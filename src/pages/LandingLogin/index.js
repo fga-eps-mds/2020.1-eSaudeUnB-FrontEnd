@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import '../LandingLogin/styles.css';
 
-import eSaude from '../../assets/images/logo.svg';
 import userIcon from '../../assets/images/userIcon.svg';
 import Union from '../../assets/images/Union.svg';
 import lock from '../../assets/images/lock.svg';
@@ -58,7 +57,7 @@ export default function LandingLogin() {
                     <button className='button' type='submit'>Entrar</button>
                     <div className="forgot">
                         <a href=''>Esqueci a minha senha</a>
-                        <Link className="a" to="/registration">Ainda não possuo uma conta</Link>
+                        <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
                     </div>
                 </form>
             </div>

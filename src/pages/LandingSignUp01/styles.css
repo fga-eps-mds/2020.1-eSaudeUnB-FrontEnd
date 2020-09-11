@@ -1,4 +1,4 @@
-.regisContainer {
+.signUp01Container {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
@@ -13,7 +13,7 @@
     font-weight: normal;
 }
 
-.content {
+.signUp01Container .content {
     width: 100%;
     height: 100vh;
 
@@ -22,21 +22,21 @@
     justify-content: space-around;
 }
 
-.section img {
+.signUp01Container .section img {
     width: 678px;
     height: 341px;
 }
 
-.section p {
+.signUp01Container .section p {
     color: #fff;
 }
 
-.section p:first-of-type {
+.signUp01Container .section p:first-of-type {
     font-size: 48px;
     line-height: 53px;
 }
 
-.form {
+.signUp01Container .form {
     height: 510px;
     width: 700px;
 
@@ -46,17 +46,17 @@
     justify-content: space-between;
 }
 
-.form .input {
+.signUp01Container .form .input {
     display: flex;
     border-bottom: 3px solid #0459AE;
 
     /**
     O css de uma página está sendo aplicado na outra, resolver isso dia(10/09)
     */
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.form input {
+.signUp01Container .form input {
     width: 320px;
     height: 33px;
 
@@ -68,16 +68,7 @@
     line-height: 27px;
 }
 
-.form .selects {
-    width: 320px;
-    height: 33px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.form .selects select {
+.signUp01Container .form .selects select {
     width: 150px;
     height: 33px;
 
@@ -86,9 +77,27 @@
     line-height: 27px;
 }
 
-.form .regisFields {
+.signUp01Container .form .signUp01Fields {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
+}
+
+.signUp01Container .form .button {
+    width: 200px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #0459AE;
+
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    line-height: 36px;
 }

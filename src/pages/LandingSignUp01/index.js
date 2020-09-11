@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
-import '../LandingRegis/styles.css';
+import '../LandingSignUp01/styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 import Union from '../../assets/images/Union.svg';
@@ -9,7 +10,7 @@ import lock from '../../assets/images/lock.svg';
 
 import Logo from '../../components/Logo';
 
-export default function LandingRegis() {
+export default function LandingSignUp01() {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -44,13 +45,13 @@ export default function LandingRegis() {
     }
 
     return (
-        <div className='regisContainer'>
+        <div className='signUp01Container'>
             <div className="content">
                 <Logo />
 
                 <form className="form" onSubmit={handleRegistration}>
                     <img src={userIcon} alt="userIcon" />
-                    <div className="regisFields">
+                    <div className="signUp01Fields">
                         <div className="input">
                             <input 
                                 placeholder="Nome"
@@ -82,33 +83,6 @@ export default function LandingRegis() {
 
                         <div className="input">
                             <input 
-                                placeholder="Matrícula UnB"
-                                value={unbRegistration}
-                                onChange={e=> setUnbRegistration(e.target.value)}
-                            />
-                            
-                            <img src={Union} alt="icon" />
-                        </div>
-                        
-                        <div className="selects">
-
-                            <select name="gender">
-                                <option value="masculino">Masculino</option>
-                                <option value="feminino">Feminino</option>
-                                <option value="naoIdentificar">Não Identificar</option>
-                            </select>
-
-                            <select name="vinculo">
-                                <option value="graduando">Graduando</option>
-                                <option value="posGraduando">Pós-Graduando</option>
-                                <option value="professor">Professor</option>
-                            </select>
-
-                        </div>
-
-
-                        <div className="input">
-                            <input 
                                 placeholder="DDD + Telefone"
                                 value={phone}
                                 onChange={e=> setPhone(e.target.value)}
@@ -116,29 +90,9 @@ export default function LandingRegis() {
                             
                             <img src={Union} alt="icon" />
                         </div>
-
-                        <div className="input">
-                            <input 
-                                placeholder="Senha"
-                                value={password}
-                                onChange={e=> setPassword(e.target.value)}
-                            />
-                            
-                            <img src={lock} alt="icon" />
-                        </div>
-
-                        <div className="input">
-                            <input 
-                                placeholder="Confirmar Senha"
-                                value={confirmPassword}
-                                onChange={e=> setConfirmPassword(e.target.value)}
-                            />
-                            
-                            <img src={lock} alt="icon" />
-                        </div>
                     </div>
-
-                    <button className="button" type="submit">Registrar</button>
+                    
+                    <Link className="button" to="/registration-step02">Próximo</Link>
                 </form>
             </div>
         </div>
