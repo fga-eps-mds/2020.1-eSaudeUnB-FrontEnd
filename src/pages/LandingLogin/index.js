@@ -19,8 +19,11 @@ export default function LandingLogin() {
         try {
             const response = await api.get('/users', { email, senha });
 
-            localStorage.setItem("user", JSON.stringify({ email, senha }));
-            localStorage.setItem("userName", JSON.stringify(response.data.name));
+            if(!response) {
+                throw() => {
+                    alert("usuario não encontrado na base de dados");
+                }
+            }
 
         } catch(err) {
             alert('Falha no login, tente novamente');
