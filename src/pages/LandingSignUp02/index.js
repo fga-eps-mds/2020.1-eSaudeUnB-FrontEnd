@@ -52,9 +52,9 @@ export default function LandingSignUp02(props) {
                     <div className="selects">
 
                         <select name="gender" onChange={e => setGender(e.target.value)}>
-                            <option value="feminino">Feminino</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="naoIdentificar">Não Identificar</option>
+                            <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
+                            <option value="I">Não Identificar</option>
                         </select>
 
                         <select name="bond" onChange={e => setBond(e.target.value)} >
