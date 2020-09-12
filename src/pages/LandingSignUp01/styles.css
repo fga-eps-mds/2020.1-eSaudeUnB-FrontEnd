@@ -68,6 +68,10 @@
     line-height: 27px;
 }
 
+.signUp01Container .form input::placeholder {
+    color: #fff;
+}
+
 .signUp01Container .form .selects select {
     width: 150px;
     height: 33px;

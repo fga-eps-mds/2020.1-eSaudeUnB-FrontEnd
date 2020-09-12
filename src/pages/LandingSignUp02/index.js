@@ -18,6 +18,12 @@ export default function LandingSignUp02(props) {
 
     function handleSignUp02() {
         try {
+            if(password !== confirmPassword) {
+                throw() => {
+                    alert("As senhas não conincidem");
+                }
+            }
+
             const user = {
                 name: props.location.state.name,
                 lastName: props.location.state.lastName,

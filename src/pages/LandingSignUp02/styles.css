@@ -91,10 +91,8 @@
     line-height: 27px;
 }
 
-.signUp02Container .form .selects select:after {
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #0459AE;
+.signUp02Container .form .selects select option {
+    background-color: #0459AE;
 }
 
 .signUp02Container .form .signUp01Fields {
