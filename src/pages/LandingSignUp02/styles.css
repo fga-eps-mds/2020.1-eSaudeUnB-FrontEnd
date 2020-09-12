@@ -65,13 +65,36 @@
     line-height: 27px;
 }
 
+.signUp02Container .form input::placeholder {
+    color: #fff;
+}
+
+.signUp02Container .form .selects {
+    display: flex;
+    justify-content: space-between;
+
+    width: 344px;
+}
+
 .signUp02Container .form .selects select {
     width: 150px;
     height: 33px;
 
+    color: #fff;
+
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #0459AE;
+
     border-radius: 5px;
     font-size: 18px;
     line-height: 27px;
+}
+
+.signUp02Container .form .selects select:after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #0459AE;
 }
 
 .signUp02Container .form .signUp01Fields {

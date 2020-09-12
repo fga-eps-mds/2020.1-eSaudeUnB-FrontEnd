@@ -19,8 +19,8 @@ export default function LandingLogin() {
         try {
             const response = await api.get('/users', { email, senha });
 
-            localStorage.setItem("user", { email, senha });
-            localStorage.setItem("userName", response.data.name);
+            localStorage.setItem("user", JSON.stringify({ email, senha }));
+            localStorage.setItem("userName", JSON.stringify(response.data.name));
 
         } catch(err) {
             alert('Falha no login, tente novamente');
