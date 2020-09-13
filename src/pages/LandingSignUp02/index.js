@@ -7,6 +7,7 @@ import Union from '../../assets/images/Union.svg';
 import lock from '../../assets/images/lock.svg';
 
 import Logo from '../../components/Logo';
+import Input from '../../components/Input';
 import './styles.css';
 
 export default function LandingSignUp02(props) {
@@ -19,16 +20,16 @@ export default function LandingSignUp02(props) {
   function handleSignUp02() {
     try {
       if (password !== confirmPassword) {
-        throw () => {
-          alert('As senhas não conincidem');
-        };
+        throw () => {};
       }
 
+      const { name, lastName, email, phone } = props.location.state.name;
+
       const user = {
-        name: props.location.state.name,
-        lastName: props.location.state.lastName,
-        email: props.location.state.email,
-        phone: props.location.state.phone,
+        name,
+        lastName,
+        email,
+        phone,
         password,
         unbRegistration,
         gender,
@@ -37,7 +38,7 @@ export default function LandingSignUp02(props) {
 
       api.post('/users', user);
     } catch (err) {
-      alert('Erro no cadastro, tente novamente');
+      alert("Erro no cadastro, tente novamente")
     }
   }
 
@@ -45,7 +46,6 @@ export default function LandingSignUp02(props) {
     <div className="signUp02Container">
       <div className="content">
         <Logo />
-
         <form className="form" onSubmit={handleSignUp02}>
           <img src={userIcon} alt="userIcon" />
 
@@ -65,35 +65,28 @@ export default function LandingSignUp02(props) {
 
           </div>
 
-          <div className="input">
-            <input
-              placeholder="Matrícula UnB"
-              value={unbRegistration}
-              onChange={(e) => setUnbRegistration(e.target.value)}
-            />
+          <Input 
+            placeholder="Matrícula UnB"
+            value={unbRegistration}
+            onChange={setUnbRegistration}
+            icon={Union}
+          />
 
-            <img src={Union} alt="icon" />
-          </div>
+          <Input 
+            placeholder="Senha"
+            value={password}
+            onChange={setPassword}
+            icon={lock}
+            type="password"
+          />
 
-          <div className="input">
-            <input
-              placeholder="Senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <img src={lock} alt="icon" />
-          </div>
-
-          <div className="input">
-            <input
-              placeholder="Confirmar Senha"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-
-            <img src={lock} alt="icon" />
-          </div>
+          <Input 
+            placeholder="Confirmar Senha"
+            value={confirmPassword}
+            onChange={setConfirmPassword}
+            icon={lock}
+            type="password"
+          />
 
           <button className="button" type="submit">Registrar</button>
         </form>

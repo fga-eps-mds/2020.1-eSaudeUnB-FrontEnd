@@ -9,6 +9,7 @@ import Union from '../../assets/images/Union.svg';
 import lock from '../../assets/images/lock.svg';
 
 import Logo from '../../components/Logo';
+import Input from '../../components/Input';
 
 export default function LandingLogin() {
   const [email, setEmail] = useState('');
@@ -35,25 +36,20 @@ export default function LandingLogin() {
 
         <form className="form" onSubmit={handleLogin}>
           <img className="userIcon" src={userIcon} alt="icone de usuario" />
-          <div className="input">
-            <input
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <Input 
+            placeholder="Email"
+            value={email}
+            onChange={setEmail}
+            icon={Union}
+          />
 
-            <img src={Union} alt="union" />
-          </div>
-
-          <div className="input">
-            <input
-              placeholder="Senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-            />
-
-            <img src={lock} alt="union" />
-          </div>
+          <Input 
+            placeholder="Senha"
+            value={senha}
+            onChange={setSenha}
+            icon={lock}
+            type="password"
+          />
 
           <button className="button" type="submit">Entrar</button>
           <div className="forgot">

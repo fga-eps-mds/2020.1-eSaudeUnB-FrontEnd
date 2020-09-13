@@ -49,10 +49,6 @@
 .signUp01Container .form .input {
     display: flex;
     border-bottom: 3px solid #0459AE;
-
-    /**
-    O css de uma página está sendo aplicado na outra, resolver isso dia(10/09)
-    */
     margin-bottom: 40px;
 }
 
