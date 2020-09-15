@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 import './styles.css';
@@ -12,52 +12,69 @@ import Logo from '../../components/Logo';
 import Input from '../../components/Input';
 
 export default function LandingLogin() {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-  async function handleLogin() {
-    try {
-      const response = await api.get('/users', { email, senha });
+    const history = useHistory();
 
-      if (!response) {
-        throw () => {
-          alert('usuario não encontrado na base de dados');
-        };
-      }
-    } catch (err) {
-      alert('Falha no login, tente novamente');
+    async function handleLogin(event) {
+        try {
+            event.preventDefault();
+
+            const response = await api.get('/login', { email, password });
+
+            if (response.status === 404) {
+                throw () => {
+                    alert('usuario não encontrado na base de dados');
+                };
+                return;
+            }
+
+            if (response.status === 400) {
+                alert('Senha incorreta, digite novamente');
+            }
+
+            if (response.status === 500) {
+                alert('Ocorreu algum erro no seu login, tente novamente');
+            }
+
+            if (response.status === 201) {
+                history.push('/home');
+            }
+        } catch (err) {
+            alert('Falha no login, tente novamente');
+        }
     }
-  }
 
-  return (
-    <div className="loginContainer">
-      <div className="content">
-        <Logo />
+    return (
+      <div className="loginContainer">
+          <div className="content">
+              <Logo />
 
-        <form className="form" onSubmit={handleLogin}>
-          <img className="userIcon" src={userIcon} alt="icone de usuario" />
-          <Input 
-            placeholder="Email"
-            value={email}
-            onChange={setEmail}
-            icon={Union}
-          />
+              <form className="form" onSubmit={handleLogin}>
+                  <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                  <Input
+                      placeholder="Email"
+                      value={email}
+                      onChange={setEmail}
+                      icon={Union}
+                    />
 
-          <Input 
-            placeholder="Senha"
-            value={senha}
-            onChange={setSenha}
-            icon={lock}
-            type="password"
-          />
+                  <Input
+                      placeholder="Senha"
+                      value={password}
+                      onChange={setPassword}
+                      icon={lock}
+                      type="password"
+                    />
 
-          <button className="button" type="submit">Entrar</button>
-          <div className="forgot">
-            <a href="">Esqueci a minha senha</a>
-            <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+                  <button className="button" type="submit">Entrar</button>
+                  <div className="forgot">
+                      <a href="">Esqueci a minha senha</a>
+                      <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
 }
