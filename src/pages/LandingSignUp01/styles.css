@@ -1,0 +1,103 @@
+.signUp01Container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
+
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.signUp01Container .content {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.signUp01Container .section img {
+    width: 678px;
+    height: 341px;
+}
+
+.signUp01Container .section p {
+    color: #fff;
+}
+
+.signUp01Container .section p:first-of-type {
+    font-size: 48px;
+    line-height: 53px;
+}
+
+.signUp01Container .form {
+    height: 510px;
+    width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signUp01Container .form .input {
+    display: flex;
+    border-bottom: 3px solid #0459AE;
+    margin-bottom: 40px;
+}
+
+.signUp01Container .form input {
+    width: 320px;
+    height: 33px;
+
+    background-color: transparent;
+    color: #fff;
+    border: 0;
+
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.signUp01Container .form input::placeholder {
+    color: #fff;
+}
+
+.signUp01Container .form .selects select {
+    width: 150px;
+    height: 33px;
+
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.signUp01Container .form .signUp01Fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+}
+
+.signUp01Container .form .button {
+    width: 200px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #0459AE;
+
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    line-height: 36px;
+}
