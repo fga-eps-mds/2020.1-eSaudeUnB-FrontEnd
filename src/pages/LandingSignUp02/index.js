@@ -52,7 +52,7 @@ export default function LandingSignUp02(props) {
 
             const response = await api.post('/users', user);
 
-            if (response.status === 200) {
+            if (response.status === 201) {
                 alert('Cadastro realizado com sucesso');
                 history.push('/');
             }

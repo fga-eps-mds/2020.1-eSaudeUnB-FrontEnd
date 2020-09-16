@@ -19,9 +19,10 @@ export default function LandingLogin() {
 
     async function handleLogin(event) {
         try {
+
             event.preventDefault();
 
-            const response = await api.get('/login', { email, password });
+            const response = await api.post('/login', { email, password });
 
             if (response.status === 404) {
                 throw () => {
@@ -39,8 +40,11 @@ export default function LandingLogin() {
             }
 
             if (response.status === 201) {
+                alert('Login efetuado');
                 history.push('/home');
             }
+
+            
         } catch (err) {
             alert('Falha no login, tente novamente');
         }
