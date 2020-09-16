@@ -1,4 +1,4 @@
-.input {
+.searcBarComponent {
     grid-area: search;
     justify-self: end;
 
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.input input {
+.searcBarComponent input {
     border-radius: 8px;
     border: none;
     
@@ -15,12 +15,12 @@
     width: 18rem;
 }
 
-.input button {
+.searcBarComponent button {
     background: none;
     border: none;
 }
 
-.input img {
+.searcBarComponent img {
     height: 1.5rem;
     margin-left: -3rem;
 }

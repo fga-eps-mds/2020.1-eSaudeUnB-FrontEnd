@@ -1,4 +1,4 @@
-.nav {
+.navBarComponent {
     width: 100%;
 
     display: flex;
@@ -6,11 +6,11 @@
     justify-content: space-between;
 }
 
-.nav p {
+.navBarComponent p {
     font: 700 3rem Poppins;
 }
 
-.nav .navLinks {
+.navBarComponent .navLinks {
     display: flex;
     justify-content: space-evenly;
     width: 35vw;
@@ -19,12 +19,12 @@
 
 }
 
-.nav .navLinks .a {
+.navBarComponent .navLinks .a {
     text-decoration: none;
     color: #eee;
 }
 
-.nav .userIcon {
+.navBarComponent .userIcon {
     height: 46px;
     width: 46px;
     margin-top: 1rem;

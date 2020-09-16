@@ -4,8 +4,8 @@ import './styles.css';
 
 import Lupa from '../../assets/images/lupa.svg';
 
-import NavBar from '../../components/NavBar/NavBar';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import NavBar from '../../components/NavBar';
+import SearchBar from '../../components/SearchBar';
 
 export default function PatientList() {
     const [search, setSearch] = useState("");

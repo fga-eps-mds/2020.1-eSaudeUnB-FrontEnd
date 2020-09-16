@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import userIcon from '../../assets/images/userIcon.svg';
-import './styles.css'
+import userIcon from '../assets/images/userIcon.svg';
+import '../assets/styles/NavBar.css';
 
 export default function NavBar() {
     return (
-        <nav className="nav">
+        <nav className="navBarComponent">
             <p>e-Saude</p>
 
             <div className="navLinks">

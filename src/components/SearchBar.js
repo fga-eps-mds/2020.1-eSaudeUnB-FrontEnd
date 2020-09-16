@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './styles.css';
+import '../assets/styles/SearchBar.css';
 
 export default function Input({
     value, onChange, icon,
 }) {
     return (
-        <div className="input">
+        <div className="searcBarComponent">
             <input
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
