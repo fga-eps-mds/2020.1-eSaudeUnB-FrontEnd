@@ -12,8 +12,8 @@ import Input from '../../components/Input';
 import './styles.css';
 
 export default function LandingSignUp02(props) {
-    const [gender, setGender] = useState('');
-    const [bond, setBond] = useState('');
+    const [gender, setGender] = useState('F');
+    const [bond, setBond] = useState('graduando');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [unbRegistration, setUnbRegistration] = useState('');

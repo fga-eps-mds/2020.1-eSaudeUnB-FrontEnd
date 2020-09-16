@@ -19,16 +19,12 @@ export default function LandingLogin() {
 
     async function handleLogin(event) {
         try {
-
             event.preventDefault();
 
             const response = await api.post('/login', { email, password });
 
             if (response.status === 404) {
-                throw () => {
-                    alert('usuario não encontrado na base de dados');
-                };
-                return;
+                alert('usuario não encontrado na base de dados');
             }
 
             if (response.status === 400) {
@@ -43,8 +39,6 @@ export default function LandingLogin() {
                 alert('Login efetuado');
                 history.push('/home');
             }
-
-            
         } catch (err) {
             alert('Falha no login, tente novamente');
         }
@@ -56,27 +50,27 @@ export default function LandingLogin() {
               <Logo />
 
               <form className="form" onSubmit={handleLogin}>
-                  <img className="userIcon" src={userIcon} alt="icone de usuario" />
-                  <Input
-                      placeholder="Email"
-                      value={email}
-                      onChange={setEmail}
-                      icon={Union}
-                    />
+                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                    <Input
+                        placeholder="Email"
+                        value={email}
+                        onChange={setEmail}
+                        icon={Union}
+                />
 
-                  <Input
-                      placeholder="Senha"
-                      value={password}
-                      onChange={setPassword}
-                      icon={lock}
-                      type="password"
-                    />
+                    <Input
+                        placeholder="Senha"
+                        value={password}
+                        onChange={setPassword}
+                        icon={lock}
+                        type="password"
+                />
 
-                  <button className="button" type="submit">Entrar</button>
-                  <div className="forgot">
-                      <a href="">Esqueci a minha senha</a>
-                      <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
-                    </div>
+                    <button className="button" type="submit">Entrar</button>
+                    <div className="forgot">
+                        <Link className="a" to="/registration-step01">Esqueci a minha senha</Link>
+                        <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
+                </div>
                 </form>
             </div>
         </div>
