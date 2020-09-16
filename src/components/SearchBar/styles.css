@@ -1,0 +1,26 @@
+.input {
+    grid-area: search;
+    justify-self: end;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input input {
+    border-radius: 8px;
+    border: none;
+    
+    height: 2rem;
+    width: 18rem;
+}
+
+.input button {
+    background: none;
+    border: none;
+}
+
+.input img {
+    height: 1.5rem;
+    margin-left: -3rem;
+}
