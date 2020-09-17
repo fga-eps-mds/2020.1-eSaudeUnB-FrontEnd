@@ -10,9 +10,9 @@ export default function Input({
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 type={type}
-          />
+            />
 
             <img src={icon} alt="icon" />
-      </div>
+        </div>
     );
 }
