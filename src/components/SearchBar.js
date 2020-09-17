@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../assets/styles/SearchBar.css';
 
@@ -15,4 +16,10 @@ export default function Input({
             <button><img src={icon} /></button>
       </div>
     );
+}
+
+Input.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    icon: PropTypes.any,
 }

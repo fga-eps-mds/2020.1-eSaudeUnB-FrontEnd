@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import go from '../assets/images/go.svg';
 import '../assets/styles/PatientTab.css';
@@ -17,4 +18,10 @@ export default function ({imgSource, patientName, patientEmail}) {
             <button> <img src={go} /> </button>
         </div>
     );
+}
+
+Input.propTypes = {
+    patientName: PropTypes.string,
+    patientEmail: PropTypes.string,
+    imgSource: PropTypes.any,
 }

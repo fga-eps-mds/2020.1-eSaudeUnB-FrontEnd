@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Input({
     placeholder, value, onChange, type, icon,
@@ -15,4 +16,12 @@ export default function Input({
             <img src={icon} alt="icon" />
         </div>
     );
+}
+
+Input.propTypes = {
+    placeholder: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    type: PropTypes.string,
+    icon: PropTypes.any,
 }
