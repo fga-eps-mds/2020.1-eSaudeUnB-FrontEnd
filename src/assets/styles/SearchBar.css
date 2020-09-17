@@ -1,5 +1,4 @@
 .searcBarComponent {
-    grid-area: search;
     justify-self: end;
 
     display: flex;

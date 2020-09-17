@@ -23,10 +23,19 @@
     grid-template-areas:   
         "nav"
         "search"
-        "content";
+        "patients";
 }
 
 
+.patientListContainer .navBar {
+    grid-area: nav;
+}
 
+.patientListContainer .searchBar {
+    grid-area: search;
+}
 
-
+.patientListContainer .patients {
+    grid-area: patients;
+    margin-top: 1rem;
+}
