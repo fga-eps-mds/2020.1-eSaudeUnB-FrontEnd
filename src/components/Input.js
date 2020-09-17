@@ -8,7 +8,7 @@ export default function Input({
             <input
                 placeholder={placeholder}
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={onChange}
                 type={type}
           />
 

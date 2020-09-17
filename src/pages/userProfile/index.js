@@ -5,7 +5,11 @@ import userIcon from '../../assets/images/userIcon.svg'
 import './styles.css'
 
 export default function UserProfile() {
-    const [email, setEmail] = useState(" ");
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [unbRegistration, setUnbRegistration] = useState('');
     return (
         <div className="userProfileContainer">
             <div className="content">
@@ -15,13 +19,15 @@ export default function UserProfile() {
                 <div className="form">
                     <Input
                         placeholder="Nome"
-                        value=""
+                        value={name}
                         icon={Union}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <Input
                         placeholder="Email"
-                        value=""
+                        value={email}
                         icon={Union}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <div className="selects">
@@ -54,18 +60,21 @@ export default function UserProfile() {
                 <div className="form">
                     <Input
                         placeholder="Sobrenome"
-                        value=""
+                        value={lastName}
                         icon={Union}
+                        onChange={(e) => setLastName(e.target.value)}
                     />
                     <Input
                         placeholder="Matrícula UnB"
-                        value=""
+                        value={unbRegistration}
                         icon={Union}
+                        onChange={(e) => setUnbRegistration(e.target.value)}
                     />
                     <Input
                         placeholder="DDD + Telefone"
-                        value=""
+                        value={phone}
                         icon={Union}
+                        onChange={(e) => setPhone(e.target.value)}
                     />
                     <select name="religion">
                         <option value="" disabled selected hidden>Religião</option>
