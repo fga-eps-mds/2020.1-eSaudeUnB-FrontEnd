@@ -62,52 +62,52 @@ export default function LandingSignUp02(props) {
     }
 
     return (
-      <div className="signUp02Container">
-          <div className="content">
-              <Logo />
-              <form className="form" onSubmit={handleSignUp02}>
-                  <img src={userIcon} alt="userIcon" />
+        <div className="signUp02Container">
+            <div className="content">
+                <Logo />
+                <form className="form" onSubmit={handleSignUp02}>
+                    <img src={userIcon} alt="userIcon" />
 
-                  <div className="selects">
+                    <div className="selects">
 
-                      <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                          <option value="F">Feminino</option>
-                          <option value="M">Masculino</option>
-                          <option value="I">Não Identificar</option>
+                        <select name="gender" onChange={(e) => setGender(e.target.value)}>
+                            <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
+                            <option value="I">Não Identificar</option>
                         </select>
 
-                      <select name="bond" onChange={(e) => setBond(e.target.value)}>
-                          <option value="graduando">Graduando</option>
-                          <option value="posGraduando">Pós-Graduando</option>
-                          <option value="professor">Professor</option>
+                        <select name="bond" onChange={(e) => setBond(e.target.value)}>
+                            <option value="graduando">Graduando</option>
+                            <option value="posGraduando">Pós-Graduando</option>
+                            <option value="professor">Professor</option>
                         </select>
 
                     </div>
 
-                  <Input
-                      placeholder="Matrícula UnB"
-                      value={unbRegistration}
-                      onChange={setUnbRegistration}
-                      icon={Union}
+                    <Input
+                        placeholder="Matrícula UnB"
+                        value={unbRegistration}
+                        onChange={setUnbRegistration}
+                        icon={Union}
                     />
 
-                  <Input
-                      placeholder="Senha"
-                      value={password}
-                      onChange={setPassword}
-                      icon={lock}
-                      type="password"
+                    <Input
+                        placeholder="Senha"
+                        value={password}
+                        onChange={setPassword}
+                        icon={lock}
+                        type="password"
                     />
 
-                  <Input
-                      placeholder="Confirmar Senha"
-                      value={confirmPassword}
-                      onChange={setConfirmPassword}
-                      icon={lock}
-                      type="password"
+                    <Input
+                        placeholder="Confirmar Senha"
+                        value={confirmPassword}
+                        onChange={setConfirmPassword}
+                        icon={lock}
+                        type="password"
                     />
 
-                  <button className="button" type="submit">Registrar</button>
+                    <button className="button" type="submit">Registrar</button>
                 </form>
             </div>
         </div>
