@@ -56,16 +56,14 @@ export default function LandingLogin() {
                         value={email}
                         onChange={setEmail}
                         icon={Union}
-                />
-
+                    />
                     <Input
                         placeholder="Senha"
                         value={password}
                         onChange={setPassword}
                         icon={lock}
                         type="password"
-                />
-
+                    />
                     <button className="button" type="submit">Entrar</button>
                     <div className="forgot">
                         <Link className="a" to="/registration-step01">Esqueci a minha senha</Link>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../../components/Input'
 import Union from '../../assets/images/Union.svg'
+import Menu from '../../components/Menu/Menu'
 import userIcon from '../../assets/images/userIcon.svg'
 import './styles.css'
 
@@ -11,7 +12,9 @@ export default function UserProfile() {
     const [phone, setPhone] = useState('');
     const [unbRegistration, setUnbRegistration] = useState('');
     return (
+        <><Menu/>
         <div className="userProfileContainer">
+            
             <div className="content">
                 <div className="profile">
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
@@ -48,7 +51,7 @@ export default function UserProfile() {
 
                     </div>
 
-                    <select name="civilStatus">
+                    <select className="container" name="civilStatus">
                         <option value="" disabled selected hidden>Estado Civil</option>
                         <option value="Solteiro">Solteiro</option>
                         <option value="Divorciado">Divorciado</option>
@@ -76,15 +79,16 @@ export default function UserProfile() {
                         icon={Union}
                         onChange={(e) => setPhone(e.target.value)}
                     />
-                    <select name="religion">
+                    <select className="container" name="religion">
                         <option value="" disabled selected hidden>Religião</option>
-                        <option value="Solteiro">Cristão</option>
-                        <option value="Divorciado">seila</option>
-                        <option value="Casado">seila 2</option>
-                        <option value="Viuvo">seila 3</option>
+                        <option value="Solteiro">Católigo</option>
+                        <option value="Divorciado">Evangélico</option>
+                        <option value="Casado">Espirita</option>
+                        <option value="Viuvo">Outra</option>
                     </select>
                 </div>
             </div>
         </div>
+        </>
     );
 }

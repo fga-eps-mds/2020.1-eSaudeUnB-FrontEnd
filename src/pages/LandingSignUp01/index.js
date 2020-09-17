@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import Input from '../../components/Input'
 import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
@@ -18,61 +18,45 @@ export default function LandingSignUp01() {
       <div className="signUp01Container">
           <div className="content">
               <Logo />
-
               <form className="form">
                   <img src={userIcon} alt="userIcon" />
-                  <div className="signUp01Fields">
-                      <div className="input">
-                          <input
-                              placeholder="Nome"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                            />
-                          <img src={Union} alt="icon" />
-                        </div>
-
-                      <div className="input">
-                          <input
-                              placeholder="Sobrenome"
-                              value={lastName}
-                              onChange={(e) => setLastName(e.target.value)}
-                            />
-
-                          <img src={Union} alt="icon" />
-                        </div>
-
-                      <div className="input">
-                          <input
-                              placeholder="Email"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                            />
-
-                          <img src={Union} alt="icon" />
-                        </div>
-
-                      <div className="input">
-                          <input
-                              placeholder="DDD + Telefone"
-                              value={phone}
-                              onChange={(e) => setPhone(e.target.value)}
-                            />
-
-                          <img src={Union} alt="icon" />
-                        </div>
-                    </div>
-
-                  <Link
-                      className="button"
-                      to={{
-                            pathname: '/registration-step02',
-                            state: {
-                                name, lastName, email, phone,
-                            },
-                        }}
-                    >
-                      Próximo
-                    </Link>
+                  <div className="signUp01Fields">                   
+                      <Input
+                          placeholder="Nome"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          icon={Union}
+                      />               
+                      <Input
+                          placeholder="Sobrenome"
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                          icon={Union}
+                      />
+                      <Input
+                          placeholder="Email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          icon={Union}
+                      />
+                      <Input
+                          placeholder="DDD + Telefone"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          icon={Union}
+                      />
+                      <Link
+                          className="button"
+                          to={{
+                                pathname: '/registration-step02',
+                                state: {
+                                    name, lastName, email, phone,
+                                },
+                            }}
+                        >
+                          Próximo
+                      </Link>
+                   </div>
                 </form>
             </div>
         </div>

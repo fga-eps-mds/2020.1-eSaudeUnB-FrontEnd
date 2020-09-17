@@ -1,0 +1,39 @@
+*{
+font-family: Poppins, sans-serif;
+font-style: normal;
+font-weight: normal;
+}
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background: linear-gradient(90deg, #0A84E9 0%, #0A9BE9 100%);
+}
+/*Alinha a direita*/
+li {
+float: right;
+}
+
+.name{
+float: left;
+font-size: 30px;
+}
+
+li a {
+display: flex;
+flex-direction: column;
+color: white;
+text-align: center;
+padding: 25px 16px;
+text-decoration: none;
+margin-right: 70px;
+}
+
+li a:hover {
+background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
+}
+
+.logo{   
+padding: 25px 30px 10px 30px;
+}

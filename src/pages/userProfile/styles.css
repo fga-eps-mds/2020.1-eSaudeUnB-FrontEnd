@@ -76,3 +76,6 @@
     align-self: baseline;
     
 }
+.container{
+    width: 344px !important; 
+}

@@ -87,14 +87,14 @@ export default function LandingSignUp02(props) {
                   <Input
                       placeholder="Matrícula UnB"
                       value={unbRegistration}
-                      onChange={setUnbRegistration}
+                      onChange={(e) => setUnbRegistration(e.target.value)}
                       icon={Union}
                     />
 
                   <Input
                       placeholder="Senha"
                       value={password}
-                      onChange={setPassword}
+                      onChange={(e) => setPassword(e.target.value)}
                       icon={lock}
                       type="password"
                     />
@@ -102,7 +102,7 @@ export default function LandingSignUp02(props) {
                   <Input
                       placeholder="Confirmar Senha"
                       value={confirmPassword}
-                      onChange={setConfirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                       icon={lock}
                       type="password"
                     />
