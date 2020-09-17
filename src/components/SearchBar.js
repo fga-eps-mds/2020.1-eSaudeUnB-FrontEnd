@@ -18,7 +18,7 @@ export default function Input({
     );
 }
 
-Input.propTypes = {
+SearchBar.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     icon: PropTypes.any,

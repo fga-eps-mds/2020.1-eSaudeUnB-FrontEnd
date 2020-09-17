@@ -20,7 +20,7 @@ export default function ({imgSource, patientName, patientEmail}) {
     );
 }
 
-Input.propTypes = {
+PatientTab.propTypes = {
     patientName: PropTypes.string,
     patientEmail: PropTypes.string,
     imgSource: PropTypes.any,
