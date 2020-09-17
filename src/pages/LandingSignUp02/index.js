@@ -54,7 +54,7 @@ export default function LandingSignUp02(props) {
 
             if (response.status === 201) {
                 alert('Cadastro realizado com sucesso');
-                history.push('/');
+                history.push('/login');
             }
         } catch (err) {
             alert('Erro no cadastro, tente novamente');

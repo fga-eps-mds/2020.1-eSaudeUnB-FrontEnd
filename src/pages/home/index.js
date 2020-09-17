@@ -2,8 +2,10 @@ import React from 'react';
 
 export default function Home() {
     return (
-      <>
-            <p>Home</p>
-        </>
+        <div className="homeContainer">
+            <div className="content">
+                <p>Home</p>
+            </div>
+        </div>
     );
 }

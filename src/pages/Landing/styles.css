@@ -1,0 +1,91 @@
+#page-landing {
+    width: 100vw;
+    height: 100vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    font-family: Poppins, sans-serif;
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+  }
+  
+  #page-landing-content {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "hero hero hero"
+      "logo buttons buttons";
+  }
+  
+  .hero-image {
+    grid-area: hero;
+    height: 60vh;
+    justify-self: center;
+    margin-top: -5rem;
+  }
+  
+  .logo-container {
+    color: #eeeeee;
+    grid-area: logo;
+    text-align: left;
+    margin-top: 4rem;
+  }
+  
+  .logo-container h1 {
+    font-weight: 700;
+    font-size: 5.4rem;
+    line-height: 5rem;
+  }
+  
+  .logo-container h2 {
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+  
+  .buttons-container {
+    display: flex;
+    margin-top: 5rem;
+    justify-self: end;
+  }
+  
+  .buttons-container a {
+    width: 18rem;
+    height: 5rem;
+  
+    border-radius: 2.5rem;
+    font: 500 2rem Poppins;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    text-decoration: none;
+  
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
+    transition: background-color 0.2s;
+  }
+  
+  .buttons-container a:first-child {
+    margin-right: 3rem;
+  }
+  
+  .buttons-container a.registration {
+    background: none;
+    border: 4px solid #0459ae;
+    color: #eeeeee;
+  }
+  .buttons-container a.registration:hover {
+    background: #0459ae;
+  }
+  
+  .buttons-container a.login {
+    background: #eeeeee;
+    color: #0459ae;
+  }
+  .buttons-container a.login:hover {
+    background: #0459ae;
+    color: #eeeeee;
+  }
+  
