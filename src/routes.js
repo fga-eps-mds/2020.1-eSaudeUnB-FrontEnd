@@ -7,19 +7,19 @@ import LandingLogin from './pages/LandingLogin';
 import LandingSignUp01 from './pages/LandingSignUp01';
 import LandingSignUp02 from './pages/LandingSignUp02';
 import PatientList from './pages/PatientList';
-import PatientHistory from './pages/PatientHistory';
+import PatientRecord from './pages/PatientRecord';
 
 export default function Routes() {
     return (
-      <BrowserRouter>
-          <Switch>
-              <Route path="/" exact component={Landing} />
-              <Route path="/home" exact component={Home} />
-              <Route path="/login"  component={LandingLogin} />
-              <Route path="/registration-step01" component={LandingSignUp01} />
-              <Route path="/registration-step02" component={LandingSignUp02} />
-              <Route path="/patient-list" exact component={PatientList} />
-              <Route path="/patient-list/:id" component={PatientHistory} />
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={Landing} />
+                <Route path="/home" exact component={Home} />
+                <Route path="/login" component={LandingLogin} />
+                <Route path="/registration-step01" component={LandingSignUp01} />
+                <Route path="/registration-step02" component={LandingSignUp02} />
+                <Route path="/patient-list" exact component={PatientList} />
+                <Route path="/patient-list/:id" component={PatientRecord} />
             </Switch>
         </BrowserRouter>
     );

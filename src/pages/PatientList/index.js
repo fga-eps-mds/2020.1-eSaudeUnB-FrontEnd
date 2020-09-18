@@ -14,13 +14,13 @@ import PatientTab from '../../components/PatientTab'
 export default function PatientList() {
     const [search, setSearch] = useState("");
     const [patients, setPatients] = useState([]);
-    
+
     useEffect(() => {
         api.get("/users")
             .then(response => {
                 setPatients(response.data);
             })
-        }, []);
+    }, []);
 
     return (
         <div className="patientListContainer">
@@ -39,9 +39,7 @@ export default function PatientList() {
                         <PatientTab
                             key={patient.id}
                             imgSource={userIcon}
-                            patientName={patient.name}
-                            patientEmail={patient.email}
-                            address={`/patient-list/${patient._id}`}
+                            patient={patient}
                         />
                     ))}
                 </div>

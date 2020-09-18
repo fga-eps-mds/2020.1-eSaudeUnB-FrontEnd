@@ -1,0 +1,23 @@
+.patientRecord {
+    width: 100%;
+    height: 100vh;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+  
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #eeeeee;
+  }
+  
+  .patientRecord .content {
+    height: 100vh;
+  }
+  
+  .patientRecord .content .navBarComponent {
+    margin-bottom: 3rem;
+  }
+  

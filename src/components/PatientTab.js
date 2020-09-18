@@ -5,25 +5,28 @@ import { Link } from 'react-router-dom';
 import go from '../assets/images/go.svg';
 import '../assets/styles/PatientTab.css';
 
-export default function PatientTab({imgSource, patientName, patientEmail, address}) {
+export default function PatientTab({ imgSource, patient }) {
     return (
         <div className="patientTab">
             <div className="patientInfos">
-                <img className="patientImg" src={imgSource} alt={patientName} />
+                <img className="patientImg" src={imgSource} alt={patient.name} />
                 <div className="minPatient">
-                    <p>{patientName}</p>
-                    <p>{patientEmail}</p>
+                    <p>{patient.name}</p>
+                    <p>{patient.email}</p>
                 </div>
             </div>
 
-            <Link to={address} > <img src={go}/> </Link>
+            <Link
+                className="button"
+                to={`patient-list/${patient.id}`}
+            >              {" "}
+                <img src={go} />{" "}
+            </Link>
         </div>
     );
 }
 
 PatientTab.propTypes = {
-    patientName: PropTypes.string,
-    patientEmail: PropTypes.string,
+    patient: PropTypes.object,
     imgSource: PropTypes.any,
-    address: PropTypes.string,
 }

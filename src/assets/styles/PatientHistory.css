@@ -1,0 +1,43 @@
+
+.patientHistory .tab {
+    overflow: hidden;
+    background-color: none;
+}
+
+.patientHitory .tab button {
+    background-color: #197FE5;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.2s;
+}
+
+.patientHitory .tab button:hover {
+    background-color: #0459AE;
+}
+
+.patientHistory .content {
+    display: flex;
+    font: 500 1.5rem Poppins;
+    line-height: 3rem;
+    color: #000;
+
+    background-color: #eee;
+    border-radius: 15px;
+
+    width: 90vw;
+    min-width: 900px;
+    max-width: 1800px;
+
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+
+
+.patientHistory .content h1, h2 {
+    color: #07387E;
+}
+
