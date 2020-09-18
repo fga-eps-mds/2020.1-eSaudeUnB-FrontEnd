@@ -20,9 +20,15 @@ export default class AdminMain extends Component{
     }
 
     deletePsychologist = async(id) =>{
+        if(window.confirm('Deseja deletar esse psicólogo?')){
         await api.delete(`/admin/psy/${id}`);
         const response = await api.get('/admin/psy');
         this.setState({psychologists: response.data});
+        }
+        else{
+            const response = await api.get('/admin/psy');
+            this.setState({psychologists: response.data});
+        }
     }
 
     render(){
