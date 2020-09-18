@@ -41,6 +41,7 @@ export default function PatientList() {
                             imgSource={userIcon}
                             patientName={patient.name}
                             patientEmail={patient.email}
+                            address={`/patient-list/${patient._id}`}
                         />
                     ))}
                 </div>

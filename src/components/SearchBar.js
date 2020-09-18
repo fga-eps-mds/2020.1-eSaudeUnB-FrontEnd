@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../assets/styles/SearchBar.css';
 
-export default function Input({
+export default function SearchBar({
     value, onChange, icon,
 }) {
     return (

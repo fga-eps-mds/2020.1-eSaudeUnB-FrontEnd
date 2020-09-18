@@ -7,6 +7,7 @@ import LandingLogin from './pages/LandingLogin';
 import LandingSignUp01 from './pages/LandingSignUp01';
 import LandingSignUp02 from './pages/LandingSignUp02';
 import PatientList from './pages/PatientList';
+import PatientHistory from './pages/PatientHistory';
 
 export default function Routes() {
     return (
@@ -17,7 +18,8 @@ export default function Routes() {
               <Route path="/login"  component={LandingLogin} />
               <Route path="/registration-step01" component={LandingSignUp01} />
               <Route path="/registration-step02" component={LandingSignUp02} />
-              <Route path="/patient-list" component={PatientList} />
+              <Route path="/patient-list" exact component={PatientList} />
+              <Route path="/patient-list/:id" component={PatientHistory} />
             </Switch>
         </BrowserRouter>
     );

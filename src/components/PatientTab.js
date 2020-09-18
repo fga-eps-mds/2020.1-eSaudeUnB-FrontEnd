@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import go from '../assets/images/go.svg';
 import '../assets/styles/PatientTab.css';
 
-export default function ({imgSource, patientName, patientEmail}) {
+export default function PatientTab({imgSource, patientName, patientEmail, address}) {
     return (
         <div className="patientTab">
             <div className="patientInfos">
@@ -15,7 +16,7 @@ export default function ({imgSource, patientName, patientEmail}) {
                 </div>
             </div>
 
-            <button> <img src={go} /> </button>
+            <Link to={address} > <img src={go}/> </Link>
         </div>
     );
 }
@@ -24,4 +25,5 @@ PatientTab.propTypes = {
     patientName: PropTypes.string,
     patientEmail: PropTypes.string,
     imgSource: PropTypes.any,
+    address: PropTypes.string,
 }
