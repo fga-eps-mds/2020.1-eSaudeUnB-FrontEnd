@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 import './styles.css';
 
 import Lupa from '../../assets/images/lupa.svg';
+import go from '../../assets/images/go.svg';
 
 import userIcon from '../../assets/images/userIcon.svg';
 
 import NavBar from '../../components/NavBar';
 import SearchBar from '../../components/SearchBar';
-import PatientTab from '../../components/PatientTab'
 
 export default function PatientList() {
     const [search, setSearch] = useState("");
@@ -36,11 +37,23 @@ export default function PatientList() {
 
                 <div className="patients">
                     {patients.map((patient) => (
-                        <PatientTab
-                            key={patient.id}
-                            imgSource={userIcon}
-                            patient={patient}
-                        />
+                        <div className="patientTab">
+                            <div className="patientInfos">
+                                <img className="patientImg" src={userIcon} alt={patient.name} />
+                                <div className="minPatient">
+                                    <p>{patient.name}</p>
+                                    <p>{patient.email}</p>
+                                </div>
+                            </div>
+
+                            <Link
+                                className="button"
+                                to={`patient-list/${patient.id}`}
+                            >
+                                <img src={go} />{" "}
+                            </Link>
+                        </div>
+
                     ))}
                 </div>
             </div>
