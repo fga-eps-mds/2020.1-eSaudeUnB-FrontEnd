@@ -36,7 +36,7 @@ export default function AdminLogin(){
 
             if (response.status === 201) {
                 alert('Login efetuado');
-                history.push('/admin/psy');
+                history.push('/admin/psy/list');
             }
         } catch (err) {
             alert('Falha no login, tente novamente');
