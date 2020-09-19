@@ -25,13 +25,13 @@ export default function UserProfile() {
                                 placeholder="Nome"
                                 value={name}
                                 icon={Union}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={setName}
                             />
                             <Input
                                 placeholder="Email"
                                 value={email}
                                 icon={Union}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={setEmail}
                             />
 
                             <div className="selects">
@@ -66,19 +66,19 @@ export default function UserProfile() {
                                 placeholder="Sobrenome"
                                 value={lastName}
                                 icon={Union}
-                                onChange={(e) => setLastName(e.target.value)}
+                                onChange={setLastName}
                             />
                             <Input
                                 placeholder="Matrícula UnB"
                                 value={unbRegistration}
                                 icon={Union}
-                                onChange={(e) => setUnbRegistration(e.target.value)}
+                                onChange={setUnbRegistration}
                             />
                             <Input
                                 placeholder="DDD + Telefone"
                                 value={phone}
                                 icon={Union}
-                                onChange={(e) => setPhone(e.target.value)}
+                                onChange={setPhone}
                             />
                             <select className="container" name="religion">
                                 <option value="" disabled selected hidden>Religião</option>

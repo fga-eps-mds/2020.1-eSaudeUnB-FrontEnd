@@ -41,7 +41,7 @@
 .userProfileContainer .form .input {
     display: flex;
     border-bottom: 3px solid #0459AE;
-
+    
     margin-bottom: 10px;
 }
 
@@ -52,7 +52,7 @@
 .userProfileContainer .form input {
     width: 320px;
     height: 33px;
-
+    color: #fff;
     background-color: transparent;
     border: 0;
 
