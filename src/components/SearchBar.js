@@ -11,10 +11,10 @@ export default function SearchBar({
             <input
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-          />
+            />
 
-            <button><img src={icon} /></button>
-      </div>
+            <button><img src={icon} alt="searchIcon" /></button>
+        </div>
     );
 }
 
@@ -22,4 +22,4 @@ SearchBar.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     icon: PropTypes.any,
-}
+};

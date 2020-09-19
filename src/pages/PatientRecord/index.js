@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
 
-import up from "../../assets/images/up.svg";
-import down from "../../assets/images/down.svg";
-import userIcon from "../../assets/images/userIcon.svg";
+import up from '../../assets/images/up.svg';
+import down from '../../assets/images/down.svg';
+import userIcon from '../../assets/images/userIcon.svg';
 
-import NavBar from "../../components/NavBar";
+import NavBar from '../../components/NavBar';
 
-import "./styles.css";
+import './styles.css';
 
 export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
@@ -17,9 +17,9 @@ export default function PatientRecord(props) {
 
     useEffect(() => {
         api.get(`/users/${props.match.params.id}`)
-            .then(response => {
+            .then((response) => {
                 setPatient(response.data[0]);
-            })
+            });
     }, []);
 
     function handleExpand() {
@@ -39,7 +39,7 @@ export default function PatientRecord(props) {
 
                 <div className="patientInfo">
                     <div className="patient">
-                        <img className="patientImg" src={userIcon} />
+                        <img className="patientImg" src={userIcon} alt="userIcon" />
                         <div className="info">
                             <div className="name">
                                 <span className="prop">Nome: </span>
@@ -58,22 +58,20 @@ export default function PatientRecord(props) {
                                 </div>
                             </div>
 
-                            {expand ?
-                                <div className="hidden">
+                            {expand
+                                ? <div className="hidden">
                                     <span className="prop">Vinculo: </span>
                                     <span>{patient.bond}</span>
 
                                     <span className="prop">Matricula: </span>
                                     <span>{patient.unbRegistration}</span>
                                 </div>
-                                :
-                                <div className="hidden"></div>}
+                                : <div className="hidden"></div>}
 
                             <button className="expand" onClick={handleExpand} >{arrow ? <img src={down} alt="expandir" /> : <img src={up} alt="expandir" />}</button>
                         </div>
                     </div>
                 </div>
-
 
                 <div className="patientHistory">
                     <div className="tab">

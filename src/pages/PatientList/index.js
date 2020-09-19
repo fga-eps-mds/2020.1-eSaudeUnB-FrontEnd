@@ -13,14 +13,14 @@ import NavBar from '../../components/NavBar';
 import SearchBar from '../../components/SearchBar';
 
 export default function PatientList() {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState('');
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
-        api.get("/users")
-            .then(response => {
+        api.get('/users')
+            .then((response) => {
                 setPatients(response.data);
-            })
+            });
     }, []);
 
     return (
@@ -41,7 +41,7 @@ export default function PatientList() {
                             <div className="patientInfos">
                                 <img className="patientImg" src={userIcon} alt={patient.name} />
                                 <div className="minPatient">
-                                    <p>{patient.name}</p>
+                                    <p>{`${patient.name} ${patient.lastName}`}</p>
                                     <p>{patient.email}</p>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@ export default function PatientList() {
                                 className="button"
                                 to={`patient-list/${patient.id}`}
                             >
-                                <img src={go} />{" "}
+                                <img src={go} alt="go" />{' '}
                             </Link>
                         </div>
 
@@ -60,6 +60,3 @@ export default function PatientList() {
         </div>
     );
 }
-
-
-

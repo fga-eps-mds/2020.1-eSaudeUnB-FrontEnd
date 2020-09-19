@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import "../assets/styles/PatientHistory.css";
+import '../assets/styles/PatientHistory.css';
 
 export default function PatientHistory(props) {
-
     return (
         <div className="patientHistory">
             <div className="tab">

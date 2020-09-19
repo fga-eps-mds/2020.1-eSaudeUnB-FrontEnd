@@ -24,4 +24,4 @@ Input.propTypes = {
     onChange: PropTypes.func,
     type: PropTypes.string,
     icon: PropTypes.any,
-}
+};
