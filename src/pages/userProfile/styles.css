@@ -33,7 +33,7 @@
 }
 .userProfileContainer .formColumn{
     display: flex;
-    width: 80vh;
+    width: 100vh;
     justify-items: baseline;
     justify-content: space-between;
 }

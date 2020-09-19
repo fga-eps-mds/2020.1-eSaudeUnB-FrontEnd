@@ -5,13 +5,13 @@ function Menu() {
     return (
         <div>
             <nav id="menu">
-                <ul>                   
-                    <li><img className="logo"src={Union}></img></li>
+                <ul>   
+                    <a id="name"href="/">eSaudeUnB</a>                
+                    <li><a id= "icone"><img src={Union}></img></a></li>
                     <li><a href="#">Perfil</a></li>
                     <li><a href="#">Lista de Psicologos</a></li>
                     <li><a href="#">Proximos Eventos</a></li>
                     <li><a href="#">Agendar Atendimento</a></li>  
-                    <li className="name"><a href="#">eSaudeUnB</a></li> 
                 </ul>
             </nav>
         </div>
