@@ -35,7 +35,7 @@ export default function LandingLogin() {
                 alert('Ocorreu algum erro no seu login, tente novamente');
             }
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 alert('Login efetuado');
                 history.push('/home');
             }
@@ -45,11 +45,11 @@ export default function LandingLogin() {
     }
 
     return (
-      <div className="loginContainer">
-          <div className="content">
-              <Logo />
+        <div className="loginContainer">
+            <div className="content">
+                <Logo />
 
-              <form className="form" onSubmit={handleLogin}>
+                <form className="form" onSubmit={handleLogin}>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
                     <Input
                         placeholder="Email"
@@ -57,6 +57,7 @@ export default function LandingLogin() {
                         onChange={setEmail}
                         icon={Union}
                     />
+
                     <Input
                         placeholder="Senha"
                         value={password}
@@ -64,11 +65,12 @@ export default function LandingLogin() {
                         icon={lock}
                         type="password"
                     />
+
                     <button className="button" type="submit">Entrar</button>
                     <div className="forgot">
                         <Link className="a" to="/registration-step01">Esqueci a minha senha</Link>
                         <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>
