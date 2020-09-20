@@ -73,7 +73,9 @@ export default function PatientRecord(props) {
                                 className="expand"
                                 onClick={handleExpand}
                             >
-                                {arrow ? <img src={down} alt="expandir" /> : <img src={up} alt="expandir" />}
+                                {arrow ?
+                                    <img src={down} alt="expandir" /> :
+                                    <img src={up} alt="expandir" />}
                             </button>
                         </div>
                     </div>
