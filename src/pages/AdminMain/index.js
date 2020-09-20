@@ -25,9 +25,9 @@ export default class AdminMain extends Component{
         this.setState({psychologists: response.data});
     }
 
-    deletePsychologist = async(id) =>{
+    deletePsychologist = async(email) =>{
         if(window.confirm('Deseja excluir esse psicólogo?')){
-        await api.delete(`/admin/psy/${id}`);
+        await api.delete(`/admin/psy/${email}`);
         const response = await api.get('/admin/psy/list');
         this.setState({psychologists: response.data});
         }
@@ -47,7 +47,7 @@ export default class AdminMain extends Component{
                     <p>{psychologist.email}</p>
                     <p>{psychologist.specialization}</p>
                     <p>{psychologist.bibliography}</p>
-                    <button onClick={() => this.deletePsychologist(psychologist.id)}>Excluir Psicólogo</button>
+                    <button onClick={() => this.deletePsychologist(psychologist.email)}>Excluir Psicólogo</button>
                     </article>
                 ))}
                 <button className="new-psychologist" onClick={this.routeChange}>
