@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 
-import Lupa from '../../assets/images/lupa.svg';
+import MagnifyingGlass from '../../assets/images/lupa.svg';
 import go from '../../assets/images/go.svg';
 
 import userIcon from '../../assets/images/userIcon.svg';
@@ -32,7 +32,7 @@ export default function PatientList() {
                     className="searchBar"
                     value={search}
                     onChange={setSearch}
-                    icon={Lupa}
+                    icon={MagnifyingGlass}
                 />
 
                 <div className="patients">
