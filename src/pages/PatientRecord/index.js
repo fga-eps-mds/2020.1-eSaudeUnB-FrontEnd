@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
@@ -90,18 +91,45 @@ export default function PatientRecord(props) {
 
                     <div className="tabContent">
                         <div className="record">
-                            <h2>Profissional: Dr. Hilmer Rodrigues Data: 07/SET/2020 Encaminhamento: Rede Interna</h2>
+                            <h2>
+                                Profissional:
+                                Dr. Hilmer Rodrigues Data: 07/SET/2020 Encaminhamento: Rede Interna
+                            </h2>
                             <h1>Queixa Principal</h1>
                             <div className="recordText">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor urna. Nullam venenatis mi nec libero tempus, vitae venenatis lacus tincidunt. Donec consequat mauris in accumsan suscipit. Curabitur cursus blandit bibendum.</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis.
+                                    Etiam vehicula tortor urna.
+                                    Nullam venenatis mi nec libero tempus,
+                                    vitae venenatis lacus tincidunt.
+                                    Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
+                                </p>
                             </div>
                             <h1>Queixa Secundaria</h1>
                             <div className="recordText">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor urna. Nullam venenatis mi nec libero tempus, vitae venenatis lacus tincidunt. Donec consequat mauris in accumsan suscipit. Curabitur cursus blandit bibendum.</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis.
+                                    Etiam vehicula tortor urna.
+                                    Nullam venenatis mi nec libero tempus,
+                                    vitae venenatis lacus tincidunt.
+                                    Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
+                                </p>
                             </div>
                             <h1>Evolução das queixas</h1>
                             <div className="recordText">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor urna. Nullam venenatis mi nec libero tempus, vitae venenatis lacus tincidunt. Donec consequat mauris in accumsan suscipit. Curabitur cursus blandit bibendum.</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis.
+                                    Etiam vehicula tortor urna.
+                                    Nullam venenatis mi nec libero tempus,
+                                    vitae venenatis lacus tincidunt.
+                                    Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -110,3 +138,8 @@ export default function PatientRecord(props) {
         </div>
     );
 }
+
+PatientRecord.propTypes = {
+    match: PropTypes.object,
+    id: PropTypes.string,
+};

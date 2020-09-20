@@ -37,7 +37,7 @@ export default function PatientList() {
 
                 <div className="patients">
                     {patients.map((patient) => (
-                        <div className="patientTab">
+                        <div key={patient.email} className="patientTab">
                             <div className="patientInfos">
                                 <img className="patientImg" src={userIcon} alt={patient.name} />
                                 <div className="minPatient">
