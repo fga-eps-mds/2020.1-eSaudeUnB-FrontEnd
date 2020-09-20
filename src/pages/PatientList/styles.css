@@ -1,77 +1,68 @@
 .patientListContainer {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
+  color: #eee;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
-    
-    color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
 .patientListContainer .content {
-    width: 100%;
-    height: 100vh;
-    margin: 0.5vw;
-
-    display: grid;
-    grid-template-rows: 6rem 2.5rem 1fr;
-    grid-template-areas:   
-        "nav"
-        "search"
-        "patients";
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-
-.patientListContainer .navBar {
-    grid-area: nav;
-}
-
-.patientListContainer .searchBar {
-    grid-area: search;
+.patientListContainer .searcBarComponent {
+  width: 1400px;
+  align-self: center;
+  justify-content: flex-end;
 }
 
 .patientListContainer .patients {
-    grid-area: patients;
-    margin-top: 1rem;
+  align-self: center;
+  margin-top: 1.5rem;
+  width: 1400px;
 }
 
 .patientListContainer .patientTab {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: Poppins, sans-serif;
-    color: #07387E;
-    background-color: #eee;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font: 500 1.2rem Poppins;
+  color: #07387e;
+
+  background-color: #eee;
+
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 2rem 0.5rem 1rem;
 }
 
 .patientListContainer .patientInfos {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.patientListContainer .patientTab .patientInfos .patientImg{
-    border-radius: 25%;
-    margin: 0 2rem 0 1rem;
+.patientListContainer .patientTab .patientInfos .patientImg {
+  border-radius: 25%;
+  margin: 0 2rem 0 1rem;
 }
 
-.patientListContainer .patientTab .patientInfos .minPatient p:first-of-type{
-    font: 700 2.5rem Poppins;
-
+.patientListContainer .patientTab .patientInfos .minPatient p:first-of-type {
+  font: 700 2rem Poppins;
 }
 .patientListContainer .patientTab button {
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    border-radius: 25%;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 25%;
 }
 
 .patientListContainer .patientTab button img {
-    width: 3rem;
-    height: 3rem;
-
+  width: 3rem;
+  height: 3rem;
 }
