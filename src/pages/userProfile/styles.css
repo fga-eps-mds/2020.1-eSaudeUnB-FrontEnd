@@ -23,7 +23,6 @@
 .userProfileContainer .form {
    
     height: 50vh;
-    width: 50vh;
     
     /*background-color: aqua;*/
     display: flex;
@@ -32,8 +31,10 @@
     justify-content: space-between;
 }
 .userProfileContainer .formColumn{
+   
     display: flex;
-    width: 100vh;
+    width: 80vh;
+    height: 60vh;
     justify-items: baseline;
     justify-content: space-between;
 }
@@ -86,12 +87,12 @@
     display: flex;
     position: absolute;
     align-self: baseline;
-    margin-top: 5vh;
+    margin-top: 1vh;
 }
 .container{
     width: 344px !important; 
 }
-.userProfileContainer .button-salvar{
+.userProfileContainer .formColumn .buttons .button-salvar{
     width: 150px;
     height: 50px;
 
@@ -104,12 +105,13 @@
     line-height: 36px;
 }
 .userProfileContainer .buttons{
+    position: absolute;
     display: flex;
     align-self: flex-end;
     justify-content: space-between;
     width: 20%;
 }
-.userProfileContainer .button-sair {
+.userProfileContainer .formColumn .buttons .button-sair {
     width: 150px;
     height: 50px;
 

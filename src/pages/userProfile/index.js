@@ -1,16 +1,60 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Input from '../../components/Input'
 import Union from '../../assets/images/Union.svg'
 import Menu from '../../components/Menu/Menu'
 import userIcon from '../../assets/images/userIcon.svg'
+import api from '../../services/api';
 import './styles.css'
 
-export default function UserProfile() {
+export default function UserProfile(props) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phone, setPhone] = useState('');
     const [unbRegistration, setUnbRegistration] = useState('');
+    const [gender, setGender] = useState('');
+    const [bond, setBond] = useState('');
+    const [password, setPassword] = useState('');
+    const [civilStatus, setCivilStatus] = useState('');
+    const [religion, setReligion] = useState('');
+    const history = useHistory();
+    
+    function getOut(event){
+        event.preventDefault();
+
+        history.push('/')
+    }
+
+    async function updateInfos(event) {
+        try {
+            event.preventDefault();
+            alert("teste");
+
+            const response = await api.put(`/userUpdate/${props.location.state.email}`, {name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion});
+            console.log(response);
+
+            if (response.status === 200) {
+                alert('Atualização efetuada');
+                history.push({
+                    pathname: '/profile',
+                    state: response.data
+                });
+                setEmail('');
+                setName('');
+                setLastName('');
+                setPhone('');
+                setUnbRegistration('');
+                setGender('');
+                setBond('');
+                setCivilStatus('');
+                setReligion('');
+            }
+
+        } catch (err) {
+            alert('Falha na atualização dos dados, tente novamente');
+        }
+    }
     return (
         <><Menu />
             <div className="userProfileContainer">
@@ -19,7 +63,7 @@ export default function UserProfile() {
                     <div className="profile">
                         <img className="userIcon" src={userIcon} alt="icone de usuario" />
                     </div>
-                    <div className="formColumn">
+                    <form className="formColumn" onSubmit={updateInfos}>
                         <div className="form">
                             <Input
                                 placeholder="Nome"
@@ -36,14 +80,14 @@ export default function UserProfile() {
 
                             <div className="selects">
 
-                                <select name="gender">
+                                <select name="gender" onChange={(e) => setGender(e.target.value)}>
                                     <option value="" disabled selected hidden>Gênero</option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
-                                <select name="bond">
+                                <select name="bond" onChange={(e) => setBond(e.target.value)}>
                                     <option value="" disabled selected hidden>Vínculo</option>
                                     <option value="graduando">Graduando</option>
                                     <option value="posGraduando">Pós-Graduando</option>
@@ -52,7 +96,7 @@ export default function UserProfile() {
 
                             </div>
 
-                            <select className="container" name="civilStatus">
+                            <select className="container" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
                                 <option value="" disabled selected hidden>Estado Civil</option>
                                 <option value="Solteiro">Solteiro</option>
                                 <option value="Divorciado">Divorciado</option>
@@ -80,7 +124,7 @@ export default function UserProfile() {
                                 icon={Union}
                                 onChange={setPhone}
                             />
-                            <select className="container" name="religion">
+                            <select className="container" name="religion" onChange={(e) => setReligion(e.target.value)}>
                                 <option value="" disabled selected hidden>Religião</option>
                                 <option value="Solteiro">Católico</option>
                                 <option value="Divorciado">Evangélico</option>
@@ -88,11 +132,11 @@ export default function UserProfile() {
                                 <option value="Viuvo">Outra</option>
                             </select>
                         </div>
-                    </div>
-                    <div className= "buttons">
-                        <button className="button-salvar" type="submit">Salvar</button>
-                        <button className="button-sair" type="submit">Sair</button>
-                    </div>
+                        <div className="buttons">
+                            <button className="button-salvar" type="submit">Salvar</button>
+                            <button className="button-sair" onClick = {getOut}>Sair</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </>

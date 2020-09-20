@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+import api from '../../services/api';
 
 import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
+import Input from '../../components/Input';
 import Union from '../../assets/images/Union.svg';
 
 import Logo from '../../components/Logo';
 
-export default function LandingSignUp01() {
+export default function LandingSignUp() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -38,11 +41,9 @@ export default function LandingSignUp01() {
             }
 
             const response = await api.post('/users', user);
-            const response2 = await api.get('/users/${user.email}');
 
             if (response.status === 201) {
                 alert('Cadastro realizado com sucesso');
-                alert(response2);
                 history.push('/');
             }
         } catch (err) {
@@ -56,7 +57,7 @@ export default function LandingSignUp01() {
             <div className="content">
                 <Logo />
 
-                <form className="form">
+                <form className="form" onSubmit={handleSign}>
                     <img src={userIcon} alt="userIcon" />
                     <div className="signUp01Fields">
                         <Input
@@ -91,39 +92,8 @@ export default function LandingSignUp01() {
                             icon={Union}
                             type="password"
                         />
-
-                        <div className="input">
-                            <input
-                                placeholder="Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-
-                            <img src={Union} alt="icon" />
-                        </div>
-
-                        <div className="input">
-                            <input
-                                placeholder="DDD + Telefone"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                            />
-
-                            <img src={Union} alt="icon" />
-                        </div>
                     </div>
-
-                    <Link
-                        className="button"
-                        to={{
-                            pathname: '/registration-step02',
-                            state: {
-                                name, lastName, email, phone,
-                            },
-                        }}
-                    >
-                      Próximo
-                    </Link>
+                    <button className="button" type="submit">Registrar</button>
                 </form>
             </div>
         </div>
