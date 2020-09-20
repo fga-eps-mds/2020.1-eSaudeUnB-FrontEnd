@@ -41,9 +41,11 @@ export default function LandingSignUp01() {
             }
 
             const response = await api.post('/users', user);
+            const response2 = await api.get('/users/${user.email}');
 
             if (response.status === 201) {
                 alert('Cadastro realizado com sucesso');
+                alert(response2);
                 history.push('/');
             }
         } catch (err) {
@@ -62,32 +64,32 @@ export default function LandingSignUp01() {
                         <Input
                             placeholder="Nome"
                             value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={setName}
                             icon={Union}
                         />
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
+                            onChange={setLastName}
                             icon={Union}
                         />
                         <Input
                             placeholder="Email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={setEmail}
                             icon={Union}
                         />
                         <Input
                             placeholder="Senha"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={setPassword}
                             icon={Union}
                             type="password"
                         />
                         <Input
                             placeholder="Confirmar senha"
                             value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={setConfirmPassword}
                             icon={Union}
                             type="password"
                         />
