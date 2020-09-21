@@ -1,0 +1,78 @@
+.loginContainer{
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
+
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.loginContainer .content {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.loginContainer .form {
+    height: 446px;
+    width: 320px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.loginContainer .form .input {
+    display: flex;
+    border-bottom: 3px solid #0459AE;
+}
+
+.loginContainer .form input {
+    width: 320px;
+    height: 33px;
+
+    background-color: transparent;
+    color: #fff;
+    border: 0;
+
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.loginContainer .form input::placeholder {
+    color: #fff;
+}
+
+.loginContainer .form .button {
+    width: 200px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #0459AE;
+
+    font-size: 24px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.loginContainer .form .pageTitle{
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}

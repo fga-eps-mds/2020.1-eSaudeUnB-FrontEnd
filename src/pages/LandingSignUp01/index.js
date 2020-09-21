@@ -70,11 +70,11 @@ export default function LandingSignUp01() {
                                 name, lastName, email, phone,
                             },
                         }}
-                    >
+                  >
                       Próximo
-                    </Link>
-                </form>
-            </div>
-        </div>
+                  </Link>
+              </form>
+          </div>
+      </div>
     );
 }
