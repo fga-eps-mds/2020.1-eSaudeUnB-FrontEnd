@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 import './styles.css';
 
@@ -10,13 +10,13 @@ import lock from '../../assets/images/lock.svg';
 import api from '../../services/api';
 import userIcon from '../../assets/images/userIcon.svg';
 
-export default function AdminLogin(){
-    const[email, setEmail] = useState('');
-    const[password, setPassword] = useState('');
+export default function AdminLogin() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const history = useHistory();
 
-    async function handleAdminLogin(event){
+    async function handleAdminLogin(event) {
         try {
             event.preventDefault();
 
@@ -43,31 +43,30 @@ export default function AdminLogin(){
         }
     }
 
-    return(
-        <div className="loginContainer">
-            <div className="content">
+    return (
+      <div className="loginContainer">
+          <div className="content">
 
-                <form className="form" onSubmit={handleAdminLogin}>
-                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
-                    <h2 className="pageTitle">Login de Administrador</h2>
-                    <Input
-                    placeholder="Email"
-                    value={email}
-                    onChange={setEmail}
-                    icon={Union}
-                />
-                    <Input
-                    placeholder="Senha"
-                    value={password}
-                    onChange={setPassword}
-                    type="password"   
-                    icon={lock}             
-                />
+              <form className="form" onSubmit={handleAdminLogin}>
+                  <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                  <h2 className="pageTitle">Login de Administrador</h2>
+                  <Input
+                        placeholder="Email"
+                        value={email}
+                        onChange={setEmail}
+                        icon={Union}
+                    />
+                  <Input
+                        placeholder="Senha"
+                        value={password}
+                        onChange={setPassword}
+                        type="password"
+                        icon={lock}
+                    />
 
-                <button className="button" type="submit">Entrar</button>
+                    <button className="button" type="submit">Entrar</button>
                 </form>
             </div>
         </div>
     );
-
 }

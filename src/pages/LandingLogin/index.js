@@ -45,34 +45,34 @@ export default function LandingLogin() {
     }
 
     return (
-      <div className="loginContainer">
-          <div className="content">
-              <Logo />
+        <div className="loginContainer">
+            <div className="content">
+                <Logo />
 
-              <form className="form" onSubmit={handleLogin}>
-                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
-                    <Input
-                        placeholder="Email"
-                        value={email}
-                        onChange={setEmail}
-                        icon={Union}
-                />
+                <form className="form" onSubmit={handleLogin}>
+                <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                <Input
+                      placeholder="Email"
+                      value={email}
+                      onChange={setEmail}
+                      icon={Union}
+                    />
 
-                    <Input
-                        placeholder="Senha"
-                        value={password}
-                        onChange={setPassword}
-                        icon={lock}
-                        type="password"
-                />
+                <Input
+                      placeholder="Senha"
+                      value={password}
+                      onChange={setPassword}
+                      icon={lock}
+                      type="password"
+                    />
 
-                    <button className="button" type="submit">Entrar</button>
-                    <div className="forgot">
-                        <Link className="a" to="/registration-step01">Esqueci a minha senha</Link>
-                        <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
-                </div>
-                </form>
-            </div>
-        </div>
+                <button className="button" type="submit">Entrar</button>
+                <div className="forgot">
+                      <Link className="a" to="/registration-step01">Esqueci a minha senha</Link>
+                      <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
+                    </div>
+              </form>
+          </div>
+      </div>
     );
 }

@@ -15,66 +15,66 @@ export default function LandingSignUp01() {
     const [phone, setPhone] = useState('');
 
     return (
-      <div className="signUp01Container">
-          <div className="content">
-              <Logo />
+        <div className="signUp01Container">
+            <div className="content">
+                <Logo />
 
-              <form className="form">
-                  <img src={userIcon} alt="userIcon" />
-                  <div className="signUp01Fields">
-                      <div className="input">
-                          <input
-                              placeholder="Nome"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                            />
-                          <img src={Union} alt="icon" />
-                        </div>
+                <form className="form">
+                    <img src={userIcon} alt="userIcon" />
+                    <div className="signUp01Fields">
+                        <div className="input">
+                            <input
+                                placeholder="Nome"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                          />
+                            <img src={Union} alt="icon" />
+                      </div>
 
-                      <div className="input">
-                          <input
-                              placeholder="Sobrenome"
-                              value={lastName}
-                              onChange={(e) => setLastName(e.target.value)}
-                            />
+                        <div className="input">
+                            <input
+                                placeholder="Sobrenome"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                          />
 
-                          <img src={Union} alt="icon" />
-                        </div>
+                            <img src={Union} alt="icon" />
+                      </div>
 
-                      <div className="input">
-                          <input
-                              placeholder="Email"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                            />
+                        <div className="input">
+                            <input
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                          />
 
-                          <img src={Union} alt="icon" />
-                        </div>
+                            <img src={Union} alt="icon" />
+                      </div>
 
-                      <div className="input">
-                          <input
-                              placeholder="DDD + Telefone"
-                              value={phone}
-                              onChange={(e) => setPhone(e.target.value)}
-                            />
+                        <div className="input">
+                            <input
+                                placeholder="DDD + Telefone"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                          />
 
-                          <img src={Union} alt="icon" />
-                        </div>
-                    </div>
+                            <img src={Union} alt="icon" />
+                      </div>
+                  </div>
 
-                  <Link
-                      className="button"
-                      to={{
+                    <Link
+                        className="button"
+                        to={{
                             pathname: '/registration-step02',
                             state: {
                                 name, lastName, email, phone,
                             },
                         }}
-                    >
+                  >
                       Próximo
-                    </Link>
-                </form>
-            </div>
-        </div>
+                  </Link>
+              </form>
+          </div>
+      </div>
     );
 }
