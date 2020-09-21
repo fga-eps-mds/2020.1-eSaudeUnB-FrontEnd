@@ -27,40 +27,40 @@ export default function LandingSignUp01() {
                                 placeholder="Nome"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                          />
+                            />
                             <img src={Union} alt="icon" />
-                      </div>
+                        </div>
 
                         <div className="input">
                             <input
                                 placeholder="Sobrenome"
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
-                          />
+                            />
 
                             <img src={Union} alt="icon" />
-                      </div>
+                        </div>
 
                         <div className="input">
                             <input
                                 placeholder="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                          />
+                            />
 
                             <img src={Union} alt="icon" />
-                      </div>
+                        </div>
 
                         <div className="input">
                             <input
                                 placeholder="DDD + Telefone"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
-                          />
+                            />
 
                             <img src={Union} alt="icon" />
-                      </div>
-                  </div>
+                        </div>
+                    </div>
 
                     <Link
                         className="button"

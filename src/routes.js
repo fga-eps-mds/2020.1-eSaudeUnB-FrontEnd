@@ -22,5 +22,6 @@ export default function Routes() {
                 <Route path="/admin/psy/create" component={PsyCreate} />
           </Switch>
       </BrowserRouter>
+
     );
 }

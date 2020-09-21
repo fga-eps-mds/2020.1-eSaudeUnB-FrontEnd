@@ -9,6 +9,6 @@ export default function Logo() {
 
             <p>E-Saude UnB</p>
             <p>Mesmo à distância nós cuidamos de você</p>
-      </section>
+        </section>
     );
 }

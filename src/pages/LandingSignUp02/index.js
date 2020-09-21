@@ -74,22 +74,22 @@ export default function LandingSignUp02(props) {
                             <option value="F">Feminino</option>
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
-                      </select>
+                        </select>
 
                         <select name="bond" onChange={(e) => setBond(e.target.value)}>
                             <option value="graduando">Graduando</option>
                             <option value="posGraduando">Pós-Graduando</option>
                             <option value="professor">Professor</option>
-                      </select>
+                        </select>
 
-                  </div>
+                    </div>
 
                     <Input
                         placeholder="Matrícula UnB"
                         value={unbRegistration}
                         onChange={setUnbRegistration}
                         icon={Union}
-                  />
+                    />
 
                     <Input
                         placeholder="Senha"
@@ -97,7 +97,7 @@ export default function LandingSignUp02(props) {
                         onChange={setPassword}
                         icon={lock}
                         type="password"
-                  />
+                    />
 
                     <Input
                         placeholder="Confirmar Senha"
@@ -105,11 +105,11 @@ export default function LandingSignUp02(props) {
                         onChange={setConfirmPassword}
                         icon={lock}
                         type="password"
-                  />
+                    />
 
                     <button className="button" type="submit">Registrar</button>
-              </form>
-          </div>
-      </div>
+                </form>
+            </div>
+        </div>
     );
 }
