@@ -7,10 +7,6 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
-
-    font-family: Poppins, sans-serif;
-    font-style: normal;
-    font-weight: normal;
 }
 
 .signUp02Container .content {
