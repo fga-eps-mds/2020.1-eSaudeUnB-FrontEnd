@@ -1,27 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input({
-    placeholder, value, onChange, type, icon,
+import '../assets/styles/SearchBar.css';
+
+export default function SearchBar({
+    value, onChange, icon,
 }) {
     return (
-        <div className="input">
+        <div className="searcBarComponent">
             <input
-                placeholder={placeholder}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                type={type}
             />
 
-            <img src={icon} alt="icon" />
+            <button><img src={icon} alt="searchIcon" /></button>
         </div>
     );
 }
 
-Input.propTypes = {
-    placeholder: PropTypes.string,
+SearchBar.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
-    type: PropTypes.string,
     icon: PropTypes.any,
 };

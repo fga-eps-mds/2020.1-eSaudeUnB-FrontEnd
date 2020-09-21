@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
@@ -39,7 +40,8 @@ export default function LandingSignUp02(props) {
                 bond,
             };
 
-            if (!name || !lastName || !email || !phone || !password || !unbRegistration || !gender || !bond) {
+            if (!name || !lastName || !email || !phone
+                || !password || !unbRegistration || !gender || !bond) {
                 alert('Os campos não foram preenchidos corretamente');
                 history.push('/registration-step01');
                 return;
@@ -54,7 +56,7 @@ export default function LandingSignUp02(props) {
 
             if (response.status === 201) {
                 alert('Cadastro realizado com sucesso');
-                history.push('/');
+                history.push('/login');
             }
         } catch (err) {
             alert('Erro no cadastro, tente novamente');
@@ -71,13 +73,13 @@ export default function LandingSignUp02(props) {
                     <div className="selects">
 
                         <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                            <option value="F">Feminino</option>
+                            <option value="F" selected >Feminino</option>
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
                         </select>
 
                         <select name="bond" onChange={(e) => setBond(e.target.value)}>
-                            <option value="graduando">Graduando</option>
+                            <option value="graduando" selected >Graduando</option>
                             <option value="posGraduando">Pós-Graduando</option>
                             <option value="professor">Professor</option>
                         </select>
@@ -113,3 +115,12 @@ export default function LandingSignUp02(props) {
         </div>
     );
 }
+
+LandingSignUp02.propTypes = {
+    location: PropTypes.object,
+    name: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.number,
+    icon: PropTypes.any,
+};

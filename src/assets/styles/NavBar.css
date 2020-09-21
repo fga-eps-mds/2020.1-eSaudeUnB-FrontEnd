@@ -1,0 +1,32 @@
+.navBarComponent {
+    width: 100%;
+    margin-bottom: 3rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navBarComponent p {
+    font: 700 3rem Poppins;
+}
+
+.navBarComponent .navLinks {
+    display: flex;
+    justify-content: space-evenly;
+    width: 35vw;
+    margin-top: 1.8rem;
+    margin-left: 49vw;
+
+}
+
+.navBarComponent .navLinks .a {
+    text-decoration: none;
+    color: #eee;
+}
+
+.navBarComponent .userIcon {
+    height: 46px;
+    width: 46px;
+    margin-top: 1rem;
+}

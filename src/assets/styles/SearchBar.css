@@ -1,0 +1,26 @@
+.searcBarComponent {
+  justify-self: end;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searcBarComponent input {
+  border-radius: 8px;
+  border: none;
+
+  height: 2rem;
+  width: 18rem;
+}
+
+.searcBarComponent button {
+  background: none;
+  border: none;
+}
+
+.searcBarComponent img {
+  height: 1.5rem;
+  margin-top: 0.3rem;
+  margin-left: -3rem;
+}
