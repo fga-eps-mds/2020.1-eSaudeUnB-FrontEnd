@@ -29,7 +29,6 @@ export default function UserProfile(props) {
     async function updateInfos(event) {
         try {
             event.preventDefault();
-            alert('teste');
 
             const response = await api.put(`/userUpdate/${props.location.state.email}`, {
                 name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
@@ -97,7 +96,7 @@ export default function UserProfile(props) {
 
                             </div>
 
-                            <select className="container" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
+                            <select className="selectsLargest" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
                                 <option value="" disabled selected hidden>Estado Civil</option>
                                 <option value="Solteiro">Solteiro</option>
                                 <option value="Divorciado">Divorciado</option>
@@ -125,7 +124,7 @@ export default function UserProfile(props) {
                                 icon={Union}
                                 onChange={setPhone}
                             />
-                            <select className="container" name="religion" onChange={(e) => setReligion(e.target.value)}>
+                            <select className="selectsLargest" name="religion" onChange={(e) => setReligion(e.target.value)}>
                                 <option value="" disabled selected hidden>Religião</option>
                                 <option value="Solteiro">Católico</option>
                                 <option value="Divorciado">Evangélico</option>

@@ -85,8 +85,8 @@
     align-self: baseline;
     margin-top: 1vh;
 }
-.container{
-    width: 344px !important; 
+.userProfileContainer .content .formColumn .form .selectsLargest{
+    width: 344px; 
 }
 .userProfileContainer .formColumn .buttons .button-salvar{
     width: 150px;
