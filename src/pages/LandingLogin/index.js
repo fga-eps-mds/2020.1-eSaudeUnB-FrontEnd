@@ -21,7 +21,8 @@ export default function LandingLogin() {
         try {
             event.preventDefault();
 
-            const response = await api.post('/login', { email, password });
+            const response = await api.post('/loginUser', { email, password });
+
 
             if (response.status === 404) {
                 alert('usuario não encontrado na base de dados');
@@ -43,7 +44,31 @@ export default function LandingLogin() {
                 });
             }
         } catch (err) {
-            alert('Falha no login, tente novamente');
+            try {
+                const responsePsy = await api.post('/loginPsy', { email, password });
+
+                if (responsePsy.status === 404) {
+                    alert('usuario não encontrado na base de dados');
+                }
+
+                if (responsePsy.status === 400) {
+                    alert('Senha incorreta, digite novamente');
+                }
+
+                if (responsePsy.status === 500) {
+                    alert('Ocorreu algum erro no seu login, tente novamente');
+                }
+
+                if (responsePsy.status === 200 || responsePsy.status === 201) {
+                    alert('Login efetuado');
+                    history.push({
+                        pathname: '/psy-profile',
+                        state: responsePsy.data,
+                    });
+                }
+            } catch (err) {
+                alert("Falha no login, tente novamente");
+            }
         }
     }
 

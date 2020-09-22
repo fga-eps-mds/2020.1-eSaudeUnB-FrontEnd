@@ -44,7 +44,7 @@ export default function PatientList() {
                                 </div>
                             </div>
 
-                            <Link className="button" to={`patient-list/${patient.id}`}>
+                            <Link className="button" to={`patient-list/${patient.email}`}>
                                 <img src={go} alt="go" />{' '}
                             </Link>
                         </div>
