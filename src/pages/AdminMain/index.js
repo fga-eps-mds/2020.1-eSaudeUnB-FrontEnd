@@ -41,15 +41,15 @@ export default function AdminMain() {
                         <p>{psychologist.email}</p>
                         <p>{psychologist.specialization}</p>
                         <p>{psychologist.bibliography}</p>
-                        <button onClick={
-                            () => deletePsychologist(psychologist.email)}
+                        <button
+                            onClick={() => deletePsychologist(psychologist.email)}
                         >
                             Excluir Psicólogo
                         </button>
                     </article>
                 ))}
                 <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
-                  Cadastrar novo Psicólogo
+                    Cadastrar novo Psicólogo
                 </button>
             </div>
         </div>
