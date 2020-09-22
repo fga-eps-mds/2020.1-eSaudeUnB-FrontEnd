@@ -34,6 +34,28 @@ Baixe na sua máquina as seguintes dependências:
 
 * Remova os serviços dos contêineres com o comando: ```sudo docker-compose rm```
 
+## Comandos do Makefile
+
+* Para rodar o eslint no projeto
+```
+make lint
+```
+
+* Para subir e realizar a build dos containers 
+```
+make build
+```
+
+* Para subir os containers 
+```
+make up
+```
+
+* Para parar e remover os containers
+```
+make down
+```
+
 ## References
 
 * https://docs.docker.com/compose/

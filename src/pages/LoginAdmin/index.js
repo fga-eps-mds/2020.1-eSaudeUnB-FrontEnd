@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import api from '../../services/api';
 import './styles.css';
 
-import userIcon from '../../assets/images/userIcon.svg';
-import Union from '../../assets/images/Union.svg';
-import lock from '../../assets/images/lock.svg';
-
-import Logo from '../../components/Logo';
 import Input from '../../components/Input';
 
-export default function LandingLogin() {
+import Union from '../../assets/images/Union.svg';
+import lock from '../../assets/images/lock.svg';
+import api from '../../services/api';
+import userIcon from '../../assets/images/userIcon.svg';
+
+export default function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const history = useHistory();
 
-    async function handleLogin(event) {
+    async function handleAdminLogin(event) {
         try {
             event.preventDefault();
 
-            const response = await api.post('/login', { email, password });
+            const response = await api.post('/admin/login', { email, password });
 
             if (response.status === 404) {
                 alert('usuario não encontrado na base de dados');
@@ -35,12 +34,9 @@ export default function LandingLogin() {
                 alert('Ocorreu algum erro no seu login, tente novamente');
             }
 
-            if (response.status === 200 || response.status === 201) {
+            if (response.status === 200) {
                 alert('Login efetuado');
-                history.push({
-                    pathname: '/profile',
-                    state: response.data,
-                });
+                history.push('/admin/psy/list');
             }
         } catch (err) {
             alert('Falha no login, tente novamente');
@@ -50,30 +46,25 @@ export default function LandingLogin() {
     return (
         <div className="loginContainer">
             <div className="content">
-                <Logo />
 
-                <form className="form" onSubmit={handleLogin}>
+                <form className="form" onSubmit={handleAdminLogin}>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                    <h2 className="pageTitle">Login de Administrador</h2>
                     <Input
                         placeholder="Email"
                         value={email}
                         onChange={setEmail}
                         icon={Union}
                     />
-
                     <Input
                         placeholder="Senha"
                         value={password}
                         onChange={setPassword}
-                        icon={lock}
                         type="password"
+                        icon={lock}
                     />
 
                     <button className="button" type="submit">Entrar</button>
-                    <div className="forgot">
-                        <Link className="a" to="/registration">Esqueci a minha senha</Link>
-                        <Link className="a" to="/registration">Ainda não possuo uma conta</Link>
-                    </div>
                 </form>
             </div>
         </div>

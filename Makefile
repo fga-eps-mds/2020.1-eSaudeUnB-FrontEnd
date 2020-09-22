@@ -42,9 +42,6 @@ down-remove-images:
 	# The images will nedd to be rebuilded
 	docker-compose -f ${file} down --rmi local -v
 
-migrate:
-	docker-compose -f ${file} run --rm e-saude-frontend npx sequelize db:migrate
-
 test:
 	docker-compose -f ${file} run --rm e-saude-frontend npm run test
 
