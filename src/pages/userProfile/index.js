@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Input from '../../components/Input';
 import Union from '../../assets/images/Union.svg';
 import Menu from '../../components/Menu/Menu';
@@ -33,7 +34,6 @@ export default function UserProfile(props) {
             const response = await api.put(`/userUpdate/${props.location.state.email}`, {
                 name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
             });
-            console.log(response);
 
             if (response.status === 200) {
                 alert('Atualização efetuada');
@@ -143,3 +143,6 @@ export default function UserProfile(props) {
         </>
     );
 }
+UserProfile.propTypes = {
+    location: PropTypes.object,
+};
