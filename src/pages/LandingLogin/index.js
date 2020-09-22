@@ -23,7 +23,6 @@ export default function LandingLogin() {
 
             const response = await api.post('/loginUser', { email, password });
 
-
             if (response.status === 404) {
                 alert('usuario não encontrado na base de dados');
             }
@@ -66,8 +65,8 @@ export default function LandingLogin() {
                         state: responsePsy.data,
                     });
                 }
-            } catch (err) {
-                alert("Falha no login, tente novamente");
+            } catch (err2) {
+                alert('Falha no login, tente novamente');
             }
         }
     }

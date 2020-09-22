@@ -44,19 +44,19 @@ export default function AdminLogin() {
     }
 
     return (
-      <div className="loginContainer">
-          <div className="content">
+        <div className="loginContainer">
+            <div className="content">
 
-              <form className="form" onSubmit={handleAdminLogin}>
-                  <img className="userIcon" src={userIcon} alt="icone de usuario" />
-                  <h2 className="pageTitle">Login de Administrador</h2>
-                  <Input
+                <form className="form" onSubmit={handleAdminLogin}>
+                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                    <h2 className="pageTitle">Login de Administrador</h2>
+                    <Input
                         placeholder="Email"
                         value={email}
                         onChange={setEmail}
                         icon={Union}
                     />
-                  <Input
+                    <Input
                         placeholder="Senha"
                         value={password}
                         onChange={setPassword}

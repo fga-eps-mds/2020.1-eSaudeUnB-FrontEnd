@@ -116,6 +116,7 @@ export default function PsyProfile(props) {
                                 </div>
                             </div>
                             <textarea
+                                maxLength="300"
                                 value={bibliography}
                                 onChange={(e) => setBibliography(e.target.value)}
                                 placeholder="Por favor adicione uma curta biografia ao seu perfil.(até 300 caracteres)"
