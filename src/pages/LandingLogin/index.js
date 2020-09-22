@@ -39,7 +39,7 @@ export default function LandingLogin() {
                 alert('Login efetuado');
                 history.push({
                     pathname: '/profile',
-                    state: response.data
+                    state: response.data,
                 });
             }
         } catch (err) {

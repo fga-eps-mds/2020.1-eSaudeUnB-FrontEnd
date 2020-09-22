@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Input from '../../components/Input'
-import Union from '../../assets/images/Union.svg'
-import Menu from '../../components/Menu/Menu'
-import userIcon from '../../assets/images/userIcon.svg'
+import Input from '../../components/Input';
+import Union from '../../assets/images/Union.svg';
+import Menu from '../../components/Menu/Menu';
+import userIcon from '../../assets/images/userIcon.svg';
 import api from '../../services/api';
-import './styles.css'
+import './styles.css';
 
 export default function UserProfile(props) {
     const [email, setEmail] = useState('');
@@ -15,30 +15,31 @@ export default function UserProfile(props) {
     const [unbRegistration, setUnbRegistration] = useState('');
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
-    const [password, setPassword] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
     const history = useHistory();
-    
-    function getOut(event){
+
+    function getOut(event) {
         event.preventDefault();
 
-        history.push('/')
+        history.push('/');
     }
 
     async function updateInfos(event) {
         try {
             event.preventDefault();
-            alert("teste");
+            alert('teste');
 
-            const response = await api.put(`/userUpdate/${props.location.state.email}`, {name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion});
+            const response = await api.put(`/userUpdate/${props.location.state.email}`, {
+                name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
+            });
             console.log(response);
 
             if (response.status === 200) {
                 alert('Atualização efetuada');
                 history.push({
                     pathname: '/profile',
-                    state: response.data
+                    state: response.data,
                 });
                 setEmail('');
                 setName('');
@@ -50,13 +51,13 @@ export default function UserProfile(props) {
                 setCivilStatus('');
                 setReligion('');
             }
-
         } catch (err) {
             alert('Falha na atualização dos dados, tente novamente');
         }
     }
     return (
-        <><Menu />
+        <>
+            <Menu />
             <div className="userProfileContainer">
 
                 <div className="content">
@@ -134,7 +135,7 @@ export default function UserProfile(props) {
                         </div>
                         <div className="buttons">
                             <button className="button-salvar" type="submit">Salvar</button>
-                            <button className="button-sair" onClick = {getOut}>Sair</button>
+                            <button className="button-sair" onClick={getOut}>Sair</button>
                         </div>
                     </form>
                 </div>

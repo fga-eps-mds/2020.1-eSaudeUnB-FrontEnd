@@ -51,7 +51,6 @@ export default function LandingSignUp() {
         }
     }
 
-
     return (
         <div className="signUp01Container">
             <div className="content">
