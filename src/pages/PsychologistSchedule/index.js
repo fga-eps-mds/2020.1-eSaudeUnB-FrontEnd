@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import NavBar from '../../components/NavBar';
 
@@ -144,7 +145,10 @@ export default function PsychologistSchedule() {
                             })}
                         </div>
 
-                        <footer className="test">
+                        <footer className="footer">
+                            <Link className="link" to={'/psychology/calendar'}>
+                                Configurações avançadas
+                            </Link>
                             {/* <button type="submit">Salvar cadastro</button> */}
                             <button type="button" onClick={test}>
                                 Salvar cadastro

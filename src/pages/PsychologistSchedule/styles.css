@@ -105,11 +105,24 @@
     font-size: 1rem;
 }
 
-.content .form .test {
+.content .form .footer {
     width: 90%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
+
+.content .form .footer .link {
+    margin-right: 500px;
+    text-decoration: none;
+    color: #0459ae;
+    transition: 0.2s;
+}
+
+.content .form .footer .link:hover {
+    color: #07387e;
+}
+
 .content .form footer button {
     cursor: pointer;
     padding: 0.6rem;
