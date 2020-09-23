@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import api from '../../services/api';
-import Input from '../../components/Input';
 
 import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
+import Input from '../../components/Input';
 import Union from '../../assets/images/Union.svg';
 
-export default function PsyCreate() {
+import Logo from '../../components/Logo';
+
+export default function LandingSignUp() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [specialization, setSpecialization] = useState('');
-    const [bibliography] = useState('');
-    const [gender, setGender] = useState('');
-    const [bond] = useState('Psychologist');
-
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const history = useHistory();
 
-    async function handlePsychologistSignUp(event) {
+    async function handleSign(event) {
         try {
             event.preventDefault();
 
@@ -27,23 +27,24 @@ export default function PsyCreate() {
                 name,
                 lastName,
                 email,
-                specialization,
-                bibliography,
-                gender,
-                bond,
+                password,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization) {
+            if (!name || !lastName || !email || !password) {
                 alert('Os campos não foram preenchidos corretamente');
-                history.push('/admin/psy/create');
                 return;
             }
 
-            const response = await api.post('/admin/psy/create', user);
+            if (password !== confirmPassword) {
+                alert('as senhas não são iguais');
+                return;
+            }
+
+            const response = await api.post('/users', user);
 
             if (response.status === 201) {
                 alert('Cadastro realizado com sucesso');
-                history.push('/admin/psy/list');
+                history.push('/');
             }
         } catch (err) {
             alert('Erro no cadastro, tente novamente');
@@ -51,56 +52,49 @@ export default function PsyCreate() {
     }
 
     return (
-        <div className="psychologist-container">
-            <div className="psychologist-create">
+        <div className="signUp01Container">
+            <div className="content">
+                <Logo />
 
-                <form className="form" onSubmit={handlePsychologistSignUp}>
+                <form className="form" onSubmit={handleSign}>
                     <img src={userIcon} alt="userIcon" />
-                    <div className="Psycreate">
+                    <div className="signUp01Fields">
                         <Input
                             placeholder="Nome"
                             value={name}
                             onChange={setName}
                             icon={Union}
                         />
-
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
                             icon={Union}
                         />
-
-                        <div className="selects">
-
-                            <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                                <option disabled selected value> Genero </option>
-                                <option value="F">Feminino</option>
-                                <option value="M">Masculino</option>
-                                <option value="I">Não Identificar</option>
-                            </select>
-
-                        </div>
-
                         <Input
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
                             icon={Union}
                         />
-
                         <Input
-                            placeholder="Especialidade"
-                            value={specialization}
-                            onChange={setSpecialization}
+                            placeholder="Senha"
+                            value={password}
+                            onChange={setPassword}
                             icon={Union}
+                            type="password"
                         />
-
-                        <button className="button" type="submit">Registrar</button>
+                        <Input
+                            placeholder="Confirmar senha"
+                            value={confirmPassword}
+                            onChange={setConfirmPassword}
+                            icon={Union}
+                            type="password"
+                        />
                     </div>
+                    <button className="button" type="submit">Registrar</button>
                 </form>
             </div>
         </div>
-
     );
 }

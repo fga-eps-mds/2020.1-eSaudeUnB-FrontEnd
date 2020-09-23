@@ -17,7 +17,6 @@ export default function Input({
         </div>
     );
 }
-
 Input.propTypes = {
     placeholder: PropTypes.string,
     value: PropTypes.string,
