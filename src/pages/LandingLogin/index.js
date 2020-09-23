@@ -28,24 +28,6 @@ export default function LandingLogin() {
 
             const response = await api.post('/login', { email, password });
 
-            if (response.status === 404) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Usuário não encontrado na base de dados.');
-            }
-
-            if (response.status === 400) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Senha incorreta, digite novamente.');
-            }
-
-            if (response.status === 500) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Ocorreu algum erro no login, tente novamente.');
-            }
-
             if (response.status === 200 || response.status === 201) {
                 alert('Login efetuado');
                 history.push({
@@ -53,10 +35,21 @@ export default function LandingLogin() {
                     state: response.data,
                 });
             }
+
         } catch (err) {
-            setShow(true);
-            setVariant('danger');
-            setAlertText('Falha no login, tente novamente.');
+
+            if (err.response.status === 404 || err.response.status === 400) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Email/Senha incorretos.');
+            }
+
+            if (err.response.status === 500) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Ocorreu algum erro no login, tente novamente.');
+            }
+
         }
     }
 
