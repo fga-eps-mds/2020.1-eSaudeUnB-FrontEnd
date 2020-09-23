@@ -1,4 +1,4 @@
-.userProfileContainer {
+.psyProfileContainer {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
@@ -9,7 +9,7 @@
     background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
 }
 
-.userProfileContainer .content {
+.psyProfileContainer .content {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -17,34 +17,34 @@
     flex-direction: row;
 }
 
-.userProfileContainer .content .firstColumn {
+.psyProfileContainer .content .firstColumn {
     width: 70%;  
 }
 
-.userProfileContainer .content .secondColumn {
+.psyProfileContainer .content .secondColumn {
     display: flex;
     flex-direction: column;
 }
 
-.userProfileContainer .content .secondColumn .link {
+.psyProfileContainer .content .secondColumn .link {
     text-decoration: none;
     margin-bottom: 20px;
     color: #eee;
 }
 
-.userProfileContainer .content .profile {
+.psyProfileContainer .content .profile {
     margin-left: 100px;
     margin-bottom: 40px;
     margin-top: 40px;
     align-self: flex-start;
 }
 
-.userProfileContainer .content .profile img {
+.psyProfileContainer .content .profile img {
     width: 130px;
     height: 130px;
 }
 
-.userProfileContainer .form {
+.psyProfileContainer .form {
     width: 900px;
     height: 500px;
     
@@ -58,14 +58,14 @@
     
 }
 
-.userProfileContainer .form .input {
+.psyProfileContainer .form .input {
     display: flex;
     border-bottom: 3px solid #0459AE;
     
     margin-bottom: 25px;
 }
 
-.userProfileContainer .form input {
+.psyProfileContainer .form input {
     width: 400px;
     height: 41px;
 
@@ -77,18 +77,18 @@
     line-height: 27px;
 }
 
-.userProfileContainer .form input::placeholder {
+.psyProfileContainer .form input::placeholder {
     color: #fff;
 }
 
-.userProfileContainer .form .selects {
+.psyProfileContainer .form .selects {
     display: flex;
     justify-content: space-between;
 
     width: 344px;
 }
 
-.userProfileContainer .form .selects select {
+.psyProfileContainer .form .selects select {
     width: 150px;
     height: 33px;
 
@@ -103,11 +103,11 @@
     line-height: 27px;
 }
 
-.userProfileContainer .form .selects select option {
+.psyProfileContainer .form .selects select option {
     background-color: #0459AE;
 }
 
-.userProfileContainer textarea{
+.psyProfileContainer textarea{
     border: none;
     border-radius: 8px;
     resize:none;
@@ -115,7 +115,7 @@
     height: 325px;
 }
 
-.userProfileContainer .content .formColumn{
+.psyProfileContainer .content .formColumn{
     width: 100%;
     height: 200px;
     display: flex;
@@ -124,14 +124,14 @@
     align-content: space-between;
 }
 
-.userProfileContainer .content .form .buttons{
+.psyProfileContainer .content .form .buttons{
     display: flex;
     width: 339px;
     margin-top: 25px;
     align-self: flex-end;
     justify-content: space-between;
 }
-.userProfileContainer .content .form .buttons .button-salvar{
+.psyProfileContainer .content .form .buttons .button-salvar{
     width: 150px;
     height: 50px;
 
@@ -143,7 +143,7 @@
     font-size: 24px;
     line-height: 36px;
 }
-.userProfileContainer .content .form .buttons .button-sair {
+.psyProfileContainer .content .form .buttons .button-sair {
     width: 150px;
     height: 50px;
 

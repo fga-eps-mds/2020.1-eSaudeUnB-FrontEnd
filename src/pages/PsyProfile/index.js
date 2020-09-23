@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Input from '../../components/Input';
 import Union from '../../assets/images/Union.svg';
-import Menu from '../../components/NavBar';
+import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import api from '../../services/api';
 import './styles.css';
@@ -54,8 +54,8 @@ export default function PsyProfile(props) {
     }
     return (
         <>
-            <Menu />
-            <div className="userProfileContainer">
+            <NavBar />
+            <div className="psyProfileContainer">
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">

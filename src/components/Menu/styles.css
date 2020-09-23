@@ -1,21 +1,21 @@
-*{
+#menu *{
     font-family: Poppins, sans-serif;
     font-style: normal;
     font-weight: normal;
 }
 
-#icone{
+#menu #icone{
     padding: 24px;
 }
 
-a#name {
+#menu a#name {
     text-decoration: none;
     color: inherit;
     color: white;
     padding: 16px;
 }
 
-ul {
+#menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -23,20 +23,20 @@ ul {
     background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
 }
 /*Alinha a direita*/
-li {
+#menu li {
     float: right;
 }
 
-#name{
+#menu #name{
     float: left;
     font-size: 30px;
 }
 
-a #icone{
+#menu a #icone{
     background-color: red;
 }
 
-li a {
+#menu li a {
     display: flex;
     flex-direction: column;
     color: white;
@@ -47,14 +47,14 @@ li a {
     width: 100%;
 }
 
-li a:hover {
+#menu li a:hover {
     background: linear-gradient(90deg, rgb(10, 102, 173) 0%, rgb(9, 121, 177) 100%);
 }
 
-.logo{   
+#menu .logo{   
     padding: 25px 30px 10px 30px;
 }
 
-a#icone {
+#menu a#icone {
     padding: 22px;
 }
