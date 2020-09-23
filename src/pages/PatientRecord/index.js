@@ -67,15 +67,15 @@ export default function PatientRecord(props) {
                                     <span>{patient.unbRegistration}</span>
                                 </div>
                             ) : (
-                                <div className="hidden"></div>
-                            )}
+                                    <div className="hidden"></div>
+                                )}
 
                             <button className="expand" onClick={handleExpand}>
                                 {arrow ? (
                                     <img src={down} alt="expandir" />
                                 ) : (
-                                    <img src={up} alt="expandir" />
-                                )}
+                                        <img src={up} alt="expandir" />
+                                    )}
                             </button>
                         </div>
                     </div>
@@ -100,31 +100,31 @@ export default function PatientRecord(props) {
                             <h1>Queixa Principal</h1>
                             <div className="recordText">
                                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                             <h1>Queixa Secundaria</h1>
                             <div className="recordText">
                                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                             <h1>Evolução das queixas</h1>
                             <div className="recordText">
                                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                         </div>

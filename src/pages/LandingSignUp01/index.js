@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -70,11 +71,11 @@ export default function LandingSignUp01() {
                                 name, lastName, email, phone,
                             },
                         }}
-                  >
-                      Próximo
+                    >
+                        Próximo
                   </Link>
-              </form>
-          </div>
-      </div>
+                </form>
+            </div>
+        </div>
     );
 }
