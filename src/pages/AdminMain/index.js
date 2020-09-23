@@ -49,7 +49,7 @@ export default function AdminMain() {
                     </article>
                 ))}
                 <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
-                  Cadastrar novo Psicólogo
+                    Cadastrar novo Psicólogo
                 </button>
             </div>
         </div>
