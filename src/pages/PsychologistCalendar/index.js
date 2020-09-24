@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Calendar from 'react-calendar';
-import api from '../../services/api';
 
 import './styles.css';
 import NavBar from '../../components/NavBar';
@@ -25,8 +23,15 @@ export default function PsychologistCalendar() {
                     </div>
                     <div className="table-right">
                         <h1>Horários de atendimento:</h1>
-                        <div className="atendimento">
-                            <p>Atendimento 1 </p>
+                        <div className="schedules">
+                            <div className="schedule-box">
+                                <span>{`asdasd ${date} asd`}</span>
+                                <button type="button">Remover</button>
+                            </div>
+                            <div className="schedule-box">
+                                <span>{`asdasd ${date} asd`}</span>
+                                <button type="button">Remover</button>
+                            </div>
                         </div>
                     </div>
                 </div>

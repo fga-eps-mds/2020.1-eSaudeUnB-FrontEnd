@@ -57,7 +57,6 @@
 .content .form .schedule {
     width: 90%;
     height: 640px;
-    /* max-height: 640px; */
     overflow: auto;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #0459ae;
@@ -86,7 +85,6 @@
 .content .form .schedule select {
     color: #07387e;
     padding: 0;
-    margin: 0 0 0 0px;
     background: none;
     border: none;
     border-bottom: 2px solid #0459ae;
@@ -103,6 +101,11 @@
     outline: 0;
     padding: 0 1.6rem;
     font-size: 1rem;
+}
+
+.content .form .schedule button {
+    margin-left: 40px;
+    margin-top: 50px;
 }
 
 .content .form .footer {

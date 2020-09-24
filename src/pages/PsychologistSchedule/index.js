@@ -53,6 +53,13 @@ export default function PsychologistSchedule() {
         setScheduleItems([...scheduleItems, { week_day: 0, from: '', to: '' }]);
     }
 
+    function removeScheduleItem(index) {
+        console.log(index);
+        let temp = [...scheduleItems];
+        temp.splice(index, 1);
+        setScheduleItems(temp);
+    }
+
     function test(e) {
         console.log(scheduleItems);
     }
@@ -140,6 +147,14 @@ export default function PsychologistSchedule() {
                                                 }
                                             />
                                         </div>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                removeScheduleItem(index)
+                                            }
+                                        >
+                                            Remover
+                                        </button>
                                     </div>
                                 );
                             })}

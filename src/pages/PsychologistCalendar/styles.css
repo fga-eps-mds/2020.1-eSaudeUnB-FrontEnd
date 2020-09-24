@@ -14,7 +14,7 @@
     border-radius: 15px;
     display: flex;
     background-color: #eee;
-    height: 610px;
+    height: 690px;
 }
 
 .psychologistcalendar .tabela .calendar {
@@ -27,7 +27,6 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
 }
 .psychologistcalendar .table-right h1 {
@@ -36,7 +35,7 @@
     color: #0459ae;
     display: flex;
 }
-.psychologistcalendar .atendimento {
+.psychologistcalendar .schedules {
     width: 90%;
     height: 80%;
     padding-left: 30px;
@@ -46,11 +45,35 @@
     color: #07387e;
 }
 
+.psychologistcalendar .schedules .schedule-box {
+    margin: 30px 5px 5px 5px;
+    text-align: left;
+    display: flex;
+    /* border-bottom: 1px solid #000; */
+}
+
+.psychologistcalendar .schedules .schedule-box + .schedule-box {
+    margin: 5px;
+}
+
+.psychologistcalendar .schedules .schedule-box button {
+    background: none;
+    border: none;
+    font: 700 1rem Poppins;
+    color: #0459ae;
+    cursor: pointer;
+    padding: 0.6rem;
+    transition: 0.2s;
+}
+.psychologistcalendar .schedules .schedule-box button:hover {
+    color: #07387e;
+}
+
 /* Calendar \/ */
 .react-calendar {
     margin: 30px;
     width: 600px;
-    height: 550px;
+    height: 630px;
     background: #eee;
     border-radius: 15px;
     filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.25));
@@ -69,6 +92,8 @@
 }
 .react-calendar__navigation button {
     width: 80px;
+    font-size: 30px;
+    color: #07387e;
     border-radius: 15px;
     background: none;
 }
