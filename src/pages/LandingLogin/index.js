@@ -28,25 +28,8 @@ export default function LandingLogin() {
 
             const responseUser = await api.post('/loginUser', { email, password });
 
-            if (responseUser.status === 404 || responseUser.status === 400) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Email/Senha incorretos, digite novamente.');
-            }
-
-            if (responseUser.status === 500) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Ocorreu algum erro no login, tente novamente.');
-            }
-
             if (responseUser.status === 200 || responseUser.status === 201) {
-                alert('Login efetuado');
-                history.push({
-                    pathname: '/profile',
-                    state: responseUser.data,
-                });
-                return;
+                history.push('/profile');
             }
         } catch (err) {
             try {
