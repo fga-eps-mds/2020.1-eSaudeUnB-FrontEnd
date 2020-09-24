@@ -51,7 +51,6 @@ export default function LandingLogin() {
                 if (err.response.status === 500) {
                     alert('Ocorreu algum erro no seu login, tente novamente');
                 }
-
             } catch (err2) {
                 if (err2.response.status === 404 || err2.response.status === 400) {
                     alert('Email/Senha incorretos, tente novamente.');
