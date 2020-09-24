@@ -13,7 +13,7 @@ export default function PsyProfile(props) {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phone, setPhone] = useState('');
-    const [unbRegistration, setUnbRegistration] = useState('');
+    const [specialization, setSpecialization] = useState('');
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [bibliography, setBibliography] = useState('');
@@ -30,7 +30,7 @@ export default function PsyProfile(props) {
             event.preventDefault();
 
             const response = await api.put(`/psyUpdate/${props.location.state.email}`, {
-                name, lastName, email, phone, unbRegistration, gender, bond, bibliography,
+                name, lastName, email, phone, specialization, gender, bond, bibliography,
             });
 
             if (response.status === 200) {
@@ -39,23 +39,45 @@ export default function PsyProfile(props) {
                     pathname: '/psy-profile',
                     state: response.data,
                 });
-                setEmail('');
-                setName('');
-                setLastName('');
-                setPhone('');
-                setUnbRegistration('');
-                setGender('F');
-                setBond('graduando');
-                setBibliography('');
+                setEmail(response.data.email);
+                setName(response.data.name);
+                setLastName(response.data.lastName);
+                setPhone(response.data.phone);
+                setSpecialization(response.data.specialization);
+                setGender(response.data.gender);
+                setBond(response.data.bond);
+                setBibliography(response.data.bibliography);
             }
         } catch (err) {
             alert('Falha na atualização dos dados, tente novamente');
         }
     }
+
+    async function renderPage(event) {
+        try {
+            event.preventDefault();
+
+            const response = await api.get(`/psy/${props.location.state.email}`);
+
+            if (response.status === 200) {
+                setEmail(response.data.email);
+                setName(response.data.name);
+                setLastName(response.data.lastName);
+                setPhone(response.data.phone);
+                setSpecialization(response.data.specialization);
+                setGender(response.data.gender);
+                setBond(response.data.bond);
+                setBibliography(response.data.bibliography);
+            }
+        } catch (err) {
+            alert('Erro ao carregar dados');
+        }
+    }
+
     return (
         <>
             <NavBar />
-            <div className="psyProfileContainer">
+            <div className="psyProfileContainer" onLoad={renderPage}>
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -102,10 +124,10 @@ export default function PsyProfile(props) {
                                         onChange={setLastName}
                                     />
                                     <Input
-                                        placeholder="Matrícula UnB"
-                                        value={unbRegistration}
+                                        placeholder="Especialização"
+                                        value={specialization}
                                         icon={Union}
-                                        onChange={setUnbRegistration}
+                                        onChange={setSpecialization}
                                     />
                                     <Input
                                         placeholder="DDD + Telefone"
