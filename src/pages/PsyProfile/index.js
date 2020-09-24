@@ -29,7 +29,7 @@ export default function PsyProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.put(`/psyUpdate/${props.location.state.email}`, {
+            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
                 name, lastName, email, phone, specialization, gender, bond, bibliography,
             });
 
@@ -57,7 +57,7 @@ export default function PsyProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.get(`/psy/${props.location.state.email}`);
+            const response = await api.get(`/psy/${props.location.state.data.email}`);
 
             if (response.status === 200) {
                 setEmail(response.data.email);

@@ -44,7 +44,7 @@ export default function LandingLogin(props) {
                 history.push({
                     pathname: '/profile',
                     state: {
-                        data: response.data,
+                        data: responseUser.data,
                         alert: {
                             show: true,
                             variant: 'success',
@@ -58,10 +58,16 @@ export default function LandingLogin(props) {
                 const responsePsy = await api.post('/loginPsy', { email, password });
 
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
-                    alert('Login efetuado');
                     history.push({
                         pathname: '/psy-profile',
-                        state: responsePsy.data,
+                        state: {
+                            data: responsePsy.data,
+                            alert: {
+                                show: true,
+                                variant: 'success',
+                                alertText: 'Login efetuado com sucesso.',
+                            },
+                        },
                     });
                     return;
                 }

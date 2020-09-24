@@ -84,7 +84,7 @@ export default function UserProfile(props) {
     }
     return (
         <>
-            <Menu />
+            <NavBar />
             <div onLoad={haveAlert} className="userProfileContainer">
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
