@@ -21,29 +21,45 @@ export default function LandingLogin() {
         try {
             event.preventDefault();
 
-            const response = await api.post('/login', { email, password });
+            const responseUser = await api.post('/loginUser', { email, password });
 
-            if (response.status === 404) {
-                alert('usuario não encontrado na base de dados');
-            }
-
-            if (response.status === 400) {
-                alert('Senha incorreta, digite novamente');
-            }
-
-            if (response.status === 500) {
-                alert('Ocorreu algum erro no seu login, tente novamente');
-            }
-
-            if (response.status === 200 || response.status === 201) {
+            if (responseUser.status === 200 || responseUser.status === 201) {
                 alert('Login efetuado');
                 history.push({
                     pathname: '/profile',
-                    state: response.data,
+                    state: responseUser.data,
                 });
+                return;
             }
         } catch (err) {
-            alert('Falha no login, tente novamente');
+            try {
+                const responsePsy = await api.post('/loginPsy', { email, password });
+
+                if (responsePsy.status === 200 || responsePsy.status === 201) {
+                    alert('Login efetuado');
+                    history.push({
+                        pathname: '/psy-profile',
+                        state: responsePsy.data,
+                    });
+                    return;
+                }
+
+                if (err.response.status === 404 || err.response.status === 400) {
+                    alert('Email/Senha incorretos, tente novamente.');
+                }
+
+                if (err.response.status === 500) {
+                    alert('Ocorreu algum erro no seu login, tente novamente');
+                }
+            } catch (err2) {
+                if (err2.response.status === 404 || err2.response.status === 400) {
+                    alert('Email/Senha incorretos, tente novamente.');
+                }
+
+                if (err2.response.status === 500) {
+                    alert('Ocorreu algum erro no seu login, tente novamente');
+                }
+            }
         }
     }
 

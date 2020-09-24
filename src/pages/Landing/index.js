@@ -17,12 +17,12 @@ export default function Landing() {
                 </div>
 
                 <div className="buttons-container">
-                    <Link to="/registration-step01" className="registration">
-            Registrar
+                    <Link to="/registration" className="registration">
+                        Registrar
                     </Link>
 
                     <Link to="/login" className="login">
-            Entrar
+                        Entrar
                     </Link>
                 </div>
             </div>

@@ -17,8 +17,8 @@ export default function PatientRecord(props) {
     const [arrow, setArrow] = useState(true);
 
     useEffect(() => {
-        api.get(`/users/${props.match.params.id}`).then((response) => {
-            setPatient(response.data[0]);
+        api.get(`/user/${props.match.params.email}`).then((response) => {
+            setPatient(response.data);
         });
     }, []);
 
@@ -100,31 +100,31 @@ export default function PatientRecord(props) {
                             <h1>Queixa Principal</h1>
                             <div className="recordText">
                                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                             <h1>Queixa Secundaria</h1>
                             <div className="recordText">
                                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                             <h1>Evolução das queixas</h1>
                             <div className="recordText">
                                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                         </div>
@@ -137,5 +137,5 @@ export default function PatientRecord(props) {
 
 PatientRecord.propTypes = {
     match: PropTypes.object,
-    id: PropTypes.string,
+    email: PropTypes.string,
 };

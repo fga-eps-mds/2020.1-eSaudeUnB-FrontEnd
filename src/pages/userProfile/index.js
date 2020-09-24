@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Input from '../../components/Input';
 import Union from '../../assets/images/Union.svg';
-import Menu from '../../components/Menu/Menu';
+import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import api from '../../services/api';
 import './styles.css';
@@ -56,7 +56,7 @@ export default function UserProfile(props) {
     }
     return (
         <>
-            <Menu />
+            <NavBar />
             <div className="userProfileContainer">
 
                 <div className="content">
