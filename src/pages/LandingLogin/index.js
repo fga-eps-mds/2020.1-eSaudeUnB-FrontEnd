@@ -35,7 +35,6 @@ export default function LandingLogin() {
                     state: response.data,
                 });
             }
-
         } catch (err) {
 
             if (err.response.status === 404 || err.response.status === 400) {
