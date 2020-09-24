@@ -17,7 +17,7 @@ export default function Landing() {
                 </div>
 
                 <div className="buttons-container">
-                    <Link to="/registration-step01" className="registration">
+                    <Link to="/registration" className="registration">
                         Registrar
                     </Link>
 
