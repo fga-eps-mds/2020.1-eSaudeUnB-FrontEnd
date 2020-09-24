@@ -4,7 +4,6 @@ import { Alert } from 'react-bootstrap';
 
 import api from '../../services/api';
 import './styles.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 import Union from '../../assets/images/Union.svg';
@@ -13,14 +12,27 @@ import lock from '../../assets/images/lock.svg';
 import Logo from '../../components/Logo';
 import Input from '../../components/Input';
 
-export default function LandingLogin() {
+export default function LandingLogin(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
     const history = useHistory();
+
+    function haveAlert(event) {
+        event.preventDefault();
+        if (props.location.state) {
+            setShow(props.location.state.alert.show);
+            setVariant(props.location.state.alert.variant);
+            setAlertText(props.location.state.alert.alertText);
+        }
+        setInterval(() => {
+            setShow(false);
+        }, 4000);
+    }
 
     async function handleLogin(event) {
         try {
@@ -29,7 +41,17 @@ export default function LandingLogin() {
             const responseUser = await api.post('/loginUser', { email, password });
 
             if (responseUser.status === 200 || responseUser.status === 201) {
-                history.push('/profile');
+                history.push({
+                    pathname: '/profile',
+                    state: {
+                        data: response.data,
+                        alert: {
+                            show: true,
+                            variant: 'success',
+                            alertText: 'Login efetuado com sucesso.',
+                        },
+                    },
+                });
             }
         } catch (err) {
             try {
@@ -76,7 +98,7 @@ export default function LandingLogin() {
     }
 
     return (
-        <div className="loginContainer">
+        <div onLoad={haveAlert} className="loginContainer">
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
