@@ -9,6 +9,7 @@
 
 .navBarComponent p {
     font: 700 3rem Poppins;
+    color: #eee;
 }
 
 .navBarComponent .navLinks {

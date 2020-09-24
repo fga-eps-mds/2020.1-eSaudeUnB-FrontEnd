@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 import api from '../../services/api';
 
@@ -17,6 +18,12 @@ export default function LandingSignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [show, setShow] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
+
+
     const history = useHistory();
 
     async function handleSign(event) {
@@ -31,28 +38,49 @@ export default function LandingSignUp() {
             };
 
             if (!name || !lastName || !email || !password) {
-                alert('Os campos não foram preenchidos corretamente');
+                setShow(true);
+                setVariant('warning');
+                setAlertText('Os campos não foram preenchidos corretamente.');
                 return;
             }
 
             if (password !== confirmPassword) {
-                alert('as senhas não são iguais');
+                setShow(true);
+                setVariant('warning');
+                setAlertText('As senhas não são iguais.');
                 return;
             }
 
             const response = await api.post('/users', user);
 
             if (response.status === 201) {
-                alert('Cadastro realizado com sucesso');
-                history.push('/');
+                history.push({
+                    pathname: '/login',
+                    state: {
+                        data: response.data,
+                        alert: {
+                            show: true,
+                            variant: 'success',
+                            alertText: 'Cadastro realizado com sucesso.',
+                        },
+                    },
+                });
             }
         } catch (err) {
-            alert('Erro no cadastro, tente novamente');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Erro no cadastro, tente novamente.');
         }
     }
 
     return (
         <div className="signUp01Container">
+            {show ? (
+                <Alert className="alert" variant={variant}>{alertText}</Alert>
+            ) : (
+                    <div></div>
+                )}
+
             <div className="content">
                 <Logo />
 
