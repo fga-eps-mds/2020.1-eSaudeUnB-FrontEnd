@@ -85,13 +85,17 @@ export default function LandingLogin() {
                     setAlertText('Ocorreu algum erro no seu login, tente novamente.');
                 }
             }
+            setInterval(() => {
+                setShow(false);
+            }, 4000);
+
         }
     }
 
     return (
         <div className="loginContainer">
             {show ? (
-                <Alert className="alert" variant='danger' onClose={() => setShow(false)} dismissible>{alertText}</Alert>
+                <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
                     <div></div>
                 )}
