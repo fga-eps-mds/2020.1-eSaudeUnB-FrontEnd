@@ -32,14 +32,10 @@ export default function LandingLogin() {
                 history.push('/home');
             }
         } catch (err) {
-            console.log(err);
-            // setShow(true);
-            // setVariant('danger');
-            // setAlertText('Falha no login, tente novamente.');
 
             if (err.response.status === 404 || err.response.status === 400) {
                 setShow(true);
-                setVariant('danger');
+                setVariant('warning');
                 setAlertText('Email/Senha incorretos.');
             }
 
@@ -48,13 +44,18 @@ export default function LandingLogin() {
                 setVariant('danger');
                 setAlertText('Ocorreu algum erro no login, tente novamente.');
             }
+
+            setInterval(() => {
+                setShow(false);
+            }, 4000);
+
         }
     }
 
     return (
         <div className="loginContainer">
             {show ? (
-                <Alert className="alert" variant='danger' onClose={() => setShow(false)} dismissible>{alertText}</Alert>
+                <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
                     <div></div>
                 )}
