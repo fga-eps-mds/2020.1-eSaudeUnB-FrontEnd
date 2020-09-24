@@ -18,11 +18,11 @@ export default function Landing() {
 
                 <div className="buttons-container">
                     <Link to="/registration-step01" className="registration">
-            Registrar
+                        Registrar
                     </Link>
 
                     <Link to="/login" className="login">
-            Entrar
+                        Entrar
                     </Link>
                 </div>
             </div>

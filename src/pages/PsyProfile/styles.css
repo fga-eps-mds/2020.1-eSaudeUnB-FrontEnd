@@ -113,6 +113,7 @@
     resize:none;
     width: 900px;
     height: 325px;
+    padding: 8px;
 }
 
 .psyProfileContainer .content .formColumn{
@@ -140,6 +141,8 @@
     color: #fff;
     background-color: #0459AE;
 
+    cursor: pointer;
+
     font-size: 24px;
     line-height: 36px;
 }
@@ -151,6 +154,8 @@
     border: 0;
     color: #fff;
     background-color: #FF2C00;
+
+    cursor: pointer;
 
     font-size: 24px;
     line-height: 36px;
