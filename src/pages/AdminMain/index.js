@@ -31,26 +31,31 @@ export default function AdminMain() {
     return (
         <div className="list-container">
             <div className="psychologist-list">
-                {psyArray.map((psychologist) => (
-                    <article key={psychologist.id}>
-                        <strong>
-                            {psychologist.name}
-                            {' '}
-                            {psychologist.lastName}
-                        </strong>
-                        <p>{psychologist.email}</p>
-                        <p>{psychologist.specialization}</p>
-                        <p>{psychologist.bibliography}</p>
-                        <button
-                            onClick={() => deletePsychologist(psychologist.email)}
-                        >
-                            Excluir Psicólogo
-                        </button>
-                    </article>
-                ))}
-                <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
-                    Cadastrar novo Psicólogo
-                </button>
+                <div className="nav">
+                    <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
+                        Cadastrar novo Psicólogo
+                    </button>
+                    <div className="count">
+                        <p>
+                            Psicólogos cadastrados: {psyArray.length}
+                        </p>
+                    </div>
+                </div>
+                <div className="psychologists-cards">
+                    {psyArray.map((psychologist) => (
+                        <article key={psychologist.id}>
+                            <strong>
+                                {psychologist.name}
+                                {' '}
+                                {psychologist.lastName}
+                            </strong>
+                            <p>{psychologist.email}</p>
+                            <p>{psychologist.specialization}</p>
+                            <p>{psychologist.bibliography}</p>
+                            <button onClick={() => deletePsychologist(psychologist.email)}>Excluir Psicólogo</button>
+                        </article>
+                    ))}
+                </div>
             </div>
         </div>
     );
