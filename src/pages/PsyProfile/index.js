@@ -60,7 +60,7 @@ export default function PsyProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 4000);
+        }, 2000);
     }
 
     async function renderPage(event) {
@@ -85,7 +85,7 @@ export default function PsyProfile(props) {
             setAlertText('Erro ao carregar dados.');
             setInterval(() => {
                 setShow(false);
-            }, 4000);
+            }, 2000);
         }
     }
 

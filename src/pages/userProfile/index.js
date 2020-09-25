@@ -54,9 +54,6 @@ export default function UserProfile(props) {
                 setShow(true);
                 setVariant('success');
                 setAlertText('Dados atualizados com sucesso.');
-                setInterval(() => {
-                    setShow(false);
-                }, 4000);
             }
         } catch (err) {
             setShow(true);
@@ -65,7 +62,7 @@ export default function UserProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 4000);
+        }, 2000);
     }
 
     async function renderPage(event) {
@@ -92,7 +89,7 @@ export default function UserProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 4000);
+        }, 2000);
     }
 
     return (
