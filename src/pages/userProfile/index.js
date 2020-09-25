@@ -44,15 +44,12 @@ export default function UserProfile(props) {
             });
 
             if (response.status === 200) {
-                setEmail(response.data.email);
-                setName(response.data.name);
-                setLastName(response.data.lastName);
-                setPhone(response.data.phone);
-                setUnbRegistration(response.data.unbRegistration);
-                setGender(response.data.gender);
-                setBond(response.data.bond);
-                setCivilStatus(response.data.civilStatus);
-                setReligion(response.data.religion);
+                history.push({
+                    pathname: '/profile',
+                    state: {
+                        data: response.data,
+                    }
+                });
 
                 setShow(true);
                 setVariant('success');
@@ -65,10 +62,10 @@ export default function UserProfile(props) {
             setShow(true);
             setVariant('danger');
             setAlertText('Falha na atualização dos dados, tente novamente');
-            setInterval(() => {
-                setShow(false);
-            }, 4000);
         }
+        setInterval(() => {
+            setShow(false);
+        }, 4000);
     }
 
     async function renderPage(event) {
@@ -83,13 +80,19 @@ export default function UserProfile(props) {
                 setLastName(response.data.lastName);
                 setPhone(response.data.phone);
                 setReligion(response.data.religion);
+                setUnbRegistration(response.data.unbRegistration);
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
             }
         } catch (err) {
-            alert('Erro ao carregar dados');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Erro ao carregar dados');
         }
+        setInterval(() => {
+            setShow(false);
+        }, 4000);
     }
 
     return (
@@ -121,14 +124,14 @@ export default function UserProfile(props) {
                             <div className="selects">
 
                                 <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                                    {/* <option value="" disabled selected hidden>Gênero</option> */}
+                                    <option value="">Gênero</option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
                                 <select name="bond" onChange={(e) => setBond(e.target.value)}>
-                                    {/* <option value="" disabled selected hidden>Vínculo</option> */}
+                                    <option value="">Vínculo</option>
                                     <option value="graduando">Graduando</option>
                                     <option value="posGraduando">Pós-Graduando</option>
                                     <option value="professor">Professor</option>
@@ -137,7 +140,7 @@ export default function UserProfile(props) {
                             </div>
 
                             <select className="selectsLargest" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
-                                {/* <option value="" disabled selected hidden>Estado Civil</option> */}
+                                <option value="">Estado Civil</option>
                                 <option value="Solteiro(a)">Solteiro</option>
                                 <option value="Divorciado(a)">Divorciado</option>
                                 <option value="Casado(a)">Casado</option>
@@ -162,7 +165,7 @@ export default function UserProfile(props) {
                                 onChange={setPhone}
                             />
                             <select className="selectsLargest" name="religion" onChange={(e) => setReligion(e.target.value)}>
-                                {/* <option value="" disabled selected hidden>Religião</option> */}
+                                <option value="">Religião</option>
                                 <option value="Solteiro">Católico</option>
                                 <option value="Divorciado">Evangélico</option>
                                 <option value="Casado">Espirita</option>

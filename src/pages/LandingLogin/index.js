@@ -35,11 +35,6 @@ export default function LandingLogin(props) {
                     pathname: '/profile',
                     state: {
                         data: responseUser.data,
-                        alert: {
-                            show: true,
-                            variant: 'success',
-                            alertText: 'Login efetuado com sucesso.',
-                        },
                     },
                 });
                 return;
@@ -53,11 +48,6 @@ export default function LandingLogin(props) {
                         pathname: '/psy-profile',
                         state: {
                             data: responsePsy.data,
-                            alert: {
-                                show: true,
-                                variant: 'success',
-                                alertText: 'Login efetuado com sucesso.',
-                            },
                         },
                     });
                     return;

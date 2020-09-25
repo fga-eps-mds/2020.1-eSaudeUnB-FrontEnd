@@ -25,6 +25,10 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.userProfileContainer .form:first-of-type {
+    margin-right: 100px;
+}
 .userProfileContainer .formColumn{
    
     display: flex;
@@ -45,8 +49,8 @@
 }
 
 .userProfileContainer .form input {
-    width: 320px;
-    height: 33px;
+    width: 400px;
+    height: 41px;
     color: #fff;
     background-color: transparent;
     border: 0;
@@ -57,7 +61,7 @@
 .userProfileContainer .form .selects {
     display: flex;
     justify-content: space-between;
-    width: 344px;
+    width: 400px;
 }
 .userProfileContainer .form select {
     width: 150px;
@@ -84,7 +88,8 @@
     margin-top: 1vh;
 }
 .userProfileContainer .content .formColumn .form .selectsLargest{
-    width: 344px; 
+    width: 400px; 
+    height: 41px; 
 }
 .userProfileContainer .formColumn .buttons .button-salvar{
     width: 150px;
