@@ -22,8 +22,6 @@ export default function LandingLogin(props) {
 
     const history = useHistory();
 
-    console.log(props);
-
     async function handleLogin(event) {
         try {
             event.preventDefault();
@@ -77,11 +75,11 @@ export default function LandingLogin(props) {
                     setAlertText('Ocorreu algum erro no seu login, tente novamente.');
                 }
             }
-            setInterval(() => {
-                setShow(false);
-            }, 4000);
 
         }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
     }
 
     return (

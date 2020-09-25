@@ -20,10 +20,12 @@
 
 .psyProfileContainer .content .firstColumn {
     width: 70%;  
+    height: 100%;
 }
 
 .psyProfileContainer .content .secondColumn {
     display: flex;
+    height: 50%;
     flex-direction: column;
 }
 
@@ -34,9 +36,7 @@
 }
 
 .psyProfileContainer .content .profile {
-    margin-left: 100px;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    margin: 40px 0 40px 100px;
     align-self: flex-start;
 }
 
@@ -63,7 +63,7 @@
     display: flex;
     border-bottom: 3px solid #0459AE;
     
-    margin-bottom: 25px;
+    margin-bottom: 60px;
 }
 
 .psyProfileContainer .form input {
@@ -119,6 +119,7 @@
 
 .psyProfileContainer .content .formColumn{
     width: 100%;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -159,4 +160,11 @@
 
     font-size: 24px;
     line-height: 36px;
+}
+
+.psyProfileContainer .alert{
+    position: absolute;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
 }
