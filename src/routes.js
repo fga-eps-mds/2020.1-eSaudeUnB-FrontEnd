@@ -9,7 +9,6 @@ import LandingSignUp02 from './pages/LandingSignUp02';
 import LoginAdmin from './pages/LoginAdmin';
 import AdminMain from './pages/AdminMain';
 import PsyCreate from './pages/PsyCreate';
-import Home from './pages/home';
 import PatientList from './pages/PatientList';
 import PatientRecord from './pages/PatientRecord';
 

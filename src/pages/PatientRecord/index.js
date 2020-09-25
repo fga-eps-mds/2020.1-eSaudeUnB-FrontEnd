@@ -15,12 +15,22 @@ export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
     const [expand, setExpand] = useState(false);
     const [arrow, setArrow] = useState(true);
+    const [sessions, setSessions] = useState([]);
 
     useEffect(() => {
-        api.get(`/users/${props.match.params.id}`).then((response) => {
-            setPatient(response.data[0]);
-        });
-    }, []);
+        async function getData(){
+            const {email} = props.location.state;
+            const response = await api.get(`/user/${email}`);
+            setPatient(response.data);
+            await api.get('/session').then((response) => setSessions(response.data));
+        }
+        getData();
+    }, [props]);
+
+    function changeSession(){
+
+    }
+
 
     function handleExpand() {
         if (expand === true) {
@@ -98,7 +108,7 @@ export default function PatientRecord(props) {
                             <h2>Encaminhamento: Rede Interna</h2>
 
                             <h1>Queixa Principal</h1>
-                            <div className="recordText">
+                            <div className="recordText" id="mainComplaint">
                                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
@@ -108,7 +118,7 @@ export default function PatientRecord(props) {
                                 </p>
                             </div>
                             <h1>Queixa Secundaria</h1>
-                            <div className="recordText">
+                            <div className="recordText" id="secondaryComplaint">
                                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
@@ -118,7 +128,7 @@ export default function PatientRecord(props) {
                                 </p>
                             </div>
                             <h1>Evolução das queixas</h1>
-                            <div className="recordText">
+                            <div className="recordText" id="complaintEvolution">
                                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
