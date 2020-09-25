@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
-import up from '../../assets/images/up.svg';
-import down from '../../assets/images/down.svg';
 import userIcon from '../../assets/images/userIcon.svg';
 
 import NavBar from '../../components/NavBar';
@@ -13,8 +11,6 @@ import './styles.css';
 
 export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
-    const [expand, setExpand] = useState(false);
-    const [arrow, setArrow] = useState(true);
 
     useEffect(() => {
         api.get(`/user/${props.match.params.email}`).then((response) => {
