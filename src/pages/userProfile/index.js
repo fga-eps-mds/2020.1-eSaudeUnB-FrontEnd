@@ -29,18 +29,6 @@ export default function UserProfile(props) {
 
     const history = useHistory();
 
-    function haveAlert(event) {
-        event.preventDefault();
-        if (props.location.state) {
-            setShow(props.location.state.alert.show);
-            setVariant(props.location.state.alert.variant);
-            setAlertText(props.location.state.alert.alertText);
-        }
-        setInterval(() => {
-            setShow(false);
-        }, 4000);
-    }
-
     function getOut(event) {
         event.preventDefault();
 
@@ -56,18 +44,6 @@ export default function UserProfile(props) {
             });
 
             if (response.status === 200) {
-                history.push({
-                    pathname: '/profile',
-                    state: {
-                        data: response.data,
-                        alert: {
-                            show: true,
-                            variant: 'success',
-                            alertText: 'Atualização efetuada.',
-                        },
-                    },
-                });
-
                 setEmail(response.data.email);
                 setName(response.data.name);
                 setLastName(response.data.lastName);
@@ -77,15 +53,49 @@ export default function UserProfile(props) {
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
                 setReligion(response.data.religion);
+
+                setShow(true);
+                setVariant('success');
+                setAlertText('Dados atualizados com sucesso.');
+                setInterval(() => {
+                    setShow(false);
+                }, 4000);
             }
         } catch (err) {
-            alert('Falha na atualização dos dados, tente novamente');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Falha na atualização dos dados, tente novamente');
+            setInterval(() => {
+                setShow(false);
+            }, 4000);
         }
     }
+
+    async function renderPage(event) {
+        try {
+            event.preventDefault();
+
+            const response = await api.get(`/user/${props.location.state.data.email}`);
+
+            if (response.status === 200) {
+                setEmail(response.data.email);
+                setName(response.data.name);
+                setLastName(response.data.lastName);
+                setPhone(response.data.phone);
+                setReligion(response.data.religion);
+                setGender(response.data.gender);
+                setBond(response.data.bond);
+                setCivilStatus(response.data.civilStatus);
+            }
+        } catch (err) {
+            alert('Erro ao carregar dados');
+        }
+    }
+
     return (
         <>
             <NavBar />
-            <div onLoad={haveAlert} className="userProfileContainer">
+            <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
@@ -100,13 +110,11 @@ export default function UserProfile(props) {
                             <Input
                                 placeholder="Nome"
                                 value={name}
-                                icon={Union}
                                 onChange={setName}
                             />
                             <Input
                                 placeholder="Email"
                                 value={email}
-                                icon={Union}
                                 onChange={setEmail}
                             />
 
@@ -130,10 +138,10 @@ export default function UserProfile(props) {
 
                             <select className="selectsLargest" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
                                 {/* <option value="" disabled selected hidden>Estado Civil</option> */}
-                                <option value="Solteiro">Solteiro</option>
-                                <option value="Divorciado">Divorciado</option>
-                                <option value="Casado">Casado</option>
-                                <option value="Viuvo">Viuvo</option>
+                                <option value="Solteiro(a)">Solteiro</option>
+                                <option value="Divorciado(a)">Divorciado</option>
+                                <option value="Casado(a)">Casado</option>
+                                <option value="Viuvo(a)">Viuvo</option>
                             </select>
                         </div>
 
@@ -141,19 +149,16 @@ export default function UserProfile(props) {
                             <Input
                                 placeholder="Sobrenome"
                                 value={lastName}
-                                icon={Union}
                                 onChange={setLastName}
                             />
                             <Input
                                 placeholder="Matrícula UnB"
                                 value={unbRegistration}
-                                icon={Union}
                                 onChange={setUnbRegistration}
                             />
                             <Input
                                 placeholder="DDD + Telefone"
                                 value={phone}
-                                icon={Union}
                                 onChange={setPhone}
                             />
                             <select className="selectsLargest" name="religion" onChange={(e) => setReligion(e.target.value)}>

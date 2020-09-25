@@ -17,6 +17,7 @@ export default function PsyProfile(props) {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [bibliography, setBibliography] = useState('');
+
     const history = useHistory();
 
     function getOut(event) {
@@ -89,13 +90,11 @@ export default function PsyProfile(props) {
                                     <Input
                                         placeholder="Nome"
                                         value={name}
-                                        icon={Union}
                                         onChange={setName}
                                     />
                                     <Input
                                         placeholder="Email"
                                         value={email}
-                                        icon={Union}
                                         onChange={setEmail}
                                     />
 
@@ -120,19 +119,16 @@ export default function PsyProfile(props) {
                                     <Input
                                         placeholder="Sobrenome"
                                         value={lastName}
-                                        icon={Union}
                                         onChange={setLastName}
                                     />
                                     <Input
                                         placeholder="Especialização"
                                         value={specialization}
-                                        icon={Union}
                                         onChange={setSpecialization}
                                     />
                                     <Input
                                         placeholder="DDD + Telefone"
                                         value={phone}
-                                        icon={Union}
                                         onChange={setPhone}
                                     />
                                 </div>

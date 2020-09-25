@@ -54,14 +54,12 @@ export default function AdminLogin() {
                         placeholder="Email"
                         value={email}
                         onChange={setEmail}
-                        icon={Union}
                     />
                     <Input
                         placeholder="Senha"
                         value={password}
                         onChange={setPassword}
                         type="password"
-                        icon={lock}
                     />
 
                     <button className="button" type="submit">Entrar</button>

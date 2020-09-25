@@ -61,14 +61,12 @@ export default function PsyCreate() {
                             placeholder="Nome"
                             value={name}
                             onChange={setName}
-                            icon={Union}
                         />
 
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
-                            icon={Union}
                         />
 
                         <div className="selects">
@@ -86,14 +84,12 @@ export default function PsyCreate() {
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
-                            icon={Union}
                         />
 
                         <Input
                             placeholder="Especialidade"
                             value={specialization}
                             onChange={setSpecialization}
-                            icon={Union}
                         />
 
                         <button className="button" type="submit">Registrar</button>

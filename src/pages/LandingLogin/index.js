@@ -22,17 +22,7 @@ export default function LandingLogin(props) {
 
     const history = useHistory();
 
-    function haveAlert(event) {
-        event.preventDefault();
-        if (props.location.state) {
-            setShow(props.location.state.alert.show);
-            setVariant(props.location.state.alert.variant);
-            setAlertText(props.location.state.alert.alertText);
-        }
-        setInterval(() => {
-            setShow(false);
-        }, 4000);
-    }
+    console.log(props);
 
     async function handleLogin(event) {
         try {
@@ -52,6 +42,7 @@ export default function LandingLogin(props) {
                         },
                     },
                 });
+                return;
             }
         } catch (err) {
             try {
@@ -104,7 +95,7 @@ export default function LandingLogin(props) {
     }
 
     return (
-        <div onLoad={haveAlert} className="loginContainer">
+        <div className="loginContainer">
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
@@ -120,14 +111,12 @@ export default function LandingLogin(props) {
                         placeholder="Email"
                         value={email}
                         onChange={setEmail}
-                        icon={Union}
                     />
 
                     <Input
                         placeholder="Senha"
                         value={password}
                         onChange={setPassword}
-                        icon={lock}
                         type="password"
                     />
 

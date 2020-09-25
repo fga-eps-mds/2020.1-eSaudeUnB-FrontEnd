@@ -39,14 +39,14 @@ export default function LandingSignUp() {
 
             if (!name || !lastName || !email || !password) {
                 setShow(true);
-                setVariant('warning');
+                setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente.');
                 return;
             }
 
             if (password !== confirmPassword) {
                 setShow(true);
-                setVariant('warning');
+                setVariant('danger');
                 setAlertText('As senhas não são iguais.');
                 return;
             }
@@ -58,11 +58,6 @@ export default function LandingSignUp() {
                     pathname: '/login',
                     state: {
                         data: response.data,
-                        alert: {
-                            show: true,
-                            variant: 'success',
-                            alertText: 'Cadastro realizado com sucesso.',
-                        },
                     },
                 });
             }
@@ -91,32 +86,27 @@ export default function LandingSignUp() {
                             placeholder="Nome"
                             value={name}
                             onChange={setName}
-                            icon={Union}
                         />
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
-                            icon={Union}
                         />
                         <Input
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
-                            icon={Union}
                         />
                         <Input
                             placeholder="Senha"
                             value={password}
                             onChange={setPassword}
-                            icon={Union}
                             type="password"
                         />
                         <Input
                             placeholder="Confirmar senha"
                             value={confirmPassword}
                             onChange={setConfirmPassword}
-                            icon={Union}
                             type="password"
                         />
                     </div>

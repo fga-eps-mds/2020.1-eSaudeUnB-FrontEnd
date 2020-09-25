@@ -4,7 +4,7 @@
     margin: 0 auto;
 
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
@@ -18,10 +18,8 @@
 
 }
 .userProfileContainer .form {
-   
     height: 50vh;
     
-    /*background-color: aqua;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +30,6 @@
     display: flex;
     width: 80vh;
     height: 60vh;
-    justify-items: baseline;
     justify-content: space-between;
 }
 
