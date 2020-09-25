@@ -75,8 +75,8 @@ export default function PatientRecord(props) {
                             <h2>Data: 07/SET/2020</h2>
                             <h2>Encaminhamento: Rede Interna</h2>
 
-                            <h1>Queixa Principal</h1>
                             <div className="recordText">
+                                <h1>Queixa Principal</h1>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
@@ -85,8 +85,8 @@ export default function PatientRecord(props) {
                                     Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
-                            <h1>Queixa Secundaria</h1>
                             <div className="recordText">
+                                <h1>Queixa Secundaria</h1>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
@@ -95,8 +95,8 @@ export default function PatientRecord(props) {
                                     Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
-                            <h1>Evolução das queixas</h1>
                             <div className="recordText">
+                                <h1>Evolução das queixas</h1>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
