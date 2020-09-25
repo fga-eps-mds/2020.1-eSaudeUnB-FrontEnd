@@ -40,6 +40,9 @@ export default function AdminMain() {
                             Psicólogos cadastrados: {psyArray.length}
                         </p>
                     </div>
+                    <button className="get-out" onClick={() => history.push('/admin/login')}>
+                        Sair
+                    </button>
                 </div>
                 <div className="psychologists-cards">
                     {psyArray.map((psychologist) => (
