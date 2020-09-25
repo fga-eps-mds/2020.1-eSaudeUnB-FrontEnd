@@ -22,6 +22,24 @@ export default function PatientList() {
         });
     }, []);
 
+    async function findPatients() {
+        try {
+            const response = await api.get(`/user/${search}`);
+
+            console.log(response);
+
+            if (response.status === 200) {
+                if (response.data) {
+                    setPatients(response.data);
+                }
+            }
+        } catch (err) {
+            alert('Falha ao buscar paciente, tente novamente');
+        }
+
+        setSearch('');
+    }
+
     return (
         <div className="patientListContainer">
             <div className="content">
@@ -31,6 +49,7 @@ export default function PatientList() {
                     value={search}
                     onChange={setSearch}
                     icon={MagnifyingGlass}
+                    onClick={findPatients}
                 />
 
                 <div className="patients">

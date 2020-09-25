@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../assets/styles/SearchBar.css';
 
 export default function SearchBar({
-    value, onChange, icon,
+    value, onChange, icon, onClick
 }) {
     return (
         <div className="searcBarComponent">
@@ -13,7 +13,7 @@ export default function SearchBar({
                 onChange={(e) => onChange(e.target.value)}
             />
 
-            <button><img src={icon} alt="searchIcon" /></button>
+            <button onClick={() => onClick()} ><img src={icon} alt="searchIcon" /></button>
         </div>
     );
 }

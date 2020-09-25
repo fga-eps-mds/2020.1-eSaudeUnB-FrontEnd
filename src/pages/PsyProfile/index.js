@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -92,7 +92,7 @@ export default function PsyProfile(props) {
     return (
         <>
             <NavBar />
-            <div onLoad={renderPage} className="psyProfileContainer">
+            <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (

@@ -18,7 +18,7 @@
 
 .patientRecord .patientInfo {
   display: flex;
-  font: 500 1.5rem Poppins;
+  font: 500 18px Poppins;
   color: #07387e;
   background-color: #eee;
   border-radius: 15px;
@@ -34,7 +34,7 @@
 }
 
 .patientRecord .patientInfo .patient .patientImg {
-  height: 10rem;
+  height: 125px;
   border-radius: 25%;
   margin: 1rem 2rem 1rem 1rem;
 }
@@ -99,7 +99,7 @@
   margin-bottom: -10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 
-  font: 500 1.2rem Poppins;
+  font: 500 14px Poppins;
   color: #eee;
 
   background-color: #197fe5;
@@ -126,7 +126,7 @@
   display: flex;
   flex-direction: column;
 
-  font: 500 1rem Poppins;
+  font: 500 14px Poppins;
   color: #000;
 
   background-color: #eee;
@@ -135,7 +135,7 @@
   width: 1400px;
 
   padding: 1rem 2rem 0 2rem;
-  height: 55vh;
+  height: 550px;
 
   overflow: auto;
 }
@@ -158,8 +158,12 @@ h2 {
   color: #07387e;
 }
 
+.patientRecord .patientHistory .tabContent h1 {
+  font-size: 32px;
+}
+
 .patientRecord .patientHistory .tabContent h2 {
-  font: 100 1.3rem Poppins;
+  font: 100 16px Poppins;
   line-height: 1rem;
 }
 

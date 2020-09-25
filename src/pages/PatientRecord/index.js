@@ -22,16 +22,6 @@ export default function PatientRecord(props) {
         });
     }, []);
 
-    function handleExpand() {
-        if (expand === true) {
-            setExpand(false);
-            setArrow(true);
-        } else {
-            setExpand(true);
-            setArrow(false);
-        }
-    }
-
     return (
         <div className="patientRecord">
             <div className="content">
@@ -58,25 +48,13 @@ export default function PatientRecord(props) {
                                 </div>
                             </div>
 
-                            {expand ? (
-                                <div className="hidden">
-                                    <span className="prop">Vinculo: </span>
-                                    <span>{patient.bond}</span>
+                            <div className="hidden">
+                                <span className="prop">Vinculo: </span>
+                                <span>{patient.bond}</span>
 
-                                    <span className="prop">Matricula: </span>
-                                    <span>{patient.unbRegistration}</span>
-                                </div>
-                            ) : (
-                                    <div className="hidden"></div>
-                                )}
-
-                            <button className="expand" onClick={handleExpand}>
-                                {arrow ? (
-                                    <img src={down} alt="expandir" />
-                                ) : (
-                                        <img src={up} alt="expandir" />
-                                    )}
-                            </button>
+                                <span className="prop">Matricula: </span>
+                                <span>{patient.unbRegistration}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
