@@ -38,6 +38,7 @@ export default function LandingLogin() {
             if (response.status === 200 || response.status === 201) {
                 alert('Login efetuado');
                 history.push('/home');
+                localStorage.setItem('user', response.data.email);
             }
         } catch (err) {
             alert('Falha no login, tente novamente');
@@ -50,7 +51,11 @@ export default function LandingLogin() {
                 <Logo />
 
                 <form className="form" onSubmit={handleLogin}>
-                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                    <img
+                        className="userIcon"
+                        src={userIcon}
+                        alt="icone de usuario"
+                    />
                     <Input
                         placeholder="Email"
                         value={email}
@@ -66,10 +71,16 @@ export default function LandingLogin() {
                         type="password"
                     />
 
-                    <button className="button" type="submit">Entrar</button>
+                    <button className="button" type="submit">
+                        Entrar
+                    </button>
                     <div className="forgot">
-                        <Link className="a" to="/registration-step01">Esqueci a minha senha</Link>
-                        <Link className="a" to="/registration-step01">Ainda não possuo uma conta</Link>
+                        <Link className="a" to="/registration-step01">
+                            Esqueci a minha senha
+                        </Link>
+                        <Link className="a" to="/registration-step01">
+                            Ainda não possuo uma conta
+                        </Link>
                     </div>
                 </form>
             </div>

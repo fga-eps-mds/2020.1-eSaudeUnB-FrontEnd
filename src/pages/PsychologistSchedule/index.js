@@ -7,7 +7,7 @@ import './styles.css';
 
 export default function PsychologistSchedule() {
     const [scheduleItems, setScheduleItems] = useState([
-        { week_day: '0', from: '', to: '' },
+        { week_day: 0, from: '', to: '', id: 0 },
     ]);
 
     const weekDays = [
@@ -49,12 +49,26 @@ export default function PsychologistSchedule() {
         setScheduleItems(updatedScheduleItems);
     }
 
+    function handleId(scheduleItems) {
+        let newID = 0;
+        scheduleItems.forEach((item) => {
+            if (item.id >= newID) {
+                newID = item.id + 1;
+            }
+        });
+        return newID;
+    }
+
     function addNewScheduleItem() {
-        setScheduleItems([...scheduleItems, { week_day: 0, from: '', to: '' }]);
+        const ID = scheduleItems.length > 0 ? handleId(scheduleItems) : 0;
+
+        setScheduleItems([
+            ...scheduleItems,
+            { week_day: 0, from: '', to: '', id: ID },
+        ]);
     }
 
     function removeScheduleItem(index) {
-        console.log(index);
         let temp = [...scheduleItems];
         temp.splice(index, 1);
         setScheduleItems(temp);
@@ -80,7 +94,10 @@ export default function PsychologistSchedule() {
                         <div className="schedule">
                             {scheduleItems.map((scheduleItem, index) => {
                                 return (
-                                    <div key={index} className="schedule-item">
+                                    <div
+                                        key={scheduleItem.id}
+                                        className="schedule-item"
+                                    >
                                         <div className="select-box">
                                             <label>Dia da Semana</label>
                                             <select

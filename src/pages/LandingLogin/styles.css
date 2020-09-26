@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
 .loginContainer .content {
@@ -44,7 +44,7 @@
 
 .loginContainer .form .input {
     display: flex;
-    border-bottom: 3px solid #0459AE;
+    border-bottom: 3px solid #0459ae;
 }
 
 .loginContainer .form input {
@@ -63,7 +63,6 @@
     color: #fff;
 }
 
-
 .loginContainer .form .button {
     width: 200px;
     height: 50px;
@@ -71,7 +70,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459AE;
+    background-color: #0459ae;
 
     font-size: 24px;
     line-height: 36px;
@@ -81,7 +80,7 @@
     width: 200px;
     height: 20px;
     text-decoration: none;
-    color: #0459AE;
+    color: #0459ae;
 
     font-size: 12px;
     line-height: 14px;
