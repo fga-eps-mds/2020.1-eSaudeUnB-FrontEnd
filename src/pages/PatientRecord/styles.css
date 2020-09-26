@@ -108,8 +108,23 @@
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.2s;
+  outline: none;
 }
 
+.patientRecord .patientHistory .tab button:focus{
+background-color: #197fe5 !important;
+}
+
+.patientRecord .patientHistory #mostrarTodos {
+  background-color: #0459ae;
+  float: left;
+}
+.patientRecord .patientHistory #mostrarTodos:hover {
+  background-color: #197fe5;
+}
+.patientRecord .patientHistory #novoAtendimento {
+  float: right;
+}
 .patientRecord .patientHistory .tab button:last-of-type {
   background-color: #0459ae;
 }

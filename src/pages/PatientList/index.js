@@ -16,6 +16,7 @@ export default function PatientList() {
     const [search, setSearch] = useState('');
     const [patients, setPatients] = useState([]);
 
+
     useEffect(() => {
         api.get('/users').then((response) => {
             setPatients(response.data);

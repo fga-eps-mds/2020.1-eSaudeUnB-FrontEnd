@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 import up from '../../assets/images/up.svg';
 import down from '../../assets/images/down.svg';
 import userIcon from '../../assets/images/userIcon.svg';
+
 
 import NavBar from '../../components/NavBar';
 
@@ -20,6 +22,9 @@ export default function PatientRecord(props) {
     const [secondaryComplaint, setSecondaryComplaint] = useState('');
     const [complaintEvolution, setComplaintEvolution] = useState('');
     const [professional, setProfessional] = useState('');
+    const [tabContent, setTabContent] = useState(true);
+
+    const history = useHistory();
 
     useEffect(() => {
         async function getData(){
@@ -34,17 +39,12 @@ export default function PatientRecord(props) {
     }, [props]);
     
     function changeSession(index){
-
+        setTabContent(false);
         setMainComplaint(sessions[index].mainComplaint);
         setSecondaryComplaint(sessions[index].secondaryComplaint);
         setComplaintEvolution(sessions[index].complaintEvolution);
         setProfessional(sessions[index].professional);
     }
-
-    function handleSession(){
-        
-    }
-
 
     function handleExpand() {
         if (expand === true) {
@@ -54,6 +54,10 @@ export default function PatientRecord(props) {
             setExpand(true);
             setArrow(false);
         }
+    }
+
+    function openShowAll(){
+        setTabContent(true);
     }
 
     return (
@@ -86,7 +90,7 @@ export default function PatientRecord(props) {
                                 <div className="hidden">
                                     <span className="prop">Vinculo: </span>
                                     <span>{patient.bond}</span>
-
+                                    
                                     <span className="prop">Matricula: </span>
                                     <span>{patient.unbRegistration}</span>
                                 </div>
@@ -104,25 +108,30 @@ export default function PatientRecord(props) {
                         </div>
                     </div>
                 </div>
-
+                                    
                 <div className="patientHistory">
                     <div className="tab">
-                        <button className="tabLink">Mostrar Todos</button>
+                        <button id="mostrarTodos" className="tabLink"onClick = {()=> openShowAll()}>Mostrar Todos</button>
                         {sessions.map((session, index) => (
                             <div className="buttons">
-                                <button className="tabLink" 
+                                <button id={`button${index}`} className="tabLink" 
                                 onClick={() => changeSession(index)}>{index}</button>
                             </div>
                         ))}
-                        <button className="tabLink" onClick={handleSession}>Novo atendimento</button>
+                        <button id ="novoAtendimento" className="tabLink" onClick={() =>
+                                history.push({pathname: `/new`,
+                                state: {email: patient.email}
+                                })}>
+                                Novo atendimento
+                        </button>
                     </div>
 
                     <div className="tabContent">
-                        <div className="record">
+                        {tabContent ? <div>asdasdasdas</div> : <div className="record">
                             <h2>Profissional: {`${professional}`}</h2>
                             <h2>Data: 07/SET/2020</h2>
                             <h2>Encaminhamento: Rede Interna</h2>
-
+                                
                             <h1>Queixa Principal</h1>
                             <div className="recordText" id="mainComplaint">
                                 <p>{`${mainComplaint}`}</p>
@@ -135,10 +144,11 @@ export default function PatientRecord(props) {
                             <div className="recordText" id="complaintEvolution">
                                 <p>{`${complaintEvolution}`}</p>
                             </div>
-                        </div>
+                        </div> }
+                        
                     </div>
                 </div>
-            </div>
+            </div>           
         </div>
     );
 }

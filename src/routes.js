@@ -11,6 +11,7 @@ import AdminMain from './pages/AdminMain';
 import PsyCreate from './pages/PsyCreate';
 import PatientList from './pages/PatientList';
 import PatientRecord from './pages/PatientRecord';
+import NewSession from './pages/NewSession';
 
 export default function Routes() {
     return (
@@ -27,6 +28,7 @@ export default function Routes() {
                 <Route path="/admin/psy/create" component={PsyCreate} />
                 <Route path="/patient-list" exact component={PatientList} />
                 <Route path="/patient-list/:id" component={PatientRecord} />
+                <Route path="/new" component={NewSession} />
             </Switch>
         </BrowserRouter>
     );

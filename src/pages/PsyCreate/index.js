@@ -8,7 +8,7 @@ import './styles.css';
 import userIcon from '../../assets/images/userIcon.svg';
 import Union from '../../assets/images/Union.svg';
 
-export default function PsyCreate(props) {
+export default function PsyCreate() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
