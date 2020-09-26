@@ -187,3 +187,25 @@ h2 {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   margin-bottom: 1.5rem;
 }
+
+.sessionTab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 500 1.2rem Poppins;
+  color: #07387e;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25) !important;
+  
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+}
+.minSession{
+  display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.info{
+  width: 200px;
+  margin-left: 300px;
+}

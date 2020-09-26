@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import api from '../../services/api';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import go from '../../assets/images/go.svg';
 
 import up from '../../assets/images/up.svg';
 import down from '../../assets/images/down.svg';
@@ -27,18 +28,18 @@ export default function PatientRecord(props) {
     const history = useHistory();
 
     useEffect(() => {
-        async function getData(){
-            const {email} = props.location.state;
+        async function getData() {
+            const { email } = props.location.state;
             const response = await api.get(`/user/${email}`);
             setPatient(response.data);
             const responseSessions = await api.get(`/session/${email}`);
             setSessions(responseSessions.data);
         }
         getData();
-        
+
     }, [props]);
-    
-    function changeSession(index){
+
+    function changeSession(index) {
         setTabContent(false);
         setMainComplaint(sessions[index].mainComplaint);
         setSecondaryComplaint(sessions[index].secondaryComplaint);
@@ -56,7 +57,7 @@ export default function PatientRecord(props) {
         }
     }
 
-    function openShowAll(){
+    function openShowAll() {
         setTabContent(true);
     }
 
@@ -90,48 +91,74 @@ export default function PatientRecord(props) {
                                 <div className="hidden">
                                     <span className="prop">Vinculo: </span>
                                     <span>{patient.bond}</span>
-                                    
+
                                     <span className="prop">Matricula: </span>
                                     <span>{patient.unbRegistration}</span>
                                 </div>
                             ) : (
-                                <div className="hidden"></div>
-                            )}
+                                    <div className="hidden"></div>
+                                )}
 
                             <button className="expand" onClick={handleExpand}>
                                 {arrow ? (
                                     <img src={down} alt="expandir" />
                                 ) : (
-                                    <img src={up} alt="expandir" />
-                                )}
+                                        <img src={up} alt="expandir" />
+                                    )}
                             </button>
                         </div>
                     </div>
                 </div>
-                                    
+
                 <div className="patientHistory">
                     <div className="tab">
-                        <button id="mostrarTodos" className="tabLink"onClick = {()=> openShowAll()}>Mostrar Todos</button>
+                        <button id="mostrarTodos" className="tabLink" onClick={() => openShowAll()}>Mostrar Todos</button>
                         {sessions.map((session, index) => (
                             <div className="buttons">
-                                <button id={`button${index}`} className="tabLink" 
-                                onClick={() => changeSession(index)}>{index}</button>
+                                <button id={`button${index}`} className="tabLink"
+                                    onClick={() => changeSession(index)}>{index}</button>
                             </div>
                         ))}
-                        <button id ="novoAtendimento" className="tabLink" onClick={() =>
-                                history.push({pathname: `/new`,
-                                state: {email: patient.email}
-                                })}>
-                                Novo atendimento
+                        <button id="novoAtendimento" className="tabLink" onClick={() =>
+                            history.push({
+                                pathname: `/new`,
+                                state: { email: patient.email }
+                            })}>
+                            Novo atendimento
                         </button>
                     </div>
 
                     <div className="tabContent">
-                        {tabContent ? <div>asdasdasdas</div> : <div className="record">
+                        {tabContent ? 
+                        <div className="sessions">
+                            {sessions.map((session) => (
+                        <div key={session._id} className="sessionTab">
+                            <div className="sessionInfos">
+                                <div className="minSession">
+                                    <p>Data: 12/12/2012 </p>
+                                    <p className="info" >Profissional: {session.professional}</p>
+                                    <p className="info">Encaminhamento: Rede Interna</p>
+                                </div>
+                            </div>
+
+                            <Link className="button" to={{
+                                pathname: `patient-list/${patient._id}`,
+                                state: {email: patient.email}
+                                }}>
+                                <img src={go} alt="go" />{' '}
+                            </Link>
+                        </div>
+                    ))}    
+                        
+                        </div> : 
+                        
+                        
+                        
+                        <div className="record">
                             <h2>Profissional: {`${professional}`}</h2>
                             <h2>Data: 07/SET/2020</h2>
                             <h2>Encaminhamento: Rede Interna</h2>
-                                
+
                             <h1>Queixa Principal</h1>
                             <div className="recordText" id="mainComplaint">
                                 <p>{`${mainComplaint}`}</p>
@@ -144,11 +171,11 @@ export default function PatientRecord(props) {
                             <div className="recordText" id="complaintEvolution">
                                 <p>{`${complaintEvolution}`}</p>
                             </div>
-                        </div> }
-                        
+                        </div>}
+
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
     );
 }
