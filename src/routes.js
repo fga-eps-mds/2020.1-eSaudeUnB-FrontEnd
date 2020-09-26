@@ -5,7 +5,7 @@ import Landing from './pages/Landing';
 import Home from './pages/Home';
 import LandingLogin from './pages/LandingLogin';
 import LandingSignUp from './pages/LandingSignUp';
-import UserProfile from './pages/userProfile';
+import UserProfile from './pages/UserProfile';
 import LoginAdmin from './pages/LoginAdmin';
 import AdminMain from './pages/AdminMain';
 import PsyCreate from './pages/PsyCreate';

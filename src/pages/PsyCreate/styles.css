@@ -83,3 +83,10 @@
 .psychologist-container .psychologist-create .form .psyCreate select option {
     background-color: #0459AE;
 }
+
+.psychologist-container .alert{
+    position: absolute;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}

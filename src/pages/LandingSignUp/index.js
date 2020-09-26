@@ -66,6 +66,9 @@ export default function LandingSignUp() {
             setVariant('danger');
             setAlertText('Erro no cadastro, tente novamente.');
         }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
     }
 
     return (
