@@ -7,7 +7,6 @@ import NavBar from '../../components/NavBar';
 export default function PsychologistCalendar() {
     const [date, setDate] = useState(new Date());
 
-
     async function putRestrict() {
         await api.put('/calendary/update/', {
             email: localStorage.getItem('user'),

@@ -6,13 +6,14 @@ import NavBar from '../../components/NavBar';
 import './styles.css';
 
 export default function PsychologistSchedule() {
-    
     const [scheduleItems, setScheduleItems] = useState([]);
-    
-    async function handleSchedule(){   
-        const Days = await api.post('/calendary/update',{email:localStorage.getItem('user')})
+
+    async function handleSchedule() {
+        const Days = await api.post('/calendary/update', {
+            email: localStorage.getItem('user'),
+        });
         console.log(Days);
-        setScheduleItems(Days.data)
+        setScheduleItems(Days.data);
     }
     window.onload = handleSchedule;
 
