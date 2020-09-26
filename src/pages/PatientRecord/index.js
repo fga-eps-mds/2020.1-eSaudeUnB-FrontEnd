@@ -16,19 +16,33 @@ export default function PatientRecord(props) {
     const [expand, setExpand] = useState(false);
     const [arrow, setArrow] = useState(true);
     const [sessions, setSessions] = useState([]);
+    const [mainComplaint, setMainComplaint] = useState('');
+    const [secondaryComplaint, setSecondaryComplaint] = useState('');
+    const [complaintEvolution, setComplaintEvolution] = useState('');
+    const [professional, setProfessional] = useState('');
 
     useEffect(() => {
         async function getData(){
             const {email} = props.location.state;
             const response = await api.get(`/user/${email}`);
             setPatient(response.data);
-            await api.get('/session').then((response) => setSessions(response.data));
+            const responseSessions = await api.get(`/session/${email}`);
+            setSessions(responseSessions.data);
         }
         getData();
+        
     }, [props]);
+    
+    function changeSession(index){
 
-    function changeSession(){
+        setMainComplaint(sessions[index].mainComplaint);
+        setSecondaryComplaint(sessions[index].secondaryComplaint);
+        setComplaintEvolution(sessions[index].complaintEvolution);
+        setProfessional(sessions[index].professional);
+    }
 
+    function handleSession(){
+        
     }
 
 
@@ -94,48 +108,32 @@ export default function PatientRecord(props) {
                 <div className="patientHistory">
                     <div className="tab">
                         <button className="tabLink">Mostrar Todos</button>
-                        <button className="tabLink">17/08/2020</button>
-                        <button className="tabLink">21/08/2020</button>
-                        <button className="tabLink">31/08/2020</button>
-                        <button className="tabLink">07/09/2020</button>
-                        <button className="tabLink">Novo atendimento</button>
+                        {sessions.map((session, index) => (
+                            <div className="buttons">
+                                <button className="tabLink" 
+                                onClick={() => changeSession(index)}>{index}</button>
+                            </div>
+                        ))}
+                        <button className="tabLink" onClick={handleSession}>Novo atendimento</button>
                     </div>
 
                     <div className="tabContent">
                         <div className="record">
-                            <h2>Profissional: Dr. Hilmer Rodrigues</h2>
+                            <h2>Profissional: {`${professional}`}</h2>
                             <h2>Data: 07/SET/2020</h2>
                             <h2>Encaminhamento: Rede Interna</h2>
 
                             <h1>Queixa Principal</h1>
                             <div className="recordText" id="mainComplaint">
-                                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
-                                </p>
+                                <p>{`${mainComplaint}`}</p>
                             </div>
                             <h1>Queixa Secundaria</h1>
                             <div className="recordText" id="secondaryComplaint">
-                                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
-                                </p>
+                                <p>{`${secondaryComplaint}`}</p>
                             </div>
                             <h1>Evolução das queixas</h1>
                             <div className="recordText" id="complaintEvolution">
-                                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
-                  urna. Nullam venenatis mi nec libero tempus, vitae venenatis
-                  lacus tincidunt. Donec consequat mauris in accumsan suscipit.
-                  Curabitur cursus blandit bibendum.
-                                </p>
+                                <p>{`${complaintEvolution}`}</p>
                             </div>
                         </div>
                     </div>
