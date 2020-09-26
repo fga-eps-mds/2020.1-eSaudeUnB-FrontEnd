@@ -7,22 +7,13 @@ import NavBar from '../../components/NavBar';
 export default function PsychologistCalendar() {
     const [date, setDate] = useState(new Date());
 
-    async function test() {
-        const weekday = await api.post('/admin/psy/create', {
-            email: localStorage.getItem('user'),
-        });
-        console.log(weekday.data.weekDay);
-        const teste = weekday.data.weekDay;
-        return teste;
-    }
 
     async function putRestrict() {
         await api.put('/calendary/update/', {
             email: localStorage.getItem('user'),
-            weekDay: test(),
             restrict: [
                 {
-                    year: date.getYear(),
+                    year: date.getFullYear(),
                     day: date.getDate(),
                     month: date.getMonth(),
                 },

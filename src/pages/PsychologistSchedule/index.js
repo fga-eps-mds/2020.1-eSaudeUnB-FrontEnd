@@ -6,33 +6,39 @@ import NavBar from '../../components/NavBar';
 import './styles.css';
 
 export default function PsychologistSchedule() {
-    const [scheduleItems, setScheduleItems] = useState([
-        { weekDay: 0, from: '', to: '', id: 0 },
-    ]);
+    
+    const [scheduleItems, setScheduleItems] = useState([]);
+    
+    async function handleSchedule(){   
+        const Days = await api.post('/calendary/update',{email:localStorage.getItem('user')})
+        console.log(Days);
+        setScheduleItems(Days.data)
+    }
+    window.onload = handleSchedule;
 
     const weekDays = [
-        { value: '0', label: 'Domingo' },
+        { value: 0, label: 'Domingo' },
         {
-            value: '1',
+            value: 1,
             label: 'Segunda-feira',
         },
         {
-            value: '2',
+            value: 2,
             label: 'Terça-feira',
         },
         {
-            value: '3',
+            value: 3,
             label: 'Quarta-feira',
         },
         {
-            value: '4',
+            value: 4,
             label: 'Quinta-feira',
         },
         {
-            value: '5',
+            value: 5,
             label: 'Sexta-feira',
         },
-        { value: '6', label: 'Sábado' },
+        { value: 6, label: 'Sábado' },
     ];
 
     function setScheduleItemsValue(position, field, value) {
@@ -78,7 +84,6 @@ export default function PsychologistSchedule() {
         await api.put('/calendary/update/', {
             email: localStorage.getItem('user'),
             weekDay: scheduleItems,
-            restrict: [],
         });
     }
 
@@ -105,6 +110,7 @@ export default function PsychologistSchedule() {
                                         <div className="select-box">
                                             <label>Dia da Semana</label>
                                             <select
+                                                value={scheduleItem.weekDay}
                                                 name="weekDay"
                                                 label="Dia da semana"
                                                 onChange={(e) =>
@@ -115,13 +121,6 @@ export default function PsychologistSchedule() {
                                                     )
                                                 }
                                             >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    hidden
-                                                >
-                                                    Selecione uma opção
-                                                </option>
                                                 {weekDays.map((option) => {
                                                     return (
                                                         <option
