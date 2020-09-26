@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import api from '../../services/api';
 import NavBar from '../../components/NavBar';
 
 import './styles.css';
 
 export default function PsychologistSchedule() {
     const [scheduleItems, setScheduleItems] = useState([
-        { week_day: 0, from: '', to: '', id: 0 },
+        { weekDay: 0, from: '', to: '', id: 0 },
     ]);
 
     const weekDays = [
@@ -64,7 +64,7 @@ export default function PsychologistSchedule() {
 
         setScheduleItems([
             ...scheduleItems,
-            { week_day: 0, from: '', to: '', id: ID },
+            { weekDay: 0, from: '', to: '', id: ID },
         ]);
     }
 
@@ -74,8 +74,12 @@ export default function PsychologistSchedule() {
         setScheduleItems(temp);
     }
 
-    function test(e) {
-        console.log(scheduleItems);
+    async function putCalendar() {
+        await api.put('/calendary/update/', {
+            email: localStorage.getItem('user'),
+            weekDay: scheduleItems,
+            restrict: [],
+        });
     }
 
     return (
@@ -101,12 +105,12 @@ export default function PsychologistSchedule() {
                                         <div className="select-box">
                                             <label>Dia da Semana</label>
                                             <select
-                                                name="week_day"
+                                                name="weekDay"
                                                 label="Dia da semana"
                                                 onChange={(e) =>
                                                     setScheduleItemsValue(
                                                         index,
-                                                        'week_day',
+                                                        'weekDay',
                                                         e.target.value
                                                     )
                                                 }
@@ -182,7 +186,7 @@ export default function PsychologistSchedule() {
                                 Configurações avançadas
                             </Link>
                             {/* <button type="submit">Salvar cadastro</button> */}
-                            <button type="button" onClick={test}>
+                            <button type="button" onClick={() => putCalendar()}>
                                 Salvar cadastro
                             </button>
                         </footer>

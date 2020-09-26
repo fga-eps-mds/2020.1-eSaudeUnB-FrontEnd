@@ -35,6 +35,22 @@
     color: #0459ae;
     display: flex;
 }
+
+.psychologistcalendar .table-right button {
+    border: none;
+    color: #d10000;
+    font: 500 1.3rem Poppins;
+    transition: 0.2s;
+    border-radius: 8px;
+    width: 60%;
+    height: 3rem;
+    align-self: center;
+}
+.psychologistcalendar .table-right button:hover {
+    color: #eee;
+    background-color: #d10000;
+}
+
 .psychologistcalendar .schedules {
     width: 90%;
     height: 80%;
