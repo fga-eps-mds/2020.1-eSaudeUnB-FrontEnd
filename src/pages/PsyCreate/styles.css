@@ -39,6 +39,7 @@
 .psychologist-container .psychologist-create .form .psyCreate input {
     width: 400px;
     height: 41px;
+    color: #eee;
 
     background-color: transparent;
     border: 0;
