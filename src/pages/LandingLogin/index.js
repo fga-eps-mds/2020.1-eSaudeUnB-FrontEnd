@@ -6,8 +6,6 @@ import api from '../../services/api';
 import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
-import Union from '../../assets/images/Union.svg';
-import lock from '../../assets/images/lock.svg';
 
 import Logo from '../../components/Logo';
 import Input from '../../components/Input';

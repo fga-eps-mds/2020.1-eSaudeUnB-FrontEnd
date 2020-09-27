@@ -7,7 +7,6 @@ import { Alert } from 'react-bootstrap';
 import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
-import Union from '../../assets/images/Union.svg';
 
 export default function PsyCreate() {
     const [name, setName] = useState('');

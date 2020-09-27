@@ -8,7 +8,6 @@ import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 import Input from '../../components/Input';
-import Union from '../../assets/images/Union.svg';
 
 import Logo from '../../components/Logo';
 

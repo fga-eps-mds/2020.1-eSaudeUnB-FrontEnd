@@ -6,7 +6,6 @@ import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
 import './styles.css';
 
-import Union from '../../assets/images/Union.svg';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 

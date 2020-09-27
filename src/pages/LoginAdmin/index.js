@@ -6,8 +6,6 @@ import './styles.css';
 
 import Input from '../../components/Input';
 
-import Union from '../../assets/images/Union.svg';
-import lock from '../../assets/images/lock.svg';
 import api from '../../services/api';
 import userIcon from '../../assets/images/userIcon.svg';
 
@@ -54,7 +52,7 @@ export default function AdminLogin() {
 
     return (
         <div className="loginContainer">
-             {show ? (
+            {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
                     <div></div>
