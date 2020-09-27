@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Input from '../../components/Input';
-import Union from '../../assets/images/Union.svg';
-import NavBar from '../../components/NavBar';
-import userIcon from '../../assets/images/userIcon.svg';
+import { Alert } from 'react-bootstrap';
+
 import api from '../../services/api';
 import './styles.css';
+
+import NavBar from '../../components/NavBar';
+import userIcon from '../../assets/images/userIcon.svg';
+
+import Input from '../../components/Input';
 
 export default function UserProfile(props) {
     const [email, setEmail] = useState('');
@@ -18,6 +21,11 @@ export default function UserProfile(props) {
     const [bond, setBond] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
+
+    const [show, setShow] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
+
     const history = useHistory();
 
     function getOut(event) {
@@ -30,35 +38,68 @@ export default function UserProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.put(`/userUpdate/${props.location.state.email}`, {
+            const response = await api.put(`/userUpdate/${props.location.state.data.email}`, {
                 name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
             });
 
             if (response.status === 200) {
-                alert('Atualização efetuada');
                 history.push({
                     pathname: '/profile',
-                    state: response.data,
+                    state: {
+                        data: response.data,
+                    },
                 });
-                setEmail('');
-                setName('');
-                setLastName('');
-                setPhone('');
-                setUnbRegistration('');
-                setGender('');
-                setBond('');
-                setCivilStatus('');
-                setReligion('');
+
+                setShow(true);
+                setVariant('success');
+                setAlertText('Dados atualizados com sucesso.');
             }
         } catch (err) {
-            alert('Falha na atualização dos dados, tente novamente');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Falha na atualização dos dados, tente novamente');
         }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
     }
+
+    async function renderPage(event) {
+        try {
+            event.preventDefault();
+
+            const response = await api.get(`/user/${props.location.state.data.email}`);
+
+            if (response.status === 200) {
+                setEmail(response.data.email);
+                setName(response.data.name);
+                setLastName(response.data.lastName);
+                setPhone(response.data.phone);
+                setReligion(response.data.religion);
+                setUnbRegistration(response.data.unbRegistration);
+                setGender(response.data.gender);
+                setBond(response.data.bond);
+                setCivilStatus(response.data.civilStatus);
+            }
+        } catch (err) {
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Erro ao carregar dados');
+        }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
+    }
+
     return (
         <>
             <NavBar />
-            <div className="userProfileContainer">
-
+            <div onLoad={renderPage} className="userProfileContainer">
+                {show ? (
+                    <Alert className="alert" variant={variant}>{alertText}</Alert>
+                ) : (
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="profile">
                         <img className="userIcon" src={userIcon} alt="icone de usuario" />
@@ -68,27 +109,25 @@ export default function UserProfile(props) {
                             <Input
                                 placeholder="Nome"
                                 value={name}
-                                icon={Union}
                                 onChange={setName}
                             />
                             <Input
                                 placeholder="Email"
                                 value={email}
-                                icon={Union}
                                 onChange={setEmail}
                             />
 
                             <div className="selects">
 
                                 <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                                    <option value="" disabled selected hidden>Gênero</option>
+                                    <option value="">Gênero</option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
                                 <select name="bond" onChange={(e) => setBond(e.target.value)}>
-                                    <option value="" disabled selected hidden>Vínculo</option>
+                                    <option value="">Vínculo</option>
                                     <option value="graduando">Graduando</option>
                                     <option value="posGraduando">Pós-Graduando</option>
                                     <option value="professor">Professor</option>
@@ -97,11 +136,11 @@ export default function UserProfile(props) {
                             </div>
 
                             <select className="selectsLargest" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
-                                <option value="" disabled selected hidden>Estado Civil</option>
-                                <option value="Solteiro">Solteiro</option>
-                                <option value="Divorciado">Divorciado</option>
-                                <option value="Casado">Casado</option>
-                                <option value="Viuvo">Viuvo</option>
+                                <option value="">Estado Civil</option>
+                                <option value="Solteiro(a)">Solteiro</option>
+                                <option value="Divorciado(a)">Divorciado</option>
+                                <option value="Casado(a)">Casado</option>
+                                <option value="Viuvo(a)">Viuvo</option>
                             </select>
                         </div>
 
@@ -109,23 +148,20 @@ export default function UserProfile(props) {
                             <Input
                                 placeholder="Sobrenome"
                                 value={lastName}
-                                icon={Union}
                                 onChange={setLastName}
                             />
                             <Input
                                 placeholder="Matrícula UnB"
                                 value={unbRegistration}
-                                icon={Union}
                                 onChange={setUnbRegistration}
                             />
                             <Input
                                 placeholder="DDD + Telefone"
                                 value={phone}
-                                icon={Union}
                                 onChange={setPhone}
                             />
                             <select className="selectsLargest" name="religion" onChange={(e) => setReligion(e.target.value)}>
-                                <option value="" disabled selected hidden>Religião</option>
+                                <option value="">Religião</option>
                                 <option value="Solteiro">Católico</option>
                                 <option value="Divorciado">Evangélico</option>
                                 <option value="Casado">Espirita</option>

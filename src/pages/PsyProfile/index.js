@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Input from '../../components/Input';
-import Union from '../../assets/images/Union.svg';
-import NavBar from '../../components/NavBar';
+
 import userIcon from '../../assets/images/userIcon.svg';
+
+import Input from '../../components/Input';
+import NavBar from '../../components/NavBar';
+
 import api from '../../services/api';
 import './styles.css';
 
@@ -17,6 +20,11 @@ export default function PsyProfile(props) {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [bibliography, setBibliography] = useState('');
+
+    const [show, setShow] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
+
     const history = useHistory();
 
     function getOut(event) {
@@ -29,35 +37,37 @@ export default function PsyProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.put(`/psyUpdate/${props.location.state.email}`, {
+            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
                 name, lastName, email, phone, specialization, gender, bond, bibliography,
             });
 
             if (response.status === 200) {
-                alert('Atualização efetuada');
                 history.push({
                     pathname: '/psy-profile',
-                    state: response.data,
+                    state: {
+                        data: response.data,
+                    },
                 });
-                setEmail(response.data.email);
-                setName(response.data.name);
-                setLastName(response.data.lastName);
-                setPhone(response.data.phone);
-                setSpecialization(response.data.specialization);
-                setGender(response.data.gender);
-                setBond(response.data.bond);
-                setBibliography(response.data.bibliography);
+
+                setShow(true);
+                setVariant('success');
+                setAlertText('Dados atualizados com sucesso.');
             }
         } catch (err) {
-            alert('Falha na atualização dos dados, tente novamente');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Falha na atualização dos dados, tente novamente.');
         }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
     }
 
     async function renderPage(event) {
         try {
             event.preventDefault();
 
-            const response = await api.get(`/psy/${props.location.state.email}`);
+            const response = await api.get(`/psy/${props.location.state.data.email}`);
 
             if (response.status === 200) {
                 setEmail(response.data.email);
@@ -70,7 +80,12 @@ export default function PsyProfile(props) {
                 setBibliography(response.data.bibliography);
             }
         } catch (err) {
-            alert('Erro ao carregar dados');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Erro ao carregar dados.');
+            setInterval(() => {
+                setShow(false);
+            }, 2000);
         }
     }
 
@@ -78,6 +93,11 @@ export default function PsyProfile(props) {
         <>
             <NavBar />
             <div className="psyProfileContainer" onLoad={renderPage}>
+                {show ? (
+                    <Alert className="alert" variant={variant}>{alertText}</Alert>
+                ) : (
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -89,25 +109,25 @@ export default function PsyProfile(props) {
                                     <Input
                                         placeholder="Nome"
                                         value={name}
-                                        icon={Union}
                                         onChange={setName}
                                     />
                                     <Input
                                         placeholder="Email"
                                         value={email}
-                                        icon={Union}
                                         onChange={setEmail}
                                     />
 
                                     <div className="selects">
 
                                         <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                                            <option value="F">Feminino</option>
+                                            <option value="">Gênero</option>
+                                            <option value="F" >Feminino</option>
                                             <option value="M">Masculino</option>
                                             <option value="I">Não Identificar</option>
                                         </select>
 
                                         <select name="bond" onChange={(e) => setBond(e.target.value)}>
+                                            <option value="">Vínculo</option>
                                             <option value="graduando">Graduando</option>
                                             <option value="posGraduando">Pós-Graduando</option>
                                             <option value="professor">Professor</option>
@@ -120,19 +140,16 @@ export default function PsyProfile(props) {
                                     <Input
                                         placeholder="Sobrenome"
                                         value={lastName}
-                                        icon={Union}
                                         onChange={setLastName}
                                     />
                                     <Input
                                         placeholder="Especialização"
                                         value={specialization}
-                                        icon={Union}
                                         onChange={setSpecialization}
                                     />
                                     <Input
                                         placeholder="DDD + Telefone"
                                         value={phone}
-                                        icon={Union}
                                         onChange={setPhone}
                                     />
                                 </div>
