@@ -65,7 +65,7 @@
     margin: 30px 5px 5px 5px;
     text-align: left;
     display: flex;
-    /* border-bottom: 1px solid #000; */
+    justify-content: space-between;
 }
 
 .psychologistcalendar .schedules .schedule-box + .schedule-box {
@@ -79,6 +79,7 @@
     color: #0459ae;
     cursor: pointer;
     padding: 0.6rem;
+    width: 30%;
     transition: 0.2s;
 }
 .psychologistcalendar .schedules .schedule-box button:hover {

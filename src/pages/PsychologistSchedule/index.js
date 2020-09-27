@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
+import { Alert, Button } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -12,7 +13,6 @@ export default function PsychologistSchedule() {
         const Days = await api.post('/calendary/update', {
             email: localStorage.getItem('user'),
         });
-        console.log(Days);
         setScheduleItems(Days.data);
     }
     window.onload = handleSchedule;
@@ -81,11 +81,26 @@ export default function PsychologistSchedule() {
         setScheduleItems(temp);
     }
 
+    function verifyCalendarData() {
+        for (let item of scheduleItems) {
+            if (!item.from || !item.to) {
+                alert(
+                    'Todos os campos devem estar preenchidos, cadastro não efetuado'
+                );
+                return false;
+            }
+        }
+        return true;
+    }
+
     async function putCalendar() {
-        await api.put('/calendary/update/', {
-            email: localStorage.getItem('user'),
-            weekDay: scheduleItems,
-        });
+        if (verifyCalendarData()) {
+            await api.put('/calendary/update/', {
+                email: localStorage.getItem('user'),
+                weekDay: scheduleItems,
+            });
+            alert('Suas alteracoes foram salvas');
+        }
     }
 
     return (
@@ -185,7 +200,6 @@ export default function PsychologistSchedule() {
                             <Link className="link" to={'/psychology/calendar'}>
                                 Configurações avançadas
                             </Link>
-                            {/* <button type="submit">Salvar cadastro</button> */}
                             <button type="button" onClick={() => putCalendar()}>
                                 Salvar cadastro
                             </button>
