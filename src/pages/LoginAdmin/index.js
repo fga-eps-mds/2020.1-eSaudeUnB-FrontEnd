@@ -26,13 +26,13 @@ export default function AdminLogin() {
             const response = await api.post('/admin/login', { email, password });
 
             if (response.status === 404 || response.status === 400) {
-                setShow(true)
+                setShow(true);
                 setVariant('danger');
                 setAlertText('Email/Senha incorretos, digite novamente.');
             }
 
             if (response.status === 500) {
-                setShow(true)
+                setShow(true);
                 setVariant('danger');
                 setAlertText('Ocorreu algum erro no seu login, tente novamente.');
             }
@@ -41,7 +41,7 @@ export default function AdminLogin() {
                 history.push('/admin/psy/list');
             }
         } catch (err) {
-            setShow(true)
+            setShow(true);
             setVariant('danger');
             setAlertText('Ocorreu algum erro no seu login, tente novamente.');
         }
@@ -55,8 +55,8 @@ export default function AdminLogin() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
 
                 <form className="form" onSubmit={handleAdminLogin}>

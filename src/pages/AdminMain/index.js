@@ -55,7 +55,9 @@ export default function AdminMain() {
                             <p>{psychologist.email}</p>
                             <p>{psychologist.specialization}</p>
                             <p>{psychologist.bibliography}</p>
-                            <button onClick={() => deletePsychologist(psychologist.email)}>Excluir Psicólogo</button>
+                            <button onClick={() => deletePsychologist(psychologist.email)}>
+                                Excluir Psicólogo
+                            </button>
                         </article>
                     ))}
                 </div>

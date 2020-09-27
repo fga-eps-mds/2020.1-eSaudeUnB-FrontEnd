@@ -10,7 +10,7 @@ import userIcon from '../../assets/images/userIcon.svg';
 import Logo from '../../components/Logo';
 import Input from '../../components/Input';
 
-export default function LandingLogin(props) {
+export default function LandingLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -73,7 +73,6 @@ export default function LandingLogin(props) {
                     setAlertText('Ocorreu algum erro no seu login, tente novamente.');
                 }
             }
-
         }
         setInterval(() => {
             setShow(false);
@@ -85,8 +84,8 @@ export default function LandingLogin(props) {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
                 <Logo />
 

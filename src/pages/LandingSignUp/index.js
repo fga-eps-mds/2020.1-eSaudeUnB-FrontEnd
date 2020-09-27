@@ -22,7 +22,6 @@ export default function LandingSignUp() {
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
-
     const history = useHistory();
 
     async function handleSign(event) {
@@ -75,8 +74,8 @@ export default function LandingSignUp() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
 
             <div className="content">
                 <Logo />
