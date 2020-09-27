@@ -47,7 +47,7 @@ export default function UserProfile(props) {
                     pathname: '/profile',
                     state: {
                         data: response.data,
-                    }
+                    },
                 });
 
                 setShow(true);
@@ -98,8 +98,8 @@ export default function UserProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="profile">
                         <img className="userIcon" src={userIcon} alt="icone de usuario" />

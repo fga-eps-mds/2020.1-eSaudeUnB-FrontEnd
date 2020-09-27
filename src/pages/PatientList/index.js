@@ -53,27 +53,27 @@ export default function PatientList() {
                                     </div>
                                 ))
                         ) : (
-                                patients
-                                    .filter((patient) => {
-                                        const fullName = `${patient.name} ${patient.lastName}`
-                                        return fullName.toUpperCase().includes(search.toUpperCase());
-                                    })
-                                    .map((patient) => (
-                                        <div key={patient.email} className="patientTab">
-                                            <div className="patientInfos">
-                                                <img className="patientImg" src={userIcon} alt={patient.name} />
-                                                <div className="minPatient">
-                                                    <p>{`${patient.name} ${patient.lastName}`}</p>
-                                                    <p>{patient.email}</p>
-                                                </div>
+                            patients
+                                .filter((patient) => {
+                                    const fullName = `${patient.name} ${patient.lastName}`;
+                                    return fullName.toUpperCase().includes(search.toUpperCase());
+                                })
+                                .map((patient) => (
+                                    <div key={patient.email} className="patientTab">
+                                        <div className="patientInfos">
+                                            <img className="patientImg" src={userIcon} alt={patient.name} />
+                                            <div className="minPatient">
+                                                <p>{`${patient.name} ${patient.lastName}`}</p>
+                                                <p>{patient.email}</p>
                                             </div>
-
-                                            <Link className="button" to={`patient-list/${patient.email}`}>
-                                                <img src={go} alt="go" />{' '}
-                                            </Link>
                                         </div>
-                                    ))
-                            )
+
+                                        <Link className="button" to={`patient-list/${patient.email}`}>
+                                            <img src={go} alt="go" />{' '}
+                                        </Link>
+                                    </div>
+                                ))
+                        )
                     }
                 </div>
             </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
 import Input from '../../components/Input';
-import { Alert } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -21,7 +21,6 @@ export default function PsyCreate() {
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
-
     const history = useHistory();
 
     async function handlePsychologistSignUp(event) {
@@ -39,7 +38,7 @@ export default function PsyCreate() {
             };
 
             if (!name || !lastName || !email || !gender || !specialization) {
-                setShow(true)
+                setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
                 history.push('/admin/psy/create');
@@ -52,7 +51,7 @@ export default function PsyCreate() {
                 history.push('/admin/psy/list');
             }
         } catch (err) {
-            setShow(true)
+            setShow(true);
             setVariant('danger');
             setAlertText('Erro no cadastro, tente novamente');
         }
@@ -66,8 +65,8 @@ export default function PsyCreate() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="psychologist-create">
 
                 <form className="form" onSubmit={handlePsychologistSignUp}>

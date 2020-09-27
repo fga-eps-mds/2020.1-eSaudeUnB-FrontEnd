@@ -46,7 +46,7 @@ export default function PsyProfile(props) {
                     pathname: '/psy-profile',
                     state: {
                         data: response.data,
-                    }
+                    },
                 });
 
                 setShow(true);
@@ -96,8 +96,8 @@ export default function PsyProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
