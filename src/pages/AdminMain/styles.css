@@ -38,7 +38,7 @@
 
 .psychologist-list article{
     width: 350px;
-    height: 200px;
+    height: 230px;
     
     display: flex;
     align-self: center;
@@ -55,7 +55,6 @@
 .psychologist-list article p {
     font-size: 16px;
     color: #000;
-    margin-top: 5px;
     line-height: 24px;
 }
 .psychologist-list article button {

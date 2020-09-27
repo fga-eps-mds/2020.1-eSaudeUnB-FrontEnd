@@ -47,14 +47,16 @@ export default function AdminMain() {
                 <div className="psychologists-cards">
                     {psyArray.map((psychologist) => (
                         <article key={psychologist.id}>
-                            <strong>
-                                {psychologist.name}
-                                {' '}
-                                {psychologist.lastName}
-                            </strong>
-                            <p>{psychologist.email}</p>
-                            <p>{psychologist.specialization}</p>
-                            <p>{psychologist.bibliography}</p>
+                            <p>
+                                <strong>Nome: </strong>{`${psychologist.name} ${psychologist.lastName}`}
+                            </p>
+                            <p><strong>E-mail:</strong> {psychologist.email}</p>
+                            <p>
+                                <strong>Especialização:</strong> {psychologist.specialization ? (psychologist.specialization) : (`Não informado`)}
+                            </p>
+                            <p>
+                                <strong>Bibliografia:</strong> {psychologist.bibliography ? (psychologist.bibliography) : (`Não informado`)}
+                            </p>
                             <button onClick={() => deletePsychologist(psychologist.email)}>Excluir Psicólogo</button>
                         </article>
                     ))}
