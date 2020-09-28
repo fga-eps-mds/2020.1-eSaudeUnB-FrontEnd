@@ -52,12 +52,13 @@ export default function LandingLogin() {
                             data: responsePsy.data,
                         },
                     });
+                    localStorage.setItem('user', responsePsy.data.email);
                     return;
                 }
 
                 if (
-                    err.response.status === 404 ||
-                    err.response.status === 400
+                    err.response.status === 404
+                    || err.response.status === 400
                 ) {
                     setShow(true);
                     setVariant('danger');
@@ -68,13 +69,13 @@ export default function LandingLogin() {
                     setShow(true);
                     setVariant('danger');
                     setAlertText(
-                        'Ocorreu algum erro no seu login, tente novamente.'
+                        'Ocorreu algum erro no seu login, tente novamente.',
                     );
                 }
             } catch (err2) {
                 if (
-                    err2.response.status === 404 ||
-                    err2.response.status === 400
+                    err2.response.status === 404
+                    || err2.response.status === 400
                 ) {
                     setShow(true);
                     setVariant('danger');
@@ -85,7 +86,7 @@ export default function LandingLogin() {
                     setShow(true);
                     setVariant('danger');
                     setAlertText(
-                        'Ocorreu algum erro no seu login, tente novamente.'
+                        'Ocorreu algum erro no seu login, tente novamente.',
                     );
                 }
             }

@@ -51,6 +51,16 @@
     background-color: #d10000;
 }
 
+.psychologistcalendar .table-right button + button {
+    margin-bottom: 25px;
+    margin-top: 10px;
+    color: #0459ae;
+}
+.psychologistcalendar .table-right button + button:hover {
+    color: #eee;
+    background-color: #0459ae;
+}
+
 .psychologistcalendar .schedules {
     width: 90%;
     height: 80%;
@@ -83,7 +93,7 @@
     transition: 0.2s;
 }
 .psychologistcalendar .schedules .schedule-box button:hover {
-    color: #07387e;
+    color: #bdc2c9;
 }
 
 /* Calendar \/ */

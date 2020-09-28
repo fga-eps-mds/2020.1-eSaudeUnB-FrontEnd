@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
-// import { Alert, Button } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 import './styles.css';
 
 export default function PsychologistSchedule() {
     const [scheduleItems, setScheduleItems] = useState([]);
+
+    const [show, setShow] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
 
     async function handleSchedule() {
         const Days = await api.post('/calendary/update', {
@@ -84,9 +88,14 @@ export default function PsychologistSchedule() {
     function verifyCalendarData() {
         for (let item of scheduleItems) {
             if (!item.from || !item.to) {
-                alert(
-                    'Todos os campos devem estar preenchidos, cadastro não efetuado'
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    'Todos os campos devem ser preenchidos, alterações não foram salvas'
                 );
+                setInterval(() => {
+                    setShow(false);
+                }, 5000);
                 return false;
             }
         }
@@ -99,13 +108,25 @@ export default function PsychologistSchedule() {
                 email: localStorage.getItem('user'),
                 weekDay: scheduleItems,
             });
-            alert('Suas alteracoes foram salvas');
+            setShow(true);
+            setVariant('success');
+            setAlertText('Suas alterações foram salvas');
+            setInterval(() => {
+                setShow(false);
+            }, 3000);
         }
     }
 
     return (
         <div className="psychologistSchedule">
             <div className="content">
+                {show ? (
+                    <Alert className="alert" variant={variant}>
+                        {alertText}
+                    </Alert>
+                ) : (
+                    <div></div>
+                )}
                 <NavBar className="navBar" />
                 <form className="form">
                     <div className="formContent">

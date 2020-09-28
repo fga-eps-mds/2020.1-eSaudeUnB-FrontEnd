@@ -15,6 +15,13 @@
     align-items: center;
 }
 
+.content .alert {
+    position: absolute;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+
 .content .form {
     background-color: #eee;
     width: 1000px;

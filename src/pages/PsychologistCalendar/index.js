@@ -16,15 +16,31 @@ export default function PsychologistCalendar() {
         window.location.reload();
     }
 
+    function checkRepeat() {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const item of restricts) {
+            if (
+                date.getDate() == item.day
+                && date.getMonth() == item.month
+                && date.getFullYear() == item.year
+            ) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     function updateRestricts() {
-        setRestricts([
-            ...restricts,
-            {
-                year: date.getFullYear(),
-                day: date.getDate(),
-                month: date.getMonth(),
-            },
-        ]);
+        if (checkRepeat()) {
+            setRestricts([
+                ...restricts,
+                {
+                    year: date.getFullYear(),
+                    day: date.getDate(),
+                    month: date.getMonth(),
+                },
+            ]);
+        }
     }
 
     async function handleRestrict() {
@@ -36,7 +52,7 @@ export default function PsychologistCalendar() {
     window.onload = handleRestrict;
 
     function removeRestrict(index) {
-        let temp = [...restricts];
+        const temp = [...restricts];
         temp.splice(index, 1);
         setRestricts(temp);
     }
@@ -57,31 +73,27 @@ export default function PsychologistCalendar() {
                         />
                     </div>
                     <div className="table-right">
-                        <h1>Horários de atendimento:</h1>
+                        <h1>Suas Restrições:</h1>
                         <div className="schedules">
-                            {restricts.map((restrict, index) => {
-                                return (
-                                    <div
-                                        // eslint-disable-next-line no-underscore-dangle
-                                        key={index}
-                                        className="schedule-box"
+                            {restricts.map((restrict, index) => (
+                                <div
+                                    // eslint-disable-next-line no-underscore-dangle
+                                    key={index}
+                                    className="schedule-box"
+                                >
+                                    <span>{`restrição dia ${restrict.day}/${
+                                        restrict.month + 1 < 10
+                                            ? `0${restrict.month + 1}`
+                                            : `${restrict.month + 1}`
+                                    }/${restrict.year}`}</span>
+                                    <button
+                                        type="button"
+                                        onClick={() => removeRestrict(index)}
                                     >
-                                        <span>{`restrição dia ${restrict.day}/${
-                                            restrict.month < 10
-                                                ? `0${restrict.month}`
-                                                : restrict.month
-                                        }/${restrict.year}`}</span>
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                removeRestrict(index)
-                                            }
-                                        >
-                                            Remover
-                                        </button>
-                                    </div>
-                                );
-                            })}
+                                        Remover
+                                    </button>
+                                </div>
+                            ))}
                         </div>
                         <button type="button" onClick={() => updateRestricts()}>
                             {`Adicionar Restrição ao dia ${date.getDate()}`}
