@@ -184,7 +184,7 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-.sessionTab {
+.patientRecord .sessionTab {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -196,12 +196,12 @@ h2 {
   margin-bottom: 1.5rem;
   padding: 0.5rem 2rem 0.5rem 1rem;
 }
-.minSession{
+.patientRecord .minSession{
   display: flex;
     align-items: center;
     margin-left: 15px;
 }
-.info{
+.patientRecord .info{
   width: 200px;
   margin-left: 300px;
 }

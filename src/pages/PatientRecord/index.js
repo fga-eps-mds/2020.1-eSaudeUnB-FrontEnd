@@ -140,50 +140,53 @@ export default function PatientRecord(props) {
                     </div>
 
                     <div className="tabContent">
-                        {tabContent ? 
-                        <div className="sessions">
-                            {allSessions.map((session, index) => (
-                        <div key={session._id} className="sessionTab">
-                            <div className="sessionInfos">
-                                <div className="minSession">
-                                    <p>Data: 12/12/2012 </p>
-                                    <p className="info" >Profissional: {session.professional}</p>
-                                    <p className="info">Encaminhamento: Rede Interna</p>
+                        {tabContent ?
+
+                            <div className="sessions">
+                                {allSessions.map((session, index) => (
+                                    <div key={session._id} className="sessionTab">
+                                        <div className="sessionInfos">
+                                            <div className="minSession">
+                                                <p>Data: 12/12/2012 </p>
+                                                <p className="info" >Profissional: {session.professional}</p>
+                                                <p className="info">Encaminhamento: Rede Interna</p>
+                                            </div>
+                                        </div>
+
+                                        <Link className="button"
+                                            onClick={(event) => {
+                                                changeAllSession(index)
+                                                event.preventDefault();
+                                            }}>
+                                            <img src={go} alt="go" />{' '}
+                                        </Link>
+                                    </div>
+                                ))}
+
+                            </div>
+
+                            :
+
+                            <div className="record">
+                                <h2>Profissional: {`${professional}`}</h2>
+                                <h2>Data: 07/SET/2020</h2>
+                                <h2>Encaminhamento: Rede Interna</h2>
+
+                                <h1>Queixa Principal</h1>
+                                <div className="recordText" id="mainComplaint">
+                                    <p>{`${mainComplaint}`}</p>
+                                </div>
+                                <h1>Queixa Secundaria</h1>
+                                <div className="recordText" id="secondaryComplaint">
+                                    <p>{`${secondaryComplaint}`}</p>
+                                </div>
+                                <h1>Evolução das queixas</h1>
+                                <div className="recordText" id="complaintEvolution">
+                                    <p>{`${complaintEvolution}`}</p>
                                 </div>
                             </div>
 
-                            <Link className="button" 
-                            onClick = {(event) => {
-                                changeAllSession(index)
-                                event.preventDefault();
-                                }}>
-                                <img src={go} alt="go" />{' '}
-                            </Link>
-                        </div>
-                    ))}    
-                        
-                        </div> : 
-                        
-                        
-                        
-                        <div className="record">
-                            <h2>Profissional: {`${professional}`}</h2>
-                            <h2>Data: 07/SET/2020</h2>
-                            <h2>Encaminhamento: Rede Interna</h2>
-
-                            <h1>Queixa Principal</h1>
-                            <div className="recordText" id="mainComplaint">
-                                <p>{`${mainComplaint}`}</p>
-                            </div>
-                            <h1>Queixa Secundaria</h1>
-                            <div className="recordText" id="secondaryComplaint">
-                                <p>{`${secondaryComplaint}`}</p>
-                            </div>
-                            <h1>Evolução das queixas</h1>
-                            <div className="recordText" id="complaintEvolution">
-                                <p>{`${complaintEvolution}`}</p>
-                            </div>
-                        </div>}
+                        }
 
                     </div>
                 </div>

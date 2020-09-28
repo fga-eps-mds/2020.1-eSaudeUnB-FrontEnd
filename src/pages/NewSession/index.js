@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import {useHistory} from 'react-router-dom'
 
-import Input from '../../components/Input'
+import './styles.css'
 
 export default function NewSession(props){
     const [patient, setPatient] = useState({});
@@ -74,7 +74,8 @@ export default function NewSession(props){
                 <div className="patientHistory">
                     <div className="tab">
                     <button id="voltar" className="tabLink" 
-                    onClick={() => history.push(`/patient-list`)}
+                    onClick={() => history.push({pathname: `/patient-list/${patient._id}`,
+                                                state: {email: patient.email} })}
                     >Voltar</button>
                     </div>
                     <form className="form" onSubmit={sendSession}>    
@@ -84,47 +85,43 @@ export default function NewSession(props){
                             <h2>Data: 07/SET/2020</h2>
                             <h2>Encaminhamento: Rede Interna</h2>
 
-                            <h1>Queixa Principal</h1>
-                            <div className="recordText" id="mainComplaint">
-                            <Input
-                                placeholder="Queixa Principal"
-                                value={mainComplaint}
-                                onChange={setMainComplaint}
-                                type="QueixaPrincipal"
+                            <h1>Profissional</h1>
+                            <div className="recordText" id="professional">
+                            <input
+                                value={professional}
+                                onChange={(e) => setProfessional(e.target.value)}
+                                type="professional"
                             />
+                            </div>
+
+                            <h1>Queixa Principal</h1>
+                            <div className="recordText" id="mainComplaint" >
+                            <textarea
+                                onChange={(e) => setMainComplaint(e.target.value)}
+                                type="mainComplaint"
+                    />
                             </div>
                             
                             <h1>Queixa Secundaria</h1>
                             <div className="recordText" id="secondaryComplaint">
-                            <Input
-                                placeholder="secondarysenha"
+                            <textarea
                                 value={secondaryComplaint}
-                                onChange={setSecondaryComplaint}
+                                onChange={(e) => setSecondaryComplaint(e.target.value)}
                                 type="secondaryComplaint"
                     />
                             </div>
 
                             <h1>Evolução das queixas</h1>
                             <div className="recordText" id="complaintEvolution">
-                            <Input
-                                placeholder="Evolução"
+                            <textarea
                                 value={complaintEvolution}
-                                onChange={setComplaintEvolution}
-                                type="complaintEvo"
+                                onChange={(e) => setComplaintEvolution(e.target.value)}
+                                type="complaintEvolution"
                     />
                             </div>
 
-                            <h1>Profissional</h1>
-                            <div className="recordText" id="professional">
-                            <Input
-                                placeholder="Profissional"
-                                value={professional}
-                                onChange={setProfessional}
-                                type="profissional"
-                            />
-                            </div>
 
-                            <button className="button" type ="submit">Enviar</button>
+                            <button className="sendButton" type ="submit">Enviar</button>
                         </div>
                     </div>
                     </form>
