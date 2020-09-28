@@ -23,7 +23,7 @@ steps:
     containerRegistry: 'esaude-frontend Azure Container Registry'
     repository: 'esaude-frontend'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: '**/Dockerfile.prod'
     tags: |
       $(Build.BuildId)
       latest
