@@ -1,8 +1,9 @@
 .list-container{
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
+    flex-direction: column;
     background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
 
     font-family: Poppins, sans-serif;
@@ -10,26 +11,69 @@
     font-weight: normal;
 }
 
-.list-container .psychologist-list{
+.list-container .alert-component {
+    position: fixed;
+    width: 350px;
+    height: 122px;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+
+.list-container .alert{
     width: 100%;
-    max-width: 700px;
-    margin: 20px auto 0;
+    height: 100%;
+}
+
+.list-container .alert .react-bootstrap-button {
+    margin-left: 20px;
+}
+
+.list-container .psychologist-list{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "nav" "cards";
+    
+    width: 100%;    
+    height: 100%;
     padding: 0 20px;
-    align-items: center;
+}
+
+.list-container .count{
+    margin-top: 30px;
+    color: #fff;
+}
+
+.psychologist-list .psychologists-cards {
+    grid-area: "cards";
+
+    margin-top: 10px;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-self: flex-start;
 }
 
 .psychologist-list article{
+    width: 350px;
+    height: 230px;
+    
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 30px;  
 }
 
 .psychologist-list article p {
     font-size: 16px;
     color: #000;
-    margin-top: 5px;
     line-height: 24px;
 }
 .psychologist-list article button {
@@ -46,15 +90,30 @@
     transition:all 0.3s;
 }
 
+.psychologist-list .nav {
+    grid-area: "nav";
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .psychologist-list .new-psychologist{
+    width: 260px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
     background-color:  #0459AE;
     color: #fff;
-    font-size: 20px;
     cursor: pointer;
     border: 1px solid blue;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
+    margin-top: 30px;
     
 }
 
@@ -63,4 +122,16 @@
     background-color: #fff;
     color: #0459AE;
     transition:all 0.3s;
+}
+
+.psychologist-list .nav .get-out {
+    width: 100px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #FF2C00;
+
+    line-height: 36px;
 }

@@ -13,7 +13,7 @@ export default function SearchBar({
                 onChange={(e) => onChange(e.target.value)}
             />
 
-            <button><img src={icon} alt="searchIcon" /></button>
+            <button ><img src={icon} alt="searchIcon" /></button>
         </div>
     );
 }

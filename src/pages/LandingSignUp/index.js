@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+
 import api from '../../services/api';
-import Input from '../../components/Input';
 
 import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
+import Input from '../../components/Input';
 
-export default function PsyCreate() {
+import Logo from '../../components/Logo';
+
+export default function LandingSignUp() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [specialization, setSpecialization] = useState('');
-    const [bibliography] = useState('');
-    const [gender, setGender] = useState('');
-    const [bond] = useState('Psychologist');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -23,7 +24,7 @@ export default function PsyCreate() {
 
     const history = useHistory();
 
-    async function handlePsychologistSignUp(event) {
+    async function handleSign(event) {
         try {
             event.preventDefault();
 
@@ -31,29 +32,37 @@ export default function PsyCreate() {
                 name,
                 lastName,
                 email,
-                specialization,
-                bibliography,
-                gender,
-                bond,
+                password,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization) {
+            if (!name || !lastName || !email || !password) {
                 setShow(true);
                 setVariant('danger');
-                setAlertText('Os campos não foram preenchidos corretamente');
-                history.push('/admin/psy/create');
+                setAlertText('Os campos não foram preenchidos corretamente.');
                 return;
             }
 
-            const response = await api.post('/admin/psy/create', user);
+            if (password !== confirmPassword) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('As senhas não são iguais.');
+                return;
+            }
+
+            const response = await api.post('/users', user);
 
             if (response.status === 201) {
-                history.push('/admin/psy/list');
+                history.push({
+                    pathname: '/login',
+                    state: {
+                        data: response.data,
+                    },
+                });
             }
         } catch (err) {
             setShow(true);
             setVariant('danger');
-            setAlertText('Erro no cadastro, tente novamente');
+            setAlertText('Erro no cadastro, tente novamente.');
         }
         setInterval(() => {
             setShow(false);
@@ -61,53 +70,50 @@ export default function PsyCreate() {
     }
 
     return (
-        <div className="psychologist-container">
+        <div className="signUp01Container">
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
                 <div></div>
             )}
-            <div className="psychologist-create">
 
-                <form className="form" onSubmit={handlePsychologistSignUp}>
+            <div className="content">
+                <Logo />
+
+                <form className="form" onSubmit={handleSign}>
                     <img src={userIcon} alt="userIcon" />
-                    <div className="psyCreate">
+                    <div className="signUp01Fields">
                         <Input
                             placeholder="Nome"
                             value={name}
                             onChange={setName}
                         />
-
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
                         />
-
-                        <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                            <option value=""> Gênero </option>
-                            <option value="F">Feminino</option>
-                            <option value="M">Masculino</option>
-                            <option value="I">Não Identificar</option>
-                        </select>
-
                         <Input
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
                         />
-
                         <Input
-                            placeholder="Especialidade"
-                            value={specialization}
-                            onChange={setSpecialization}
+                            placeholder="Senha"
+                            value={password}
+                            onChange={setPassword}
+                            type="password"
                         />
-
-                        <button className="button" type="submit">Registrar</button>
+                        <Input
+                            placeholder="Confirmar senha"
+                            value={confirmPassword}
+                            onChange={setConfirmPassword}
+                            type="password"
+                        />
                     </div>
+                    <button className="button" type="submit">Registrar</button>
                 </form>
             </div>
         </div>
-
     );
 }

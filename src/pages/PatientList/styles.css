@@ -1,6 +1,6 @@
 .patientListContainer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   color: #eee;
 
   display: flex;
@@ -49,20 +49,22 @@
 
 .patientListContainer .patientTab .patientInfos .patientImg {
   border-radius: 25%;
+  width: 100px;
+  height: 100px;
   margin: 0 2rem 0 1rem;
 }
 
 .patientListContainer .patientTab .patientInfos .minPatient p:first-of-type {
-  font: 700 2rem Poppins;
+  font: 700 32px Poppins; 
 }
-.patientListContainer .patientTab button {
+.patientListContainer .patientTab .button {
   width: 3rem;
   height: 3rem;
   border: none;
   border-radius: 25%;
 }
 
-.patientListContainer .patientTab button img {
-  width: 3rem;
-  height: 3rem;
+.patientListContainer .patientTab .button img {
+  width: 40px;
+  height: 40px;
 }

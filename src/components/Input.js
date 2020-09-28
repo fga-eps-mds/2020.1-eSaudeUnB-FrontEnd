@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Input({
-    placeholder, value, onChange, type, icon,
+    placeholder, value, onChange, type,
 }) {
     return (
         <div className="input">
@@ -12,12 +12,9 @@ export default function Input({
                 onChange={(e) => onChange(e.target.value)}
                 type={type}
             />
-
-            <img src={icon} alt="icon" />
         </div>
     );
 }
-
 Input.propTypes = {
     placeholder: PropTypes.string,
     value: PropTypes.string,

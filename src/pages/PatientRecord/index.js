@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
-import up from '../../assets/images/up.svg';
-import down from '../../assets/images/down.svg';
 import userIcon from '../../assets/images/userIcon.svg';
 
 import NavBar from '../../components/NavBar';
@@ -13,24 +11,12 @@ import './styles.css';
 
 export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
-    const [expand, setExpand] = useState(false);
-    const [arrow, setArrow] = useState(true);
 
     useEffect(() => {
-        api.get(`/users/${props.match.params.id}`).then((response) => {
-            setPatient(response.data[0]);
+        api.get(`/user/${props.match.params.email}`).then((response) => {
+            setPatient(response.data);
         });
     });
-
-    function handleExpand() {
-        if (expand === true) {
-            setExpand(false);
-            setArrow(true);
-        } else {
-            setExpand(true);
-            setArrow(false);
-        }
-    }
 
     return (
         <div className="patientRecord">
@@ -62,25 +48,13 @@ export default function PatientRecord(props) {
                                 </div>
                             </div>
 
-                            {expand ? (
-                                <div className="hidden">
-                                    <span className="prop">Vinculo: </span>
-                                    <span>{patient.bond}</span>
+                            <div className="hidden">
+                                <span className="prop">Vinculo: </span>
+                                <span>{patient.bond}</span>
 
-                                    <span className="prop">Matricula: </span>
-                                    <span>{patient.unbRegistration}</span>
-                                </div>
-                            ) : (
-                                <div className="hidden"></div>
-                            )}
-
-                            <button className="expand" onClick={handleExpand}>
-                                {arrow ? (
-                                    <img src={down} alt="expandir" />
-                                ) : (
-                                    <img src={up} alt="expandir" />
-                                )}
-                            </button>
+                                <span className="prop">Matricula: </span>
+                                <span>{patient.unbRegistration}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -101,40 +75,34 @@ export default function PatientRecord(props) {
                             <h2>Data: 07/SET/2020</h2>
                             <h2>Encaminhamento: Rede Interna</h2>
 
-                            <h1>Queixa Principal</h1>
                             <div className="recordText">
+                                <h1>Queixa Principal</h1>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Maecenas mattis sed risus
-                                    ac lobortis. Etiam vehicula tortor urna.
-                                    Nullam venenatis mi nec libero tempus, vitae
-                                    venenatis lacus tincidunt. Donec consequat
-                                    mauris in accumsan suscipit. Curabitur
-                                    cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
-                            <h1>Queixa Secundaria</h1>
                             <div className="recordText">
+                                <h1>Queixa Secundaria</h1>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Maecenas mattis sed risus
-                                    ac lobortis. Etiam vehicula tortor urna.
-                                    Nullam venenatis mi nec libero tempus, vitae
-                                    venenatis lacus tincidunt. Donec consequat
-                                    mauris in accumsan suscipit. Curabitur
-                                    cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
-                            <h1>Evolução das queixas</h1>
                             <div className="recordText">
+                                <h1>Evolução das queixas</h1>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Maecenas mattis sed risus
-                                    ac lobortis. Etiam vehicula tortor urna.
-                                    Nullam venenatis mi nec libero tempus, vitae
-                                    venenatis lacus tincidunt. Donec consequat
-                                    mauris in accumsan suscipit. Curabitur
-                                    cursus blandit bibendum.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Maecenas mattis sed risus ac lobortis. Etiam vehicula tortor
+                                    urna. Nullam venenatis mi nec libero tempus, vitae venenatis
+                                    lacus tincidunt. Donec consequat mauris in accumsan suscipit.
+                                    Curabitur cursus blandit bibendum.
                                 </p>
                             </div>
                         </div>
@@ -147,5 +115,5 @@ export default function PatientRecord(props) {
 
 PatientRecord.propTypes = {
     match: PropTypes.object,
-    id: PropTypes.string,
+    email: PropTypes.string,
 };
