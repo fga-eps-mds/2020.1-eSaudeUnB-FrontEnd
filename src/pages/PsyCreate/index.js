@@ -52,32 +52,32 @@ export default function PsyCreate() {
 
     return (
         <div className="psychologist-container">
-        <div className="psychologist-create">
+            <div className="psychologist-create">
 
-              <form className="form" onSubmit={handlePsychologistSignUp}>
-                  <img src={userIcon} alt="userIcon" />
-                  <div className="Psycreate">
+                <form className="form" onSubmit={handlePsychologistSignUp}>
+                    <img src={userIcon} alt="userIcon" />
+                    <div className="Psycreate">
                         <Input
                             placeholder="Nome"
                             value={name}
                             onChange={setName}
                             icon={Union}
-                    />
+                        />
 
-                      <Input
+                        <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
                             icon={Union}
                         />
 
-                      <div className="selects">
+                        <div className="selects">
 
-                          <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                              <option disabled selected value> Genero </option>
-                              <option value="F">Feminino</option>
-                              <option value="M">Masculino</option>
-                              <option value="I">Não Identificar</option>
+                            <select name="gender" onChange={(e) => setGender(e.target.value)}>
+                                <option disabled selected value> Genero </option>
+                                <option value="F">Feminino</option>
+                                <option value="M">Masculino</option>
+                                <option value="I">Não Identificar</option>
                             </select>
 
                         </div>
@@ -87,20 +87,20 @@ export default function PsyCreate() {
                             value={email}
                             onChange={setEmail}
                             icon={Union}
-                    />
+                        />
 
                         <Input
                             placeholder="Especialidade"
                             value={specialization}
                             onChange={setSpecialization}
                             icon={Union}
-                    />
+                        />
 
                         <button className="button" type="submit">Registrar</button>
                     </div>
                 </form>
             </div>
-      </div>
+        </div>
 
     );
 }

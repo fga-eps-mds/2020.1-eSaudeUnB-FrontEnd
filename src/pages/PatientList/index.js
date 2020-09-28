@@ -16,7 +16,6 @@ export default function PatientList() {
     const [search, setSearch] = useState('');
     const [patients, setPatients] = useState([]);
 
-
     useEffect(() => {
         api.get('/users').then((response) => {
             setPatients(response.data);
@@ -47,8 +46,8 @@ export default function PatientList() {
 
                             <Link className="button" to={{
                                 pathname: `patient-list/${patient._id}`,
-                                state: {email: patient.email}
-                                }}>
+                                state: { email: patient.email },
+                            }}>
                                 <img src={go} alt="go" />{' '}
                             </Link>
                         </div>

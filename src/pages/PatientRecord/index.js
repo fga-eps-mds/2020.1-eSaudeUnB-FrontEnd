@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import api from '../../services/api';
 import { Link, useHistory } from 'react-router-dom';
+import api from '../../services/api';
 import go from '../../assets/images/go.svg';
 
 import up from '../../assets/images/up.svg';
 import down from '../../assets/images/down.svg';
 import userIcon from '../../assets/images/userIcon.svg';
-
 
 import NavBar from '../../components/NavBar';
 
@@ -39,7 +38,6 @@ export default function PatientRecord(props) {
             setAllSessions(responseAllsessions.data);
         }
         getData();
-
     }, [props]);
 
     function changeSession(index) {
@@ -107,15 +105,15 @@ export default function PatientRecord(props) {
                                     <span>{patient.unbRegistration}</span>
                                 </div>
                             ) : (
-                                    <div className="hidden"></div>
-                                )}
+                                <div className="hidden"></div>
+                            )}
 
                             <button className="expand" onClick={handleExpand}>
                                 {arrow ? (
                                     <img src={down} alt="expandir" />
                                 ) : (
-                                        <img src={up} alt="expandir" />
-                                    )}
+                                    <img src={up} alt="expandir" />
+                                )}
                             </button>
                         </div>
                     </div>
@@ -125,24 +123,23 @@ export default function PatientRecord(props) {
                     <div className="tab">
                         <button id="mostrarTodos" className="tabLink" onClick={() => openShowAll()}>Mostrar Todos</button>
                         {sessions.map((session, index) => (
-                            <div className="buttons">
+                            <div key={session._id} className="buttons">
                                 <button id={`button${index}`} className="tabLink"
                                     onClick={() => changeSession(index)}>{index}</button>
                             </div>
                         ))}
-                        <button id="novoAtendimento" className="tabLink" onClick={() =>
-                            history.push({
-                                pathname: `/new`,
-                                state: { email: patient.email }
-                            })}>
+                        <button id="novoAtendimento" className="tabLink" onClick={() => history.push({
+                            pathname: '/new',
+                            state: { email: patient.email },
+                        })}>
                             Novo atendimento
                         </button>
                     </div>
 
                     <div className="tabContent">
-                        {tabContent ?
+                        {tabContent
 
-                            <div className="sessions">
+                            ? <div className="sessions">
                                 {allSessions.map((session, index) => (
                                     <div key={session._id} className="sessionTab">
                                         <div className="sessionInfos">
@@ -155,7 +152,7 @@ export default function PatientRecord(props) {
 
                                         <Link className="button"
                                             onClick={(event) => {
-                                                changeAllSession(index)
+                                                changeAllSession(index);
                                                 event.preventDefault();
                                             }}>
                                             <img src={go} alt="go" />{' '}
@@ -165,9 +162,7 @@ export default function PatientRecord(props) {
 
                             </div>
 
-                            :
-
-                            <div className="record">
+                            : <div className="record">
                                 <h2>Profissional: {`${professional}`}</h2>
                                 <h2>Data: 07/SET/2020</h2>
                                 <h2>Encaminhamento: Rede Interna</h2>
