@@ -139,18 +139,14 @@ background-color: #197fe5 !important;
 .patientRecord .patientHistory .tabContent {
   display: flex;
   flex-direction: column;
-
   font: 500 1rem Poppins;
   color: #000;
-
   background-color: #eee;
-  border-radius: 15px;
-
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   width: 1400px;
-
   padding: 1rem 2rem 0 2rem;
   height: 55vh;
-
   overflow: auto;
 }
 ::-webkit-scrollbar {

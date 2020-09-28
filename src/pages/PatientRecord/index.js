@@ -18,7 +18,8 @@ export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
     const [expand, setExpand] = useState(false);
     const [arrow, setArrow] = useState(true);
-    const [sessions, setSessions] = useState([]);
+    const [sessions, setsessions] = useState([]);
+    const [allSessions, setAllSessions] = useState([]);
     const [mainComplaint, setMainComplaint] = useState('');
     const [secondaryComplaint, setSecondaryComplaint] = useState('');
     const [complaintEvolution, setComplaintEvolution] = useState('');
@@ -32,8 +33,10 @@ export default function PatientRecord(props) {
             const { email } = props.location.state;
             const response = await api.get(`/user/${email}`);
             setPatient(response.data);
-            const responseSessions = await api.get(`/session/${email}`);
-            setSessions(responseSessions.data);
+            const responsesessions = await api.get(`/session/${email}`);
+            setsessions(responsesessions.data);
+            const responseAllsessions = await api.get(`/session/all/${email}`);
+            setAllSessions(responseAllsessions.data);
         }
         getData();
 
@@ -45,6 +48,14 @@ export default function PatientRecord(props) {
         setSecondaryComplaint(sessions[index].secondaryComplaint);
         setComplaintEvolution(sessions[index].complaintEvolution);
         setProfessional(sessions[index].professional);
+    }
+
+    function changeAllSession(index) {
+        setTabContent(false);
+        setMainComplaint(allSessions[index].mainComplaint);
+        setSecondaryComplaint(allSessions[index].secondaryComplaint);
+        setComplaintEvolution(allSessions[index].complaintEvolution);
+        setProfessional(allSessions[index].professional);
     }
 
     function handleExpand() {
@@ -131,7 +142,7 @@ export default function PatientRecord(props) {
                     <div className="tabContent">
                         {tabContent ? 
                         <div className="sessions">
-                            {sessions.map((session) => (
+                            {allSessions.map((session, index) => (
                         <div key={session._id} className="sessionTab">
                             <div className="sessionInfos">
                                 <div className="minSession">
@@ -141,9 +152,10 @@ export default function PatientRecord(props) {
                                 </div>
                             </div>
 
-                            <Link className="button" to={{
-                                pathname: `patient-list/${patient._id}`,
-                                state: {email: patient.email}
+                            <Link className="button" 
+                            onClick = {(event) => {
+                                changeAllSession(index)
+                                event.preventDefault();
                                 }}>
                                 <img src={go} alt="go" />{' '}
                             </Link>
