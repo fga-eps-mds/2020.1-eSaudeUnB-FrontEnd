@@ -9,6 +9,12 @@
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
+.psychologistcalendar .content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .psychologistcalendar .tabela {
     width: 1400px;
     border-radius: 15px;

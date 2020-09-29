@@ -20,9 +20,9 @@ export default function PsychologistCalendar() {
         // eslint-disable-next-line no-restricted-syntax
         for (const item of restricts) {
             if (
-                date.getDate() == item.day
-                && date.getMonth() == item.month
-                && date.getFullYear() == item.year
+                date.getDate() === item.day
+                && date.getMonth() === item.month
+                && date.getFullYear() === item.year
             ) {
                 return false;
             }

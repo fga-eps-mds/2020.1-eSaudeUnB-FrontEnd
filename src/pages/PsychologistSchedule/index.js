@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
-import { Alert } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -54,13 +54,13 @@ export default function PsychologistSchedule() {
                 }
 
                 return scheduleItem;
-            }
+            },
         );
 
         setScheduleItems(updatedScheduleItems);
     }
 
-    function handleId(scheduleItems) {
+    function handleId() {
         let newID = 0;
         scheduleItems.forEach((item) => {
             if (item.id >= newID) {
@@ -80,18 +80,18 @@ export default function PsychologistSchedule() {
     }
 
     function removeScheduleItem(index) {
-        let temp = [...scheduleItems];
+        const temp = [...scheduleItems];
         temp.splice(index, 1);
         setScheduleItems(temp);
     }
 
     function verifyCalendarData() {
-        for (let item of scheduleItems) {
+        for (const item of scheduleItems) {
             if (!item.from || !item.to) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
-                    'Todos os campos devem ser preenchidos, alterações não foram salvas'
+                    'Todos os campos devem ser preenchidos, alterações não foram salvas',
                 );
                 setInterval(() => {
                     setShow(false);
@@ -154,7 +154,7 @@ export default function PsychologistSchedule() {
                                                     setScheduleItemsValue(
                                                         index,
                                                         'weekDay',
-                                                        e.target.value
+                                                        e.target.value,
                                                     )
                                                 }
                                             >
@@ -182,7 +182,7 @@ export default function PsychologistSchedule() {
                                                     setScheduleItemsValue(
                                                         index,
                                                         'from',
-                                                        e.target.value
+                                                        e.target.value,
                                                     )
                                                 }
                                             />
@@ -199,7 +199,7 @@ export default function PsychologistSchedule() {
                                                     setScheduleItemsValue(
                                                         index,
                                                         'to',
-                                                        e.target.value
+                                                        e.target.value,
                                                     )
                                                 }
                                             />
