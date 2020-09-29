@@ -8,21 +8,21 @@
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
-.content {
+.psychologistSchedule .content {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.content .alert {
+.psychologistSchedule .content .alert {
     position: absolute;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
 }
 
-.content .form {
+.psychologistSchedule .content .form {
     background-color: #eee;
     width: 1000px;
     height: 800px;
@@ -30,7 +30,7 @@
     padding-top: 1.5rem;
 }
 
-.content .formContent {
+.psychologistSchedule .content .formContent {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +38,7 @@
     height: 100%;
 }
 
-.content .form .legend {
+.psychologistSchedule .content .form .legend {
     color: #07387e;
     padding: 0 1.5rem 0 1.5rem;
     font: 700 1.5rem Poppins;
@@ -49,7 +49,7 @@
     border-bottom: 1px solid #0459ae;
 }
 
-.content .form button {
+.psychologistSchedule .content .form button {
     background: none;
     border: none;
     font: 700 1rem Poppins;
@@ -57,39 +57,39 @@
     cursor: pointer;
     transition: color 0.2s;
 }
-.content .form button:hover {
+.psychologistSchedule .content .form button:hover {
     color: #07387e;
 }
 
-.content .form .schedule {
+.psychologistSchedule .content .form .schedule {
     width: 90%;
     height: 640px;
     overflow: auto;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #0459ae;
 }
-.content .form .schedule .schedule-item {
+.psychologistSchedule .content .form .schedule .schedule-item {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.content .form .schedule .select-box,
+.psychologistSchedule .content .form .schedule .select-box,
 .input-box {
     display: flex;
     flex-direction: column;
 }
 
-.content .form .schedule .input-box label {
+.psychologistSchedule .content .form .schedule .input-box label {
     margin-left: 20px;
 }
 
-.content .form .schedule label {
+.psychologistSchedule .content .form .schedule label {
     font: 500 0.8rem Poppins;
     color: #c4c4c4;
     margin-top: 20px;
 }
-.content .form .schedule select {
+.psychologistSchedule .content .form .schedule select {
     color: #07387e;
     padding: 0;
     background: none;
@@ -99,7 +99,7 @@
     font-size: 1rem;
 }
 
-.content .form .schedule input {
+.psychologistSchedule .content .form .schedule input {
     color: #07387e;
     height: 2rem;
     margin: 0 0 0 20px;
@@ -110,30 +110,30 @@
     font-size: 1rem;
 }
 
-.content .form .schedule button {
+.psychologistSchedule .content .form .schedule button {
     margin-left: 40px;
     margin-top: 50px;
 }
 
-.content .form .footer {
+.psychologistSchedule .content .form .footer {
     width: 90%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.content .form .footer .link {
+.psychologistSchedule .content .form .footer .link {
     margin-right: 500px;
     text-decoration: none;
     color: #0459ae;
     transition: 0.2s;
 }
 
-.content .form .footer .link:hover {
+.psychologistSchedule .content .form .footer .link:hover {
     color: #07387e;
 }
 
-.content .form footer button {
+.psychologistSchedule .content .form footer button {
     cursor: pointer;
     padding: 0.6rem;
     margin: 1.2rem;
@@ -142,7 +142,7 @@
     background-color: #0459ae;
     transition: 0.2s;
 }
-.content .form footer button:hover {
+.psychologistSchedule .content .form footer button:hover {
     color: #eee;
     background-color: #07387e;
 }
