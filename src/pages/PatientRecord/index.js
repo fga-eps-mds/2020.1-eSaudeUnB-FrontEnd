@@ -27,7 +27,7 @@ export default function PatientRecord(props) {
 
     useEffect(() => {
         async function getData() {
-            const { email } = props.location.state;
+            const { email } = props.match.params;
             const response = await api.get(`/user/${email}`);
             setPatient(response.data);
             const responsesessions = await api.get(`/session/${email}`);
@@ -137,6 +137,7 @@ export default function PatientRecord(props) {
                                         </div>
 
                                         <Link className="button"
+                                            to={''}
                                             onClick={(event) => {
                                                 changeAllSession(index);
                                                 event.preventDefault();

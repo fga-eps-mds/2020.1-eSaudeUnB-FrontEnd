@@ -37,7 +37,7 @@ export default function NewSession(props) {
         });
 
         history.push({
-            pathname: `patient-list/${patient._id}`,
+            pathname: `patient-list/${patient.email}`,
             state: { email },
         });
     }

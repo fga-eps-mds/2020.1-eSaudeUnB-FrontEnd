@@ -49,25 +49,6 @@ export default function AdminMain() {
 
     return (
         <div className="list-container">
-<<<<<<< HEAD
-            <div className="psychologist-list">
-                {psyArray.map((psychologist) => (
-                    <article key={psychologist.id}>
-                        <strong>
-                            {psychologist.name}
-                            {' '}
-                            {psychologist.lastName}
-                        </strong>
-                        <p>{psychologist.email}</p>
-                        <p>{psychologist.specialization}</p>
-                        <p>{psychologist.bibliography}</p>
-                        <button onClick={() => deletePsychologist(psychologist.email)}>Excluir Psicólogo</button>
-                    </article>
-                ))}
-                <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
-                  Cadastrar novo Psicólogo
-                </button>
-=======
             {show ? (
                 <header className="alert-component">
                     <Alert className="alert" variant='secondary'>
@@ -116,7 +97,6 @@ export default function AdminMain() {
                         </article>
                     ))}
                 </div>
->>>>>>> develop
             </div>
         </div>
     );
