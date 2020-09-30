@@ -13,8 +13,8 @@ import './styles.css';
 
 export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
-    const [expand, setExpand] = useState(false);
-    const [arrow, setArrow] = useState(true);
+    // const [expand, setExpand] = useState(false);
+    // const [arrow, setArrow] = useState(true);
     const [sessions, setsessions] = useState([]);
     const [allSessions, setAllSessions] = useState([]);
     const [mainComplaint, setMainComplaint] = useState('');
@@ -54,15 +54,15 @@ export default function PatientRecord(props) {
         setProfessional(allSessions[index].professional);
     }
 
-    function handleExpand() {
-        if (expand === true) {
-            setExpand(false);
-            setArrow(true);
-        } else {
-            setExpand(true);
-            setArrow(false);
-        }
-    }
+    // function handleExpand() {
+    //     if (expand === true) {
+    //         setExpand(false);
+    //         setArrow(true);
+    //     } else {
+    //         setExpand(true);
+    //         setArrow(false);
+    //     }
+    // }
 
     function openShowAll() {
         setTabContent(true);
@@ -126,6 +126,7 @@ export default function PatientRecord(props) {
                         {tabContent
 
                             ? <div className="sessions">
+                                {allSessions.length === 0 && <p className="noSession">Você não possui atendimentos anteriores</p>}
                                 {allSessions.map((session, index) => (
                                     <div key={session._id} className="sessionTab">
                                         <div className="sessionInfos">
