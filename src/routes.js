@@ -13,6 +13,7 @@ import PatientList from './pages/PatientList';
 import PatientRecord from './pages/PatientRecord';
 import NewSession from './pages/NewSession';
 import PsyProfile from './pages/PsyProfile';
+import NotFound from './pages/NotFound/'
 
 export default function Routes() {
     return (
@@ -30,6 +31,7 @@ export default function Routes() {
                 <Route path="/patient-list" exact component={PatientList} />
                 <Route path="/patient-list/:email" component={PatientRecord} />
                 <Route path="/new" component={NewSession} />
+                <Route path="*" component={NotFound} />
             </Switch>
         </BrowserRouter>
     );
