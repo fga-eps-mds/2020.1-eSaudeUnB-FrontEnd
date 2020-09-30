@@ -68,15 +68,21 @@ export default function NewSession(props) {
                                 </div>
                             </div>
 
+                            <div className="hidden">
+                                <span className="prop">Vinculo: </span>
+                                <span>{patient.bond}</span>
+
+                                <span className="prop">Matricula: </span>
+                                <span>{patient.unbRegistration}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="patientHistory">
                     <div className="tab">
                         <button id="voltar" className="tabLink"
                             onClick={() => history.push({
-                                pathname: `/patient-list/${patient._id}`,
+                                pathname: `/patient-list/${patient.email}`,
                                 state: { email: patient.email },
                             })}
                         >Voltar</button>
