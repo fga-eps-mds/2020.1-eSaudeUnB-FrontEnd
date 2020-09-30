@@ -121,14 +121,14 @@ export default function UserProfile(props) {
                             <div className="selects">
 
                                 <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
-                                    <option value="">Gênero</option>
+                                    <option value="" disabled>Gênero</option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
                                 <select name="bond" value={bond} onChange={(e) => setBond(e.target.value)}>
-                                    <option value="">Vínculo</option>
+                                    <option value="" disabled>Vínculo</option>
                                     <option value="graduando">Graduando</option>
                                     <option value="posGraduando">Pós-Graduando</option>
                                     <option value="professor">Professor</option>
@@ -137,7 +137,7 @@ export default function UserProfile(props) {
                             </div>
 
                             <select className="selectsLargest" value={civilStatus} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
-                                <option value="">Estado Civil</option>
+                                <option value="" disabled>Estado Civil</option>
                                 <option value="Solteiro(a)">Solteiro</option>
                                 <option value="Divorciado(a)">Divorciado</option>
                                 <option value="Casado(a)">Casado</option>
@@ -162,7 +162,7 @@ export default function UserProfile(props) {
                                 onChange={setPhone}
                             />
                             <select className="selectsLargest" name="religion" value={religion} onChange={(e) => setReligion(e.target.value)}>
-                                <option value="">Religião</option>
+                                <option value="" disabled>Religião</option>
                                 <option value="Solteiro">Católico</option>
                                 <option value="Divorciado">Evangélico</option>
                                 <option value="Casado">Espirita</option>
