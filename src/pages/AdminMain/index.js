@@ -20,21 +20,6 @@ export default function AdminMain() {
         fetchData();
     }, []);
 
-    // const deletePsychologist = async (email) => {
-    //     setShow(true);
-    //     if (del) {
-    //         await api.delete(`/admin/psy/${email}`);
-    //         const response = await api.get('/admin/psy/list');
-    //         setPsyArray(response.data);
-    //         setShow(false);
-
-    //     } else {
-    //         const response = await api.get('/admin/psy/list');
-    //         setPsyArray(response.data);
-    //         setShow(false);
-    //     }
-    // };
-
     const showConfirmation = (email) => {
         setActualPsyEmail(email);
         setShow(true);
