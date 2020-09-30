@@ -13,17 +13,9 @@ import PatientList from './pages/PatientList';
 import PatientRecord from './pages/PatientRecord';
 import NewSession from './pages/NewSession';
 import PsyProfile from './pages/PsyProfile';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import PsychologistSchedule from './pages/PsychologistSchedule';
 import PsychologistCalendar from './pages/PsychologistCalendar';
-=======
 import NotFound from './pages/NotFound/'
->>>>>>> a103989... feat: add 404 not found page and fix the button back when you register a new session
-=======
-import NotFound from './pages/NotFound/'
->>>>>>> e4d4a62431c8babf6e3fd3e3f4b40187b08f4595
-
 export default function Routes() {
     return (
         <BrowserRouter>
@@ -39,8 +31,8 @@ export default function Routes() {
                 <Route path="/psy-profile" component={PsyProfile} />
                 <Route path="/patient-list" exact component={PatientList} />
                 <Route path="/patient-list/:email" component={PatientRecord} />
-                <Route path="/psychology/schedule"component={PsychologistSchedule}/>
-                <Route path="/psychology/calendar"component={PsychologistCalendar}/>
+                <Route path="/psychology/schedule" component={PsychologistSchedule} />
+                <Route path="/psychology/calendar" component={PsychologistCalendar} />
                 <Route path="/new" component={NewSession} />
                 <Route path="*" component={NotFound} />
             </Switch>
