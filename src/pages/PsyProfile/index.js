@@ -96,8 +96,8 @@ export default function PsyProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -119,14 +119,14 @@ export default function PsyProfile(props) {
 
                                     <div className="selects">
 
-                                        <select name="gender" onChange={(e) => setGender(e.target.value)}>
+                                        <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
                                             <option value="">Gênero</option>
                                             <option value="F" >Feminino</option>
                                             <option value="M">Masculino</option>
                                             <option value="I">Não Identificar</option>
                                         </select>
 
-                                        <select name="bond" onChange={(e) => setBond(e.target.value)}>
+                                        <select name="bond" value={bond} onChange={(e) => setBond(e.target.value)}>
                                             <option value="">Vínculo</option>
                                             <option value="graduando">Graduando</option>
                                             <option value="posGraduando">Pós-Graduando</option>
