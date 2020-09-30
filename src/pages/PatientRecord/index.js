@@ -13,8 +13,8 @@ import './styles.css';
 
 export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
-    const [expand, setExpand] = useState(false);
-    const [arrow, setArrow] = useState(true);
+    // const [expand, setExpand] = useState(false);
+    // const [arrow, setArrow] = useState(true);
     const [sessions, setsessions] = useState([]);
     const [allSessions, setAllSessions] = useState([]);
     const [mainComplaint, setMainComplaint] = useState('');
@@ -54,15 +54,15 @@ export default function PatientRecord(props) {
         setProfessional(allSessions[index].professional);
     }
 
-    function handleExpand() {
-        if (expand === true) {
-            setExpand(false);
-            setArrow(true);
-        } else {
-            setExpand(true);
-            setArrow(false);
-        }
-    }
+    // function handleExpand() {
+    //     if (expand === true) {
+    //         setExpand(false);
+    //         setArrow(true);
+    //     } else {
+    //         setExpand(true);
+    //         setArrow(false);
+    //     }
+    // }
 
     function openShowAll() {
         setTabContent(true);
@@ -143,8 +143,10 @@ export default function PatientRecord(props) {
                     </div>
 
                     <div className="tabContent">
-                        {tabContent ? (
-                            <div className="sessions">
+                        {tabContent
+
+                            ? (<div className="sessions">
+                                {allSessions.length === 0 && <p className="noSession">Você não possui atendimentos anteriores</p>}
                                 {allSessions.map((session, index) => (
                                     <div
                                         key={session._id}
@@ -176,32 +178,32 @@ export default function PatientRecord(props) {
                                     </div>
                                 ))}
                             </div>
-                        ) : (
-                            <div className="record">
-                                <h2>Profissional: {`${professional}`}</h2>
-                                <h2>Data: 07/SET/2020</h2>
-                                <h2>Encaminhamento: Rede Interna</h2>
+                            ) : (
+                                <div className="record">
+                                    <h2>Profissional: {`${professional}`}</h2>
+                                    <h2>Data: 07/SET/2020</h2>
+                                    <h2>Encaminhamento: Rede Interna</h2>
 
-                                <h1>Queixa Principal</h1>
-                                <div className="recordText" id="mainComplaint">
-                                    <p>{`${mainComplaint}`}</p>
+                                    <h1>Queixa Principal</h1>
+                                    <div className="recordText" id="mainComplaint">
+                                        <p>{`${mainComplaint}`}</p>
+                                    </div>
+                                    <h1>Queixa Secundaria</h1>
+                                    <div
+                                        className="recordText"
+                                        id="secondaryComplaint"
+                                    >
+                                        <p>{`${secondaryComplaint}`}</p>
+                                    </div>
+                                    <h1>Evolução das queixas</h1>
+                                    <div
+                                        className="recordText"
+                                        id="complaintEvolution"
+                                    >
+                                        <p>{`${complaintEvolution}`}</p>
+                                    </div>
                                 </div>
-                                <h1>Queixa Secundaria</h1>
-                                <div
-                                    className="recordText"
-                                    id="secondaryComplaint"
-                                >
-                                    <p>{`${secondaryComplaint}`}</p>
-                                </div>
-                                <h1>Evolução das queixas</h1>
-                                <div
-                                    className="recordText"
-                                    id="complaintEvolution"
-                                >
-                                    <p>{`${complaintEvolution}`}</p>
-                                </div>
-                            </div>
-                        )}
+                            )}
                     </div>
                 </div>
             </div>

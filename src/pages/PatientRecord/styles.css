@@ -212,3 +212,10 @@ h2 {
   width: 200px;
   margin-left: 300px;
 }
+.noSession {
+  font: 100 3.0rem Poppins;
+  line-height: 1rem;
+  color: #07387e;
+  text-align: center;
+  margin-top: 16%;
+}
