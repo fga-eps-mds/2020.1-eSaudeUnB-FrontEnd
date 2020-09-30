@@ -24,7 +24,10 @@ export default function LandingLogin() {
         try {
             event.preventDefault();
 
-            const responseUser = await api.post('/loginUser', { email, password });
+            const responseUser = await api.post('/loginUser', {
+                email,
+                password,
+            });
 
             if (responseUser.status === 200 || responseUser.status === 201) {
                 history.push({
@@ -37,7 +40,10 @@ export default function LandingLogin() {
             }
         } catch (err) {
             try {
-                const responsePsy = await api.post('/loginPsy', { email, password });
+                const responsePsy = await api.post('/loginPsy', {
+                    email,
+                    password,
+                });
 
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
                     history.push({
@@ -46,10 +52,14 @@ export default function LandingLogin() {
                             data: responsePsy.data,
                         },
                     });
+                    localStorage.setItem('user', responsePsy.data.email);
                     return;
                 }
 
-                if (err.response.status === 404 || err.response.status === 400) {
+                if (
+                    err.response.status === 404
+                    || err.response.status === 400
+                ) {
                     setShow(true);
                     setVariant('danger');
                     setAlertText('Email/Senha incorretos, digite novamente.');
@@ -58,10 +68,15 @@ export default function LandingLogin() {
                 if (err.response.status === 500) {
                     setShow(true);
                     setVariant('danger');
-                    setAlertText('Ocorreu algum erro no seu login, tente novamente.');
+                    setAlertText(
+                        'Ocorreu algum erro no seu login, tente novamente.',
+                    );
                 }
             } catch (err2) {
-                if (err2.response.status === 404 || err2.response.status === 400) {
+                if (
+                    err2.response.status === 404
+                    || err2.response.status === 400
+                ) {
                     setShow(true);
                     setVariant('danger');
                     setAlertText('Email/Senha incorretos, digite novamente.');
@@ -70,7 +85,9 @@ export default function LandingLogin() {
                 if (err2.response.status === 500) {
                     setShow(true);
                     setVariant('danger');
-                    setAlertText('Ocorreu algum erro no seu login, tente novamente.');
+                    setAlertText(
+                        'Ocorreu algum erro no seu login, tente novamente.',
+                    );
                 }
             }
         }
@@ -82,7 +99,9 @@ export default function LandingLogin() {
     return (
         <div className="loginContainer">
             {show ? (
-                <Alert className="alert" variant={variant}>{alertText}</Alert>
+                <Alert className="alert" variant={variant}>
+                    {alertText}
+                </Alert>
             ) : (
                 <div></div>
             )}
@@ -90,7 +109,11 @@ export default function LandingLogin() {
                 <Logo />
 
                 <form className="form" onSubmit={handleLogin}>
-                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                    <img
+                        className="userIcon"
+                        src={userIcon}
+                        alt="icone de usuario"
+                    />
 
                     <Input
                         placeholder="Email"
@@ -105,10 +128,16 @@ export default function LandingLogin() {
                         type="password"
                     />
 
-                    <button className="button" type="submit">Entrar</button>
+                    <button className="button" type="submit">
+                        Entrar
+                    </button>
                     <div className="forgot">
-                        <Link className="a" to="/registration">Esqueci a minha senha</Link>
-                        <Link className="a" to="/registration">Ainda não possuo uma conta</Link>
+                        <Link className="a" to="/registration">
+                            Esqueci a minha senha
+                        </Link>
+                        <Link className="a" to="/registration">
+                            Ainda não possuo uma conta
+                        </Link>
                     </div>
                 </form>
             </div>
