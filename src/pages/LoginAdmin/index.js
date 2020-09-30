@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 import './styles.css';
 
 import Input from '../../components/Input';
 
-import Union from '../../assets/images/Union.svg';
-import lock from '../../assets/images/lock.svg';
 import api from '../../services/api';
 import userIcon from '../../assets/images/userIcon.svg';
 
 export default function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [show, setShow] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
 
     const history = useHistory();
 
@@ -22,29 +25,38 @@ export default function AdminLogin() {
 
             const response = await api.post('/admin/login', { email, password });
 
-            if (response.status === 404) {
-                alert('usuario não encontrado na base de dados');
-            }
-
-            if (response.status === 400) {
-                alert('Senha incorreta, digite novamente');
+            if (response.status === 404 || response.status === 400) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Email/Senha incorretos, digite novamente.');
             }
 
             if (response.status === 500) {
-                alert('Ocorreu algum erro no seu login, tente novamente');
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Ocorreu algum erro no seu login, tente novamente.');
             }
 
             if (response.status === 200) {
-                alert('Login efetuado');
                 history.push('/admin/psy/list');
             }
         } catch (err) {
-            alert('Falha no login, tente novamente');
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Ocorreu algum erro no seu login, tente novamente.');
         }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
     }
 
     return (
         <div className="loginContainer">
+            {show ? (
+                <Alert className="alert" variant={variant}>{alertText}</Alert>
+            ) : (
+                <div></div>
+            )}
             <div className="content">
 
                 <form className="form" onSubmit={handleAdminLogin}>
@@ -54,14 +66,12 @@ export default function AdminLogin() {
                         placeholder="Email"
                         value={email}
                         onChange={setEmail}
-                        icon={Union}
                     />
                     <Input
                         placeholder="Senha"
                         value={password}
                         onChange={setPassword}
                         type="password"
-                        icon={lock}
                     />
 
                     <button className="button" type="submit">Entrar</button>

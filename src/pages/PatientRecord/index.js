@@ -5,8 +5,6 @@ import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import go from '../../assets/images/go.svg';
 
-import up from '../../assets/images/up.svg';
-import down from '../../assets/images/down.svg';
 import userIcon from '../../assets/images/userIcon.svg';
 
 import NavBar from '../../components/NavBar';
@@ -96,25 +94,13 @@ export default function PatientRecord(props) {
                                 </div>
                             </div>
 
-                            {expand ? (
-                                <div className="hidden">
-                                    <span className="prop">Vinculo: </span>
-                                    <span>{patient.bond}</span>
+                            <div className="hidden">
+                                <span className="prop">Vinculo: </span>
+                                <span>{patient.bond}</span>
 
-                                    <span className="prop">Matricula: </span>
-                                    <span>{patient.unbRegistration}</span>
-                                </div>
-                            ) : (
-                                <div className="hidden"></div>
-                            )}
-
-                            <button className="expand" onClick={handleExpand}>
-                                {arrow ? (
-                                    <img src={down} alt="expandir" />
-                                ) : (
-                                    <img src={up} alt="expandir" />
-                                )}
-                            </button>
+                                <span className="prop">Matricula: </span>
+                                <span>{patient.unbRegistration}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,5 +178,5 @@ export default function PatientRecord(props) {
 
 PatientRecord.propTypes = {
     match: PropTypes.object,
-    id: PropTypes.string,
+    email: PropTypes.string,
 };

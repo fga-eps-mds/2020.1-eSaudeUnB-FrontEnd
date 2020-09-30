@@ -47,12 +47,13 @@
   .buttons-container {
     display: flex;
     margin-top: 5rem;
+    align-items: center;
     justify-self: end;
   }
   
   .buttons-container a {
-    width: 18rem;
-    height: 5rem;
+    width: 240px;
+    height: 60px;
   
     border-radius: 2.5rem;
     font: 500 2rem Poppins;
