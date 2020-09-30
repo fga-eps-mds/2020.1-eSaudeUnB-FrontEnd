@@ -132,11 +132,10 @@ export default function PatientRecord(props) {
                         <button
                             id="novoAtendimento"
                             className="tabLink"
-                            onClick={() =>
-                                history.push({
-                                    pathname: '/new',
-                                    state: { email: patient.email },
-                                })
+                            onClick={() => history.push({
+                                pathname: '/new',
+                                state: { email: patient.email },
+                            })
                             }
                         >
                             Novo atendimento
