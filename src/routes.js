@@ -14,11 +14,15 @@ import PatientRecord from './pages/PatientRecord';
 import NewSession from './pages/NewSession';
 import PsyProfile from './pages/PsyProfile';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import PsychologistSchedule from './pages/PsychologistSchedule';
 import PsychologistCalendar from './pages/PsychologistCalendar';
 =======
 import NotFound from './pages/NotFound/'
 >>>>>>> a103989... feat: add 404 not found page and fix the button back when you register a new session
+=======
+import NotFound from './pages/NotFound/'
+>>>>>>> e4d4a62431c8babf6e3fd3e3f4b40187b08f4595
 
 export default function Routes() {
     return (
