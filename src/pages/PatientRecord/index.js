@@ -30,10 +30,6 @@ export default function PatientRecord(props) {
             const { email } = props.match.params;
             const response = await api.get(`/user/${email}`);
             setPatient(response.data);
-<<<<<<< HEAD
-        });
-    });
-=======
             const responsesessions = await api.get(`/session/${email}`);
             setsessions(responsesessions.data);
             const responseAllsessions = await api.get(`/session/all/${email}`);
@@ -71,7 +67,6 @@ export default function PatientRecord(props) {
     function openShowAll() {
         setTabContent(true);
     }
->>>>>>> develop
 
     return (
         <div className="patientRecord">
@@ -116,49 +111,74 @@ export default function PatientRecord(props) {
 
                 <div className="patientHistory">
                     <div className="tab">
-                        <button id="mostrarTodos" className="tabLink" onClick={() => openShowAll()}>Mostrar Todos</button>
+                        <button
+                            id="mostrarTodos"
+                            className="tabLink"
+                            onClick={() => openShowAll()}
+                        >
+                            Mostrar Todos
+                        </button>
                         {sessions.map((session, index) => (
                             <div key={session._id} className="buttons">
-                                <button id={`button${index}`} className="tabLink"
-                                    onClick={() => changeSession(index)}>{index}</button>
+                                <button
+                                    id={`button${index}`}
+                                    className="tabLink"
+                                    onClick={() => changeSession(index)}
+                                >
+                                    {index}
+                                </button>
                             </div>
                         ))}
-                        <button id="novoAtendimento" className="tabLink" onClick={() => history.push({
-                            pathname: '/new',
-                            state: { email: patient.email },
-                        })}>
+                        <button
+                            id="novoAtendimento"
+                            className="tabLink"
+                            onClick={() =>
+                                history.push({
+                                    pathname: '/new',
+                                    state: { email: patient.email },
+                                })
+                            }
+                        >
                             Novo atendimento
                         </button>
                     </div>
 
                     <div className="tabContent">
-                        {tabContent
-
-                            ? <div className="sessions">
+                        {tabContent ? (
+                            <div className="sessions">
                                 {allSessions.map((session, index) => (
-                                    <div key={session._id} className="sessionTab">
+                                    <div
+                                        key={session._id}
+                                        className="sessionTab"
+                                    >
                                         <div className="sessionInfos">
                                             <div className="minSession">
                                                 <p>Data: 12/12/2012 </p>
-                                                <p className="info" >Profissional: {session.professional}</p>
-                                                <p className="info">Encaminhamento: Rede Interna</p>
+                                                <p className="info">
+                                                    Profissional:{' '}
+                                                    {session.professional}
+                                                </p>
+                                                <p className="info">
+                                                    Encaminhamento: Rede Interna
+                                                </p>
                                             </div>
                                         </div>
 
-                                        <Link className="button"
+                                        <Link
+                                            className="button"
                                             to={''}
                                             onClick={(event) => {
                                                 changeAllSession(index);
                                                 event.preventDefault();
-                                            }}>
+                                            }}
+                                        >
                                             <img src={go} alt="go" />{' '}
                                         </Link>
                                     </div>
                                 ))}
-
                             </div>
-
-                            : <div className="record">
+                        ) : (
+                            <div className="record">
                                 <h2>Profissional: {`${professional}`}</h2>
                                 <h2>Data: 07/SET/2020</h2>
                                 <h2>Encaminhamento: Rede Interna</h2>
@@ -168,17 +188,21 @@ export default function PatientRecord(props) {
                                     <p>{`${mainComplaint}`}</p>
                                 </div>
                                 <h1>Queixa Secundaria</h1>
-                                <div className="recordText" id="secondaryComplaint">
+                                <div
+                                    className="recordText"
+                                    id="secondaryComplaint"
+                                >
                                     <p>{`${secondaryComplaint}`}</p>
                                 </div>
                                 <h1>Evolução das queixas</h1>
-                                <div className="recordText" id="complaintEvolution">
+                                <div
+                                    className="recordText"
+                                    id="complaintEvolution"
+                                >
                                     <p>{`${complaintEvolution}`}</p>
                                 </div>
                             </div>
-
-                        }
-
+                        )}
                     </div>
                 </div>
             </div>
