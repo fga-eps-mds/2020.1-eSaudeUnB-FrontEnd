@@ -12,6 +12,11 @@ export default function AdminMain() {
 
     const history = useHistory();
 
+    //Esse useEffect está recebendo causando um erro na página Admin/psy/list
+    //Como chegar ao erro:
+    //                      -1. Crie um psicólogo válido, que ao ser redirecionado para a página
+    //                      Admin/psy/list o erro estará no console
+
     useEffect(() => {
         async function fetchData() {
             const response = await api.get('/admin/psy/list');
@@ -69,7 +74,7 @@ export default function AdminMain() {
                 </div>
                 <div className="psychologists-cards">
                     {psyArray.map((psychologist) => (
-                        <article key={psychologist.id}>
+                        <article key={psychologist.email}>
                             <p><strong>Nome: </strong>{`${psychologist.name} ${psychologist.lastName}`}</p>
                             <p><strong>E-mail:</strong> {psychologist.email}</p>
                             <p>

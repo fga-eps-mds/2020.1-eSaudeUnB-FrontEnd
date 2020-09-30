@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+
 import api from '../../services/api';
 import Input from '../../components/Input';
 
@@ -23,6 +24,12 @@ export default function PsyCreate() {
 
     const history = useHistory();
 
+    async function verifyEmail(email) {
+        const psychologists = await api.get('/admin/psy/list');
+
+        return psychologists.data.find(psychologist => psychologist.email === email);
+    }
+
     async function handlePsychologistSignUp(event) {
         try {
             event.preventDefault();
@@ -37,12 +44,18 @@ export default function PsyCreate() {
                 bond,
             };
 
+            if (verifyEmail(email)) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Email já cadastrado');
+                history.push('/admin/psy/create');
+            }
+
             if (!name || !lastName || !email || !gender || !specialization) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
                 history.push('/admin/psy/create');
-                return;
             }
 
             const response = await api.post('/admin/psy/create', user);
@@ -57,7 +70,7 @@ export default function PsyCreate() {
         }
         setInterval(() => {
             setShow(false);
-        }, 2000);
+        }, 3500);
     }
 
     return (
@@ -65,8 +78,8 @@ export default function PsyCreate() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="psychologist-create">
 
                 <form className="form" onSubmit={handlePsychologistSignUp}>
