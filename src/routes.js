@@ -11,6 +11,7 @@ import AdminMain from './pages/AdminMain';
 import PsyCreate from './pages/PsyCreate';
 import PatientList from './pages/PatientList';
 import PatientRecord from './pages/PatientRecord';
+import NewSession from './pages/NewSession';
 import PsyProfile from './pages/PsyProfile';
 import PsychologistSchedule from './pages/PsychologistSchedule';
 import PsychologistCalendar from './pages/PsychologistCalendar';
@@ -30,14 +31,9 @@ export default function Routes() {
                 <Route path="/psy-profile" component={PsyProfile} />
                 <Route path="/patient-list" exact component={PatientList} />
                 <Route path="/patient-list/:email" component={PatientRecord} />
-                <Route
-                    path="/psychology/schedule"
-                    component={PsychologistSchedule}
-                />
-                <Route
-                    path="/psychology/calendar"
-                    component={PsychologistCalendar}
-                />
+                <Route path="/psychology/schedule"component={PsychologistSchedule}/>
+                <Route path="/psychology/calendar"component={PsychologistCalendar}/>
+                <Route path="/new" component={NewSession} />
             </Switch>
         </BrowserRouter>
     );

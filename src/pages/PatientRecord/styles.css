@@ -101,7 +101,7 @@
 
   font: 500 14px Poppins;
   color: #eee;
-
+  float: left;
   background-color: #197fe5;
   border: none;
   border-radius: 0.7vw;
@@ -109,8 +109,23 @@
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.2s;
+  outline: none;
 }
 
+.patientRecord .patientHistory .tab button:focus{
+background-color: #197fe5 !important;
+}
+
+.patientRecord .patientHistory #mostrarTodos {
+  background-color: #0459ae;
+  float: left;
+}
+.patientRecord .patientHistory #mostrarTodos:hover {
+  background-color: #197fe5;
+}
+.patientRecord .patientHistory #novoAtendimento {
+  float: right;
+}
 .patientRecord .patientHistory .tab button:last-of-type {
   background-color: #0459ae;
 }
@@ -128,12 +143,10 @@
 
   font: 500 14px Poppins;
   color: #000;
-
   background-color: #eee;
-  border-radius: 15px;
-
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   width: 1400px;
-
   padding: 1rem 2rem 0 2rem;
   height: 550px;
 
@@ -176,4 +189,26 @@ h2 {
   padding: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   margin-bottom: 1.5rem;
+}
+
+.patientRecord .sessionTab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 500 1.2rem Poppins;
+  color: #07387e;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25) !important;
+  
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+}
+.patientRecord .minSession{
+  display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.patientRecord .info{
+  width: 200px;
+  margin-left: 300px;
 }
