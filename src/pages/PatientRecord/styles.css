@@ -114,23 +114,22 @@
 }
 
 .patientRecord .patientHistory .tab button:focus{
-background-color: #197fe5 !important;
+  background-color: #eee !important;
+  color: #0459ae;
 }
 
 .patientRecord .patientHistory #mostrarTodos {
-  background-color: #0459ae;
+  background-color: #197fe5;
   float: left;
 }
 .patientRecord .patientHistory #mostrarTodos:hover {
-  background-color: #197fe5;
+  background-color: #0459ae;
 }
 .patientRecord .patientHistory #novoAtendimento {
   float: right;
+  background-color: #0459ae
 }
-.patientRecord .patientHistory .tab button:last-of-type {
-  background-color: #0459ae;
-}
-.patientRecord .patientHistory .tab button:last-of-type:hover {
+.patientRecord .patientHistory #novoAtendimento:hover {
   background-color: #197fe5;
 }
 
@@ -198,7 +197,7 @@ h2 {
   justify-content: space-between;
   font: 500 1.2rem Poppins;
   color: #07387e;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   
   border-radius: 15px;
   margin-bottom: 1.5rem;

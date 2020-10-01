@@ -13,8 +13,6 @@ import './styles.css';
 
 export default function PatientRecord(props) {
     const [patient, setPatient] = useState({});
-    // const [expand, setExpand] = useState(false);
-    // const [arrow, setArrow] = useState(true);
     const [sessions, setsessions] = useState([]);
     const [allSessions, setAllSessions] = useState([]);
     const [mainComplaint, setMainComplaint] = useState('');
@@ -53,16 +51,6 @@ export default function PatientRecord(props) {
         setComplaintEvolution(allSessions[index].complaintEvolution);
         setProfessional(allSessions[index].professional);
     }
-
-    // function handleExpand() {
-    //     if (expand === true) {
-    //         setExpand(false);
-    //         setArrow(true);
-    //     } else {
-    //         setExpand(true);
-    //         setArrow(false);
-    //     }
-    // }
 
     function openShowAll() {
         setTabContent(true);
@@ -121,7 +109,7 @@ export default function PatientRecord(props) {
                             <div key={session._id} className="buttons">
                                 <button
                                     id={`button${index}`}
-                                    className="tabLink"
+                                    className="tablink"
                                     onClick={() => changeSession(index)}
                                 >
                                     {index}
