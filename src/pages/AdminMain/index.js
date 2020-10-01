@@ -56,8 +56,8 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="psychologist-list">
                 <div className="nav">
                     <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
@@ -81,7 +81,7 @@ export default function AdminMain() {
                                 <strong>Especialização:</strong> {psychologist.specialization ? (psychologist.specialization) : ('Não informado')}
                             </p>
                             <p>
-                                <strong>Bibliografia:</strong> {psychologist.bibliography ? (psychologist.bibliography) : ('Não informado')}
+                                <strong>Biografia:</strong> {psychologist.bibliography ? (psychologist.bibliography) : ('Não informado')}
                             </p>
                             <button onClick={() => showConfirmation(psychologist.email)}>Excluir Psicólogo</button>
                         </article>
