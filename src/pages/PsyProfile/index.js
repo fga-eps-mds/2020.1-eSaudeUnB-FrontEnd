@@ -91,7 +91,7 @@ export default function PsyProfile(props) {
 
     return (
         <>
-            <NavBar />
+            <NavBar bond="Psychologist" />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
