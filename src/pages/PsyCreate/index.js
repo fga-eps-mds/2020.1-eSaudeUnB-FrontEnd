@@ -9,7 +9,7 @@ import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 
-export default function PsyCreate(props) {
+export default function PsyCreate() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ export default function PsyCreate(props) {
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
-    // const history = useHistory();
+    const history = useHistory();
 
     async function handlePsychologistSignUp(event) {
         try {
@@ -45,7 +45,7 @@ export default function PsyCreate(props) {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return props.history.push('/admin/psy/create');
+                return history.push('/admin/psy/create');
             }
 
             const response = await api.post('/admin/psy/create', user);
@@ -57,11 +57,11 @@ export default function PsyCreate(props) {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return props.history.push('/admin/psy/create');
+                return history.push('/admin/psy/create');
             }
 
             if (response.status === 201) {
-                return props.history.push('/admin/psy/list');
+                return history.push('/admin/psy/list');
             }
         } catch (err) {
             setShow(true);

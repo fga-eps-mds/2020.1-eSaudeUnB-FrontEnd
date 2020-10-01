@@ -51,8 +51,18 @@ export default function LandingSignUp() {
 
             const response = await api.post('/users', user);
 
+            if (response.status === 200) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Email já cadastrado');
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push('/registration');
+            }
+
             if (response.status === 201) {
-                history.push({
+                return history.push({
                     pathname: '/login',
                     state: {
                         data: response.data,
@@ -74,8 +84,8 @@ export default function LandingSignUp() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
 
             <div className="content">
                 <Logo />
