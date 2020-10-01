@@ -14,7 +14,7 @@ export default function NavBar({ bond }) {
             {bond === "Psychologist" ? (
                 <div className="navLinks">
                     <Link className="a" to="" >Próximos Eventos</Link>
-                    <Link className="a" to="" >Lista de Pacientes</Link>
+                    <Link className="a" to="/patient-list" >Lista de Pacientes</Link>
                     <Link className="a" to="/psy-profile" >Perfil</Link>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
                 </div>)
