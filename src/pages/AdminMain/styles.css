@@ -57,11 +57,12 @@
 
 .psychologist-list article{
     width: 350px;
-    height: 230px;
-    
+    height: 300px;
+    word-wrap: break-word;
+
     display: flex;
     align-self: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
 
     background: #fff;
