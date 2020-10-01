@@ -1,0 +1,5 @@
+.MakeAppointmentContainer .searcBarComponent {
+    width: 1400px;
+    align-self: center;
+    justify-content: flex-end;
+}
