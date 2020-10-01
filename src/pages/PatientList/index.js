@@ -24,8 +24,8 @@ export default function PatientList() {
 
     return (
         <div className="patientListContainer">
+            <NavBar className="navBar" bond="Psychologist" />
             <div className="content">
-                <NavBar className="navBar" bond="Psychologist" />
                 <SearchBar
                     className="searchBar"
                     value={search}

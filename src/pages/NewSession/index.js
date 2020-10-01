@@ -44,9 +44,8 @@ export default function NewSession(props) {
 
     return (
         <div className="newSession">
+            <NavBar className="navBar" />
             <div className="content">
-                <NavBar className="navBar" />
-
                 <div className="patientInfo">
                     <div className="patient">
                         <img className="patientImg" src={userIcon} alt="userIcon" />
@@ -64,16 +63,16 @@ export default function NewSession(props) {
 
                                 <div className="phone">
                                     <span className="prop">Telefone: </span>
-                                    <span>{patient.phone}</span>
+                                    <span>{patient.phone ? patient.phone : "não informado"}</span>
                                 </div>
                             </div>
 
                             <div className="hidden">
                                 <span className="prop">Vinculo: </span>
-                                <span>{patient.bond}</span>
+                                <span>{patient.bond ? patient.bond : "não informado"}</span>
 
                                 <span className="prop">Matricula: </span>
-                                <span>{patient.unbRegistration}</span>
+                                <span>{patient.unbRegistration ? patient.unbRegistration : "não informado"}</span>
                             </div>
                         </div>
                     </div>
@@ -94,8 +93,8 @@ export default function NewSession(props) {
                                 <h2>Data: 07/SET/2020</h2>
                                 <h2>Encaminhamento: Rede Interna</h2>
 
-                                <h1>Profissional</h1>
                                 <div className="recordText" id="professional">
+                                    <h1>Profissional</h1>
                                     <input
                                         value={professional}
                                         onChange={(e) => setProfessional(e.target.value)}
@@ -103,16 +102,16 @@ export default function NewSession(props) {
                                     />
                                 </div>
 
-                                <h1>Queixa Principal</h1>
                                 <div className="recordText" id="mainComplaint" >
+                                    <h1>Queixa Principal</h1>
                                     <textarea
                                         onChange={(e) => setMainComplaint(e.target.value)}
                                         type="mainComplaint"
                                     />
                                 </div>
 
-                                <h1>Queixa Secundaria</h1>
                                 <div className="recordText" id="secondaryComplaint">
+                                    <h1>Queixa Secundaria</h1>
                                     <textarea
                                         value={secondaryComplaint}
                                         onChange={(e) => setSecondaryComplaint(e.target.value)}
@@ -120,8 +119,8 @@ export default function NewSession(props) {
                                     />
                                 </div>
 
-                                <h1>Evolução das queixas</h1>
                                 <div className="recordText" id="complaintEvolution">
+                                    <h1>Evolução das queixas</h1>
                                     <textarea
                                         value={complaintEvolution}
                                         onChange={(e) => setComplaintEvolution(e.target.value)}

@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 

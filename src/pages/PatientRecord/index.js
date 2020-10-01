@@ -70,9 +70,8 @@ export default function PatientRecord(props) {
 
     return (
         <div className="patientRecord">
+            <NavBar className="navBar" />
             <div className="content">
-                <NavBar className="navBar" />
-
                 <div className="patientInfo">
                     <div className="patient">
                         <img
@@ -94,16 +93,16 @@ export default function PatientRecord(props) {
 
                                 <div className="phone">
                                     <span className="prop">Telefone: </span>
-                                    <span>{patient.phone}</span>
+                                    <span>{patient.phone ? patient.phone : "não informado"}</span>
                                 </div>
                             </div>
 
                             <div className="hidden">
                                 <span className="prop">Vinculo: </span>
-                                <span>{patient.bond}</span>
+                                <span>{patient.bond ? patient.bond : "não informado"}</span>
 
                                 <span className="prop">Matricula: </span>
-                                <span>{patient.unbRegistration}</span>
+                                <span>{patient.unbRegistration ? patient.unbRegistration : "não informado"}</span>
                             </div>
                         </div>
                     </div>
@@ -184,22 +183,22 @@ export default function PatientRecord(props) {
                                     <h2>Data: 07/SET/2020</h2>
                                     <h2>Encaminhamento: Rede Interna</h2>
 
-                                    <h1>Queixa Principal</h1>
                                     <div className="recordText" id="mainComplaint">
+                                        <h1>Queixa Principal</h1>
                                         <p>{`${mainComplaint}`}</p>
                                     </div>
-                                    <h1>Queixa Secundaria</h1>
                                     <div
                                         className="recordText"
                                         id="secondaryComplaint"
                                     >
+                                        <h1>Queixa Secundaria</h1>
                                         <p>{`${secondaryComplaint}`}</p>
                                     </div>
-                                    <h1>Evolução das queixas</h1>
                                     <div
                                         className="recordText"
                                         id="complaintEvolution"
                                     >
+                                        <h1>Evolução das queixas</h1>
                                         <p>{`${complaintEvolution}`}</p>
                                     </div>
                                 </div>

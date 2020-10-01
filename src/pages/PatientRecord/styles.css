@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
@@ -205,10 +206,10 @@ h2 {
 }
 .patientRecord .minSession{
   display: flex;
-    align-items: center;
-    margin-left: 15px;
+  align-items: center;
+  margin-left: 15px;
 }
-.patientRecord .info{
+.patientRecord .tabContent .info{
   width: 200px;
   margin-left: 300px;
 }
