@@ -65,9 +65,16 @@
 
 .psychologistListContainer .patientInfos {
     display: flex;
+<<<<<<< HEAD
 }
 
 .psychologistListContainer .patientTab .patientInfos .patientImg {
+=======
+    
+  }
+  
+  .psychologistListContainer .patientTab .patientInfos .patientImg {
+>>>>>>> 0206965d72ae70ff2710058908de980c87b99816
     border-radius: 25%;
     width: 100px;
     height: 100px;
@@ -91,6 +98,7 @@
 .psychologistListContainer .patientTab .button img {
     width: 40px;
     height: 40px;
+<<<<<<< HEAD
 }
 .psychologistListContainer button {
     transform: rotate(90deg);
@@ -100,3 +108,13 @@
     transform: rotate(360deg);
     border-color: transparent;
 }
+=======
+    transform: rotate(90deg);
+  }
+  .psychologistListContainer  button{    
+    border-color: transparent;
+}
+  .psychologistListContainer .cardToggle button{    
+  border-color: transparent;
+}
+>>>>>>> 0206965d72ae70ff2710058908de980c87b99816
