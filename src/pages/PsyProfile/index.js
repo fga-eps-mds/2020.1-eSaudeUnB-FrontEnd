@@ -170,7 +170,7 @@ export default function PsyProfile(props) {
 
                     <div className="secondColumn" >
                         <Link className="link" to="/psychology/schedule">Configurar meu cronograma</Link>
-                        <Link className="link" to="/" >Alterar Senha</Link>
+                        {/* <Link className="link" to="/" >Alterar Senha</Link> */}
                     </div>
                 </div>
             </div>

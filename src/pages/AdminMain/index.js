@@ -86,10 +86,6 @@ export default function AdminMain() {
                             <p>
                                 <strong>Especialização:</strong> {psychologist.specialization ? (psychologist.specialization) : ('Não informado')}
                             </p>
-
-                            <p>
-                                <strong>Biografia:</strong> {psychologist.bibliography ? (psychologist.bibliography) : ('Não informado')}
-                            </p>
                             <button onClick={() => showConfirmation(psychologist.email)}>Excluir Psicólogo</button>
                         </article>
                     ))}

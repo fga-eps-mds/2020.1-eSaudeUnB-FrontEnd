@@ -131,6 +131,7 @@ export default function PsychologistSchedule() {
 
     return (
         <div className="psychologistSchedule">
+            <NavBar className="navBar" />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
@@ -139,7 +140,6 @@ export default function PsychologistSchedule() {
                 ) : (
                         <div></div>
                     )}
-                <NavBar className="navBar" />
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
