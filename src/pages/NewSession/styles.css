@@ -200,7 +200,7 @@
   background-color: #197fe5 !important;
 }
 
-textarea {
+.newSession textarea {
   border-radius: 15px;
   width: 1300px;
   height: 230px;
@@ -216,7 +216,7 @@ textarea {
 }
 
 
-input{
+.newSession input{
   width:  600px;
   font: 500 1.5rem Poppins;
   padding-left: 10px;

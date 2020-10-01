@@ -43,7 +43,7 @@ export default function NewSession(props) {
     }
 
     return (
-        <div className="patientRecord">
+        <div className="newSession">
             <div className="content">
                 <NavBar className="navBar" />
 
@@ -129,7 +129,7 @@ export default function NewSession(props) {
                                     />
                                 </div>
 
-                                <button className="sendButton" type ="submit">Enviar</button>
+                                <button className="sendButton" type="submit">Enviar</button>
                             </div>
                         </div>
                     </form>

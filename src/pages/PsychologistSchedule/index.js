@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
@@ -13,13 +13,13 @@ export default function PsychologistSchedule() {
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
-    async function handleSchedule() {
-        const Days = await api.post('/calendary/update', {
+    useEffect(() => {
+        const Days = api.post('/calendary/update', {
             email: localStorage.getItem('user'),
+        }).then((response) => {
+            setScheduleItems(response.data);
         });
-        setScheduleItems(Days.data);
-    }
-    window.onload = handleSchedule;
+    }, []);
 
     const weekDays = [
         { value: 0, label: 'Domingo' },
@@ -87,6 +87,18 @@ export default function PsychologistSchedule() {
 
     function verifyCalendarData() {
         for (const item of scheduleItems) {
+            if (item.from > item.to) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    'O horario de término não pode ser menor que o de ínicio',
+                );
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return false;
+            }
+
             if (!item.from || !item.to) {
                 setShow(true);
                 setVariant('danger');
@@ -95,7 +107,7 @@ export default function PsychologistSchedule() {
                 );
                 setInterval(() => {
                     setShow(false);
-                }, 5000);
+                }, 3500);
                 return false;
             }
         }
@@ -125,8 +137,8 @@ export default function PsychologistSchedule() {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <NavBar className="navBar" />
                 <form className="form">
                     <div className="formContent">
