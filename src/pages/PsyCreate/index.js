@@ -9,12 +9,12 @@ import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 
-export default function PsyCreate() {
+export default function PsyCreate(props) {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [specialization, setSpecialization] = useState('');
-    const [bibliography] = useState('');
+    const [biography] = useState('');
     const [gender, setGender] = useState('');
     const [bond] = useState('Psychologist');
 
@@ -22,13 +22,7 @@ export default function PsyCreate() {
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
-    const history = useHistory();
-
-    async function verifyEmail(email) {
-        const psychologists = await api.get('/admin/psy/list');
-
-        return psychologists.data.find(psychologist => psychologist.email === email);
-    }
+    // const history = useHistory();
 
     async function handlePsychologistSignUp(event) {
         try {
@@ -39,29 +33,35 @@ export default function PsyCreate() {
                 lastName,
                 email,
                 specialization,
-                bibliography,
+                biography,
                 gender,
                 bond,
             };
-
-            if (verifyEmail(email)) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Email já cadastrado');
-                history.push('/admin/psy/create');
-            }
 
             if (!name || !lastName || !email || !gender || !specialization) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
-                history.push('/admin/psy/create');
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return props.history.push('/admin/psy/create');
             }
 
             const response = await api.post('/admin/psy/create', user);
 
+            if (response.status === 200) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Email já cadastrado');
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return props.history.push('/admin/psy/create');
+            }
+
             if (response.status === 201) {
-                history.push('/admin/psy/list');
+                return props.history.push('/admin/psy/list');
             }
         } catch (err) {
             setShow(true);

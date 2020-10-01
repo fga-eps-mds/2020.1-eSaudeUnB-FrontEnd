@@ -19,7 +19,7 @@ export default function PsyProfile(props) {
     const [specialization, setSpecialization] = useState('');
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
-    const [bibliography, setBibliography] = useState('');
+    const [biography, setBiography] = useState('');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -38,7 +38,7 @@ export default function PsyProfile(props) {
             event.preventDefault();
 
             const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
-                name, lastName, email, phone, specialization, gender, bond, bibliography,
+                name, lastName, email, phone, specialization, gender, bond, biography,
             });
 
             if (response.status === 200) {
@@ -77,7 +77,7 @@ export default function PsyProfile(props) {
                 setSpecialization(response.data.specialization);
                 setGender(response.data.gender);
                 setBond(response.data.bond);
-                setBibliography(response.data.bibliography);
+                setBiography(response.data.biography);
             }
         } catch (err) {
             setShow(true);
@@ -156,8 +156,8 @@ export default function PsyProfile(props) {
                             </div>
                             <textarea
                                 maxLength="300"
-                                value={bibliography}
-                                onChange={(e) => setBibliography(e.target.value)}
+                                value={biography}
+                                onChange={(e) => setBiography(e.target.value)}
                                 placeholder="Por favor adicione uma curta biografia ao seu perfil.(até 300 caracteres)"
                             />
 

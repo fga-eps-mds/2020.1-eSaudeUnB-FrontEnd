@@ -12,17 +12,11 @@ export default function AdminMain() {
 
     const history = useHistory();
 
-    //Esse useEffect está recebendo causando um erro na página Admin/psy/list
-    //Como chegar ao erro:
-    //                      -1. Crie um psicólogo válido, que ao ser redirecionado para a página
-    //                      Admin/psy/list o erro estará no console
-
     useEffect(() => {
-        async function fetchData() {
-            const response = await api.get('/admin/psy/list');
-            setPsyArray(response.data);
-        }
-        fetchData();
+        api.get('/admin/psy/list')
+            .then((response) => {
+                setPsyArray(response.data);
+            });
     }, []);
 
     const showConfirmation = (email) => {
