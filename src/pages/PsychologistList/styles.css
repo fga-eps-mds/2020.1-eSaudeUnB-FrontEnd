@@ -26,7 +26,29 @@
     margin-top: 1.5rem;
     width: 1400px;
   }
-  
+  .psychologistListContainer .cardToggle{
+    display: flex;
+    align-items: bottom;
+    justify-content: bottom;
+    flex-direction: column;
+  }
+  .psychologistListContainer .cardToggle button{    
+    border-color: transparent;
+    width: 290px;
+    height: 51px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #0459AE;
+
+    cursor: pointer;
+
+    font-size: 24px;
+    line-height: 36px;
+  }
+ 
+
   .psychologistListContainer .patientTab {
     display: flex;
     align-items: center;
@@ -68,4 +90,10 @@
     width: 40px;
     height: 40px;
   }
-  
+  .psychologistListContainer button{    
+    border-color: transparent;
+}
+.psychologistListContainer .cardToggle button{    
+  border-color: transparent;
+  color:green;
+}
