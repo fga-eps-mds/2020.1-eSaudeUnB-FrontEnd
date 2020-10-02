@@ -91,12 +91,11 @@
 .psychologistListContainer .patientTab .button img {
     width: 40px;
     height: 40px;
+    transform: rotate(90deg);
 }
 .psychologistListContainer button {
-    transform: rotate(90deg);
     border-color: transparent;
 }
 .psychologistListContainer .cardToggle button {
-    transform: rotate(360deg);
     border-color: transparent;
 }
