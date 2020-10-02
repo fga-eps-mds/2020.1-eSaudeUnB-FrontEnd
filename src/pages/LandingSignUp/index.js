@@ -24,6 +24,24 @@ export default function LandingSignUp() {
 
     const history = useHistory();
 
+    function handleWrongField(field) {
+        setShow(true);
+        setVariant('danger');
+
+        if (field === 'name') {
+            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+        }
+        if (field === 'lastName') {
+            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+        }
+        if (field === 'email') {
+            return setAlertText('O campo "Email" não está preenchido corretamente.');
+        }
+        if (field === 'passworrd') {
+            return setAlertText('O campo "Senha" não está preenchido corretamente.');
+        }
+    }
+
     async function handleSign(event) {
         try {
             event.preventDefault();
@@ -50,6 +68,15 @@ export default function LandingSignUp() {
             }
 
             const response = await api.post('/users', user);
+
+            if (response.status === 203) {
+                const field = response.data.error.details[0].path[0];
+                handleWrongField(field);
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push('/registration');
+            }
 
             if (response.status === 200) {
                 setShow(true);

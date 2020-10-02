@@ -15,6 +15,7 @@ export default function PsyCreate() {
     const [email, setEmail] = useState('');
     const [specialization, setSpecialization] = useState('');
     const [biography] = useState('');
+    const [phone] = useState('');
     const [gender, setGender] = useState('');
     const [bond] = useState('Psychologist');
 
@@ -23,6 +24,36 @@ export default function PsyCreate() {
     const [variant, setVariant] = useState('');
 
     const history = useHistory();
+
+    function handleWrongField(field) {
+        setShow(true);
+        setVariant('danger');
+
+        if (field === 'name') {
+            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+        }
+        if (field === 'lastName') {
+            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+        }
+        if (field === 'email') {
+            return setAlertText('O campo "Email" não está preenchido corretamente.');
+        }
+        if (field === 'specialization') {
+            return setAlertText('O campo "Especialização" não está preenchido corretamente.');
+        }
+        if (field === 'biography') {
+            return setAlertText('O campo "Biografia" não está preenchido corretamente.');
+        }
+        if (field === 'gender') {
+            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
+        }
+        if (field === 'phone') {
+            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
+        }
+        if (field === 'bond') {
+            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
+        }
+    }
 
     async function handlePsychologistSignUp(event) {
         try {
@@ -35,6 +66,7 @@ export default function PsyCreate() {
                 specialization,
                 biography,
                 gender,
+                phone,
                 bond,
             };
 
@@ -49,6 +81,15 @@ export default function PsyCreate() {
             }
 
             const response = await api.post('/admin/psy/create', user);
+
+            if (response.status === 203) {
+                const field = response.data.error.details[0].path[0];
+                handleWrongField(field);
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push('/admin/psy/create');
+            }
 
             if (response.status === 200) {
                 setShow(true);
