@@ -23,9 +23,8 @@ export default function PsychologistList() {
     }, []);
 
     function rotate() {
-        var roda = 270;
         var img = document.getElementById("teste24");
-        img.style.transform = "rotate(" + roda + "deg)"
+        img.style.transform = "rotate(270deg)"
     }
 
     return (
@@ -58,17 +57,18 @@ export default function PsychologistList() {
                                                                 Bibliografia:{' '}
                                                                 {`${psy.bibliography}`}
                                                             </p>
-                                                            <button>
+                                                            <Link to={'/psy-list/schedule'}><button>
                                                                 Agendar atendimento
                                                       </button>
+                                                      </Link>
                                                         </div>
                                                     </Accordion.Collapse>
                                                 </div>
                                             </div>
                                             <Accordion.Toggle eventKey="0">
-                                                    <Link className="button" to={`#`}>
-                                                        <img src={go} alt="go" />{' '}
-                                                    </Link>
+                                                <Link className="button" to={`#`}>
+                                                    <img src={go} alt="go" />{' '}
+                                                </Link>
                                             </Accordion.Toggle>
                                         </div>
                                     </Accordion>
@@ -103,9 +103,9 @@ export default function PsychologistList() {
                                                 </div>
                                             </div>
                                             <Accordion.Toggle eventKey="0">
-                                                    <Link className="button" to={`#`}>
-                                                        <img src={go} alt="go" />{' '}
-                                                    </Link>
+                                                <Link className="button" to={`#`}>
+                                                    <img src={go} alt="go" />{' '}
+                                                </Link>
                                             </Accordion.Toggle>
                                         </div>
                                     </Accordion>

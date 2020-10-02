@@ -9,20 +9,13 @@ import MagnifyingGlass from '../../assets/images/lupa.svg';
 import userIcon from '../../assets/images/userIcon.svg';
 
 import NavBar from '../../components/NavBar';
-import SearchBar from '../../components/SearchBar';
 
-export default function MakeAppointment() {
+export default function UserSchedule() {
     const [search, setSearch] = useState('');
     return (
-        <div className="MakeAppointmentContainer">
+        <div className="userScheduleContainer">
             <div className="content">
-                <NavBar className="navBar" />
-                <SearchBar
-                    className="searchBar"
-                    value={search}
-                    onChange={setSearch}
-                    icon={MagnifyingGlass}
-                />
+                <NavBar/>
             </div>
         </div>
     );
