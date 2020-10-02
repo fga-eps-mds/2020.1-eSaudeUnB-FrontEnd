@@ -14,7 +14,7 @@ export default function PsychologistSchedule() {
     const [variant, setVariant] = useState('');
 
     useEffect(() => {
-        const Days = api.post('/calendary/update', {
+        api.post('/calendary/update', {
             email: localStorage.getItem('user'),
         }).then((response) => {
             setScheduleItems(response.data);
