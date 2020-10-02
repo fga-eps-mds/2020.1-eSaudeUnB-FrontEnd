@@ -50,8 +50,8 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="psychologist-list">
                 <div className="nav">
                     <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
@@ -70,7 +70,8 @@ export default function AdminMain() {
                     {psyArray.map((psychologist) => (
                         <article key={psychologist.email}>
                             <p>
-                                <strong>Nome: </strong>{`${psychologist.name} ${psychologist.lastName}`}
+                                <strong>Nome: </strong>
+                                {`${psychologist.name} ${psychologist.lastName}`}
                             </p>
 
                             <p>
@@ -78,9 +79,15 @@ export default function AdminMain() {
                             </p>
 
                             <p>
-                                <strong>Especialização:</strong> {psychologist.specialization ? (psychologist.specialization) : ('Não informado')}
+                                <strong>Especialização:</strong>
+                                {psychologist.specialization
+                                    ? (psychologist.specialization)
+                                    : ('Não informado')}
                             </p>
-                            <button onClick={() => showConfirmation(psychologist.email)}>Excluir Psicólogo</button>
+                            <button
+                                onClick={() => showConfirmation(psychologist.email)}
+                            >
+                                Excluir Psicólogo</button>
                         </article>
                     ))}
                 </div>

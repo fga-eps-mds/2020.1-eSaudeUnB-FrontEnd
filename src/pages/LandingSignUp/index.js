@@ -111,8 +111,8 @@ export default function LandingSignUp() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
 
             <div className="content">
                 <Logo />

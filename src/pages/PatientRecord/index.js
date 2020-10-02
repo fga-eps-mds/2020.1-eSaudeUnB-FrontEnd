@@ -81,16 +81,16 @@ export default function PatientRecord(props) {
 
                                 <div className="phone">
                                     <span className="prop">Telefone: </span>
-                                    <span>{patient.phone ? patient.phone : "não informado"}</span>
+                                    <span>{patient.phone ? patient.phone : 'não informado'}</span>
                                 </div>
                             </div>
 
                             <div className="hidden">
                                 <span className="prop">Vinculo: </span>
-                                <span>{patient.bond ? patient.bond : "não informado"}</span>
+                                <span>{patient.bond ? patient.bond : 'não informado'}</span>
 
                                 <span className="prop">Matricula: </span>
-                                <span>{patient.unbRegistration ? patient.unbRegistration : "não informado"}</span>
+                                <span>{patient.unbRegistration ? patient.unbRegistration : 'não informado'}</span>
                             </div>
                         </div>
                     </div>

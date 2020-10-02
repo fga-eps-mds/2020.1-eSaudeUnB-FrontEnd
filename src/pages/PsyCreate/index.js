@@ -119,8 +119,8 @@ export default function PsyCreate() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="psychologist-create">
 
                 <form className="form" onSubmit={handlePsychologistSignUp}>

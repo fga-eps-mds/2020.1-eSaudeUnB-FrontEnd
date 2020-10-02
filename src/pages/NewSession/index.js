@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
@@ -63,16 +64,16 @@ export default function NewSession(props) {
 
                                 <div className="phone">
                                     <span className="prop">Telefone: </span>
-                                    <span>{patient.phone ? patient.phone : "não informado"}</span>
+                                    <span>{patient.phone ? patient.phone : 'não informado'}</span>
                                 </div>
                             </div>
 
                             <div className="hidden">
                                 <span className="prop">Vinculo: </span>
-                                <span>{patient.bond ? patient.bond : "não informado"}</span>
+                                <span>{patient.bond ? patient.bond : 'não informado'}</span>
 
                                 <span className="prop">Matricula: </span>
-                                <span>{patient.unbRegistration ? patient.unbRegistration : "não informado"}</span>
+                                <span>{patient.unbRegistration ? patient.unbRegistration : 'não informado'}</span>
                             </div>
                         </div>
                     </div>
@@ -137,3 +138,7 @@ export default function NewSession(props) {
         </div>
     );
 }
+
+NewSession.propTypes = {
+    location: PropTypes.object,
+};

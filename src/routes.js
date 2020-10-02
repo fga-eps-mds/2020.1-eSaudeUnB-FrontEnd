@@ -15,7 +15,8 @@ import NewSession from './pages/NewSession';
 import PsyProfile from './pages/PsyProfile';
 import PsychologistSchedule from './pages/PsychologistSchedule';
 import PsychologistCalendar from './pages/PsychologistCalendar';
-import NotFound from './pages/NotFound/'
+import NotFound from './pages/NotFound';
+
 export default function Routes() {
     return (
         <BrowserRouter>
