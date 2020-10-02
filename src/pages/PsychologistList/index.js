@@ -22,6 +22,12 @@ export default function PsychologistList() {
         });
     }, []);
 
+    function rotate(){
+        var roda = 270;
+        var img = document.getElementById("teste24");
+        img.style.transform = "rotate("+roda+"deg)"
+    }
+
     return (
         <div className="psychologistListContainer">
             <div className="content">
@@ -42,7 +48,7 @@ export default function PsychologistList() {
                                         <div key={psy.email} className="patientTab">
                                             <div className="patientInfos">
                                                 <img className="patientImg" src={userIcon} alt={psy.name} />
-                                                <div className="minPatient">    
+                                                <div className="minPatient">
                                                     <p>Nome: {`${psy.name} ${psy.lastName}`}</p>
                                                     <p>email: {psy.email}</p>
 
@@ -56,8 +62,8 @@ export default function PsychologistList() {
                                                 </div>
                                             </div>
                                             <Accordion.Toggle eventKey="0">
-                                                <Link className="button" to={`#`}>
-                                                    <img src={go} alt="go" />{' '}
+                                                <Link className="button" onClick={rotate} to={`#`}>
+                                                    <img id="teste24" src={go} alt="go" />{' '}
                                                 </Link>
                                             </Accordion.Toggle>
                                         </div>
@@ -71,29 +77,29 @@ export default function PsychologistList() {
                                     })
                                     .map((psy) => (
                                         <Accordion >
-                                        <div key={psy.email} className="patientTab">
-                                            <div className="patientInfos">
-                                                <img className="patientImg" src={userIcon} alt={psy.name} />
-                                                <div className="minPatient">    
-                                                    <p>Nome: {`${psy.name} ${psy.lastName}`}</p>
-                                                    <p>email: {psy.email}</p>
+                                            <div key={psy.email} className="patientTab">
+                                                <div className="patientInfos">
+                                                    <img className="patientImg" src={userIcon} alt={psy.name} />
+                                                    <div className="minPatient">
+                                                        <p>Nome: {`${psy.name} ${psy.lastName}`}</p>
+                                                        <p>email: {psy.email}</p>
 
-                                                    <Accordion.Collapse eventKey="0">
-                                                        <div className="cardToggle">
-                                                            <p>Bibliografia: {`${psy.bibliography}`}</p>
-                                                            <button> Agendar Consulta</button>
-                                                        </div>
-                                                    </Accordion.Collapse>
+                                                        <Accordion.Collapse eventKey="0">
+                                                            <div className="cardToggle">
+                                                                <p>Bibliografia: {`${psy.bibliography}`}</p>
+                                                                <button> Agendar Consulta</button>
+                                                            </div>
+                                                        </Accordion.Collapse>
 
+                                                    </div>
                                                 </div>
+                                                <Accordion.Toggle eventKey="0">
+                                                    <Link className="button" to={`#`}>
+                                                        <img src={go} alt="go" />{' '}
+                                                    </Link>
+                                                </Accordion.Toggle>
                                             </div>
-                                            <Accordion.Toggle eventKey="0">
-                                                <Link className="button" to={`#`}>
-                                                    <img src={go} alt="go" />{' '}
-                                                </Link>
-                                            </Accordion.Toggle>
-                                        </div>
-                                    </Accordion>
+                                        </Accordion>
                                     ))
                             )
                     }
