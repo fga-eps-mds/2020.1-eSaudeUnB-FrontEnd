@@ -4,7 +4,7 @@
     color: #eee;
 
     display: flex;
-    align-items: center;    
+    align-items: center;
     justify-content: center;
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
@@ -13,4 +13,18 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+.psychologistListContainer .forms {
+    background-color: #eee;
+    width: 1000px;
+    height: 800px;
+    border-radius: 15px;
+    padding-top: 1.5rem;
+}
+
+.psychologistListContainer .times {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

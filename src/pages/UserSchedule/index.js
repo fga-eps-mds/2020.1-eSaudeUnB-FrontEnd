@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 
-import go from '../../assets/images/go.svg';
-
 import NavBar from '../../components/NavBar';
 
 export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
-    const [week, setWeek] = useState({});
     const { email } = props.match.params;
-
     const weekDays = [
         { value: 0, label: 'Domingo' },
         {
@@ -36,21 +32,32 @@ export default function UserSchedule(props) {
         },
         { value: 6, label: 'Sábado' },
     ];
-
     useEffect(() => {
         async function getData() {
             const response = await api.get(`/psy/${email}`);
             setPsychologist(response.data);
-            console.log(response.data);
         }
         getData();
     }, [props]);
-
     return (
         <div className="userScheduleContainer">
             <div className="content">
                 <NavBar />
-                <h2>{console.log(psychologist.weekDay)}</h2>
+                <form className="forms">
+                    <div className="times">
+                        {psychologist.weekDay &&
+                            psychologist.weekDay.map((Day) => (
+                                <div key={Day.id} className="psyList">
+                                    <p>
+                                        Dia da semana :{' '}
+                                        {`${weekDays[Day.weekDay].label} `}
+                                        Atendendo de : {`${Day.from} `}
+                                        Até : {`${Day.to} `}
+                                    </p>
+                                </div>
+                            ))}
+                    </div>
+                </form>
             </div>
         </div>
     );

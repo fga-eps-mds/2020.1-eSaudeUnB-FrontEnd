@@ -101,7 +101,8 @@
 
 .psychologistSchedule .content .form .schedule input {
     color: #07387e;
-    height: 2rem;
+    height: 35px;
+    width: 150px;
     margin: 0 0 0 20px;
     border-radius: 8px;
     border: 1px solid #c4c4c4;
