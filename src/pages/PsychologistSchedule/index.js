@@ -138,8 +138,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
@@ -153,7 +153,9 @@ export default function PsychologistSchedule(props) {
                             {scheduleItems.map((scheduleItem, index) => {
                                 return (
                                     <div
-                                        key={scheduleItem.id}
+                                        key={
+                                            scheduleItem._id || scheduleItem.id
+                                        }
                                         className="schedule-item"
                                     >
                                         <div className="select-box">
