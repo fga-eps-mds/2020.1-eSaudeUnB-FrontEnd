@@ -6,7 +6,7 @@ import NavBar from '../../components/NavBar';
 
 import './styles.css';
 
-export default function PsychologistSchedule() {
+export default function PsychologistSchedule(props) {
     const [scheduleItems, setScheduleItems] = useState([]);
 
     const [show, setShow] = useState(false);
@@ -131,7 +131,7 @@ export default function PsychologistSchedule() {
 
     return (
         <div className="psychologistSchedule">
-            <NavBar className="navBar" />
+            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>

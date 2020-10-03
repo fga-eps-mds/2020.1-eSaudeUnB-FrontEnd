@@ -4,7 +4,7 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function PsychologistCalendar() {
+export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
     const [restricts, setRestricts] = useState([]);
 
@@ -59,7 +59,7 @@ export default function PsychologistCalendar() {
 
     return (
         <div className="psychologistcalendar">
-            <NavBar className="navBar" />
+            <NavBar className="navBar" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -81,11 +81,10 @@ export default function PsychologistCalendar() {
                                     key={index}
                                     className="schedule-box"
                                 >
-                                    <span>{`restrição dia ${restrict.day}/${
-                                        restrict.month + 1 < 10
-                                            ? `0${restrict.month + 1}`
-                                            : `${restrict.month + 1}`
-                                    }/${restrict.year}`}</span>
+                                    <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
+                                        ? `0${restrict.month + 1}`
+                                        : `${restrict.month + 1}`
+                                        }/${restrict.year}`}</span>
                                     <button
                                         type="button"
                                         onClick={() => removeRestrict(index)}

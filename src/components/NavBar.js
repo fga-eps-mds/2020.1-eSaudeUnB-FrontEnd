@@ -6,7 +6,11 @@ import userIcon from '../assets/images/userIcon.svg';
 import logoQuadrado from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
-export default function NavBar({ bond }) {
+export default function NavBar(props) {
+
+    const bond = props.bond;
+
+    const actualUser = props.actualUser;
     return (
         <nav className="navBarComponent">
             <div className="logo">
@@ -15,13 +19,43 @@ export default function NavBar({ bond }) {
             {bond === 'Psychologist' ? (
                 <div className="navLinks">
                     {/* <Link className="a" to="" >Próximos Eventos</Link> */}
-                    <Link className="a" to="/patient-list" >Lista de Pacientes</Link>
-                    <Link className="a" to="/psy-profile" >Perfil</Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: "/patient-list",
+                            state: {
+                                data: actualUser,
+                            }
+                        }}
+                    >
+                        Lista de Pacientes
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: "/psy-profile",
+                            state: {
+                                data: actualUser,
+                            }
+                        }}
+                    >
+                        Perfil
+                    </Link>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
                 </div>)
                 : (<div className="navLinks">
                     {/* <Link className="a" to="" >Próximos Eventos</Link> */}
-                    <Link className="a" to="/profile" >Perfil</Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: "/profile",
+                            state: {
+                                data: actualUser,
+                            }
+                        }}
+                    >
+                        Perfil
+                    </Link>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
                 </div>
                 )}
@@ -31,4 +65,5 @@ export default function NavBar({ bond }) {
 
 NavBar.propTypes = {
     bond: PropTypes.string,
+    actualUser: PropTypes.object,
 };

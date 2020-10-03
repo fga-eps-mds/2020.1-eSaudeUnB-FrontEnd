@@ -91,13 +91,13 @@ export default function PsyProfile(props) {
 
     return (
         <>
-            <NavBar bond="Psychologist" />
+            <NavBar bond="Psychologist" actualUser={props.location.state.data} />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -169,7 +169,17 @@ export default function PsyProfile(props) {
                     </div>
 
                     <div className="secondColumn" >
-                        <Link className="link" to="/psychology/schedule">Configurar meu cronograma</Link>
+                        <Link
+                            className="link"
+                            to={{
+                                pathname: "/psychology/schedule",
+                                state: {
+                                    data: props.location.state.data,
+                                }
+                            }}
+                        >
+                            Configurar meu cronograma
+                        </Link>
                         {/* <Link className="link" to="/" >Alterar Senha</Link> */}
                     </div>
                 </div>
