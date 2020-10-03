@@ -59,7 +59,7 @@ export default function PsychologistCalendar(props) {
 
     return (
         <div className="psychologistcalendar">
-            <NavBar className="navBar" actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">

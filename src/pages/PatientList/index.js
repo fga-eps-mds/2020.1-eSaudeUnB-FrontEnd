@@ -47,7 +47,15 @@ export default function PatientList(props) {
                                             </div>
                                         </div>
 
-                                        <Link className="button" to={`patient-list/${patient.email}`}>
+                                        <Link
+                                            className="button"
+                                            to={{
+                                                pathname: `patient-list/${patient.email}`,
+                                                state: {
+                                                    data: props.location.state.data,
+                                                },
+                                            }}
+                                        >
                                             <img src={go} alt="go" />{' '}
                                         </Link>
                                     </div>

@@ -58,7 +58,7 @@ export default function PatientRecord(props) {
 
     return (
         <div className="patientRecord">
-            <NavBar className="navBar" />
+            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="patientInfo">
                     <div className="patient">

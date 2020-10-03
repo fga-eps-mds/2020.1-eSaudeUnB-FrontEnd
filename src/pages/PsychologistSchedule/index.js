@@ -138,8 +138,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
@@ -232,7 +232,15 @@ export default function PsychologistSchedule(props) {
                         </div>
 
                         <footer className="footer">
-                            <Link className="link" to={'/psychology/calendar'}>
+                            <Link
+                                className="link"
+                                to={{
+                                    pathname: '/psychology/calendar',
+                                    state: {
+                                        data: props.location.state.data,
+                                    }
+                                }}
+                            >
                                 Configurações avançadas
                             </Link>
                             <button type="button" onClick={() => putCalendar()}>
