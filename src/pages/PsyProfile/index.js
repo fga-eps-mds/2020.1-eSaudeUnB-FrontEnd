@@ -33,6 +33,36 @@ export default function PsyProfile(props) {
         history.push('/');
     }
 
+    function handleWrongField(field) {
+        setShow(true);
+        setVariant('danger');
+
+        if (field === 'name') {
+            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+        }
+        if (field === 'lastName') {
+            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+        }
+        if (field === 'email') {
+            return setAlertText('O campo "Email" não está preenchido corretamente.');
+        }
+        if (field === 'specialization') {
+            return setAlertText('O campo "Especialização" não está preenchido corretamente.');
+        }
+        if (field === 'biography') {
+            return setAlertText('O campo "Biografia" não está preenchido corretamente.');
+        }
+        if (field === 'gender') {
+            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
+        }
+        if (field === 'phone') {
+            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
+        }
+        if (field === 'bond') {
+            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
+        }
+    }
+
     async function updateInfos(event) {
         try {
             event.preventDefault();
@@ -40,6 +70,20 @@ export default function PsyProfile(props) {
             const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
                 name, lastName, email, phone, specialization, gender, bond, biography,
             });
+
+            if (response.status === 203) {
+                const field = response.data.error.details[0].path[0];
+                handleWrongField(field);
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push({
+                    pathname: '/psy-profile',
+                    state: {
+                        data: response.data.value,
+                    },
+                });
+            }
 
             if (response.status === 200) {
                 history.push({
