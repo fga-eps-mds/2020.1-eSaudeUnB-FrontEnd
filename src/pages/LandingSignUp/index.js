@@ -37,8 +37,11 @@ export default function LandingSignUp() {
         if (field === 'email') {
             return setAlertText('O campo "Email" não está preenchido corretamente.');
         }
-        if (field === 'passworrd') {
-            return setAlertText('O campo "Senha" não está preenchido corretamente.');
+        if (field === 'password') {
+            setAlertText('O campo "Senha" não está preenchido corretamente.');
+            setInterval(() => {
+                setAlertText('-A senha deve conter no mínimo 8 caracteres sem caracteres especiais.');
+            }, 1500);
         }
     }
 
@@ -109,7 +112,12 @@ export default function LandingSignUp() {
     return (
         <div className="signUp01Container">
             {show ? (
-                <Alert className="alert" variant={variant}>{alertText}</Alert>
+                <Alert 
+                    className="alert" 
+                    variant={variant}
+                    >
+                        {alertText}
+                    </Alert>
             ) : (
                 <div></div>
             )}
