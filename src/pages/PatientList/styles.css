@@ -28,6 +28,10 @@
   width: 1400px;
 }
 
+.patientListContainer .patients .noPatients {
+  font-size: 32px;
+}
+
 .patientListContainer .patientTab {
   display: flex;
   align-items: center;

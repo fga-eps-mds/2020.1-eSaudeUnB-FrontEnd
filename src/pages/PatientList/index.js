@@ -35,37 +35,11 @@ export default function PatientList(props) {
 
                 <div className="patients">
                     {
-                        !search ? (
-                            patients
-                                .map((patient) => (
-                                    <div key={patient.email} className="patientTab">
-                                        <div className="patientInfos">
-                                            <img className="patientImg" src={userIcon} alt={patient.name} />
-                                            <div className="minPatient">
-                                                <p>{`${patient.name} ${patient.lastName}`}</p>
-                                                <p>{patient.email}</p>
-                                            </div>
-                                        </div>
-
-                                        <Link
-                                            className="button"
-                                            to={{
-                                                pathname: `patient-list/${patient.email}`,
-                                                state: {
-                                                    data: props.location.state.data,
-                                                },
-                                            }}
-                                        >
-                                            <img src={go} alt="go" />{' '}
-                                        </Link>
-                                    </div>
-                                ))
+                        patients.length === 0 ? (
+                            <div className="patientTab noPatients">Não há pacientes cadastrados</div>
                         ) : (
+                            !search ? (
                                 patients
-                                    .filter((patient) => {
-                                        const fullName = `${patient.name} ${patient.lastName}`;
-                                        return fullName.toUpperCase().includes(search.toUpperCase());
-                                    })
                                     .map((patient) => (
                                         <div key={patient.email} className="patientTab">
                                             <div className="patientInfos">
@@ -75,13 +49,43 @@ export default function PatientList(props) {
                                                     <p>{patient.email}</p>
                                                 </div>
                                             </div>
-
-                                            <Link className="button" to={`patient-list/${patient.email}`}>
+    
+                                            <Link
+                                                className="button"
+                                                to={{
+                                                    pathname: `patient-list/${patient.email}`,
+                                                    state: {
+                                                        data: props.location.state.data,
+                                                    },
+                                                }}
+                                            >
                                                 <img src={go} alt="go" />{' '}
                                             </Link>
                                         </div>
                                     ))
-                            )
+                            ) : (
+                                    patients
+                                        .filter((patient) => {
+                                            const fullName = `${patient.name} ${patient.lastName}`;
+                                            return fullName.toUpperCase().includes(search.toUpperCase());
+                                        })
+                                        .map((patient) => (
+                                            <div key={patient.email} className="patientTab">
+                                                <div className="patientInfos">
+                                                    <img className="patientImg" src={userIcon} alt={patient.name} />
+                                                    <div className="minPatient">
+                                                        <p>{`${patient.name} ${patient.lastName}`}</p>
+                                                        <p>{patient.email}</p>
+                                                    </div>
+                                                </div>
+    
+                                                <Link className="button" to={`patient-list/${patient.email}`}>
+                                                    <img src={go} alt="go" />{' '}
+                                                </Link>
+                                            </div>
+                                        ))
+                                )
+                        )
                     }
                 </div>
             </div>
