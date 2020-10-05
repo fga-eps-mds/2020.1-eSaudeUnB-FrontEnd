@@ -38,10 +38,7 @@ export default function LandingSignUp() {
             return setAlertText('O campo "Email" não está preenchido corretamente.');
         }
         if (field === 'password') {
-            setAlertText('O campo "Senha" não está preenchido corretamente.');
-            setInterval(() => {
-                setAlertText('-A senha deve conter no mínimo 8 caracteres sem caracteres especiais.');
-            }, 1500);
+            return setAlertText('A senha deve conter no mínimo 8 caracteres, sem dígitos especiais.');
         }
     }
 
@@ -59,15 +56,13 @@ export default function LandingSignUp() {
             if (!name || !lastName || !email || !password) {
                 setShow(true);
                 setVariant('danger');
-                setAlertText('Os campos não foram preenchidos corretamente.');
-                return;
+                return setAlertText('Os campos não foram preenchidos corretamente.');
             }
 
             if (password !== confirmPassword) {
                 setShow(true);
                 setVariant('danger');
-                setAlertText('As senhas não são iguais.');
-                return;
+                return setAlertText('As senhas não são iguais.');
             }
 
             const response = await api.post('/users', user);
@@ -112,15 +107,15 @@ export default function LandingSignUp() {
     return (
         <div className="signUp01Container">
             {show ? (
-                <Alert 
-                    className="alert" 
+                <Alert
+                    className="alert"
                     variant={variant}
-                    >
-                        {alertText}
-                    </Alert>
+                >
+                    {alertText}
+                </Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
 
             <div className="content">
                 <Logo />
