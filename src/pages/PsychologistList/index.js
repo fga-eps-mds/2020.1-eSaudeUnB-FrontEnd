@@ -122,7 +122,7 @@ export default function PsychologistList() {
                                               </div>
                                           </div>
                                           <Accordion.Toggle eventKey="0">
-                                              <Link className="button" to={`#`}>
+                                              <Link className='button' to={`#`}>
                                                   <img src={go} alt="go" />{' '}
                                               </Link>
                                           </Accordion.Toggle>

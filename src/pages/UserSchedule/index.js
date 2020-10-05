@@ -62,7 +62,7 @@ export default function UserSchedule(props) {
                             </div>
                         }
                     </div>
-                    <Link to = "/psy-list">
+                    <Link to = '/psy-list'>
                         <button>Voltar</button>
                     </Link>
                 </form>
