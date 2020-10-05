@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
@@ -44,21 +45,32 @@ export default function UserSchedule(props) {
             <div className="content">
                 <NavBar />
                 <form className="forms">
+                    <h1>Dias de atendimento</h1>
                     <div className="times">
-                        {psychologist.weekDay &&
-                            psychologist.weekDay.map((Day) => (
+                        {psychologist.weekDay !== undefined && psychologist.weekDay.length > 0
+                            ? psychologist.weekDay.map((Day) => (
                                 <div key={Day.id} className="psyList">
-                                    <p>
-                                        Dia da semana :{' '}
+                                    <h2>
                                         {`${weekDays[Day.weekDay].label} `}
                                         Atendendo de : {`${Day.from} `}
-                                        Até : {`${Day.to} `}
-                                    </p>
+                                        até {`${Day.to} `}
+                                    </h2>
                                 </div>
-                            ))}
+                            ))
+                            : <div>
+                                <h2>Não possui horários disponíveis</h2>
+                            </div>
+                        }
                     </div>
+                    <Link to = "/psy-list">
+                        <button>Voltar</button>
+                    </Link>
                 </form>
             </div>
         </div>
     );
 }
+
+UserSchedule.propTypes = {
+    match: PropTypes.object,
+};

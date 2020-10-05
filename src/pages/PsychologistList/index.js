@@ -54,7 +54,7 @@ export default function PsychologistList() {
                                               <Accordion.Collapse eventKey="0">
                                                   <div className="cardToggle">
                                                       <p>
-                                                          Bibliografia:{' '}
+                                                          Biografia:{' '}
                                                           {`${psy.bibliography}`}
                                                       </p>
                                                       <Link
