@@ -78,7 +78,7 @@
     .patientTab
     .patientInfos
     .minPatient
-    p:first-of-type {
+    .cardName {
     font: 700 32px Poppins;
 }
 .psychologistListContainer .patientTab .button {

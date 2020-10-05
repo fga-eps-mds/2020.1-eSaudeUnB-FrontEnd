@@ -45,7 +45,7 @@ export default function PsychologistList() {
                                               alt={psy.name}
                                           />
                                           <div className="minPatient">
-                                              <p>
+                                              <p className= "cardName">
                                                   Nome:{' '}
                                                   {`${psy.name} ${psy.lastName}`}
                                               </p>
@@ -97,7 +97,7 @@ export default function PsychologistList() {
                                                   alt={psy.name}
                                               />
                                               <div className="minPatient">
-                                                  <p>
+                                                  <p className= "cardName">
                                                       Nome:{' '}
                                                       {`${psy.name} ${psy.lastName}`}
                                                   </p>
