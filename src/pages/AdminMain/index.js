@@ -13,27 +13,11 @@ export default function AdminMain() {
     const history = useHistory();
 
     useEffect(() => {
-        async function fetchData() {
-            const response = await api.get('/admin/psy/list');
-            setPsyArray(response.data);
-        }
-        fetchData();
+        api.get('/admin/psy/list')
+            .then((response) => {
+                setPsyArray(response.data);
+            });
     }, []);
-
-    // const deletePsychologist = async (email) => {
-    //     setShow(true);
-    //     if (del) {
-    //         await api.delete(`/admin/psy/${email}`);
-    //         const response = await api.get('/admin/psy/list');
-    //         setPsyArray(response.data);
-    //         setShow(false);
-
-    //     } else {
-    //         const response = await api.get('/admin/psy/list');
-    //         setPsyArray(response.data);
-    //         setShow(false);
-    //     }
-    // };
 
     const showConfirmation = (email) => {
         setActualPsyEmail(email);
@@ -84,16 +68,26 @@ export default function AdminMain() {
                 </div>
                 <div className="psychologists-cards">
                     {psyArray.map((psychologist) => (
-                        <article key={psychologist.id}>
-                            <p><strong>Nome: </strong>{`${psychologist.name} ${psychologist.lastName}`}</p>
-                            <p><strong>E-mail:</strong> {psychologist.email}</p>
+                        <article key={psychologist.email}>
                             <p>
-                                <strong>Especialização:</strong> {psychologist.specialization ? (psychologist.specialization) : ('Não informado')}
+                                <strong>Nome: </strong>
+                                {`${psychologist.name} ${psychologist.lastName}`}
                             </p>
+
                             <p>
-                                <strong>Bibliografia:</strong> {psychologist.bibliography ? (psychologist.bibliography) : ('Não informado')}
+                                <strong>E-mail:</strong> {psychologist.email}
                             </p>
-                            <button onClick={() => showConfirmation(psychologist.email)}>Excluir Psicólogo</button>
+
+                            <p>
+                                <strong>Especialização:</strong>
+                                {psychologist.specialization
+                                    ? (psychologist.specialization)
+                                    : ('Não informado')}
+                            </p>
+                            <button
+                                onClick={() => showConfirmation(psychologist.email)}
+                            >
+                                Excluir Psicólogo</button>
                         </article>
                     ))}
                 </div>

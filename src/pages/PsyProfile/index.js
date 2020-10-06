@@ -19,7 +19,7 @@ export default function PsyProfile(props) {
     const [specialization, setSpecialization] = useState('');
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
-    const [bibliography, setBibliography] = useState('');
+    const [biography, setBiography] = useState('');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -33,13 +33,57 @@ export default function PsyProfile(props) {
         history.push('/');
     }
 
+    function handleWrongField(field) {
+        setShow(true);
+        setVariant('danger');
+
+        if (field === 'name') {
+            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+        }
+        if (field === 'lastName') {
+            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+        }
+        if (field === 'email') {
+            return setAlertText('O campo "Email" não está preenchido corretamente.');
+        }
+        if (field === 'specialization') {
+            return setAlertText('O campo "Especialização" não está preenchido corretamente.');
+        }
+        if (field === 'biography') {
+            return setAlertText('O campo "Biografia" não está preenchido corretamente.');
+        }
+        if (field === 'gender') {
+            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
+        }
+        if (field === 'phone') {
+            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
+        }
+        if (field === 'bond') {
+            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
+        }
+    }
+
     async function updateInfos(event) {
         try {
             event.preventDefault();
 
             const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
-                name, lastName, email, phone, specialization, gender, bond, bibliography,
+                name, lastName, email, phone, specialization, gender, bond, biography,
             });
+
+            if (response.status === 203) {
+                const field = response.data.error.details[0].path[0];
+                handleWrongField(field);
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push({
+                    pathname: '/psy-profile',
+                    state: {
+                        data: response.data.value,
+                    },
+                });
+            }
 
             if (response.status === 200) {
                 history.push({
@@ -77,7 +121,7 @@ export default function PsyProfile(props) {
                 setSpecialization(response.data.specialization);
                 setGender(response.data.gender);
                 setBond(response.data.bond);
-                setBibliography(response.data.bibliography);
+                setBiography(response.data.biography);
             }
         } catch (err) {
             setShow(true);
@@ -91,13 +135,13 @@ export default function PsyProfile(props) {
 
     return (
         <>
-            <NavBar />
+            <NavBar bond="Psychologist" actualUser={props.location.state.data} />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -119,15 +163,15 @@ export default function PsyProfile(props) {
 
                                     <div className="selects">
 
-                                        <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                                            <option value="">Gênero</option>
+                                        <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
+                                            <option value="" disabled>Gênero</option>
                                             <option value="F" >Feminino</option>
                                             <option value="M">Masculino</option>
                                             <option value="I">Não Identificar</option>
                                         </select>
 
-                                        <select name="bond" onChange={(e) => setBond(e.target.value)}>
-                                            <option value="">Vínculo</option>
+                                        <select name="bond" value={bond} onChange={(e) => setBond(e.target.value)}>
+                                            <option value="" disabled>Vínculo</option>
                                             <option value="graduando">Graduando</option>
                                             <option value="posGraduando">Pós-Graduando</option>
                                             <option value="professor">Professor</option>
@@ -156,8 +200,8 @@ export default function PsyProfile(props) {
                             </div>
                             <textarea
                                 maxLength="300"
-                                value={bibliography}
-                                onChange={(e) => setBibliography(e.target.value)}
+                                value={biography}
+                                onChange={(e) => setBiography(e.target.value)}
                                 placeholder="Por favor adicione uma curta biografia ao seu perfil.(até 300 caracteres)"
                             />
 
@@ -169,8 +213,18 @@ export default function PsyProfile(props) {
                     </div>
 
                     <div className="secondColumn" >
-                        <Link className="link" to="/" >Configurar meu cronograma</Link>
-                        <Link className="link" to="/" >Alterar Senha</Link>
+                        <Link
+                            className="link"
+                            to={{
+                                pathname: "/psychology/schedule",
+                                state: {
+                                    data: props.location.state.data,
+                                }
+                            }}
+                        >
+                            Configurar meu cronograma
+                        </Link>
+                        {/* <Link className="link" to="/" >Alterar Senha</Link> */}
                     </div>
                 </div>
             </div>

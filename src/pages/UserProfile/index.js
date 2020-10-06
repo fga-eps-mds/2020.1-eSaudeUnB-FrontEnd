@@ -34,6 +34,39 @@ export default function UserProfile(props) {
         history.push('/');
     }
 
+    function handleWrongField(field) {
+        setShow(true);
+        setVariant('danger');
+
+        if (field === 'name') {
+            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+        }
+        if (field === 'lastName') {
+            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+        }
+        if (field === 'email') {
+            return setAlertText('O campo "Email" não está preenchido corretamente.');
+        }
+        if (field === 'phone') {
+            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
+        }
+        if (field === 'unbRegistration') {
+            return setAlertText('O campo "Matrícula" não está preenchido corretamente.');
+        }
+        if (field === 'gender') {
+            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
+        }
+        if (field === 'bond') {
+            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
+        }
+        if (field === 'religion') {
+            return setAlertText('O campo "Religião" não está preenchido corretamente.');
+        }
+        if (field === 'civilStatus') {
+            return setAlertText('O campo "Estado Civil" não está preenchido corretamente.');
+        }
+    }
+
     async function updateInfos(event) {
         try {
             event.preventDefault();
@@ -41,6 +74,20 @@ export default function UserProfile(props) {
             const response = await api.put(`/userUpdate/${props.location.state.data.email}`, {
                 name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
             });
+
+            if (response.status === 203) {
+                const field = response.data.error.details[0].path[0];
+                handleWrongField(field);
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push({
+                    pathname: '/profile',
+                    state: {
+                        data: response.data.value,
+                    },
+                });
+            }
 
             if (response.status === 200) {
                 history.push({
@@ -93,13 +140,13 @@ export default function UserProfile(props) {
 
     return (
         <>
-            <NavBar />
+            <NavBar actualUser={props.location.state.data} />
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="profile">
                         <img className="userIcon" src={userIcon} alt="icone de usuario" />
@@ -119,15 +166,15 @@ export default function UserProfile(props) {
 
                             <div className="selects">
 
-                                <select name="gender" onChange={(e) => setGender(e.target.value)}>
-                                    <option value="">Gênero</option>
+                                <select name="gender" value={gender ? gender : ""} onChange={(e) => setGender(e.target.value)}>
+                                    <option value="" disabled>Gênero</option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
-                                <select name="bond" onChange={(e) => setBond(e.target.value)}>
-                                    <option value="">Vínculo</option>
+                                <select name="bond" value={bond ? bond : ""} onChange={(e) => setBond(e.target.value)}>
+                                    <option value="" disabled>Vínculo</option>
                                     <option value="graduando">Graduando</option>
                                     <option value="posGraduando">Pós-Graduando</option>
                                     <option value="professor">Professor</option>
@@ -135,8 +182,8 @@ export default function UserProfile(props) {
 
                             </div>
 
-                            <select className="selectsLargest" name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
-                                <option value="">Estado Civil</option>
+                            <select className="selectsLargest" value={civilStatus ? civilStatus : "naoInformado"} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
+                                <option value="naoInformado" disabled>Estado Civil</option>
                                 <option value="Solteiro(a)">Solteiro</option>
                                 <option value="Divorciado(a)">Divorciado</option>
                                 <option value="Casado(a)">Casado</option>
@@ -160,12 +207,12 @@ export default function UserProfile(props) {
                                 value={phone}
                                 onChange={setPhone}
                             />
-                            <select className="selectsLargest" name="religion" onChange={(e) => setReligion(e.target.value)}>
-                                <option value="">Religião</option>
-                                <option value="Solteiro">Católico</option>
-                                <option value="Divorciado">Evangélico</option>
-                                <option value="Casado">Espirita</option>
-                                <option value="Viuvo">Outra</option>
+                            <select className="selectsLargest" name="religion" value={religion ? religion : "naoInformado"} onChange={(e) => setReligion(e.target.value)}>
+                                <option value="naoInformado" disabled>Religião</option>
+                                <option value="Catolico">Católico</option>
+                                <option value="Evangolico">Evangélico</option>
+                                <option value="Espirita">Espirita</option>
+                                <option value="outra">Outra</option>
                             </select>
                         </div>
                         <div className="buttons">
