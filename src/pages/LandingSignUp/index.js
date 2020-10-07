@@ -24,6 +24,24 @@ export default function LandingSignUp() {
 
     const history = useHistory();
 
+    function handleWrongField(field) {
+        setShow(true);
+        setVariant('danger');
+
+        if (field === 'name') {
+            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+        }
+        if (field === 'lastName') {
+            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+        }
+        if (field === 'email') {
+            return setAlertText('O campo "Email" não está preenchido corretamente.');
+        }
+        if (field === 'password') {
+            return setAlertText('A senha deve conter no mínimo 8 caracteres, sem dígitos especiais.');
+        }
+    }
+
     async function handleSign(event) {
         try {
             event.preventDefault();
@@ -38,21 +56,38 @@ export default function LandingSignUp() {
             if (!name || !lastName || !email || !password) {
                 setShow(true);
                 setVariant('danger');
-                setAlertText('Os campos não foram preenchidos corretamente.');
-                return;
+                return setAlertText('Os campos não foram preenchidos corretamente.');
             }
 
             if (password !== confirmPassword) {
                 setShow(true);
                 setVariant('danger');
-                setAlertText('As senhas não são iguais.');
-                return;
+                return setAlertText('As senhas não são iguais.');
             }
 
             const response = await api.post('/users', user);
 
+            if (response.status === 203) {
+                const field = response.data.error.details[0].path[0];
+                handleWrongField(field);
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push('/registration');
+            }
+
+            if (response.status === 200) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Email já cadastrado');
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return history.push('/registration');
+            }
+
             if (response.status === 201) {
-                history.push({
+                return history.push({
                     pathname: '/login',
                     state: {
                         data: response.data,
@@ -72,10 +107,15 @@ export default function LandingSignUp() {
     return (
         <div className="signUp01Container">
             {show ? (
-                <Alert className="alert" variant={variant}>{alertText}</Alert>
+                <Alert
+                    className="alert"
+                    variant={variant}
+                >
+                    {alertText}
+                </Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
 
             <div className="content">
                 <Logo />

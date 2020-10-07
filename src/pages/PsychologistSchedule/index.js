@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
@@ -6,20 +6,20 @@ import NavBar from '../../components/NavBar';
 
 import './styles.css';
 
-export default function PsychologistSchedule() {
+export default function PsychologistSchedule(props) {
     const [scheduleItems, setScheduleItems] = useState([]);
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
-    async function handleSchedule() {
-        const Days = await api.post('/calendary/update', {
+    useEffect(() => {
+        api.post('/calendary/update', {
             email: localStorage.getItem('user'),
+        }).then((response) => {
+            setScheduleItems(response.data);
         });
-        setScheduleItems(Days.data);
-    }
-    window.onload = handleSchedule;
+    }, []);
 
     const weekDays = [
         { value: 0, label: 'Domingo' },
@@ -87,6 +87,18 @@ export default function PsychologistSchedule() {
 
     function verifyCalendarData() {
         for (const item of scheduleItems) {
+            if (item.from > item.to) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    'O horario de término não pode ser menor que o de ínicio',
+                );
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return false;
+            }
+
             if (!item.from || !item.to) {
                 setShow(true);
                 setVariant('danger');
@@ -95,7 +107,7 @@ export default function PsychologistSchedule() {
                 );
                 setInterval(() => {
                     setShow(false);
-                }, 5000);
+                }, 3500);
                 return false;
             }
         }
@@ -119,15 +131,15 @@ export default function PsychologistSchedule() {
 
     return (
         <div className="psychologistSchedule">
+            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
-                <NavBar className="navBar" />
+                        <div></div>
+                    )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
@@ -141,7 +153,9 @@ export default function PsychologistSchedule() {
                             {scheduleItems.map((scheduleItem, index) => {
                                 return (
                                     <div
-                                        key={scheduleItem.id}
+                                        key={
+                                            scheduleItem._id || scheduleItem.id
+                                        }
                                         className="schedule-item"
                                     >
                                         <div className="select-box">
@@ -218,7 +232,15 @@ export default function PsychologistSchedule() {
                         </div>
 
                         <footer className="footer">
-                            <Link className="link" to={'/psychology/calendar'}>
+                            <Link
+                                className="link"
+                                to={{
+                                    pathname: '/psychology/calendar',
+                                    state: {
+                                        data: props.location.state.data,
+                                    }
+                                }}
+                            >
                                 Configurações avançadas
                             </Link>
                             <button type="button" onClick={() => putCalendar()}>

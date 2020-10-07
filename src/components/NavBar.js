@@ -1,21 +1,69 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import userIcon from '../assets/images/userIcon.svg';
+import logoQuadrado from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
-export default function NavBar() {
+export default function NavBar(props) {
+
+    const bond = props.bond;
+
+    const actualUser = props.actualUser;
     return (
         <nav className="navBarComponent">
-            <p>e-Saude</p>
-
-            <div className="navLinks">
-                <Link className="a" to="" >Próximos Eventos</Link>
-                <Link className="a" to="" >Lista de Pacientes</Link>
-                <Link className="a" to="" >Perfil</Link>
+            <div className="logo">
+                <img className="logoQuadrado" src={logoQuadrado} alt="icone de usuario" />
             </div>
-
-            <img className="userIcon" src={userIcon} alt="icone de usuario" />
-        </nav>
+            {bond === 'Psychologist' ? (
+                <div className="navLinks">
+                    {/* <Link className="a" to="" >Próximos Eventos</Link> */}
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: "/patient-list",
+                            state: {
+                                data: actualUser,
+                            }
+                        }}
+                    >
+                        Lista de Pacientes
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: "/psy-profile",
+                            state: {
+                                data: actualUser,
+                            }
+                        }}
+                    >
+                        Perfil
+                    </Link>
+                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                </div>)
+                : (<div className="navLinks">
+                    {/* <Link className="a" to="" >Próximos Eventos</Link> */}
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: "/profile",
+                            state: {
+                                data: actualUser,
+                            }
+                        }}
+                    >
+                        Perfil
+                    </Link>
+                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                </div>
+                )}
+        </nav >
     );
 }
+
+NavBar.propTypes = {
+    bond: PropTypes.string,
+    actualUser: PropTypes.object,
+};

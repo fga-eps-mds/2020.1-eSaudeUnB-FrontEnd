@@ -5,30 +5,41 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin:0 0 15px 0;
     padding: 0px 15px 0 15px;
 }
 
-.navBarComponent p {
-    font: 700 3rem Poppins;
-    color: #eee;
+.navBarComponent .logo {
+    width: 20%;
+}
+
+.navBarComponent .logo img {
+    width: 175px;
+    height: 80px;
 }
 
 .navBarComponent .navLinks {
     display: flex;
-    justify-content: space-evenly;
-    width: 35vw;
+    justify-content: flex-end;
+    width: 35%;
     margin-top: 1.8rem;
     margin-left: 49vw;
-
 }
 
 .navBarComponent .navLinks .a {
     text-decoration: none;
+    margin-right: 10%;
     color: #eee;
 }
 
-.navBarComponent .userIcon {
-    height: 46px;
+.navBarComponent .navLinks .a:hover {
+    color: #eeeeee94;
+}
+
+.navBarComponent .navLinks .userIcon {
+    height: 100%;
     width: 46px;
-    margin-top: 1rem;
+    transform: translateY(-30%);
+    top: 0;
+    left: 50%;
 }

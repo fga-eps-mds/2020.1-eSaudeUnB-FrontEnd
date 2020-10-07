@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
@@ -43,10 +44,9 @@ export default function NewSession(props) {
     }
 
     return (
-        <div className="patientRecord">
+        <div className="newSession">
+            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
             <div className="content">
-                <NavBar className="navBar" />
-
                 <div className="patientInfo">
                     <div className="patient">
                         <img className="patientImg" src={userIcon} alt="userIcon" />
@@ -64,19 +64,25 @@ export default function NewSession(props) {
 
                                 <div className="phone">
                                     <span className="prop">Telefone: </span>
-                                    <span>{patient.phone}</span>
+                                    <span>{patient.phone ? patient.phone : 'não informado'}</span>
                                 </div>
                             </div>
 
+                            <div className="hidden">
+                                <span className="prop">Vinculo: </span>
+                                <span>{patient.bond ? patient.bond : 'não informado'}</span>
+
+                                <span className="prop">Matricula: </span>
+                                <span>{patient.unbRegistration ? patient.unbRegistration : 'não informado'}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="patientHistory">
                     <div className="tab">
                         <button id="voltar" className="tabLink"
                             onClick={() => history.push({
-                                pathname: `/patient-list/${patient._id}`,
+                                pathname: `/patient-list/${patient.email}`,
                                 state: { email: patient.email },
                             })}
                         >Voltar</button>
@@ -88,8 +94,8 @@ export default function NewSession(props) {
                                 <h2>Data: 07/SET/2020</h2>
                                 <h2>Encaminhamento: Rede Interna</h2>
 
-                                <h1>Profissional</h1>
                                 <div className="recordText" id="professional">
+                                    <h1>Profissional</h1>
                                     <input
                                         value={professional}
                                         onChange={(e) => setProfessional(e.target.value)}
@@ -97,16 +103,16 @@ export default function NewSession(props) {
                                     />
                                 </div>
 
-                                <h1>Queixa Principal</h1>
                                 <div className="recordText" id="mainComplaint" >
+                                    <h1>Queixa Principal</h1>
                                     <textarea
                                         onChange={(e) => setMainComplaint(e.target.value)}
                                         type="mainComplaint"
                                     />
                                 </div>
 
-                                <h1>Queixa Secundaria</h1>
                                 <div className="recordText" id="secondaryComplaint">
+                                    <h1>Queixa Secundaria</h1>
                                     <textarea
                                         value={secondaryComplaint}
                                         onChange={(e) => setSecondaryComplaint(e.target.value)}
@@ -114,8 +120,8 @@ export default function NewSession(props) {
                                     />
                                 </div>
 
-                                <h1>Evolução das queixas</h1>
                                 <div className="recordText" id="complaintEvolution">
+                                    <h1>Evolução das queixas</h1>
                                     <textarea
                                         value={complaintEvolution}
                                         onChange={(e) => setComplaintEvolution(e.target.value)}
@@ -123,7 +129,7 @@ export default function NewSession(props) {
                                     />
                                 </div>
 
-                                <button className="sendButton" type ="submit">Enviar</button>
+                                <button className="sendButton" type="submit">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -132,3 +138,7 @@ export default function NewSession(props) {
         </div>
     );
 }
+
+NewSession.propTypes = {
+    location: PropTypes.object,
+};

@@ -17,6 +17,7 @@ import PsychologistSchedule from './pages/PsychologistSchedule';
 import PsychologistCalendar from './pages/PsychologistCalendar';
 import PsychologistList from './pages/PsychologistList';
 import userSchedule from './pages/UserSchedule';
+import NotFound from './pages/NotFound';
 
 export default function Routes() {
     return (
@@ -33,11 +34,21 @@ export default function Routes() {
                 <Route path="/psy-profile" component={PsyProfile} />
                 <Route path="/patient-list" exact component={PatientList} />
                 <Route path="/psy-list" exact component={PsychologistList} />
-                <Route path="/psy-list/schedule/:email" component={userSchedule} />
+                <Route
+                    path="/psy-list/schedule/:email"
+                    component={userSchedule}
+                />
                 <Route path="/patient-list/:email" component={PatientRecord} />
-                <Route path="/psychology/schedule" component={PsychologistSchedule} />
-                <Route path="/psychology/calendar" component={PsychologistCalendar} />
+                <Route
+                    path="/psychology/schedule"
+                    component={PsychologistSchedule}
+                />
+                <Route
+                    path="/psychology/calendar"
+                    component={PsychologistCalendar}
+                />
                 <Route path="/new" component={NewSession} />
+                <Route path="*" component={NotFound} />
             </Switch>
         </BrowserRouter>
     );
