@@ -114,8 +114,8 @@ export default function LandingSignUp() {
                     {alertText}
                 </Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
 
             <div className="content">
                 <Logo />

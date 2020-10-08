@@ -140,8 +140,8 @@ export default function PsyProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -216,10 +216,10 @@ export default function PsyProfile(props) {
                         <Link
                             className="link"
                             to={{
-                                pathname: "/psychology/schedule",
+                                pathname: '/psychology/schedule',
                                 state: {
                                     data: props.location.state.data,
-                                }
+                                },
                             }}
                         >
                             Configurar meu cronograma

@@ -75,7 +75,9 @@ export default function PsychologistSchedule(props) {
 
         setScheduleItems([
             ...scheduleItems,
-            { weekDay: 0, from: '', to: '', id: ID },
+            {
+                weekDay: 0, from: '', to: '', id: ID,
+            },
         ]);
     }
 
@@ -138,8 +140,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
@@ -150,85 +152,77 @@ export default function PsychologistSchedule(props) {
                         </legend>
 
                         <div className="schedule">
-                            {scheduleItems.map((scheduleItem, index) => {
-                                return (
-                                    <div
-                                        key={
-                                            scheduleItem._id || scheduleItem.id
-                                        }
-                                        className="schedule-item"
-                                    >
-                                        <div className="select-box">
-                                            <label>Dia da Semana</label>
-                                            <select
-                                                value={scheduleItem.weekDay}
-                                                name="weekDay"
-                                                label="Dia da semana"
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'weekDay',
-                                                        e.target.value,
-                                                    )
-                                                }
-                                            >
-                                                {weekDays.map((option) => {
-                                                    return (
-                                                        <option
-                                                            key={option.value}
-                                                            value={option.value}
-                                                        >
-                                                            {option.label}
-                                                        </option>
-                                                    );
-                                                })}
-                                            </select>
-                                        </div>
-
-                                        <div className="input-box">
-                                            <label>Das</label>
-                                            <input
-                                                name="from"
-                                                label="Das"
-                                                type="time"
-                                                value={scheduleItem.from}
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'from',
-                                                        e.target.value,
-                                                    )
-                                                }
-                                            />
-                                        </div>
-
-                                        <div className="input-box">
-                                            <label>Até</label>
-                                            <input
-                                                name="to"
-                                                label="Até"
-                                                type="time"
-                                                value={scheduleItem.to}
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'to',
-                                                        e.target.value,
-                                                    )
-                                                }
-                                            />
-                                        </div>
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                removeScheduleItem(index)
+                            {scheduleItems.map((scheduleItem, index) => (
+                                <div
+                                    key={
+                                        scheduleItem._id || scheduleItem.id
+                                    }
+                                    className="schedule-item"
+                                >
+                                    <div className="select-box">
+                                        <label>Dia da Semana</label>
+                                        <select
+                                            value={scheduleItem.weekDay}
+                                            name="weekDay"
+                                            label="Dia da semana"
+                                            onChange={(e) => setScheduleItemsValue(
+                                                index,
+                                                'weekDay',
+                                                e.target.value,
+                                            )
                                             }
                                         >
-                                            Remover
-                                        </button>
+                                            {weekDays.map((option) => (
+                                                <option
+                                                    key={option.value}
+                                                    value={option.value}
+                                                >
+                                                    {option.label}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
-                                );
-                            })}
+
+                                    <div className="input-box">
+                                        <label>Das</label>
+                                        <input
+                                            name="from"
+                                            label="Das"
+                                            type="time"
+                                            value={scheduleItem.from}
+                                            onChange={(e) => setScheduleItemsValue(
+                                                index,
+                                                'from',
+                                                e.target.value,
+                                            )
+                                            }
+                                        />
+                                    </div>
+
+                                    <div className="input-box">
+                                        <label>Até</label>
+                                        <input
+                                            name="to"
+                                            label="Até"
+                                            type="time"
+                                            value={scheduleItem.to}
+                                            onChange={(e) => setScheduleItemsValue(
+                                                index,
+                                                'to',
+                                                e.target.value,
+                                            )
+                                            }
+                                        />
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => removeScheduleItem(index)
+                                        }
+                                    >
+                                            Remover
+                                    </button>
+                                </div>
+                            ))}
                         </div>
 
                         <footer className="footer">
@@ -238,7 +232,7 @@ export default function PsychologistSchedule(props) {
                                     pathname: '/psychology/calendar',
                                     state: {
                                         data: props.location.state.data,
-                                    }
+                                    },
                                 }}
                             >
                                 Configurações avançadas

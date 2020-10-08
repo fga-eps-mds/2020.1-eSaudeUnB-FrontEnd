@@ -7,10 +7,9 @@ import logoQuadrado from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
 export default function NavBar(props) {
+    const { bond } = props;
 
-    const bond = props.bond;
-
-    const actualUser = props.actualUser;
+    const { actualUser } = props;
     return (
         <nav className="navBarComponent">
             <div className="logo">
@@ -22,10 +21,10 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: "/patient-list",
+                            pathname: '/patient-list',
                             state: {
                                 data: actualUser,
-                            }
+                            },
                         }}
                     >
                         Lista de Pacientes
@@ -33,10 +32,10 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: "/psy-profile",
+                            pathname: '/psy-profile',
                             state: {
                                 data: actualUser,
-                            }
+                            },
                         }}
                     >
                         Perfil
@@ -48,10 +47,10 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: "/profile",
+                            pathname: '/profile',
                             state: {
                                 data: actualUser,
-                            }
+                            },
                         }}
                     >
                         Perfil

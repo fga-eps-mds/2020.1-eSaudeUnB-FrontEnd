@@ -145,8 +145,8 @@ export default function UserProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="profile">
                         <img className="userIcon" src={userIcon} alt="icone de usuario" />
@@ -166,14 +166,14 @@ export default function UserProfile(props) {
 
                             <div className="selects">
 
-                                <select name="gender" value={gender ? gender : ""} onChange={(e) => setGender(e.target.value)}>
+                                <select name="gender" value={gender || ''} onChange={(e) => setGender(e.target.value)}>
                                     <option value="" disabled>Gênero</option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
-                                <select name="bond" value={bond ? bond : ""} onChange={(e) => setBond(e.target.value)}>
+                                <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
                                     <option value="" disabled>Vínculo</option>
                                     <option value="graduando">Graduando</option>
                                     <option value="posGraduando">Pós-Graduando</option>
@@ -182,7 +182,7 @@ export default function UserProfile(props) {
 
                             </div>
 
-                            <select className="selectsLargest" value={civilStatus ? civilStatus : "naoInformado"} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
+                            <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
                                 <option value="naoInformado" disabled>Estado Civil</option>
                                 <option value="Solteiro(a)">Solteiro</option>
                                 <option value="Divorciado(a)">Divorciado</option>
@@ -207,7 +207,7 @@ export default function UserProfile(props) {
                                 value={phone}
                                 onChange={setPhone}
                             />
-                            <select className="selectsLargest" name="religion" value={religion ? religion : "naoInformado"} onChange={(e) => setReligion(e.target.value)}>
+                            <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
                                 <option value="naoInformado" disabled>Religião</option>
                                 <option value="Catolico">Católico</option>
                                 <option value="Evangolico">Evangélico</option>

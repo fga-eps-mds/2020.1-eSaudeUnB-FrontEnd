@@ -1,5 +1,6 @@
 {
     "env": {
+        "es6": true,
         "browser": true
     },
     "extends": [
@@ -10,7 +11,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 8,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "plugins": [
@@ -19,6 +20,7 @@
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "indent": ["error", 4],
-        "arrow-parens": ["error", "always"]
+        "arrow-parens": ["error", "always"],
+        "no-underscore-dangle": ["error", { "allow": ["_id"] }]
     }
 }

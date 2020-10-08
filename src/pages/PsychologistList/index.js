@@ -36,99 +36,99 @@ export default function PsychologistList() {
                 <div className="psy">
                     {!search
                         ? psychologist.map((psy) => (
-                              <Accordion>
-                                  <div key={psy.email} className="patientTab">
-                                      <div className="patientInfos">
-                                          <img
-                                              className="patientImg"
-                                              src={userIcon}
-                                              alt={psy.name}
-                                          />
-                                          <div className="minPatient">
-                                              <p className= "cardName">
+                            <Accordion>
+                                <div key={psy.email} className="patientTab">
+                                    <div className="patientInfos">
+                                        <img
+                                            className="patientImg"
+                                            src={userIcon}
+                                            alt={psy.name}
+                                        />
+                                        <div className="minPatient">
+                                            <p className= "cardName">
                                                   Nome:{' '}
-                                                  {`${psy.name} ${psy.lastName}`}
-                                              </p>
-                                              <p>email: {psy.email}</p>
+                                                {`${psy.name} ${psy.lastName}`}
+                                            </p>
+                                            <p>email: {psy.email}</p>
 
-                                              <Accordion.Collapse eventKey="0">
-                                                  <div className="cardToggle">
-                                                      <p>
+                                            <Accordion.Collapse eventKey="0">
+                                                <div className="cardToggle">
+                                                    <p>
                                                           Biografia:{' '}
-                                                          {`${psy.bibliography}`}
-                                                      </p>
-                                                      <Link
-                                                          to={`/psy-list/schedule/${psy.email}`}
-                                                      >
-                                                          <button>
+                                                        {`${psy.bibliography}`}
+                                                    </p>
+                                                    <Link
+                                                        to={`/psy-list/schedule/${psy.email}`}
+                                                    >
+                                                        <button>
                                                               Agendar
                                                               atendimento
-                                                          </button>
-                                                      </Link>
-                                                  </div>
-                                              </Accordion.Collapse>
-                                          </div>
-                                      </div>
-                                      <Accordion.Toggle eventKey="0">
-                                          <Link className='button' to={'#'}>
-                                              <img src={go} alt="go" />{' '}
-                                          </Link>
-                                      </Accordion.Toggle>
-                                  </div>
-                              </Accordion>
-                          ))
+                                                        </button>
+                                                    </Link>
+                                                </div>
+                                            </Accordion.Collapse>
+                                        </div>
+                                    </div>
+                                    <Accordion.Toggle eventKey="0">
+                                        <Link className='button' to={'#'}>
+                                            <img src={go} alt="go" />{' '}
+                                        </Link>
+                                    </Accordion.Toggle>
+                                </div>
+                            </Accordion>
+                        ))
                         : psychologist
-                              .filter((psy) => {
-                                  const fullName = `${psy.name} ${psy.lastName}`;
-                                  return fullName
-                                      .toUpperCase()
-                                      .includes(search.toUpperCase());
-                              })
-                              .map((psy) => (
-                                  <Accordion>
-                                      <div
-                                          key={psy.email}
-                                          className="patientTab"
-                                      >
-                                          <div className="patientInfos">
-                                              <img
-                                                  className="patientImg"
-                                                  src={userIcon}
-                                                  alt={psy.name}
-                                              />
-                                              <div className="minPatient">
-                                                  <p className= "cardName">
+                            .filter((psy) => {
+                                const fullName = `${psy.name} ${psy.lastName}`;
+                                return fullName
+                                    .toUpperCase()
+                                    .includes(search.toUpperCase());
+                            })
+                            .map((psy) => (
+                                <Accordion>
+                                    <div
+                                        key={psy.email}
+                                        className="patientTab"
+                                    >
+                                        <div className="patientInfos">
+                                            <img
+                                                className="patientImg"
+                                                src={userIcon}
+                                                alt={psy.name}
+                                            />
+                                            <div className="minPatient">
+                                                <p className= "cardName">
                                                       Nome:{' '}
-                                                      {`${psy.name} ${psy.lastName}`}
-                                                  </p>
-                                                  <p>email: {psy.email}</p>
+                                                    {`${psy.name} ${psy.lastName}`}
+                                                </p>
+                                                <p>email: {psy.email}</p>
 
-                                                  <Accordion.Collapse eventKey="0">
-                                                      <div className="cardToggle">
-                                                          <p>
+                                                <Accordion.Collapse eventKey="0">
+                                                    <div className="cardToggle">
+                                                        <p>
                                                               Bibliografia:{' '}
-                                                              {`${psy.bibliography}`}
-                                                          </p>
-                                                          <Link
-                                                              to={`/psy-list/schedule/${psy.email}`}
-                                                          >
-                                                              <button>
+                                                            {`${psy.bibliography}`}
+                                                        </p>
+                                                        <Link
+                                                            to={`/psy-list/schedule/${psy.email}`}
+                                                        >
+                                                            <button>
                                                                   Agendar
                                                                   atendimento
-                                                              </button>
-                                                          </Link>
-                                                      </div>
-                                                  </Accordion.Collapse>
-                                              </div>
-                                          </div>
-                                          <Accordion.Toggle eventKey="0">
-                                              <Link className='button' to={'#'}>
-                                                  <img src={go} alt="go" />{' '}
-                                              </Link>
-                                          </Accordion.Toggle>
-                                      </div>
-                                  </Accordion>
-                              ))}
+                                                            </button>
+                                                        </Link>
+                                                    </div>
+                                                </Accordion.Collapse>
+                                            </div>
+                                        </div>
+                                        <Accordion.Toggle eventKey="0">
+                                            <Link className='button' to={'#'}>
+                                                <img src={go} alt="go" />{' '}
+                                            </Link>
+                                        </Accordion.Toggle>
+                                    </div>
+                                </Accordion>
+                            ))}
                 </div>
             </div>
         </div>

@@ -84,7 +84,7 @@ export default function PsychologistCalendar(props) {
                                     <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
                                         ? `0${restrict.month + 1}`
                                         : `${restrict.month + 1}`
-                                        }/${restrict.year}`}</span>
+                                    }/${restrict.year}`}</span>
                                     <button
                                         type="button"
                                         onClick={() => removeRestrict(index)}
