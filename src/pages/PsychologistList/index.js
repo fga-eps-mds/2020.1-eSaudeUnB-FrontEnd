@@ -24,8 +24,8 @@ export default function PsychologistList() {
 
     return (
         <div className="psychologistListContainer">
+            <NavBar className="navBar" />
             <div className="content">
-                <NavBar className="navBar" />
                 <SearchBar
                     className="searchBar"
                     value={search}
@@ -55,7 +55,7 @@ export default function PsychologistList() {
                                                 <div className="cardToggle">
                                                     <p>
                                                           Biografia:{' '}
-                                                        {`${psy.bibliography}`}
+                                                        {`${psy.biography}`}
                                                     </p>
                                                     <Link
                                                         to={`/psy-list/schedule/${psy.email}`}

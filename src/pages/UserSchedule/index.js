@@ -42,8 +42,8 @@ export default function UserSchedule(props) {
     }, [props]);
     return (
         <div className="userScheduleContainer">
-            <div className="content">
-                <NavBar />
+            <NavBar />
+            <div className="content"> 
                 <form className="forms">
                     <h1>Dias de atendimento</h1>
                     <div className="times">
