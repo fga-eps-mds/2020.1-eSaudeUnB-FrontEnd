@@ -47,7 +47,7 @@ export default function LandingLogin() {
 
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
                     history.push({
-                        pathname: '/psy-profile',
+                        pathname: '/psychologist/profile',
                         state: {
                             data: responsePsy.data,
                         },
@@ -103,8 +103,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="content">
                 <Logo />
 

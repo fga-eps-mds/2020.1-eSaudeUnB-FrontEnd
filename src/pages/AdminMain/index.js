@@ -50,11 +50,11 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="psychologist-list">
                 <div className="nav">
-                    <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
+                    <button className="new-psychologist" onClick={() => history.push('/admin/psychologist/create')}>
                         Cadastrar novo Psicólogo
                     </button>
                     <div className="count">
@@ -62,7 +62,7 @@ export default function AdminMain() {
                             Psicólogos cadastrados: {psyArray.length}
                         </p>
                     </div>
-                    <button className="get-out" onClick={() => history.push('/admin/login')}>
+                    <button className="get-out" onClick={() => history.push('/admin')}>
                         Sair
                     </button>
                 </div>

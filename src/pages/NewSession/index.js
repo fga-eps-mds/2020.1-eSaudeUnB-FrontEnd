@@ -38,8 +38,11 @@ export default function NewSession(props) {
         });
 
         history.push({
-            pathname: `patient-list/${patient.email}`,
-            state: { email },
+            pathname: `patient/list/${patient.email}`,
+            state: {
+                email,
+                data: props.location.state.data,
+            },
         });
     }
 
@@ -82,7 +85,7 @@ export default function NewSession(props) {
                     <div className="tab">
                         <button id="voltar" className="tabLink"
                             onClick={() => history.push({
-                                pathname: `/patient-list/${patient.email}`,
+                                pathname: `/patient/list/${patient.email}`,
                                 state: { email: patient.email },
                             })}
                         >Voltar</button>

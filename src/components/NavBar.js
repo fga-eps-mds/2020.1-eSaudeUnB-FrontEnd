@@ -21,7 +21,7 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: '/patient-list',
+                            pathname: '/patient/list',
                             state: {
                                 data: actualUser,
                             },
@@ -32,7 +32,7 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: '/psy-profile',
+                            pathname: '/psychologist/profile',
                             state: {
                                 data: actualUser,
                             },
@@ -47,7 +47,7 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: '/psy-list',
+                            pathname: '/psychologist/list',
                             state: {
                                 data: actualUser,
                             },

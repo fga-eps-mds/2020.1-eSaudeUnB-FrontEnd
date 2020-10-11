@@ -38,7 +38,7 @@ export default function AdminLogin() {
             }
 
             if (response.status === 200) {
-                history.push('/admin/psy/list');
+                history.push('/admin/psychologist/list');
             }
         } catch (err) {
             setShow(true);
@@ -55,8 +55,8 @@ export default function AdminLogin() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="content">
 
                 <form className="form" onSubmit={handleAdminLogin}>

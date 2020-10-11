@@ -78,7 +78,7 @@ export default function PsyProfile(props) {
                     setShow(false);
                 }, 3500);
                 return history.push({
-                    pathname: '/psy-profile',
+                    pathname: '/psychologist/profile',
                     state: {
                         data: response.data.value,
                     },
@@ -87,7 +87,7 @@ export default function PsyProfile(props) {
 
             if (response.status === 200) {
                 history.push({
-                    pathname: '/psy-profile',
+                    pathname: '/psychologist/profile',
                     state: {
                         data: response.data,
                     },
@@ -140,8 +140,8 @@ export default function PsyProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -216,7 +216,7 @@ export default function PsyProfile(props) {
                         <Link
                             className="link"
                             to={{
-                                pathname: '/psychology/schedule',
+                                pathname: '/psychologist/schedule',
                                 state: {
                                     data: props.location.state.data,
                                 },

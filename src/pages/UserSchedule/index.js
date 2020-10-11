@@ -42,8 +42,8 @@ export default function UserSchedule(props) {
     }, [props]);
     return (
         <div className="userScheduleContainer">
-            <NavBar />
-            <div className="content"> 
+            <NavBar actualUser={props.location.state.data} />
+            <div className="content">
                 <form className="forms">
                     <h1>Dias de atendimento</h1>
                     <div className="times">
@@ -62,7 +62,14 @@ export default function UserSchedule(props) {
                             </div>
                         }
                     </div>
-                    <Link to = '/psy-list'>
+                    <Link
+                        to={{
+                            pathname: '/psychologist/list',
+                            state: {
+                                data: props.location.state.data,
+                            },
+                        }}
+                    >
                         <button>Voltar</button>
                     </Link>
                 </form>

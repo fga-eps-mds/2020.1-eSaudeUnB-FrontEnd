@@ -140,8 +140,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
@@ -219,7 +219,7 @@ export default function PsychologistSchedule(props) {
                                         onClick={() => removeScheduleItem(index)
                                         }
                                     >
-                                            Remover
+                                        Remover
                                     </button>
                                 </div>
                             ))}
@@ -229,7 +229,7 @@ export default function PsychologistSchedule(props) {
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: '/psychology/calendar',
+                                    pathname: '/psychologist/calendar',
                                     state: {
                                         data: props.location.state.data,
                                     },

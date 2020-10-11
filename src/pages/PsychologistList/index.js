@@ -15,16 +15,18 @@ import SearchBar from '../../components/SearchBar';
 export default function PsychologistList(props) {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
+    const [actualUser, setActualUser] = useState({});
 
     useEffect(() => {
         api.get('/admin/psy/list').then((response) => {
             setPsychologist(response.data);
         });
+        setActualUser(props.location.state.data);
     }, []);
 
     return (
         <div className="psychologistListContainer">
-            <NavBar className="navBar" actualUser={props.location.state.data} />
+            <NavBar className="navBar" actualUser={actualUser} />
             <div className="content">
                 <SearchBar
                     className="searchBar"
@@ -58,7 +60,12 @@ export default function PsychologistList(props) {
                                                         {`${psy.biography}`}
                                                     </p>
                                                     <Link
-                                                        to={`/psy-list/schedule/${psy.email}`}
+                                                        to={{
+                                                            pathname: `/psychologist/list/schedule/${psy.email}`,
+                                                            state: {
+                                                                data: actualUser,
+                                                            }
+                                                        }}
                                                     >
                                                         <button>
                                                             Agendar
@@ -70,7 +77,10 @@ export default function PsychologistList(props) {
                                         </div>
                                     </div>
                                     <Accordion.Toggle eventKey="0">
-                                        <Link className='button' to={'#'}>
+                                        <Link
+                                            className='button'
+                                            to={'#'}
+                                        >
                                             <img src={go} alt="go" />{' '}
                                         </Link>
                                     </Accordion.Toggle>
@@ -110,7 +120,12 @@ export default function PsychologistList(props) {
                                                             {`${psy.bibliography}`}
                                                         </p>
                                                         <Link
-                                                            to={`/psy-list/schedule/${psy.email}`}
+                                                            to={{
+                                                                pathname: `/psychologist/list/schedule/${psy.email}`,
+                                                                state: {
+                                                                    data: actualUser,
+                                                                }
+                                                            }}
                                                         >
                                                             <button>
                                                                 Agendar

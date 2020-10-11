@@ -77,7 +77,7 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/admin/psychologist/create');
             }
 
             const response = await api.post('/admin/psy/create', user);
@@ -88,7 +88,7 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/admin/psychologist/create');
             }
 
             if (response.status === 200) {
@@ -98,11 +98,11 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/admin/psychologist/create');
             }
 
             if (response.status === 201) {
-                return history.push('/admin/psy/list');
+                return history.push('/admin/psychologist/list');
             }
         } catch (err) {
             setShow(true);
@@ -119,8 +119,8 @@ export default function PsyCreate() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="psychologist-create">
 
                 <form className="form" onSubmit={handlePsychologistSignUp}>

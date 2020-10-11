@@ -120,7 +120,7 @@ export default function PatientRecord(props) {
                             id="novoAtendimento"
                             className="tabLink"
                             onClick={() => history.push({
-                                pathname: '/new',
+                                pathname: '/new-session',
                                 state: {
                                     email: patient.email,
                                     data: props.location.state.data,
