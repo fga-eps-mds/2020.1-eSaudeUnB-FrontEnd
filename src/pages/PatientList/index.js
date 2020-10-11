@@ -22,6 +22,8 @@ export default function PatientList(props) {
         });
     }, []);
 
+    console.log(patients.filter(() => true).length === 0);
+
     return (
         <div className="patientListContainer">
             <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
@@ -68,22 +70,32 @@ export default function PatientList(props) {
                                             .filter((patient) => {
                                                 const fullName = `${patient.name} ${patient.lastName}`;
                                                 return fullName.toUpperCase().includes(search.toUpperCase());
-                                            })
-                                            .map((patient) => (
-                                                <div key={patient.email} className="patientTab">
-                                                    <div className="patientInfos">
-                                                        <img className="patientImg" src={userIcon} alt={patient.name} />
-                                                        <div className="minPatient">
-                                                            <p>{`${patient.name} ${patient.lastName}`}</p>
-                                                            <p>{patient.email}</p>
-                                                        </div>
-                                                    </div>
+                                            }).length !== 0 ? (
+                                                patients
+                                                    .filter((patient) => {
+                                                        const fullName = `${patient.name} ${patient.lastName}`;
+                                                        return fullName.toUpperCase().includes(search.toUpperCase());
+                                                    })
+                                                    .map((patient) => (
+                                                        <div key={patient.email} className="patientTab">
+                                                            <div className="patientInfos">
+                                                                <img className="patientImg" src={userIcon} alt={patient.name} />
+                                                                <div className="minPatient">
+                                                                    <p>{`${patient.name} ${patient.lastName}`}</p>
+                                                                    <p>{patient.email}</p>
+                                                                </div>
+                                                            </div>
 
-                                                    <Link className="button" to={`/patient/list/${patient.email}`}>
-                                                        <img src={go} alt="go" />{' '}
-                                                    </Link>
+                                                            <Link className="button" to={`/patient/list/${patient.email}`}>
+                                                                <img src={go} alt="go" />{' '}
+                                                            </Link>
+                                                        </div>
+                                                    ))
+                                            ) : (
+                                                <div className="patientTab noPatients">
+                                                    Não há pacientes cadastrados com esse nome
                                                 </div>
-                                            ))
+                                            )
                                     )
                             )
                     }
