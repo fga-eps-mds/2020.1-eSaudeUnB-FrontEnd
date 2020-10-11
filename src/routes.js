@@ -8,11 +8,11 @@ import LandingSignUp from './pages/LandingSignUp';
 import UserProfile from './pages/UserProfile';
 import LoginAdmin from './pages/LoginAdmin';
 import AdminMain from './pages/AdminMain';
-import PsyCreate from './pages/PsyCreate';
+import PsychologistCreate from './pages/PsychologistCreate';
 import PatientList from './pages/PatientList';
 import PatientRecord from './pages/PatientRecord';
 import NewSession from './pages/NewSession';
-import PsyProfile from './pages/PsyProfile';
+import PsychologistProfile from './pages/PsychologistProfile';
 import PsychologistSchedule from './pages/PsychologistSchedule';
 import PsychologistCalendar from './pages/PsychologistCalendar';
 import PsychologistList from './pages/PsychologistList';
@@ -30,8 +30,8 @@ export default function Routes() {
                 <Route path="/registration" component={LandingSignUp} />
                 <Route path="/admin" exact component={LoginAdmin} />
                 <Route path="/admin/psychologist/list" component={AdminMain} />
-                <Route path="/admin/psychologist/create" component={PsyCreate} />
-                <Route path="/psychologist/profile" component={PsyProfile} />
+                <Route path="/admin/psychologist/create" component={PsychologistCreate} />
+                <Route path="/psychologist/profile" component={PsychologistProfile} />
                 <Route path="/patient/list" exact component={PatientList} />
                 <Route path="/psychologist/list" exact component={PsychologistList} />
                 <Route path="/psychologist/list/schedule/:email" component={userSchedule} />
