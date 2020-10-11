@@ -12,7 +12,7 @@ import userIcon from '../../assets/images/userIcon.svg';
 import NavBar from '../../components/NavBar';
 import SearchBar from '../../components/SearchBar';
 
-export default function PsychologistList() {
+export default function PsychologistList(props) {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
 
@@ -24,7 +24,7 @@ export default function PsychologistList() {
 
     return (
         <div className="psychologistListContainer">
-            <NavBar className="navBar" />
+            <NavBar className="navBar" actualUser={props.location.state.data} />
             <div className="content">
                 <SearchBar
                     className="searchBar"
@@ -45,8 +45,8 @@ export default function PsychologistList() {
                                             alt={psy.name}
                                         />
                                         <div className="minPatient">
-                                            <p className= "cardName">
-                                                  Nome:{' '}
+                                            <p className="cardName">
+                                                Nome:{' '}
                                                 {`${psy.name} ${psy.lastName}`}
                                             </p>
                                             <p>email: {psy.email}</p>
@@ -54,15 +54,15 @@ export default function PsychologistList() {
                                             <Accordion.Collapse eventKey="0">
                                                 <div className="cardToggle">
                                                     <p>
-                                                          Biografia:{' '}
+                                                        Biografia:{' '}
                                                         {`${psy.biography}`}
                                                     </p>
                                                     <Link
                                                         to={`/psy-list/schedule/${psy.email}`}
                                                     >
                                                         <button>
-                                                              Agendar
-                                                              atendimento
+                                                            Agendar
+                                                            atendimento
                                                         </button>
                                                     </Link>
                                                 </div>
@@ -97,8 +97,8 @@ export default function PsychologistList() {
                                                 alt={psy.name}
                                             />
                                             <div className="minPatient">
-                                                <p className= "cardName">
-                                                      Nome:{' '}
+                                                <p className="cardName">
+                                                    Nome:{' '}
                                                     {`${psy.name} ${psy.lastName}`}
                                                 </p>
                                                 <p>email: {psy.email}</p>
@@ -106,15 +106,15 @@ export default function PsychologistList() {
                                                 <Accordion.Collapse eventKey="0">
                                                     <div className="cardToggle">
                                                         <p>
-                                                              Bibliografia:{' '}
+                                                            Bibliografia:{' '}
                                                             {`${psy.bibliography}`}
                                                         </p>
                                                         <Link
                                                             to={`/psy-list/schedule/${psy.email}`}
                                                         >
                                                             <button>
-                                                                  Agendar
-                                                                  atendimento
+                                                                Agendar
+                                                                atendimento
                                                             </button>
                                                         </Link>
                                                     </div>
