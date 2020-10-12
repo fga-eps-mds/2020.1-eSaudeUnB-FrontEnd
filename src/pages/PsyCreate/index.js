@@ -91,7 +91,7 @@ export default function PsyCreate() {
                 return history.push('/admin/psy/create');
             }
 
-            if (response.status === 200) {
+            if (response.status === 409) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Email já cadastrado');
