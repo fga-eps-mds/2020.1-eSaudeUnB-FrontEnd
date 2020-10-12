@@ -46,7 +46,7 @@
 .signUp01Container .form .input {
     display: flex;
     border-bottom: 3px solid #0459AE;
-    margin-bottom: 40px;
+    
 }
 
 .signUp01Container .form input {
@@ -97,4 +97,14 @@
 
     font-size: 24px;
     line-height: 36px;
+}
+.signUp01Container .form .alertContent{
+    height: 30px;
+}
+
+.signUp01Container .form p {
+    color:red;
+    text-align: left;
+    width: 320px;
+    font-size: 14px;
 }
