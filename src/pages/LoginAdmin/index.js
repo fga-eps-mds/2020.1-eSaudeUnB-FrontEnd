@@ -38,7 +38,7 @@ export default function AdminLogin() {
             }
 
             if (response.status === 200) {
-                history.push('/admin/psy/list');
+                history.push('/psychologists');
             }
         } catch (err) {
             setShow(true);

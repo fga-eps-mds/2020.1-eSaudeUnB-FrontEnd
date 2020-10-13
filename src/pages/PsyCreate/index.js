@@ -77,10 +77,10 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/psychologist');
             }
 
-            const response = await api.post('/admin/psy/create', user);
+            const response = await api.post('/psychologist', user);
 
             if (response.status === 203) {
                 const field = response.data.error.details[0].path[0];
@@ -88,7 +88,7 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/psychologist');
             }
 
             if (response.status === 409) {
@@ -98,11 +98,11 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/psychologist');
             }
 
             if (response.status === 201) {
-                return history.push('/admin/psy/list');
+                return history.push('/psychologists');
             }
         } catch (err) {
             setShow(true);

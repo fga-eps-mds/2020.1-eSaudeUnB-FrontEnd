@@ -111,7 +111,7 @@ export default function PsyProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.get(`/psy/${props.location.state.data.email}`);
+            const response = await api.get(`/psychologist/${props.location.state.data.email}`);
 
             if (response.status === 200) {
                 setEmail(response.data.email);

@@ -13,7 +13,7 @@ export default function AdminMain() {
     const history = useHistory();
 
     useEffect(() => {
-        api.get('/admin/psy/list')
+        api.get('/psychologists')
             .then((response) => {
                 setPsyArray(response.data);
             });
@@ -25,8 +25,8 @@ export default function AdminMain() {
     };
 
     const deletePsychologist = async () => {
-        await api.delete(`/admin/psy/${actualPsyEmail}`);
-        const response = await api.get('/admin/psy/list');
+        await api.delete(`/psychologist/${actualPsyEmail}`);
+        const response = await api.get('/psychologists');
         setPsyArray(response.data);
         setShow(false);
     };
@@ -54,7 +54,7 @@ export default function AdminMain() {
             )}
             <div className="psychologist-list">
                 <div className="nav">
-                    <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
+                    <button className="new-psychologist" onClick={() => history.push('/psychologist')}>
                         Cadastrar novo Psicólogo
                     </button>
                     <div className="count">

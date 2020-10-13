@@ -35,7 +35,7 @@ export default function UserSchedule(props) {
     ];
     useEffect(() => {
         async function getData() {
-            const response = await api.get(`/psy/${email}`);
+            const response = await api.get(`/psychologist/${email}`);
             setPsychologist(response.data);
         }
         getData();

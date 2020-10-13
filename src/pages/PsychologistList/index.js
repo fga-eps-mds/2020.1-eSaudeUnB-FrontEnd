@@ -17,7 +17,7 @@ export default function PsychologistList() {
     const [psychologist, setPsychologist] = useState([]);
 
     useEffect(() => {
-        api.get('/admin/psy/list').then((response) => {
+        api.get('/psychologists').then((response) => {
             setPsychologist(response.data);
         });
     }, []);
