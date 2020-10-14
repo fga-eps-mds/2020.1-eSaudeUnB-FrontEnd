@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
@@ -140,8 +141,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
@@ -247,3 +248,7 @@ export default function PsychologistSchedule(props) {
         </div>
     );
 }
+
+PsychologistSchedule.propTypes = {
+    location: PropTypes.object,
+};

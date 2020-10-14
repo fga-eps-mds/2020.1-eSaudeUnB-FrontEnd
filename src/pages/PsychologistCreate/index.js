@@ -55,7 +55,7 @@ export default function PsyCreate() {
         }
     }
 
-    async function handlePsychologistSignUp(event) {
+    async function handlePsychologistCreation(event) {
         try {
             event.preventDefault();
 
@@ -104,6 +104,8 @@ export default function PsyCreate() {
             if (response.status === 201) {
                 return history.push('/admin/psychologist/list');
             }
+
+            return false;
         } catch (err) {
             setShow(true);
             setVariant('danger');
@@ -119,11 +121,11 @@ export default function PsyCreate() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="psychologist-create">
 
-                <form className="form" onSubmit={handlePsychologistSignUp}>
+                <form className="form" onSubmit={handlePsychologistCreation}>
                     <img src={userIcon} alt="userIcon" />
                     <div className="psyCreate">
                         <Input

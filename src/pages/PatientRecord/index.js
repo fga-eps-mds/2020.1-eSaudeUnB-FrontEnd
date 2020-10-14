@@ -204,4 +204,5 @@ export default function PatientRecord(props) {
 PatientRecord.propTypes = {
     match: PropTypes.object,
     email: PropTypes.string,
+    location: PropTypes.object,
 };

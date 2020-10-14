@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
@@ -87,7 +88,7 @@ export default function PsychologistCalendar(props) {
                                     <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
                                         ? `0${restrict.month + 1}`
                                         : `${restrict.month + 1}`
-                                        }/${restrict.year}`}</span>
+                                    }/${restrict.year}`}</span>
                                     <button
                                         type="button"
                                         onClick={() => removeRestrict(index)}
@@ -112,7 +113,7 @@ export default function PsychologistCalendar(props) {
                                         state: {
                                             data: props.location.state.data,
                                         },
-                                    })
+                                    });
                                 }
                             }>
                             Voltar
@@ -123,3 +124,7 @@ export default function PsychologistCalendar(props) {
         </div >
     );
 }
+
+PsychologistCalendar.propTypes = {
+    location: PropTypes.object,
+};

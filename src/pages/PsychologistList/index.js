@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Accordion from 'react-bootstrap/Accordion';
 import api from '../../services/api';
 import './styles.css';
@@ -38,8 +39,8 @@ export default function PsychologistList(props) {
                 <div className="psy">
                     {!search
                         ? psychologist.map((psy) => (
-                            <Accordion>
-                                <div key={psy.email} className="patientTab">
+                            <Accordion key={psy.email}>
+                                <div className="patientTab">
                                     <div className="patientInfos">
                                         <img
                                             className="patientImg"
@@ -64,7 +65,7 @@ export default function PsychologistList(props) {
                                                             pathname: `/psychologist/list/schedule/${psy.email}`,
                                                             state: {
                                                                 data: actualUser,
-                                                            }
+                                                            },
                                                         }}
                                                     >
                                                         <button>
@@ -95,9 +96,8 @@ export default function PsychologistList(props) {
                                     .includes(search.toUpperCase());
                             })
                             .map((psy) => (
-                                <Accordion>
+                                <Accordion key={psy.email}>
                                     <div
-                                        key={psy.email}
                                         className="patientTab"
                                     >
                                         <div className="patientInfos">
@@ -124,7 +124,7 @@ export default function PsychologistList(props) {
                                                                 pathname: `/psychologist/list/schedule/${psy.email}`,
                                                                 state: {
                                                                     data: actualUser,
-                                                                }
+                                                                },
                                                             }}
                                                         >
                                                             <button>
@@ -149,3 +149,7 @@ export default function PsychologistList(props) {
         </div>
     );
 }
+
+PsychologistList.propTypes = {
+    location: PropTypes.object,
+};

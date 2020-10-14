@@ -55,8 +55,8 @@ export default function AdminLogin() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
 
                 <form className="form" onSubmit={handleAdminLogin}>

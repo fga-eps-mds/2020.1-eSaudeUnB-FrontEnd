@@ -80,4 +80,5 @@ export default function UserSchedule(props) {
 
 UserSchedule.propTypes = {
     match: PropTypes.object,
+    location: PropTypes.object,
 };
