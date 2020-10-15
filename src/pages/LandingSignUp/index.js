@@ -24,7 +24,10 @@ export default function LandingSignUp() {
     const [alertContentLastName, setAlertContentLastName] = useState(false);
     const [alertContentEmail, setAlertContentEmail] = useState(false);
     const [alertContentPassword, setAlertContentPassword] = useState(false);
-    const [alertContentConfirmPassword, setAlertContentConfirmPassword] = useState(false);
+    const [
+        alertContentConfirmPassword,
+        setAlertContentConfirmPassword,
+    ] = useState(false);
 
     const history = useHistory();
 
@@ -50,7 +53,9 @@ export default function LandingSignUp() {
             if (!name || !lastName || !email || !password) {
                 setShow(true);
                 setVariant('danger');
-                return setAlertText('Os campos não foram preenchidos corretamente.');
+                return setAlertText(
+                    'Os campos não foram preenchidos corretamente.',
+                );
             }
 
             const response = await api.post('/users', user);
@@ -59,7 +64,11 @@ export default function LandingSignUp() {
                 const { details } = response.data.error;
                 closeAlerts();
 
-                for (let value = 0; value < response.data.error.details.length; value + 1) {
+                for (
+                    let value = 0;
+                    value < response.data.error.details.length;
+                    value + 1
+                ) {
                     if (details[value].path[0] === 'name') {
                         setAlertContentName(true);
                     }
@@ -132,10 +141,7 @@ export default function LandingSignUp() {
     return (
         <div className="signUp01Container">
             {show ? (
-                <Alert
-                    className="alert"
-                    variant={variant}
-                >
+                <Alert className="alert" variant={variant}>
                     {alertText}
                 </Alert>
             ) : (
@@ -153,58 +159,82 @@ export default function LandingSignUp() {
                             value={name}
                             onChange={setName}
                         />
-                        {alertContentName
-                            ? <div className="alertContent">
+                        {alertContentName ? (
+                            <div className="alertContent">
                                 <p>Nome precisa possuir mais de 2 letras.</p>
                             </div>
-                            : <div className="alertContent"><p></p></div>}
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
                         />
-                        {alertContentLastName
-                            ? <div className="alertContent">
-                                <p>Sobrenome precisa possuir mais de 2 letras.</p>
+                        {alertContentLastName ? (
+                            <div className="alertContent">
+                                <p>
+                                    Sobrenome precisa possuir mais de 2 letras.
+                                </p>
                             </div>
-                            : <div className="alertContent"><p></p></div>}
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                         <Input
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
                         />
-                        {alertContentEmail
-                            ? <div className="alertContent">
+                        {alertContentEmail ? (
+                            <div className="alertContent">
                                 <p>E-mail não foi preenchido corretamente.</p>
                             </div>
-                            : <div className="alertContent"><p></p></div>}
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                         <Input
                             placeholder="Senha"
                             value={password}
                             onChange={setPassword}
                             type="password"
                         />
-                        {alertContentPassword
-                            ? <div className="alertContent">
+                        {alertContentPassword ? (
+                            <div className="alertContent">
                                 <p>
                                     A senha deve conter no mínimo 8 caracteres,
                                     sem dígitos especiais.
                                 </p>
                             </div>
-                            : <div className="alertContent"><p></p></div>}
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                         <Input
                             placeholder="Confirmar senha"
                             value={confirmPassword}
                             onChange={setConfirmPassword}
                             type="password"
                         />
-                        {alertContentConfirmPassword
-                            ? <div className="alertContent">
+                        {alertContentConfirmPassword ? (
+                            <div className="alertContent">
                                 <p>As senhas não são iguais.</p>
                             </div>
-                            : <div className="alertContent"><p></p></div>}
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                     </div>
-                    <button className="button" type="submit">Registrar</button>
+                    <button className="button" type="submit">
+                        Registrar
+                    </button>
                 </form>
             </div>
         </div>

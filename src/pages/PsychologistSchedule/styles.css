@@ -17,7 +17,7 @@
 }
 
 .psychologistSchedule .content .alert {
-    position: absolute;
+    position: fixed;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
