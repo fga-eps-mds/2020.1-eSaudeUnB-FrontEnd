@@ -23,8 +23,6 @@ export default function PatientList(props) {
         });
     }, []);
 
-    console.log(patients.filter(() => true).length === 0);
-
     return (
         <div className="patientListContainer">
             <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />

@@ -136,6 +136,8 @@ export default function LandingSignUp() {
         setInterval(() => {
             setShow(false);
         }, 2000);
+
+        return 0;
     }
 
     return (

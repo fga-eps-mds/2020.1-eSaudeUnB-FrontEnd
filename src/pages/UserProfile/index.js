@@ -65,6 +65,7 @@ export default function UserProfile(props) {
         if (field === 'civilStatus') {
             return setAlertText('O campo "Estado Civil" não está preenchido corretamente.');
         }
+        return 0;
     }
 
     async function updateInfos(event) {
@@ -109,6 +110,8 @@ export default function UserProfile(props) {
         setInterval(() => {
             setShow(false);
         }, 2000);
+
+        return 0;
     }
 
     async function renderPage(event) {

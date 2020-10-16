@@ -86,7 +86,7 @@ export default function NewSession(props) {
                         <button id="voltar" className="tabLink"
                             onClick={() => history.push({
                                 pathname: `/patient/list/${patient.email}`,
-                                state: { 
+                                state: {
                                     email: patient.email,
                                     data: props.location.state.data,
                                 },

@@ -61,6 +61,7 @@ export default function PsyProfile(props) {
         if (field === 'bond') {
             return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
         }
+        return 0;
     }
 
     async function updateInfos(event) {
@@ -105,6 +106,8 @@ export default function PsyProfile(props) {
         setInterval(() => {
             setShow(false);
         }, 2000);
+
+        return 0;
     }
 
     async function renderPage(event) {

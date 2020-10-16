@@ -53,6 +53,7 @@ export default function PsyCreate() {
         if (field === 'bond') {
             return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
         }
+        return 0;
     }
 
     async function handlePsychologistCreation(event) {
@@ -104,8 +105,6 @@ export default function PsyCreate() {
             if (response.status === 201) {
                 return history.push('/admin/psychologist/list');
             }
-
-            return false;
         } catch (err) {
             setShow(true);
             setVariant('danger');
@@ -114,6 +113,8 @@ export default function PsyCreate() {
         setInterval(() => {
             setShow(false);
         }, 3500);
+
+        return 0;
     }
 
     return (
