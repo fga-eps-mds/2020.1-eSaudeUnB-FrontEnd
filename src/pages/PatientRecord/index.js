@@ -136,7 +136,7 @@ export default function PatientRecord(props) {
                         {tabContent
 
                             ? (<div className="sessions">
-                                {allSessions.length === 0 && <p className="noSession">Você não possui atendimentos anteriores</p>}
+                                {allSessions.length === 0 && <p className="noSession">O paciente não possui atendimentos anteriores</p>}
                                 {allSessions.map((session, index) => (
                                     <div
                                         key={session._id}

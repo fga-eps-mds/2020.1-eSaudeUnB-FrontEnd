@@ -89,6 +89,34 @@ export default function PsychologistSchedule(props) {
     }
 
     function verifyCalendarData() {
+        // for (var i = 0; i < scheduleItems.length; i + 1) {
+        //     console.log(scheduleItems[i]);
+        //     if (scheduleItems[i].from > scheduleItems[i].to) {
+        //         setShow(true);
+        //         setVariant('danger');
+        //         setAlertText(
+        //             'O horario de término não pode ser menor que o de ínicio',
+        //         );
+        //         setInterval(() => {
+        //             setShow(false);
+        //         }, 3500);
+        //         return false;
+        //     }
+
+        //     if (!scheduleItems[i].from || !scheduleItems[i].to) {
+        //         setShow(true);
+        //         setVariant('danger');
+        //         setAlertText(
+        //             'Todos os campos devem ser preenchidos, alterações não foram salvas',
+        //         );
+        //         setInterval(() => {
+        //             setShow(false);
+        //         }, 3500);
+        //         return false;
+        //     }
+        // }
+        // return true;
+
         for (const item of scheduleItems) {
             if (item.from > item.to) {
                 setShow(true);
