@@ -24,10 +24,7 @@ export default function LandingSignUp() {
     const [alertContentLastName, setAlertContentLastName] = useState(false);
     const [alertContentEmail, setAlertContentEmail] = useState(false);
     const [alertContentPassword, setAlertContentPassword] = useState(false);
-    const [
-        alertContentConfirmPassword,
-        setAlertContentConfirmPassword,
-    ] = useState(false);
+    const [alertContentConfirmPassword, setAlertContentConfirmPassword] = useState(false);
 
     const history = useHistory();
 
@@ -64,11 +61,7 @@ export default function LandingSignUp() {
                 const { details } = response.data.error;
                 closeAlerts();
 
-                for (
-                    let value = 0;
-                    value < response.data.error.details.length;
-                    value + 1
-                ) {
+                for (let value = 0; value < response.data.error.details.length; value += 1) {
                     if (details[value].path[0] === 'name') {
                         setAlertContentName(true);
                     }
@@ -86,24 +79,6 @@ export default function LandingSignUp() {
                     }
                 }
 
-                // for (const value in response.data.error.details) {
-                //     if (details[value].path[0] === 'name') {
-                //         setAlertContentName(true);
-                //     }
-                //     if (details[value].path[0] === 'lastName') {
-                //         setAlertContentLastName(true);
-                //     }
-                //     if (details[value].path[0] === 'email') {
-                //         setAlertContentEmail(true);
-                //     }
-                //     if (details[value].path[0] === 'password') {
-                //         setAlertContentPassword(true);
-                //     }
-                //     if (password !== confirmPassword) {
-                //         return setAlertContentConfirmPassword(true);
-                //     }
-                // }
-
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
@@ -116,7 +91,7 @@ export default function LandingSignUp() {
                 setAlertText('Email já cadastrado');
                 setInterval(() => {
                     setShow(false);
-                }, 3500);
+                }, 6500);
                 return history.push('/registration');
             }
 

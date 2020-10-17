@@ -18,42 +18,18 @@ export default function PsyCreate() {
     const [phone] = useState('');
     const [gender, setGender] = useState('');
     const [bond] = useState('Psychologist');
-
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
-
     const history = useHistory();
+    const [alertContentName, setAlertContentName] = useState(false);
+    const [alertContentLastName, setAlertContentLastName] = useState(false);
+    const [alertContentEmail, setAlertContentEmail] = useState(false);
 
-    function handleWrongField(field) {
-        setShow(true);
-        setVariant('danger');
-
-        if (field === 'name') {
-            return setAlertText('O campo "Nome" não está preenchido corretamente.');
-        }
-        if (field === 'lastName') {
-            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
-        }
-        if (field === 'email') {
-            return setAlertText('O campo "Email" não está preenchido corretamente.');
-        }
-        if (field === 'specialization') {
-            return setAlertText('O campo "Especialização" não está preenchido corretamente.');
-        }
-        if (field === 'biography') {
-            return setAlertText('O campo "Biografia" não está preenchido corretamente.');
-        }
-        if (field === 'gender') {
-            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
-        }
-        if (field === 'phone') {
-            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
-        }
-        if (field === 'bond') {
-            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
-        }
-        return 0;
+    function closeAlerts() {
+        setAlertContentName(false);
+        setAlertContentLastName(false);
+        setAlertContentEmail(false);
     }
 
     async function handlePsychologistCreation(event) {
@@ -84,8 +60,21 @@ export default function PsyCreate() {
             const response = await api.post('/admin/psy/create', user);
 
             if (response.status === 203) {
-                const field = response.data.error.details[0].path[0];
-                handleWrongField(field);
+                const { details } = response.data.error;
+                closeAlerts();
+
+                for (let value = 0; value < response.data.error.details.length; value += 1) {
+                    if (details[value].path[0] === 'name') {
+                        setAlertContentName(true);
+                    }
+                    if (details[value].path[0] === 'lastName') {
+                        setAlertContentLastName(true);
+                    }
+                    if (details[value].path[0] === 'email') {
+                        setAlertContentEmail(true);
+                    }
+                }
+
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
@@ -98,7 +87,7 @@ export default function PsyCreate() {
                 setAlertText('Email já cadastrado');
                 setInterval(() => {
                     setShow(false);
-                }, 3500);
+                }, 6500);
                 return history.push('/admin/psychologist/create');
             }
 
@@ -134,12 +123,32 @@ export default function PsyCreate() {
                             value={name}
                             onChange={setName}
                         />
+                        {alertContentName ? (
+                            <div className="alertContent">
+                                <p>Nome precisa possuir mais de 2 letras.</p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
 
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
                         />
+                        {alertContentLastName ? (
+                            <div className="alertContent">
+                                <p>
+                                    Sobrenome precisa possuir mais de 2 letras.
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
 
                         <select name="gender" onChange={(e) => setGender(e.target.value)}>
                             <option value=""> Gênero </option>
@@ -147,19 +156,29 @@ export default function PsyCreate() {
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
                         </select>
+                        <div className="alertContent">
+                            <p></p>
+                        </div>
 
                         <Input
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
                         />
-
+                        {alertContentEmail ? (
+                            <div className="alertContent">
+                                <p>E-mail não foi preenchido corretamente.</p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                         <Input
                             placeholder="Especialidade"
                             value={specialization}
                             onChange={setSpecialization}
                         />
-
                         <button className="button" type="submit">Registrar</button>
                     </div>
                 </form>

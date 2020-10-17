@@ -95,3 +95,13 @@
     top: 0;
     left: 50%;
 }
+.alertContent{
+    margin: 0px;
+}
+.psychologist-container .form p {
+    color: red;
+    text-align: left;
+    width: 400px;
+    height: 20px;
+    font-size: 14px;
+}
