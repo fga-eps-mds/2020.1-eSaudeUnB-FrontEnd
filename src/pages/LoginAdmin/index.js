@@ -23,7 +23,10 @@ export default function AdminLogin() {
         try {
             event.preventDefault();
 
-            const response = await api.post('/admin/login', { email, password });
+            const response = await api.post('/admin/login', {
+                email,
+                password,
+            });
 
             if (response.status === 404 || response.status === 400) {
                 setShow(true);
@@ -34,11 +37,13 @@ export default function AdminLogin() {
             if (response.status === 500) {
                 setShow(true);
                 setVariant('danger');
-                setAlertText('Ocorreu algum erro no seu login, tente novamente.');
+                setAlertText(
+                    'Ocorreu algum erro no seu login, tente novamente.',
+                );
             }
 
             if (response.status === 200) {
-                history.push('/psychologists');
+                history.push('/admin/psy/list');
             }
         } catch (err) {
             setShow(true);
@@ -53,14 +58,19 @@ export default function AdminLogin() {
     return (
         <div className="loginContainer">
             {show ? (
-                <Alert className="alert" variant={variant}>{alertText}</Alert>
+                <Alert className="alert" variant={variant}>
+                    {alertText}
+                </Alert>
             ) : (
                 <div></div>
             )}
             <div className="content">
-
                 <form className="form" onSubmit={handleAdminLogin}>
-                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                    <img
+                        className="userIcon"
+                        src={userIcon}
+                        alt="icone de usuario"
+                    />
                     <h2 className="pageTitle">Login de Administrador</h2>
                     <Input
                         placeholder="Email"
@@ -74,7 +84,9 @@ export default function AdminLogin() {
                         type="password"
                     />
 
-                    <button className="button" type="submit">Entrar</button>
+                    <button className="button" type="submit">
+                        Entrar
+                    </button>
                 </form>
             </div>
         </div>

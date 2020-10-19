@@ -30,28 +30,44 @@ export default function PsyCreate() {
         setVariant('danger');
 
         if (field === 'name') {
-            return setAlertText('O campo "Nome" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Nome" não está preenchido corretamente.',
+            );
         }
         if (field === 'lastName') {
-            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Sobrenome" não está preenchido corretamente.',
+            );
         }
         if (field === 'email') {
-            return setAlertText('O campo "Email" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Email" não está preenchido corretamente.',
+            );
         }
         if (field === 'specialization') {
-            return setAlertText('O campo "Especialização" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Especialização" não está preenchido corretamente.',
+            );
         }
         if (field === 'biography') {
-            return setAlertText('O campo "Biografia" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Biografia" não está preenchido corretamente.',
+            );
         }
         if (field === 'gender') {
-            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Gênero" não está preenchido corretamente.',
+            );
         }
         if (field === 'phone') {
-            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Telefone" não está preenchido corretamente.',
+            );
         }
         if (field === 'bond') {
-            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
+            return setAlertText(
+                'O campo "Vínculo" não está preenchido corretamente.',
+            );
         }
     }
 
@@ -77,7 +93,7 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/psychologist');
+                return history.push('/admin/psy/create');
             }
 
             const response = await api.post('/psychologist', user);
@@ -88,7 +104,7 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/psychologist');
+                return history.push('/admin/psy/list');
             }
 
             if (response.status === 409) {
@@ -98,11 +114,11 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/psychologist');
+                return history.push('/admin/psy/list');
             }
 
             if (response.status === 201) {
-                return history.push('/psychologists');
+                return history.push('/admin/psy/list');
             }
         } catch (err) {
             setShow(true);
@@ -117,12 +133,13 @@ export default function PsyCreate() {
     return (
         <div className="psychologist-container">
             {show ? (
-                <Alert className="alert" variant={variant}>{alertText}</Alert>
+                <Alert className="alert" variant={variant}>
+                    {alertText}
+                </Alert>
             ) : (
                 <div></div>
             )}
             <div className="psychologist-create">
-
                 <form className="form" onSubmit={handlePsychologistSignUp}>
                     <img src={userIcon} alt="userIcon" />
                     <div className="psyCreate">
@@ -138,7 +155,10 @@ export default function PsyCreate() {
                             onChange={setLastName}
                         />
 
-                        <select name="gender" onChange={(e) => setGender(e.target.value)}>
+                        <select
+                            name="gender"
+                            onChange={(e) => setGender(e.target.value)}
+                        >
                             <option value=""> Gênero </option>
                             <option value="F">Feminino</option>
                             <option value="M">Masculino</option>
@@ -157,11 +177,12 @@ export default function PsyCreate() {
                             onChange={setSpecialization}
                         />
 
-                        <button className="button" type="submit">Registrar</button>
+                        <button className="button" type="submit">
+                            Registrar
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
-
     );
 }
