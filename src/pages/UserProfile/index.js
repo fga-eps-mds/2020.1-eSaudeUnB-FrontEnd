@@ -71,7 +71,7 @@ export default function UserProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.put(`/userUpdate/${props.location.state.data.email}`, {
+            const response = await api.put(`/user/${props.location.state.data.email}`, {
                 name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
             });
 

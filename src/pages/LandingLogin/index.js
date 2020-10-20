@@ -24,7 +24,7 @@ export default function LandingLogin() {
         try {
             event.preventDefault();
 
-            const responseUser = await api.post('/loginUser', {
+            const responseUser = await api.post('/login/patient', {
                 email,
                 password,
             });
@@ -40,7 +40,7 @@ export default function LandingLogin() {
             }
         } catch (err) {
             try {
-                const responsePsy = await api.post('/loginPsy', {
+                const responsePsy = await api.post('/login/psychologist', {
                     email,
                     password,
                 });

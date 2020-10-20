@@ -13,10 +13,9 @@ export default function AdminMain() {
     const history = useHistory();
 
     useEffect(() => {
-        api.get('/admin/psy/list')
-            .then((response) => {
-                setPsyArray(response.data);
-            });
+        api.get('/psychologists').then((response) => {
+            setPsyArray(response.data);
+        });
     }, []);
 
     const showConfirmation = (email) => {
@@ -25,8 +24,8 @@ export default function AdminMain() {
     };
 
     const deletePsychologist = async () => {
-        await api.delete(`/admin/psy/${actualPsyEmail}`);
-        const response = await api.get('/admin/psy/list');
+        await api.delete(`/psychologist/${actualPsyEmail}`);
+        const response = await api.get('/psychologists');
         setPsyArray(response.data);
         setShow(false);
     };
@@ -35,15 +34,23 @@ export default function AdminMain() {
         <div className="list-container">
             {show ? (
                 <header className="alert-component">
-                    <Alert className="alert" variant='secondary'>
+                    <Alert className="alert" variant="secondary">
                         Deseja mesmo excluir este psicólogo?
                         <hr />
                         <div className="d-flex justify-content-end">
-                            <Button className="react-bootstrap-button" onClick={deletePsychologist} variant="outline-success">
+                            <Button
+                                className="react-bootstrap-button"
+                                onClick={deletePsychologist}
+                                variant="outline-success"
+                            >
                                 Sim
                             </Button>
 
-                            <Button className="react-bootstrap-button" onClick={() => setShow(false)} variant="outline-danger">
+                            <Button
+                                className="react-bootstrap-button"
+                                onClick={() => setShow(false)}
+                                variant="outline-danger"
+                            >
                                 Não
                             </Button>
                         </div>
@@ -54,15 +61,19 @@ export default function AdminMain() {
             )}
             <div className="psychologist-list">
                 <div className="nav">
-                    <button className="new-psychologist" onClick={() => history.push('/admin/psy/create')}>
+                    <button
+                        className="new-psychologist"
+                        onClick={() => history.push('/admin/psy/create')}
+                    >
                         Cadastrar novo Psicólogo
                     </button>
                     <div className="count">
-                        <p>
-                            Psicólogos cadastrados: {psyArray.length}
-                        </p>
+                        <p>Psicólogos cadastrados: {psyArray.length}</p>
                     </div>
-                    <button className="get-out" onClick={() => history.push('/admin/login')}>
+                    <button
+                        className="get-out"
+                        onClick={() => history.push('/admin/login')}
+                    >
                         Sair
                     </button>
                 </div>
@@ -81,13 +92,16 @@ export default function AdminMain() {
                             <p>
                                 <strong>Especialização:</strong>
                                 {psychologist.specialization
-                                    ? (psychologist.specialization)
-                                    : ('Não informado')}
+                                    ? psychologist.specialization
+                                    : 'Não informado'}
                             </p>
                             <button
-                                onClick={() => showConfirmation(psychologist.email)}
+                                onClick={() =>
+                                    showConfirmation(psychologist.email)
+                                }
                             >
-                                Excluir Psicólogo</button>
+                                Excluir Psicólogo
+                            </button>
                         </article>
                     ))}
                 </div>

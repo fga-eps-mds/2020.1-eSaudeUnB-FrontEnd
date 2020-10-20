@@ -76,7 +76,7 @@ export default function LandingSignUp() {
                 return history.push('/registration');
             }
 
-            if (response.status === 200) {
+            if (response.status === 409) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Email já cadastrado');
