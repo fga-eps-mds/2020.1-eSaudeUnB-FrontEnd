@@ -28,44 +28,32 @@ export default function UserProfile(props) {
 
     const history = useHistory();
 
+    const [alertContentName, setAlertContentName] = useState(false);
+    const [alertContentLastName, setAlertContentLastName] = useState(false);
+    const [alertContentEmail, setAlertContentEmail] = useState(false);
+    const [alertContentPhone, setAlertContentPhone] = useState(false);
+    const [alertContentUnbRegistration, setAlertContentUnbRegistration] = useState(false);
+    const [alertContentGender, setAlertContentGender] = useState(false);
+    const [alertContentBond, setAlertContentBond] = useState(false);
+    const [alertContentReligion, setAlertContentReligion] = useState(false);
+    const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(false);
+
+    function closeAlerts() {
+        setAlertContentName(false);
+        setAlertContentLastName(false);
+        setAlertContentEmail(false);
+        setAlertContentPhone(false);
+        setAlertContentUnbRegistration(false);
+        setAlertContentGender(false);
+        setAlertContentBond(false);
+        setAlertContentReligion(false);
+        setAlertContentCivilStatus(false);
+    }
+
     function getOut(event) {
         event.preventDefault();
 
         history.push('/');
-    }
-
-    function handleWrongField(field) {
-        setShow(true);
-        setVariant('danger');
-
-        if (field === 'name') {
-            return setAlertText('O campo "Nome" não está preenchido corretamente.');
-        }
-        if (field === 'lastName') {
-            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
-        }
-        if (field === 'email') {
-            return setAlertText('O campo "Email" não está preenchido corretamente.');
-        }
-        if (field === 'phone') {
-            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
-        }
-        if (field === 'unbRegistration') {
-            return setAlertText('O campo "Matrícula" não está preenchido corretamente.');
-        }
-        if (field === 'gender') {
-            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
-        }
-        if (field === 'bond') {
-            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
-        }
-        if (field === 'religion') {
-            return setAlertText('O campo "Religião" não está preenchido corretamente.');
-        }
-        if (field === 'civilStatus') {
-            return setAlertText('O campo "Estado Civil" não está preenchido corretamente.');
-        }
-        return 0;
     }
 
     async function updateInfos(event) {
@@ -77,8 +65,39 @@ export default function UserProfile(props) {
             });
 
             if (response.status === 203) {
-                const field = response.data.error.details[0].path[0];
-                handleWrongField(field);
+                const { details } = response.data.error;
+                closeAlerts();
+
+                for (let value = 0; value < response.data.error.details.length; value += 1) {
+                    if (details[value].path[0] === 'name') {
+                        setAlertContentName(true);
+                    }
+                    if (details[value].path[0] === 'lastName') {
+                        setAlertContentLastName(true);
+                    }
+                    if (details[value].path[0] === 'email') {
+                        setAlertContentEmail(true);
+                    }
+                    if (details[value].path[0] === 'phone') {
+                        setAlertContentPhone(true);
+                    }
+                    if (details[value].path[0] === 'unbRegistration') {
+                        setAlertContentUnbRegistration(true);
+                    }
+                    if (details[value].path[0] === 'gender') {
+                        setAlertContentGender(true);
+                    }
+                    if (details[value].path[0] === 'bond') {
+                        setAlertContentBond(true);
+                    }
+                    if (details[value].path[0] === 'religion') {
+                        setAlertContentReligion(true);
+                    }
+                    if (details[value].path[0] === 'civilStatus') {
+                        setAlertContentCivilStatus(true);
+                    }
+                }
+
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
@@ -97,6 +116,8 @@ export default function UserProfile(props) {
                         data: response.data,
                     },
                 });
+
+                closeAlerts();
 
                 setShow(true);
                 setVariant('success');
@@ -161,11 +182,29 @@ export default function UserProfile(props) {
                                 value={name}
                                 onChange={setName}
                             />
+                            {alertContentName ? (
+                                <div className="alertContent">
+                                    <p>Nome precisa possuir mais de 2 letras.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <Input
                                 placeholder="Email"
                                 value={email}
                                 onChange={setEmail}
                             />
+                            {alertContentEmail ? (
+                                <div className="alertContent">
+                                    <p>E-mail não foi preenchido corretamente.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                             <div className="selects">
 
@@ -175,6 +214,15 @@ export default function UserProfile(props) {
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
+                                {alertContentGender ? (
+                                    <div className="alertContent">
+                                        <p>Selecione um gênero.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
                                     <option value="" disabled>Vínculo</option>
@@ -182,6 +230,15 @@ export default function UserProfile(props) {
                                     <option value="posGraduando">Pós-Graduando</option>
                                     <option value="professor">Professor</option>
                                 </select>
+                                {alertContentBond ? (
+                                    <div className="alertContent">
+                                        <p>Selecione um vínculo.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                             </div>
 
@@ -192,6 +249,15 @@ export default function UserProfile(props) {
                                 <option value="Casado(a)">Casado</option>
                                 <option value="Viuvo(a)">Viuvo</option>
                             </select>
+                            {alertContentCivilStatus ? (
+                                <div className="alertContent">
+                                    <p>Informe o estado civil.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                         </div>
 
                         <div className="form">
@@ -200,16 +266,45 @@ export default function UserProfile(props) {
                                 value={lastName}
                                 onChange={setLastName}
                             />
+                            {alertContentLastName ? (
+                                <div className="alertContent">
+                                    <p>
+                                        Sobrenome precisa possuir mais de 2 letras.
+                                    </p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <Input
                                 placeholder="Matrícula UnB"
                                 value={unbRegistration}
                                 onChange={setUnbRegistration}
                             />
+                            {alertContentUnbRegistration ? (
+                                <div className="alertContent">
+                                    <p>Insira uma matrícula válida.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <Input
                                 placeholder="DDD + Telefone"
                                 value={phone}
                                 onChange={setPhone}
                             />
+                            {alertContentPhone ? (
+                                <div className="alertContent">
+                                    <p>Insira um telefone válido.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
                                 <option value="naoInformado" disabled>Religião</option>
                                 <option value="Catolico">Católico</option>
@@ -217,6 +312,15 @@ export default function UserProfile(props) {
                                 <option value="Espirita">Espirita</option>
                                 <option value="outra">Outra</option>
                             </select>
+                            {alertContentReligion ? (
+                                <div className="alertContent">
+                                    <p>Selecione a sua religião.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                         </div>
                         <div className="buttons">
                             <button className="button-salvar" type="submit">Salvar</button>

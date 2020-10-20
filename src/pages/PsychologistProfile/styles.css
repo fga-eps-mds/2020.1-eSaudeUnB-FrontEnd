@@ -167,3 +167,12 @@
     top: 0;
     left: 50%;
 }
+
+.psyProfileContainer .form .alertContent {
+    margin: 0px;
+    color: black;
+    text-align: left;
+    width: 400px;
+    height: 20px;
+    font-size: 14px;
+}

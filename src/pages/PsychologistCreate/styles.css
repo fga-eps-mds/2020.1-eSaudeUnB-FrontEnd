@@ -95,11 +95,9 @@
     top: 0;
     left: 50%;
 }
-.alertContent{
+.psychologist-container .form .alertContent{
     margin: 0px;
-}
-.psychologist-container .form p {
-    color: red;
+    color: black;
     text-align: left;
     width: 400px;
     height: 20px;

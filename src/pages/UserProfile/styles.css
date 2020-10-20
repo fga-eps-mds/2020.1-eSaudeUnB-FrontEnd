@@ -130,3 +130,12 @@
     font-size: 24px;
     line-height: 36px;
 }
+
+.userProfileContainer .form .alertContent {
+    margin: 0px;
+    color: black;
+    text-align: left;
+    width: 400px;
+    height: 20px;
+    font-size: 14px;
+}
