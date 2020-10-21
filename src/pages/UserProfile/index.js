@@ -10,6 +10,7 @@ import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 
 import Input from '../../components/Input';
+import UserImage from '../../components/UserImage/UserImage';
 
 export default function UserProfile(props) {
     const [email, setEmail] = useState('');
@@ -21,6 +22,7 @@ export default function UserProfile(props) {
     const [bond, setBond] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
+    const [userImage, setUserImage] = useState('');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -37,6 +39,8 @@ export default function UserProfile(props) {
     const [alertContentBond, setAlertContentBond] = useState(false);
     const [alertContentReligion, setAlertContentReligion] = useState(false);
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(false);
+
+    
 
     function closeAlerts() {
         setAlertContentName(false);
@@ -55,15 +59,17 @@ export default function UserProfile(props) {
 
         history.push('/');
     }
-
+    
     async function updateInfos(event) {
+        
         try {
+            
             event.preventDefault();
 
             const response = await api.put(`/user/${props.location.state.data.email}`, {
-                name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
+                name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion, userImage,
             });
-
+            console.log(response.data.userImage);
             if (response.status === 203) {
                 const { details } = response.data.error;
                 closeAlerts();
@@ -124,9 +130,11 @@ export default function UserProfile(props) {
                 setAlertText('Dados atualizados com sucesso.');
             }
         } catch (err) {
+            console.log(err);
             setShow(true);
             setVariant('danger');
             setAlertText('Falha na atualização dos dados, tente novamente');
+            
         }
         setInterval(() => {
             setShow(false);
@@ -151,7 +159,9 @@ export default function UserProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
+                setUserImage(UserImage.userImage);
             }
+            
         } catch (err) {
             setShow(true);
             setVariant('danger');
@@ -161,27 +171,31 @@ export default function UserProfile(props) {
             setShow(false);
         }, 2000);
     }
-
+    
     return (
         <>
             <NavBar actualUser={props.location.state.data} />
+           
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
                     <div></div>
                 )}
+                
                 <div className="content">
                     <div className="profile">
                         <img className="userIcon" src={userIcon} alt="icone de usuario" />
                     </div>
                     <form className="formColumn" onSubmit={updateInfos}>
                         <div className="form">
+                        <UserImage actualUser={props.location.state.data}/>
                             <Input
                                 placeholder="Nome"
                                 value={name}
                                 onChange={setName}
                             />
+                           
                             {alertContentName ? (
                                 <div className="alertContent">
                                     <p>Nome precisa possuir mais de 2 letras.</p>
@@ -321,6 +335,7 @@ export default function UserProfile(props) {
                                     <p></p>
                                 </div>
                             )}
+                            
                         </div>
                         <div className="buttons">
                             <button className="button-salvar" type="submit">Salvar</button>
