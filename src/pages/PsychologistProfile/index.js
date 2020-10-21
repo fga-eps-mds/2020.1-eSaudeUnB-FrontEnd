@@ -11,7 +11,7 @@ import NavBar from '../../components/NavBar';
 import api from '../../services/api';
 import './styles.css';
 
-export default function PsyProfile(props) {
+export default function PsychologistProfile(props) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -27,40 +27,30 @@ export default function PsyProfile(props) {
 
     const history = useHistory();
 
+    const [alertContentName, setAlertContentName] = useState(false);
+    const [alertContentLastName, setAlertContentLastName] = useState(false);
+    const [alertContentEmail, setAlertContentEmail] = useState(false);
+    const [alertContentSpecialization, setAlertContentSpecialization] = useState(false);
+    const [alertContentBiography, setAlertContentBiography] = useState(false);
+    const [alertContentGender, setAlertContentGender] = useState(false);
+    const [alertContentPhone, setAlertContentPhone] = useState(false);
+    const [alertContentBond, setAlertContentBond] = useState(false);
+
+    function closeAlerts() {
+        setAlertContentName(false);
+        setAlertContentLastName(false);
+        setAlertContentEmail(false);
+        setAlertContentSpecialization(false);
+        setAlertContentBiography(false);
+        setAlertContentGender(false);
+        setAlertContentPhone(false);
+        setAlertContentBond(false);
+    }
+
     function getOut(event) {
         event.preventDefault();
 
         history.push('/');
-    }
-
-    function handleWrongField(field) {
-        setShow(true);
-        setVariant('danger');
-
-        if (field === 'name') {
-            return setAlertText('O campo "Nome" não está preenchido corretamente.');
-        }
-        if (field === 'lastName') {
-            return setAlertText('O campo "Sobrenome" não está preenchido corretamente.');
-        }
-        if (field === 'email') {
-            return setAlertText('O campo "Email" não está preenchido corretamente.');
-        }
-        if (field === 'specialization') {
-            return setAlertText('O campo "Especialização" não está preenchido corretamente.');
-        }
-        if (field === 'biography') {
-            return setAlertText('O campo "Biografia" não está preenchido corretamente.');
-        }
-        if (field === 'gender') {
-            return setAlertText('O campo "Gênero" não está preenchido corretamente.');
-        }
-        if (field === 'phone') {
-            return setAlertText('O campo "Telefone" não está preenchido corretamente.');
-        }
-        if (field === 'bond') {
-            return setAlertText('O campo "Vínculo" não está preenchido corretamente.');
-        }
     }
 
     async function updateInfos(event) {
@@ -72,13 +62,38 @@ export default function PsyProfile(props) {
             });
 
             if (response.status === 203) {
-                const field = response.data.error.details[0].path[0];
-                handleWrongField(field);
-                setInterval(() => {
-                    setShow(false);
-                }, 3500);
+                const { details } = response.data.error;
+                closeAlerts();
+
+                for (let value = 0; value < response.data.error.details.length; value += 1) {
+                    if (details[value].path[0] === 'name') {
+                        setAlertContentName(true);
+                    }
+                    if (details[value].path[0] === 'lastName') {
+                        setAlertContentLastName(true);
+                    }
+                    if (details[value].path[0] === 'email') {
+                        setAlertContentEmail(true);
+                    }
+                    if (details[value].path[0] === 'phone') {
+                        setAlertContentPhone(true);
+                    }
+                    if (details[value].path[0] === 'specialization') {
+                        setAlertContentSpecialization(true);
+                    }
+                    if (details[value].path[0] === 'biography') {
+                        setAlertContentBiography(true);
+                    }
+                    if (details[value].path[0] === 'gender') {
+                        setAlertContentGender(true);
+                    }
+                    if (details[value].path[0] === 'bond') {
+                        setAlertContentBond(true);
+                    }
+                }
+
                 return history.push({
-                    pathname: '/psy-profile',
+                    pathname: '/psychologist/profile',
                     state: {
                         data: response.data.value,
                     },
@@ -87,11 +102,13 @@ export default function PsyProfile(props) {
 
             if (response.status === 200) {
                 history.push({
-                    pathname: '/psy-profile',
+                    pathname: '/psychologist/profile',
                     state: {
                         data: response.data,
                     },
                 });
+
+                closeAlerts();
 
                 setShow(true);
                 setVariant('success');
@@ -105,6 +122,8 @@ export default function PsyProfile(props) {
         setInterval(() => {
             setShow(false);
         }, 2000);
+
+        return 0;
     }
 
     async function renderPage(event) {
@@ -155,11 +174,30 @@ export default function PsyProfile(props) {
                                         value={name}
                                         onChange={setName}
                                     />
+                                    {alertContentName ? (
+                                        <div className="alertContent">
+                                            <p>Nome precisa possuir mais de 2 letras.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
                                     <Input
                                         placeholder="Email"
                                         value={email}
                                         onChange={setEmail}
                                     />
+                                    {alertContentEmail ? (
+                                        <div className="alertContent">
+                                            <p>E-mail não foi preenchido corretamente.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <div className="selects">
 
@@ -169,6 +207,15 @@ export default function PsyProfile(props) {
                                             <option value="M">Masculino</option>
                                             <option value="I">Não Identificar</option>
                                         </select>
+                                        {alertContentGender ? (
+                                            <div className="alertContent">
+                                                <p>Selecione um gênero.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                         <select name="bond" value={bond} onChange={(e) => setBond(e.target.value)}>
                                             <option value="" disabled>Vínculo</option>
@@ -176,6 +223,15 @@ export default function PsyProfile(props) {
                                             <option value="posGraduando">Pós-Graduando</option>
                                             <option value="professor">Professor</option>
                                         </select>
+                                        {alertContentBond ? (
+                                            <div className="alertContent">
+                                                <p>Selecione um vínculo.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     </div>
                                 </div>
@@ -186,16 +242,50 @@ export default function PsyProfile(props) {
                                         value={lastName}
                                         onChange={setLastName}
                                     />
+                                    {alertContentLastName ? (
+                                        <div className="alertContent">
+                                            <p>
+                                                Sobrenome precisa possuir mais de 2 letras.
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
                                     <Input
                                         placeholder="Especialização"
                                         value={specialization}
                                         onChange={setSpecialization}
                                     />
+                                    {alertContentSpecialization ? (
+                                        <div className="alertContent">
+                                            <p>
+                                                Informe a Especialização.
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
                                     <Input
                                         placeholder="DDD + Telefone"
                                         value={phone}
                                         onChange={setPhone}
                                     />
+                                    {alertContentPhone ? (
+                                        <div className="alertContent">
+                                            <p>Insira um telefone válido.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
                                 </div>
                             </div>
                             <textarea
@@ -204,6 +294,15 @@ export default function PsyProfile(props) {
                                 onChange={(e) => setBiography(e.target.value)}
                                 placeholder="Por favor adicione uma curta biografia ao seu perfil.(até 300 caracteres)"
                             />
+                            {alertContentBiography ? (
+                                <div className="alertContent">
+                                    <p>A biografia deve conter no máximo 300 caracteres.</p>
+                                </div>
+                            ) : (
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                             <div className="buttons">
                                 <button className="button-salvar" type="submit">Salvar</button>
@@ -216,7 +315,7 @@ export default function PsyProfile(props) {
                         <Link
                             className="link"
                             to={{
-                                pathname: '/psychology/schedule',
+                                pathname: '/psychologist/schedule',
                                 state: {
                                     data: props.location.state.data,
                                 },
@@ -231,6 +330,6 @@ export default function PsyProfile(props) {
         </>
     );
 }
-PsyProfile.propTypes = {
+PsychologistProfile.propTypes = {
     location: PropTypes.object,
 };

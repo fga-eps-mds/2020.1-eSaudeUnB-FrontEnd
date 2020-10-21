@@ -105,7 +105,7 @@
 }
 
 .userProfileContainer .alert{
-    position: absolute;
+    position: fixed;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
@@ -129,4 +129,13 @@
 
     font-size: 24px;
     line-height: 36px;
+}
+
+.userProfileContainer .form .alertContent {
+    margin: 0px;
+    color: black;
+    text-align: left;
+    width: 400px;
+    height: 20px;
+    font-size: 14px;
 }

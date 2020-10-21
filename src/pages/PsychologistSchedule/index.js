@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
 import NavBar from '../../components/NavBar';
@@ -88,8 +89,8 @@ export default function PsychologistSchedule(props) {
     }
 
     function verifyCalendarData() {
-        for (const item of scheduleItems) {
-            if (item.from > item.to) {
+        for (let i = 0; i < scheduleItems.length; i += 1) {
+            if (scheduleItems[i].from > scheduleItems[i].to) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -101,7 +102,7 @@ export default function PsychologistSchedule(props) {
                 return false;
             }
 
-            if (!item.from || !item.to) {
+            if (!scheduleItems[i].from || !scheduleItems[i].to) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -219,7 +220,7 @@ export default function PsychologistSchedule(props) {
                                         onClick={() => removeScheduleItem(index)
                                         }
                                     >
-                                            Remover
+                                        Remover
                                     </button>
                                 </div>
                             ))}
@@ -229,7 +230,7 @@ export default function PsychologistSchedule(props) {
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: '/psychology/calendar',
+                                    pathname: '/psychologist/calendar',
                                     state: {
                                         data: props.location.state.data,
                                     },
@@ -247,3 +248,7 @@ export default function PsychologistSchedule(props) {
         </div>
     );
 }
+
+PsychologistSchedule.propTypes = {
+    location: PropTypes.object,
+};

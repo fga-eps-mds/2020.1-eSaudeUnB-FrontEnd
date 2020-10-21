@@ -20,7 +20,7 @@
 .psychologist-container .psychologist-create .form {
     width: 700px;
     height: 700px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,24 +43,28 @@
 
     background-color: transparent;
     border: 0;
-    border-bottom: 3px solid #0459AE;
+    border-bottom: 3px solid #0459ae;
 
     font-size: 18px;
     line-height: 27px;
 }
 
-.psychologist-container .psychologist-create .form .psyCreate input::placeholder {
+.psychologist-container
+    .psychologist-create
+    .form
+    .psyCreate
+    input::placeholder {
     color: #eee;
 }
 
- .psychologist-container .psychologist-create .form .psyCreate .button{
+.psychologist-container .psychologist-create .form .psyCreate .button {
     width: 150px;
     height: 50px;
 
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459AE;
+    background-color: #0459ae;
 
     font-size: 24px;
     line-height: 36px;
@@ -74,7 +78,7 @@
 
     border: 0px;
     background-color: transparent;
-    border-bottom: 3px solid #0459AE;
+    border-bottom: 3px solid #0459ae;
 
     border-radius: 5px;
     font-size: 18px;
@@ -82,12 +86,20 @@
 }
 
 .psychologist-container .psychologist-create .form .psyCreate select option {
-    background-color: #0459AE;
+    background-color: #0459ae;
 }
 
-.psychologist-container .alert{
-    position: absolute;
+.psychologist-container .alert {
+    position: fixed;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
+}
+.psychologist-container .form .alertContent{
+    margin: 0px;
+    color: black;
+    text-align: left;
+    width: 400px;
+    height: 20px;
+    font-size: 14px;
 }

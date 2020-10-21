@@ -9,7 +9,7 @@ import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 
-export default function PsyCreate() {
+export default function PsychologistCreate() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -18,60 +18,22 @@ export default function PsyCreate() {
     const [phone] = useState('');
     const [gender, setGender] = useState('');
     const [bond] = useState('Psychologist');
-
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
-
     const history = useHistory();
 
-    function handleWrongField(field) {
-        setShow(true);
-        setVariant('danger');
+    const [alertContentName, setAlertContentName] = useState(false);
+    const [alertContentLastName, setAlertContentLastName] = useState(false);
+    const [alertContentEmail, setAlertContentEmail] = useState(false);
 
-        if (field === 'name') {
-            return setAlertText(
-                'O campo "Nome" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'lastName') {
-            return setAlertText(
-                'O campo "Sobrenome" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'email') {
-            return setAlertText(
-                'O campo "Email" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'specialization') {
-            return setAlertText(
-                'O campo "Especialização" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'biography') {
-            return setAlertText(
-                'O campo "Biografia" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'gender') {
-            return setAlertText(
-                'O campo "Gênero" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'phone') {
-            return setAlertText(
-                'O campo "Telefone" não está preenchido corretamente.',
-            );
-        }
-        if (field === 'bond') {
-            return setAlertText(
-                'O campo "Vínculo" não está preenchido corretamente.',
-            );
-        }
+    function closeAlerts() {
+        setAlertContentName(false);
+        setAlertContentLastName(false);
+        setAlertContentEmail(false);
     }
 
-    async function handlePsychologistSignUp(event) {
+    async function handlePsychologistCreation(event) {
         try {
             event.preventDefault();
 
@@ -93,18 +55,31 @@ export default function PsyCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/create');
+                return history.push('/admin/psychologist/create');
             }
 
             const response = await api.post('/psychologist', user);
 
             if (response.status === 203) {
-                const field = response.data.error.details[0].path[0];
-                handleWrongField(field);
+                const { details } = response.data.error;
+                closeAlerts();
+
+                for (let value = 0; value < response.data.error.details.length; value += 1) {
+                    if (details[value].path[0] === 'name') {
+                        setAlertContentName(true);
+                    }
+                    if (details[value].path[0] === 'lastName') {
+                        setAlertContentLastName(true);
+                    }
+                    if (details[value].path[0] === 'email') {
+                        setAlertContentEmail(true);
+                    }
+                }
+
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                return history.push('/admin/psy/list');
+                return history.push('/admin/psychologist/create');
             }
 
             if (response.status === 409) {
@@ -113,12 +88,12 @@ export default function PsyCreate() {
                 setAlertText('Email já cadastrado');
                 setInterval(() => {
                     setShow(false);
-                }, 3500);
-                return history.push('/admin/psy/list');
+                }, 6500);
+                return history.push('/admin/psychologist/create');
             }
 
             if (response.status === 201) {
-                return history.push('/admin/psy/list');
+                return history.push('/admin/psychologist/list');
             }
         } catch (err) {
             setShow(true);
@@ -128,6 +103,8 @@ export default function PsyCreate() {
         setInterval(() => {
             setShow(false);
         }, 3500);
+
+        return 0;
     }
 
     return (
@@ -140,7 +117,8 @@ export default function PsyCreate() {
                 <div></div>
             )}
             <div className="psychologist-create">
-                <form className="form" onSubmit={handlePsychologistSignUp}>
+
+                <form className="form" onSubmit={handlePsychologistCreation}>
                     <img src={userIcon} alt="userIcon" />
                     <div className="psyCreate">
                         <Input
@@ -148,12 +126,32 @@ export default function PsyCreate() {
                             value={name}
                             onChange={setName}
                         />
+                        {alertContentName ? (
+                            <div className="alertContent">
+                                <p>Nome precisa possuir mais de 2 letras.</p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
 
                         <Input
                             placeholder="Sobrenome"
                             value={lastName}
                             onChange={setLastName}
                         />
+                        {alertContentLastName ? (
+                            <div className="alertContent">
+                                <p>
+                                    Sobrenome precisa possuir mais de 2 letras.
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
 
                         <select
                             name="gender"
@@ -164,13 +162,24 @@ export default function PsyCreate() {
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
                         </select>
+                        <div className="alertContent">
+                            <p></p>
+                        </div>
 
                         <Input
                             placeholder="Email"
                             value={email}
                             onChange={setEmail}
                         />
-
+                        {alertContentEmail ? (
+                            <div className="alertContent">
+                                <p>E-mail não foi preenchido corretamente.</p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
                         <Input
                             placeholder="Especialidade"
                             value={specialization}
@@ -183,6 +192,6 @@ export default function PsyCreate() {
                     </div>
                 </form>
             </div>
-        </div>
+        </div >
     );
 }

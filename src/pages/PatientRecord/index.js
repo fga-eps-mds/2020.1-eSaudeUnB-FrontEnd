@@ -120,7 +120,7 @@ export default function PatientRecord(props) {
                             id="novoAtendimento"
                             className="tabLink"
                             onClick={() => history.push({
-                                pathname: '/new',
+                                pathname: '/new-session',
                                 state: {
                                     email: patient.email,
                                     data: props.location.state.data,
@@ -136,7 +136,7 @@ export default function PatientRecord(props) {
                         {tabContent
 
                             ? (<div className="sessions">
-                                {allSessions.length === 0 && <p className="noSession">Você não possui atendimentos anteriores</p>}
+                                {allSessions.length === 0 && <p className="noSession">O paciente não possui atendimentos anteriores</p>}
                                 {allSessions.map((session, index) => (
                                     <div
                                         key={session._id}
@@ -204,4 +204,5 @@ export default function PatientRecord(props) {
 PatientRecord.propTypes = {
     match: PropTypes.object,
     email: PropTypes.string,
+    location: PropTypes.object,
 };

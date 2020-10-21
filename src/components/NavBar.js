@@ -21,7 +21,7 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: '/patient-list',
+                            pathname: '/patient/list',
                             state: {
                                 data: actualUser,
                             },
@@ -32,7 +32,7 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
-                            pathname: '/psy-profile',
+                            pathname: '/psychologist/profile',
                             state: {
                                 data: actualUser,
                             },
@@ -44,6 +44,17 @@ export default function NavBar(props) {
                 </div>)
                 : (<div className="navLinks">
                     {/* <Link className="a" to="" >Próximos Eventos</Link> */}
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/psychologist/list',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Lista de Psicologos
+                    </Link>
                     <Link
                         className="a"
                         to={{

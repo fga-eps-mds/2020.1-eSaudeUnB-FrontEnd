@@ -61,19 +61,13 @@ export default function AdminMain() {
             )}
             <div className="psychologist-list">
                 <div className="nav">
-                    <button
-                        className="new-psychologist"
-                        onClick={() => history.push('/admin/psy/create')}
-                    >
+                    <button className="new-psychologist" onClick={() => history.push('/admin/psychologist/create')}>
                         Cadastrar novo Psicólogo
                     </button>
                     <div className="count">
                         <p>Psicólogos cadastrados: {psyArray.length}</p>
                     </div>
-                    <button
-                        className="get-out"
-                        onClick={() => history.push('/admin/login')}
-                    >
+                    <button className="get-out" onClick={() => history.push('/admin')}>
                         Sair
                     </button>
                 </div>
@@ -96,8 +90,7 @@ export default function AdminMain() {
                                     : 'Não informado'}
                             </p>
                             <button
-                                onClick={() =>
-                                    showConfirmation(psychologist.email)
+                                onClick={() => showConfirmation(psychologist.email)
                                 }
                             >
                                 Excluir Psicólogo
