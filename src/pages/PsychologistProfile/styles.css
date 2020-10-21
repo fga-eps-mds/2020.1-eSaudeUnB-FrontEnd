@@ -62,7 +62,7 @@
     display: flex;
     border-bottom: 3px solid #0459ae;
 
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .psyProfileContainer .form input {
@@ -90,7 +90,7 @@
 
 .psyProfileContainer .form .selects select {
     width: 150px;
-    height: 33px;
+    height: 41px;
 
     color: #fff;
 

@@ -115,33 +115,6 @@ export default function PsychologistSchedule(props) {
             }
         }
         return true;
-
-        // for (const item of scheduleItems) {
-        //     if (item.from > item.to) {
-        //         setShow(true);
-        //         setVariant('danger');
-        //         setAlertText(
-        //             'O horario de término não pode ser menor que o de ínicio',
-        //         );
-        //         setInterval(() => {
-        //             setShow(false);
-        //         }, 3500);
-        //         return false;
-        //     }
-
-        //     if (!item.from || !item.to) {
-        //         setShow(true);
-        //         setVariant('danger');
-        //         setAlertText(
-        //             'Todos os campos devem ser preenchidos, alterações não foram salvas',
-        //         );
-        //         setInterval(() => {
-        //             setShow(false);
-        //         }, 3500);
-        //         return false;
-        //     }
-        // }
-        // return true;
     }
 
     async function putCalendar() {
@@ -168,8 +141,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">

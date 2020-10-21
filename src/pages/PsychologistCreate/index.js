@@ -9,7 +9,7 @@ import './styles.css';
 
 import userIcon from '../../assets/images/userIcon.svg';
 
-export default function PsyCreate() {
+export default function PsychologistCreate() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -111,8 +111,8 @@ export default function PsyCreate() {
             {show ? (
                 <Alert className="alert" variant={variant}>{alertText}</Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="psychologist-create">
 
                 <form className="form" onSubmit={handlePsychologistCreation}>
@@ -128,10 +128,10 @@ export default function PsyCreate() {
                                 <p>Nome precisa possuir mais de 2 letras.</p>
                             </div>
                         ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                         <Input
                             placeholder="Sobrenome"
@@ -145,10 +145,10 @@ export default function PsyCreate() {
                                 </p>
                             </div>
                         ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                         <select name="gender" onChange={(e) => setGender(e.target.value)}>
                             <option value=""> Gênero </option>
@@ -170,10 +170,10 @@ export default function PsyCreate() {
                                 <p>E-mail não foi preenchido corretamente.</p>
                             </div>
                         ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                         <Input
                             placeholder="Especialidade"
                             value={specialization}

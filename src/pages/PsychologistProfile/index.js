@@ -11,7 +11,7 @@ import NavBar from '../../components/NavBar';
 import api from '../../services/api';
 import './styles.css';
 
-export default function PsyProfile(props) {
+export default function PsychologistProfile(props) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -159,8 +159,8 @@ export default function PsyProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
@@ -179,10 +179,10 @@ export default function PsyProfile(props) {
                                             <p>Nome precisa possuir mais de 2 letras.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <Input
                                         placeholder="Email"
@@ -194,10 +194,10 @@ export default function PsyProfile(props) {
                                             <p>E-mail não foi preenchido corretamente.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <div className="selects">
 
@@ -212,10 +212,10 @@ export default function PsyProfile(props) {
                                                 <p>Selecione um gênero.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
 
                                         <select name="bond" value={bond} onChange={(e) => setBond(e.target.value)}>
                                             <option value="" disabled>Vínculo</option>
@@ -228,10 +228,10 @@ export default function PsyProfile(props) {
                                                 <p>Selecione um vínculo.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
 
                                     </div>
                                 </div>
@@ -249,10 +249,10 @@ export default function PsyProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <Input
                                         placeholder="Especialização"
@@ -266,10 +266,10 @@ export default function PsyProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <Input
                                         placeholder="DDD + Telefone"
@@ -281,10 +281,10 @@ export default function PsyProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                 </div>
                             </div>
@@ -299,10 +299,10 @@ export default function PsyProfile(props) {
                                     <p>A biografia deve conter no máximo 300 caracteres.</p>
                                 </div>
                             ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                             <div className="buttons">
                                 <button className="button-salvar" type="submit">Salvar</button>
@@ -330,6 +330,6 @@ export default function PsyProfile(props) {
         </>
     );
 }
-PsyProfile.propTypes = {
+PsychologistProfile.propTypes = {
     location: PropTypes.object,
 };
