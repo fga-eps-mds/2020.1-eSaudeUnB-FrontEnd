@@ -1,92 +1,155 @@
-#page-landing {
-    width: 100vw;
-    height: 100vh;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    font-family: Poppins, sans-serif;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+.page-landing {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.page-landing .nav-bar {
+  position: fixed;
+  top: 0;
+}
+
+.page-landing .content {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+
+.page-landing .content .main {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+
+.page-landing .content .main .landing-img {
+  height: 60vh;
+  justify-self: center;
+  margin-top: -90px;
+
+  margin-bottom: 55px;
+}
+
+.page-landing .content .main .wave-animation {
+  width: 100%;
+  overflow: hidden;
+}
+
+.page-landing .content .main .wave-animation .wave {
+  width: 100%;
+  height: 129px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: url(../../assets/images/wave.svg);
+  background-size: auto 100%;
+}
+
+.page-landing .content .main .wave-animation .wave.wave1 {
+  animation: 15000s linear 0s infinite animate;
+  z-index: 10;
+  opacity: 1;
+  bottom: 0;
+}
+.page-landing .content .main .wave-animation .wave.wave2 {
+  animation: 7000s linear -5s infinite animate2;
+  z-index: 9;
+  opacity: 0.5;
+  bottom: 10px;
+}
+.page-landing .content .main .wave-animation .wave.wave3 {
+  animation: 10000s linear -2s infinite animate;
+  z-index: 8;
+  opacity: 0.2;
+  bottom: 15px;
+}
+@keyframes animate {
+  0% {
+    background-position-x: 0;
   }
-  
-  #page-landing-content {
-    display: grid;
-    grid-template-rows: 2fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "hero hero hero"
-      "logo buttons buttons";
+  100% {
+    background-position-x: 100000%;
   }
-  
-  .hero-image {
-    grid-area: hero;
-    height: 60vh;
-    justify-self: center;
-    margin-top: -5rem;
+}
+@keyframes animate2 {
+  0% {
+    background-position-x: 0;
   }
-  
-  .logo-container {
-    color: #eeeeee;
-    grid-area: logo;
-    text-align: left;
-    margin-top: 4rem;
+  100% {
+    background-position-x: 100000%;
   }
-  
-  .logo-container h1 {
-    font-weight: 700;
-    font-size: 5.4rem;
-    line-height: 5rem;
-  }
-  
-  .logo-container h2 {
-    font-weight: 500;
-    font-size: 1.4rem;
-  }
-  
-  .buttons-container {
-    display: flex;
-    margin-top: 5rem;
-    align-items: center;
-    justify-self: end;
-  }
-  
-  .buttons-container a {
-    width: 240px;
-    height: 60px;
-  
-    border-radius: 2.5rem;
-    font: 500 2rem Poppins;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    text-decoration: none;
-  
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
-    transition: background-color 0.2s;
-  }
-  
-  .buttons-container a:first-child {
-    margin-right: 3rem;
-  }
-  
-  .buttons-container a.registration {
-    background: none;
-    border: 4px solid #0459ae;
-    color: #eeeeee;
-  }
-  .buttons-container a.registration:hover {
-    background: #0459ae;
-  }
-  
-  .buttons-container a.login {
-    background: #eeeeee;
-    color: #0459ae;
-  }
-  .buttons-container a.login:hover {
-    background: #0459ae;
-    color: #eeeeee;
-  }
-  
+}
+
+.page-landing .content .main .above-img {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+
+  width: 100%;
+}
+
+.page-landing .content .main .above-img h1 {
+  font-weight: 700;
+  font-size: 84px;
+  line-height: 80px;
+  color: #eee;
+}
+
+.page-landing .content .main .above-img h2 {
+  font-weight: 500;
+  font-size: 23px;
+  color: #eee;
+}
+
+.page-landing .content .main .above-img .buttons-container {
+  display: flex;
+}
+
+.page-landing .content .main .above-img .buttons-container a {
+  width: 240px;
+  height: 60px;
+
+  border-radius: 40px;
+  font: 500 32px Poppins;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
+  transition: background-color 0.2s;
+}
+
+.page-landing .content .main .above-img .buttons-container a:first-child {
+  margin-right: 40px;
+}
+
+.page-landing .content .main .above-img .buttons-container a.registration {
+  background: none;
+  border: 4px solid #0459ae;
+  color: #eeeeee;
+}
+
+.page-landing .content .main .above-img .buttons-container a.registration:hover {
+  background: #0459ae;
+}
+
+.page-landing .content .main .above-img .buttons-container a.login {
+  background: #eeeeee;
+  color: #0459ae;
+}
+.page-landing .content .main .above-img .buttons-container a.login:hover {
+  background: #0459ae;
+  color: #eeeeee;
+}
