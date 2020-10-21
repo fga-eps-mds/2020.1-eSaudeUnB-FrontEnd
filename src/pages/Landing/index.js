@@ -58,7 +58,35 @@ export default function Landing() {
                     </div>
                 </div>
                 <div id="how-it-work" className="how-it-work">Como funciona</div>
-                <div id="faq" className="faq">FAQ</div>
+                <div id="faq" className="faq">
+                    <h1>FAQ</h1>
+                    <div className="faq-questions">
+                        <div className="faq-card">
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique nulla aliquet. In ante metus dictum at tempor commodo ullamcorper a. Elementum eu facilisis sed odio morbi quis commodo. Blandit massa enim nec dui nunc mattis enim.</span>
+                        </div>
+                        <div className="faq-card">
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique nulla aliquet. In ante metus dictum at tempor commodo ullamcorper a. Elementum eu facilisis sed odio morbi quis commodo. Blandit massa enim nec dui nunc mattis enim.</span>
+                        </div>
+                        <div className="faq-card">
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique nulla aliquet. In ante metus dictum at tempor commodo ullamcorper a. Elementum eu facilisis sed odio morbi quis commodo. Blandit massa enim nec dui nunc mattis enim.</span>
+                        </div>
+                        <div className="faq-card">
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique nulla aliquet. In ante metus dictum at tempor commodo ullamcorper a. Elementum eu facilisis sed odio morbi quis commodo. Blandit massa enim nec dui nunc mattis enim.</span>
+                        </div>
+                        <div className="faq-card">
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique nulla aliquet. In ante metus dictum at tempor commodo ullamcorper a. Elementum eu facilisis sed odio morbi quis commodo. Blandit massa enim nec dui nunc mattis enim.</span>
+                        </div>
+                        <div className="faq-card">
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique nulla aliquet. In ante metus dictum at tempor commodo ullamcorper a. Elementum eu facilisis sed odio morbi quis commodo. Blandit massa enim nec dui nunc mattis enim.</span>
+                        </div>
+                    </div>
+                </div>
                 <div id="who-behind" className="who-behind">Quem está por trás do projeto</div>
                 <footer></footer>
             </div>
