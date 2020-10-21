@@ -1,4 +1,4 @@
-.aboutCard {
+.about-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,11 +10,11 @@
     text-align: justify;
     padding: 30px 25px;
 }
-.aboutCard h2 {
+.about-card h2 {
     text-align: center;
 }
 
-.aboutCard + .aboutCard {
+.about-card + .about-card {
     margin-left: 50px;
 }
 

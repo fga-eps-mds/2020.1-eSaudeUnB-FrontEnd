@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import LandingNavBar from '../../components/LandingNavBar';
-import AboutCard from '../../components/AboutCard';
 
 import landingImg from '../../assets/images/logo.svg';
 
 import './styles.css';
+import '../../assets/styles/AboutCard.css';
+import '../../assets/styles/FaqCard.css';
 
 export default function Landing() {
     return (
@@ -40,21 +41,18 @@ export default function Landing() {
                 <div id="about" className="about">
                     <h1>Sobre</h1>
                     <div className="about-cards">
-                        <AboutCard
-                            title="Preciso de ajuda"
-                        >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.
-                        </AboutCard>
-                        <AboutCard
-                            title="Quero Atender"
-                        >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.
-                        </AboutCard>
-                        <AboutCard
-                            title="Conexão Feita"
-                        >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.
-                        </AboutCard>
+                        <div className="about-card">
+                            <h2>Preciso de ajuda</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.</span>
+                        </div>
+                        <div className="about-card">
+                            <h2>Quero Atender</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.</span>
+                        </div>
+                        <div className="about-card">
+                            <h2>Conexão Feita</h2>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.</span>
+                        </div>
                     </div>
                 </div>
                 <div id="how-it-work" className="how-it-work">Como funciona</div>

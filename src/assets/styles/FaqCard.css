@@ -1,0 +1,14 @@
+.faq-card {
+    max-width: 500px;
+    max-height: 400px;
+  
+    margin-bottom: 100px;
+}
+
+.faq-card h2 {
+    font-size: 18px;
+}
+  
+.faq-card span {
+    font-size: 14px;
+}

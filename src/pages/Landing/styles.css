@@ -199,18 +199,3 @@
 
   margin-top: 75px;
 }
-
-.page-landing .content .faq .faq-questions .faq-card {
-  max-width: 500px;
-  max-height: 400px;
-
-  margin-bottom: 100px;
-}
-
-.page-landing .content .faq .faq-questions .faq-card h2 {
-  font-size: 18px;
-}
-
-.page-landing .content .faq .faq-questions .faq-card span {
-  font-size: 14px;
-}
