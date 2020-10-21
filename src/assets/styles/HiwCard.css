@@ -1,4 +1,4 @@
-.about-card {
+.hiw-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,11 +10,11 @@
     text-align: justify;
     padding: 30px 25px;
 }
-.about-card h2 {
+.hiw-card h2 {
     text-align: center;
 }
 
-.about-card + .about-card {
+.hiw-card + .hiw-card {
     margin-left: 50px;
 }
 

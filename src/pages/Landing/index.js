@@ -6,7 +6,7 @@ import LandingNavBar from '../../components/LandingNavBar';
 import landingImg from '../../assets/images/logo.svg';
 
 import './styles.css';
-import '../../assets/styles/AboutCard.css';
+import '../../assets/styles/HiwCard.css';
 import '../../assets/styles/FaqCard.css';
 
 export default function Landing() {
@@ -40,22 +40,27 @@ export default function Landing() {
                 </div>
                 <div id="about" className="about">
                     <h1>Sobre</h1>
-                    <div className="about-cards">
-                        <div className="about-card">
+                    <h2>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suspendisse faucibus interdum posuere lorem ipsum. Bibendum arcu vitae elementum curabitur vitae. Etiam tempor orci eu lobortis. Tempus quam pellentesque nec nam aliquam sem et tortor consequat. Sit amet commodo nulla facilisi nullam vehicula. Adipiscing elit pellentesque habitant morbi tristique senectus. Malesuada nunc vel risus commodo viverra maecenas. Sed velit dignissim sodales ut eu. Amet luctus venenatis lectus magna fringilla urna. In hac habitasse platea dictumst vestibulum rhoncus. Massa tempor nec feugiat nisl. Eu non diam phasellus vestibulum lorem. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Sit amet purus gravida quis blandit. Aliquam ut porttitor leo a diam sollicitudin tempor. Massa placerat duis ultricies lacus sed turpis tincidunt.
+                    </h2>
+                </div>
+                <div id="how-it-work" className="how-it-work">
+                    <h1>Como funciona</h1>
+                    <div className="hiw-cards">
+                        <div className="hiw-card">
                             <h2>Preciso de ajuda</h2>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.</span>
                         </div>
-                        <div className="about-card">
+                        <div className="hiw-card">
                             <h2>Quero Atender</h2>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.</span>
                         </div>
-                        <div className="about-card">
+                        <div className="hiw-card">
                             <h2>Conexão Feita</h2>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.</span>
                         </div>
                     </div>
                 </div>
-                <div id="how-it-work" className="how-it-work">Como funciona</div>
                 <div id="faq" className="faq">
                     <h1>FAQ</h1>
                     <div className="faq-questions">
@@ -85,7 +90,10 @@ export default function Landing() {
                         </div>
                     </div>
                 </div>
-                <div id="who-behind" className="who-behind">Quem está por trás do projeto</div>
+                <div id="who-behind" className="who-behind">
+                    <h1>Quem está por trás desta rede</h1>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim lobortis scelerisque fermentum dui faucibus in ornare quam. Eros donec ac odio tempor. Semper viverra nam libero justo laoreet sit amet cursus. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Tincidunt praesent semper feugiat nibh. Eu facilisis sed odio morbi quis commodo odio aenean sed. Mattis enim ut tellus elementum sagittis vitae. Massa massa ultricies mi quis hendrerit dolor magna. Commodo elit at imperdiet dui. Faucibus purus in massa tempor. Lobortis feugiat vivamus at augue. Nulla posuere sollicitudin aliquam ultrices. Vestibulum sed arcu non odio euismod. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum.</h2>
+                </div>
                 <footer></footer>
             </div>
         </div>
