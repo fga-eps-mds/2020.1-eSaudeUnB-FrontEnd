@@ -14,9 +14,9 @@ export default function Landing() {
             <LandingNavBar />
             <div className="content">
                 <div className="main" id="main">
-                    <img className="landing-img" src={landingImg} />
+                    <img className="landing-img" src={landingImg} alt="Imagem representando o e-saudeUnb" />
                     <div className="above-img">
-                        <div class="logo-container">
+                        <div className="logo-container">
                             <h1>e-Saúde</h1>
                             <h2>Mesmo à distância nós cuidamos de você</h2>
                         </div>

@@ -15,4 +15,4 @@ export default function AboutCard({ title, text }) {
 AboutCard.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
-}
+};
