@@ -13,8 +13,8 @@ export default function LandingNavBar() {
                 <a href="#how-it-work">Como Funciona</a>
                 <a href="#faq">FAQ</a>
                 <a href="#who-behind">Quem está por trás</a>
-                <a href="/login">Login</a>
-                <a href="/registration">Registrar</a>
+                <a className="registration-link" href="/registration">Registrar</a>
+                <a className="login-link" href="/login">Entrar</a>
             </div>
         </nav>
     );

@@ -31,5 +31,14 @@
 }
 
 .landingNavBarComponent .links a:hover {
-    color: #ddd;
+    color: #ccc;
 }
+
+/* .landingNavBarComponent .links .registration-link:hover {
+    background: darkblue;
+    border: 1px solid darkblue;
+}
+
+.landingNavBarComponent .links .login-link:hover {
+    background: darkblue;
+} */
