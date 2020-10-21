@@ -57,8 +57,8 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="psychologist-list">
                 <div className="nav">
                     <button className="new-psychologist" onClick={() => history.push('/admin/psychologist/create')}>
@@ -90,8 +90,7 @@ export default function AdminMain() {
                                     : 'Não informado'}
                             </p>
                             <button
-                                onClick={() =>
-                                    showConfirmation(psychologist.email)
+                                onClick={() => showConfirmation(psychologist.email)
                                 }
                             >
                                 Excluir Psicólogo
