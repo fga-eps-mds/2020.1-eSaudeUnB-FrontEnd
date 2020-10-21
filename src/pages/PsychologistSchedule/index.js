@@ -141,8 +141,8 @@ export default function PsychologistSchedule(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
