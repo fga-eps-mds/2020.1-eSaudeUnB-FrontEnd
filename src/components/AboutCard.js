@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import '../assets/styles/AboutCard.css';
 
-export default function AboutCard({ title, text }) {
+export default function AboutCard({ title, children }) {
     return (
         <div className="aboutCard">
             <h2>{title}</h2>
-            <span>{text}</span>
+            <span>{children}</span>
         </div>
     );
 }
 
 AboutCard.propTypes = {
     title: PropTypes.string,
-    text: PropTypes.string,
+    children: PropTypes.string,
 };

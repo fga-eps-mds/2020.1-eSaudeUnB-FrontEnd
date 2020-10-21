@@ -42,16 +42,19 @@ export default function Landing() {
                     <div className="about-cards">
                         <AboutCard
                             title="Preciso de ajuda"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur."
-                        />
+                        >
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.
+                        </AboutCard>
                         <AboutCard
                             title="Quero Atender"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur."
-                        />
+                        >
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.
+                        </AboutCard>
                         <AboutCard
-                            title="Coneção Feita"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur."
-                        />
+                            title="Conexão Feita"
+                        >
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum sem sed libero faucibus porttitor. Aenean facilisis, magna non porta tincidunt, diam dui venenatis purus, nec egestas mi est aliquet nisl. Nam et augue a nibh convallis blandit. Nunc lacinia pretium consectetur.
+                        </AboutCard>
                     </div>
                 </div>
                 <div id="how-it-work" className="how-it-work">Como funciona</div>
