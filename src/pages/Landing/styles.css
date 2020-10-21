@@ -9,11 +9,6 @@
 
 }
 
-.page-landing .nav-bar {
-  position: fixed;
-  top: 0;
-}
-
 .page-landing .content {
   display: flex;
   flex-direction: column;
@@ -26,6 +21,8 @@
   display: flex;
   flex-direction: column;
 
+  padding-top: 100px;
+
   width: 100%;
   height: 100%;
 }
@@ -34,12 +31,11 @@
   height: 60vh;
   justify-self: center;
   margin-top: -90px;
-
-  margin-bottom: 55px;
 }
 
 .page-landing .content .main .wave-animation {
   width: 100%;
+  margin-top: -90px;
 }
 
 .page-landing .content .main .wave-animation .wave {
@@ -154,7 +150,30 @@
   background: #eeeeee;
   color: #0459ae;
 }
+
 .page-landing .content .main .above-img .buttons-container a.login:hover {
   background: #0459ae;
   color: #eeeeee;
+}
+
+.page-landing .content .about {
+  background-color: #eee;
+  margin-top: -128px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding-top: 100px;
+
+  width: 100%;
+  height: 900px;
+}
+
+.page-landing .content .about .about-cards{
+  padding-top: 100px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

@@ -157,7 +157,7 @@
   }
   
   .newSession .patientHistory .tabContent h1,
-  h2 {
+  .newSession .patientHistory .tabContent h2 {
     margin: 1rem 0 1.5rem 0;
     color: #07387e;
   }
