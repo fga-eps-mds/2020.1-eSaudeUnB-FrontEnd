@@ -30,7 +30,7 @@ export default function PatientRecord(props) {
             setPatient(response.data);
             const responsesessions = await api.get(`/session/${email}`);
             setsessions(responsesessions.data);
-            const responseAllsessions = await api.get(`/session/all/${email}`);
+            const responseAllsessions = await api.get(`/sessions/${email}`);
             setAllSessions(responseAllsessions.data);
         }
         getData();

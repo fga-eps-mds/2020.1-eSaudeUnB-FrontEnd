@@ -22,6 +22,7 @@ export default function PsychologistCreate() {
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
     const history = useHistory();
+
     const [alertContentName, setAlertContentName] = useState(false);
     const [alertContentLastName, setAlertContentLastName] = useState(false);
     const [alertContentEmail, setAlertContentEmail] = useState(false);
@@ -57,7 +58,7 @@ export default function PsychologistCreate() {
                 return history.push('/admin/psychologist/create');
             }
 
-            const response = await api.post('/admin/psy/create', user);
+            const response = await api.post('/psychologist', user);
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -81,7 +82,7 @@ export default function PsychologistCreate() {
                 return history.push('/admin/psychologist/create');
             }
 
-            if (response.status === 200) {
+            if (response.status === 409) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Email já cadastrado');
@@ -109,10 +110,12 @@ export default function PsychologistCreate() {
     return (
         <div className="psychologist-container">
             {show ? (
-                <Alert className="alert" variant={variant}>{alertText}</Alert>
+                <Alert className="alert" variant={variant}>
+                    {alertText}
+                </Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="psychologist-create">
 
                 <form className="form" onSubmit={handlePsychologistCreation}>
@@ -128,10 +131,10 @@ export default function PsychologistCreate() {
                                 <p>Nome precisa possuir mais de 2 letras.</p>
                             </div>
                         ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                         <Input
                             placeholder="Sobrenome"
@@ -145,12 +148,15 @@ export default function PsychologistCreate() {
                                 </p>
                             </div>
                         ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
-                        <select name="gender" onChange={(e) => setGender(e.target.value)}>
+                        <select
+                            name="gender"
+                            onChange={(e) => setGender(e.target.value)}
+                        >
                             <option value=""> Gênero </option>
                             <option value="F">Feminino</option>
                             <option value="M">Masculino</option>
@@ -170,20 +176,22 @@ export default function PsychologistCreate() {
                                 <p>E-mail não foi preenchido corretamente.</p>
                             </div>
                         ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                         <Input
                             placeholder="Especialidade"
                             value={specialization}
                             onChange={setSpecialization}
                         />
-                        <button className="button" type="submit">Registrar</button>
+
+                        <button className="button" type="submit">
+                            Registrar
+                        </button>
                     </div>
                 </form>
             </div>
-        </div>
-
+        </div >
     );
 }

@@ -19,7 +19,7 @@ export default function PsychologistList(props) {
     const [actualUser, setActualUser] = useState({});
 
     useEffect(() => {
-        api.get('/admin/psy/list').then((response) => {
+        api.get('/psychologists').then((response) => {
             setPsychologist(response.data);
         });
         setActualUser(props.location.state.data);
