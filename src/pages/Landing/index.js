@@ -36,10 +36,10 @@ export default function Landing() {
                         <div className="wave wave3" ></div>
                     </section>
                 </div>
-                <div className="about"></div>
-                <div className="how-it-work"></div>
-                <div className="faq"></div>
-                <div className="who-behind"></div>
+                <div className="about">Sobre</div>
+                <div className="how-it-work">Como funciona</div>
+                <div className="faq">FAQ</div>
+                <div className="who-behind">Quem está por trás do projeto</div>
                 <footer></footer>
             </div>
         </div>
