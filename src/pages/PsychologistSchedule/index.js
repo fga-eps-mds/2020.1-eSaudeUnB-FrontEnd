@@ -9,7 +9,6 @@ import './styles.css';
 
 export default function PsychologistSchedule(props) {
     const [scheduleItems, setScheduleItems] = useState([]);
-
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
@@ -65,6 +64,39 @@ export default function PsychologistSchedule(props) {
         );
 
         setScheduleItems(updatedScheduleItems);
+        console.log(updatedScheduleItems)
+        
+    }
+    function appointmentHours(start,end,duration){
+        let actualHour = parseInt(start.substring(0, 2))
+        let actualMinutes = parseInt(start.substring(3, 5))
+        duration = parseInt(duration)
+        let endHour = parseInt(end.substring(0, 2))
+        let endMinutes = parseInt(end.substring(3, 5))
+        let hour = {}
+        let hours = [{}];
+        hours[0] = {
+            time: `${start}`,
+            scheduled:false
+        }
+        
+        do{
+            if(actualMinutes+duration >= 60){
+                actualHour += 1
+                actualMinutes = 60 - (actualMinutes+duration)
+            }else{
+                actualMinutes += duration
+            }
+            hour = {
+                time:`${actualHour>=10 ? actualHour : `0${actualHour}`}:${actualMinutes>=10 ? actualMinutes : `0${actualMinutes}`}`,
+                scheduled:false,
+            }
+            if(hour.time != end){
+                hours.push(hour)
+                console.log(`atendimento Individual: ${hour.time}`)
+            }
+        }while(hour.time != end)
+        return hours
     }
 
     function handleId() {
@@ -146,6 +178,9 @@ export default function PsychologistSchedule(props) {
                 }, 3500);
                 return false;
             }
+            let value = appointmentHours(scheduleItems[i].from,scheduleItems[i].to,scheduleItems[i].duration)
+            setScheduleItemsValue(i,'appointment',value)
+            console.log("salvou")
         }
         return true;
     }
