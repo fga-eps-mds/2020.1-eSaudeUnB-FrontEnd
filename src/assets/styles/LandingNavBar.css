@@ -10,6 +10,7 @@
 
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
     z-index: 1000;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.25));
 }
 
 .landingNavBarComponent img {
@@ -25,20 +26,26 @@
 }
 
 .landingNavBarComponent .links a {
-    color: #eee;
+    padding: 13px;
+    color: #fff;
     text-decoration: none;
     transition: 0.2s all;
 }
 
 .landingNavBarComponent .links a:hover {
-    color: #ccc;
+    color: #b5e1f7;
 }
 
-/* .landingNavBarComponent .links .registration-link:hover {
-    background: darkblue;
-    border: 1px solid darkblue;
+.landingNavBarComponent .links .registration-link,
+.login-link {
+    margin-right: -26px;
 }
 
+.landingNavBarComponent .links .registration-link:hover {
+    background: #0459ae;
+    color: #fff;
+}
 .landingNavBarComponent .links .login-link:hover {
-    background: darkblue;
-} */
+    background: #0459ae;
+    color: #fff;
+}
