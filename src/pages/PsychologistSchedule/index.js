@@ -23,7 +23,10 @@ export default function PsychologistSchedule(props) {
     }, []);
 
     const weekDays = [
-        { value: 0, label: 'Domingo' },
+        { 
+            value: 0, 
+            label: 'Domingo' 
+        },
         {
             value: 1,
             label: 'Segunda-feira',
@@ -44,7 +47,10 @@ export default function PsychologistSchedule(props) {
             value: 5,
             label: 'Sexta-feira',
         },
-        { value: 6, label: 'Sábado' },
+        { 
+            value: 6, 
+            label: 'Sábado' 
+        },
     ];
 
     function setScheduleItemsValue(position, field, value) {
@@ -88,7 +94,8 @@ export default function PsychologistSchedule(props) {
         setScheduleItems(temp);
     }
 
-    function verifyCalendarData() {
+    async function verifyCalendarData() {
+        let minutes;
         for (let i = 0; i < scheduleItems.length; i += 1) {
             if (scheduleItems[i].from > scheduleItems[i].to) {
                 setShow(true);
@@ -113,12 +120,38 @@ export default function PsychologistSchedule(props) {
                 }, 3500);
                 return false;
             }
+
+            if(scheduleItems[i].duration <= 0){
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    'A duração da consulta deve ser maior que 0 minutos',
+                );
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return false;
+            }
+            //function to be edited earlier
+            minutes = await calculateAttendance(scheduleItems[i].from,scheduleItems[i].to,scheduleItems[i].duration);
+ 
+            if(minutes > 0){
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    `Voce possui ${minutes} minutos que não se encaixarão em atendimentos`,
+                );
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return false;
+            }
         }
         return true;
     }
 
     async function putCalendar() {
-        if (verifyCalendarData()) {
+        if (await verifyCalendarData()) {
             await api.put('/calendary/update/', {
                 email: localStorage.getItem('user'),
                 weekDay: scheduleItems,
@@ -130,6 +163,19 @@ export default function PsychologistSchedule(props) {
                 setShow(false);
             }, 3000);
         }
+    }
+
+    async function calculateAttendance(start,end,duration){
+        start = parseInt(start.substring(0, 2))*60 + parseInt(start.substring(3, 5))
+        end = parseInt(end.substring(0, 2))*60 + parseInt(end.substring(3, 5))
+        duration = parseInt(duration)
+
+        let number = (end-start)
+        let minutesRemaining = 0;
+        if(number % duration != 0){
+            minutesRemaining = number % duration
+        }
+        return minutesRemaining;
     }
 
     return (
@@ -210,6 +256,23 @@ export default function PsychologistSchedule(props) {
                                             onChange={(e) => setScheduleItemsValue(
                                                 index,
                                                 'to',
+                                                e.target.value,
+                                            )
+                                            }
+                                        />
+                                    </div>
+                                    
+                                    <div className="input-box">
+                                        <label>Duração da consulta (minutos)</label>
+                                        <input
+                                            name="duration"
+                                            label="duration"
+                                            type="number"
+                                            min="0"
+                                            value={scheduleItem.duration}
+                                            onChange={(e) => setScheduleItemsValue(
+                                                index,
+                                                'duration',
                                                 e.target.value,
                                             )
                                             }
