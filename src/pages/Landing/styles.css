@@ -1,243 +1,247 @@
 .page-landing {
-  margin: 0;
-  width: 100%;
-  height: 100%;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .page-landing .content {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .page-landing .content .main {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  padding-top: 100px;
+    padding-top: 100px;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .page-landing .content .main .landing-img {
-  height: 60vh;
-  justify-self: center;
-  margin-top: -90px;
+    height: 60vh;
+    justify-self: center;
+    margin-top: -90px;
 }
 
 .page-landing .content .main .wave-animation {
-  width: 100%;
-  margin-top: -90px;
+    width: 100%;
+    margin-top: -90px;
 }
 
 .page-landing .content .main .wave-animation .wave {
-  width: 100%;
-  height: 129px;
-  background: url(../../assets/images/wave.svg);
-  background-size: auto 100%;
+    width: 100%;
+    height: 129px;
+    background: url(../../assets/images/wave.svg);
+    background-size: auto 100%;
 }
 
 .page-landing .content .main .wave-animation .wave.wave1 {
-  animation: 15000s linear 0s infinite animate;
-  z-index: 10;
-  position: relative;
-  top: 130px;
-  left: 0;
-  opacity: 1;
-  bottom: 0;
+    animation: 1500s linear 1s infinite animate;
+    z-index: 10;
+    position: relative;
+    top: 130px;
+    left: 0;
+    opacity: 1;
+    bottom: 0;
 }
 .page-landing .content .main .wave-animation .wave.wave2 {
-  animation: 7000s linear -5s infinite animate2;
-  z-index: 9;
-  position: relative;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
-  bottom: 10px;
+    animation: 700s linear -7s infinite animate2;
+    z-index: 9;
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    bottom: 10px;
 }
 .page-landing .content .main .wave-animation .wave.wave3 {
-  animation: 10000s linear -2s infinite animate;
-  z-index: 8;
-  position: relative;
-  top: -130px;
-  left: 0;
-  opacity: 0.2;
-  bottom: 15px;
+    animation: 1000s linear -3s infinite animate;
+    z-index: 8;
+    position: relative;
+    top: -130px;
+    left: 0;
+    opacity: 0.2;
+    bottom: 15px;
 }
 @keyframes animate {
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 100000%;
-  }
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100000%;
+    }
 }
 @keyframes animate2 {
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 100000%;
-  }
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100000%;
+    }
 }
 
 .page-landing .content .main .above-img {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
 
-  width: 100%;
+    width: 100%;
 }
 
 .page-landing .content .main .above-img h1 {
-  font-weight: 700;
-  font-size: 84px;
-  line-height: 80px;
-  color: #eee;
+    font-weight: 700;
+    font-size: 84px;
+    line-height: 80px;
+    color: #eee;
 }
 
 .page-landing .content .main .above-img h2 {
-  font-weight: 500;
-  font-size: 23px;
-  color: #eee;
+    font-weight: 500;
+    font-size: 23px;
+    color: #eee;
 }
 
 .page-landing .content .main .above-img .buttons-container {
-  display: flex;
+    display: flex;
 }
 
 .page-landing .content .main .above-img .buttons-container a {
-  width: 240px;
-  height: 60px;
+    width: 240px;
+    height: 60px;
 
-  border-radius: 40px;
-  font: 500 32px Poppins;
+    border-radius: 40px;
+    font: 500 32px Poppins;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  text-decoration: none;
+    text-decoration: none;
 
-  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
-  transition: background-color 0.2s;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
+    transition: background-color 0.2s;
 }
 
 .page-landing .content .main .above-img .buttons-container a:first-child {
-  margin-right: 40px;
+    margin-right: 40px;
 }
 
 .page-landing .content .main .above-img .buttons-container a.registration {
-  background: none;
-  border: 4px solid #0459ae;
-  color: #eeeeee;
+    background: none;
+    border: 4px solid #0459ae;
+    color: #eeeeee;
 }
 
-.page-landing .content .main .above-img .buttons-container a.registration:hover {
-  background: #0459ae;
+.page-landing
+    .content
+    .main
+    .above-img
+    .buttons-container
+    a.registration:hover {
+    background: #0459ae;
 }
 
 .page-landing .content .main .above-img .buttons-container a.login {
-  background: #eeeeee;
-  color: #0459ae;
+    background: #eeeeee;
+    color: #0459ae;
 }
 
 .page-landing .content .main .above-img .buttons-container a.login:hover {
-  background: #0459ae;
-  color: #eeeeee;
+    background: #0459ae;
+    color: #eeeeee;
 }
 
 .page-landing .content .about {
-  background-color: #eee;
-  margin-top: -128px;
+    background-color: #eee;
+    margin-top: -128px;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-  padding-top: 100px;
+    padding-top: 100px;
 
-  width: 100%;
-  height: 900px;
+    width: 100%;
+    height: 900px;
 }
 
 .page-landing .content .about h2 {
-  margin-top: 150px;
-  width: 80%;
-  text-align: justify;
-  font-size: 20px;
+    margin-top: 150px;
+    width: 80%;
+    text-align: justify;
+    font-size: 20px;
 }
 
 .page-landing .content .how-it-work {
-  background-color: #eee;
-  margin-top: -128px;
+    background-color: #eee;
+    margin-top: -128px;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-  padding-top: 100px;
+    padding-top: 100px;
 
-  width: 100%;
-  height: 900px;
+    width: 100%;
+    height: 900px;
 }
 
-.page-landing .content .how-it-work .hiw-cards{
-  padding-top: 100px;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.page-landing .content .how-it-work .hiw-cards {
+    padding-top: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .page-landing .content .faq {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-  padding-top: 100px;
+    padding-top: 100px;
 
-  width: 100%;
-  height: 900px;
+    width: 100%;
+    height: 900px;
 
-  color: #eee;
+    color: #eee;
 }
 
 .page-landing .content .faq .faq-questions {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-flow: row wrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
 
-  margin-top: 75px;
+    margin-top: 75px;
 }
 
 .page-landing .content .who-behind {
-  background-color: #eee;
-  margin-top: -128px;
+    background-color: #eee;
+    margin-top: -128px;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-  padding-top: 100px;
+    padding-top: 100px;
 
-  width: 100%;
-  height: 900px;
+    width: 100%;
+    height: 900px;
 }
 
 .page-landing .content .who-behind h2 {
-  margin-top: 150px;
-  width: 80%;
-  text-align: justify;
-  font-size: 20px;
+    margin-top: 150px;
+    width: 80%;
+    text-align: justify;
+    font-size: 20px;
 }
