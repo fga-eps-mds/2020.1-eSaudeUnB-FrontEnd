@@ -69,7 +69,7 @@ export default function UserProfile(props) {
             const response = await api.put(`/user/${props.location.state.data.email}`, {
                 name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion, userImage,
             });
-            console.log(response.data.userImage);
+            console.log("resopnse1", response.data.userImage);
             if (response.status === 203) {
                 const { details } = response.data.error;
                 closeAlerts();
@@ -142,13 +142,13 @@ export default function UserProfile(props) {
 
         return 0;
     }
-
+    
     async function renderPage(event) {
         try {
             event.preventDefault();
 
             const response = await api.get(`/user/${props.location.state.data.email}`);
-
+            
             if (response.status === 200) {
                 setEmail(response.data.email);
                 setName(response.data.name);
@@ -159,9 +159,11 @@ export default function UserProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
-                setUserImage(UserImage.userImage);
+                //setUserImage(response.data.userImage);
+               
             }
-            
+            console.log("vraaaaaaaau");
+            console.log();
         } catch (err) {
             setShow(true);
             setVariant('danger');

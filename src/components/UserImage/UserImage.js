@@ -18,6 +18,9 @@ function UpdateUserImage({actualUser}) {
     
   };
   
+  let base64Image = atob(new Buffer(actualUser.userImage, 'binary').toString('base64'));
+  
+  
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -32,9 +35,11 @@ function UpdateUserImage({actualUser}) {
       };
     });
   };
-
+  
   return (
+    
     <div className="App">
+      <img src={base64Image} height="200px" />
       <input
         type="file"
         onChange={(e) => {
@@ -42,7 +47,7 @@ function UpdateUserImage({actualUser}) {
         }}
       />
       <br></br>
-      <img src={baseImage} height="200px" />
+      
     </div>
   );
 }
