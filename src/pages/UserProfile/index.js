@@ -10,7 +10,7 @@ import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 
 import Input from '../../components/Input';
-import UserImage from '../../components/UserImage/UserImage';
+import { convertBase64, uploadImage } from '../../components/UserImage/UserImage';
 
 export default function UserProfile(props) {
     const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ export default function UserProfile(props) {
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
     const [userImage, setUserImage] = useState('');
-
+    const [currentImage, setCurrentImage] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
@@ -39,8 +39,6 @@ export default function UserProfile(props) {
     const [alertContentBond, setAlertContentBond] = useState(false);
     const [alertContentReligion, setAlertContentReligion] = useState(false);
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(false);
-
-    
 
     function closeAlerts() {
         setAlertContentName(false);
@@ -59,17 +57,24 @@ export default function UserProfile(props) {
 
         history.push('/');
     }
-    
+
     async function updateInfos(event) {
-        
         try {
-            
             event.preventDefault();
 
             const response = await api.put(`/user/${props.location.state.data.email}`, {
-                name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion, userImage,
+                name,
+                lastName,
+                email,
+                phone,
+                unbRegistration,
+                gender,
+                bond,
+                civilStatus,
+                religion,
+                userImage: currentImage,
             });
-            console.log("resopnse1", response.data.userImage);
+
             if (response.status === 203) {
                 const { details } = response.data.error;
                 closeAlerts();
@@ -130,11 +135,9 @@ export default function UserProfile(props) {
                 setAlertText('Dados atualizados com sucesso.');
             }
         } catch (err) {
-            console.log(err);
             setShow(true);
             setVariant('danger');
             setAlertText('Falha na atualização dos dados, tente novamente');
-            
         }
         setInterval(() => {
             setShow(false);
@@ -142,13 +145,15 @@ export default function UserProfile(props) {
 
         return 0;
     }
-    
+    function refreshPage() {
+        window.location.reload(false);
+    }
     async function renderPage(event) {
         try {
             event.preventDefault();
 
             const response = await api.get(`/user/${props.location.state.data.email}`);
-            
+
             if (response.status === 200) {
                 setEmail(response.data.email);
                 setName(response.data.name);
@@ -159,11 +164,8 @@ export default function UserProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
-                //setUserImage(response.data.userImage);
-               
+                setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
             }
-            console.log("vraaaaaaaau");
-            console.log();
         } catch (err) {
             setShow(true);
             setVariant('danger');
@@ -173,31 +175,40 @@ export default function UserProfile(props) {
             setShow(false);
         }, 2000);
     }
-    
+
     return (
         <>
             <NavBar actualUser={props.location.state.data} />
-           
+
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
                     <div></div>
                 )}
-                
+
                 <div className="content">
                     <div className="profile">
-                        <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                        <img className="userIcon" src={userImage || userIcon} alt="icone de usuario" width="150px" />
                     </div>
                     <form className="formColumn" onSubmit={updateInfos}>
+
                         <div className="form">
-                        <UserImage actualUser={props.location.state.data}/>
+                            <input
+                                type="file"
+                                name={userImage}
+                                onChange={async (e) => {
+                                    uploadImage(e);
+                                    const teste = await convertBase64(e.target.files[0]);
+                                    setCurrentImage(teste);
+                                }}
+                            />
                             <Input
                                 placeholder="Nome"
                                 value={name}
                                 onChange={setName}
                             />
-                           
+
                             {alertContentName ? (
                                 <div className="alertContent">
                                     <p>Nome precisa possuir mais de 2 letras.</p>
@@ -337,10 +348,10 @@ export default function UserProfile(props) {
                                     <p></p>
                                 </div>
                             )}
-                            
+
                         </div>
                         <div className="buttons">
-                            <button className="button-salvar" type="submit">Salvar</button>
+                            <button className="button-salvar" type="submit" onClick={refreshPage}>Salvar</button>
                             <button className="button-sair" onClick={getOut}>Sair</button>
                         </div>
                     </form>
