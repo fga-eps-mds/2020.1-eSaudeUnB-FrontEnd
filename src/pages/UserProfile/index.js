@@ -207,7 +207,7 @@ export default function UserProfile(props) {
                                     <figure class="personal-figure">
                                         <img src={userImage || userIcon} class="personal-avatar" alt="avatar" />
                                         <figcaption class="personal-figcaption">
-                                            <img src={figureCaption} />
+                                            <img src={figureCaption} alt = "figureCaption"/>
                                         </figcaption>
                                     </figure>
                                 </label>

@@ -51,6 +51,7 @@
     height: 500px;
 
     margin-left: 100px;
+    margin-top: 230px;
 
     display: flex;
     justify-content: space-between;
@@ -177,31 +178,34 @@
     height: 20px;
     font-size: 14px;
 }
-.personal-image {
+.psyProfileContainer .form .personal-image {
     text-align: center;
-  }
-  .personal-image input[type="file"] {
+    position: absolute;
+    top: 130px;
+    left: 90px;
+}
+.psyProfileContainer .form .personal-image input[type="file"] {
     display: none;
-  }
-  .personal-figure {
+}
+.psyProfileContainer .form .personal-figure {
     position: relative;
-    width: 120px;
-    height: 120px;
-  }
-  .personal-avatar {
+    width: 150px;
+    height: 150px;
+}
+.psyProfileContainer .form .personal-avatar {
     cursor: pointer;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     box-sizing: border-box;
-    border-radius: 100%;
+    border-radius: 50%;
     border: 2px solid transparent;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     transition: all ease-in-out .3s;
-  }
-  .personal-avatar:hover {
+}
+.psyProfileContainer .form .personal-avatar:hover {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-  }
-  .personal-figcaption {
+}
+  .psyProfileContainer .form .personal-figcaption {
     cursor: pointer;
     position: absolute;
     top: 0px;
@@ -211,13 +215,13 @@
     opacity: 0;
     background-color: rgba(0, 0, 0, 0);
     transition: all ease-in-out .3s;
-  }
-  .personal-figcaption:hover {
+}
+.psyProfileContainer .form .personal-figcaption:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, .5);
-  }
-  .personal-figcaption > img {
+}
+.psyProfileContainer .form .personal-figcaption > img {
     margin-top: 32.5px;
     width: 50px;
     height: 50px;
-  }
+}
