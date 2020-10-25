@@ -141,6 +141,15 @@
     color: #eeeeee;
 }
 
+.page-landing .content .main .above-img .buttons-container .know-more-btn {
+    color: #eee;
+    transition: 0.2s all;
+}
+
+.page-landing .content .main .above-img .buttons-container .know-more-btn:hover {
+    opacity: 0.3;
+}
+
 .page-landing
     .content
     .main

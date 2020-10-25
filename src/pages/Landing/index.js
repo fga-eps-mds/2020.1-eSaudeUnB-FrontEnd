@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LandingNavBar from '../../components/LandingNavBar';
 
 import landingImg from '../../assets/images/logo.svg';
+import down from '../../assets/images/down.svg';
 
 import './styles.css';
 import '../../assets/styles/HiwCard.css';
@@ -27,6 +28,8 @@ export default function Landing() {
                         </div>
 
                         <div className="buttons-container">
+                            <a className="know-more-btn" href="#about">Saiba mais<img src={down} /></a>
+
                             <Link to="/registration" className="registration">
                                 Registrar
                             </Link>
