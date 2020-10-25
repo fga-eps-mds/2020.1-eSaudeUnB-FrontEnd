@@ -28,8 +28,6 @@ export default function Landing() {
                         </div>
 
                         <div className="buttons-container">
-                            <a className="know-more-btn" href="#about">Saiba mais<img src={down} /></a>
-
                             <Link to="/registration" className="registration">
                                 Registrar
                             </Link>
@@ -37,6 +35,7 @@ export default function Landing() {
                             <Link to="/login" className="login">
                                 Entrar
                             </Link>
+                            <a className="know-more-btn" href="#about">Saiba mais<img src={down} /></a>
                         </div>
                     </div>
                     <section className="wave-animation">

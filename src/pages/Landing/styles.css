@@ -142,6 +142,10 @@
 }
 
 .page-landing .content .main .above-img .buttons-container .know-more-btn {
+    position: relative;
+    top: 75px;
+    right: 375px;
+
     color: #eee;
     transition: 0.2s all;
 }
