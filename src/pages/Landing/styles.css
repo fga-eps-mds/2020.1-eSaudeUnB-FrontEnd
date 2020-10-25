@@ -150,7 +150,12 @@
     transition: 0.2s all;
 }
 
-.page-landing .content .main .above-img .buttons-container .know-more-btn:hover {
+.page-landing
+    .content
+    .main
+    .above-img
+    .buttons-container
+    .know-more-btn:hover {
     opacity: 0.3;
 }
 
@@ -257,4 +262,14 @@
     width: 80%;
     text-align: justify;
     font-size: 20px;
+}
+
+.page-landing .content footer {
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.page-landing .content footer img {
+    width: 250px;
 }

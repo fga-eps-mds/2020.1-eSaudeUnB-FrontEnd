@@ -5,6 +5,7 @@ import LandingNavBar from '../../components/LandingNavBar';
 
 import landingImg from '../../assets/images/logo.svg';
 import down from '../../assets/images/down.svg';
+import logo from '../../assets/images/esaude_logo.svg';
 
 import './styles.css';
 import '../../assets/styles/HiwCard.css';
@@ -35,7 +36,10 @@ export default function Landing() {
                             <Link to="/login" className="login">
                                 Entrar
                             </Link>
-                            <a className="know-more-btn" href="#about">Saiba mais<img src={down} /></a>
+                            <a className="know-more-btn" href="#about">
+                                Saiba mais
+                                <img src={down} />
+                            </a>
                         </div>
                     </div>
                     <section className="wave-animation">
@@ -235,7 +239,12 @@ export default function Landing() {
                         dignissim diam quis enim lobortis scelerisque fermentum.
                     </h2>
                 </div>
-                <footer></footer>
+                <footer>
+                    <a href="#main">
+                        <img src={logo} alt="Logo e-saude unb" />
+                    </a>
+                    <div className="foot-links"></div>
+                </footer>
             </div>
         </div>
     );
