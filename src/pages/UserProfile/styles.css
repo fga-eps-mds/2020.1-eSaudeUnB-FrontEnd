@@ -139,3 +139,11 @@
     height: 20px;
     font-size: 14px;
 }
+.userProfileContainer .userIcon {
+    border-radius: 50% ;
+    width: 150px;
+}
+#image {
+    position: absolute;
+    top : 250px;
+}

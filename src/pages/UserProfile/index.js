@@ -189,17 +189,18 @@ export default function UserProfile(props) {
 
                 <div className="content">
                     <div className="profile">
-                        <img className="userIcon" src={userImage || userIcon} alt="icone de usuario" width="150px" />
+                        <img className="userIcon" src={userImage || userIcon} alt="icone de usuario"/>
                     </div>
                     <form className="formColumn" onSubmit={updateInfos}>
 
                         <div className="form">
                             <input
+                                id = "image"
                                 type="file"
                                 onChange={async (e) => {
                                     uploadImage(e);
-                                    const teste = await convertBase64(e.target.files[0]);
-                                    setCurrentImage(teste);
+                                    const image = await convertBase64(e.target.files[0]);
+                                    setCurrentImage(image);
                                 }}
                             />
                             <Input

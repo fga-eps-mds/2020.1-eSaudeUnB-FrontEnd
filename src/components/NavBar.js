@@ -14,7 +14,7 @@ export default function NavBar({ actualUser, bond }) {
             const response = await api.get(`/user/${actualUser.email}`);
             setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
         }());
-    }, []);
+    }, [actualUser]);
 
     return (
         <nav className="navBarComponent">
