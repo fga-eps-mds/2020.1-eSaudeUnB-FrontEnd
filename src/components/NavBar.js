@@ -66,6 +66,17 @@ export default function NavBar(props) {
                     >
                         Perfil
                     </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/main',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Horários
+                    </Link>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
                 </div>
                 )}
