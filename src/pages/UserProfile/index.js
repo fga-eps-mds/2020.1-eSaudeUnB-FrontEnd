@@ -196,7 +196,6 @@ export default function UserProfile(props) {
                         <div className="form">
                             <input
                                 type="file"
-                                name={userImage}
                                 onChange={async (e) => {
                                     uploadImage(e);
                                     const teste = await convertBase64(e.target.files[0]);

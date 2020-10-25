@@ -27,7 +27,7 @@ export default function PsychologistList(props) {
 
     return (
         <div className="psychologistListContainer">
-            <NavBar className="navBar" actualUser={actualUser} />
+            <NavBar className="navBar" actualUser={props.location.state.data} />
             <div className="content">
                 <SearchBar
                     className="searchBar"
