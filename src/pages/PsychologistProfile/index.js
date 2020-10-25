@@ -7,6 +7,7 @@ import userIcon from '../../assets/images/userIcon.svg';
 
 import Input from '../../components/Input';
 import NavBar from '../../components/NavBar';
+import { convertBase64, uploadImage } from '../../components/UserImage/UserImage';
 
 import api from '../../services/api';
 import './styles.css';
@@ -20,6 +21,8 @@ export default function PsychologistProfile(props) {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [biography, setBiography] = useState('');
+    const [userImage, setUserImage] = useState('');
+    const [currentImage, setCurrentImage] = useState('');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -52,13 +55,24 @@ export default function PsychologistProfile(props) {
 
         history.push('/');
     }
+    function refreshPage() {
+        window.location.reload(false);
+    }
 
     async function updateInfos(event) {
         try {
             event.preventDefault();
 
             const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
-                name, lastName, email, phone, specialization, gender, bond, biography,
+                name,
+                lastName,
+                email,
+                phone,
+                specialization,
+                gender,
+                bond,
+                biography,
+                userImage: currentImage,
             });
 
             if (response.status === 203) {
@@ -141,6 +155,7 @@ export default function PsychologistProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setBiography(response.data.biography);
+                setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
             }
         } catch (err) {
             setShow(true);
@@ -164,11 +179,20 @@ export default function PsychologistProfile(props) {
                 <div className="content">
                     <div className="firstColumn">
                         <div className="profile">
-                            <img className="userIcon" src={userIcon} alt="icone de usuario" />
+                            <img className="userIcon" src={userImage || userIcon} alt="icone de usuario" />
                         </div>
                         <form className="form" onSubmit={updateInfos}>
                             <div className="formColumn">
                                 <div>
+                                    <input
+                                        id = "image"
+                                        type="file"
+                                        onChange={async (e) => {
+                                            uploadImage(e);
+                                            const image = await convertBase64(e.target.files[0]);
+                                            setCurrentImage(image);
+                                        }}
+                                    />
                                     <Input
                                         placeholder="Nome"
                                         value={name}
@@ -305,7 +329,7 @@ export default function PsychologistProfile(props) {
                             )}
 
                             <div className="buttons">
-                                <button className="button-salvar" type="submit">Salvar</button>
+                                <button className="button-salvar" type="submit" onClick={refreshPage}>Salvar</button>
                                 <button className="button-sair" onClick={getOut}>Sair</button>
                             </div>
                         </form>
