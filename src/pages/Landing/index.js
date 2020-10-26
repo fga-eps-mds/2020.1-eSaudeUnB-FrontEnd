@@ -38,7 +38,7 @@ export default function Landing() {
                             </Link>
                             <a className="know-more-btn" href="#about">
                                 Saiba mais
-                                <img src={down} />
+                                <img src={down} alt="seta para baixo" />
                             </a>
                         </div>
                     </div>
@@ -52,10 +52,23 @@ export default function Landing() {
                     <h1>Sobre</h1>
                     <h2>
                         A eSaúdeUnB é uma plataforma online criada com o intuido de:
-                        <li>facilitar o atendimento médico para pacientes</li>
-                        <li>auxiliar profissionais da saúde na gestão dos prontuários médicos desses pacientes</li>
-                        <li>além de permitir aos gestores o acesso aos dados dos atendimentos realizados pelos profissionais de forma a otimizar tempo e recursos e auxiliá-los na tomada de decisões.</li>
-                        <li>atualizar o atendimento na área de saúde mental decorrentes do isolamento social, a fim de lidar com a fase de recuperação da pandemia do Covid-19</li>
+                        <li>
+                            facilitar o atendimento médico para pacientes
+                        </li>
+                        <li>
+                            auxiliar profissionais da saúde na gestão dos
+                            prontuários médicos desses pacientes
+                        </li>
+                        <li>
+                            além de permitir aos gestores o acesso aos dados dos atendimentos
+                            realizados pelos profissionais de forma a otimizar tempo e recursos
+                            e auxiliá-los na tomada de decisões.
+                        </li>
+                        <li>
+                            atualizar o atendimento na área de saúde mental decorrentes do
+                            isolamento social, a fim de lidar com a fase de recuperação
+                            da pandemia do Covid-19
+                        </li>
                     </h2>
                 </div>
                 <div id="how-it-work" className="how-it-work">
@@ -86,7 +99,7 @@ export default function Landing() {
                             <span>
                                 Para um paciente, após já estar
                                 com o cadastro completo. Basta entrar
-                                na "lista de psicólogos" e escolher o psicólogo
+                                na &rdquo;lista de psicólogos&rdquo; e escolher o psicólogo
                                 e horário da sua preferência.
                                 Já para um psicólogo basta estar com o cadastro completo
                                 e o perfil atualizado para esperar que alguém solicite uma
@@ -104,7 +117,7 @@ export default function Landing() {
                             </h2>
                             <span>
                                 Já na página inicial é possível encontrar um botão
-                                de "registrar" na parte superior esquerda da tela.
+                                de &rdquo;registrar&rdquo; na parte superior esquerda da tela.
                                 Ao clicar o úsuario será redirencionado para a tela
                                 de cadastro, onde deverá informar os dados solicitados
                             </span>
@@ -116,7 +129,7 @@ export default function Landing() {
                             <span>
                                 Após já estar cadastrado e já ter atualizado as
                                 informações de perfil. Basta realizar o login
-                                e clicar em "lista de Psicólogos", escolher o psicólogo
+                                e clicar em &rdquo;lista de Psicólogos&rdquo;, escolher o psicólogo
                                 e o horário de sua preferência.
                             </span>
                         </div>
@@ -184,12 +197,32 @@ export default function Landing() {
                 <div id="who-behind" className="who-behind">
                     <h1>Quem está por trás desta rede</h1>
                     <h2>
-                        <li>Carla Silva Rocha Aguiar - Engenharia de Software - campus Gama Unb FGA</li>
-                        <li>Pricila Almeida Andrade - Curso de graduação em Saúde Coletiva/UnB - campus Ceilândia e membro do COES de Saúde Mental da Dasu/DAC</li>
-                        <li>Laércia Abreu Vasconcelos - Departamento de Processos Psicológicos Básicos/Instituto de Psicologia/ UnB - campus Darcy e membro do COES de Saúde Mental da Dasu/DAC</li>
-                        <li>Ana Valéria Machado Mendonça - Departamento de Saúde Coletiva/ Faculdade de Ciências da Saúde - Campus Darcy e membro do Coes-UnB</li>
-                        <li>Cristineide Leandro França - psicóloga, coordenadora da Coordenação de Prevenção (Cooprev/Dasu/DAC) e membro do COES de Saúde Mental da Dasu/DAC</li>
-                        <li>alunos de graduação e pós graduação</li>
+                        <li>
+                            Carla Silva Rocha Aguiar - Engenharia de Software - campus Gama Unb FGA
+                        </li>
+                        <li>
+                            Pricila Almeida Andrade - Curso de graduação em Saúde Coletiva/UnB -
+                            campus Ceilândia e membro do COES de Saúde Mental da Dasu/DAC
+                        </li>
+                        <li>
+                            Laércia Abreu Vasconcelos -
+                            Departamento de Processos Psicológicos
+                            Básicos/Instituto de Psicologia/ UnB -
+                            campus Darcy e membro do COES de Saúde Mental da Dasu/DAC
+                        </li>
+                        <li>
+                            Ana Valéria Machado Mendonça -
+                            Departamento de Saúde Coletiva/ Faculdade de Ciências da Saúde -
+                            Campus Darcy e membro do Coes-UnB
+                        </li>
+                        <li>
+                            Cristineide Leandro França -
+                            psicóloga, coordenadora da Coordenação de Prevenção (Cooprev/Dasu/DAC) e
+                            membro do COES de Saúde Mental da Dasu/DAC
+                        </li>
+                        <li>
+                            alunos de graduação e pós graduação
+                        </li>
                     </h2>
                 </div>
                 <footer>
