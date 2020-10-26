@@ -51,24 +51,11 @@ export default function Landing() {
                 <div id="about" className="about">
                     <h1>Sobre</h1>
                     <h2>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Suspendisse faucibus interdum posuere
-                        lorem ipsum. Bibendum arcu vitae elementum curabitur
-                        vitae. Etiam tempor orci eu lobortis. Tempus quam
-                        pellentesque nec nam aliquam sem et tortor consequat.
-                        Sit amet commodo nulla facilisi nullam vehicula.
-                        Adipiscing elit pellentesque habitant morbi tristique
-                        senectus. Malesuada nunc vel risus commodo viverra
-                        maecenas. Sed velit dignissim sodales ut eu. Amet luctus
-                        venenatis lectus magna fringilla urna. In hac habitasse
-                        platea dictumst vestibulum rhoncus. Massa tempor nec
-                        feugiat nisl. Eu non diam phasellus vestibulum lorem.
-                        Egestas tellus rutrum tellus pellentesque eu tincidunt
-                        tortor aliquam nulla. Sit amet purus gravida quis
-                        blandit. Aliquam ut porttitor leo a diam sollicitudin
-                        tempor. Massa placerat duis ultricies lacus sed turpis
-                        tincidunt.
+                        A eSaúdeUnB é uma plataforma online criada com o intuido de:
+                        <li>facilitar o atendimento médico para pacientes</li>
+                        <li>auxiliar profissionais da saúde na gestão dos prontuários médicos desses pacientes</li>
+                        <li>além de permitir aos gestores o acesso aos dados dos atendimentos realizados pelos profissionais de forma a otimizar tempo e recursos e auxiliá-los na tomada de decisões.</li>
+                        <li>atualizar o atendimento na área de saúde mental decorrentes do isolamento social, a fim de lidar com a fase de recuperação da pandemia do Covid-19</li>
                     </h2>
                 </div>
                 <div id="how-it-work" className="how-it-work">
@@ -77,37 +64,33 @@ export default function Landing() {
                         <div className="hiw-card">
                             <h2>Preciso de ajuda</h2>
                             <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Cras fermentum sem sed libero
-                                faucibus porttitor. Aenean facilisis, magna non
-                                porta tincidunt, diam dui venenatis purus, nec
-                                egestas mi est aliquet nisl. Nam et augue a nibh
-                                convallis blandit. Nunc lacinia pretium
-                                consectetur.
+                                Você só precisa se registrar em
+                                nossa plataforma, e atualizar seus
+                                dados de perfil.Após isso já terá
+                                acesso a uma lista de psicólogos
+                                com seus horários disponíveis para
+                                solicitação de atendimentos.
                             </span>
                         </div>
                         <div className="hiw-card">
                             <h2>Quero Atender</h2>
                             <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Cras fermentum sem sed libero
-                                faucibus porttitor. Aenean facilisis, magna non
-                                porta tincidunt, diam dui venenatis purus, nec
-                                egestas mi est aliquet nisl. Nam et augue a nibh
-                                convallis blandit. Nunc lacinia pretium
-                                consectetur.
+                                Atualmente para um psicólogo se
+                                registrar na plataforma, ele deve
+                                entrar em contato com um
+                                administrador que irá cadastrá-lo.
                             </span>
                         </div>
                         <div className="hiw-card">
-                            <h2>Conexão Feita</h2>
+                            <h2>Realizar conexão</h2>
                             <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Cras fermentum sem sed libero
-                                faucibus porttitor. Aenean facilisis, magna non
-                                porta tincidunt, diam dui venenatis purus, nec
-                                egestas mi est aliquet nisl. Nam et augue a nibh
-                                convallis blandit. Nunc lacinia pretium
-                                consectetur.
+                                Para um paciente, após já estar
+                                com o cadastro completo. Basta entrar
+                                na "lista de psicólogos" e escolher o psicólogo
+                                e horário da sua preferência.
+                                Já para um psicólogo basta estar com o cadastro completo
+                                e o perfil atualizado para esperar que alguém solicite uma
+                                consulta.
                             </span>
                         </div>
                     </div>
@@ -117,53 +100,32 @@ export default function Landing() {
                     <div className="faq-questions">
                         <div className="faq-card">
                             <h2>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
+                                Como faço para me registrar na plataforma?
                             </h2>
                             <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                                Risus ultricies tristique nulla aliquet. In ante
-                                metus dictum at tempor commodo ullamcorper a.
-                                Elementum eu facilisis sed odio morbi quis
-                                commodo. Blandit massa enim nec dui nunc mattis
-                                enim.
+                                Já na página inicial é possível encontrar um botão
+                                de "registrar" na parte superior esquerda da tela.
+                                Ao clicar o úsuario será redirencionado para a tela
+                                de cadastro, onde deverá informar os dados solicitados
                             </span>
                         </div>
                         <div className="faq-card">
                             <h2>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
+                                Como marco uma consulta?
                             </h2>
                             <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                                Risus ultricies tristique nulla aliquet. In ante
-                                metus dictum at tempor commodo ullamcorper a.
-                                Elementum eu facilisis sed odio morbi quis
-                                commodo. Blandit massa enim nec dui nunc mattis
-                                enim.
+                                Após já estar cadastrado e já ter atualizado as
+                                informações de perfil. Basta realizar o login
+                                e clicar em "lista de Psicólogos", escolher o psicólogo
+                                e o horário de sua preferência.
                             </span>
                         </div>
                         <div className="faq-card">
                             <h2>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
+                                É cobrado algum valor por consulta?
                             </h2>
                             <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                                Risus ultricies tristique nulla aliquet. In ante
-                                metus dictum at tempor commodo ullamcorper a.
-                                Elementum eu facilisis sed odio morbi quis
-                                commodo. Blandit massa enim nec dui nunc mattis
-                                enim.
+                                Não, todas as consultas solicitadas pela partaforma são gratuitas.
                             </span>
                         </div>
                         <div className="faq-card">
@@ -222,21 +184,12 @@ export default function Landing() {
                 <div id="who-behind" className="who-behind">
                     <h1>Quem está por trás desta rede</h1>
                     <h2>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Enim lobortis scelerisque fermentum dui
-                        faucibus in ornare quam. Eros donec ac odio tempor.
-                        Semper viverra nam libero justo laoreet sit amet cursus.
-                        Facilisi etiam dignissim diam quis enim lobortis
-                        scelerisque fermentum dui. Tincidunt praesent semper
-                        feugiat nibh. Eu facilisis sed odio morbi quis commodo
-                        odio aenean sed. Mattis enim ut tellus elementum
-                        sagittis vitae. Massa massa ultricies mi quis hendrerit
-                        dolor magna. Commodo elit at imperdiet dui. Faucibus
-                        purus in massa tempor. Lobortis feugiat vivamus at
-                        augue. Nulla posuere sollicitudin aliquam ultrices.
-                        Vestibulum sed arcu non odio euismod. Facilisi etiam
-                        dignissim diam quis enim lobortis scelerisque fermentum.
+                        <li>Carla Silva Rocha Aguiar - Engenharia de Software - campus Gama Unb FGA</li>
+                        <li>Pricila Almeida Andrade - Curso de graduação em Saúde Coletiva/UnB - campus Ceilândia e membro do COES de Saúde Mental da Dasu/DAC</li>
+                        <li>Laércia Abreu Vasconcelos - Departamento de Processos Psicológicos Básicos/Instituto de Psicologia/ UnB - campus Darcy e membro do COES de Saúde Mental da Dasu/DAC</li>
+                        <li>Ana Valéria Machado Mendonça - Departamento de Saúde Coletiva/ Faculdade de Ciências da Saúde - Campus Darcy e membro do Coes-UnB</li>
+                        <li>Cristineide Leandro França - psicóloga, coordenadora da Coordenação de Prevenção (Cooprev/Dasu/DAC) e membro do COES de Saúde Mental da Dasu/DAC</li>
+                        <li>alunos de graduação e pós graduação</li>
                     </h2>
                 </div>
                 <footer>
