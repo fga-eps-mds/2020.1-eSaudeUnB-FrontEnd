@@ -184,19 +184,10 @@ export default function PsychologistProfile(props) {
                         </div>
                         <form className="formColumn" onSubmit={updateInfos}>
                             <div className="form">
-                                <input
-                                    id="image"
-                                    type="file"
-                                    onChange={async (e) => {
-                                        uploadImage(e);
-                                        const image = await convertBase64(e.target.files[0]);
-                                        setCurrentImage(image);
-                                    }}
-                                />
                                 <div>
                                     <div class="personal-image">
                                         <label class="label">
-                                            <input
+                                            {<input
                                                 id="image"
                                                 type="file"
                                                 onChange={async (e) => {
@@ -204,9 +195,9 @@ export default function PsychologistProfile(props) {
                                                     const image = await convertBase64(e.target.files[0]);
                                                     setCurrentImage(image);
                                                 }}
-                                            />
+                                            />}
                                             <figure class="personal-figure">
-                                                <img src={userImage || userIcon} class="personal-avatar" alt="avatar" />
+                                                <img src={currentImage || userImage || userIcon} class="personal-avatar" alt="avatar" />
                                                 <figcaption class="personal-figcaption">
                                                     <img src={figureCaption} alt="figureCaption" />
                                                 </figcaption>
