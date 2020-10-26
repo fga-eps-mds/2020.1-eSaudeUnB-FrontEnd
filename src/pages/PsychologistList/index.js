@@ -27,7 +27,7 @@ export default function PsychologistList(props) {
 
     return (
         <div className="psychologistListContainer">
-            <NavBar className="navBar" actualUser={props.location.state.data} />
+            <NavBar className="navBar" actualUser={actualUser} />
             <div className="content">
                 <SearchBar
                     className="searchBar"
@@ -42,11 +42,21 @@ export default function PsychologistList(props) {
                             <Accordion key={psy.email}>
                                 <div className="patientTab">
                                     <div className="patientInfos">
-                                        <img
-                                            className="patientImg"
-                                            src={userIcon}
-                                            alt={psy.name}
-                                        />
+                                        {psy.userImage != null ? (
+                                            <img
+                                                className="patientImg"
+                                                src={atob(Buffer.from(psy.userImage, 'binary').toString('base64'))}
+                                                alt={psy.name}
+                                            />
+                                        ) :
+                                            (
+                                                <img
+                                                    className="patientImg"
+                                                    src={userIcon}
+                                                    alt={psy.name}
+                                                />
+                                            )}
+
                                         <div className="minPatient">
                                             <p className="cardName">
                                                 Nome:{' '}
@@ -101,11 +111,20 @@ export default function PsychologistList(props) {
                                         className="patientTab"
                                     >
                                         <div className="patientInfos">
-                                            <img
-                                                className="patientImg"
-                                                src={userIcon}
-                                                alt={psy.name}
-                                            />
+                                            {psy.userImage != null ? (
+                                                <img
+                                                    className="patientImg"
+                                                    src={atob(Buffer.from(psy.userImage, 'binary').toString('base64'))}
+                                                    alt={psy.name}
+                                                />
+                                            ) :
+                                                (
+                                                    <img
+                                                        className="patientImg"
+                                                        src={userIcon}
+                                                        alt={psy.name}
+                                                    />
+                                                )}
                                             <div className="minPatient">
                                                 <p className="cardName">
                                                     Nome:{' '}

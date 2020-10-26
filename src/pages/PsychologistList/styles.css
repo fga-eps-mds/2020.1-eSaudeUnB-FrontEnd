@@ -68,17 +68,13 @@
 }
 
 .psychologistListContainer .patientTab .patientInfos .patientImg {
-    border-radius: 25%;
+    border-radius: 50%;
     width: 100px;
     height: 100px;
     margin: 0 2rem 0 1rem;
 }
 
-.psychologistListContainer
-    .patientTab
-    .patientInfos
-    .minPatient
-    .cardName {
+.psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
     font: 700 32px Poppins;
 }
 .psychologistListContainer .patientTab .button {

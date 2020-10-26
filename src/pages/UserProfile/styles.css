@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 .userProfileContainer .content {
     width: 100%;
@@ -15,11 +15,9 @@
     display: flex;
     align-items: center;
     padding-left: 5%;
-
 }
 .userProfileContainer .form {
     height: 35vh;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,8 +27,7 @@
 .userProfileContainer .form:first-of-type {
     margin-right: 100px;
 }
-.userProfileContainer .formColumn{
-   
+.userProfileContainer .formColumn {
     display: flex;
     width: 80vh;
     height: 50vh;
@@ -39,8 +36,8 @@
 
 .userProfileContainer .form .input {
     display: flex;
-    border-bottom: 3px solid #0459AE;
-    
+    border-bottom: 3px solid #0459ae;
+
     margin-bottom: 10px;
 }
 
@@ -71,47 +68,47 @@
 
     border: 0px;
     background-color: transparent;
-    border-bottom: 3px solid #0459AE;
+    border-bottom: 3px solid #0459ae;
 
     border-radius: 5px;
     font-size: 18px;
     line-height: 27px;
 }
 .userProfileContainer .form select option {
-    background-color: #0459AE;
+    background-color: #0459ae;
 }
 
-.userProfileContainer .profile{
+.userProfileContainer .profile {
     display: flex;
     position: absolute;
     align-self: baseline;
     margin-top: 1vh;
 }
-.userProfileContainer .content .formColumn .form .selectsLargest{
-    width: 400px; 
-    height: 41px; 
+.userProfileContainer .content .formColumn .form .selectsLargest {
+    width: 400px;
+    height: 41px;
 }
-.userProfileContainer .formColumn .buttons .button-salvar{
+.userProfileContainer .formColumn .buttons .button-salvar {
     width: 150px;
     height: 50px;
 
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459AE;
+    background-color: #0459ae;
 
     font-size: 24px;
     line-height: 36px;
 }
 
-.userProfileContainer .alert{
+.userProfileContainer .alert {
     position: fixed;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
 }
 
-.userProfileContainer .buttons{
+.userProfileContainer .buttons {
     position: absolute;
     display: flex;
     align-self: flex-end;
@@ -125,7 +122,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #FF2C00;
+    background-color: #ff2c00;
 
     font-size: 24px;
     line-height: 36px;
@@ -140,10 +137,10 @@
     font-size: 14px;
 }
 .userProfileContainer .userIcon {
-    border-radius: 50% ;
+    border-radius: 50%;
     width: 150px;
 }
 #image {
     position: absolute;
-    top : 250px;
+    top: 250px;
 }

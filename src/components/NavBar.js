@@ -11,10 +11,20 @@ export default function NavBar({ actualUser, bond }) {
 
     useEffect(() => {
         (async function renderImage() {
-            const response = await api.get(`/user/${actualUser.email}`);
-            setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+            if (bond === 'Psychologist') {
+                const response = await api.get(`/psychologist/${actualUser.email}`);
+                if (response.data.userImage != null) {
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                }
+            }
+            else {
+                const response = await api.get(`/user/${actualUser.email}`);
+                if (response.data.userImage != null) {
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                }
+            }
         }());
-    }, [actualUser]);
+    }, [actualUser, bond]);
 
     return (
         <nav className="navBarComponent">
@@ -46,6 +56,7 @@ export default function NavBar({ actualUser, bond }) {
                     >
                         Perfil
                     </Link>
+
                     <img className="userIcon" src={userImage || userIcon} alt="icone de usuario" />
                 </div>)
                 : (<div className="navLinks">

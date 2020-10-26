@@ -43,9 +43,11 @@
 .psyProfileContainer .content .profile img {
     width: 130px;
     height: 130px;
+    margin-bottom: 10px;
+    border-radius: 50%;
 }
 
-.psyProfileContainer .form {
+.psyProfileContainer .formColumn {
     width: 900px;
     height: 500px;
 
@@ -58,37 +60,37 @@
     flex-direction: column;
 }
 
-.psyProfileContainer .form .input {
+.psyProfileContainer .formColumn .input {
     display: flex;
     border-bottom: 3px solid #0459ae;
 
     margin-bottom: 30px;
 }
 
-.psyProfileContainer .form input {
+.psyProfileContainer .formColumn input {
     width: 400px;
     height: 41px;
 
     background-color: transparent;
     color: #fff;
     border: 0;
-
+    padding-top: 20px;
     font-size: 18px;
     line-height: 27px;
 }
 
-.psyProfileContainer .form input::placeholder {
+.psyProfileContainer .formColumn input::placeholder {
     color: #fff;
 }
 
-.psyProfileContainer .form .selects {
+.psyProfileContainer .formColumn .selects {
     display: flex;
     justify-content: space-between;
 
     width: 400px;
 }
 
-.psyProfileContainer .form .selects select {
+.psyProfileContainer .formColumn .selects select {
     width: 150px;
     height: 41px;
 
@@ -103,7 +105,7 @@
     line-height: 27px;
 }
 
-.psyProfileContainer .form .selects select option {
+.psyProfileContainer .formColumn .selects select option {
     background-color: #0459ae;
 }
 
@@ -116,7 +118,7 @@
     padding: 8px;
 }
 
-.psyProfileContainer .content .formColumn {
+.psyProfileContainer .content .form {
     width: 100%;
 
     display: flex;
@@ -125,14 +127,14 @@
     align-content: space-between;
 }
 
-.psyProfileContainer .content .form .buttons {
+.psyProfileContainer .content .formColumn .buttons {
     display: flex;
     width: 339px;
     margin-top: 25px;
     align-self: flex-start;
     justify-content: space-between;
 }
-.psyProfileContainer .content .form .buttons .button-salvar {
+.psyProfileContainer .content .formColumn .buttons .button-salvar {
     width: 150px;
     height: 50px;
 
@@ -146,7 +148,7 @@
     font-size: 24px;
     line-height: 36px;
 }
-.psyProfileContainer .content .form .buttons .button-sair {
+.psyProfileContainer .content .formColumn .buttons .button-sair {
     width: 150px;
     height: 50px;
 
@@ -168,7 +170,7 @@
     left: 50%;
 }
 
-.psyProfileContainer .form .alertContent {
+.psyProfileContainer .formColumn .alertContent {
     margin: 0px;
     color: black;
     text-align: left;
