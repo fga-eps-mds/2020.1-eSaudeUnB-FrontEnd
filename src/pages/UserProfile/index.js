@@ -9,6 +9,7 @@ import './styles.css';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import { convertBase64, uploadImage } from '../../components/UserImage';
+import figureCaption from '../../assets/images/figureCaption.png';
 
 import Input from '../../components/Input';
 
@@ -189,21 +190,29 @@ export default function UserProfile(props) {
                     )}
 
                 <div className="content">
-                    <div className="profile">
-                        <img className="userIcon" src={currentImage || userImage || userIcon} alt="icone de usuario" />
-                    </div>
+
                     <form className="formColumn" onSubmit={updateInfos}>
 
                         <div className="form">
-                            <input
-                                id="image"
-                                type="file"
-                                onChange={async (e) => {
-                                    uploadImage(e);
-                                    const image = await convertBase64(e.target.files[0]);
-                                    setCurrentImage(image);
-                                }}
-                            />
+                            <div class="personal-image">
+                                <label class="label">
+                                    <input
+                                        id="image"
+                                        type="file"
+                                        onChange={async (e) => {
+                                            uploadImage(e);
+                                            const image = await convertBase64(e.target.files[0]);
+                                            setCurrentImage(image);
+                                        }}
+                                    />
+                                    <figure class="personal-figure">
+                                        <img src={currentImage || userImage || userIcon} class="personal-avatar" alt="avatar" />
+                                        <figcaption class="personal-figcaption">
+                                            <img src={figureCaption} alt="figureCaption" />
+                                        </figcaption>
+                                    </figure>
+                                </label>
+                            </div>
                             <Input
                                 placeholder="Nome"
                                 value={name}

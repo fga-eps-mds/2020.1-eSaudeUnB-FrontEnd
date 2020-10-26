@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import { convertBase64, uploadImage } from '../../components/UserImage';
+import figureCaption from '../../assets/images/figureCaption.png';
 
 import api from '../../services/api';
 import './styles.css';
@@ -55,13 +56,24 @@ export default function PsychologistProfile(props) {
 
         history.push('/');
     }
+    function refreshPage() {
+        window.location.reload(false);
+    }
 
     async function updateInfos(event) {
         try {
             event.preventDefault();
 
             const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
-                name, lastName, email, phone, specialization, gender, bond, biography, userImage: currentImage,
+                name,
+                lastName,
+                email,
+                phone,
+                specialization,
+                gender,
+                bond,
+                biography,
+                userImage: currentImage,
             });
 
             if (response.status === 203) {
@@ -182,6 +194,25 @@ export default function PsychologistProfile(props) {
                                     }}
                                 />
                                 <div>
+                                    <div class="personal-image">
+                                        <label class="label">
+                                            <input
+                                                id="image"
+                                                type="file"
+                                                onChange={async (e) => {
+                                                    uploadImage(e);
+                                                    const image = await convertBase64(e.target.files[0]);
+                                                    setCurrentImage(image);
+                                                }}
+                                            />
+                                            <figure class="personal-figure">
+                                                <img src={userImage || userIcon} class="personal-avatar" alt="avatar" />
+                                                <figcaption class="personal-figcaption">
+                                                    <img src={figureCaption} alt="figureCaption" />
+                                                </figcaption>
+                                            </figure>
+                                        </label>
+                                    </div>
                                     <Input
                                         placeholder="Nome"
                                         value={name}
@@ -318,7 +349,7 @@ export default function PsychologistProfile(props) {
                                 )}
 
                             <div className="buttons">
-                                <button className="button-salvar" type="submit">Salvar</button>
+                                <button className="button-salvar" type="submit" onClick={refreshPage}>Salvar</button>
                                 <button className="button-sair" onClick={getOut}>Sair</button>
                             </div>
                         </form>
