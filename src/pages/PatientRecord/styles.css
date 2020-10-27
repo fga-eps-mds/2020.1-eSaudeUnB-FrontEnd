@@ -36,6 +36,7 @@
 
 .patientRecord .patientInfo .patient .patientImg {
     height: 125px;
+    width: 125px;
     border-radius: 50%;
     margin: 1rem 2rem 1rem 1rem;
 }

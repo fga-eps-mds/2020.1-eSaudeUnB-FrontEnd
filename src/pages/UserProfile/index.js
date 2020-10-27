@@ -146,9 +146,6 @@ export default function UserProfile(props) {
 
         return 0;
     }
-    function refreshPage() {
-        window.location.reload(false);
-    }
     async function renderPage(event) {
         try {
             event.preventDefault();
@@ -165,7 +162,9 @@ export default function UserProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
-                setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                if(response.data.userImage){
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                }
             }
         } catch (err) {
             setShow(true);
@@ -315,7 +314,7 @@ export default function UserProfile(props) {
                             )}
                             <Input
                                 placeholder="Matrícula UnB"
-                                value={unbRegistration}
+                                value={unbRegistration || ""}
                                 onChange={setUnbRegistration}
                             />
                             {alertContentUnbRegistration ? (
@@ -329,7 +328,7 @@ export default function UserProfile(props) {
                             )}
                             <Input
                                 placeholder="DDD + Telefone"
-                                value={phone}
+                                value={phone || ""}
                                 onChange={setPhone}
                             />
                             {alertContentPhone ? (
@@ -360,7 +359,7 @@ export default function UserProfile(props) {
 
                         </div>
                         <div className="buttons">
-                            <button className="button-salvar" type="submit" onClick={refreshPage}>Salvar</button>
+                            <button className="button-salvar" type="submit">Salvar</button>
                             <button className="button-sair" onClick={getOut}>Sair</button>
                         </div>
                     </form>

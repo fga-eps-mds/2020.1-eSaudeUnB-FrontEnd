@@ -55,9 +55,6 @@ export default function PsychologistProfile(props) {
 
         history.push('/');
     }
-    function refreshPage() {
-        window.location.reload(false);
-    }
 
     async function updateInfos(event) {
         try {
@@ -155,7 +152,9 @@ export default function PsychologistProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setBiography(response.data.biography);
-                setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                if(response.data.userImage){
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                }
             }
         } catch (err) {
             setShow(true);
@@ -393,7 +392,6 @@ export default function PsychologistProfile(props) {
                                 <button
                                     className="button-salvar"
                                     type="submit"
-                                    onClick={refreshPage}
                                 >
                                     Salvar
                                 </button>
