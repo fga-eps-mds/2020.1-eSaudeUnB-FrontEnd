@@ -13,12 +13,12 @@ export default function NavBar({ actualUser, bond }) {
         (async function renderImage() {
             if (bond === 'Psychologist') {
                 const response = await api.get(`/psychologist/${actualUser.email}`);
-                if (response.data.userImage != null) {
+                if (response.data != null) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
             } else {
                 const response = await api.get(`/user/${actualUser.email}`);
-                if (response.data.userImage != null) {
+                if (response.data != null) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
             }
