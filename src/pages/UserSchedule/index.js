@@ -11,6 +11,8 @@ export default function UserSchedule(props) {
     const { email } = props.match.params;
     const [selectedValue, setSelectedValue] = useState();
 
+    const history = useHistory();
+
     const weekDays = [
         {   value: 0,
             label: 'Domingo' },
@@ -45,11 +47,31 @@ export default function UserSchedule(props) {
         getData();
     }, [props]);
 
+    async function saveAppointment(){
+        console.log(selectedValue);
+        psychologist.weekDay.map((workDay) => {
+            workDay.appointment.map((appointment) => {
+                if(appointment._id === selectedValue){
+                    appointment.scheduled = true;
+                }
+            });
+        });
+
+        await api.put(`/calendary/update`,
+        {
+            email: psychologist.email,
+            weekDay: psychologist.weekDay
+        });
+
+        console.log(psychologist)
+        history.push('/psychologist/list');
+    }
+
     return (
         <div className="userScheduleContainer">
-            <NavBar actualUser={props.location.state.data} />
+            <NavBar actualUser={localStorage.getItem('user')} />
             <div className="content">
-                <form className="forms">
+                <form className="forms" onsubmit={() => saveAppointment()}>
                     <h1>Dias de atendimento</h1>
                     <div className="times">
                         {psychologist.weekDay !== undefined && psychologist.weekDay.length > 0
@@ -72,22 +94,11 @@ export default function UserSchedule(props) {
                             </div>
                         }
                     </div>
-                    <Link
-                        to={{
-                            pathname: `/psychologist/list/schedule/${psychologist.email}`,
-                            state: {
-                                data: props.location.state.data,
-                            },
-                        }}
-                    >
-                        <button>Salvar</button>
-                    </Link>
+                    <button type="submit">Salvar</button>
                     <Link
                         to={{
                             pathname: '/psychologist/list',
-                            state: {
-                                data: props.location.state.data,
-                            },
+                            
                         }}
                     >
                         <button>Voltar</button>
