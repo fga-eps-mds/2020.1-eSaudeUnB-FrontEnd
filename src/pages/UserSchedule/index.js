@@ -47,7 +47,8 @@ export default function UserSchedule(props) {
         getData();
     }, [props]);
 
-    async function saveAppointment(){
+    async function saveAppointment(event){
+        event.preventDefault();
         console.log(selectedValue);
         psychologist.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
@@ -64,14 +65,13 @@ export default function UserSchedule(props) {
         });
 
         console.log(psychologist)
-        history.push('/psychologist/list');
     }
 
     return (
         <div className="userScheduleContainer">
             <NavBar actualUser={localStorage.getItem('user')} />
             <div className="content">
-                <form className="forms" onsubmit={() => saveAppointment()}>
+                <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
                     <div className="times">
                         {psychologist.weekDay !== undefined && psychologist.weekDay.length > 0
@@ -95,14 +95,7 @@ export default function UserSchedule(props) {
                         }
                     </div>
                     <button type="submit">Salvar</button>
-                    <Link
-                        to={{
-                            pathname: '/psychologist/list',
-                            
-                        }}
-                    >
-                        <button>Voltar</button>
-                    </Link>
+                    
                 </form>
             </div>
         </div>
