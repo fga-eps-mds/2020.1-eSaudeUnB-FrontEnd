@@ -16,8 +16,7 @@ export default function NavBar({ actualUser, bond }) {
                 if (response.data.userImage != null) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
-            }
-            else {
+            } else {
                 const response = await api.get(`/user/${actualUser.email}`);
                 if (response.data.userImage != null) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));

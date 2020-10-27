@@ -36,13 +36,13 @@ export default function PatientList(props) {
                         patients.length === 0 ? (
                             <div className="patientTab noPatients">Não há pacientes cadastrados</div>
                         ) : (
-                                <RealizeSearch
-                                    patients={patients}
-                                    location={props.location}
-                                    src={MagnifyingGlass}
-                                    search={search}
-                                />
-                            )
+                            <RealizeSearch
+                                patients={patients}
+                                location={props.location}
+                                src={MagnifyingGlass}
+                                search={search}
+                            />
+                        )
 
                     }
                 </div>

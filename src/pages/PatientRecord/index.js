@@ -68,8 +68,8 @@ export default function PatientRecord(props) {
                                 src={atob(Buffer.from(patient.userImage, 'binary').toString('base64'))}
                                 alt={patient.name}
                             />
-                        ) :
-                            (
+                        )
+                            : (
                                 <img
                                     className="patientImg"
                                     src={userIcon}

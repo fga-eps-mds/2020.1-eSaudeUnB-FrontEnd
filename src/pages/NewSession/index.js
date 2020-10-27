@@ -58,8 +58,8 @@ export default function NewSession(props) {
                                 src={atob(Buffer.from(patient.userImage, 'binary').toString('base64'))}
                                 alt={patient.name}
                             />
-                        ) :
-                            (
+                        )
+                            : (
                                 <img
                                     className="patientImg"
                                     src={userIcon}

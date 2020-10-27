@@ -22,8 +22,8 @@ export default function RealizeSearch(props) {
                                     src={atob(Buffer.from(patient.userImage, 'binary').toString('base64'))}
                                     alt={patient.name}
                                 />
-                            ) :
-                                (
+                            )
+                                : (
                                     <img
                                         className="patientImg"
                                         src={userIcon}
@@ -50,8 +50,8 @@ export default function RealizeSearch(props) {
                     </div>
                 ))
         ) : (
-                <SearchedPatients patients={patients} location={location} search={search} />
-            )
+            <SearchedPatients patients={patients} location={location} search={search} />
+        )
     );
 }
 

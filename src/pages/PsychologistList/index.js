@@ -48,8 +48,8 @@ export default function PsychologistList(props) {
                                                 src={atob(Buffer.from(psy.userImage, 'binary').toString('base64'))}
                                                 alt={psy.name}
                                             />
-                                        ) :
-                                            (
+                                        )
+                                            : (
                                                 <img
                                                     className="patientImg"
                                                     src={userIcon}
@@ -117,8 +117,8 @@ export default function PsychologistList(props) {
                                                     src={atob(Buffer.from(psy.userImage, 'binary').toString('base64'))}
                                                     alt={psy.name}
                                                 />
-                                            ) :
-                                                (
+                                            )
+                                                : (
                                                     <img
                                                         className="patientImg"
                                                         src={userIcon}
