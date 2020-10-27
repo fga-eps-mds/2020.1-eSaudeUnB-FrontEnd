@@ -47,3 +47,18 @@
 .userScheduleContainer h1{
     color: #07387e;
 }
+
+.userScheduleContainer .content .forms select {
+    width: 400px;
+    height: 41px;
+
+    color: #fff;
+
+    border: 0px;
+    background-color: #0459ae;
+    border-bottom: 3px solid #0459ae;
+
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 27px;
+}
