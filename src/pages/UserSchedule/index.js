@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 
@@ -10,7 +10,7 @@ export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
     const { email } = props.match.params;
     const [selectedValue, setSelectedValue] = useState();
-   
+
     const weekDays = [
         {   value: 0,
             label: 'Domingo' },
@@ -60,7 +60,7 @@ export default function UserSchedule(props) {
                                     <select value={selectedValue}
                                             onChange={(e) => setSelectedValue(e.target.value)}>
                                         {workDay.appointment.map((appointment) => (
-                                            <option id={appointment.time}>
+                                            <option value={appointment._id}>
                                                 Horário de começo: {appointment.time}
                                             </option>
                                         ))}
