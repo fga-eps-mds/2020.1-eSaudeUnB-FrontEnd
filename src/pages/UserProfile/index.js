@@ -162,7 +162,7 @@ export default function UserProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
-                if(response.data.userImage){
+                if (response.data.userImage) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
             }
@@ -314,7 +314,7 @@ export default function UserProfile(props) {
                             )}
                             <Input
                                 placeholder="Matrícula UnB"
-                                value={unbRegistration || ""}
+                                value={unbRegistration || ''}
                                 onChange={setUnbRegistration}
                             />
                             {alertContentUnbRegistration ? (
@@ -328,7 +328,7 @@ export default function UserProfile(props) {
                             )}
                             <Input
                                 placeholder="DDD + Telefone"
-                                value={phone || ""}
+                                value={phone || ''}
                                 onChange={setPhone}
                             />
                             {alertContentPhone ? (

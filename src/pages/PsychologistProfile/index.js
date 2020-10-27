@@ -152,7 +152,7 @@ export default function PsychologistProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setBiography(response.data.biography);
-                if(response.data.userImage){
+                if (response.data.userImage) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
             }
