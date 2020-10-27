@@ -9,8 +9,11 @@ import NavBar from '../../components/NavBar';
 export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
     const { email } = props.match.params;
+    const [selectedValue, setSelectedValue] = useState();
+   
     const weekDays = [
-        { value: 0, label: 'Domingo' },
+        {   value: 0,
+            label: 'Domingo' },
         {
             value: 1,
             label: 'Segunda-feira',
@@ -33,6 +36,7 @@ export default function UserSchedule(props) {
         },
         { value: 6, label: 'Sábado' },
     ];
+
     useEffect(() => {
         async function getData() {
             const response = await api.get(`/psychologist/${email}`);
@@ -40,6 +44,7 @@ export default function UserSchedule(props) {
         }
         getData();
     }, [props]);
+
     return (
         <div className="userScheduleContainer">
             <NavBar actualUser={props.location.state.data} />
@@ -48,13 +53,18 @@ export default function UserSchedule(props) {
                     <h1>Dias de atendimento</h1>
                     <div className="times">
                         {psychologist.weekDay !== undefined && psychologist.weekDay.length > 0
-                            ? psychologist.weekDay.map((Day) => (
-                                <div key={Day.id} className="psyList">
-                                    <h2>
-                                        {`${weekDays[Day.weekDay].label} `}
-                                        Atendendo de : {`${Day.from} `}
-                                        até {`${Day.to} `}
-                                    </h2>
+                            ? psychologist.weekDay.map((workDay) => (
+                                <div key={workDay.id} className="psyList">
+                                    <h1>{weekDays[workDay.weekDay].label}</h1>
+                                    <h2>Duração da consulta: {workDay.duration} minutos</h2>
+                                    <select value={selectedValue}
+                                            onChange={(e) => setSelectedValue(e.target.value)}>
+                                        {workDay.appointment.map((appointment) => (
+                                            <option id={appointment.time}>
+                                                Horário de começo: {appointment.time}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                             ))
                             : <div>
@@ -62,6 +72,9 @@ export default function UserSchedule(props) {
                             </div>
                         }
                     </div>
+                    <button>
+                        Salvar
+                    </button>
                     <Link
                         to={{
                             pathname: '/psychologist/list',

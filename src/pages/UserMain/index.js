@@ -9,7 +9,6 @@ import NavBar from '../../components/NavBar';
 export default function UserMain(props) {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
-    const [actualUser, setActualUser] = useState({});
 
     useEffect(() => {
         api.get('/psychologists').then((response) => {
@@ -18,8 +17,6 @@ export default function UserMain(props) {
     }, []);
 
     function dateCheck(weekDay){
-        console.log(date.getDay());
-        console.log(weekDay);
         if(weekDay === date.getDay()){
             return true;
         }
@@ -57,7 +54,10 @@ export default function UserMain(props) {
                                         key={index}
                                        
                                     >   
-                                         <Link
+                                         <Link to={{
+                                             pathname: `/psychologist/list/schedule/${psychologist.email}`,
+                                             state: psychologist
+                                         }}
                                         >
                                             <h3>Profissional: {psychologist.name} {psychologist.lastName}</h3>
                                         </Link>
