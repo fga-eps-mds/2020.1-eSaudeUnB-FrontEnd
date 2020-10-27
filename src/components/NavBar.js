@@ -11,16 +11,18 @@ export default function NavBar({ actualUser, bond }) {
 
     useEffect(() => {
         (async function renderImage() {
-            if (bond === 'Psychologist') {
-                const response = await api.get(`/psychologist/${actualUser.email}`);
-                if (response.data != null) {
+            try {
+                if (bond === 'Psychologist') {
+                    const response = await api.get(`/psychologist/${actualUser.email}`);
+
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                } else {
+                    const response = await api.get(`/user/${actualUser.email}`);
+
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
-            } else {
-                const response = await api.get(`/user/${actualUser.email}`);
-                if (response.data != null) {
-                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
-                }
+            } catch (err) {
+                // Erro ao renderizar imagem
             }
         }());
     }, [actualUser, bond]);
