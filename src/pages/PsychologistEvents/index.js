@@ -58,17 +58,10 @@ export default function UserMain(props) {
                                     >   
                                             {workDay.appointment.map((appointment) => (
                                                 appointment.scheduled ?
-                                                <Link to={{
-                                                    pathname: `/psychologist/list/schedule/${psychologist.email}`,
-                                                    state: { data: psychologist,
-                                                               weekDay: workDay.weekDay}
-                                                }}
-                                               >
-                                                <div>
+                                                <div className="testeTotal">
                                                     <h3>{`- ${appointment.time}`}</h3>
                                                     <h3>Atendimento com Peter Park</h3>
                                                 </div>
-                                                </Link>
                                                 :
                                                 <div></div>
                                             ))}

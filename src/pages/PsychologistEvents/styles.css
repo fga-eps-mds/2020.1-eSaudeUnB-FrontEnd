@@ -197,3 +197,12 @@
     display: flex;
     justify-content: center;
 }
+.testeTotal{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: 80px;
+}
