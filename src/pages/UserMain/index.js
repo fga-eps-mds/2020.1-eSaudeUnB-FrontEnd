@@ -63,10 +63,6 @@ export default function UserMain(props) {
                                             <h3>Profissional: {psychologist.name} {psychologist.lastName}</h3>
                                             <h3>Das {workDay.from} até as {workDay.to}</h3>
                                         </Link>
-                                        {//workDay.appointment.map((appointment) => (
-                                          //  <h2>Horário: {appointment.time}</h2>
-                                        //))
-                                    }
                                     </div>
                                 : <div></div>
                                 ))}

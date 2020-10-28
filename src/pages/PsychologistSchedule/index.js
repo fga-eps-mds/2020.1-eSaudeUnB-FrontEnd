@@ -64,7 +64,6 @@ export default function PsychologistSchedule(props) {
         );
 
         setScheduleItems(updatedScheduleItems);
-        console.log(updatedScheduleItems)
         
     }
     function appointmentHours(start,end,duration){
@@ -91,7 +90,6 @@ export default function PsychologistSchedule(props) {
             }
             if(hour.time !== end){
                 hours.push(hour)
-                console.log(`atendimento Individual: ${hour.time}`)
             }
         }while(hour.time !== end)
         return hours
@@ -178,7 +176,6 @@ export default function PsychologistSchedule(props) {
             }
             let value = appointmentHours(scheduleItems[i].from,scheduleItems[i].to,scheduleItems[i].duration)
             setScheduleItemsValue(i,'appointment',value)
-            console.log("salvou")
         }
         return true;
     }

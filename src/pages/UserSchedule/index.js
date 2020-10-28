@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 
@@ -10,8 +9,6 @@ export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
     const { email } = props.match.params;
     const [selectedValue, setSelectedValue] = useState();
-
-    const history = useHistory();
 
     const weekDays = [
         {   value: 0,
@@ -49,11 +46,14 @@ export default function UserSchedule(props) {
 
     async function saveAppointment(event){
         event.preventDefault();
-        console.log(selectedValue);
+        const response = await api.get(`/user/${localStorage.getItem('user')}`);
+        const userId = response.data._id;
+
         psychologist.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
                 if(appointment._id === selectedValue){
                     appointment.scheduled = true;
+                    appointment.user = userId;
                 }
             });
         });
@@ -63,8 +63,6 @@ export default function UserSchedule(props) {
             email: psychologist.email,
             weekDay: psychologist.weekDay
         });
-
-        console.log(psychologist)
     }
 
     return (
