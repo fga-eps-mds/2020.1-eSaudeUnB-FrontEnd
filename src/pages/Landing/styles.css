@@ -34,7 +34,7 @@
 
 .page-landing .content .main .wave-animation {
     width: 100%;
-    margin-top: -90px;
+    margin-top: -35px;
 }
 
 .page-landing .content .main .wave-animation .wave {
@@ -143,7 +143,8 @@
 
 .page-landing .content .main .above-img .buttons-container .know-more-btn {
     position: relative;
-    top: 75px;
+    font: 500 26px Poppins;
+    top: 85px;
     right: 375px;
 
     color: #eee;
@@ -151,9 +152,8 @@
 }
 
 .page-landing .content .main .above-img .buttons-container .know-more-btn img {
-    position: relative;
-    top: 35px;
-    right: 100px;
+    height: 12px;
+    margin-left: 8px;
 }
 
 .page-landing
@@ -195,7 +195,7 @@
     padding-top: 100px;
 
     width: 100%;
-    height: 750px;
+    height: 900px;
 }
 
 .page-landing .content .about h2 {
@@ -246,7 +246,7 @@
     justify-content: space-around;
     flex-flow: row wrap;
 
-    margin-top: 45px;
+    margin-top: 75px;
 }
 
 .page-landing .content .who-behind {
