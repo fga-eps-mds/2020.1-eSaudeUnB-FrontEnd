@@ -61,7 +61,7 @@
     width: 400px;
 }
 .userProfileContainer .form select {
-    width: 150px;
+    width: 170px;
     height: 33px;
 
     color: #fff;
@@ -73,6 +73,9 @@
     border-radius: 5px;
     font-size: 18px;
     line-height: 27px;
+}
+.userProfileContainer .form .space {
+    width: 144px;
 }
 .userProfileContainer .form select option {
     background-color: #0459ae;

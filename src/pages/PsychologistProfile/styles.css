@@ -92,7 +92,7 @@
 }
 
 .psyProfileContainer .formColumn .selects select {
-    width: 150px;
+    width: 170px;
     height: 41px;
 
     color: #fff;
@@ -104,6 +104,9 @@
     border-radius: 5px;
     font-size: 18px;
     line-height: 27px;
+}
+.psyProfileContainer .formColumn .space {
+    width: 144px;
 }
 
 .psyProfileContainer .formColumn .selects select option {
