@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Accordion from 'react-bootstrap/Accordion';
 import api from '../../services/api';
@@ -18,10 +18,24 @@ export default function PsychologistList(props) {
     const [psychologist, setPsychologist] = useState([]);
     const [actualUser, setActualUser] = useState({});
 
+    const history = useHistory();
+
     useEffect(() => {
-        api.get('/psychologists').then((response) => {
-            setPsychologist(response.data);
-        });
+        const accessToken = localStorage.getItem("accessToken");
+
+        api.get('/psychologists',{
+            headers: {"authorization": accessToken} 
+        })
+            .then((response) => {
+                setPsychologist(response.data);
+            })
+            .catch(err => {
+                if(err.response.status === 401) {
+                    return setTimeout(() => {
+                        history.push('/');
+                    }, 2000);
+                }
+            });
         setActualUser(props.location.state.data);
     }, []);
 
