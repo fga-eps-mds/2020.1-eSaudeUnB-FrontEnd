@@ -47,13 +47,14 @@ export default function UserSchedule(props) {
     async function saveAppointment(event){
         event.preventDefault();
         const response = await api.get(`/user/${localStorage.getItem('user')}`);
-        const userId = response.data._id;
+        const {_id, name, lastName} = response.data;
 
         psychologist.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
                 if(appointment._id === selectedValue){
                     appointment.scheduled = true;
-                    appointment.user = userId;
+                    appointment.user = _id;
+                    appointment.name = `${name} ${lastName}`
                 }
             });
         });
