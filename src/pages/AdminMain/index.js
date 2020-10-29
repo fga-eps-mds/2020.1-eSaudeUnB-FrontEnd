@@ -58,8 +58,12 @@ export default function AdminMain() {
     };
 
     const deletePsychologist = async () => {
+        const accessToken = localStorage.getItem("accessToken");
+        
         await api.delete(`/psychologist/${actualPsyEmail}`);
-        const response = await api.get('/psychologists');
+        const response = await api.get('/psychologists',{
+            headers: {"authorization": accessToken} 
+        });
         setPsyArray(response.data);
         setShow(false);
     };
