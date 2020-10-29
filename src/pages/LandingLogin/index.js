@@ -33,7 +33,7 @@ export default function LandingLogin() {
                 history.push({
                     pathname: '/profile',
                     state: {
-                        data: responseUser.data,
+                        data: responseUser.data.user,
                     },
                 });
                 return;
@@ -49,7 +49,7 @@ export default function LandingLogin() {
                     history.push({
                         pathname: '/psychologist/profile',
                         state: {
-                            data: responsePsy.data,
+                            data: responsePsy.data.user,
                         },
                     });
                     localStorage.setItem('user', responsePsy.data.email);
