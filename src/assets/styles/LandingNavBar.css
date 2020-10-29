@@ -1,7 +1,7 @@
 .landingNavBarComponent {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
     width: 100%;
 
     position: -webkit-sticky;
@@ -19,7 +19,7 @@
 }
 
 .landingNavBarComponent .links {
-    width: 40%;
+    width: 100%;
 
     display: flex;
     justify-content: space-evenly;

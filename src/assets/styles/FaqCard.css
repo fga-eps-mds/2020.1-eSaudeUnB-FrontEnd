@@ -3,9 +3,11 @@
     max-height: 400px;
   
     margin-bottom: 100px;
+    text-align: justify;
 }
 
 .faq-card h2 {
+    font-weight: bold;
     font-size: 18px;
 }
   

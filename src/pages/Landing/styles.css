@@ -150,6 +150,12 @@
     transition: 0.2s all;
 }
 
+.page-landing .content .main .above-img .buttons-container .know-more-btn img {
+    position: relative;
+    top: 35px;
+    right: 100px;
+}
+
 .page-landing
     .content
     .main
@@ -189,7 +195,7 @@
     padding-top: 100px;
 
     width: 100%;
-    height: 900px;
+    height: 750px;
 }
 
 .page-landing .content .about h2 {
@@ -240,7 +246,7 @@
     justify-content: space-around;
     flex-flow: row wrap;
 
-    margin-top: 75px;
+    margin-top: 45px;
 }
 
 .page-landing .content .who-behind {
