@@ -55,6 +55,7 @@ export default function UserMain() {
                             <Calendar
                                 onChange={(currentDate) => {
                                     setDate(currentDate);
+                                    checkAnyDate()
                                 }}
                                 value={date}
                                 next2Label={null}
