@@ -201,3 +201,9 @@
     padding-left: 20px;
     align-items: center;
 }
+
+.usercalendar .alert {
+    display: flex;
+    width: 800px;
+    align-self: flex-end;
+}

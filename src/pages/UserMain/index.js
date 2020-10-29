@@ -5,10 +5,12 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import './styles.css';
 import NavBar from '../../components/NavBar';
+import { Alert } from 'react-bootstrap';
 
-export default function UserMain(props) {
+export default function UserMain() {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         api.get('/psychologists').then((response) => {
@@ -20,7 +22,22 @@ export default function UserMain(props) {
         if(weekDay === date.getDay()){
             return true;
         }
-        else return false;
+        else {
+            return false;
+        }
+    }
+
+    function checkAnyDate(){
+        let anyDate = false;
+        psychologists.map((psychologist) => {
+            psychologist.weekDay.map((workDay) => {
+                if(workDay.weekDay === date.getDay()){
+                    anyDate = true;
+                }
+            });
+        });
+
+        setShow(!anyDate);
     }
 
     return (
@@ -32,6 +49,7 @@ export default function UserMain(props) {
                         <Calendar
                             onChange={(currentDate) => {
                                 setDate(currentDate);
+                                checkAnyDate();
                             }}
                             value={date}
                             next2Label={null}
@@ -74,6 +92,14 @@ export default function UserMain(props) {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className="alert">
+            {show? 
+                <Alert variant="danger">
+                    Não há horários cadastrados
+                </Alert>
+            : <div></div>
+            }
             </div>
         </div >
     );
