@@ -184,8 +184,8 @@ export default function UserProfile(props) {
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
 
                 <div className="content">
 
@@ -222,10 +222,10 @@ export default function UserProfile(props) {
                                     <p>Nome precisa possuir mais de 2 letras.</p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <Input
                                 placeholder="Email"
                                 value={email}
@@ -236,10 +236,10 @@ export default function UserProfile(props) {
                                     <p>E-mail não foi preenchido corretamente.</p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                             <div className="selects">
 
@@ -249,7 +249,6 @@ export default function UserProfile(props) {
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
-
 
                                 <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
                                     <option value="" disabled>Vínculo</option>
@@ -265,22 +264,21 @@ export default function UserProfile(props) {
                                         <p>Selecione um gênero.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <div className="space"></div>
                                 {alertContentBond ? (
                                     <div className="alertContent">
                                         <p>Selecione um vínculo.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                             </div>
-
 
                             <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
                                 <option value="naoInformado" disabled>Estado Civil</option>
@@ -294,10 +292,10 @@ export default function UserProfile(props) {
                                     <p>Informe o estado civil.</p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                         </div>
 
                         <div className="form">
@@ -313,10 +311,10 @@ export default function UserProfile(props) {
                                     </p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <Input
                                 placeholder="Matrícula UnB"
                                 value={unbRegistration || ''}
@@ -327,10 +325,10 @@ export default function UserProfile(props) {
                                     <p>Insira uma matrícula válida.</p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <Input
                                 placeholder="DDD + Telefone"
                                 value={phone || ''}
@@ -341,10 +339,10 @@ export default function UserProfile(props) {
                                     <p>Insira um telefone válido.</p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
                             <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
                                 <option value="naoInformado" disabled>Religião</option>
                                 <option value="Catolico">Católico</option>
@@ -357,10 +355,10 @@ export default function UserProfile(props) {
                                     <p>Selecione a sua religião.</p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                         </div>
                         <div className="buttons">
