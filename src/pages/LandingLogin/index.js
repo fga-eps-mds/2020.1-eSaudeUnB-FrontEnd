@@ -30,6 +30,7 @@ export default function LandingLogin() {
             });
 
             if (responseUser.status === 200 || responseUser.status === 201) {
+                localStorage.setItem('accessToken',  responseUser.data.accessToken);
                 history.push({
                     pathname: '/profile',
                     state: {
@@ -46,6 +47,7 @@ export default function LandingLogin() {
                 });
 
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
+                    localStorage.setItem('accessToken',  responsePsy.data.accessToken);
                     history.push({
                         pathname: '/psychologist/profile',
                         state: {

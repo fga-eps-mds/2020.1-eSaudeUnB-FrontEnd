@@ -52,6 +52,7 @@ export default function UserProfile(props) {
 
     function getOut(event) {
         event.preventDefault();
+        localStorage.removeItem("accessToken");
 
         history.push('/');
     }
@@ -139,7 +140,11 @@ export default function UserProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.get(`/user/${props.location.state.data.email}`);
+            const accessToken = localStorage.getItem("accessToken");
+
+            const response = await api.get(`/user/${props.location.state.data.email}`, {
+                headers: {"authorization": accessToken}
+            });
 
             if (response.status === 200) {
                 setEmail(response.data.email);
@@ -153,6 +158,14 @@ export default function UserProfile(props) {
                 setCivilStatus(response.data.civilStatus);
             }
         } catch (err) {
+            if(err.response.status === 401) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Sessão expirada');
+                return setTimeout(() => {
+                    getOut(event);
+                }, 2000);
+            }
             setShow(true);
             setVariant('danger');
             setAlertText('Erro ao carregar dados');
