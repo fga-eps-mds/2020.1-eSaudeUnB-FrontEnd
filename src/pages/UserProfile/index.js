@@ -146,8 +146,6 @@ export default function UserProfile(props) {
                 headers: { "authorization": accessToken }
             });
 
-            console.log(response);
-
             if (response.status === 200) {
                 setEmail(response.data.email);
                 setName(response.data.name);
