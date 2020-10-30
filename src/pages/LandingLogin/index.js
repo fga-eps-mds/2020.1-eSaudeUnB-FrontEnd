@@ -31,7 +31,6 @@ export default function LandingLogin() {
 
             if (responseUser.status === 200 || responseUser.status === 201) {
                 localStorage.setItem('accessToken', responseUser.data.accessToken);
-                console.log(responseUser.data.accessToken)
                 history.push({
                     pathname: '/profile',
                     state: {
@@ -106,8 +105,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="content">
                 <Logo />
 
