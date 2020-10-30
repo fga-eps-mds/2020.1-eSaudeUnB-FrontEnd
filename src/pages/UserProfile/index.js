@@ -119,7 +119,6 @@ export default function UserProfile(props) {
                 });
 
                 closeAlerts();
-
                 setShow(true);
                 setVariant('success');
                 setAlertText('Dados atualizados com sucesso.');

@@ -21,16 +21,16 @@ export default function PsychologistList(props) {
     const history = useHistory();
 
     useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
+        const accessToken = localStorage.getItem('accessToken');
 
-        api.get('/psychologists',{
-            headers: {"authorization": accessToken} 
+        api.get('/psychologists', {
+            headers: { authorization: accessToken },
         })
             .then((response) => {
                 setPsychologist(response.data);
             })
-            .catch(err => {
-                if(err.response.status === 401) {
+            .catch((err) => {
+                if (err.response.status === 401) {
                     return setTimeout(() => {
                         history.push('/');
                     }, 2000);
@@ -63,7 +63,7 @@ export default function PsychologistList(props) {
                                         />
                                         <div className="minPatient">
                                             <p className="cardName">
-                                                Nome:{' '}
+                                                  Nome:{' '}
                                                 {`${psy.name} ${psy.lastName}`}
                                             </p>
                                             <p>email: {psy.email}</p>
@@ -71,7 +71,7 @@ export default function PsychologistList(props) {
                                             <Accordion.Collapse eventKey="0">
                                                 <div className="cardToggle">
                                                     <p>
-                                                        Biografia:{' '}
+                                                          Biografia:{' '}
                                                         {`${psy.biography}`}
                                                     </p>
                                                     <Link
@@ -83,8 +83,8 @@ export default function PsychologistList(props) {
                                                         }}
                                                     >
                                                         <button>
-                                                            Agendar
-                                                            atendimento
+                                                              Agendar
+                                                              atendimento
                                                         </button>
                                                     </Link>
                                                 </div>
@@ -92,10 +92,7 @@ export default function PsychologistList(props) {
                                         </div>
                                     </div>
                                     <Accordion.Toggle eventKey="0">
-                                        <Link
-                                            className='button'
-                                            to={'#'}
-                                        >
+                                        <Link className="button" to={'#'}>
                                             <img src={go} alt="go" />{' '}
                                         </Link>
                                     </Accordion.Toggle>
@@ -111,9 +108,7 @@ export default function PsychologistList(props) {
                             })
                             .map((psy) => (
                                 <Accordion key={psy.email}>
-                                    <div
-                                        className="patientTab"
-                                    >
+                                    <div className="patientTab">
                                         <div className="patientInfos">
                                             <img
                                                 className="patientImg"
@@ -122,7 +117,7 @@ export default function PsychologistList(props) {
                                             />
                                             <div className="minPatient">
                                                 <p className="cardName">
-                                                    Nome:{' '}
+                                                      Nome:{' '}
                                                     {`${psy.name} ${psy.lastName}`}
                                                 </p>
                                                 <p>email: {psy.email}</p>
@@ -130,7 +125,7 @@ export default function PsychologistList(props) {
                                                 <Accordion.Collapse eventKey="0">
                                                     <div className="cardToggle">
                                                         <p>
-                                                            Bibliografia:{' '}
+                                                              Bibliografia:{' '}
                                                             {`${psy.bibliography}`}
                                                         </p>
                                                         <Link
@@ -142,8 +137,8 @@ export default function PsychologistList(props) {
                                                             }}
                                                         >
                                                             <button>
-                                                                Agendar
-                                                                atendimento
+                                                                  Agendar
+                                                                  atendimento
                                                             </button>
                                                         </Link>
                                                     </div>
@@ -151,7 +146,7 @@ export default function PsychologistList(props) {
                                             </div>
                                         </div>
                                         <Accordion.Toggle eventKey="0">
-                                            <Link className='button' to={'#'}>
+                                            <Link className="button" to={'#'}>
                                                 <img src={go} alt="go" />{' '}
                                             </Link>
                                         </Accordion.Toggle>

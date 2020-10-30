@@ -13,43 +13,25 @@ export default function AdminMain() {
     const history = useHistory();
 
     function getOut() {
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
 
         history.push('/admin');
     }
 
     useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
+        const accessToken = localStorage.getItem('accessToken');
 
-        api.get('/psychologists',{
-            headers: {"authorization": accessToken} 
-        })
-            .then((response) => {
+        api.get('/psychologists', {
+            headers: { authorization: accessToken },
+        }).then((response) => {
                 setPsyArray(response.data);
-            })
-            .catch(err => {
-                if(err.response.status === 401) {
+            }).catch((err) => {
+                if (err.response.status === 401) {
                     return setTimeout(() => {
                         getOut();
                     }, 2000);
                 }
             });
-
-        try{
-            const accessToken = localStorage.getItem("accessToken");
-
-            const response = api.get('/psychologists',{
-                headers: {"authorization": accessToken} 
-            });
-            if(response.status === 200) {
-                setPsyArray(response.data);
-            }
-        }catch(err) {
-            console.log(err);
-            if(err.response.status === 401) {
-                getOut();
-            }
-        }
     }, []);
 
     const showConfirmation = (email) => {
@@ -58,11 +40,11 @@ export default function AdminMain() {
     };
 
     const deletePsychologist = async () => {
-        const accessToken = localStorage.getItem("accessToken");
-        
+        const accessToken = localStorage.getItem('accessToken');
+
         await api.delete(`/psychologist/${actualPsyEmail}`);
-        const response = await api.get('/psychologists',{
-            headers: {"authorization": accessToken} 
+        const response = await api.get('/psychologists', {
+            headers: { authorization: accessToken },
         });
         setPsyArray(response.data);
         setShow(false);

@@ -49,7 +49,7 @@ export default function PsychologistProfile(props) {
 
     function getOut(event) {
         event.preventDefault();
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
 
         history.push('/');
     }
@@ -131,10 +131,10 @@ export default function PsychologistProfile(props) {
         try {
             event.preventDefault();
 
-            const accessToken = localStorage.getItem("accessToken");
+            const accessToken = localStorage.getItem('accessToken');
 
             const response = await api.get(`/psychologist/${props.location.state.data.email}`, {
-                headers: {"authorization": accessToken}
+                headers: { authorization: accessToken },
             });
 
             if (response.status === 200) {
@@ -148,7 +148,7 @@ export default function PsychologistProfile(props) {
                 setBiography(response.data.biography);
             }
         } catch (err) {
-            if(err.response.status === 401) {
+            if (err.response.status === 401) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Sessão expirada');
