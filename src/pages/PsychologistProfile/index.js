@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
+import { Alert, ResponsiveEmbed } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import userIcon from '../../assets/images/userIcon.svg';
@@ -57,11 +57,14 @@ export default function PsychologistProfile(props) {
     async function updateInfos(event) {
         try {
             event.preventDefault();
-
-            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
+            
+            const accessToken = localStorage.getItem('accessToken');
+            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, 
+            {headers:{authorization: accessToken},
                 name, lastName, email, phone, specialization, gender, bond, biography,
             });
-
+            console.log("pasou aqui")
+            console.log(response)
             if (response.status === 203) {
                 const { details } = response.data.error;
                 closeAlerts();

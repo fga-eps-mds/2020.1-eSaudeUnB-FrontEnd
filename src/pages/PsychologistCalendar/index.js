@@ -14,6 +14,7 @@ export default function PsychologistCalendar(props) {
 
     async function putRestrict() {
         await api.put('/calendary/update/', {
+            header: localStorage.getItem('acessToken'),
             email: localStorage.getItem('user'),
             restrict: [...restricts],
         });
