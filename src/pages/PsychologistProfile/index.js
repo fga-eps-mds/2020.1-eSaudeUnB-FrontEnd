@@ -57,14 +57,19 @@ export default function PsychologistProfile(props) {
     async function updateInfos(event) {
         try {
             event.preventDefault();
-            
             const accessToken = localStorage.getItem('accessToken');
-            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, 
-            {headers:{authorization: accessToken},
-                name, lastName, email, phone, specialization, gender, bond, biography,
-            });
-            console.log("pasou aqui")
-            console.log(response)
+            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
+                name,
+                lastName,
+                email,
+                phone,
+                specialization,
+                gender,
+                bond,
+                biography,
+            },
+            { headers: { authorization: accessToken } });
+
             if (response.status === 203) {
                 const { details } = response.data.error;
                 closeAlerts();
@@ -118,6 +123,7 @@ export default function PsychologistProfile(props) {
                 setVariant('success');
                 setAlertText('Dados atualizados com sucesso.');
             }
+            console.log(response);
         } catch (err) {
             setShow(true);
             setVariant('danger');

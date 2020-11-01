@@ -105,8 +105,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
                 <Logo />
 

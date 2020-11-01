@@ -20,17 +20,27 @@ export default function PatientRecord(props) {
     const [complaintEvolution, setComplaintEvolution] = useState('');
     const [professional, setProfessional] = useState('');
     const [tabContent, setTabContent] = useState(true);
+    const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
 
     useEffect(() => {
         async function getData() {
             const { email } = props.match.params;
-            const response = await api.get(`/user/${email}`);
+            const response = await api.get(`/user/${email}`,
+                {
+                    headers: { authorization: accessToken },
+                });
             setPatient(response.data);
-            const responsesessions = await api.get(`/session/${email}`);
+            const responsesessions = await api.get(`/session/${email}`,
+                {
+                    headers: { authorization: accessToken },
+                });
             setsessions(responsesessions.data);
-            const responseAllsessions = await api.get(`/sessions/${email}`);
+            const responseAllsessions = await api.get(`/sessions/${email}`,
+                {
+                    headers: { authorization: accessToken },
+                });
             setAllSessions(responseAllsessions.data);
         }
         getData();

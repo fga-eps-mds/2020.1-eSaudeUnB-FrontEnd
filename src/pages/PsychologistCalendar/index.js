@@ -9,6 +9,7 @@ import NavBar from '../../components/NavBar';
 export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
     const [restricts, setRestricts] = useState([]);
+    const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
 
@@ -51,6 +52,8 @@ export default function PsychologistCalendar(props) {
     async function handleRestrict() {
         const Restricts = await api.post('/calendary/restrict', {
             email: localStorage.getItem('user'),
+        }, {
+            headers: { authorization: accessToken },
         });
         setRestricts(Restricts.data);
     }

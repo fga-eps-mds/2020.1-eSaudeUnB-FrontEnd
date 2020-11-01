@@ -24,14 +24,14 @@ export default function AdminMain() {
         api.get('/psychologists', {
             headers: { authorization: accessToken },
         }).then((response) => {
-                setPsyArray(response.data);
-            }).catch((err) => {
-                if (err.response.status === 401) {
-                    return setTimeout(() => {
-                        getOut();
-                    }, 2000);
-                }
-            });
+            setPsyArray(response.data);
+        }).catch((err) => {
+            if (err.response.status === 401) {
+                return setTimeout(() => {
+                    getOut();
+                }, 2000);
+            }
+        });
     }, []);
 
     const showConfirmation = (email) => {
@@ -42,7 +42,8 @@ export default function AdminMain() {
     const deletePsychologist = async () => {
         const accessToken = localStorage.getItem('accessToken');
 
-        await api.delete(`/psychologist/${actualPsyEmail}`);
+        await api.delete(`/psychologist/${actualPsyEmail}`,
+            { headers: { authorization: accessToken } });
         const response = await api.get('/psychologists', {
             headers: { authorization: accessToken },
         });

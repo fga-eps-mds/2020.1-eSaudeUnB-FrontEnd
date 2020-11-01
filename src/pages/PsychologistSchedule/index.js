@@ -9,13 +9,15 @@ import './styles.css';
 
 export default function PsychologistSchedule(props) {
     const [scheduleItems, setScheduleItems] = useState([]);
+    const accessToken = localStorage.getItem('accessToken');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
 
     useEffect(() => {
-        api.post('/calendary/update', {
+        const response = api.post('/calendary/update', {
+            headers: { authorization: accessToken },
             email: localStorage.getItem('user'),
         }).then((response) => {
             setScheduleItems(response.data);
@@ -122,7 +124,8 @@ export default function PsychologistSchedule(props) {
             await api.put('/calendary/update/', {
                 email: localStorage.getItem('user'),
                 weekDay: scheduleItems,
-            });
+            },
+            { headers: { authorization: accessToken } });
             setShow(true);
             setVariant('success');
             setAlertText('Suas alterações foram salvas');
