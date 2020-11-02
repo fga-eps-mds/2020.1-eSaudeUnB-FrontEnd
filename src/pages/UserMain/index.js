@@ -11,7 +11,7 @@ import { Alert } from 'react-bootstrap';
 export default function UserMain() {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
-    const [userSelected, setUserSelected] = useState([]);
+    const [userSelected, setUserSelected] = useState({});
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -29,19 +29,18 @@ export default function UserMain() {
         }
     }
 
-    function checkAnyDate(){
+    async function checkAnyDate() {
         let anyDate = false;
         psychologists.map((psychologist) => {
             psychologist.weekDay.map((workDay) => {
-                if(workDay.weekDay === date.getDay()){
+                if (workDay.weekDay === date.getDay()) {
                     anyDate = true;
                 }
             });
         });
 
-        setShow(!anyDate);
     }
-    function teste(psychologist){
+    function teste(psychologist) {
         console.log(psychologist)
         setUserSelected(psychologist)
     }
@@ -49,13 +48,13 @@ export default function UserMain() {
         <div className="usercalendar">
             <NavBar className="navBar" bond="Patient" actualUser={'user'} />
             <div className="content">
-                <Accordion>
                     <div className="tabela">
                         <div className="calendar">
                             <Calendar
-                                onChange={(currentDate) => {
+                                onChange={ (currentDate) => {
                                     setDate(currentDate);
                                     checkAnyDate()
+                                    setUserSelected("")
                                 }}
                                 value={date}
                                 next2Label={null}
@@ -74,16 +73,15 @@ export default function UserMain() {
                                         {psychologist.weekDay.map((workDay, index) => (
                                             dateCheck(workDay.weekDay) ?
                                                 <div className="testecalendar" key={index}>
+                                                    
                                                     <div className="psy-card"
                                                         // eslint-disable-next-line no-underscore-dangle
                                                         key={index}
 
                                                     >
-                                                        <Accordion.Toggle eventKey="0">
                                                             <button onClick={() => teste(psychologist)}>
                                                                 <h3>Profissional: {psychologist.name} {psychologist.lastName}</h3>
                                                             </button>
-                                                        </Accordion.Toggle>
 
                                                     </div>
                                                 </div>
@@ -95,27 +93,45 @@ export default function UserMain() {
                         </div>
 
                     </div>
-                    <Accordion.Collapse eventKey="0">
+                        {userSelected.weekDay !== undefined ?
                         <div className="dropDown-calendar">
                             <div className="column1">
-                                <h3>{userSelected.name}</h3>
+                                <h3>{userSelected.name} {userSelected.lastName}</h3>
                                 <h3>{userSelected.biography}</h3>
                             </div>
                             <div className="column2">
                                 <h3>Horários Disponíveis:</h3>
+                                <div className = "hours-disponibility">
+                                    {userSelected.weekDay !== undefined
+                                        ? userSelected.weekDay.map((workDay) => (
+                                            workDay.appointment.map((appointment) => (
+                                                
+                                                appointment.scheduled === false ?
+                                                <option value={appointment._id}>
+                                                    {appointment.time}
+                                                </option>
+                                                :
+                                                    ""
+                                            ))
+                                        ))
+                                        : <div></div>
+                                    }
+                                </div>
+                                <div className = "schedule-buttons">
                                 <button>Agendar</button>
+                                <button className = "cancelSchedule" onClick={() => setUserSelected("")}>Cancelar</button>
+                                </div>
                             </div>
+                        </div> : 
+                        show ?
+                        <div>
+                            <h3>
+                                Nao possuimos horarios disponiveis
+                            </h3>
                         </div>
-                    </Accordion.Collapse>
-                </Accordion>
-            </div>
-            <div className="alert">
-            {show? 
-                <Alert variant="danger">
-                    Não há horários cadastrados
-                </Alert>
-            : <div></div>
-            }
+                        : <div></div>
+                        
+                    }
             </div>
         </div >
     );
