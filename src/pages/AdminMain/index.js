@@ -33,8 +33,7 @@ export default function AdminMain() {
                 }, 2000);
             }
         });
-        return 0;
-    });
+    },[]);
 
     const showConfirmation = (email) => {
         setActualPsyEmail(email);
