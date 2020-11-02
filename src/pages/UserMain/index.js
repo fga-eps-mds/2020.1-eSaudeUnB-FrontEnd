@@ -2,18 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
-import Accordion from 'react-bootstrap/Accordion';
-import { Link } from 'react-router-dom';
 import './styles.css';
 import NavBar from '../../components/NavBar';
-import { Alert } from 'react-bootstrap';
 
 export default function UserMain() {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
     const [userSelected, setUserSelected] = useState({});
     const [show, setShow] = useState(false);
-    let anyDate = false;
+    const [selectedValue, setSelectedValue] = useState();
 
     useEffect(() => {
         api.get('/psychologists').then((response) => {
@@ -25,9 +22,34 @@ export default function UserMain() {
         if (weekDay === date.getDay()) {
             return true;
         }
-        else {
-            return false;
-        }
+        
+        return false;
+    }
+
+    async function saveAppointment(event){
+        event.preventDefault();
+        const response = await api.get(`/user/${localStorage.getItem('user')}`);
+        const {_id, name, lastName} = response.data;
+
+        userSelected.weekDay.map((workDay) => {
+            workDay.appointment.map((appointment) => {
+                if(appointment._id === selectedValue){
+                    appointment.scheduled = true;
+                    appointment.user = _id;
+                    appointment.name = `${name} ${lastName}`;
+                }
+            });
+        });
+
+        const {email, weekDay} = userSelected;
+
+        await api.put(`/calendary/update`,
+        {
+            email,
+            weekDay,
+        });
+
+        window.location.reload();
     }
 
     return (
@@ -39,7 +61,7 @@ export default function UserMain() {
                         <Calendar
                             onChange={(currentDate) => {
                                 setDate(currentDate);
-                                setUserSelected("")
+                                setUserSelected("");
                             }}
                             value={date}
                             next2Label={null}
@@ -58,7 +80,6 @@ export default function UserMain() {
                                     {psychologist.weekDay.map((workDay, index) => (
                                         dateCheck(workDay.weekDay) ?
                                             <div className="testecalendar" key={index}>
-                                                {show ? setShow(false) : ""}
                                                 <div className="psy-card"
                                                     // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
@@ -70,7 +91,7 @@ export default function UserMain() {
 
                                                 </div>
                                             </div>
-                                            : <div key={index}>{!show ? setShow(true) : ""}</div>
+                                            : <div key={index}></div>
                                     ))}
                                 </div>
                             ))}
@@ -86,27 +107,28 @@ export default function UserMain() {
                         </div>
                         <div className="column2">
                             <h3>Horários Disponíveis:</h3>
-                            <form>
+                            <form onSubmit={saveAppointment}>
                                 <div className="hours-disponibility">
                                     {userSelected.weekDay !== undefined
                                         ? userSelected.weekDay.map((workDay) => (
+                                            dateCheck(workDay.weekDay) ?
                                             workDay.appointment.map((appointment) => (
-
                                                 appointment.scheduled === false ? (
                                                     <label >
-                                                        <input type="radio" name="hour" id ={appointment._id}  value={appointment.time} />
+                                                        <input type="radio" name="hour" key={appointment._id}  value={appointment._id}
+                                                         onChange={() => setSelectedValue(appointment._id)}/>
                                                         {appointment.time}
                                                     </label>
                                                 )
                                                     :
                                                     ""
                                             ))
-                                        ))
+                                        : <div></div>))
                                         : <div></div>
                                     }
                                 </div>
                                 <div className="schedule-buttons">
-                                    <button>Agendar</button>
+                                    <button type="submit">Agendar</button>
                                     <button className="cancelSchedule" onClick={() => setUserSelected("")}>Cancelar</button>
                                 </div>
                             </form>

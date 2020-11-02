@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
