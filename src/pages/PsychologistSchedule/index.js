@@ -9,17 +9,22 @@ import './styles.css';
 
 export default function PsychologistSchedule(props) {
     const [scheduleItems, setScheduleItems] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
+    const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
-        const response = api.post('/calendary/update', {
-            headers: { authorization: accessToken },
-            email: localStorage.getItem('user'),
-        }).then((response) => {
+        api.post(
+            '/calendary/update',
+            {
+                email: user,
+            },
+            { headers: { authorization: accessToken } },
+        ).then((response) => {
+            console.log(response);
             setScheduleItems(response.data);
         });
     }, []);
@@ -79,7 +84,10 @@ export default function PsychologistSchedule(props) {
         setScheduleItems([
             ...scheduleItems,
             {
-                weekDay: 0, from: '', to: '', id: ID,
+                weekDay: 0,
+                from: '',
+                to: '',
+                id: ID,
             },
         ]);
     }
@@ -121,11 +129,16 @@ export default function PsychologistSchedule(props) {
 
     async function putCalendar() {
         if (verifyCalendarData()) {
-            await api.put('/calendary/update/', {
-                email: localStorage.getItem('user'),
-                weekDay: scheduleItems,
-            },
-            { headers: { authorization: accessToken } });
+            await api.put(
+                '/calendary/update/',
+                {
+                    email: user,
+                    weekDay: scheduleItems,
+                },
+                {
+                    headers: { authorization: accessToken },
+                },
+            );
             setShow(true);
             setVariant('success');
             setAlertText('Suas alterações foram salvas');
@@ -137,7 +150,11 @@ export default function PsychologistSchedule(props) {
 
     return (
         <div className="psychologistSchedule">
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar
+                className="navBar"
+                bond="Psychologist"
+                actualUser={props.location.state.data}
+            />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
@@ -149,18 +166,16 @@ export default function PsychologistSchedule(props) {
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
-                            Cadastrar horários disponíveis
+							Cadastrar horários disponíveis
                             <button type="button" onClick={addNewScheduleItem}>
-                                + Novo Horário
+								+ Novo Horário
                             </button>
                         </legend>
 
                         <div className="schedule">
                             {scheduleItems.map((scheduleItem, index) => (
                                 <div
-                                    key={
-                                        scheduleItem._id || scheduleItem.id
-                                    }
+                                    key={scheduleItem._id || scheduleItem.id}
                                     className="schedule-item"
                                 >
                                     <div className="select-box">
@@ -223,7 +238,7 @@ export default function PsychologistSchedule(props) {
                                         onClick={() => removeScheduleItem(index)
                                         }
                                     >
-                                        Remover
+										Remover
                                     </button>
                                 </div>
                             ))}
@@ -239,10 +254,10 @@ export default function PsychologistSchedule(props) {
                                     },
                                 }}
                             >
-                                Configurações avançadas
+								Configurações avançadas
                             </Link>
                             <button type="button" onClick={() => putCalendar()}>
-                                Salvar cadastro
+								Salvar cadastro
                             </button>
                         </footer>
                     </div>

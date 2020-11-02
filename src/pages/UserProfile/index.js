@@ -141,11 +141,9 @@ export default function UserProfile(props) {
     async function renderPage(event) {
         try {
             event.preventDefault();
-
             const response = await api.get(`/user/${props.location.state.data.email}`, {
                 headers: { authorization: accessToken },
             });
-
             if (response.status === 200) {
                 setEmail(response.data.email);
                 setName(response.data.name);

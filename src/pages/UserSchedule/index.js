@@ -42,7 +42,7 @@ export default function UserSchedule(props) {
             setPsychologist(response.data);
         }
         getData();
-    }, [props]);
+    });
     return (
         <div className="userScheduleContainer">
             <NavBar actualUser={props.location.state.data} />

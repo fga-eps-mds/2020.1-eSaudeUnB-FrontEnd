@@ -16,7 +16,7 @@ import SearchBar from '../../components/SearchBar';
 export default function PsychologistList(props) {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
-    const [actualUser, setActualUser] = useState({});
+    const [actualUser, setActualUser] = useState([]);
 
     const history = useHistory();
 
@@ -37,7 +37,7 @@ export default function PsychologistList(props) {
                 }
             });
         setActualUser(props.location.state.data);
-    }, []);
+    });
 
     return (
         <div className="psychologistListContainer">

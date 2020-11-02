@@ -44,7 +44,7 @@ export default function PatientRecord(props) {
             setAllSessions(responseAllsessions.data);
         }
         getData();
-    }, [props]);
+    });
 
     function changeSession(index) {
         setTabContent(false);

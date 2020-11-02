@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Alert, ResponsiveEmbed } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import userIcon from '../../assets/images/userIcon.svg';

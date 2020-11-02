@@ -59,10 +59,9 @@ export default function PsychologistCreate() {
             }
 
             const accessToken = localStorage.getItem('accessToken');
-            const response = await api
-                .post('/psychologist', user, {
-                    headers: { authorization: accessToken },
-                })
+            await api.post('/psychologist', user, {
+                headers: { authorization: accessToken },
+            })
                 .then((response) => {
                     if (response.status === 203) {
                         const { details } = response.data.error;

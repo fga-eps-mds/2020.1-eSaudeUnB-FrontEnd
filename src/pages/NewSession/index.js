@@ -24,7 +24,7 @@ export default function NewSession(props) {
             setPatient(response.data);
         }
         getData();
-    }, [props]);
+    });
 
     const history = useHistory();
 

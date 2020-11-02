@@ -21,7 +21,7 @@ export default function PatientList(props) {
         }).then((response) => {
             setPatients(response.data);
         });
-    }, []);
+    });
 
     return (
         <div className="patientListContainer">

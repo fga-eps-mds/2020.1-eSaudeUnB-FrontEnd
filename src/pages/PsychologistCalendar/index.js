@@ -18,12 +18,11 @@ export default function PsychologistCalendar(props) {
             header: localStorage.getItem('acessToken'),
             email: localStorage.getItem('user'),
             restrict: [...restricts],
-        });
+        }, []);
         window.location.reload();
     }
 
     function checkRepeat() {
-        // eslint-disable-next-line no-restricted-syntax
         for (const item of restricts) {
             if (
                 date.getDate() === item.day
@@ -85,7 +84,6 @@ export default function PsychologistCalendar(props) {
                         <div className="schedules">
                             {restricts.map((restrict, index) => (
                                 <div
-                                    // eslint-disable-next-line no-underscore-dangle
                                     key={index}
                                     className="schedule-box"
                                 >

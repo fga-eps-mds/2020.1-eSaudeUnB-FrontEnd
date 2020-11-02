@@ -25,6 +25,7 @@ export default function AdminMain() {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPsyArray(response.data);
+            return 204;
         }).catch((err) => {
             if (err.response.status === 401) {
                 return setTimeout(() => {
@@ -32,7 +33,8 @@ export default function AdminMain() {
                 }, 2000);
             }
         });
-    }, []);
+        return 0;
+    });
 
     const showConfirmation = (email) => {
         setActualPsyEmail(email);
