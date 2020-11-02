@@ -52,7 +52,20 @@ export default function NewSession(props) {
             <div className="content">
                 <div className="patientInfo">
                     <div className="patient">
-                        <img className="patientImg" src={userIcon} alt="userIcon" />
+                        {patient.userImage != null ? (
+                            <img
+                                className="patientImg"
+                                src={atob(Buffer.from(patient.userImage, 'binary').toString('base64'))}
+                                alt={patient.name}
+                            />
+                        )
+                            : (
+                                <img
+                                    className="patientImg"
+                                    src={userIcon}
+                                    alt={patient.name}
+                                />
+                            )}
                         <div className="info">
                             <div className="name">
                                 <span className="prop">Nome: </span>
