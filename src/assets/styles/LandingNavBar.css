@@ -1,0 +1,51 @@
+.landingNavBarComponent {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    z-index: 1000;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.landingNavBarComponent img {
+    width: 150px;
+    height: 50px;
+}
+
+.landingNavBarComponent .links {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.landingNavBarComponent .links a {
+    padding: 13px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s all;
+}
+
+.landingNavBarComponent .links a:hover {
+    color: #b5e1f7;
+}
+
+.landingNavBarComponent .links .registration-link,
+.login-link {
+    margin-right: -26px;
+}
+
+.landingNavBarComponent .links .registration-link:hover {
+    background: #0459ae;
+    color: #fff;
+}
+.landingNavBarComponent .links .login-link:hover {
+    background: #0459ae;
+    color: #fff;
+}

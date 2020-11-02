@@ -1,92 +1,281 @@
-#page-landing {
-    width: 100vw;
-    height: 100vh;
-  
+.page-landing {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-  
-    font-family: Poppins, sans-serif;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
-  }
-  
-  #page-landing-content {
-    display: grid;
-    grid-template-rows: 2fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "hero hero hero"
-      "logo buttons buttons";
-  }
-  
-  .hero-image {
-    grid-area: hero;
+    flex-direction: column;
+}
+
+.page-landing .content {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+}
+
+.page-landing .content .main {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 100px;
+
+    width: 100%;
+    height: 100%;
+}
+
+.page-landing .content .main .landing-img {
     height: 60vh;
     justify-self: center;
-    margin-top: -5rem;
-  }
-  
-  .logo-container {
-    color: #eeeeee;
-    grid-area: logo;
-    text-align: left;
-    margin-top: 4rem;
-  }
-  
-  .logo-container h1 {
-    font-weight: 700;
-    font-size: 5.4rem;
-    line-height: 5rem;
-  }
-  
-  .logo-container h2 {
-    font-weight: 500;
-    font-size: 1.4rem;
-  }
-  
-  .buttons-container {
+    margin-top: -90px;
+}
+
+.page-landing .content .main .wave-animation {
+    width: 100%;
+    margin-top: -35px;
+}
+
+.page-landing .content .main .wave-animation .wave {
+    width: 100%;
+    height: 129px;
+    background: url(../../assets/images/wave.svg);
+    background-size: auto 100%;
+}
+
+.page-landing .content .main .wave-animation .wave.wave1 {
+    animation: 1500s linear 1s infinite animate;
+    z-index: 10;
+    position: relative;
+    top: 130px;
+    left: 0;
+    opacity: 1;
+    bottom: 0;
+}
+.page-landing .content .main .wave-animation .wave.wave2 {
+    animation: 700s linear -7s infinite animate2;
+    z-index: 9;
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    bottom: 10px;
+}
+.page-landing .content .main .wave-animation .wave.wave3 {
+    animation: 1000s linear -3s infinite animate;
+    z-index: 8;
+    position: relative;
+    top: -130px;
+    left: 0;
+    opacity: 0.2;
+    bottom: 15px;
+}
+@keyframes animate {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100000%;
+    }
+}
+@keyframes animate2 {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100000%;
+    }
+}
+
+.page-landing .content .main .above-img {
     display: flex;
-    margin-top: 5rem;
     align-items: center;
-    justify-self: end;
-  }
-  
-  .buttons-container a {
+    justify-content: space-around;
+    flex-direction: row;
+
+    width: 100%;
+}
+
+.page-landing .content .main .above-img h1 {
+    font-weight: 700;
+    font-size: 84px;
+    line-height: 80px;
+    color: #eee;
+}
+
+.page-landing .content .main .above-img h2 {
+    font-weight: 500;
+    font-size: 23px;
+    color: #eee;
+}
+
+.page-landing .content .main .above-img .buttons-container {
+    display: flex;
+}
+
+.page-landing .content .main .above-img .buttons-container a {
     width: 240px;
     height: 60px;
-  
-    border-radius: 2.5rem;
-    font: 500 2rem Poppins;
-  
+
+    border-radius: 40px;
+    font: 500 32px Poppins;
+
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
     text-decoration: none;
-  
+
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
     transition: background-color 0.2s;
-  }
-  
-  .buttons-container a:first-child {
-    margin-right: 3rem;
-  }
-  
-  .buttons-container a.registration {
+}
+
+.page-landing .content .main .above-img .buttons-container a:first-child {
+    margin-right: 40px;
+}
+
+.page-landing .content .main .above-img .buttons-container a.registration {
     background: none;
     border: 4px solid #0459ae;
     color: #eeeeee;
-  }
-  .buttons-container a.registration:hover {
+}
+
+.page-landing .content .main .above-img .buttons-container .know-more-btn {
+    position: relative;
+    font: 500 26px Poppins;
+    top: 85px;
+    right: 375px;
+
+    color: #eee;
+    transition: 0.2s all;
+}
+
+.page-landing .content .main .above-img .buttons-container .know-more-btn img {
+    height: 12px;
+    margin-left: 8px;
+}
+
+.page-landing
+    .content
+    .main
+    .above-img
+    .buttons-container
+    .know-more-btn:hover {
+    opacity: 0.3;
+}
+
+.page-landing
+    .content
+    .main
+    .above-img
+    .buttons-container
+    a.registration:hover {
     background: #0459ae;
-  }
-  
-  .buttons-container a.login {
+}
+
+.page-landing .content .main .above-img .buttons-container a.login {
     background: #eeeeee;
     color: #0459ae;
-  }
-  .buttons-container a.login:hover {
+}
+
+.page-landing .content .main .above-img .buttons-container a.login:hover {
     background: #0459ae;
     color: #eeeeee;
-  }
-  
+}
+
+.page-landing .content .about {
+    background-color: #eee;
+    margin-top: -128px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 100px;
+
+    width: 100%;
+    height: 900px;
+}
+
+.page-landing .content .about h2 {
+    margin-top: 150px;
+    width: 80%;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.page-landing .content .how-it-work {
+    background-color: #eee;
+    margin-top: -128px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 100px;
+
+    width: 100%;
+    height: 900px;
+}
+
+.page-landing .content .how-it-work .hiw-cards {
+    padding-top: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.page-landing .content .faq {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 100px;
+
+    width: 100%;
+    height: 900px;
+
+    color: #eee;
+}
+
+.page-landing .content .faq .faq-questions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
+
+    margin-top: 75px;
+}
+
+.page-landing .content .who-behind {
+    background-color: #eee;
+    margin-top: -128px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 100px;
+
+    width: 100%;
+    height: 900px;
+}
+
+.page-landing .content .who-behind h2 {
+    margin-top: 150px;
+    width: 80%;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.page-landing .content footer {
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.page-landing .content footer img {
+    width: 250px;
+}
