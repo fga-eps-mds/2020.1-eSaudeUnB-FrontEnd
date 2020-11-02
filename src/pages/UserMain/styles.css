@@ -190,7 +190,6 @@
     padding-top: 20px;
     padding-left: 20px;
     border-radius: 15px;
-    align-items: center;
     justify-content: space-around;
 }
 .usercalendar .testecalendar{
@@ -219,15 +218,16 @@
 .usercalendar .column1{
     display: flex;
     flex-direction: column;
-    width: 630px;
+    width: 520px;
     padding-right: 20px;
-    border-right: 2px solid #0459ae;
+    
 }
 .usercalendar .column2{
     display: flex;
     width: 700px;
     flex-direction: column;
-
+    border-left: 2px solid #0459ae;
+    padding-left: 20px;
     height: 100%;
 }
 .usercalendar .column2 .schedule-buttons{
@@ -252,8 +252,21 @@
     width: 800px;
     align-self: flex-end;
 }
-.hours-disponibility{
-
+.usercalendar .hours-disponibility{
+    display: flex;
+    flex-direction: column;
     padding-left: 20px;
     padding-bottom: 20px;
+}
+.usercalendar .noHours{
+    display: flex;
+    background-color:#FF2C00;
+    color: #4A0D00;
+    flex-direction: row;
+    width: 1400px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
 }
