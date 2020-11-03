@@ -158,7 +158,7 @@ export default function PsychologistCreate() {
                         {alertContentLastName ? (
                             <div className="alertContent">
                                 <p>
-									Sobrenome precisa possuir mais de 2 letras.
+Sobrenome precisa possuir mais de 2 letras.
                                 </p>
                             </div>
                         ) : (
@@ -201,7 +201,7 @@ export default function PsychologistCreate() {
                         />
 
                         <button className="button" type="submit">
-							Registrar
+Registrar
                         </button>
                     </div>
                 </form>

@@ -32,8 +32,9 @@ export default function AdminMain() {
                     getOut();
                 }, 2000);
             }
+            return 401;
         });
-    },[]);
+    }, []);
 
     const showConfirmation = (email) => {
         setActualPsyEmail(email);

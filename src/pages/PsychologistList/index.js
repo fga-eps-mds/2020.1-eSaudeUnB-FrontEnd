@@ -37,7 +37,7 @@ export default function PsychologistList(props) {
                 }
             });
         setActualUser(props.location.state.data);
-    },[]);
+    }, []);
 
     return (
         <div className="psychologistListContainer">

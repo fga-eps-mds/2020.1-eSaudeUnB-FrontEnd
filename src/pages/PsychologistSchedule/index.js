@@ -24,7 +24,6 @@ export default function PsychologistSchedule(props) {
             },
             { headers: { authorization: accessToken } },
         ).then((response) => {
-            console.log(response);
             setScheduleItems(response.data);
         });
     }, []);
@@ -166,9 +165,9 @@ export default function PsychologistSchedule(props) {
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
-							Cadastrar horários disponíveis
+Cadastrar horários disponíveis
                             <button type="button" onClick={addNewScheduleItem}>
-								+ Novo Horário
++ Novo Horário
                             </button>
                         </legend>
 
@@ -238,7 +237,7 @@ export default function PsychologistSchedule(props) {
                                         onClick={() => removeScheduleItem(index)
                                         }
                                     >
-										Remover
+Remover
                                     </button>
                                 </div>
                             ))}
@@ -254,10 +253,10 @@ export default function PsychologistSchedule(props) {
                                     },
                                 }}
                             >
-								Configurações avançadas
+Configurações avançadas
                             </Link>
                             <button type="button" onClick={() => putCalendar()}>
-								Salvar cadastro
+Salvar cadastro
                             </button>
                         </footer>
                     </div>

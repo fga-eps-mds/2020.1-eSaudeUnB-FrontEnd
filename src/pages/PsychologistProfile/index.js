@@ -123,7 +123,6 @@ export default function PsychologistProfile(props) {
                 setVariant('success');
                 setAlertText('Dados atualizados com sucesso.');
             }
-            console.log(response);
         } catch (err) {
             setShow(true);
             setVariant('danger');
