@@ -5,7 +5,7 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function UserMain() {
+export default function UserMain(props) {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
     const [userSelected, setUserSelected] = useState({});
@@ -54,7 +54,7 @@ export default function UserMain() {
 
     return (
         <div className="usercalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={'user'} />
+            <NavBar className="navBar" bond="Patient" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -80,6 +80,7 @@ export default function UserMain() {
                                     {psychologist.weekDay.map((workDay, index) => (
                                         dateCheck(workDay.weekDay) ?
                                             <div className="testecalendar" key={index}>
+                                                {show ? setShow(false) : ""}
                                                 <div className="psy-card"
                                                     // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
@@ -91,7 +92,7 @@ export default function UserMain() {
 
                                                 </div>
                                             </div>
-                                            : <div key={index}></div>
+                                            : <div key={index}>{!show ? setShow(true) : ""}</div>
                                     ))}
                                 </div>
                             ))}
