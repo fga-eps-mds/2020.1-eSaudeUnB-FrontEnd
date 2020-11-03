@@ -29,19 +29,27 @@ export default function UserMain(props) {
     async function saveAppointment(event){
         event.preventDefault();
         const response = await api.get(`/user/${localStorage.getItem('user')}`);
-        const {_id, name, lastName} = response.data;
+        const userPatient = response.data;
 
         userSelected.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
                 if(appointment._id === selectedValue){
                     appointment.scheduled = true;
-                    appointment.user = _id;
-                    appointment.name = `${name} ${lastName}`;
+                    appointment.user = userPatient._id;
+                    appointment.name = `${userPatient.name} ${userPatient.lastName}`;
+
+                    userPatient.appointments.push({
+                        psychologist: userSelected._id,
+                        weekDay: workDay.weekDay,
+                        time: appointment.time,
+                        duration: workDay.duration
+                    });
                 }
             });
         });
 
         const {email, weekDay} = userSelected;
+        const {appointments} = userPatient;
 
         await api.put(`/calendary/update`,
         {
@@ -49,7 +57,9 @@ export default function UserMain(props) {
             weekDay,
         });
 
-        window.location.reload();
+        await api.put(`/user/schedule/${userPatient.email}`, { appointments });
+
+       window.location.reload();
     }
 
     return (
@@ -80,7 +90,7 @@ export default function UserMain(props) {
                                     {psychologist.weekDay.map((workDay, index) => (
                                         dateCheck(workDay.weekDay) ?
                                             <div className="testecalendar" key={index}>
-                                                {show ? setShow(false) : ""}
+                                                
                                                 <div className="psy-card"
                                                     // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
@@ -92,7 +102,7 @@ export default function UserMain(props) {
 
                                                 </div>
                                             </div>
-                                            : <div key={index}>{!show ? setShow(true) : ""}</div>
+                                            : <div key={index}></div>
                                     ))}
                                 </div>
                             ))}

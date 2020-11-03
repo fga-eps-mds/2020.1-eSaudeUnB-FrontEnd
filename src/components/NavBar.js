@@ -32,6 +32,17 @@ export default function NavBar(props) {
                     <Link
                         className="a"
                         to={{
+                            pathname: '/psychologist/events',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Agendamentos
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
                             pathname: '/psychologist/profile',
                             state: {
                                 data: actualUser,
