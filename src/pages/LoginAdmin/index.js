@@ -57,7 +57,7 @@ export default function AdminLogin() {
     }
 
     return (
-        <div className="loginContainer">
+        <div className="loginAdminContainer">
             {show ? (
                 <Alert className="alert" variant={variant}>
                     {alertText}

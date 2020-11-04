@@ -5,8 +5,6 @@ import { Alert } from 'react-bootstrap';
 import api from '../../services/api';
 import './styles.css';
 
-import userIcon from '../../assets/images/userIcon.svg';
-
 import Logo from '../../components/Logo';
 import Input from '../../components/Input';
 
@@ -111,11 +109,7 @@ export default function LandingLogin() {
                 <Logo />
 
                 <form className="form" onSubmit={handleLogin}>
-                    <img
-                        className="userIcon"
-                        src={userIcon}
-                        alt="icone de usuario"
-                    />
+                    <span>Login de Usuário</span>
 
                     <Input
                         placeholder="Email"
