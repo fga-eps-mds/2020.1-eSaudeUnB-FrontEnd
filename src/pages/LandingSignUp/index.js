@@ -129,7 +129,7 @@ export default function LandingSignUp() {
                 <Logo />
 
                 <form className="form" onSubmit={handleSign}>
-                    <img src={userIcon} alt="userIcon" />
+                    <span>Registro de usuário</span>
                     <div className="signUp01Fields">
                         <Input
                             placeholder="Nome"
