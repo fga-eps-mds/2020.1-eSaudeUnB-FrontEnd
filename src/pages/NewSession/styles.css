@@ -2,100 +2,101 @@
     width: 100%;
     height: 100vh;
     color: #eee;
-  
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
-  }
-  
-  .newSession .content {
+}
+
+.newSession .content {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .newSession .patientInfo {
+}
+
+.newSession .patientInfo {
     display: flex;
     font: 500 18px Poppins;
     color: #07387e;
     background-color: #eee;
     border-radius: 15px;
     line-height: 3rem;
-  
+
     width: 1400px;
-  }
-  
-  .newSession .patientInfo .patient {
+}
+
+.newSession .patientInfo .patient {
     display: flex;
     align-items: center;
     width: 100%;
-  }
-  
-  .newSession .patientInfo .patient .patientImg {
+}
+
+.newSession .patientInfo .patient .patientImg {
     height: 125px;
-    border-radius: 25%;
+    width: 125px;
+    border-radius: 50%;
     margin: 1rem 2rem 1rem 1rem;
-  }
-  .newSession .patientInfo .patient .info {
+}
+.newSession .patientInfo .patient .info {
     width: 1400px;
     display: flex;
     flex-direction: column;
-  }
-  
-  .newSession .patientInfo .patient .info span {
+}
+
+.newSession .patientInfo .patient .info span {
     margin-right: 2rem;
-  }
-  
-  .newSession .patientInfo .patient .info .prop {
+}
+
+.newSession .patientInfo .patient .info .prop {
     font-weight: bold;
     margin-right: 0;
-  }
-  
-  .newSession .patientInfo .patient .info .name {
+}
+
+.newSession .patientInfo .patient .info .name {
     width: 90%;
     display: block;
-  }
-  
-  .newSession .patientInfo .patient .info .expand {
+}
+
+.newSession .patientInfo .patient .info .expand {
     width: 3rem;
     height: 3rem;
     align-self: center;
     border: none;
-  }
-  
-  .newSession .patientInfo .patient .info .expand:focus {
+}
+
+.newSession .patientInfo .patient .info .expand:focus {
     outline: 0px auto -webkit-focus-ring-color;
     outline-offset: 0px;
-  }
-  
-  .newSession .patientInfo .patient .info .expand img {
+}
+
+.newSession .patientInfo .patient .info .expand img {
     width: 2.5rem;
     height: 2.5rem;
-  }
-  
-  .newSession .patientInfo .patient .info .emailAndPhone {
+}
+
+.newSession .patientInfo .patient .info .emailAndPhone {
     display: flex;
     flex-direction: row;
-  }
-  
-  .newSession .patientHistory {
+}
+
+.newSession .patientHistory {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .newSession .patientHistory .tab {
+}
+
+.newSession .patientHistory .tab {
     margin-top: 3rem;
     width: 1400px;
-  
+
     overflow: hidden;
     background-color: none;
-  }
-  
-  .newSession .patientHistory .tab button {
+}
+
+.newSession .patientHistory .tab button {
     width: 233.3px;
     margin-bottom: -10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
@@ -109,77 +110,78 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.2s;
-  }
-  
-  .newSession .patientHistory .tab button:last-of-type {
+}
+
+.newSession .patientHistory .tab button:last-of-type {
     background-color: #0459ae;
-  }
-  .newSession .patientHistory .tab button:last-of-type:hover {
+}
+.newSession .patientHistory .tab button:last-of-type:hover {
     background-color: #197fe5;
-  }
-  
-  .newSession .patientHistory .tab button:hover {
+}
+
+.newSession .patientHistory .tab button:hover {
     background-color: #0459ae;
-  }
-  
-  .newSession .patientHistory .tabContent {
+}
+
+.newSession .patientHistory .tabContent {
     display: flex;
     flex-direction: column;
-  
+
     font: 500 14px Poppins;
     color: #000;
-  
+
     background-color: #eee;
     border-radius: 15px;
-  
+
     width: 1400px;
-  
+
     padding: 1rem 2rem 0 2rem;
     height: 55vh;
-  
+
     overflow: auto;
-  }
-  ::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
     width: 6px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background: #197fe5;
     border-radius: 3px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #0459ae;
-  }
+}
 
-  .newSession .patientHistory .tabContent h1 {
+::-webkit-scrollbar-thumb:hover {
+    background: #0459ae;
+}
+
+.newSession .patientHistory .tabContent h1 {
     font-size: 32px;
-  }
-  
-  .newSession .patientHistory .tabContent h1,
-  h2 {
+}
+
+.newSession .patientHistory .tabContent h1,
+h2 {
+
     margin: 1rem 0 1.5rem 0;
     color: #07387e;
-  }
-  
-  .newSession .patientHistory .tabContent h2 {
+}
+
+.newSession .patientHistory .tabContent h2 {
     font: 100 16px Poppins;
     line-height: 1rem;
-  }
-  
-  .newSession .patientHistory .tabContent p {
+}
+
+.newSession .patientHistory .tabContent p {
     line-height: 2rem;
-  }
-  
-  .newSession .patientHistory .tabContent .recordText {
+}
+
+.newSession .patientHistory .tabContent .recordText {
     border-radius: 15px;
     padding: 1rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
     margin-bottom: 1.5rem;
-  }
+}
 
-.newSession #professional{
-  width: 630px;
+.newSession #professional {
+    width: 630px;
 }
 
 .newSession .sendButton {
@@ -188,42 +190,41 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459AE !important;
+    background-color: #0459ae !important;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    line-height: 36px;   
+    line-height: 36px;
     float: right;
     margin-bottom: 20px;
     margin-top: 5px;
 }
 
-.newSession .sendButton:hover{
-  cursor: pointer;
-  background-color: #197fe5 !important;
+.newSession .sendButton:hover {
+    cursor: pointer;
+    background-color: #197fe5 !important;
 }
 
 .newSession textarea {
-  border-radius: 15px;
-  width: 1300px;
-  height: 180px;
-  box-sizing: border-box;
-  word-break: break-word;
-  line-break: strict;
-  padding-bottom: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  font: 500 16px Poppins;
-  text-align: left;
+    border-radius: 15px;
+    width: 1300px;
+    height: 180px;
+    box-sizing: border-box;
+    word-break: break-word;
+    line-break: strict;
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    font: 500 16px Poppins;
+    text-align: left;
 }
 
-
-.newSession input{
-  width:  600px;
-  font: 500 16px Poppins;
-  padding-left: 10px;
-  padding-right: 10px;
+.newSession input {
+    width: 600px;
+    font: 500 16px Poppins;
+    padding-left: 10px;
+    padding-right: 10px;
 }
