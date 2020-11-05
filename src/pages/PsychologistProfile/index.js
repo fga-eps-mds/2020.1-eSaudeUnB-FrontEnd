@@ -253,6 +253,24 @@ export default function PsychologistProfile(props) {
                                     )}
 
                                     <Input
+                                        placeholder="Sobrenome"
+                                        value={lastName}
+                                        onChange={setLastName}
+                                    />
+                                    {alertContentLastName ? (
+                                        <div className="alertContent">
+                                            <p>
+                                                Sobrenome precisa possuir mais
+                                                de 2 letras.
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
+                                    <Input
                                         placeholder="Email"
                                         value={email}
                                         onChange={setEmail}
@@ -270,7 +288,43 @@ export default function PsychologistProfile(props) {
                                         </div>
                                     )}
 
-                                    <div className="selects">
+                                   
+
+                                </div>
+
+                                <div className="inputs">
+                                    
+
+                                    <Input
+                                        placeholder="Especialização"
+                                        value={specialization}
+                                        onChange={setSpecialization}
+                                    />
+                                    {alertContentSpecialization ? (
+                                        <div className="alertContent">
+                                            <p>Informe a Especialização.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
+                                    <Input
+                                        placeholder="DDD + Telefone"
+                                        value={phone}
+                                        onChange={setPhone}
+                                    />
+                                    {alertContentPhone ? (
+                                        <div className="alertContent">
+                                            <p>Insira um telefone válido.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                     <div className="selects">
                                         <select
                                             name="gender"
                                             value={gender}
@@ -329,57 +383,6 @@ export default function PsychologistProfile(props) {
                                             </div>
                                         )}
                                     </div>
-
-                                </div>
-
-                                <div className="inputs">
-                                    <Input
-                                        placeholder="Sobrenome"
-                                        value={lastName}
-                                        onChange={setLastName}
-                                    />
-                                    {alertContentLastName ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Sobrenome precisa possuir mais
-                                                de 2 letras.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-
-                                    <Input
-                                        placeholder="Especialização"
-                                        value={specialization}
-                                        onChange={setSpecialization}
-                                    />
-                                    {alertContentSpecialization ? (
-                                        <div className="alertContent">
-                                            <p>Informe a Especialização.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-
-                                    <Input
-                                        placeholder="DDD + Telefone"
-                                        value={phone}
-                                        onChange={setPhone}
-                                    />
-                                    {alertContentPhone ? (
-                                        <div className="alertContent">
-                                            <p>Insira um telefone válido.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                             <textarea
@@ -408,10 +411,10 @@ export default function PsychologistProfile(props) {
                                 >
                                     Alterar Senha
                                 </button>
-
+                                
                                 <button
                                     className="button-salvar"
-                                    type=""
+                                    type="submit"
                                 >
                                     Salvar
                                 </button>
