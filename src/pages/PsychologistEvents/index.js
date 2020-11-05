@@ -5,26 +5,33 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function UserMain(props) {
+export default function PsychologistEvents() {
     const [date, setDate] = useState(new Date());
-    const [psychologists, setPsychologists] = useState([]);
+    const [psychologist, setPsychologist] = useState({});
 
     useEffect(() => {
-        api.get('/psychologists').then((response) => {
-            setPsychologists(response.data);
-        });
+        setPsy();
     }, []);
+
+    async function setPsy(){
+        api.get(`/psychologist/${localStorage.getItem('user')}`).then((response) => {
+                setPsychologist(response.data);
+        })
+
+    }
 
     function dateCheck(workday){
         if(workday.weekDay === date.getDay()){
             return true;
         }
-        else return false;
+        
+        
+        return false;
     }
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={'user'} />
+            <NavBar className="navBar" bond="Psychologist" actualUser={localStorage.getItem('user')} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -42,33 +49,30 @@ export default function UserMain(props) {
                         <h1>{`Próximos Eventos`}</h1>
                         </div>
                         <div className="schedules">
-                            {psychologists.map((psychologist, index) => (
+                            {
+                            psychologist.weekDay &&
+                            psychologist.weekDay.length > 0 ? 
+                            psychologist.weekDay.map((workDay, index) => (
+                                dateCheck(workDay) ?
                                 <div
-                                    // eslint-disable-next-line no-underscore-dangle
+                                    eslint-disable-next-line no-underscore-dangle
                                     key={index}
-                                    className="schedule-box"
-                                > 
-                                {psychologist.weekDay.map((workDay, index) => (
-                                    dateCheck(workDay) ?
-                                    <div
-                                        // eslint-disable-next-line no-underscore-dangle
-                                        key={index}
-                                       
-                                    >   
-                                            {workDay.appointment.map((appointment) => (
-                                                appointment.scheduled ?
-                                                <div className="testeTotal">
-                                                    <h3>{`- ${appointment.time}`}</h3>
-                                                    <h3>Atendimento com {appointment.name}</h3>
-                                                </div>
-                                                :
-                                                <div></div>
-                                            ))}
-                                    </div>
-                                : <div></div>
-                                ))}
+                                    
+                                >   
+                                        {workDay.appointment.map((appointment) => (
+                                            appointment.scheduled ?
+                                            <div className="testeTotal">
+                                                <h3>{`- ${appointment.time}`}</h3>
+                                                <h3>Atendimento com {appointment.name}</h3>
+                                            </div>
+                                            :
+                                            <div></div>
+                                        ))}
                                 </div>
-                            ))}
+                            : <div></div>
+                            ))
+                            :<div></div>}
+                            
                         </div>
                     </div>
                 </div>
@@ -77,6 +81,6 @@ export default function UserMain(props) {
     );
 }
 
-UserMain.propTypes = {
+PsychologistEvents.propTypes = {
     location: PropTypes.object,
 };

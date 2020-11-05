@@ -39,7 +39,8 @@ export default function UserMain(props) {
                     appointment.name = `${userPatient.name} ${userPatient.lastName}`;
 
                     userPatient.appointments.push({
-                        psychologist: userSelected._id,
+                        psychologist_id: userSelected._id,
+                        psychologistName: `${userSelected.name} ${userSelected.lastName}`,
                         weekDay: workDay.weekDay,
                         time: appointment.time,
                         duration: workDay.duration

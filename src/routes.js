@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import LandingLogin from './pages/LandingLogin';
 import LandingSignUp from './pages/LandingSignUp';
 import UserMain from './pages/UserMain';
+import UserEvents from './pages/UserEvents';
 import PsychologistEvents from './pages/PsychologistEvents';
 import UserProfile from './pages/UserProfile';
 import LoginAdmin from './pages/LoginAdmin';
@@ -21,6 +22,7 @@ import PsychologistList from './pages/PsychologistList';
 import userSchedule from './pages/UserSchedule';
 import NotFound from './pages/NotFound';
 
+
 export default function Routes() {
     return (
         <BrowserRouter>
@@ -31,6 +33,7 @@ export default function Routes() {
                 <Route path="/psychologist/events" component={PsychologistEvents}/>
                 <Route path="/profile" component={UserProfile} />
                 <Route path="/login" component={LandingLogin} />
+                <Route path="/events" component={UserEvents} />
                 <Route path="/registration" component={LandingSignUp} />
                 <Route path="/admin" exact component={LoginAdmin} />
                 <Route path="/admin/psychologist/list" component={AdminMain} />

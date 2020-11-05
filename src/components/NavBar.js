@@ -86,7 +86,18 @@ export default function NavBar(props) {
                             },
                         }}
                     >
-                        Horários
+                        Agendamentos
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/events',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Consultas Marcadas
                     </Link>
                     <img className="userIcon" src={userIcon} alt="icone de usuario" />
                 </div>
