@@ -11,21 +11,28 @@
 }
 
 .patientListContainer .content {
-    height: 100%;
+    width: 915px;
+    height: 700px;
     display: flex;
+    background: #eeeeee;
+    border-radius: 15px;
+    padding: 10px 0 10px 0;
+    margin-top: 30px;
     flex-direction: column;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+    overflow: auto;
 }
 
 .patientListContainer .searcBarComponent {
-    width: 1400px;
+    width: 915px;
     align-self: center;
     justify-content: flex-end;
 }
 
 .patientListContainer .patients {
     align-self: center;
-    margin-top: 1.5rem;
-    width: 1400px;
+    margin-top: 25px;
+    width: 915px;
 }
 
 .patientListContainer .patients .noPatients {
@@ -37,14 +44,16 @@
     align-items: center;
     justify-content: space-between;
 
-    font: 500 1.2rem Poppins;
+    font: 500 18px Poppins;
     color: #07387e;
 
     background-color: #eee;
 
+    border: 2px solid #0459ae;
+
     border-radius: 15px;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 2rem 0.5rem 1rem;
+    margin: 0 30px 30px 30px;
+    padding: 10px 20px 10px 20px;
 }
 
 .patientListContainer .patientInfos {
@@ -53,20 +62,16 @@
 }
 
 .patientListContainer .patientTab .patientInfos .patientImg {
+    border: 1px solid #0459ae;
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    margin: 0 2rem 0 1rem;
+    margin: 0 40px 0 10px;
 }
 
 .patientListContainer .patientTab .patientInfos .minPatient p:first-of-type {
+    margin: 16px 0 0 0;
     font: 700 32px Poppins;
-}
-.patientListContainer .patientTab .button {
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    border-radius: 25%;
 }
 
 .patientListContainer .patientTab .button img {
