@@ -280,7 +280,6 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-                                <div className="space"></div>
                                 {alertContentBond ? (
                                     <div className="alertContent">
                                         <p>Selecione um vínculo.</p>

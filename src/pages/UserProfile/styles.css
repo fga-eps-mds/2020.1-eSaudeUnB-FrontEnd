@@ -1,7 +1,6 @@
 .userProfileContainer {
     width: 100%;
-    height: 100vh;
-    margin: 0 auto;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -11,62 +10,58 @@
 }
 .userProfileContainer .content {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
     padding-left: 5%;
 }
 .userProfileContainer .form {
-    height: 35vh;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 .userProfileContainer .form:first-of-type {
-    margin-right: 100px;
+    margin-right: 215px;
 }
 .userProfileContainer .formColumn {
-    display: flex;
-    width: 950px;
-    height: 800px;
-    justify-content: space-between;
-    margin: auto;
+    height: 700px;
     background-color: #eee;
-    display: flow-root;
     border-radius: 15px;
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
 }
 .userProfileContainer .inputs {
+    width: 950px;
+    height: 330px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .userProfileContainer .form .input {
     display: flex;
+    margin-top: -3px;
     border-bottom: 3px solid #0459ae;
-
     margin-bottom: 10px;
+    height: 41px;
 }
 
 .userProfileContainer .form input::placeholder {
-    color: #fff;
+    color: #909090;
 }
 
 .userProfileContainer .form input {
     width: 300px;
-    height: 41px;
-    
+    /* height: 41px; */
+    margin: 0;
+
     background-color: transparent;
     color: #0459ae;
     border: 0;
     padding-top: 20px;
     font-size: 15px;
     line-height: 27px;
-    
 }
 .userProfileContainer .form .selects {
     display: flex;
@@ -79,30 +74,21 @@
 
     color: #0459ae;
 
+    padding-top: 15px;
     border: 0px;
     background-color: transparent;
     border-bottom: 3px solid #0459ae;
 
     font-size: 14px;
     line-height: 27px;
-}
-.userProfileContainer .form .space {
-    width: 144px;
-}
-.userProfileContainer .form select option {
-    background-color: #0459ae;
+    margin: -3px 0 10.5px 0;
 }
 
-.userProfileContainer .profile {
-    display: flex;
-    position: absolute;
-    align-self: baseline;
-    margin-top: 1vh;
-}
 .userProfileContainer .content .formColumn .form .selectsLargest {
     width: 300px;
     height: 41px;
 }
+
 .userProfileContainer .formColumn .buttons .button-salvar {
     width: 130px;
     height: 40px;
@@ -126,21 +112,26 @@
 }
 
 .userProfileContainer .buttons {
-    
     display: flex;
     justify-content: flex-end;
     width: 92%;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .userProfileContainer .form .alertContent {
-    margin: 0px;
-    color: black;
+    color: red;
     text-align: left;
-    width: 400px;
+    width: 300px;
     height: 20px;
     font-size: 14px;
+    margin-top: -8px;
+    margin-bottom: 10px;
 }
+
+.userProfileContainer .form .alertContent + .alertContent {
+    margin-left: 20px;
+}
+
 .userProfileContainer .userIcon {
     border-radius: 50%;
     width: 150px;
@@ -160,11 +151,10 @@
     position: relative;
     width: 125px;
     height: 125px;
-    
+
     text-align: center;
-    
 }
-.userIcon{
+.userIcon {
     width: 400px;
     height: 400px;
 }
@@ -175,7 +165,7 @@
     box-sizing: border-box;
     border-radius: 50%;
     transition: all ease-in-out 0.3s;
-    border: solid 1px #0459ae; 
+    border: solid 1px #0459ae;
     border-radius: 50%;
 }
 .userProfileContainer .personal-avatar:hover {
@@ -192,11 +182,11 @@
     background-color: rgba(0, 0, 0, 0);
     transition: all ease-in-out 0.3s;
 }
-.userProfileContainer  .personal-figcaption:hover {
+.userProfileContainer .personal-figcaption:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.userProfileContainer  .personal-figcaption > img {
+.userProfileContainer .personal-figcaption > img {
     margin-top: 32.5px;
     width: 50px;
     height: 50px;
