@@ -108,11 +108,18 @@
 .psyProfileContainer textarea {
     border: none;
     border-radius: 8px;
+
     resize: none;
     width: 800px;
     height: 100px;
+
     margin-top: 30px;
+
     font-size: 14px;
+    padding: 10px;
+    color: #0459ae;
+
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .psyProfileContainer .content .form {
