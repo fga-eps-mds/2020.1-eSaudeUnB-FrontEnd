@@ -198,8 +198,6 @@ export default function PsychologistProfile(props) {
                     <div className="firstColumn">
 
                         <form className="formColumn" onSubmit={updateInfos}>
-                            <div className="form">
-                                <div>
                                     <div className="personal-image">
                                         <label className="label">
                                             {
@@ -234,6 +232,8 @@ export default function PsychologistProfile(props) {
                                             </figure>
                                         </label>
                                     </div>
+                            <div className="form">
+                                <div className="inputs">
                                     <Input
                                         placeholder="Nome"
                                         value={name}
@@ -332,7 +332,7 @@ export default function PsychologistProfile(props) {
 
                                 </div>
 
-                                <div>
+                                <div className="inputs">
                                     <Input
                                         placeholder="Sobrenome"
                                         value={lastName}
@@ -403,23 +403,25 @@ export default function PsychologistProfile(props) {
 
                             <div className="buttons">
                                 <button
-                                    className="button-salvar"
+                                    className="button-change"
                                     type="submit"
+                                >
+                                    Alterar Senha
+                                </button>
+
+                                <button
+                                    className="button-salvar"
+                                    type=""
                                 >
                                     Salvar
                                 </button>
-                                <button
-                                    className="button-sair"
-                                    onClick={getOut}
-                                >
-                                    Sair
-                                </button>
+
                             </div>
                         </form>
                     </div>
 
                     <div className="secondColumn">
-                        <Link
+                        {/* <Link
                             className="link"
                             to={{
                                 pathname: '/psychologist/schedule',
@@ -429,9 +431,10 @@ export default function PsychologistProfile(props) {
                             }}
                         >
                             Configurar meu cronograma
-                        </Link>
+                        </Link> */}
                         {/* <Link className="link" to="/" >Alterar Senha</Link> */}
                     </div>
+                    
                 </div>
             </div>
         </>
