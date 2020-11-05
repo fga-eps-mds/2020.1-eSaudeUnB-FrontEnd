@@ -201,9 +201,7 @@ export default function UserProfile(props) {
                 <div className="content">
 
                     <form className="formColumn" onSubmit={updateInfos}>
-
-                        <div className="form">
-                            <div className="personal-image">
+                    <div className="personal-image">
                                 <label className="label">
                                     <input
                                         id="image"
@@ -222,6 +220,9 @@ export default function UserProfile(props) {
                                     </figure>
                                 </label>
                             </div>
+                            <div className="inputs">
+                        <div className="form">
+                            
                             <Input
                                 placeholder="Nome"
                                 value={name}
@@ -372,9 +373,9 @@ export default function UserProfile(props) {
                             )}
 
                         </div>
+                        </div>
                         <div className="buttons">
                             <button className="button-salvar" type="submit">Salvar</button>
-                            <button className="button-sair" onClick={getOut}>Sair</button>
                         </div>
                     </form>
                 </div>

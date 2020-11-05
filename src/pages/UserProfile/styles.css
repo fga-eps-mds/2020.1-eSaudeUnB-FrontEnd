@@ -29,9 +29,20 @@
 }
 .userProfileContainer .formColumn {
     display: flex;
-    width: 80vh;
-    height: 50vh;
+    width: 950px;
+    height: 800px;
     justify-content: space-between;
+    margin: auto;
+    background-color: #eee;
+    display: flow-root;
+    border-radius: 15px;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+}
+.userProfileContainer .inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .userProfileContainer .form .input {
@@ -46,32 +57,33 @@
 }
 
 .userProfileContainer .form input {
-    width: 400px;
+    width: 300px;
     height: 41px;
-    color: #fff;
+    
     background-color: transparent;
+    color: #0459ae;
     border: 0;
-
-    font-size: 18px;
+    padding-top: 20px;
+    font-size: 15px;
     line-height: 27px;
+    
 }
 .userProfileContainer .form .selects {
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    width: 300px;
 }
 .userProfileContainer .form select {
-    width: 170px;
-    height: 33px;
+    width: 140px;
+    height: 41px;
 
-    color: #fff;
+    color: #0459ae;
 
     border: 0px;
     background-color: transparent;
     border-bottom: 3px solid #0459ae;
 
-    border-radius: 5px;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 27px;
 }
 .userProfileContainer .form .space {
@@ -88,19 +100,21 @@
     margin-top: 1vh;
 }
 .userProfileContainer .content .formColumn .form .selectsLargest {
-    width: 400px;
+    width: 300px;
     height: 41px;
 }
 .userProfileContainer .formColumn .buttons .button-salvar {
-    width: 150px;
-    height: 50px;
+    width: 130px;
+    height: 40px;
 
     border-radius: 25px;
     border: 0;
     color: #fff;
     background-color: #0459ae;
 
-    font-size: 24px;
+    cursor: pointer;
+
+    font-size: 18px;
     line-height: 36px;
 }
 
@@ -112,23 +126,11 @@
 }
 
 .userProfileContainer .buttons {
-    position: absolute;
+    
     display: flex;
-    align-self: flex-end;
-    justify-content: space-between;
-    width: 20%;
-}
-.userProfileContainer .formColumn .buttons .button-sair {
-    width: 150px;
-    height: 50px;
-
-    border-radius: 25px;
-    border: 0;
-    color: #fff;
-    background-color: #ff2c00;
-
-    font-size: 24px;
-    line-height: 36px;
+    justify-content: flex-end;
+    width: 92%;
+    margin-top: 40px;
 }
 
 .userProfileContainer .form .alertContent {
@@ -144,35 +146,42 @@
     width: 150px;
     height: 150px;
 }
-.userProfileContainer .form .personal-image {
-    text-align: center;
-    position: absolute;
-    top: 130px;
-    left: 90px;
+.userProfileContainer .personal-image {
+    margin-left: 65px;
+    margin-top: 45.5px;
+    margin-bottom: 30px;
+    height: 125px;
 }
-.userProfileContainer .form .personal-image input[type='file'] {
+
+.userProfileContainer .personal-image input[type='file'] {
     display: none;
 }
-.userProfileContainer .form .personal-figure {
+.userProfileContainer .personal-figure {
     position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    
+    text-align: center;
+    
 }
-.userProfileContainer .form .personal-avatar {
+.userIcon{
+    width: 400px;
+    height: 400px;
+}
+.userProfileContainer .personal-avatar {
     cursor: pointer;
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     box-sizing: border-box;
     border-radius: 50%;
-    border: 2px solid transparent;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     transition: all ease-in-out 0.3s;
+    border: solid 1px #0459ae; 
+    border-radius: 50%;
 }
-.userProfileContainer .form .personal-avatar:hover {
+.userProfileContainer .personal-avatar:hover {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
-.userProfileContainer .form .personal-figcaption {
+.userProfileContainer .personal-figcaption {
     cursor: pointer;
     position: absolute;
     top: 0px;
@@ -183,11 +192,11 @@
     background-color: rgba(0, 0, 0, 0);
     transition: all ease-in-out 0.3s;
 }
-.userProfileContainer .form .personal-figcaption:hover {
+.userProfileContainer  .personal-figcaption:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.userProfileContainer .form .personal-figcaption > img {
+.userProfileContainer  .personal-figcaption > img {
     margin-top: 32.5px;
     width: 50px;
     height: 50px;
