@@ -117,7 +117,6 @@ export default function NavBar({ actualUser, bond }) {
                     >
                         Consultas Marcadas
                     </Link>
-                    <img className="userIcon" src={userIcon} alt="icone de usuario" />
                     <img className="userIcon" src={userImage || userIcon} alt="icone de usuario" />
                 </div>
                 )}
