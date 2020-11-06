@@ -108,11 +108,33 @@ export default function NavBar({ actualUser, bond }) {
                         Perfil
                     </Link>
 
-                    <img
-                        className="userIcon"
-                        src={userImage || userIcon}
-                        alt="icone de usuario"
-                    />
+                    <div className="dropdown">
+                        <div className="images">
+                            <img
+                                className="userIcon"
+                                src={userImage || userIcon}
+                                alt="icone de usuario"
+                            />
+                            <img
+                                className="arrow"
+                                src={arrow}
+                                alt="menu"
+                                onClick={() => showDropDown()}
+                            />
+                        </div>
+                        {dropDown ? (
+                            <ul className="dropdown-items">
+                                <li>
+                                    <a href="">Perfil</a>
+                                </li>
+                                <li>
+                                    <a href="">Sair</a>
+                                </li>
+                            </ul>
+                        ) : (
+                            <div></div>
+                        )}
+                    </div>
                 </div>
             ) : (
                 <div className="navLinks">
