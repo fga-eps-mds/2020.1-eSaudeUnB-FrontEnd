@@ -42,13 +42,14 @@ export default function PsychologistList(props) {
     return (
         <div className="psychologistListContainer">
             <NavBar className="navBar" actualUser={actualUser} />
-            <SearchBar
-                className="searchBar"
-                value={search}
-                onChange={setSearch}
-                icon={MagnifyingGlass}
-            />
             <div className="content">
+                <SearchBar
+                    placeholder="Pesquisar"
+                    className="searchBar"
+                    value={search}
+                    onChange={setSearch}
+                    icon={MagnifyingGlass}
+                />
                 <div className="psy">
                     {!search
                         ? psychologist.map((psy) => (

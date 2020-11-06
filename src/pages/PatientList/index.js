@@ -30,13 +30,14 @@ export default function PatientList(props) {
                 bond="Psychologist"
                 actualUser={props.location.state.data}
             />
-            <SearchBar
-                className="searchBar"
-                value={search}
-                onChange={setSearch}
-                icon={MagnifyingGlass}
-            />
             <div className="content">
+                <SearchBar
+                    placeholder="Pesquisar"
+                    className="searchBar"
+                    value={search}
+                    onChange={setSearch}
+                    icon={MagnifyingGlass}
+                />
                 <div className="patients">
                     {patients.length === 0 ? (
                         <div className="patientTab noPatients">
