@@ -9,26 +9,17 @@ import '../assets/styles/NavBar.css';
 
 export default function NavBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
-<<<<<<< HEAD
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
-=======
     const [dropDown, setDropDown] = useState(false);
 
->>>>>>> fix: navBar design
     useEffect(() => {
         (async function renderImage() {
             try {
                 if (bond === 'Psychologist') {
-<<<<<<< HEAD
                     const response = await api.get(`/psychologist/${user}`, {
                         headers: { authorization: accessToken },
                     });
-=======
-                    const response = await api.get(
-                        `/psychologist/${actualUser.email}`,
-                    );
->>>>>>> fix: navBar design
 
                     setUserImage(
                         atob(
@@ -125,10 +116,30 @@ export default function NavBar({ actualUser, bond }) {
                         {dropDown ? (
                             <ul className="dropdown-items">
                                 <li>
-                                    <a href="">Perfil</a>
+                                    <Link
+                                        className="a"
+                                        to={{
+                                            pathname: '/psychologist/profile',
+                                            state: {
+                                                data: actualUser,
+                                            },
+                                        }}
+                                    >
+                                        Perfil
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="">Sair</a>
+                                    <Link
+                                        className="a"
+                                        to={{
+                                            pathname: '/',
+                                            state: {
+                                                data: actualUser,
+                                            },
+                                        }}
+                                    >
+                                        Sair
+                                    </Link>
                                 </li>
                             </ul>
                         ) : (
@@ -201,10 +212,30 @@ export default function NavBar({ actualUser, bond }) {
                         {dropDown ? (
                             <ul className="dropdown-items">
                                 <li>
-                                    <a href="">Perfil</a>
+                                    <Link
+                                        className="a"
+                                        to={{
+                                            pathname: '/profile',
+                                            state: {
+                                                data: actualUser,
+                                            },
+                                        }}
+                                    >
+                                        Perfil
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="">Sair</a>
+                                    <Link
+                                        className="a"
+                                        to={{
+                                            pathname: '/',
+                                            state: {
+                                                data: actualUser,
+                                            },
+                                        }}
+                                    >
+                                        Sair
+                                    </Link>
                                 </li>
                             </ul>
                         ) : (

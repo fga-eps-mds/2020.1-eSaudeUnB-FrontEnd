@@ -204,7 +204,7 @@ export default function UserProfile(props) {
     }
 
     return (
-        <>
+        <div>
             <NavBar actualUser={props.location.state.data} />
 
             <div onLoad={renderPage} className="userProfileContainer">
@@ -429,7 +429,7 @@ export default function UserProfile(props) {
                     </form>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 UserProfile.propTypes = {

@@ -92,8 +92,12 @@
     color: #eee;
 }
 
-.navBarComponent .navLinks .dropdown li a {
-    margin: 10px 15px;
+.navBarComponent .navLinks .dropdown li .a {
+    min-width: 150px;
+    height: 100%;
+    margin-top: 10px;
+    margin-left: -10px;
     text-decoration: none;
     color: #0459ae;
+    padding: 10px 95px 10px 17px;
 }
