@@ -33,8 +33,9 @@
 }
 
 .navBarComponent .navLinks .userIcon {
-    height: 100%;
+    height: 46px;
     width: 46px;
+    border-radius: 50%;
 }
 
 .navBarComponent .navLinks .arrow {
