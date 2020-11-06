@@ -26,7 +26,8 @@
     margin-right: 215px;
 }
 .userProfileContainer .formColumn {
-    height: 700px;
+    margin-top: 80px;
+    height: 650px;
     background-color: #eee;
     border-radius: 15px;
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
@@ -62,11 +63,7 @@
     font-size: 15px;
     line-height: 27px;
 }
-.userProfileContainer .form .selects {
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-}
+
 .userProfileContainer .form select {
     width: 140px;
     height: 41px;
@@ -103,6 +100,10 @@
     line-height: 36px;
 }
 
+.userProfileContainer .formColumn .buttons .button-salvar:hover {
+    background: #0a84e3;
+}
+
 .userProfileContainer .alert {
     position: fixed;
     transform: translateX(-50%);
@@ -114,7 +115,7 @@
     display: flex;
     justify-content: flex-end;
     width: 92%;
-    margin-top: 20px;
+    margin-top: -5px;
 }
 
 .userProfileContainer .form .alertContent {
