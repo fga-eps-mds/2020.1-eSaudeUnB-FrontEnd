@@ -11,9 +11,13 @@ export default function UserMain(props) {
     const [userSelected, setUserSelected] = useState({});
     const [show, setShow] = useState(false);
     const [selectedValue, setSelectedValue] = useState();
+    const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
-        api.get('/psychologists').then((response) => {
+        api.get('/psychologists', {
+            headers: { authorization: accessToken },
+        }).then((response) => {
             setPsychologists(response.data);
         });
     }, []);
@@ -22,18 +26,20 @@ export default function UserMain(props) {
         if (weekDay === date.getDay()) {
             return true;
         }
-        
+
         return false;
     }
 
-    async function saveAppointment(event){
+    async function saveAppointment(event) {
         event.preventDefault();
-        const response = await api.get(`/user/${localStorage.getItem('user')}`);
+        const response = await api.get(`/user/${localStorage.getItem('user')}`, {
+            headers: { authorization: accessToken },
+        });
         const userPatient = response.data;
 
         userSelected.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
-                if(appointment._id === selectedValue){
+                if (appointment._id === selectedValue) {
                     appointment.scheduled = true;
                     appointment.user = userPatient._id;
                     appointment.name = `${userPatient.name} ${userPatient.lastName}`;
@@ -43,36 +49,40 @@ export default function UserMain(props) {
                         psychologistName: `${userSelected.name} ${userSelected.lastName}`,
                         weekDay: workDay.weekDay,
                         time: appointment.time,
-                        duration: workDay.duration
+                        duration: workDay.duration,
                     });
                 }
             });
         });
 
-        const {email, weekDay} = userSelected;
-        const {appointments} = userPatient;
+        const { email, weekDay } = userSelected;
+        const { appointments } = userPatient;
 
-        await api.put(`/calendary/update`,
-        {
-            email,
-            weekDay,
+        await api.put('/calendary/update',
+            {
+                email,
+                weekDay,
+            }, {
+            headers: { authorization: accessToken },
         });
 
-        await api.put(`/user/schedule/${userPatient.email}`, { appointments });
+        await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
+            headers: { authorization: accessToken },
+        });
 
-       window.location.reload();
+        window.location.reload();
     }
 
     return (
         <div className="usercalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Patient" actualUser={user} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
                         <Calendar
                             onChange={(currentDate) => {
                                 setDate(currentDate);
-                                setUserSelected("");
+                                setUserSelected('');
                             }}
                             value={date}
                             next2Label={null}
@@ -89,9 +99,9 @@ export default function UserMain(props) {
                                     className="schedule-box"
                                 >
                                     {psychologist.weekDay.map((workDay, index) => (
-                                        dateCheck(workDay.weekDay) ?
-                                            <div className="testecalendar" key={index}>
-                                                
+                                        dateCheck(workDay.weekDay)
+                                            ? <div className="testecalendar" key={index}>
+
                                                 <div className="psy-card"
                                                     // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
@@ -111,8 +121,8 @@ export default function UserMain(props) {
                     </div>
 
                 </div>
-                {userSelected.weekDay !== undefined ?
-                    <div className="dropDown-calendar">
+                {userSelected.weekDay !== undefined
+                    ? <div className="dropDown-calendar">
                         <div className="column1">
                             <h3>{userSelected.name} {userSelected.lastName}</h3>
                             <h3>{userSelected.biography}</h3>
@@ -123,31 +133,30 @@ export default function UserMain(props) {
                                 <div className="hours-disponibility">
                                     {userSelected.weekDay !== undefined
                                         ? userSelected.weekDay.map((workDay) => (
-                                            dateCheck(workDay.weekDay) ?
-                                            workDay.appointment.map((appointment) => (
-                                                appointment.scheduled === false ? (
-                                                    <label >
-                                                        <input type="radio" name="hour" key={appointment._id}  value={appointment._id}
-                                                         onChange={() => setSelectedValue(appointment._id)}/>
-                                                        {appointment.time}
-                                                    </label>
-                                                )
-                                                    :
-                                                    ""
-                                            ))
-                                        : <div></div>))
+                                            dateCheck(workDay.weekDay)
+                                                ? workDay.appointment.map((appointment) => (
+                                                    appointment.scheduled === false ? (
+                                                        <label >
+                                                            <input type="radio" name="hour" key={appointment._id} value={appointment._id}
+                                                                onChange={() => setSelectedValue(appointment._id)} />
+                                                            {appointment.time}
+                                                        </label>
+                                                    )
+                                                        : ''
+                                                ))
+                                                : <div></div>))
                                         : <div></div>
                                     }
                                 </div>
                                 <div className="schedule-buttons">
                                     <button type="submit">Agendar</button>
-                                    <button className="cancelSchedule" onClick={() => setUserSelected("")}>Cancelar</button>
+                                    <button className="cancelSchedule" onClick={() => setUserSelected('')}>Cancelar</button>
                                 </div>
                             </form>
                         </div>
-                    </div> :
-                    show ?
-                        <div className="noHours">
+                    </div>
+                    : show
+                        ? <div className="noHours">
                             <h3>
                                 Desculpe, não temos horários disponíveis em {date.getDate()}/{date.getMonth() + 1}
                             </h3>

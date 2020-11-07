@@ -66,6 +66,8 @@ export default function UserProfile(props) {
             event.preventDefault();
 
             const response = await api.put(`/user/${props.location.state.data.email}`, {
+                headers: { authorization: accessToken },
+            }, {
                 name,
                 lastName,
                 email,
