@@ -9,7 +9,6 @@ import './styles.css';
 
 export default function PsychologistSchedule(props) {
     const [scheduleItems, setScheduleItems] = useState([]);
-
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
@@ -29,7 +28,10 @@ export default function PsychologistSchedule(props) {
     }, []);
 
     const weekDays = [
-        { value: 0, label: 'Domingo' },
+        {
+            value: 0,
+            label: 'Domingo',
+        },
         {
             value: 1,
             label: 'Segunda-feira',
@@ -50,7 +52,10 @@ export default function PsychologistSchedule(props) {
             value: 5,
             label: 'Sexta-feira',
         },
-        { value: 6, label: 'Sábado' },
+        {
+            value: 6,
+            label: 'Sábado',
+        },
     ];
 
     function setScheduleItemsValue(position, field, value) {
@@ -65,6 +70,34 @@ export default function PsychologistSchedule(props) {
         );
 
         setScheduleItems(updatedScheduleItems);
+    }
+    function appointmentHours(start, end, duration) {
+        let actualHour = parseInt(start.substring(0, 2));
+        let actualMinutes = parseInt(start.substring(3, 5));
+        duration = parseInt(duration);
+        let hour = {};
+        const hours = [{}];
+        hours[0] = {
+            time: `${start}`,
+            scheduled: false,
+        };
+
+        do {
+            if (actualMinutes + duration >= 60) {
+                actualHour += 1;
+                actualMinutes = 60 - (actualMinutes + duration);
+            } else {
+                actualMinutes += duration;
+            }
+            hour = {
+                time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`}`,
+                scheduled: false,
+            };
+            if (hour.time !== end) {
+                hours.push(hour);
+            }
+        } while (hour.time !== end);
+        return hours;
     }
 
     function handleId() {
@@ -97,7 +130,8 @@ export default function PsychologistSchedule(props) {
         setScheduleItems(temp);
     }
 
-    function verifyCalendarData() {
+    async function verifyCalendarData() {
+        let minutes;
         for (let i = 0; i < scheduleItems.length; i += 1) {
             if (scheduleItems[i].from > scheduleItems[i].to) {
                 setShow(true);
@@ -122,6 +156,34 @@ export default function PsychologistSchedule(props) {
                 }, 3500);
                 return false;
             }
+
+            if (scheduleItems[i].duration <= 0) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    'A duração da consulta deve ser maior que 0 minutos',
+                );
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return false;
+            }
+            // function to be edited earlier
+            minutes = await calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+
+            if (minutes > 0) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText(
+                    `Voce possui ${minutes} minutos que não se encaixarão em atendimentos`,
+                );
+                setInterval(() => {
+                    setShow(false);
+                }, 3500);
+                return false;
+            }
+            const value = appointmentHours(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            setScheduleItemsValue(i, 'appointment', value);
         }
         return true;
     }
@@ -147,6 +209,19 @@ export default function PsychologistSchedule(props) {
         }
     }
 
+    async function calculateAttendance(start, end, duration) {
+        start = parseInt(start.substring(0, 2)) * 60 + parseInt(start.substring(3, 5));
+        end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
+        duration = parseInt(duration);
+
+        const number = (end - start);
+        let minutesRemaining = 0;
+        if (number % duration !== 0) {
+            minutesRemaining = number % duration;
+        }
+        return minutesRemaining;
+    }
+
     return (
         <div className="psychologistSchedule">
             <NavBar
@@ -165,9 +240,9 @@ export default function PsychologistSchedule(props) {
                 <form className="form">
                     <div className="formContent">
                         <legend className="legend">
-Cadastrar horários disponíveis
+                            Cadastrar horários disponíveis
                             <button type="button" onClick={addNewScheduleItem}>
-+ Novo Horário
+                                + Novo Horário
                             </button>
                         </legend>
 
@@ -232,12 +307,29 @@ Cadastrar horários disponíveis
                                             }
                                         />
                                     </div>
+
+                                    <div className="input-box">
+                                        <label>Duração da consulta (minutos)</label>
+                                        <input
+                                            name="duration"
+                                            label="duration"
+                                            type="number"
+                                            min="0"
+                                            value={scheduleItem.duration}
+                                            onChange={(e) => setScheduleItemsValue(
+                                                index,
+                                                'duration',
+                                                e.target.value,
+                                            )
+                                            }
+                                        />
+                                    </div>
                                     <button
                                         type="button"
                                         onClick={() => removeScheduleItem(index)
                                         }
                                     >
-Remover
+                                        Remover
                                     </button>
                                 </div>
                             ))}
@@ -253,10 +345,10 @@ Remover
                                     },
                                 }}
                             >
-Configurações avançadas
+                                Configurações avançadas
                             </Link>
                             <button type="button" onClick={() => putCalendar()}>
-Salvar cadastro
+                                Salvar cadastro
                             </button>
                         </footer>
                     </div>

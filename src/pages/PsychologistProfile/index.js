@@ -3,10 +3,11 @@ import { useHistory, Link } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import userIcon from '../../assets/images/userIcon.svg';
-
 import Input from '../../components/Input';
 import NavBar from '../../components/NavBar';
+import userIcon from '../../assets/images/userIcon.svg';
+import { convertBase64, uploadImage } from '../../components/UserImage';
+import figureCaption from '../../assets/images/figureCaption.png';
 
 import api from '../../services/api';
 import './styles.css';
@@ -20,6 +21,8 @@ export default function PsychologistProfile(props) {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [biography, setBiography] = useState('');
+    const [currentImage, setCurrentImage] = useState('');
+    const [userImage, setUserImage] = useState('');
 
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -67,6 +70,7 @@ export default function PsychologistProfile(props) {
                 gender,
                 bond,
                 biography,
+                userImage: currentImage,
             },
             { headers: { authorization: accessToken } });
 
@@ -154,6 +158,9 @@ export default function PsychologistProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setBiography(response.data.biography);
+                if (response.data.userImage) {
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                }
             }
         } catch (err) {
             if (err.response.status === 401) {
@@ -167,29 +174,66 @@ export default function PsychologistProfile(props) {
             setShow(true);
             setVariant('danger');
             setAlertText('Erro ao carregar dados.');
-            setInterval(() => {
-                setShow(false);
-            }, 2000);
         }
+        setInterval(() => {
+            setShow(false);
+        }, 2000);
     }
 
     return (
         <>
-            <NavBar bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar
+                actualUser={props.location.state.data}
+                bond="Psychologist"
+            />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (
-                    <Alert className="alert" variant={variant}>{alertText}</Alert>
+                    <Alert className="alert" variant={variant}>
+                        {alertText}
+                    </Alert>
                 ) : (
                     <div></div>
                 )}
                 <div className="content">
                     <div className="firstColumn">
-                        <div className="profile">
-                            <img className="userIcon" src={userIcon} alt="icone de usuario" />
-                        </div>
-                        <form className="form" onSubmit={updateInfos}>
-                            <div className="formColumn">
+
+                        <form className="formColumn" onSubmit={updateInfos}>
+                            <div className="form">
                                 <div>
+                                    <div className="personal-image">
+                                        <label className="label">
+                                            {
+                                                <input
+                                                    id="image"
+                                                    type="file"
+                                                    onChange={async (e) => {
+                                                        uploadImage(e);
+                                                        const image = await convertBase64(
+                                                            e.target.files[0],
+                                                        );
+                                                        setCurrentImage(image);
+                                                    }}
+                                                />
+                                            }
+                                            <figure className="personal-figure">
+                                                <img
+                                                    src={
+                                                        currentImage
+                                                        || userImage
+                                                        || userIcon
+                                                    }
+                                                    className="personal-avatar"
+                                                    alt="avatar"
+                                                />
+                                                <figcaption className="personal-figcaption">
+                                                    <img
+                                                        src={figureCaption}
+                                                        alt="figureCaption"
+                                                    />
+                                                </figcaption>
+                                            </figure>
+                                        </label>
+                                    </div>
                                     <Input
                                         placeholder="Nome"
                                         value={name}
@@ -197,7 +241,10 @@ export default function PsychologistProfile(props) {
                                     />
                                     {alertContentName ? (
                                         <div className="alertContent">
-                                            <p>Nome precisa possuir mais de 2 letras.</p>
+                                            <p>
+                                                Nome precisa possuir mais de 2
+                                                letras.
+                                            </p>
                                         </div>
                                     ) : (
                                         <div className="alertContent">
@@ -212,7 +259,10 @@ export default function PsychologistProfile(props) {
                                     />
                                     {alertContentEmail ? (
                                         <div className="alertContent">
-                                            <p>E-mail não foi preenchido corretamente.</p>
+                                            <p>
+                                                E-mail não foi preenchido
+                                                corretamente.
+                                            </p>
                                         </div>
                                     ) : (
                                         <div className="alertContent">
@@ -221,13 +271,44 @@ export default function PsychologistProfile(props) {
                                     )}
 
                                     <div className="selects">
-
-                                        <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
-                                            <option value="" disabled>Gênero</option>
-                                            <option value="F" >Feminino</option>
+                                        <select
+                                            name="gender"
+                                            value={gender}
+                                            onChange={(e) => setGender(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Gênero
+                                            </option>
+                                            <option value="F">Feminino</option>
                                             <option value="M">Masculino</option>
-                                            <option value="I">Não Identificar</option>
+                                            <option value="I">
+                                                Não Identificar
+                                            </option>
                                         </select>
+
+                                        <select
+                                            name="bond"
+                                            value={bond}
+                                            onChange={(e) => setBond(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Vínculo
+                                            </option>
+                                            <option value="graduando">
+                                                Graduando
+                                            </option>
+                                            <option value="posGraduando">
+                                                Pós-Graduando
+                                            </option>
+                                            <option value="professor">
+                                                Professor
+                                            </option>
+                                        </select>
+
+                                    </div>
+                                    <div className="selects">
                                         {alertContentGender ? (
                                             <div className="alertContent">
                                                 <p>Selecione um gênero.</p>
@@ -237,13 +318,7 @@ export default function PsychologistProfile(props) {
                                                 <p></p>
                                             </div>
                                         )}
-
-                                        <select name="bond" value={bond} onChange={(e) => setBond(e.target.value)}>
-                                            <option value="" disabled>Vínculo</option>
-                                            <option value="graduando">Graduando</option>
-                                            <option value="posGraduando">Pós-Graduando</option>
-                                            <option value="professor">Professor</option>
-                                        </select>
+                                        <div className="space"></div>
                                         {alertContentBond ? (
                                             <div className="alertContent">
                                                 <p>Selecione um vínculo.</p>
@@ -253,8 +328,8 @@ export default function PsychologistProfile(props) {
                                                 <p></p>
                                             </div>
                                         )}
-
                                     </div>
+
                                 </div>
 
                                 <div>
@@ -266,7 +341,8 @@ export default function PsychologistProfile(props) {
                                     {alertContentLastName ? (
                                         <div className="alertContent">
                                             <p>
-                                                Sobrenome precisa possuir mais de 2 letras.
+                                                Sobrenome precisa possuir mais
+                                                de 2 letras.
                                             </p>
                                         </div>
                                     ) : (
@@ -282,9 +358,7 @@ export default function PsychologistProfile(props) {
                                     />
                                     {alertContentSpecialization ? (
                                         <div className="alertContent">
-                                            <p>
-                                                Informe a Especialização.
-                                            </p>
+                                            <p>Informe a Especialização.</p>
                                         </div>
                                     ) : (
                                         <div className="alertContent">
@@ -306,7 +380,6 @@ export default function PsychologistProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
-
                                 </div>
                             </div>
                             <textarea
@@ -317,7 +390,10 @@ export default function PsychologistProfile(props) {
                             />
                             {alertContentBiography ? (
                                 <div className="alertContent">
-                                    <p>A biografia deve conter no máximo 300 caracteres.</p>
+                                    <p>
+                                        A biografia deve conter no máximo 300
+                                        caracteres.
+                                    </p>
                                 </div>
                             ) : (
                                 <div className="alertContent">
@@ -326,13 +402,23 @@ export default function PsychologistProfile(props) {
                             )}
 
                             <div className="buttons">
-                                <button className="button-salvar" type="submit">Salvar</button>
-                                <button className="button-sair" onClick={getOut}>Sair</button>
+                                <button
+                                    className="button-salvar"
+                                    type="submit"
+                                >
+                                    Salvar
+                                </button>
+                                <button
+                                    className="button-sair"
+                                    onClick={getOut}
+                                >
+                                    Sair
+                                </button>
                             </div>
                         </form>
                     </div>
 
-                    <div className="secondColumn" >
+                    <div className="secondColumn">
                         <Link
                             className="link"
                             to={{

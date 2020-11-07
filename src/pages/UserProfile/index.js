@@ -8,6 +8,8 @@ import './styles.css';
 
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
+import { convertBase64, uploadImage } from '../../components/UserImage';
+import figureCaption from '../../assets/images/figureCaption.png';
 
 import Input from '../../components/Input';
 
@@ -21,7 +23,8 @@ export default function UserProfile(props) {
     const [bond, setBond] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
-
+    const [userImage, setUserImage] = useState('');
+    const [currentImage, setCurrentImage] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
@@ -63,9 +66,18 @@ export default function UserProfile(props) {
             event.preventDefault();
 
             const response = await api.put(`/user/${props.location.state.data.email}`, {
-                name, lastName, email, phone, unbRegistration, gender, bond, civilStatus, religion,
-            }, {
                 headers: { authorization: accessToken },
+            }, {
+                name,
+                lastName,
+                email,
+                phone,
+                unbRegistration,
+                gender,
+                bond,
+                civilStatus,
+                religion,
+                userImage: currentImage,
             });
 
             if (response.status === 203) {
@@ -137,7 +149,6 @@ export default function UserProfile(props) {
 
         return 0;
     }
-
     async function renderPage(event) {
         try {
             event.preventDefault();
@@ -154,6 +165,9 @@ export default function UserProfile(props) {
                 setGender(response.data.gender);
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
+                if (response.data.userImage) {
+                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                }
             }
         } catch (err) {
             if (err.response.status === 401) {
@@ -176,23 +190,44 @@ export default function UserProfile(props) {
     return (
         <>
             <NavBar actualUser={props.location.state.data} />
+
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
                     <Alert className="alert" variant={variant}>{alertText}</Alert>
                 ) : (
                     <div></div>
                 )}
+
                 <div className="content">
-                    <div className="profile">
-                        <img className="userIcon" src={userIcon} alt="icone de usuario" />
-                    </div>
+
                     <form className="formColumn" onSubmit={updateInfos}>
+
                         <div className="form">
+                            <div className="personal-image">
+                                <label className="label">
+                                    <input
+                                        id="image"
+                                        type="file"
+                                        onChange={async (e) => {
+                                            uploadImage(e);
+                                            const image = await convertBase64(e.target.files[0]);
+                                            setCurrentImage(image);
+                                        }}
+                                    />
+                                    <figure className="personal-figure">
+                                        <img src={currentImage || userImage || userIcon} className="personal-avatar" alt="avatar" />
+                                        <figcaption className="personal-figcaption">
+                                            <img src={figureCaption} alt="figureCaption" />
+                                        </figcaption>
+                                    </figure>
+                                </label>
+                            </div>
                             <Input
                                 placeholder="Nome"
                                 value={name}
                                 onChange={setName}
                             />
+
                             {alertContentName ? (
                                 <div className="alertContent">
                                     <p>Nome precisa possuir mais de 2 letras.</p>
@@ -225,6 +260,16 @@ export default function UserProfile(props) {
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
+
+                                <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
+                                    <option value="" disabled>Vínculo</option>
+                                    <option value="graduando">Graduando</option>
+                                    <option value="posGraduando">Pós-Graduando</option>
+                                    <option value="professor">Professor</option>
+                                </select>
+
+                            </div>
+                            <div className="selects">
                                 {alertContentGender ? (
                                     <div className="alertContent">
                                         <p>Selecione um gênero.</p>
@@ -234,13 +279,7 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-
-                                <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
-                                    <option value="" disabled>Vínculo</option>
-                                    <option value="graduando">Graduando</option>
-                                    <option value="posGraduando">Pós-Graduando</option>
-                                    <option value="professor">Professor</option>
-                                </select>
+                                <div className="space"></div>
                                 {alertContentBond ? (
                                     <div className="alertContent">
                                         <p>Selecione um vínculo.</p>
@@ -250,7 +289,6 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-
                             </div>
 
                             <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
@@ -290,7 +328,7 @@ export default function UserProfile(props) {
                             )}
                             <Input
                                 placeholder="Matrícula UnB"
-                                value={unbRegistration}
+                                value={unbRegistration || ''}
                                 onChange={setUnbRegistration}
                             />
                             {alertContentUnbRegistration ? (
@@ -304,7 +342,7 @@ export default function UserProfile(props) {
                             )}
                             <Input
                                 placeholder="DDD + Telefone"
-                                value={phone}
+                                value={phone || ''}
                                 onChange={setPhone}
                             />
                             {alertContentPhone ? (
@@ -332,6 +370,7 @@ export default function UserProfile(props) {
                                     <p></p>
                                 </div>
                             )}
+
                         </div>
                         <div className="buttons">
                             <button className="button-salvar" type="submit">Salvar</button>

@@ -43,13 +43,16 @@
 .psyProfileContainer .content .profile img {
     width: 130px;
     height: 130px;
+    margin-bottom: 10px;
+    border-radius: 50%;
 }
 
-.psyProfileContainer .form {
+.psyProfileContainer .formColumn {
     width: 900px;
     height: 500px;
 
     margin-left: 100px;
+    margin-top: 230px;
 
     display: flex;
     justify-content: space-between;
@@ -58,38 +61,38 @@
     flex-direction: column;
 }
 
-.psyProfileContainer .form .input {
+.psyProfileContainer .formColumn .input {
     display: flex;
     border-bottom: 3px solid #0459ae;
 
     margin-bottom: 30px;
 }
 
-.psyProfileContainer .form input {
+.psyProfileContainer .formColumn input {
     width: 400px;
     height: 41px;
 
     background-color: transparent;
     color: #fff;
     border: 0;
-
+    padding-top: 20px;
     font-size: 18px;
     line-height: 27px;
 }
 
-.psyProfileContainer .form input::placeholder {
+.psyProfileContainer .formColumn input::placeholder {
     color: #fff;
 }
 
-.psyProfileContainer .form .selects {
+.psyProfileContainer .formColumn .selects {
     display: flex;
     justify-content: space-between;
 
     width: 400px;
 }
 
-.psyProfileContainer .form .selects select {
-    width: 150px;
+.psyProfileContainer .formColumn .selects select {
+    width: 170px;
     height: 41px;
 
     color: #fff;
@@ -102,8 +105,11 @@
     font-size: 18px;
     line-height: 27px;
 }
+.psyProfileContainer .formColumn .space {
+    width: 144px;
+}
 
-.psyProfileContainer .form .selects select option {
+.psyProfileContainer .formColumn .selects select option {
     background-color: #0459ae;
 }
 
@@ -116,7 +122,7 @@
     padding: 8px;
 }
 
-.psyProfileContainer .content .formColumn {
+.psyProfileContainer .content .form {
     width: 100%;
 
     display: flex;
@@ -125,14 +131,14 @@
     align-content: space-between;
 }
 
-.psyProfileContainer .content .form .buttons {
+.psyProfileContainer .content .formColumn .buttons {
     display: flex;
     width: 339px;
     margin-top: 25px;
     align-self: flex-start;
     justify-content: space-between;
 }
-.psyProfileContainer .content .form .buttons .button-salvar {
+.psyProfileContainer .content .formColumn .buttons .button-salvar {
     width: 150px;
     height: 50px;
 
@@ -146,7 +152,7 @@
     font-size: 24px;
     line-height: 36px;
 }
-.psyProfileContainer .content .form .buttons .button-sair {
+.psyProfileContainer .content .formColumn .buttons .button-sair {
     width: 150px;
     height: 50px;
 
@@ -168,11 +174,58 @@
     left: 50%;
 }
 
-.psyProfileContainer .form .alertContent {
+.psyProfileContainer .formColumn .alertContent {
     margin: 0px;
     color: black;
     text-align: left;
     width: 400px;
     height: 20px;
     font-size: 14px;
+}
+.psyProfileContainer .form .personal-image {
+    text-align: center;
+    position: absolute;
+    top: 130px;
+    left: 90px;
+}
+.psyProfileContainer .form .personal-image input[type='file'] {
+    display: none;
+}
+.psyProfileContainer .form .personal-figure {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+.psyProfileContainer .form .personal-avatar {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out 0.3s;
+}
+.psyProfileContainer .form .personal-avatar:hover {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+.psyProfileContainer .form .personal-figcaption {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    width: inherit;
+    height: inherit;
+    border-radius: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all ease-in-out 0.3s;
+}
+.psyProfileContainer .form .personal-figcaption:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.psyProfileContainer .form .personal-figcaption > img {
+    margin-top: 32.5px;
+    width: 50px;
+    height: 50px;
 }

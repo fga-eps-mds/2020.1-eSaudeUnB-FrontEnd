@@ -38,6 +38,7 @@ export default function LandingLogin() {
                         data: responseUser.data.user,
                     },
                 });
+                localStorage.setItem('user', responseUser.data.email);
                 return;
             }
         } catch (err) {

@@ -42,6 +42,7 @@ export default function PatientList(props) {
                             <RealizeSearch
                                 patients={patients}
                                 location={props.location}
+                                src={MagnifyingGlass}
                                 search={search}
                             />
                         )
