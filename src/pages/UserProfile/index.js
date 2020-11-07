@@ -79,7 +79,7 @@ export default function UserProfile(props) {
                 religion,
                 userImage: currentImage,
             },
-            {headers: { authorization: accessToken },});
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;

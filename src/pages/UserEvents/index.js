@@ -56,7 +56,9 @@ export default function UserEvents() {
 
                                             >
                                                 <h3>{`- ${appointment.time}`}</h3>
-                                                <h3>Atendimento com {appointment.psychologistName}</h3>
+                                                <h3>
+                                                Atendimento com {appointment.psychologistName}
+                                                </h3>
                                             </div>
                                             : <div></div>
                                     ))

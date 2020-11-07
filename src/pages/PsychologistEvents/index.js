@@ -64,7 +64,9 @@ export default function PsychologistEvents() {
                                                     appointment.scheduled
                                                         ? <div className="testeTotal">
                                                             <h3>{`- ${appointment.time}`}</h3>
-                                                            <h3>Atendimento com {appointment.name}</h3>
+                                                            <h3>
+                                                            Atendimento com {appointment.name}
+                                                            </h3>
                                                         </div>
                                                         : <div></div>
                                                 ))}

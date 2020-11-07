@@ -41,7 +41,6 @@ export default function UserSchedule(props) {
 
     useEffect(() => {
         async function getData() {
-            const accessToken = localStorage.getItem('accessToken');
             const response = await api.get(`/psychologist/${email}`, {
                 headers: { authorization: accessToken },
             });

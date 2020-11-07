@@ -5,7 +5,7 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function UserMain(props) {
+export default function UserMain() {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
     const [userSelected, setUserSelected] = useState({});
@@ -63,8 +63,8 @@ export default function UserMain(props) {
                 email,
                 weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
