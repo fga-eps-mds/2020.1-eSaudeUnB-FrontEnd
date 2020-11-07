@@ -1,0 +1,78 @@
+.waiting-list-container {
+    width: 100%;
+    height: 100vh;
+    color: #eee;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+}
+
+.waiting-list-container .content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.waiting-list-container .list {
+    width: 1400px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    height: 690px;
+}
+
+.waiting-list-container .list .list-title{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    color: #000;
+}
+.waiting-list-container .list .list-content {
+    color: #000;
+    height: 640px;
+    width: 100%;
+}
+
+.waiting-list-container .list .wl-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.waiting-list-container .list .wl-buttons button {
+    width: 350px;
+    height: 60px;
+    margin: 0 15px 10px 0;
+
+    border-radius: 40px;
+    font: 500 20px Poppins;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    border: none;
+
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
+    background: #0459ae;
+    color: #fff;
+
+    transition: all 0.3s;
+}
+
+.waiting-list-container .list .goBackButton:hover {
+    background: red;
+    color: #000;
+}
+
+.waiting-list-container .list .waitingListButton:hover{
+    background: #00C048;
+    color: #000;
+}

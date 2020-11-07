@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
@@ -13,6 +14,8 @@ export default function UserMain() {
     const [selectedValue, setSelectedValue] = useState();
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
+
+    const history = useHistory();
 
     useEffect(() => {
         api.get('/psychologists', {
@@ -150,7 +153,17 @@ export default function UserMain() {
                                 </div>
                                 <div className="schedule-buttons">
                                     <button type="submit">Agendar</button>
-                                    <button className="cancelSchedule" onClick={() => setUserSelected('')}>Cancelar</button>
+                                    <button className="cancelSchedule" onClick={() => setUserSelected("")}>Cancelar</button>
+                                    <button
+                                        className="waiting-list"
+                                        onClick={() => history.push({
+                                            pathname: `/waiting-list`,
+                                            state: {
+                                                data: props.location.state.data,
+                                            },
+                                        })}>
+                                        Lista de espera
+                                    </button>
                                 </div>
                             </form>
                         </div>
