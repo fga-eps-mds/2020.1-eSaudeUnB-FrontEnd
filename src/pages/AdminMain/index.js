@@ -12,9 +12,27 @@ export default function AdminMain() {
 
     const history = useHistory();
 
+    function getOut() {
+        localStorage.removeItem('accessToken');
+
+        history.push('/admin');
+    }
+
     useEffect(() => {
-        api.get('/psychologists').then((response) => {
+        const accessToken = localStorage.getItem('accessToken');
+
+        api.get('/psychologists', {
+            headers: { authorization: accessToken },
+        }).then((response) => {
             setPsyArray(response.data);
+            return 204;
+        }).catch((err) => {
+            if (err.response.status === 401) {
+                return setTimeout(() => {
+                    getOut();
+                }, 2000);
+            }
+            return 401;
         });
     }, []);
 
@@ -24,8 +42,13 @@ export default function AdminMain() {
     };
 
     const deletePsychologist = async () => {
-        await api.delete(`/psychologist/${actualPsyEmail}`);
-        const response = await api.get('/psychologists');
+        const accessToken = localStorage.getItem('accessToken');
+
+        await api.delete(`/psychologist/${actualPsyEmail}`,
+            { headers: { authorization: accessToken } });
+        const response = await api.get('/psychologists', {
+            headers: { authorization: accessToken },
+        });
         setPsyArray(response.data);
         setShow(false);
     };
@@ -67,7 +90,7 @@ export default function AdminMain() {
                     <div className="count">
                         <p>Psicólogos cadastrados: {psyArray.length}</p>
                     </div>
-                    <button className="get-out" onClick={() => history.push('/admin')}>
+                    <button className="get-out" onClick={getOut}>
                         Sair
                     </button>
                 </div>

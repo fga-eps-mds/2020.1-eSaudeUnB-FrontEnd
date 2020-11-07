@@ -9,19 +9,20 @@ import NavBar from '../../components/NavBar';
 export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
     const [restricts, setRestricts] = useState([]);
+    const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
 
     async function putRestrict() {
         await api.put('/calendary/update/', {
+            header: localStorage.getItem('acessToken'),
             email: localStorage.getItem('user'),
             restrict: [...restricts],
-        });
+        }, []);
         window.location.reload();
     }
 
     function checkRepeat() {
-        // eslint-disable-next-line no-restricted-syntax
         for (const item of restricts) {
             if (
                 date.getDate() === item.day
@@ -50,6 +51,8 @@ export default function PsychologistCalendar(props) {
     async function handleRestrict() {
         const Restricts = await api.post('/calendary/restrict', {
             email: localStorage.getItem('user'),
+        }, {
+            headers: { authorization: accessToken },
         });
         setRestricts(Restricts.data);
     }
@@ -81,7 +84,6 @@ export default function PsychologistCalendar(props) {
                         <div className="schedules">
                             {restricts.map((restrict, index) => (
                                 <div
-                                    // eslint-disable-next-line no-underscore-dangle
                                     key={index}
                                     className="schedule-box"
                                 >

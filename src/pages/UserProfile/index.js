@@ -30,6 +30,7 @@ export default function UserProfile(props) {
     const [variant, setVariant] = useState('');
 
     const history = useHistory();
+    const accessToken = localStorage.getItem('accessToken');
 
     const [alertContentName, setAlertContentName] = useState(false);
     const [alertContentLastName, setAlertContentLastName] = useState(false);
@@ -55,6 +56,7 @@ export default function UserProfile(props) {
 
     function getOut(event) {
         event.preventDefault();
+        localStorage.removeItem('accessToken');
 
         history.push('/');
     }
@@ -74,7 +76,8 @@ export default function UserProfile(props) {
                 civilStatus,
                 religion,
                 userImage: currentImage,
-            });
+            },
+            {headers: { authorization: accessToken },});
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -110,7 +113,7 @@ export default function UserProfile(props) {
                     }
                 }
 
-                setInterval(() => {
+                setTimeout(() => {
                     setShow(false);
                 }, 3500);
                 return history.push({
@@ -130,7 +133,6 @@ export default function UserProfile(props) {
                 });
 
                 closeAlerts();
-
                 setShow(true);
                 setVariant('success');
                 setAlertText('Dados atualizados com sucesso.');
@@ -149,9 +151,9 @@ export default function UserProfile(props) {
     async function renderPage(event) {
         try {
             event.preventDefault();
-
-            const response = await api.get(`/user/${props.location.state.data.email}`);
-
+            const response = await api.get(`/user/${props.location.state.data.email}`, {
+                headers: { authorization: accessToken },
+            });
             if (response.status === 200) {
                 setEmail(response.data.email);
                 setName(response.data.name);
@@ -167,6 +169,14 @@ export default function UserProfile(props) {
                 }
             }
         } catch (err) {
+            if (err.response.status === 401) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Sessão expirada');
+                return setTimeout(() => {
+                    getOut(event);
+                }, 2000);
+            }
             setShow(true);
             setVariant('danger');
             setAlertText('Erro ao carregar dados');

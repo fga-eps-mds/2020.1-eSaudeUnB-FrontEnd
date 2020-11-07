@@ -13,12 +13,15 @@ import RealizeSearch from '../../components/RealizeSearch';
 export default function PatientList(props) {
     const [search, setSearch] = useState('');
     const [patients, setPatients] = useState([]);
+    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
-        api.get('/users').then((response) => {
+        api.get('/users', {
+            headers: { authorization: accessToken },
+        }).then((response) => {
             setPatients(response.data);
         });
-    }, []);
+    });
 
     return (
         <div className="patientListContainer">
