@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
@@ -12,6 +13,8 @@ export default function UserMain(props) {
     const [show, setShow] = useState(false);
     const [selectedValue, setSelectedValue] = useState();
 
+    const history = useHistory();
+
     useEffect(() => {
         api.get('/psychologists').then((response) => {
             setPsychologists(response.data);
@@ -22,18 +25,18 @@ export default function UserMain(props) {
         if (weekDay === date.getDay()) {
             return true;
         }
-        
+
         return false;
     }
 
-    async function saveAppointment(event){
+    async function saveAppointment(event) {
         event.preventDefault();
         const response = await api.get(`/user/${localStorage.getItem('user')}`);
         const userPatient = response.data;
 
         userSelected.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
-                if(appointment._id === selectedValue){
+                if (appointment._id === selectedValue) {
                     appointment.scheduled = true;
                     appointment.user = userPatient._id;
                     appointment.name = `${userPatient.name} ${userPatient.lastName}`;
@@ -49,18 +52,18 @@ export default function UserMain(props) {
             });
         });
 
-        const {email, weekDay} = userSelected;
-        const {appointments} = userPatient;
+        const { email, weekDay } = userSelected;
+        const { appointments } = userPatient;
 
         await api.put(`/calendary/update`,
-        {
-            email,
-            weekDay,
-        });
+            {
+                email,
+                weekDay,
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments });
 
-       window.location.reload();
+        window.location.reload();
     }
 
     return (
@@ -91,7 +94,7 @@ export default function UserMain(props) {
                                     {psychologist.weekDay.map((workDay, index) => (
                                         dateCheck(workDay.weekDay) ?
                                             <div className="testecalendar" key={index}>
-                                                
+
                                                 <div className="psy-card"
                                                     // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
@@ -124,24 +127,34 @@ export default function UserMain(props) {
                                     {userSelected.weekDay !== undefined
                                         ? userSelected.weekDay.map((workDay) => (
                                             dateCheck(workDay.weekDay) ?
-                                            workDay.appointment.map((appointment) => (
-                                                appointment.scheduled === false ? (
-                                                    <label >
-                                                        <input type="radio" name="hour" key={appointment._id}  value={appointment._id}
-                                                         onChange={() => setSelectedValue(appointment._id)}/>
-                                                        {appointment.time}
-                                                    </label>
-                                                )
-                                                    :
-                                                    ""
-                                            ))
-                                        : <div></div>))
+                                                workDay.appointment.map((appointment) => (
+                                                    appointment.scheduled === false ? (
+                                                        <label >
+                                                            <input type="radio" name="hour" key={appointment._id} value={appointment._id}
+                                                                onChange={() => setSelectedValue(appointment._id)} />
+                                                            {appointment.time}
+                                                        </label>
+                                                    )
+                                                        :
+                                                        ""
+                                                ))
+                                                : <div></div>))
                                         : <div></div>
                                     }
                                 </div>
                                 <div className="schedule-buttons">
                                     <button type="submit">Agendar</button>
                                     <button className="cancelSchedule" onClick={() => setUserSelected("")}>Cancelar</button>
+                                    <button
+                                        className="waiting-list"
+                                        onClick={() => history.push({
+                                            pathname: `/waiting-list`,
+                                            state: {
+                                                data: props.location.state.data,
+                                            },
+                                        })}>
+                                        Lista de espera
+                                    </button>
                                 </div>
                             </form>
                         </div>
