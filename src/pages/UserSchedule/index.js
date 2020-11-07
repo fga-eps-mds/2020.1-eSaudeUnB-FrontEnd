@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 import './styles.css';
@@ -11,8 +11,10 @@ export default function UserSchedule(props) {
     const [selectedValue, setSelectedValue] = useState();
 
     const weekDays = [
-        {   value: 0,
-            label: 'Domingo' },
+        {
+            value: 0,
+            label: 'Domingo'
+        },
         {
             value: 1,
             label: 'Segunda-feira',
@@ -44,14 +46,14 @@ export default function UserSchedule(props) {
         getData();
     }, [props]);
 
-    async function saveAppointment(event){
+    async function saveAppointment(event) {
         event.preventDefault();
         const response = await api.get(`/user/${localStorage.getItem('user')}`);
-        const {_id, name, lastName} = response.data;
+        const { _id, name, lastName } = response.data;
 
         psychologist.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
-                if(appointment._id === selectedValue){
+                if (appointment._id === selectedValue) {
                     appointment.scheduled = true;
                     appointment.user = _id;
                     appointment.name = `${name} ${lastName}`
@@ -60,15 +62,15 @@ export default function UserSchedule(props) {
         });
 
         await api.put(`/calendary/update`,
-        {
-            email: psychologist.email,
-            weekDay: psychologist.weekDay
-        });
+            {
+                email: psychologist.email,
+                weekDay: psychologist.weekDay
+            });
     }
 
     return (
         <div className="userScheduleContainer">
-            <NavBar actualUser={localStorage.getItem('user')} />
+            <NavBar actualUser={props.location.state.data} />
             <div className="content">
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
@@ -79,7 +81,7 @@ export default function UserSchedule(props) {
                                     <h1>{weekDays[workDay.weekDay].label}</h1>
                                     <h2>Duração da consulta: {workDay.duration} minutos</h2>
                                     <select value={selectedValue}
-                                            onChange={(e) => setSelectedValue(e.target.value)}>
+                                        onChange={(e) => setSelectedValue(e.target.value)}>
                                         {workDay.appointment.map((appointment) => (
                                             <option value={appointment._id}>
                                                 Horário de começo: {appointment.time}
@@ -94,7 +96,7 @@ export default function UserSchedule(props) {
                         }
                     </div>
                     <button type="submit">Salvar</button>
-                    
+
                 </form>
             </div>
         </div>

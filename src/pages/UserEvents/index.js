@@ -1,11 +1,11 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function UserEvents() {
+export default function UserEvents(props) {
     const [date, setDate] = useState(new Date());
     const [user, setUser] = useState({});
 
@@ -16,8 +16,8 @@ export default function UserEvents() {
 
     }, []);
 
-    function dateCheck(weekDay){
-        if(weekDay === date.getDay()){
+    function dateCheck(weekDay) {
+        if (weekDay === date.getDay()) {
             return true;
         }
         else return false;
@@ -25,7 +25,7 @@ export default function UserEvents() {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={'user'} />
+            <NavBar className="navBar" bond="Patient" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -40,31 +40,31 @@ export default function UserEvents() {
                     </div>
                     <div className="table-right">
                         <div className="calendar-title">
-                        <h1>{`Próximos Eventos`}</h1>
+                            <h1>{`Próximos Eventos`}</h1>
                         </div>
                         <div className="schedules">
-                                {
+                            {
                                 user.appointments &&
-                                user.appointments.length > 0 ?
-                                user.appointments.map((appointment, index) => (
-                                    dateCheck(appointment.weekDay) ?
-                                    <div
-                                        // eslint-disable-next-line no-underscore-dangle
-                                        key={index}
-                                       
-                                    >
-                                    <h3>{`- ${appointment.time}`}</h3>
-                                    <h3>Atendimento com {appointment.psychologistName}</h3>
-                                    </div>
-                                    :
-                                    <div></div>
+                                    user.appointments.length > 0 ?
+                                    user.appointments.map((appointment, index) => (
+                                        dateCheck(appointment.weekDay) ?
+                                            <div
+                                                // eslint-disable-next-line no-underscore-dangle
+                                                key={index}
+
+                                            >
+                                                <h3>{`- ${appointment.time}`}</h3>
+                                                <h3>Atendimento com {appointment.psychologistName}</h3>
+                                            </div>
+                                            :
+                                            <div></div>
                                     ))
-                                : <div></div>}
-                                    </div>                                
+                                    : <div></div>}
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     );
 }
 
