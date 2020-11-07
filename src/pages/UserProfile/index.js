@@ -43,7 +43,6 @@ export default function UserProfile(props) {
     ] = useState(false);
     const [alertContentGender, setAlertContentGender] = useState(false);
     const [alertContentBond, setAlertContentBond] = useState(false);
-    const [alertContentReligion, setAlertContentReligion] = useState(false);
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(
         false,
     );
@@ -56,7 +55,6 @@ export default function UserProfile(props) {
         setAlertContentUnbRegistration(false);
         setAlertContentGender(false);
         setAlertContentBond(false);
-        setAlertContentReligion(false);
         setAlertContentCivilStatus(false);
     }
 
@@ -114,9 +112,6 @@ export default function UserProfile(props) {
                     }
                     if (details[value].path[0] === 'bond') {
                         setAlertContentBond(true);
-                    }
-                    if (details[value].path[0] === 'religion') {
-                        setAlertContentReligion(true);
                     }
                     if (details[value].path[0] === 'civilStatus') {
                         setAlertContentCivilStatus(true);
@@ -234,9 +229,9 @@ export default function UserProfile(props) {
                                 <figure className="personal-figure">
                                     <img
                                         src={
-                                            currentImage ||
-                                            userImage ||
-                                            userIcon
+                                            currentImage
+                                            || userImage
+                                            || userIcon
                                         }
                                         className="personal-avatar"
                                         alt="avatar"
@@ -393,8 +388,7 @@ export default function UserProfile(props) {
                                     className="selectsLargest"
                                     value={civilStatus || 'naoInformado'}
                                     name="civilStatus"
-                                    onChange={(e) =>
-                                        setCivilStatus(e.target.value)
+                                    onChange={(e) => setCivilStatus(e.target.value)
                                     }
                                 >
                                     <option value="naoInformado" disabled>

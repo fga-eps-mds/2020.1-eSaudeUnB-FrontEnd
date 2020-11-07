@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import '../assets/styles/SearchBar.css';
 
-export default function SearchBar({ value, onChange, icon, placeholder }) {
+export default function SearchBar({
+    value, onChange, icon, placeholder,
+}) {
     return (
         <div className="searcBarComponent">
             <input
@@ -23,4 +25,5 @@ SearchBar.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     icon: PropTypes.any,
+    placeholder: PropTypes.string,
 };

@@ -6,7 +6,6 @@ import api from '../../services/api';
 
 import './styles.css';
 
-import userIcon from '../../assets/images/userIcon.svg';
 import Input from '../../components/Input';
 
 import Logo from '../../components/Logo';
@@ -24,7 +23,10 @@ export default function LandingSignUp() {
     const [alertContentLastName, setAlertContentLastName] = useState(false);
     const [alertContentEmail, setAlertContentEmail] = useState(false);
     const [alertContentPassword, setAlertContentPassword] = useState(false);
-    const [alertContentConfirmPassword, setAlertContentConfirmPassword] = useState(false);
+    const [
+        alertContentConfirmPassword,
+        setAlertContentConfirmPassword,
+    ] = useState(false);
 
     const history = useHistory();
 
@@ -61,7 +63,11 @@ export default function LandingSignUp() {
                 const { details } = response.data.error;
                 closeAlerts();
 
-                for (let value = 0; value < response.data.error.details.length; value += 1) {
+                for (
+                    let value = 0;
+                    value < response.data.error.details.length;
+                    value += 1
+                ) {
                     if (details[value].path[0] === 'name') {
                         setAlertContentName(true);
                     }

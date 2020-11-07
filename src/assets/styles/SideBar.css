@@ -1,0 +1,104 @@
+.sidebar {
+    border-top-right-radius: 150px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 80px;
+    background-color: #eee;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    box-shadow: 10px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar a {
+    padding: 8px 30px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0459ae;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #0459ae;
+    color: #eee;
+}
+
+.sidebar p {
+    margin: -45px 0px 50px 30px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #0459ae;
+    display: block;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 40vh;
+    right: 0;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidebar .openbtn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.sidebar .openbtn:hover {
+    opacity: 0.6;
+}
+
+.SideBar #main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+}
+.SideBar .userIcon {
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    border: 2px solid #0459ae;
+    margin-left: 30px;
+    margin-bottom: 60px;
+}
+.SideBar .arrow {
+    margin: 0 20px 0 20px;
+    transform: rotate(-90deg);
+    cursor: pointer;
+}
+
+.SideBar .arrow:hover {
+    opacity: 0.6;
+}
+
+.SideBar .arrowOpen {
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.SideBar .openbtn {
+    z-index: 1;
+    position: absolute;
+    border: none;
+    background: none;
+    top: 50.8vh;
+    left: 15px;
+    display: none;
+}
+.SideBar .openbtn:hover {
+    background: transparent;
+    color: transparent;
+    opacity: 0.6;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}

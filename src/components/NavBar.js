@@ -46,11 +46,11 @@ export default function NavBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        })();
+        }());
     }, [actualUser, bond]);
 
     function showDropDown() {
-        setDropDown(!dropDown ? true : false);
+        setDropDown(!dropDown);
     }
 
     return (
@@ -65,6 +65,17 @@ export default function NavBar({ actualUser, bond }) {
             {bond === 'Psychologist' ? (
                 <div className="navLinks">
                     {/* <Link className="a" to="" >Próximos Eventos</Link> */}
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/psychologist/schedule',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Configurar meu cronograma
+                    </Link>
                     <Link
                         className="a"
                         to={{

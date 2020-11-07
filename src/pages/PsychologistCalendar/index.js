@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
+import SideBar from '../../components/SideBar';
 
 export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
@@ -66,7 +67,15 @@ export default function PsychologistCalendar(props) {
 
     return (
         <div className="psychologistcalendar">
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar
+                className="navBar"
+                bond="Psychologist"
+                actualUser={props.location.state.data}
+            />
+            <SideBar
+                bond="Psychologist"
+                actualUser={props.location.state.data}
+            />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -87,9 +96,10 @@ export default function PsychologistCalendar(props) {
                                     key={index}
                                     className="schedule-box"
                                 >
-                                    <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
-                                        ? `0${restrict.month + 1}`
-                                        : `${restrict.month + 1}`
+                                    <span>{`restrição dia ${restrict.day}/${
+                                        restrict.month + 1 < 10
+                                            ? `0${restrict.month + 1}`
+                                            : `${restrict.month + 1}`
                                     }/${restrict.year}`}</span>
                                     <button
                                         type="button"
@@ -108,22 +118,21 @@ export default function PsychologistCalendar(props) {
                         </button>
                         <button
                             type="button"
-                            onClick={
-                                () => {
-                                    history.push({
-                                        pathname: '/psychologist/schedule',
-                                        state: {
-                                            data: props.location.state.data,
-                                        },
-                                    });
-                                }
-                            }>
+                            onClick={() => {
+                                history.push({
+                                    pathname: '/psychologist/schedule',
+                                    state: {
+                                        data: props.location.state.data,
+                                    },
+                                });
+                            }}
+                        >
                             Voltar
                         </button>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
