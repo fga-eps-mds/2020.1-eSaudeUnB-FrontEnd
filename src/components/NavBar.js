@@ -49,6 +49,17 @@ export default function NavBar({ actualUser, bond }) {
                     <Link
                         className="a"
                         to={{
+                            pathname: '/psychologist/events',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Agendamentos
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
                             pathname: '/psychologist/profile',
                             state: {
                                 data: actualUser,
@@ -83,6 +94,28 @@ export default function NavBar({ actualUser, bond }) {
                         }}
                     >
                         Perfil
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/main',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Agendamentos
+                    </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/events',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Consultas Marcadas
                     </Link>
                     <img className="userIcon" src={userImage || userIcon} alt="icone de usuario" />
                 </div>
