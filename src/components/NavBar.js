@@ -8,16 +8,21 @@ import '../assets/styles/NavBar.css';
 
 export default function NavBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
-
+    const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user')
     useEffect(() => {
         (async function renderImage() {
             try {
                 if (bond === 'Psychologist') {
-                    const response = await api.get(`/psychologist/${actualUser.email}`);
+                    const response = await api.get(`/psychologist/${user}`, {
+                        headers: { authorization: accessToken },
+                    });
 
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 } else {
-                    const response = await api.get(`/user/${actualUser.email}`);
+                    const response = await api.get(`/user/${user}`, {
+                        headers: { authorization: accessToken },
+                    });
 
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }

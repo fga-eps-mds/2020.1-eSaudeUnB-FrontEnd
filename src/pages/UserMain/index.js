@@ -37,6 +37,7 @@ export default function UserMain() {
         });
         const userPatient = response.data;
 
+
         userSelected.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
                 if (appointment._id === selectedValue) {
@@ -63,8 +64,8 @@ export default function UserMain() {
                 email,
                 weekDay,
             }, {
-                headers: { authorization: accessToken },
-            });
+            headers: { authorization: accessToken },
+        });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
