@@ -22,7 +22,6 @@ import PsychologistList from './pages/PsychologistList';
 import userSchedule from './pages/UserSchedule';
 import NotFound from './pages/NotFound';
 
-
 export default function Routes() {
     return (
         <BrowserRouter>

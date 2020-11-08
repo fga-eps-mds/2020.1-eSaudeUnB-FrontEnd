@@ -58,43 +58,58 @@ export default function PsychologistCreate() {
                 return history.push('/admin/psychologist/create');
             }
 
-            const response = await api.post('/psychologist', user);
+            const accessToken = localStorage.getItem('accessToken');
+            await api.post('/psychologist', user, {
+                headers: { authorization: accessToken },
+            })
+                .then((response) => {
+                    if (response.status === 203) {
+                        const { details } = response.data.error;
+                        closeAlerts();
 
-            if (response.status === 203) {
-                const { details } = response.data.error;
-                closeAlerts();
+                        for (
+                            let value = 0;
+                            value < response.data.error.details.length;
+                            value += 1
+                        ) {
+                            if (details[value].path[0] === 'name') {
+                                setAlertContentName(true);
+                            }
+                            if (details[value].path[0] === 'lastName') {
+                                setAlertContentLastName(true);
+                            }
+                            if (details[value].path[0] === 'email') {
+                                setAlertContentEmail(true);
+                            }
+                        }
 
-                for (let value = 0; value < response.data.error.details.length; value += 1) {
-                    if (details[value].path[0] === 'name') {
-                        setAlertContentName(true);
+                        setInterval(() => {
+                            setShow(false);
+                        }, 3500);
+                        return history.push('/admin/psychologist/create');
                     }
-                    if (details[value].path[0] === 'lastName') {
-                        setAlertContentLastName(true);
+
+                    if (response.status === 409) {
+                        setShow(true);
+                        setVariant('danger');
+                        setAlertText('Email já cadastrado');
+                        setInterval(() => {
+                            setShow(false);
+                        }, 6500);
+                        return history.push('/admin/psychologist/create');
                     }
-                    if (details[value].path[0] === 'email') {
-                        setAlertContentEmail(true);
+
+                    if (response.status === 201) {
+                        return history.push('/admin/psychologist/list');
                     }
-                }
-
-                setInterval(() => {
-                    setShow(false);
-                }, 3500);
-                return history.push('/admin/psychologist/create');
-            }
-
-            if (response.status === 409) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Email já cadastrado');
-                setInterval(() => {
-                    setShow(false);
-                }, 6500);
-                return history.push('/admin/psychologist/create');
-            }
-
-            if (response.status === 201) {
-                return history.push('/admin/psychologist/list');
-            }
+                })
+                .catch((err) => {
+                    if (err.response.status === 401) {
+                        return setTimeout(() => {
+                            history.push('/admin');
+                        }, 2000);
+                    }
+                });
         } catch (err) {
             setShow(true);
             setVariant('danger');
@@ -117,7 +132,6 @@ export default function PsychologistCreate() {
                 <div></div>
             )}
             <div className="psychologist-create">
-
                 <form className="form" onSubmit={handlePsychologistCreation}>
                     <img src={userIcon} alt="userIcon" />
                     <div className="psyCreate">
@@ -144,7 +158,7 @@ export default function PsychologistCreate() {
                         {alertContentLastName ? (
                             <div className="alertContent">
                                 <p>
-                                    Sobrenome precisa possuir mais de 2 letras.
+Sobrenome precisa possuir mais de 2 letras.
                                 </p>
                             </div>
                         ) : (
@@ -187,11 +201,11 @@ export default function PsychologistCreate() {
                         />
 
                         <button className="button" type="submit">
-                            Registrar
+Registrar
                         </button>
                     </div>
                 </form>
             </div>
-        </div >
+        </div>
     );
 }

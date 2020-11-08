@@ -13,15 +13,18 @@ export default function NewSession(props) {
     const [secondaryComplaint, setSecondaryComplaint] = useState('');
     const [complaintEvolution, setComplaintEvolution] = useState('');
     const [professional, setProfessional] = useState('');
+    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
         async function getData() {
             const { email } = props.location.state;
-            const response = await api.get(`/user/${email}`);
+            const response = await api.get(`/user/${email}`, {
+                headers: { authorization: accessToken },
+            });
             setPatient(response.data);
         }
         getData();
-    }, [props]);
+    });
 
     const history = useHistory();
 
@@ -35,6 +38,9 @@ export default function NewSession(props) {
             secondaryComplaint,
             complaintEvolution,
             professional,
+        },
+        {
+            headers: { authorization: accessToken },
         });
 
         history.push({

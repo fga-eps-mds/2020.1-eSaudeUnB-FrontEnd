@@ -43,6 +43,7 @@ export default function AdminLogin() {
             }
 
             if (response.status === 200) {
+                localStorage.setItem('accessToken', response.data.accessToken);
                 history.push('/admin/psychologist/list');
             }
         } catch (err) {

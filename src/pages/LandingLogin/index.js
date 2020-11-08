@@ -30,13 +30,14 @@ export default function LandingLogin() {
             });
 
             if (responseUser.status === 200 || responseUser.status === 201) {
+                localStorage.setItem('accessToken', responseUser.data.accessToken);
+                localStorage.setItem('user', email);
                 history.push({
                     pathname: '/profile',
                     state: {
-                        data: responseUser.data,
+                        data: responseUser.data.user,
                     },
                 });
-                localStorage.setItem('user', responseUser.data.email);
                 return;
             }
         } catch (err) {
@@ -47,14 +48,14 @@ export default function LandingLogin() {
                 });
 
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
+                    localStorage.setItem('accessToken', responsePsy.data.accessToken);
+                    localStorage.setItem('user', email);
                     history.push({
                         pathname: '/psychologist/profile',
                         state: {
-                            data: responsePsy.data,
+                            data: responsePsy.data.user,
                         },
                     });
-                    localStorage.setItem('user', responsePsy.data.email);
-                    return;
                 }
 
                 if (

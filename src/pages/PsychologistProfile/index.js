@@ -38,6 +38,8 @@ export default function PsychologistProfile(props) {
     const [alertContentGender, setAlertContentGender] = useState(false);
     const [alertContentPhone, setAlertContentPhone] = useState(false);
     const [alertContentBond, setAlertContentBond] = useState(false);
+    const accessToken = localStorage.getItem('accessToken');
+    const userEmail = localStorage.getItem('user');
 
     function closeAlerts() {
         setAlertContentName(false);
@@ -52,6 +54,8 @@ export default function PsychologistProfile(props) {
 
     function getOut(event) {
         event.preventDefault();
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
 
         history.push('/');
     }
@@ -59,8 +63,7 @@ export default function PsychologistProfile(props) {
     async function updateInfos(event) {
         try {
             event.preventDefault();
-
-            const response = await api.put(`/psyUpdate/${props.location.state.data.email}`, {
+            const response = await api.put(`/psyUpdate/${userEmail}`, {
                 name,
                 lastName,
                 email,
@@ -70,7 +73,8 @@ export default function PsychologistProfile(props) {
                 bond,
                 biography,
                 userImage: currentImage,
-            });
+            },
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -141,7 +145,9 @@ export default function PsychologistProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.get(`/psychologist/${props.location.state.data.email}`);
+            const response = await api.get(`/psychologist/${userEmail}`, {
+                headers: { authorization: accessToken },
+            });
 
             if (response.status === 200) {
                 setEmail(response.data.email);
@@ -157,6 +163,14 @@ export default function PsychologistProfile(props) {
                 }
             }
         } catch (err) {
+            if (err.response.status === 401) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Sessão expirada');
+                return setTimeout(() => {
+                    getOut(event);
+                }, 2000);
+            }
             setShow(true);
             setVariant('danger');
             setAlertText('Erro ao carregar dados.');

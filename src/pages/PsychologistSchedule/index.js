@@ -12,19 +12,25 @@ export default function PsychologistSchedule(props) {
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
+    const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
-        api.post('/calendary/update', {
-            email: localStorage.getItem('user'),
-        }).then((response) => {
+        api.post(
+            '/calendary/update',
+            {
+                email: user,
+            },
+            { headers: { authorization: accessToken } },
+        ).then((response) => {
             setScheduleItems(response.data);
         });
     }, []);
 
     const weekDays = [
-        { 
-            value: 0, 
-            label: 'Domingo' 
+        {
+            value: 0,
+            label: 'Domingo',
         },
         {
             value: 1,
@@ -46,9 +52,9 @@ export default function PsychologistSchedule(props) {
             value: 5,
             label: 'Sexta-feira',
         },
-        { 
-            value: 6, 
-            label: 'Sábado' 
+        {
+            value: 6,
+            label: 'Sábado',
         },
     ];
 
@@ -64,35 +70,34 @@ export default function PsychologistSchedule(props) {
         );
 
         setScheduleItems(updatedScheduleItems);
-        
     }
-    function appointmentHours(start,end,duration){
-        let actualHour = parseInt(start.substring(0, 2))
-        let actualMinutes = parseInt(start.substring(3, 5))
-        duration = parseInt(duration)
-        let hour = {}
-        let hours = [{}];
+    function appointmentHours(start, end, duration) {
+        let actualHour = parseInt(start.substring(0, 2));
+        let actualMinutes = parseInt(start.substring(3, 5));
+        duration = parseInt(duration);
+        let hour = {};
+        const hours = [{}];
         hours[0] = {
             time: `${start}`,
-            scheduled:false
-        }
-        
-        do{
-            if(actualMinutes+duration >= 60){
-                actualHour += 1
-                actualMinutes = 60 - (actualMinutes+duration)
-            }else{
-                actualMinutes += duration
+            scheduled: false,
+        };
+
+        do {
+            if (actualMinutes + duration >= 60) {
+                actualHour += 1;
+                actualMinutes = 60 - (actualMinutes + duration);
+            } else {
+                actualMinutes += duration;
             }
             hour = {
-                time:`${actualHour>=10 ? actualHour : `0${actualHour}`}:${actualMinutes>=10 ? actualMinutes : `0${actualMinutes}`}`,
-                scheduled:false,
+                time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`}`,
+                scheduled: false,
+            };
+            if (hour.time !== end) {
+                hours.push(hour);
             }
-            if(hour.time !== end){
-                hours.push(hour)
-            }
-        }while(hour.time !== end)
-        return hours
+        } while (hour.time !== end);
+        return hours;
     }
 
     function handleId() {
@@ -111,7 +116,10 @@ export default function PsychologistSchedule(props) {
         setScheduleItems([
             ...scheduleItems,
             {
-                weekDay: 0, from: '', to: '', id: ID,
+                weekDay: 0,
+                from: '',
+                to: '',
+                id: ID,
             },
         ]);
     }
@@ -149,7 +157,7 @@ export default function PsychologistSchedule(props) {
                 return false;
             }
 
-            if(scheduleItems[i].duration <= 0){
+            if (scheduleItems[i].duration <= 0) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -160,10 +168,10 @@ export default function PsychologistSchedule(props) {
                 }, 3500);
                 return false;
             }
-            //function to be edited earlier
-            minutes = await calculateAttendance(scheduleItems[i].from,scheduleItems[i].to,scheduleItems[i].duration);
- 
-            if(minutes > 0){
+            // function to be edited earlier
+            minutes = await calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+
+            if (minutes > 0) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -174,18 +182,24 @@ export default function PsychologistSchedule(props) {
                 }, 3500);
                 return false;
             }
-            let value = appointmentHours(scheduleItems[i].from,scheduleItems[i].to,scheduleItems[i].duration)
-            setScheduleItemsValue(i,'appointment',value)
+            const value = appointmentHours(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            setScheduleItemsValue(i, 'appointment', value);
         }
         return true;
     }
 
     async function putCalendar() {
         if (await verifyCalendarData()) {
-            await api.put('/calendary/update/', {
-                email: localStorage.getItem('user'),
-                weekDay: scheduleItems,
-            });
+            await api.put(
+                '/calendary/update/',
+                {
+                    email: localStorage.getItem('user'),
+                    weekDay: scheduleItems,
+                },
+                {
+                    headers: { authorization: accessToken },
+                },
+            );
             setShow(true);
             setVariant('success');
             setAlertText('Suas alterações foram salvas');
@@ -195,22 +209,26 @@ export default function PsychologistSchedule(props) {
         }
     }
 
-    async function calculateAttendance(start,end,duration){
-        start = parseInt(start.substring(0, 2))*60 + parseInt(start.substring(3, 5))
-        end = parseInt(end.substring(0, 2))*60 + parseInt(end.substring(3, 5))
-        duration = parseInt(duration)
+    async function calculateAttendance(start, end, duration) {
+        start = parseInt(start.substring(0, 2)) * 60 + parseInt(start.substring(3, 5));
+        end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
+        duration = parseInt(duration);
 
-        let number = (end-start)
+        const number = (end - start);
         let minutesRemaining = 0;
-        if(number % duration !== 0){
-            minutesRemaining = number % duration
+        if (number % duration !== 0) {
+            minutesRemaining = number % duration;
         }
         return minutesRemaining;
     }
 
     return (
         <div className="psychologistSchedule">
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar
+                className="navBar"
+                bond="Psychologist"
+                actualUser={props.location.state.data}
+            />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
@@ -231,9 +249,7 @@ export default function PsychologistSchedule(props) {
                         <div className="schedule">
                             {scheduleItems.map((scheduleItem, index) => (
                                 <div
-                                    key={
-                                        scheduleItem._id || scheduleItem.id
-                                    }
+                                    key={scheduleItem._id || scheduleItem.id}
                                     className="schedule-item"
                                 >
                                     <div className="select-box">
@@ -291,7 +307,7 @@ export default function PsychologistSchedule(props) {
                                             }
                                         />
                                     </div>
-                                    
+
                                     <div className="input-box">
                                         <label>Duração da consulta (minutos)</label>
                                         <input

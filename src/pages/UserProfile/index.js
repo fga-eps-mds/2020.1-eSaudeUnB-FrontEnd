@@ -30,6 +30,8 @@ export default function UserProfile(props) {
     const [variant, setVariant] = useState('');
 
     const history = useHistory();
+    const accessToken = localStorage.getItem('accessToken');
+    const UserEmail = localStorage.getItem('user');
 
     const [alertContentName, setAlertContentName] = useState(false);
     const [alertContentLastName, setAlertContentLastName] = useState(false);
@@ -55,7 +57,8 @@ export default function UserProfile(props) {
 
     function getOut(event) {
         event.preventDefault();
-
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
         history.push('/');
     }
 
@@ -63,7 +66,7 @@ export default function UserProfile(props) {
         try {
             event.preventDefault();
 
-            const response = await api.put(`/user/${props.location.state.data.email}`, {
+            const response = await api.put(`/user/${UserEmail}`, {
                 name,
                 lastName,
                 email,
@@ -74,7 +77,8 @@ export default function UserProfile(props) {
                 civilStatus,
                 religion,
                 userImage: currentImage,
-            });
+            },
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -110,7 +114,7 @@ export default function UserProfile(props) {
                     }
                 }
 
-                setInterval(() => {
+                setTimeout(() => {
                     setShow(false);
                 }, 3500);
                 return history.push({
@@ -130,7 +134,6 @@ export default function UserProfile(props) {
                 });
 
                 closeAlerts();
-
                 setShow(true);
                 setVariant('success');
                 setAlertText('Dados atualizados com sucesso.');
@@ -149,9 +152,9 @@ export default function UserProfile(props) {
     async function renderPage(event) {
         try {
             event.preventDefault();
-
-            const response = await api.get(`/user/${props.location.state.data.email}`);
-
+            const response = await api.get(`/user/${UserEmail}`, {
+                headers: { authorization: accessToken },
+            });
             if (response.status === 200) {
                 setEmail(response.data.email);
                 setName(response.data.name);
@@ -166,7 +169,15 @@ export default function UserProfile(props) {
                     setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
                 }
             }
-        } catch (err) {
+        } catch (err2) {
+            if (err2.response.status === 401) {
+                setShow(true);
+                setVariant('danger');
+                setAlertText('Sessão expirada');
+                return setTimeout(() => {
+                    getOut(event);
+                }, 2000);
+            }
             setShow(true);
             setVariant('danger');
             setAlertText('Erro ao carregar dados');
