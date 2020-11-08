@@ -32,11 +32,10 @@ export default function UserMain() {
 
     async function saveAppointment(event) {
         event.preventDefault();
-        const response = await api.get(`/user/${localStorage.getItem('user')}`, {
+        const response = await api.get(`/user/${user}`, {
             headers: { authorization: accessToken },
         });
         const userPatient = response.data;
-
 
         userSelected.weekDay.map((workDay) => {
             workDay.appointment.map((appointment) => {
@@ -64,8 +63,8 @@ export default function UserMain() {
                 email,
                 weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },

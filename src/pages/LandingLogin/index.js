@@ -74,17 +74,17 @@ export default function LandingLogin() {
                         'Ocorreu algum erro no seu login, tente novamente.',
                     );
                 }
-            } catch (err) {
+            } catch (err2) {
                 if (
-                    err.response.status === 404
-                    || err.response.status === 400
+                    err2.response.status === 404
+                    || err2.response.status === 400
                 ) {
                     setShow(true);
                     setVariant('danger');
                     setAlertText('Email/Senha incorretos, digite novamente.');
                 }
 
-                if (err.response.status === 500) {
+                if (err2.response.status === 500) {
                     setShow(true);
                     setVariant('danger');
                     setAlertText(
@@ -105,8 +105,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
                 <Logo />
 

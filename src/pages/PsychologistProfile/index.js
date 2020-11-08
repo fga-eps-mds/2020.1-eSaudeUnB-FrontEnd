@@ -55,7 +55,7 @@ export default function PsychologistProfile(props) {
     function getOut(event) {
         event.preventDefault();
         localStorage.removeItem('accessToken');
-        localStorage.removeItem('user')
+        localStorage.removeItem('user');
 
         history.push('/');
     }
@@ -74,7 +74,7 @@ export default function PsychologistProfile(props) {
                 biography,
                 userImage: currentImage,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -145,8 +145,6 @@ export default function PsychologistProfile(props) {
         try {
             event.preventDefault();
 
-            const accessToken = localStorage.getItem('accessToken');
-
             const response = await api.get(`/psychologist/${userEmail}`, {
                 headers: { authorization: accessToken },
             });
@@ -194,8 +192,8 @@ export default function PsychologistProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="firstColumn">
 
@@ -249,10 +247,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Email"
@@ -267,10 +265,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <div className="selects">
                                         <select
@@ -316,20 +314,20 @@ export default function PsychologistProfile(props) {
                                                 <p>Selecione um gênero.</p>
                                             </div>
                                         ) : (
-                                                <div className="alertContent">
-                                                    <p></p>
-                                                </div>
-                                            )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                         <div className="space"></div>
                                         {alertContentBond ? (
                                             <div className="alertContent">
                                                 <p>Selecione um vínculo.</p>
                                             </div>
                                         ) : (
-                                                <div className="alertContent">
-                                                    <p></p>
-                                                </div>
-                                            )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     </div>
 
                                 </div>
@@ -348,10 +346,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Especialização"
@@ -363,10 +361,10 @@ export default function PsychologistProfile(props) {
                                             <p>Informe a Especialização.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="DDD + Telefone"
@@ -378,10 +376,10 @@ export default function PsychologistProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <textarea
@@ -398,10 +396,10 @@ export default function PsychologistProfile(props) {
                                     </p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                             <div className="buttons">
                                 <button

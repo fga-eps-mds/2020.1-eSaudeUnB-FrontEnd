@@ -9,7 +9,7 @@ import '../assets/styles/NavBar.css';
 export default function NavBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
     const accessToken = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user')
+    const user = localStorage.getItem('user');
     useEffect(() => {
         (async function renderImage() {
             try {
