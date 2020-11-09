@@ -66,8 +66,8 @@ export default function UserMain(props) {
                 email,
                 weekDay,
             }, {
-                headers: { authorization: accessToken },
-            });
+            headers: { authorization: accessToken },
+        });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
@@ -160,6 +160,7 @@ export default function UserMain(props) {
                                             pathname: `/waiting-list`,
                                             state: {
                                                 data: props.location.state.data,
+                                                psychologist: userSelected,
                                             },
                                         })}>
                                         Lista de espera
