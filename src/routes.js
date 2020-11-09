@@ -22,6 +22,10 @@ import PsychologistList from './pages/PsychologistList';
 import userSchedule from './pages/UserSchedule';
 import NotFound from './pages/NotFound';
 import WaitingList from './pages/WaitingList';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 790a618b4129cd8f197e1734272b5d85f2dd39ca
 
 export default function Routes() {
     return (

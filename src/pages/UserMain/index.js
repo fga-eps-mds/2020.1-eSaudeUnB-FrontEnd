@@ -17,6 +17,8 @@ export default function UserMain(props) {
 
     const history = useHistory();
 
+    const history = useHistory();
+
     useEffect(() => {
         api.get('/psychologists', {
             headers: { authorization: accessToken },
