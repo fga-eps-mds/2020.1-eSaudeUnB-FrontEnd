@@ -39,12 +39,12 @@ export default function SideBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        }());
+        })();
     }, [actualUser, bond]);
     function openNav() {
-        document.getElementById('mySidebar').style.width = '350px';
+        document.getElementById('mySidebar').style.width = '300px';
         document.getElementById('sideBarInterior').style.display = 'block';
-        document.getElementById('main').style.marginLeft = '350px';
+        document.getElementById('main').style.marginLeft = '300px';
         document.getElementById('openbtn').style.display = 'none';
     }
 

@@ -7,8 +7,6 @@ import Input from '../../components/Input';
 
 import './styles.css';
 
-import userIcon from '../../assets/images/userIcon.svg';
-
 export default function PsychologistCreate() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -133,7 +131,7 @@ export default function PsychologistCreate() {
             )}
             <div className="psychologist-create">
                 <form className="form" onSubmit={handlePsychologistCreation}>
-                    <img src={userIcon} alt="userIcon" />
+                    <h2>Cadastro de Psicólogo</h2>
                     <div className="psyCreate">
                         <Input
                             placeholder="Nome"

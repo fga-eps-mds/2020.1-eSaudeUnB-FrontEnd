@@ -26,9 +26,9 @@ export default function PsychologistCalendar(props) {
     function checkRepeat() {
         for (const item of restricts) {
             if (
-                date.getDate() === item.day
-                && date.getMonth() === item.month
-                && date.getFullYear() === item.year
+                date.getDate() === item.day &&
+                date.getMonth() === item.month &&
+                date.getFullYear() === item.year
             ) {
                 return false;
             }
@@ -57,7 +57,6 @@ export default function PsychologistCalendar(props) {
         });
         setRestricts(Restricts.data);
     }
-    window.onload = handleRestrict;
 
     function removeRestrict(index) {
         const temp = [...restricts];
@@ -66,7 +65,7 @@ export default function PsychologistCalendar(props) {
     }
 
     return (
-        <div className="psychologistcalendar">
+        <div className="psychologistcalendar" onLoad={handleRestrict}>
             <NavBar
                 className="navBar"
                 bond="Psychologist"
@@ -115,19 +114,6 @@ export default function PsychologistCalendar(props) {
                         </button>
                         <button type="button" onClick={() => putRestrict()}>
                             Salvar
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => {
-                                history.push({
-                                    pathname: '/psychologist/schedule',
-                                    state: {
-                                        data: props.location.state.data,
-                                    },
-                                });
-                            }}
-                        >
-                            Voltar
                         </button>
                     </div>
                 </div>

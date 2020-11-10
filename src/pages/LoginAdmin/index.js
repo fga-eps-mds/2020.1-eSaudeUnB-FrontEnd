@@ -7,7 +7,6 @@ import './styles.css';
 import Input from '../../components/Input';
 
 import api from '../../services/api';
-import userIcon from '../../assets/images/userIcon.svg';
 
 export default function AdminLogin() {
     const [email, setEmail] = useState('');
@@ -67,11 +66,6 @@ export default function AdminLogin() {
             )}
             <div className="content">
                 <form className="form" onSubmit={handleAdminLogin}>
-                    <img
-                        className="userIcon"
-                        src={userIcon}
-                        alt="icone de usuario"
-                    />
                     <h2 className="pageTitle">Login de Administrador</h2>
                     <Input
                         placeholder="Email"
