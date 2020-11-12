@@ -260,16 +260,12 @@ export default function UserProfile(props) {
                                             type="file"
                                             onChange={async (e) => {
                                                 uploadImage(e);
-                                                const image = 
-                                                    await convertBase64(e.target.files[0]);
+                                                const image = await convertBase64(e.target.files[0]);
                                                 setCurrentImage(image);
                                             }}
                                         />
                                         <figure className="personal-figure">
-                                            <img 
-                                                src={currentImage || userImage || userIcon} 
-                                                className="personal-avatar" alt="avatar" 
-                                            />
+                                            <img src={currentImage || userImage || userIcon} className="personal-avatar" alt="avatar" />
                                             <figcaption className="personal-figcaption">
                                                 <img src={figureCaption} alt="figureCaption" />
                                             </figcaption>
