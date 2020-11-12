@@ -43,7 +43,7 @@ export default function UserProfile(props) {
     const [alertContentReligion, setAlertContentReligion] = useState(false);
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(false);
 
-    const [alertDanger, setAlertDanger] = useState(false);
+    const [alertPasswordtext, setAlertPasswordtext] = useState(false);
     const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [actualPassword, setActualPassword] = useState('');
@@ -73,6 +73,7 @@ export default function UserProfile(props) {
         event.preventDefault();
 
         if(newPassword !== confirmNewPassword) {
+            setAlertPasswordtext('As senhas devem ser iguais');
             setAlertConfirmPassword(true);
             return;
         }
@@ -87,6 +88,11 @@ export default function UserProfile(props) {
                 },
                 { headers: { authorization: accessToken } });
 
+                if(response.status === 203){
+                    setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
+                    setAlertConfirmPassword(true);
+                }
+
                 if(response.status === 200){
                     setShowModal(false);
                     setShow(true);
@@ -94,7 +100,14 @@ export default function UserProfile(props) {
                     setAlertText('Senha alterada com sucesso.');
                 }
             } catch(err) {
-                setAlertDanger(true);
+                if(err.response.status === 400){
+                    setAlertPasswordtext('A senha atual está incorreta.');
+                    setAlertConfirmPassword(true);
+                    return;
+                }
+                setAlertPasswordtext('Ocorreu algum erro ao atualizar a senha, tente novamente.');
+                setAlertConfirmPassword(true);
+                return;
             }
             
         }
@@ -424,7 +437,6 @@ export default function UserProfile(props) {
                             onHide={
                                 () => {
                                     setAlertConfirmPassword(false);
-                                    setAlertDanger(false);
                                     setShowModal(false);
                                     setActualPassword('');
                                     setNewPassword('');
@@ -460,18 +472,7 @@ export default function UserProfile(props) {
                                 {alertConfirmPassword ? (
                                     <div className="alertContent">
                                         <p>
-                                            As novas senhas devem ser iguais.
-                                        </p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-                                {alertDanger ? (
-                                    <div className="alertContent">
-                                        <p>
-                                            Ocorreu algum erro ao atualizar a senha, tente novamente.
+                                            {alertPasswordtext}
                                         </p>
                                     </div>
                                 ) : (
@@ -486,7 +487,6 @@ export default function UserProfile(props) {
                                     variant="danger" 
                                     onClick={() => {
                                         setAlertConfirmPassword(false);
-                                        setAlertDanger(false);
                                         setShowModal(false);
                                         setActualPassword('');
                                         setNewPassword('');
