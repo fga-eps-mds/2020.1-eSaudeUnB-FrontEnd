@@ -79,6 +79,10 @@
 }
 
 .waiting-list-container .list .goBackButton:hover {
+    background: blue;
+}
+
+.waiting-list-container .list .getOutOfWLButton:hover {
     background: red;
     color: #000;
 }

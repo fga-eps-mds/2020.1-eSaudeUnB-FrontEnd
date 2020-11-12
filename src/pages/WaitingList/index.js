@@ -22,6 +22,10 @@ export default function WaitingList(props) {
             });
     }, []);
 
+    async function getOutOfWaitingList(){
+        
+    }
+
     async function registerOnWaitingList() {
         if(waitingList.find(element => element.emailPatient === props.location.state.data.email)){
             setShow(true);
@@ -80,6 +84,7 @@ export default function WaitingList(props) {
                     </div>
                     <div className="wl-buttons">
                         <button className="waitingListButton" onClick={() => registerOnWaitingList()}>Entrar para a lista de espera</button>
+                        <button className="getOutOfWLButton" onClick={() => getOutOfWaitingList()}>Sair da lista de espera</button>
                         <button
                             className="goBackButton"
                             onClick={() => history.push({
