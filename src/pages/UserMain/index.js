@@ -26,7 +26,6 @@ export default function UserMain() {
         if (weekDay === date.getDay()) {
             return true;
         }
-
         return false;
     }
 
@@ -101,7 +100,7 @@ export default function UserMain() {
                                     {psychologist.weekDay.map((workDay, index) => (
                                         dateCheck(workDay.weekDay)
                                             ? <div className="testecalendar" key={index}>
-
+                                                {show? setShow(false) : ""}
                                                 <div className="psy-card"
                                                     // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
@@ -113,7 +112,7 @@ export default function UserMain() {
 
                                                 </div>
                                             </div>
-                                            : <div key={index}></div>
+                                            : <div key={index}>{!show ? setShow(true) : ""}</div>
                                     ))}
                                 </div>
                             ))}
@@ -121,8 +120,8 @@ export default function UserMain() {
                     </div>
 
                 </div>
-                {userSelected.weekDay !== undefined
-                    ? <div className="dropDown-calendar">
+                {userSelected.weekDay !== undefined ?
+                     <div className="dropDown-calendar">
                         <div className="column1">
                             <h3>{userSelected.name} {userSelected.lastName}</h3>
                             <h3>{userSelected.biography}</h3>
@@ -154,16 +153,18 @@ export default function UserMain() {
                                 </div>
                             </form>
                         </div>
-                    </div>
-                    : show
+                    </div> : ''
+                }
+                <div>
+                    {show
                         ? <div className="noHours">
                             <h3>
                                 Desculpe, não temos horários disponíveis em {date.getDate()}/{date.getMonth() + 1}
                             </h3>
                         </div>
                         : <div></div>
-
-                }
+                    }
+                </div>
             </div>
         </div >
     );
