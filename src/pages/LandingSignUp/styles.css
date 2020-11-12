@@ -120,8 +120,11 @@
 }
 
 .signUp01Container .form p {
-    color: black;
+    color: red;
     text-align: left;
     width: 320px;
     font-size: 14px;
+}
+.signUp01Container .form .back {
+    text-decoration: underline;
 }

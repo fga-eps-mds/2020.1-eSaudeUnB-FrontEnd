@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import './styles.css';
@@ -218,6 +218,11 @@ export default function LandingSignUp() {
                     <button className="button" type="submit">
                         Registrar
                     </button>
+                    <div className="back">
+                        <Link className="a" to="/">
+                            Voltar
+                        </Link>
+                    </div>
                 </form>
             </div>
         </div>

@@ -46,11 +46,11 @@ export default function NavBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        }());
+        })();
     }, [actualUser, bond]);
 
     function showDropDown() {
-        setDropDown(!dropDown);
+        setDropDown(!dropDown ? true : false);
     }
 
     return (
@@ -65,17 +65,6 @@ export default function NavBar({ actualUser, bond }) {
             {bond === 'Psychologist' ? (
                 <div className="navLinks">
                     {/* <Link className="a" to="" >Próximos Eventos</Link> */}
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/psychologist/schedule',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Configurar meu cronograma
-                    </Link>
                     <Link
                         className="a"
                         to={{
@@ -98,18 +87,6 @@ export default function NavBar({ actualUser, bond }) {
                     >
                         Agendamentos
                     </Link>
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/psychologist/profile',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Perfil
-                    </Link>
-
                     <div className="dropdown">
                         <div className="images">
                             <img
@@ -171,17 +148,6 @@ export default function NavBar({ actualUser, bond }) {
                         }}
                     >
                         Lista de Psicologos
-                    </Link>
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/profile',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Perfil
                     </Link>
                     <Link
                         className="a"

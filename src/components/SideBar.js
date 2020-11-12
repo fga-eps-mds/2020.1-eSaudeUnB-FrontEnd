@@ -41,13 +41,14 @@ export default function SideBar({ actualUser, bond }) {
             }
         })();
     }, [actualUser, bond]);
+    
+
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
         document.getElementById('sideBarInterior').style.display = 'block';
         document.getElementById('main').style.marginLeft = '300px';
         document.getElementById('openbtn').style.display = 'none';
     }
-
     function closeNav() {
         document.getElementById('mySidebar').style.width = '50px';
         document.getElementById('sideBarInterior').style.display = 'none';
@@ -60,6 +61,7 @@ export default function SideBar({ actualUser, bond }) {
             <div id="mySidebar" className="sidebar">
                 <div id="sideBarInterior">
                     <arrow
+                        /* eslint-disable-next-line */
                         href="javascript:void(0)"
                         className="closebtn"
                         onClick={() => closeNav()}
@@ -72,10 +74,10 @@ export default function SideBar({ actualUser, bond }) {
                         alt="menu"
                     />
                     <p>{actualUser.name}</p>
-                    <a href="#">Proximos Eventos</a>
-                    <a href="#">Lista de Psicologos</a>
-                    <a href="#">Meu Perfil</a>
-                    <a href="#">eSaude</a>
+                    <a href="/">Proximos Eventos</a>
+                    <a href="/">Lista de Psicologos</a>
+                    <a href="/">Meu Perfil</a>
+                    <a href="/">eSaude</a>
                 </div>
             </div>
 

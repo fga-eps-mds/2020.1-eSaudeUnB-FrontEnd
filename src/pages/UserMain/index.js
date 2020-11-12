@@ -9,7 +9,7 @@ export default function UserMain() {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
     const [userSelected, setUserSelected] = useState({});
-    const [show, setShow] = useState(false);
+    const [show] = useState(false);
     const [selectedValue, setSelectedValue] = useState();
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');

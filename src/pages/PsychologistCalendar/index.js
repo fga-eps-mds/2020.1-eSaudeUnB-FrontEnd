@@ -5,7 +5,6 @@ import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
-import SideBar from '../../components/SideBar';
 
 export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
@@ -68,10 +67,6 @@ export default function PsychologistCalendar(props) {
         <div className="psychologistcalendar" onLoad={handleRestrict}>
             <NavBar
                 className="navBar"
-                bond="Psychologist"
-                actualUser={props.location.state.data}
-            />
-            <SideBar
                 bond="Psychologist"
                 actualUser={props.location.state.data}
             />
