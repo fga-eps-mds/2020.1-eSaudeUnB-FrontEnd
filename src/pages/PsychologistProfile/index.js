@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Alert, Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -47,6 +47,7 @@ export default function PsychologistProfile(props) {
     const [actualPassword, setActualPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [alertDanger, setAlertDanger] = useState(false);
     const accessToken = localStorage.getItem('accessToken');
     const userEmail = localStorage.getItem('user');
 
