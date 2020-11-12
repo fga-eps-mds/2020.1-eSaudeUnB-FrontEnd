@@ -16,6 +16,13 @@
     align-items: center;
 }
 
+.waiting-list-container .alert {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+
 .waiting-list-container .list {
     padding: 10px;
     width: 1400px;

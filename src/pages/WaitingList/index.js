@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Table } from 'react-bootstrap';
+import { Table, Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 import './styles.css';
@@ -8,6 +8,10 @@ import NavBar from '../../components/NavBar';
 
 export default function WaitingList(props) {
     const [waitingList, setWaitingList] = useState([]);
+
+    const [show, setShow] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
 
     const history = useHistory();
 
@@ -19,6 +23,16 @@ export default function WaitingList(props) {
     }, []);
 
     async function registerOnWaitingList() {
+        if(waitingList.find(element => element.emailPatient === props.location.state.data.email)){
+            setShow(true);
+            setVariant('danger');
+            setAlertText('Só é possível entrar uma vez na lista de espera.');
+            setInterval(() => {
+                setShow(false);
+            }, 2000);
+            return;
+        }
+
         const response = await api.post('/waitingList', {
             email: props.location.state.psychologist.email,
             emailPatient: props.location.state.data.email,
@@ -30,6 +44,13 @@ export default function WaitingList(props) {
     return (
         <div className="waiting-list-container">
             <NavBar className="navBar" bond="Patient" actualUser={props.location.state.data} />
+            {show ? (
+                    <Alert className="alert" variant={variant}>
+                        {alertText}
+                    </Alert>
+                ) : (
+                    <div></div>
+                )}
             <div className="content">
                 <div className="list">
                     <div className="list-title">
