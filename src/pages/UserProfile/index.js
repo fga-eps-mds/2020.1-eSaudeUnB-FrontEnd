@@ -418,7 +418,7 @@ export default function UserProfile(props) {
                         </form>
                     </div>
                     <div className="lateralLinks">
-                        <button className="updt-pswrd-btn" onClick={() => setShowModal(true)}>teste</button>
+                        <button className="updt-pswrd-btn" onClick={() => setShowModal(true)}>Alterar Senha</button>
                         <Modal
                             show={showModal}
                             onHide={() => setShowModal(false)}
