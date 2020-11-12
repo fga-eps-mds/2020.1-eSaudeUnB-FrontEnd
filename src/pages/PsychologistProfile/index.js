@@ -67,47 +67,45 @@ export default function PsychologistProfile(props) {
     }
 
     async function updatePassword(event) {
-            event.preventDefault();
+        event.preventDefault();
 
-            if(newPassword !== confirmNewPassword) {
-                setAlertPasswordtext('As senhas devem ser iguais');
-                setAlertConfirmPassword(true);
-                return;
-            }
-            
-            if(newPassword === confirmNewPassword) {
-                setAlertConfirmPassword(false);
-                
-                try{
-                    const response = await api.put(`/psyUpdatePassword/${userEmail}`, {
-                        oldPassword: actualPassword,
-                        password: newPassword
-                    },
-                    { headers: { authorization: accessToken } });
+        if (newPassword !== confirmNewPassword) {
+            setAlertPasswordtext('As senhas devem ser iguais');
+            setAlertConfirmPassword(true);
+            return;
+        }
 
-                    if(response.status === 203){
-                        setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
-                        setAlertConfirmPassword(true);
-                    }
-    
-                    if(response.status === 200){
-                        setShowModal(false);
-                        setShow(true);
-                        setVariant('success');
-                        setAlertText('Senha alterada com sucesso.');
-                    }
-                } catch(err) {
-                    if(err.response.status === 400){
-                        setAlertPasswordtext('A senha atual está incorreta.');
-                        setAlertConfirmPassword(true);
-                        return;
-                    }
-                    setAlertPasswordtext('Ocorreu algum erro ao atualizar a senha, tente novamente.');
+        if (newPassword === confirmNewPassword) {
+            setAlertConfirmPassword(false);
+
+            try {
+                const response = await api.put(`/psyUpdatePassword/${userEmail}`, {
+                    oldPassword: actualPassword,
+                    password: newPassword,
+                },
+                { headers: { authorization: accessToken } });
+
+                if (response.status === 203) {
+                    setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
+                    setAlertConfirmPassword(true);
+                }
+
+                if (response.status === 200) {
+                    setShowModal(false);
+                    setShow(true);
+                    setVariant('success');
+                    setAlertText('Senha alterada com sucesso.');
+                }
+            } catch (err) {
+                if (err.response.status === 400) {
+                    setAlertPasswordtext('A senha atual está incorreta.');
                     setAlertConfirmPassword(true);
                     return;
                 }
-                
+                setAlertPasswordtext('Ocorreu algum erro ao atualizar a senha, tente novamente.');
+                setAlertConfirmPassword(true);
             }
+        }
     }
 
     async function updateInfos(event) {
@@ -496,7 +494,7 @@ export default function PsychologistProfile(props) {
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
                             centered
-                            >
+                        >
                             <Modal.Header closeButton>
                                 <Modal.Title id="contained-modal-title-vcenter">
                                     Mudar Senha
@@ -532,8 +530,8 @@ export default function PsychologistProfile(props) {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={updatePassword}>Confirmar</Button>
-                                <Button 
-                                    variant="danger" 
+                                <Button
+                                    variant="danger"
                                     onClick={
                                         () => {
                                             setAlertConfirmPassword(false);

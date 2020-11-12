@@ -72,46 +72,44 @@ export default function UserProfile(props) {
     async function updatePassword(event) {
         event.preventDefault();
 
-        if(newPassword !== confirmNewPassword) {
+        if (newPassword !== confirmNewPassword) {
             setAlertPasswordtext('As senhas devem ser iguais');
             setAlertConfirmPassword(true);
             return;
         }
-        
-        if(newPassword === confirmNewPassword) {
+
+        if (newPassword === confirmNewPassword) {
             setAlertConfirmPassword(false);
-            
-            try{
+
+            try {
                 const response = await api.put(`/user/password/${UserEmail}`, {
                     oldPassword: actualPassword,
-                    password: newPassword
+                    password: newPassword,
                 },
                 { headers: { authorization: accessToken } });
 
-                if(response.status === 203){
+                if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
                     setAlertConfirmPassword(true);
                 }
 
-                if(response.status === 200){
+                if (response.status === 200) {
                     setShowModal(false);
                     setShow(true);
                     setVariant('success');
                     setAlertText('Senha alterada com sucesso.');
                 }
-            } catch(err) {
-                if(err.response.status === 400){
+            } catch (err) {
+                if (err.response.status === 400) {
                     setAlertPasswordtext('A senha atual está incorreta.');
                     setAlertConfirmPassword(true);
                     return;
                 }
                 setAlertPasswordtext('Ocorreu algum erro ao atualizar a senha, tente novamente.');
                 setAlertConfirmPassword(true);
-                return;
             }
-            
         }
-}
+    }
 
     async function updateInfos(event) {
         try {
@@ -447,7 +445,7 @@ export default function UserProfile(props) {
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
                             centered
-                            >
+                        >
                             <Modal.Header closeButton>
                                 <Modal.Title id="contained-modal-title-vcenter">
                                     Mudar Senha
@@ -483,8 +481,8 @@ export default function UserProfile(props) {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={updatePassword}>Confirmar</Button>
-                                <Button 
-                                    variant="danger" 
+                                <Button
+                                    variant="danger"
                                     onClick={() => {
                                         setAlertConfirmPassword(false);
                                         setShowModal(false);
