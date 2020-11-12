@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
+import { Alert, Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Input from '../../components/Input';
@@ -38,6 +38,12 @@ export default function PsychologistProfile(props) {
     const [alertContentGender, setAlertContentGender] = useState(false);
     const [alertContentPhone, setAlertContentPhone] = useState(false);
     const [alertContentBond, setAlertContentBond] = useState(false);
+    const [alertDanger, setAlertDanger] = useState(false);
+    const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [actualPassword, setActualPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const userEmail = localStorage.getItem('user');
 
@@ -58,6 +64,37 @@ export default function PsychologistProfile(props) {
         localStorage.removeItem('user');
 
         history.push('/');
+    }
+
+    async function updatePassword(event) {
+            event.preventDefault();
+
+            if(newPassword !== confirmNewPassword) {
+                setAlertConfirmPassword(true);
+                return;
+            }
+            
+            if(newPassword === confirmNewPassword) {
+                setAlertConfirmPassword(false);
+                
+                try{
+                    const response = await api.put(`/psyUpdatePassword/${userEmail}`, {
+                        oldPassword: actualPassword,
+                        password: newPassword
+                    },
+                    { headers: { authorization: accessToken } });
+    
+                    if(response.status === 200){
+                        setShowModal(false);
+                        setShow(true);
+                        setVariant('success');
+                        setAlertText('Senha alterada com sucesso.');
+                    }
+                } catch(err) {
+                    setAlertDanger(true);
+                }
+                
+            }
     }
 
     async function updateInfos(event) {
@@ -430,7 +467,64 @@ export default function PsychologistProfile(props) {
                         >
                             Configurar meu cronograma
                         </Link>
-                        {/* <Link className="link" to="/" >Alterar Senha</Link> */}
+                        <button className="updt-pswrd-btn" onClick={() => setShowModal(true)} >Alterar Senha</button>
+                        <Modal
+                            show={showModal}
+                            onHide={() => setShowModal(false)}
+                            backdrop="static"
+                            size="lg"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            centered
+                            >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="contained-modal-title-vcenter">
+                                    Mudar Senha
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Input
+                                    placeholder="Senha Atual"
+                                    value={actualPassword}
+                                    onChange={setActualPassword}
+                                />
+                                <Input
+                                    placeholder="Nova senha"
+                                    value={newPassword}
+                                    onChange={setNewPassword}
+                                />
+                                <Input
+                                    placeholder="Confirmar nova senha"
+                                    value={confirmNewPassword}
+                                    onChange={setConfirmNewPassword}
+                                />
+                                {alertConfirmPassword ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            As novas senhas devem ser iguais.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                {alertDanger ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Ocorreu algum erro ao atualizar a senha, tente novamente.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="success" onClick={updatePassword}>Confirmar</Button>
+                                <Button variant="danger" onClick={() => setShowModal(false)}>Cancelar</Button>
+                            </Modal.Footer>
+                        </Modal>
                     </div>
                 </div>
             </div>

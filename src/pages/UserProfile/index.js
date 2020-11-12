@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Alert } from 'react-bootstrap';
+import { Alert, Modal, Button } from 'react-bootstrap';
 
 import api from '../../services/api';
 import './styles.css';
@@ -43,6 +43,13 @@ export default function UserProfile(props) {
     const [alertContentReligion, setAlertContentReligion] = useState(false);
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(false);
 
+    const [alertDanger, setAlertDanger] = useState(false);
+    const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [actualPassword, setActualPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
     function closeAlerts() {
         setAlertContentName(false);
         setAlertContentLastName(false);
@@ -61,6 +68,37 @@ export default function UserProfile(props) {
         localStorage.removeItem('user');
         history.push('/');
     }
+
+    async function updatePassword(event) {
+        event.preventDefault();
+
+        if(newPassword !== confirmNewPassword) {
+            setAlertConfirmPassword(true);
+            return;
+        }
+        
+        if(newPassword === confirmNewPassword) {
+            setAlertConfirmPassword(false);
+            
+            try{
+                const response = await api.put(`/user/password/${UserEmail}`, {
+                    oldPassword: actualPassword,
+                    password: newPassword
+                },
+                { headers: { authorization: accessToken } });
+
+                if(response.status === 200){
+                    setShowModal(false);
+                    setShow(true);
+                    setVariant('success');
+                    setAlertText('Senha alterada com sucesso.');
+                }
+            } catch(err) {
+                setAlertDanger(true);
+            }
+            
+        }
+}
 
     async function updateInfos(event) {
         try {
@@ -200,89 +238,108 @@ export default function UserProfile(props) {
 
                 <div className="content">
 
-                    <form className="formColumn" onSubmit={updateInfos}>
+                    <div className="teste">
+                        <form className="formColumn" onSubmit={updateInfos}>
 
-                        <div className="form">
-                            <div className="personal-image">
-                                <label className="label">
-                                    <input
-                                        id="image"
-                                        type="file"
-                                        onChange={async (e) => {
-                                            uploadImage(e);
-                                            const image = await convertBase64(e.target.files[0]);
-                                            setCurrentImage(image);
-                                        }}
-                                    />
-                                    <figure className="personal-figure">
-                                        <img src={currentImage || userImage || userIcon} className="personal-avatar" alt="avatar" />
-                                        <figcaption className="personal-figcaption">
-                                            <img src={figureCaption} alt="figureCaption" />
-                                        </figcaption>
-                                    </figure>
-                                </label>
-                            </div>
-                            <Input
-                                placeholder="Nome"
-                                value={name}
-                                onChange={setName}
-                            />
-
-                            {alertContentName ? (
-                                <div className="alertContent">
-                                    <p>Nome precisa possuir mais de 2 letras.</p>
+                            <div className="form">
+                                <div className="personal-image">
+                                    <label className="label">
+                                        <input
+                                            id="image"
+                                            type="file"
+                                            onChange={async (e) => {
+                                                uploadImage(e);
+                                                const image = await convertBase64(e.target.files[0]);
+                                                setCurrentImage(image);
+                                            }}
+                                        />
+                                        <figure className="personal-figure">
+                                            <img src={currentImage || userImage || userIcon} className="personal-avatar" alt="avatar" />
+                                            <figcaption className="personal-figcaption">
+                                                <img src={figureCaption} alt="figureCaption" />
+                                            </figcaption>
+                                        </figure>
+                                    </label>
                                 </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <Input
-                                placeholder="Email"
-                                value={email}
-                                onChange={setEmail}
-                            />
-                            {alertContentEmail ? (
-                                <div className="alertContent">
-                                    <p>E-mail não foi preenchido corretamente.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
+                                <Input
+                                    placeholder="Nome"
+                                    value={name}
+                                    onChange={setName}
+                                />
 
-                            <div className="selects">
-
-                                <select name="gender" value={gender || ''} onChange={(e) => setGender(e.target.value)}>
-                                    <option value="" disabled>Gênero</option>
-                                    <option value="F">Feminino</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="I">Não Identificar</option>
-                                </select>
-
-                                <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
-                                    <option value="" disabled>Vínculo</option>
-                                    <option value="graduando">Graduando</option>
-                                    <option value="posGraduando">Pós-Graduando</option>
-                                    <option value="professor">Professor</option>
-                                </select>
-
-                            </div>
-                            <div className="selects">
-                                {alertContentGender ? (
+                                {alertContentName ? (
                                     <div className="alertContent">
-                                        <p>Selecione um gênero.</p>
+                                        <p>Nome precisa possuir mais de 2 letras.</p>
                                     </div>
                                 ) : (
                                     <div className="alertContent">
                                         <p></p>
                                     </div>
                                 )}
-                                <div className="space"></div>
-                                {alertContentBond ? (
+                                <Input
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={setEmail}
+                                />
+                                {alertContentEmail ? (
                                     <div className="alertContent">
-                                        <p>Selecione um vínculo.</p>
+                                        <p>E-mail não foi preenchido corretamente.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+
+                                <div className="selects">
+
+                                    <select name="gender" value={gender || ''} onChange={(e) => setGender(e.target.value)}>
+                                        <option value="" disabled>Gênero</option>
+                                        <option value="F">Feminino</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="I">Não Identificar</option>
+                                    </select>
+
+                                    <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
+                                        <option value="" disabled>Vínculo</option>
+                                        <option value="graduando">Graduando</option>
+                                        <option value="posGraduando">Pós-Graduando</option>
+                                        <option value="professor">Professor</option>
+                                    </select>
+
+                                </div>
+                                <div className="selects">
+                                    {alertContentGender ? (
+                                        <div className="alertContent">
+                                            <p>Selecione um gênero.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                    <div className="space"></div>
+                                    {alertContentBond ? (
+                                        <div className="alertContent">
+                                            <p>Selecione um vínculo.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
+                                    <option value="naoInformado" disabled>Estado Civil</option>
+                                    <option value="Solteiro(a)">Solteiro</option>
+                                    <option value="Divorciado(a)">Divorciado</option>
+                                    <option value="Casado(a)">Casado</option>
+                                    <option value="Viuvo(a)">Viuvo</option>
+                                </select>
+                                {alertContentCivilStatus ? (
+                                    <div className="alertContent">
+                                        <p>Informe o estado civil.</p>
                                     </div>
                                 ) : (
                                     <div className="alertContent">
@@ -291,92 +348,135 @@ export default function UserProfile(props) {
                                 )}
                             </div>
 
-                            <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
-                                <option value="naoInformado" disabled>Estado Civil</option>
-                                <option value="Solteiro(a)">Solteiro</option>
-                                <option value="Divorciado(a)">Divorciado</option>
-                                <option value="Casado(a)">Casado</option>
-                                <option value="Viuvo(a)">Viuvo</option>
-                            </select>
-                            {alertContentCivilStatus ? (
-                                <div className="alertContent">
-                                    <p>Informe o estado civil.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                        </div>
+                            <div className="form">
+                                <Input
+                                    placeholder="Sobrenome"
+                                    value={lastName}
+                                    onChange={setLastName}
+                                />
+                                {alertContentLastName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Sobrenome precisa possuir mais de 2 letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                <Input
+                                    placeholder="Matrícula UnB"
+                                    value={unbRegistration || ''}
+                                    onChange={setUnbRegistration}
+                                />
+                                {alertContentUnbRegistration ? (
+                                    <div className="alertContent">
+                                        <p>Insira uma matrícula válida.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                <Input
+                                    placeholder="DDD + Telefone"
+                                    value={phone || ''}
+                                    onChange={setPhone}
+                                />
+                                {alertContentPhone ? (
+                                    <div className="alertContent">
+                                        <p>Insira um telefone válido.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
+                                    <option value="naoInformado" disabled>Religião</option>
+                                    <option value="Catolico">Católico</option>
+                                    <option value="Evangolico">Evangélico</option>
+                                    <option value="Espirita">Espirita</option>
+                                    <option value="outra">Outra</option>
+                                </select>
+                                {alertContentReligion ? (
+                                    <div className="alertContent">
+                                        <p>Selecione a sua religião.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
-                        <div className="form">
-                            <Input
-                                placeholder="Sobrenome"
-                                value={lastName}
-                                onChange={setLastName}
-                            />
-                            {alertContentLastName ? (
-                                <div className="alertContent">
-                                    <p>
-                                        Sobrenome precisa possuir mais de 2 letras.
-                                    </p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <Input
-                                placeholder="Matrícula UnB"
-                                value={unbRegistration || ''}
-                                onChange={setUnbRegistration}
-                            />
-                            {alertContentUnbRegistration ? (
-                                <div className="alertContent">
-                                    <p>Insira uma matrícula válida.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <Input
-                                placeholder="DDD + Telefone"
-                                value={phone || ''}
-                                onChange={setPhone}
-                            />
-                            {alertContentPhone ? (
-                                <div className="alertContent">
-                                    <p>Insira um telefone válido.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
-                                <option value="naoInformado" disabled>Religião</option>
-                                <option value="Catolico">Católico</option>
-                                <option value="Evangolico">Evangélico</option>
-                                <option value="Espirita">Espirita</option>
-                                <option value="outra">Outra</option>
-                            </select>
-                            {alertContentReligion ? (
-                                <div className="alertContent">
-                                    <p>Selecione a sua religião.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-
-                        </div>
-                        <div className="buttons">
-                            <button className="button-salvar" type="submit">Salvar</button>
-                            <button className="button-sair" onClick={getOut}>Sair</button>
-                        </div>
-                    </form>
+                            </div>
+                            <div className="buttons">
+                                <button className="button-salvar" type="submit">Salvar</button>
+                                <button className="button-sair" onClick={getOut}>Sair</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="lateralLinks">
+                        <button className="updt-pswrd-btn" onClick={() => setShowModal(true)}>teste</button>
+                        <Modal
+                            show={showModal}
+                            onHide={() => setShowModal(false)}
+                            backdrop="static"
+                            size="lg"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            centered
+                            >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="contained-modal-title-vcenter">
+                                    Mudar Senha
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Input
+                                    placeholder="Senha Atual"
+                                    value={actualPassword}
+                                    onChange={setActualPassword}
+                                />
+                                <Input
+                                    placeholder="Nova senha"
+                                    value={newPassword}
+                                    onChange={setNewPassword}
+                                />
+                                <Input
+                                    placeholder="Confirmar nova senha"
+                                    value={confirmNewPassword}
+                                    onChange={setConfirmNewPassword}
+                                />
+                                {alertConfirmPassword ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            As novas senhas devem ser iguais.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                {alertDanger ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Ocorreu algum erro ao atualizar a senha, tente novamente.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="success" onClick={updatePassword}>Confirmar</Button>
+                                <Button variant="danger" onClick={() => setShowModal(false)}>Cancelar</Button>
+                            </Modal.Footer>
+                        </Modal>
+                    </div>
                 </div>
             </div>
         </>

@@ -35,6 +35,20 @@
     color: #eee;
 }
 
+.psyProfileContainer .content .secondColumn .updt-pswrd-btn {
+    text-decoration: none;
+    border: none;
+    background: none;
+    margin-bottom: 20px;
+    color: #eee;
+}
+
+.psyProfileContainer .content .secondColumn .updt-pswrd-modalBody{
+    display: flex;
+    flex-direction: row;
+    color: red;
+}
+
 .psyProfileContainer .content .profile {
     margin: 40px 0 40px 100px;
     align-self: flex-start;
