@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar';
 
 import './styles.css';
 
-export default function PsychologistSchedule(props) {
+export default function PsychologistSchedule() {
     const [scheduleItems, setScheduleItems] = useState([]);
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -71,7 +71,7 @@ export default function PsychologistSchedule(props) {
 
         setScheduleItems(updatedScheduleItems);
     }
-    
+
     function appointmentHours(start, end, duration) {
         let actualHour = parseInt(start.substring(0, 2));
         let actualMinutes = parseInt(start.substring(3, 5));
@@ -133,7 +133,7 @@ export default function PsychologistSchedule(props) {
 
     function verifyCalendarData() {
         let minutes;
-        for(let i = 0; i < scheduleItems.length; i++){
+        for (let i = 0; i < scheduleItems.length; i++) {
             if (scheduleItems[i].from > scheduleItems[i].to) {
                 setShow(true);
                 setVariant('danger');
@@ -211,7 +211,6 @@ export default function PsychologistSchedule(props) {
             }, 3000);
         }
     }
-
 
     function calculateAttendance(start, end, duration) {
         start = parseInt(start.substring(0, 2)) * 60 + parseInt(start.substring(3, 5));

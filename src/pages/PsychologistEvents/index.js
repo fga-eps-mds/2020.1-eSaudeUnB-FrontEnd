@@ -11,16 +11,12 @@ export default function PsychologistEvents() {
     const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
-        setPsy();
-    }, []);
-
-    async function setPsy() {
         api.get(`/psychologist/${localStorage.getItem('user')}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPsychologist(response.data);
         });
-    }
+    }, []);
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
@@ -65,7 +61,7 @@ export default function PsychologistEvents() {
                                                         ? <div className="testeTotal">
                                                             <h3>{`- ${appointment.time}`}</h3>
                                                             <h3>
-                                                            Atendimento com {appointment.name}
+                                                                Atendimento com {appointment.name}
                                                             </h3>
                                                         </div>
                                                         : <div></div>

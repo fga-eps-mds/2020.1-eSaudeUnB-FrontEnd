@@ -93,16 +93,14 @@ export default function UserMain() {
                         <div className="schedules">
                             {psychologists.map((psychologist, index) => (
                                 <div
-                                    // eslint-disable-next-line no-underscore-dangle
                                     key={index}
                                     className="schedule-box"
                                 >
                                     {psychologist.weekDay.map((workDay, index) => (
                                         dateCheck(workDay.weekDay)
                                             ? <div className="testecalendar" key={index}>
-                                                {show? setShow(false) : ""}
+                                                {show ? setShow(false) : ''}
                                                 <div className="psy-card"
-                                                    // eslint-disable-next-line no-underscore-dangle
                                                     key={index}
 
                                                 >
@@ -112,7 +110,7 @@ export default function UserMain() {
 
                                                 </div>
                                             </div>
-                                            : <div key={index}>{!show ? setShow(true) : ""}</div>
+                                            : <div key={index}>{!show ? setShow(true) : ''}</div>
                                     ))}
                                 </div>
                             ))}
@@ -120,8 +118,8 @@ export default function UserMain() {
                     </div>
 
                 </div>
-                {userSelected.weekDay !== undefined ?
-                     <div className="dropDown-calendar">
+                {userSelected.weekDay !== undefined
+                    ? <div className="dropDown-calendar">
                         <div className="column1">
                             <h3>{userSelected.name} {userSelected.lastName}</h3>
                             <h3>{userSelected.biography}</h3>
