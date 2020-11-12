@@ -421,7 +421,16 @@ export default function UserProfile(props) {
                         <button className="updt-pswrd-btn" onClick={() => setShowModal(true)}>Alterar Senha</button>
                         <Modal
                             show={showModal}
-                            onHide={() => setShowModal(false)}
+                            onHide={
+                                () => {
+                                    setAlertConfirmPassword(false);
+                                    setAlertDanger(false);
+                                    setShowModal(false);
+                                    setActualPassword('');
+                                    setNewPassword('');
+                                    setConfirmNewPassword('');
+                                }
+                            }
                             backdrop="static"
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
@@ -473,7 +482,19 @@ export default function UserProfile(props) {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={updatePassword}>Confirmar</Button>
-                                <Button variant="danger" onClick={() => setShowModal(false)}>Cancelar</Button>
+                                <Button 
+                                    variant="danger" 
+                                    onClick={() => {
+                                        setAlertConfirmPassword(false);
+                                        setAlertDanger(false);
+                                        setShowModal(false);
+                                        setActualPassword('');
+                                        setNewPassword('');
+                                        setConfirmNewPassword('');
+                                    }}
+                                >
+                                            Cancelar
+                                </Button>
                             </Modal.Footer>
                         </Modal>
                     </div>
