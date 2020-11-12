@@ -1,4 +1,4 @@
-.loginContainer {
+.loginAdminContainer {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
@@ -13,7 +13,7 @@
     font-weight: normal;
 }
 
-.loginContainer .content {
+.loginAdminContainer .content {
     width: 100%;
     height: 100vh;
 
@@ -22,38 +22,42 @@
     justify-content: space-around;
 }
 
-.loginContainer .form {
-    height: 446px;
-    width: 320px;
+.loginAdminContainer .form {
+    height: 480px;
+    width: 380px;
 
+    background-color: #eee;
+    border-radius: 15px;
+
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
-.loginContainer .form .input {
+.loginAdminContainer .form .input {
+    margin: 25px 0 25px 0;
     display: flex;
     border-bottom: 3px solid #0459ae;
 }
 
-.loginContainer .form input {
+.loginAdminContainer .form input {
     width: 320px;
     height: 33px;
 
     background-color: transparent;
-    color: #fff;
+    color: #0459ae;
     border: 0;
 
-    font-size: 18px;
+    font-size: 14px;
     line-height: 27px;
 }
 
-.loginContainer .form input::placeholder {
-    color: #fff;
+.loginAdminContainer .form input::placeholder {
+    color: #909090;
 }
 
-.loginContainer .form .button {
+.loginAdminContainer .form .button {
     width: 200px;
     height: 50px;
 
@@ -61,23 +65,28 @@
     border: 0;
     color: #fff;
     background-color: #0459ae;
+    margin-top: 50px;
 
     font-size: 24px;
     line-height: 36px;
     cursor: pointer;
 }
+.loginAdminContainer .form .button:hover {
+    background: #0a84e3;
+}
 
-.loginContainer .form .pageTitle {
+.loginAdminContainer .form .pageTitle {
     font-size: 20px;
     line-height: 30px;
-    color: #fff;
+    color: #0459ae;
+    margin: 50px 0 50px 0;
 
     font-family: Poppins, sans-serif;
     font-style: normal;
     font-weight: normal;
 }
 
-.loginContainer .alert {
+.loginAdminContainer .alert {
     position: fixed;
     transform: translateX(-50%);
     top: 0;

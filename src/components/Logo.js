@@ -7,7 +7,7 @@ export default function Logo() {
         <section className="section">
             <img src={logo} alt="logo-eSaude" />
 
-            <p>E-Saude UnB</p>
+            <p>e-Saúde UnB</p>
             <p>Mesmo à distância nós cuidamos de você</p>
         </section>
     );

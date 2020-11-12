@@ -44,12 +44,12 @@ export default function PsychologistList(props) {
             <NavBar className="navBar" actualUser={actualUser} />
             <div className="content">
                 <SearchBar
+                    placeholder="Pesquisar"
                     className="searchBar"
                     value={search}
                     onChange={setSearch}
                     icon={MagnifyingGlass}
                 />
-
                 <div className="psy">
                     {!search
                         ? psychologist.map((psy) => (
@@ -59,17 +59,21 @@ export default function PsychologistList(props) {
                                         {psy.userImage != null ? (
                                             <img
                                                 className="patientImg"
-                                                src={atob(Buffer.from(psy.userImage, 'binary').toString('base64'))}
+                                                src={atob(
+                                                    Buffer.from(
+                                                        psy.userImage,
+                                                        'binary',
+                                                    ).toString('base64'),
+                                                )}
                                                 alt={psy.name}
                                             />
-                                        )
-                                            : (
-                                                <img
-                                                    className="patientImg"
-                                                    src={userIcon}
-                                                    alt={psy.name}
-                                                />
-                                            )}
+                                        ) : (
+                                            <img
+                                                className="patientImg"
+                                                src={userIcon}
+                                                alt={psy.name}
+                                            />
+                                        )}
 
                                         <div className="minPatient">
                                             <p className="cardName">
@@ -123,17 +127,21 @@ export default function PsychologistList(props) {
                                             {psy.userImage != null ? (
                                                 <img
                                                     className="patientImg"
-                                                    src={atob(Buffer.from(psy.userImage, 'binary').toString('base64'))}
+                                                    src={atob(
+                                                        Buffer.from(
+                                                            psy.userImage,
+                                                            'binary',
+                                                        ).toString('base64'),
+                                                    )}
                                                     alt={psy.name}
                                                 />
-                                            )
-                                                : (
-                                                    <img
-                                                        className="patientImg"
-                                                        src={userIcon}
-                                                        alt={psy.name}
-                                                    />
-                                                )}
+                                            ) : (
+                                                <img
+                                                    className="patientImg"
+                                                    src={userIcon}
+                                                    alt={psy.name}
+                                                />
+                                            )}
                                             <div className="minPatient">
                                                 <p className="cardName">
                                                       Nome:{' '}

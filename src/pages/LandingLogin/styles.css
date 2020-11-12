@@ -22,37 +22,48 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
 .loginContainer .section img {
-    width: 678px;
-    height: 341px;
+    width: 1000px;
 }
 
 .loginContainer .section p {
+    font: 500 24px Poppins;
     color: #fff;
 }
 
 .loginContainer .section p:first-of-type {
-    font-size: 48px;
+    margin-top: 50px;
+    font: 700 66px Poppins;
     line-height: 53px;
 }
 
 .loginContainer .form {
-    height: 446px;
-    width: 320px;
+    height: 580px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    background-color: #eee;
+    border-radius: 15px;
+    padding: 90px 60px 40px 60px;
+
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+
+    color: #0459ae;
+}
+
+.loginContainer .form span {
+    font: 500 26px Poppins;
 }
 
 .loginContainer .form .input {
-    display: flex;
     border-bottom: 3px solid #0459ae;
 }
 
@@ -61,7 +72,7 @@
     height: 33px;
 
     background-color: transparent;
-    color: #fff;
+    color: #0459ae;
     border: 0;
 
     font-size: 18px;
@@ -69,7 +80,7 @@
 }
 
 .loginContainer .form input::placeholder {
-    color: #fff;
+    color: #909090;
 }
 
 .loginContainer .form .button {
@@ -78,21 +89,24 @@
 
     border-radius: 25px;
     border: 0;
-    color: #fff;
+    color: #eee;
     background-color: #0459ae;
 
     font-size: 24px;
     line-height: 36px;
 }
+.loginContainer .form .button:hover {
+    background: #0a84e3;
+}
 
 .loginContainer .form a {
-    width: 200px;
+    width: 250px;
     height: 20px;
-    text-decoration: none;
+    text-decoration: underline;
     color: #0459ae;
 
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 .loginContainer .form .userIcon {

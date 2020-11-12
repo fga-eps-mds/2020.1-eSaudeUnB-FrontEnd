@@ -37,11 +37,15 @@ export default function UserProfile(props) {
     const [alertContentLastName, setAlertContentLastName] = useState(false);
     const [alertContentEmail, setAlertContentEmail] = useState(false);
     const [alertContentPhone, setAlertContentPhone] = useState(false);
-    const [alertContentUnbRegistration, setAlertContentUnbRegistration] = useState(false);
+    const [
+        alertContentUnbRegistration,
+        setAlertContentUnbRegistration,
+    ] = useState(false);
     const [alertContentGender, setAlertContentGender] = useState(false);
     const [alertContentBond, setAlertContentBond] = useState(false);
-    const [alertContentReligion, setAlertContentReligion] = useState(false);
-    const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(false);
+    const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(
+        false,
+    );
 
     function closeAlerts() {
         setAlertContentName(false);
@@ -51,7 +55,6 @@ export default function UserProfile(props) {
         setAlertContentUnbRegistration(false);
         setAlertContentGender(false);
         setAlertContentBond(false);
-        setAlertContentReligion(false);
         setAlertContentCivilStatus(false);
     }
 
@@ -84,7 +87,11 @@ export default function UserProfile(props) {
                 const { details } = response.data.error;
                 closeAlerts();
 
-                for (let value = 0; value < response.data.error.details.length; value += 1) {
+                for (
+                    let value = 0;
+                    value < response.data.error.details.length;
+                    value += 1
+                ) {
                     if (details[value].path[0] === 'name') {
                         setAlertContentName(true);
                     }
@@ -105,9 +112,6 @@ export default function UserProfile(props) {
                     }
                     if (details[value].path[0] === 'bond') {
                         setAlertContentBond(true);
-                    }
-                    if (details[value].path[0] === 'religion') {
-                        setAlertContentReligion(true);
                     }
                     if (details[value].path[0] === 'civilStatus') {
                         setAlertContentCivilStatus(true);
@@ -166,7 +170,14 @@ export default function UserProfile(props) {
                 setBond(response.data.bond);
                 setCivilStatus(response.data.civilStatus);
                 if (response.data.userImage) {
-                    setUserImage(atob(Buffer.from(response.data.userImage, 'binary').toString('base64')));
+                    setUserImage(
+                        atob(
+                            Buffer.from(
+                                response.data.userImage,
+                                'binary',
+                            ).toString('base64'),
+                        ),
+                    );
                 }
             }
         } catch (err2) {
@@ -188,88 +199,155 @@ export default function UserProfile(props) {
     }
 
     return (
-        <>
+        <div>
             <NavBar actualUser={props.location.state.data} />
 
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
-                    <Alert className="alert" variant={variant}>{alertText}</Alert>
+                    <Alert className="alert" variant={variant}>
+                        {alertText}
+                    </Alert>
                 ) : (
                     <div></div>
                 )}
 
                 <div className="content">
-
                     <form className="formColumn" onSubmit={updateInfos}>
-
-                        <div className="form">
-                            <div className="personal-image">
-                                <label className="label">
-                                    <input
-                                        id="image"
-                                        type="file"
-                                        onChange={async (e) => {
-                                            uploadImage(e);
-                                            const image = await convertBase64(e.target.files[0]);
-                                            setCurrentImage(image);
-                                        }}
+                        <div className="personal-image">
+                            <label className="label">
+                                <input
+                                    id="image"
+                                    type="file"
+                                    onChange={async (e) => {
+                                        uploadImage(e);
+                                        const image = await convertBase64(
+                                            e.target.files[0],
+                                        );
+                                        setCurrentImage(image);
+                                    }}
+                                />
+                                <figure className="personal-figure">
+                                    <img
+                                        src={
+                                            currentImage
+                                            || userImage
+                                            || userIcon
+                                        }
+                                        className="personal-avatar"
+                                        alt="avatar"
                                     />
-                                    <figure className="personal-figure">
-                                        <img src={currentImage || userImage || userIcon} className="personal-avatar" alt="avatar" />
-                                        <figcaption className="personal-figcaption">
-                                            <img src={figureCaption} alt="figureCaption" />
-                                        </figcaption>
-                                    </figure>
-                                </label>
+                                    <figcaption className="personal-figcaption">
+                                        <img
+                                            src={figureCaption}
+                                            alt="figureCaption"
+                                        />
+                                    </figcaption>
+                                </figure>
+                            </label>
+                        </div>
+                        <div className="inputs">
+                            <div className="form">
+                                <Input
+                                    placeholder="Nome"
+                                    value={name}
+                                    onChange={setName}
+                                />
+
+                                {alertContentName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Nome precisa possuir mais de 2
+                                            letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+
+                                <Input
+                                    placeholder="Sobrenome"
+                                    value={lastName}
+                                    onChange={setLastName}
+                                />
+                                {alertContentLastName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Sobrenome precisa possuir mais de 2
+                                            letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+
+                                <Input
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={setEmail}
+                                />
+                                {alertContentEmail ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            E-mail não foi preenchido
+                                            corretamente.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+
+                                <Input
+                                    placeholder="Matrícula UnB"
+                                    value={unbRegistration || ''}
+                                    onChange={setUnbRegistration}
+                                />
+                                {alertContentUnbRegistration ? (
+                                    <div className="alertContent">
+                                        <p>Insira uma matrícula válida.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                             </div>
-                            <Input
-                                placeholder="Nome"
-                                value={name}
-                                onChange={setName}
-                            />
 
-                            {alertContentName ? (
-                                <div className="alertContent">
-                                    <p>Nome precisa possuir mais de 2 letras.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <Input
-                                placeholder="Email"
-                                value={email}
-                                onChange={setEmail}
-                            />
-                            {alertContentEmail ? (
-                                <div className="alertContent">
-                                    <p>E-mail não foi preenchido corretamente.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
+                            <div className="form">
+                                <Input
+                                    placeholder="DDD + Telefone"
+                                    value={phone || ''}
+                                    onChange={setPhone}
+                                />
+                                {alertContentPhone ? (
+                                    <div className="alertContent">
+                                        <p>Insira um telefone válido.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
-                            <div className="selects">
-
-                                <select name="gender" value={gender || ''} onChange={(e) => setGender(e.target.value)}>
-                                    <option value="" disabled>Gênero</option>
+                                <select
+                                    className="selectsLargest"
+                                    name="gender"
+                                    value={gender || ''}
+                                    onChange={(e) => setGender(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Gênero
+                                    </option>
                                     <option value="F">Feminino</option>
                                     <option value="M">Masculino</option>
                                     <option value="I">Não Identificar</option>
                                 </select>
 
-                                <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
-                                    <option value="" disabled>Vínculo</option>
-                                    <option value="graduando">Graduando</option>
-                                    <option value="posGraduando">Pós-Graduando</option>
-                                    <option value="professor">Professor</option>
-                                </select>
-
-                            </div>
-                            <div className="selects">
                                 {alertContentGender ? (
                                     <div className="alertContent">
                                         <p>Selecione um gênero.</p>
@@ -279,7 +357,23 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-                                <div className="space"></div>
+
+                                <select
+                                    className="selectsLargest"
+                                    name="bond"
+                                    value={bond || ''}
+                                    onChange={(e) => setBond(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Vínculo
+                                    </option>
+                                    <option value="graduando">Graduando</option>
+                                    <option value="posGraduando">
+                                        Pós-Graduando
+                                    </option>
+                                    <option value="professor">Professor</option>
+                                </select>
+
                                 {alertContentBond ? (
                                     <div className="alertContent">
                                         <p>Selecione um vínculo.</p>
@@ -289,97 +383,47 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
+
+                                <select
+                                    className="selectsLargest"
+                                    value={civilStatus || 'naoInformado'}
+                                    name="civilStatus"
+                                    onChange={(e) => setCivilStatus(e.target.value)
+                                    }
+                                >
+                                    <option value="naoInformado" disabled>
+                                        Estado Civil
+                                    </option>
+                                    <option value="Solteiro(a)">
+                                        Solteiro
+                                    </option>
+                                    <option value="Divorciado(a)">
+                                        Divorciado
+                                    </option>
+                                    <option value="Casado(a)">Casado</option>
+                                    <option value="Viuvo(a)">Viuvo</option>
+                                </select>
+
+                                {alertContentCivilStatus ? (
+                                    <div className="alertContent">
+                                        <p>Informe o estado civil.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                             </div>
-
-                            <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
-                                <option value="naoInformado" disabled>Estado Civil</option>
-                                <option value="Solteiro(a)">Solteiro</option>
-                                <option value="Divorciado(a)">Divorciado</option>
-                                <option value="Casado(a)">Casado</option>
-                                <option value="Viuvo(a)">Viuvo</option>
-                            </select>
-                            {alertContentCivilStatus ? (
-                                <div className="alertContent">
-                                    <p>Informe o estado civil.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="form">
-                            <Input
-                                placeholder="Sobrenome"
-                                value={lastName}
-                                onChange={setLastName}
-                            />
-                            {alertContentLastName ? (
-                                <div className="alertContent">
-                                    <p>
-                                        Sobrenome precisa possuir mais de 2 letras.
-                                    </p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <Input
-                                placeholder="Matrícula UnB"
-                                value={unbRegistration || ''}
-                                onChange={setUnbRegistration}
-                            />
-                            {alertContentUnbRegistration ? (
-                                <div className="alertContent">
-                                    <p>Insira uma matrícula válida.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <Input
-                                placeholder="DDD + Telefone"
-                                value={phone || ''}
-                                onChange={setPhone}
-                            />
-                            {alertContentPhone ? (
-                                <div className="alertContent">
-                                    <p>Insira um telefone válido.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                            <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
-                                <option value="naoInformado" disabled>Religião</option>
-                                <option value="Catolico">Católico</option>
-                                <option value="Evangolico">Evangélico</option>
-                                <option value="Espirita">Espirita</option>
-                                <option value="outra">Outra</option>
-                            </select>
-                            {alertContentReligion ? (
-                                <div className="alertContent">
-                                    <p>Selecione a sua religião.</p>
-                                </div>
-                            ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-
                         </div>
                         <div className="buttons">
-                            <button className="button-salvar" type="submit">Salvar</button>
-                            <button className="button-sair" onClick={getOut}>Sair</button>
+                            <button className="button-salvar" type="submit">
+                                Salvar
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 UserProfile.propTypes = {

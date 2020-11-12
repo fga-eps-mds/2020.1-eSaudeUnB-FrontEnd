@@ -34,13 +34,24 @@
 }
 
 .signUp01Container .form {
-    height: 510px;
-    width: 700px;
+    height: 700px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    background-color: #eee;
+    border-radius: 15px;
+    padding: 80px 60px 95px 60px;
+
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+
+    color: #0459ae;
+}
+
+.signUp01Container .form span {
+    font: 500 26px Poppins;
 }
 
 .signUp01Container .form .input {
@@ -53,7 +64,7 @@
     height: 33px;
 
     background-color: transparent;
-    color: #fff;
+    color: #0459ae;
     border: 0;
 
     font-size: 18px;
@@ -61,7 +72,7 @@
 }
 
 .signUp01Container .form input::placeholder {
-    color: #fff;
+    color: #909090;
 }
 
 .signUp01Container .form .selects select {
@@ -109,8 +120,11 @@
 }
 
 .signUp01Container .form p {
-    color: black;
+    color: red;
     text-align: left;
     width: 320px;
     font-size: 14px;
+}
+.signUp01Container .form .back {
+    text-decoration: underline;
 }
