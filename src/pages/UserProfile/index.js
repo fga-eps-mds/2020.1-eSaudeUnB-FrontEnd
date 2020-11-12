@@ -520,8 +520,8 @@ export default function UserProfile(props) {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={updatePassword}>Confirmar</Button>
-                                <Button 
-                                    variant="danger" 
+                                <Button
+                                    variant="danger"
                                     onClick={() => {
                                         setAlertConfirmPassword(false);
                                         setShowModal(false);
