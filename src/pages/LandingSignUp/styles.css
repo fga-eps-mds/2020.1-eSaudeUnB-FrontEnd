@@ -18,18 +18,24 @@
     align-items: center;
     justify-content: space-around;
 }
+.signUp01Container .section{
+    width: 40vw;
+}
 
 .signUp01Container .section img {
-    width: 678px;
-    height: 341px;
+    width: 120%;
+    max-width: 1300px;
+
 }
 
 .signUp01Container .section p {
+    font: 500 24px Poppins;
     color: #fff;
 }
 
 .signUp01Container .section p:first-of-type {
-    font-size: 48px;
+    margin-top: 50px;
+    font: 700 66px Poppins;
     line-height: 53px;
 }
 
@@ -127,4 +133,45 @@
 }
 .signUp01Container .form .back {
     text-decoration: underline;
+}
+
+@media only screen and (max-width: 1000px) {
+    .signUp01Container .section .logoImg {
+        display: none;
+    }
+    .signUp01Container .content {
+        background-image: url('../../assets/images/logo.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }    .signUp01Container .form {
+        height: 520px;
+        width: 330px;
+        margin: auto;
+        padding-top: 50px;
+    }
+    .signUp01Container .form input {
+        width: 240px;
+        font-size: 14px;
+    }
+    .signUp01Container .form span {
+        font: 500 20px Poppins;
+        margin-bottom: 30px;
+    }
+    .signUp01Container .form .button {
+        width: 120px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .signUp01Container .form a {
+        font-size: 12px;
+    }
+    .signUp01Container .form .alertContent {
+        width: 240px;
+    }
+    .signUp01Container .form p {
+        width: 240px;
+        font-size: 10px;
+    }
+    
+    
 }
