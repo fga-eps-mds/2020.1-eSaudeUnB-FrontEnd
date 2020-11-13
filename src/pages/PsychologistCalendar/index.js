@@ -25,9 +25,9 @@ export default function PsychologistCalendar(props) {
     function checkRepeat() {
         for (const item of restricts) {
             if (
-                date.getDate() === item.day &&
-                date.getMonth() === item.month &&
-                date.getFullYear() === item.year
+                date.getDate() === item.day
+                && date.getMonth() === item.month
+                && date.getFullYear() === item.year
             ) {
                 return false;
             }
