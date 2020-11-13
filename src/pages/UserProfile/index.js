@@ -37,6 +37,7 @@ export default function UserProfile(props) {
     const [alertContentLastName, setAlertContentLastName] = useState(false);
     const [alertContentEmail, setAlertContentEmail] = useState(false);
     const [alertContentPhone, setAlertContentPhone] = useState(false);
+    const [alertContentReligion, setAlertContentRealertContentReligion] = useState(false);
     const [
         alertContentUnbRegistration,
         setAlertContentUnbRegistration,
@@ -332,7 +333,6 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-
                                 <Input
                                     placeholder="Email"
                                     value={email}
@@ -340,10 +340,7 @@ export default function UserProfile(props) {
                                 />
                                 {alertContentEmail ? (
                                     <div className="alertContent">
-                                        <p>
-                                            E-mail não foi preenchido
-                                            corretamente.
-                                        </p>
+                                        <p>E-mail não foi preenchido corretamente.</p>
                                     </div>
                                 ) : (
                                     <div className="alertContent">
@@ -351,6 +348,80 @@ export default function UserProfile(props) {
                                     </div>
                                 )}
 
+                                <div className="selects">
+
+                                    <select name="gender" value={gender || ''} onChange={(e) => setGender(e.target.value)}>
+                                        <option value="" disabled>Gênero</option>
+                                        <option value="F">Feminino</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="I">Não Identificar</option>
+                                    </select>
+
+                                    <select name="bond" value={bond || ''} onChange={(e) => setBond(e.target.value)}>
+                                        <option value="" disabled>Vínculo</option>
+                                        <option value="graduando">Graduando</option>
+                                        <option value="posGraduando">Pós-Graduando</option>
+                                        <option value="professor">Professor</option>
+                                    </select>
+
+                                </div>
+                                <div className="selects">
+                                    {alertContentGender ? (
+                                        <div className="alertContent">
+                                            <p>Selecione um gênero.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                    <div className="space"></div>
+                                    {alertContentBond ? (
+                                        <div className="alertContent">
+                                            <p>Selecione um vínculo.</p>
+                                        </div>
+                                    ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
+                                    <option value="naoInformado" disabled>Estado Civil</option>
+                                    <option value="Solteiro(a)">Solteiro</option>
+                                    <option value="Divorciado(a)">Divorciado</option>
+                                    <option value="Casado(a)">Casado</option>
+                                    <option value="Viuvo(a)">Viuvo</option>
+                                </select>
+                                {alertContentCivilStatus ? (
+                                    <div className="alertContent">
+                                        <p>Informe o estado civil.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="form">
+                                <Input
+                                    placeholder="Sobrenome"
+                                    value={lastName}
+                                    onChange={setLastName}
+                                />
+                                {alertContentLastName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Sobrenome precisa possuir mais de 2 letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <Input
                                     placeholder="Matrícula UnB"
                                     value={unbRegistration || ''}
@@ -365,9 +436,6 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-                            </div>
-
-                            <div className="form">
                                 <Input
                                     placeholder="DDD + Telefone"
                                     value={phone || ''}
@@ -382,24 +450,16 @@ export default function UserProfile(props) {
                                         <p></p>
                                     </div>
                                 )}
-
-                                <select
-                                    className="selectsLargest"
-                                    name="gender"
-                                    value={gender || ''}
-                                    onChange={(e) => setGender(e.target.value)}
-                                >
-                                    <option value="" disabled>
-                                        Gênero
-                                    </option>
-                                    <option value="F">Feminino</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="I">Não Identificar</option>
+                                <select className="selectsLargest" name="religion" value={religion || 'naoInformado'} onChange={(e) => setReligion(e.target.value)}>
+                                    <option value="naoInformado" disabled>Religião</option>
+                                    <option value="Catolico">Católico</option>
+                                    <option value="Evangolico">Evangélico</option>
+                                    <option value="Espirita">Espirita</option>
+                                    <option value="outra">Outra</option>
                                 </select>
-
-                                {alertContentGender ? (
+                                {alertContentReligion ? (
                                     <div className="alertContent">
-                                        <p>Selecione um gênero.</p>
+                                        <p>Selecione a sua religião.</p>
                                     </div>
                                 ) : (
                                     <div className="alertContent">
@@ -407,69 +467,16 @@ export default function UserProfile(props) {
                                     </div>
                                 )}
 
-                                <select
-                                    className="selectsLargest"
-                                    name="bond"
-                                    value={bond || ''}
-                                    onChange={(e) => setBond(e.target.value)}
-                                >
-                                    <option value="" disabled>
-                                        Vínculo
-                                    </option>
-                                    <option value="graduando">Graduando</option>
-                                    <option value="posGraduando">
-                                        Pós-Graduando
-                                    </option>
-                                    <option value="professor">Professor</option>
-                                </select>
-
-                                {alertContentBond ? (
-                                    <div className="alertContent">
-                                        <p>Selecione um vínculo.</p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-
-                                <select
-                                    className="selectsLargest"
-                                    value={civilStatus || 'naoInformado'}
-                                    name="civilStatus"
-                                    onChange={(e) => setCivilStatus(e.target.value)
-                                    }
-                                >
-                                    <option value="naoInformado" disabled>
-                                        Estado Civil
-                                    </option>
-                                    <option value="Solteiro(a)">
-                                        Solteiro
-                                    </option>
-                                    <option value="Divorciado(a)">
-                                        Divorciado
-                                    </option>
-                                    <option value="Casado(a)">Casado</option>
-                                    <option value="Viuvo(a)">Viuvo</option>
-                                </select>
-
-                                {alertContentCivilStatus ? (
-                                    <div className="alertContent">
-                                        <p>Informe o estado civil.</p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
                             </div>
-                        </div>
-                        <div className="buttons">
-                            <button className="button-change" onClick={() => setShowModal(true)}>
-                                Alterar Senha
-                            </button>
-
-                            <Modal
+                            <div className="buttons">
+                                <button className="button-salvar" type="submit">Salvar</button>
+                                <button className="button-sair" onClick={getOut}>Sair</button>
+                            </div>
+                    </div>
+                        </form>
+                    <div className="lateralLinks">
+                        <button className="updt-pswrd-btn" onClick={() => setShowModal(true)}>Alterar Senha</button>
+                        <Modal
                             show={showModal}
                             onHide={
                                 () => {
@@ -530,16 +537,11 @@ export default function UserProfile(props) {
                                         setConfirmNewPassword('');
                                     }}
                                 >
-                                    Cancelar
+                                            Cancelar
                                 </Button>
                             </Modal.Footer>
                         </Modal>
-
-                            <button className="button-salvar" type="submit">
-                                Salvar
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
