@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Alert, Modal, Button, Col, Row, Container } from 'react-bootstrap';
+import {
+    Alert, Modal, Button, Col, Row, Container,
+} from 'react-bootstrap';
 
 import api from '../../services/api';
 import './styles.css';
