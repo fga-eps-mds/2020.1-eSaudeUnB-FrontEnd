@@ -85,7 +85,8 @@
     height: 41px;
 }
 
-.userProfileContainer .formColumn .buttons .button-salvar {
+.userProfileContainer .content .formColumn .buttons .button-salvar,
+.button-change {
     width: 130px;
     height: 40px;
 
@@ -102,6 +103,12 @@
 
 .userProfileContainer .formColumn .buttons .button-salvar:hover {
     background: #0a84e3;
+}
+
+.userProfileContainer .content .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
+    margin-right: 420px;
 }
 
 .userProfileContainer .alert {
