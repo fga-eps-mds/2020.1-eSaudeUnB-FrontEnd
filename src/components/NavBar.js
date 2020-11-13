@@ -50,7 +50,6 @@ export default function NavBar({ actualUser, bond }) {
         })();
     }, [actualUser, bond]);
 
-
     return (
         // <nav className="navBarComponent">
         //     <div className="logo">
@@ -123,12 +122,13 @@ export default function NavBar({ actualUser, bond }) {
         //                 Consultas Marcadas
         //             </Link>
 
-
         //         </div>
         //     )}
         // </nav>
         <Navbar className="navBarComponent" bg="light" expand="lg">
-            <Navbar.Brand href="#home"><img className="logoQuadrado" src={logoQuadrado}></img></Navbar.Brand>
+            <Navbar.Brand href="#home">
+                <img className="logoQuadrado" src={logoQuadrado}></img>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
@@ -144,7 +144,7 @@ export default function NavBar({ actualUser, bond }) {
                                 }}
                             >
                                 Lista de Pacientes
-                    </Link>
+                            </Link>
                             <Link
                                 className="a"
                                 to={{
@@ -155,71 +155,70 @@ export default function NavBar({ actualUser, bond }) {
                                 }}
                             >
                                 Agendamentos
-                    </Link>
-
+                            </Link>
                         </div>
                     ) : (
-                            <div className="navLinks">
-
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/psychologist/list',
-                                        state: {
-                                            data: actualUser,
-                                        },
-                                    }}
-                                >
-                                    Lista de Psicologos
-                    </Link>
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/main',
-                                        state: {
-                                            data: actualUser,
-                                        },
-                                    }}
-                                >
-                                    Agendamentos
-                    </Link>
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/events',
-                                        state: {
-                                            data: actualUser,
-                                        },
-                                    }}
-                                >
-                                    Consultas Marcadas
-                    </Link>
-
-
-                            </div>
-                        )}
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Lista de Psicologos
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/main',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Agendamentos
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/events',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Consultas Marcadas
+                            </Link>
+                        </div>
+                    )}
                     <img
                         className="userIcon"
                         src={userImage || userIcon}
                         alt="icone de usuario"
                     />
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
-                        <NavDropdown.Item href="#action/3.1">{<Link
-                            className="a"
-                            to={{
-                                pathname: '/psychologist/profile',
-                                state: {
-                                    data: actualUser,
-                                },
-                            }}
-                        >
-                            Perfil
-                        </Link>}</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.1">
+                            {
+                                <Link
+                                    className="a"
+                                    to={{
+                                        pathname: '/psychologist/profile',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Perfil
+                                </Link>
+                            }
+                        </NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="/">Sair</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-
             </Navbar.Collapse>
         </Navbar>
     );
