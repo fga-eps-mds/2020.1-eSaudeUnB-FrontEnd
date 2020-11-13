@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Alert, Modal, Button } from 'react-bootstrap';
+import { Alert, Modal, Button, Col, Row, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Input from '../../components/Input';
@@ -486,33 +486,48 @@ export default function PsychologistProfile(props) {
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <Input
-                                    placeholder="Senha Atual"
-                                    value={actualPassword}
-                                    onChange={setActualPassword}
-                                />
-                                <Input
-                                    placeholder="Nova senha"
-                                    value={newPassword}
-                                    onChange={setNewPassword}
-                                />
-                                <Input
-                                    placeholder="Confirmar nova senha"
-                                    value={confirmNewPassword}
-                                    onChange={setConfirmNewPassword}
-                                />
-                                {alertConfirmPassword ? (
-                                    <div className="alertContent">
-                                        <p>
-                                            {alertPasswordText}
-                                        </p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-                            </Modal.Body>
+                                    <Container>
+                                        <Row>
+                                            <Col xs={6} md={4}>
+                                                <Input
+                                                    placeholder="Senha Atual"
+                                                    value={actualPassword}
+                                                    onChange={setActualPassword}
+                                                />
+                                            </Col>
+                                            <Col xs={6} md={4}>
+                                                <Input
+                                                    placeholder="Nova senha"
+                                                    value={newPassword}
+                                                    onChange={setNewPassword}
+                                                />
+                                            </Col>
+                                            <Col xs={6} md={4}>
+                                                <Input
+                                                    placeholder="Confirmar nova senha"
+                                                    value={confirmNewPassword}
+                                                    onChange={setConfirmNewPassword}
+                                                />
+                                            </Col>
+                                        </Row>
+
+                                        <Row>
+                                            <Col xs={18} md={12}>
+                                                {alertConfirmPassword ? (
+                                                    <div className="alertContent">
+                                                        <p>
+                                                            {alertPasswordText}
+                                                        </p>
+                                                    </div>
+                                                ) : (
+                                                    <div className="alertContent">
+                                                        <p></p>
+                                                    </div>
+                                                )}
+                                            </Col>
+                                        </Row>
+                                    </Container>
+                                </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={updatePassword}>Confirmar</Button>
                                 <Button
