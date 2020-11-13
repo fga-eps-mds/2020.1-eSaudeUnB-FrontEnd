@@ -169,7 +169,7 @@ export default function UserProfile(props) {
                     }
                 }
 
-                setInterval(() => {
+                setTimeout(() => {
                     setShow(false);
                 }, 3500);
                 return history.push({
@@ -236,7 +236,7 @@ export default function UserProfile(props) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Sessão expirada');
-                return setInterval(() => {
+                return setTimeout(() => {
                     getOut(event);
                 }, 2000);
             }

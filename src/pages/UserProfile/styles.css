@@ -110,6 +110,10 @@
     margin-left: 35px;
 }
 
+.userProfileContainer .formColumn .buttons .button-salvar:hover {
+    background: #0a84e3;
+}
+
 .userProfileContainer .alert {
     position: fixed;
     transform: translateX(-50%);

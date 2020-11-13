@@ -19,14 +19,6 @@
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
 }
 
-.psyProfileContainer .content .secondColumn .updt-pswrd-btn {
-    text-decoration: none;
-    border: none;
-    background: none;
-    margin-bottom: 20px;
-    color: #eee;
-}
-
 .psyProfileContainer .content .profile {
     margin: 40px 0 40px 100px;
     align-self: flex-start;
