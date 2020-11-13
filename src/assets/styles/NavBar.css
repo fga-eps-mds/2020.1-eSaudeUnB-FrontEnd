@@ -1,20 +1,24 @@
 .navBarComponent {
-    width: 100%;
-
-    background: #0a84e3;
+    height: 70px !important;
+    background: #0a84e3 !important; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin: 0 0 15px 0;
-    padding: 0px 15px 0 15px;
+    padding: 0px 15px 0 15px; */
 }
 
-.navBarComponent .logo img {
-    width: 175px;
-    height: 80px;
+.navbar .navLinks {
+    display: flex !important;
+    
+}
+
+.navBarComponent .logoQuadrado {
+    width: 175px !important;
+    height: 80px !important;
 }
 
 .navBarComponent .navLinks {
@@ -32,7 +36,7 @@
     color: #eeeeee94;
 }
 
-.navBarComponent .navLinks .userIcon {
+.navBarComponent .userIcon {
     height: 46px;
     width: 46px;
     border-radius: 50%;
@@ -100,4 +104,17 @@
     text-decoration: none;
     color: #0459ae;
     padding: 10px 95px 10px 17px;
+}
+
+@media only screen and (max-width: 991px) {
+    .navBarComponent .navLinks {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .navBarComponent .navLinks a {
+        margin-bottom: 20px !important;
+    }
+    .navBarComponent .navLinks a:first-child{
+        margin-top: 20px;
+    }
 }

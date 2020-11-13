@@ -40,8 +40,9 @@ export default function PsychologistList(props) {
     }, []);
 
     return (
+        <>
+        <NavBar className="navBar" actualUser={actualUser} />
         <div className="psychologistListContainer">
-            <NavBar className="navBar" actualUser={actualUser} />
             <div className="content">
                 <SearchBar
                     placeholder="Pesquisar"
@@ -68,16 +69,16 @@ export default function PsychologistList(props) {
                                                 alt={psy.name}
                                             />
                                         ) : (
-                                            <img
-                                                className="patientImg"
-                                                src={userIcon}
-                                                alt={psy.name}
-                                            />
-                                        )}
+                                                <img
+                                                    className="patientImg"
+                                                    src={userIcon}
+                                                    alt={psy.name}
+                                                />
+                                            )}
 
                                         <div className="minPatient">
                                             <p className="cardName">
-                                                  Nome:{' '}
+                                                Nome:{' '}
                                                 {`${psy.name} ${psy.lastName}`}
                                             </p>
                                             <p>email: {psy.email}</p>
@@ -85,7 +86,7 @@ export default function PsychologistList(props) {
                                             <Accordion.Collapse eventKey="0">
                                                 <div className="cardToggle">
                                                     <p>
-                                                          Biografia:{' '}
+                                                        Biografia:{' '}
                                                         {`${psy.biography}`}
                                                     </p>
                                                     <Link
@@ -97,8 +98,8 @@ export default function PsychologistList(props) {
                                                         }}
                                                     >
                                                         <button>
-                                                              Agendar
-                                                              atendimento
+                                                            Agendar
+                                                            atendimento
                                                         </button>
                                                     </Link>
                                                 </div>
@@ -136,15 +137,15 @@ export default function PsychologistList(props) {
                                                     alt={psy.name}
                                                 />
                                             ) : (
-                                                <img
-                                                    className="patientImg"
-                                                    src={userIcon}
-                                                    alt={psy.name}
-                                                />
-                                            )}
+                                                    <img
+                                                        className="patientImg"
+                                                        src={userIcon}
+                                                        alt={psy.name}
+                                                    />
+                                                )}
                                             <div className="minPatient">
                                                 <p className="cardName">
-                                                      Nome:{' '}
+                                                    Nome:{' '}
                                                     {`${psy.name} ${psy.lastName}`}
                                                 </p>
                                                 <p>email: {psy.email}</p>
@@ -152,7 +153,7 @@ export default function PsychologistList(props) {
                                                 <Accordion.Collapse eventKey="0">
                                                     <div className="cardToggle">
                                                         <p>
-                                                              Bibliografia:{' '}
+                                                            Bibliografia:{' '}
                                                             {`${psy.bibliography}`}
                                                         </p>
                                                         <Link
@@ -164,8 +165,8 @@ export default function PsychologistList(props) {
                                                             }}
                                                         >
                                                             <button>
-                                                                  Agendar
-                                                                  atendimento
+                                                                Agendar
+                                                                atendimento
                                                             </button>
                                                         </Link>
                                                     </div>
@@ -183,6 +184,7 @@ export default function PsychologistList(props) {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 
