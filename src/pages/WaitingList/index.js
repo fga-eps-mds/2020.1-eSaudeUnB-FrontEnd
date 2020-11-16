@@ -74,7 +74,6 @@ export default function WaitingList(props) {
                                 <tr>
                                     <th>Posição</th>
                                     <th>Nome</th>
-                                    <th>Data da requisição</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,7 +82,6 @@ export default function WaitingList(props) {
                                         <tr key={index} className="waiting-list-item">
                                             <td>{`${index + 1}º`}</td>
                                             <td>{`${item.namePatient}`}</td>
-                                            <td>{`${item.createdAt}`}</td>
                                         </tr>
                                     );
                                 })}
