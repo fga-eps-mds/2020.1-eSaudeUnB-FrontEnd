@@ -25,26 +25,26 @@ export default function PatientList(props) {
 
     return (
         <>
-        <NavBar
-            className="navBar"
-            bond="Psychologist"
-            actualUser={props.location.state.data}
-        />
-        <div className="patientListContainer">
-            <div className="content">
-                <SearchBar
-                    placeholder="Pesquisar"
-                    className="searchBar"
-                    value={search}
-                    onChange={setSearch}
-                    icon={MagnifyingGlass}
-                />
-                <div className="patients">
-                    {patients.length === 0 ? (
-                        <div className="patientTab noPatients">
+            <NavBar
+                className="navBar"
+                bond="Psychologist"
+                actualUser={props.location.state.data}
+            />
+            <div className="patientListContainer">
+                <div className="content">
+                    <SearchBar
+                        placeholder="Pesquisar"
+                        className="searchBar"
+                        value={search}
+                        onChange={setSearch}
+                        icon={MagnifyingGlass}
+                    />
+                    <div className="patients">
+                        {patients.length === 0 ? (
+                            <div className="patientTab noPatients">
                             Não há pacientes cadastrados
-                        </div>
-                    ) : (
+                            </div>
+                        ) : (
                             <RealizeSearch
                                 patients={patients}
                                 location={props.location}
@@ -52,9 +52,9 @@ export default function PatientList(props) {
                                 search={search}
                             />
                         )}
+                    </div>
                 </div>
             </div>
-        </div>
         </>
     );
 }
