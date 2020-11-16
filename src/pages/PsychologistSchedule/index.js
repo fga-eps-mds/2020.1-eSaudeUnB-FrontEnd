@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar';
 
 import './styles.css';
 
-export default function PsychologistSchedule(props) {
+export default function PsychologistSchedule() {
     const [scheduleItems, setScheduleItems] = useState([]);
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -71,6 +71,7 @@ export default function PsychologistSchedule(props) {
 
         setScheduleItems(updatedScheduleItems);
     }
+
     function appointmentHours(start, end, duration) {
         let actualHour = parseInt(start.substring(0, 2));
         let actualMinutes = parseInt(start.substring(3, 5));
@@ -112,7 +113,6 @@ export default function PsychologistSchedule(props) {
 
     function addNewScheduleItem() {
         const ID = scheduleItems.length > 0 ? handleId(scheduleItems) : 0;
-
         setScheduleItems([
             ...scheduleItems,
             {
@@ -120,6 +120,7 @@ export default function PsychologistSchedule(props) {
                 from: '',
                 to: '',
                 id: ID,
+                appointment: [],
             },
         ]);
     }
@@ -130,9 +131,9 @@ export default function PsychologistSchedule(props) {
         setScheduleItems(temp);
     }
 
-    async function verifyCalendarData() {
+    function verifyCalendarData() {
         let minutes;
-        for (let i = 0; i < scheduleItems.length; i += 1) {
+        for (let i = 0; i < scheduleItems.length; i++) {
             if (scheduleItems[i].from > scheduleItems[i].to) {
                 setShow(true);
                 setVariant('danger');
@@ -169,7 +170,7 @@ export default function PsychologistSchedule(props) {
                 return false;
             }
             // function to be edited earlier
-            minutes = await calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            minutes = calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
 
             if (minutes > 0) {
                 setShow(true);
@@ -183,17 +184,19 @@ export default function PsychologistSchedule(props) {
                 return false;
             }
             const value = appointmentHours(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
-            setScheduleItemsValue(i, 'appointment', value);
+            scheduleItems[i].appointment = value;
         }
+
         return true;
     }
 
-    async function putCalendar() {
-        if (await verifyCalendarData()) {
+    async function putCalendar(event) {
+        event.preventDefault();
+        if (verifyCalendarData()) {
             await api.put(
                 '/calendary/update/',
                 {
-                    email: localStorage.getItem('user'),
+                    email: user,
                     weekDay: scheduleItems,
                 },
                 {
@@ -209,7 +212,7 @@ export default function PsychologistSchedule(props) {
         }
     }
 
-    async function calculateAttendance(start, end, duration) {
+    function calculateAttendance(start, end, duration) {
         start = parseInt(start.substring(0, 2)) * 60 + parseInt(start.substring(3, 5));
         end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
         duration = parseInt(duration);
@@ -227,7 +230,6 @@ export default function PsychologistSchedule(props) {
             <NavBar
                 className="navBar"
                 bond="Psychologist"
-                actualUser={props.location.state.data}
             />
             <div className="content">
                 {show ? (
@@ -237,7 +239,7 @@ export default function PsychologistSchedule(props) {
                 ) : (
                     <div></div>
                 )}
-                <form className="form">
+                <form className="form" onSubmit={putCalendar, putCalendar}>
                     <div className="formContent">
                         <legend className="legend">
                             Cadastrar horários disponíveis
@@ -341,13 +343,13 @@ export default function PsychologistSchedule(props) {
                                 to={{
                                     pathname: '/psychologist/calendar',
                                     state: {
-                                        data: props.location.state.data,
+                                        data: user,
                                     },
                                 }}
                             >
                                 Configurações avançadas
                             </Link>
-                            <button type="button" onClick={() => putCalendar()}>
+                            <button type="submit">
                                 Salvar cadastro
                             </button>
                         </footer>
