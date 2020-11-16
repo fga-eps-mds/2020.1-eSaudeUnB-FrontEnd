@@ -14,16 +14,23 @@ export default function WaitingList(props) {
     const [variant, setVariant] = useState('');
 
     const history = useHistory();
+    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
-        api.get(`/waitingList/${props.location.state.psychologist.email}`)
-            .then((response) => {
+        api.get(`/waitingList/${props.location.state.psychologist.email}`, {
+            headers: { authorization: accessToken }
+        }).then((response) => {
                 setWaitingList(response.data);
             });
+
     }, []);
 
     async function getOutOfWaitingList(){
-        
+        const response = await api.delete(`/waitingList/${props.location.state.data.email}`, {
+            headers: { authorization: accessToken }
+        });
+
+        window.location.reload();
     }
 
     async function registerOnWaitingList() {
@@ -41,7 +48,8 @@ export default function WaitingList(props) {
             email: props.location.state.psychologist.email,
             emailPatient: props.location.state.data.email,
             namePatient: props.location.state.data.name + " " + props.location.state.data.lastName
-        });
+        },
+        { headers: { authorization: accessToken } });
         window.location.reload();
     }
 
@@ -72,7 +80,7 @@ export default function WaitingList(props) {
                             <tbody>
                                 {waitingList.map((item, index) => {
                                     return (
-                                        <tr className="waiting-list-item">
+                                        <tr key={index} className="waiting-list-item">
                                             <td>{`${index + 1}º`}</td>
                                             <td>{`${item.namePatient}`}</td>
                                             <td>{`${item.createdAt}`}</td>
