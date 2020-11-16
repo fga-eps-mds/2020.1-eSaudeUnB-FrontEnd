@@ -231,6 +231,9 @@
         margin-top: 300px;
         margin-bottom: 50px;
     }
+    .psyProfileContainer .formColumn {
+        margin-top: 200px;
+    }
     .psyProfileContainer .content .firstColumn {
         width: 300px;
         height: 920px;
