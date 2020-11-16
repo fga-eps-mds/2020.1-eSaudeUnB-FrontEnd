@@ -1,0 +1,224 @@
+.psyProfileContainer {
+    width: 100%;
+    height: 90vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+}
+
+.psyProfileContainer .content .firstColumn {
+    width: 800px;
+    height: 650px;
+    margin: auto;
+    background-color: #eee;
+    border-radius: 15px;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+}
+
+.psyProfileContainer .content .profile {
+    margin: 40px 0 40px 100px;
+    align-self: flex-start;
+}
+
+.psyProfileContainer .content .profile img {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.psyProfileContainer .formColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.psyProfileContainer .formColumn .inputs {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.psyProfileContainer .formColumn input {
+    width: 300px;
+    height: 41px;
+
+    background-color: transparent;
+    color: #0459ae;
+    border: 0;
+    padding-top: 20px;
+    font-size: 15px;
+    line-height: 27px;
+    border-bottom: 3px solid #0459ae;
+}
+
+.psyProfileContainer .formColumn input::placeholder {
+    color: #0459ae;
+}
+
+.psyProfileContainer .content .firstColumn .form {
+    display: flex;
+    align-items: center;
+    width: 700px;
+}
+
+.psyProfileContainer .formColumn .selects {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.psyProfileContainer .formColumn .selects select {
+    width: 140px;
+    height: 41px;
+
+    color: #0459ae;
+
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #0459ae;
+
+    font-size: 14px;
+    line-height: 27px;
+}
+.psyProfileContainer .formColumn .space {
+    width: 144px;
+}
+
+.psyProfileContainer .formColumn .selects select option {
+    background-color: #eeeeee;
+}
+
+.psyProfileContainer textarea {
+    border: none;
+    border-radius: 8px;
+
+    resize: none;
+    width: 700px;
+    height: 100px;
+
+    margin-top: 30px;
+
+    font-size: 14px;
+    padding: 10px;
+    color: #0459ae;
+
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.psyProfileContainer .content .form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.psyProfileContainer .content .formColumn .buttons {
+    display: flex;
+    margin-top: 25px;
+    margin-right: 52px;
+    align-self: flex-end;
+    justify-content: space-between;
+}
+.psyProfileContainer .content .formColumn .buttons .button-salvar,
+.button-change {
+    width: 130px;
+    height: 40px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #0459ae;
+
+    cursor: pointer;
+
+    font-size: 18px;
+    line-height: 36px;
+}
+.psyProfileContainer .content .formColumn .buttons .button-salvar:hover {
+    background: #0a84e3;
+}
+
+.psyProfileContainer .content .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
+    margin-right: 420px;
+}
+
+.psyProfileContainer .alert {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+
+.psyProfileContainer .formColumn .alertContent {
+    margin: 0px;
+    color: black;
+    text-align: left;
+    width: 300px;
+    height: 20px;
+    font-size: 10px;
+}
+.psyProfileContainer .personal-image {
+    margin-left: -580px;
+    margin-top: 45.5px;
+    margin-bottom: 30px;
+    height: 125px;
+}
+
+.psyProfileContainer .personal-image input[type='file'] {
+    display: none;
+}
+.psyProfileContainer .personal-figure {
+    position: relative;
+    width: 125px;
+    height: 125px;
+
+    text-align: center;
+}
+.userIcon {
+    width: 400px;
+    height: 400px;
+}
+.psyProfileContainer .personal-avatar {
+    cursor: pointer;
+    width: 125px;
+    height: 125px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    transition: all ease-in-out 0.3s;
+    border: solid 1px #0459ae;
+    border-radius: 50%;
+}
+.psyProfileContainer .personal-avatar:hover {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+.psyProfileContainer .personal-figcaption {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    width: inherit;
+    height: inherit;
+    border-radius: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all ease-in-out 0.3s;
+}
+.psyProfileContainer .personal-figcaption:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.psyProfileContainer .personal-figcaption > img {
+    margin-top: 32.5px;
+    width: 50px;
+    height: 50px;
+}

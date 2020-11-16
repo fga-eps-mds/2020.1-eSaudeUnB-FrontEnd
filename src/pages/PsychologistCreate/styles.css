@@ -1,0 +1,107 @@
+.psychologist-container {
+    width: 100vw;
+    height: 100vh;
+    color: #0459ae;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.psychologist-container .psychologist-create {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.psychologist-container .psychologist-create .form {
+    background: #eee;
+    border-radius: 15px;
+    width: 550px;
+    height: 700px;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.psychologist-container .psychologist-create .form .psyCreate {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.psychologist-container .psychologist-create .form .psyCreate input {
+    width: 400px;
+    height: 41px;
+    color: #0459ae;
+
+    background-color: transparent;
+    border: 0;
+    border-bottom: 3px solid #0459ae;
+
+    font-size: 18px;
+}
+.psychologist-container .psychologist-create .form h2 {
+    text-align: center;
+    margin-top: 50px;
+    color: #0459ae;
+}
+.psychologist-container
+    .psychologist-create
+    .form
+    .psyCreate
+    input::placeholder {
+    color: #909090;
+}
+
+.psychologist-container .psychologist-create .form .psyCreate .button {
+    width: 150px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: none;
+    color: #fff;
+    background-color: #0459ae;
+    margin-top: 70px;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.psychologist-container .psychologist-create .form .psyCreate .button:hover {
+    background: #0a84e3;
+}
+
+.psychologist-container .psychologist-create .form .psyCreate select {
+    width: 400px;
+    height: 41px;
+
+    color: #0459ae;
+
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #0459ae;
+
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.psychologist-container .alert {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+.psychologist-container .form .alertContent {
+    margin: 5px 0 5px 0;
+    color: red;
+    text-align: left;
+    width: 400px;
+    height: 20px;
+    font-size: 14px;
+}

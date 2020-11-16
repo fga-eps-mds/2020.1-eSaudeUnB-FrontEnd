@@ -1,0 +1,94 @@
+.loginAdminContainer {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.loginAdminContainer .content {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.loginAdminContainer .form {
+    height: 480px;
+    width: 380px;
+
+    background-color: #eee;
+    border-radius: 15px;
+
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginAdminContainer .form .input {
+    margin: 25px 0 25px 0;
+    display: flex;
+    border-bottom: 3px solid #0459ae;
+}
+
+.loginAdminContainer .form input {
+    width: 320px;
+    height: 33px;
+
+    background-color: transparent;
+    color: #0459ae;
+    border: 0;
+
+    font-size: 14px;
+    line-height: 27px;
+}
+
+.loginAdminContainer .form input::placeholder {
+    color: #909090;
+}
+
+.loginAdminContainer .form .button {
+    width: 200px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #fff;
+    background-color: #0459ae;
+    margin-top: 50px;
+
+    font-size: 24px;
+    line-height: 36px;
+    cursor: pointer;
+}
+.loginAdminContainer .form .button:hover {
+    background: #0a84e3;
+}
+
+.loginAdminContainer .form .pageTitle {
+    font-size: 20px;
+    line-height: 30px;
+    color: #0459ae;
+    margin: 50px 0 50px 0;
+
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.loginAdminContainer .alert {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}

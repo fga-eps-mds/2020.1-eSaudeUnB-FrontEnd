@@ -1,0 +1,20 @@
+.Container{
+    background-color: #eee;
+}
+
+#notfound {
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-333.985px;
+	margin-top:-180.5px;
+} 
+.Container .div p{
+    font: 500 4.0rem Poppins;
+    color: #095db8;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-482.695px;
+    margin-top:-400.5px;   	
+}

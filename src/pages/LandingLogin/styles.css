@@ -1,0 +1,122 @@
+.loginContainer {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loginContainer .alert {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+
+.loginContainer .content {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+}
+
+.loginContainer .section img {
+    width: 1000px;
+}
+
+.loginContainer .section p {
+    font: 500 24px Poppins;
+    color: #fff;
+}
+
+.loginContainer .section p:first-of-type {
+    margin-top: 50px;
+    font: 700 66px Poppins;
+    line-height: 53px;
+}
+
+.loginContainer .form {
+    height: 580px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #eee;
+    border-radius: 15px;
+    padding: 90px 60px 40px 60px;
+
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+
+    color: #0459ae;
+}
+
+.loginContainer .form span {
+    font: 500 26px Poppins;
+}
+
+.loginContainer .form .input {
+    border-bottom: 3px solid #0459ae;
+}
+
+.loginContainer .form input {
+    width: 320px;
+    height: 33px;
+
+    background-color: transparent;
+    color: #0459ae;
+    border: 0;
+
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.loginContainer .form input::placeholder {
+    color: #909090;
+}
+
+.loginContainer .form .button {
+    width: 200px;
+    height: 50px;
+
+    border-radius: 25px;
+    border: 0;
+    color: #eee;
+    background-color: #0459ae;
+
+    font-size: 24px;
+    line-height: 36px;
+}
+.loginContainer .form .button:hover {
+    background: #0a84e3;
+}
+
+.loginContainer .form a {
+    width: 250px;
+    height: 20px;
+    text-decoration: underline;
+    color: #0459ae;
+
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.loginContainer .form .userIcon {
+    width: 132px;
+    height: 132px;
+}
+
+.loginContainer .form .forgot {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
