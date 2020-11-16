@@ -174,17 +174,19 @@ export default function NavBar({ actualUser, bond }) {
                                 >
                                     Perfil
                                 </Link>)
-                                : (<Link
-                                    className="profileDropDown"
-                                    to={{
-                                        pathname: '/profile',
-                                        state: {
-                                            data: actualUser,
-                                        },
-                                    }}
-                                >
-                                        Perfil
-                                </Link>)
+
+                                : (
+                                    <Link
+                                        className="profileDropDown"
+                                        to={{
+                                            pathname: '/profile',
+                                            state: {
+                                                data: actualUser,
+                                            },
+                                        }}
+                                    >
+                                    Perfil
+                                    </Link>)
                             }
                         </NavDropdown.Item>
 

@@ -108,4 +108,7 @@
     a.profileDropDown {
         padding: 12px 72px 12px 0px !important;
     }
+    .navbar-toggler {
+        background-color: #eee;
+    }
 }
