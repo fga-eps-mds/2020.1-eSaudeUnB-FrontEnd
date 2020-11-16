@@ -158,52 +158,88 @@ export default function NavBar({ actualUser, bond }) {
                             </Link>
                         </div>
                     ) : (
-                        <div className="navLinks">
-                            <Link
-                                className="a"
-                                to={{
-                                    pathname: '/psychologist/list',
-                                    state: {
-                                        data: actualUser,
-                                    },
-                                }}
-                            >
-                                Lista de Psicologos
+                            <div className="navLinks">
+                                <Link
+                                    className="a"
+                                    to={{
+                                        pathname: '/psychologist/list',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Lista de Psicologos
                             </Link>
-                            <Link
-                                className="a"
-                                to={{
-                                    pathname: '/main',
-                                    state: {
-                                        data: actualUser,
-                                    },
-                                }}
-                            >
-                                Agendamentos
+                                <Link
+                                    className="a"
+                                    to={{
+                                        pathname: '/main',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Agendamentos
                             </Link>
-                            <Link
-                                className="a"
-                                to={{
-                                    pathname: '/events',
-                                    state: {
-                                        data: actualUser,
-                                    },
-                                }}
-                            >
-                                Consultas Marcadas
+                                <Link
+                                    className="a"
+                                    to={{
+                                        pathname: '/events',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Consultas Marcadas
                             </Link>
-                        </div>
-                    )}
+                            </div>
+                        )}
                     <img
                         className="userIcon"
                         src={userImage || userIcon}
                         alt="icone de usuario"
                     />
+                    <NavDropdown.Divider className="dropNone dropDivider" />
+                    {bond === 'Psychologist' ? (
+                        <Link
+                            className="dropNone"
+                            to={{
+                                pathname: '/psychologist/profile',
+                                state: {
+                                    data: actualUser,
+                                },
+                            }}
+                        >
+                            Perfil
+                    </Link>) :
+                        (<Link
+                            className="dropNone"
+                            to={{
+                                pathname: '/profile',
+                                state: {
+                                    data: actualUser,
+                                },
+                            }}
+                        >
+                            Perfil
+                    </Link>)
+                    }
+                    <Link
+                        className="dropNone"
+                        to={{
+                            pathname: '/',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Sair
+                    </Link>
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
-                        <NavDropdown.Item href="#action/3.1">
-                            {
+                        <NavDropdown.Item>
+                            {bond === 'Psychologist' ? (
                                 <Link
-                                    className="a"
+                                    className="profileDropDown"
                                     to={{
                                         pathname: '/psychologist/profile',
                                         state: {
@@ -212,9 +248,21 @@ export default function NavBar({ actualUser, bond }) {
                                     }}
                                 >
                                     Perfil
-                                </Link>
+                        </Link>) :
+                                (<Link
+                                    className="profileDropDown"
+                                    to={{
+                                        pathname: '/profile',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Perfil
+                        </Link>)
                             }
                         </NavDropdown.Item>
+
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="/">Sair</NavDropdown.Item>
                     </NavDropdown>

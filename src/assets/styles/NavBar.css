@@ -54,6 +54,9 @@
     height: 70px !important;
     margin-top: -15px;
 }
+.navbar a.dropNone {
+    display: none;
+}
 
 @media only screen and (max-width: 991px) {
     .navBarComponent .navLinks {
@@ -66,9 +69,11 @@
     .navBarComponent .navLinks a:first-child {
         margin-top: 30px;
     }
+    
     .navbar .navbar-collapse {
+        z-index: 1;
         border-radius: 0 0 15px 15px;
-        margin-bottom: -190px;
+        margin-bottom: -290px;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
         background: #eee;
     }
@@ -80,5 +85,27 @@
     .navbar .ml-auto .userIcon,
     .dropdown-toggle {
         display: none;
+    }
+    .navbar a.dropNone {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        text-decoration: none;
+        margin-right: 30px;
+        color: #0a84e3;
+    }
+    .navbar a.dropNone:nth-child(odd) {
+        margin-bottom: 20px;
+        color: red;
+    }
+    .navbar a.dropNone:hover{
+        opacity: 0.6;
+    }
+    .navbar .dropNone.dropDivider.dropdown-divider {
+        border-top: 1px solid #0459ae!important;
+        margin: 0 30px;      
+    }
+    a.profileDropDown {
+        padding: 12px 72px 12px 0px !important;
     }
 }

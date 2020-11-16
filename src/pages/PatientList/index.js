@@ -24,12 +24,13 @@ export default function PatientList(props) {
     });
 
     return (
+        <>
+        <NavBar
+            className="navBar"
+            bond="Psychologist"
+            actualUser={props.location.state.data}
+        />
         <div className="patientListContainer">
-            <NavBar
-                className="navBar"
-                bond="Psychologist"
-                actualUser={props.location.state.data}
-            />
             <div className="content">
                 <SearchBar
                     placeholder="Pesquisar"
@@ -44,16 +45,17 @@ export default function PatientList(props) {
                             Não há pacientes cadastrados
                         </div>
                     ) : (
-                        <RealizeSearch
-                            patients={patients}
-                            location={props.location}
-                            src={MagnifyingGlass}
-                            search={search}
-                        />
-                    )}
+                            <RealizeSearch
+                                patients={patients}
+                                location={props.location}
+                                src={MagnifyingGlass}
+                                search={search}
+                            />
+                        )}
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

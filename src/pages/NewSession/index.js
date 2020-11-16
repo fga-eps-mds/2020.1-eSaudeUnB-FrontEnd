@@ -53,8 +53,9 @@ export default function NewSession(props) {
     }
 
     return (
+        <>
+        <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
         <div className="newSession">
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="patientInfo">
                     <div className="patient">
@@ -161,6 +162,7 @@ export default function NewSession(props) {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

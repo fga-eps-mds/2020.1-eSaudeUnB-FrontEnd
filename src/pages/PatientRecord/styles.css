@@ -8,6 +8,7 @@
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+
 }
 
 .patientRecord .content {
@@ -24,6 +25,8 @@
     background-color: #eee;
     border-radius: 15px;
     line-height: 3rem;
+
+    margin-top: 50px;
 
     width: 1400px;
 }
