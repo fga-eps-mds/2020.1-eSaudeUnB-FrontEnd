@@ -25,7 +25,7 @@ export default function WaitingList(props) {
     }, []);
 
     async function getOutOfWaitingList() {
-        const response = await api.delete(`/waitingList/${props.location.state.data.email}`, {
+        await api.delete(`/waitingList/${props.location.state.data.email}`, {
             headers: { authorization: accessToken },
         });
 
@@ -33,9 +33,7 @@ export default function WaitingList(props) {
     }
 
     async function registerOnWaitingList() {
-        if (waitingList.find((element) => {
-            element.emailPatient === props.location.state.data.email
-        })) {
+        if (waitingList.find((element) => element.emailPatient === props.location.state.data.email)) {
             setShow(true);
             setVariant('danger');
             setAlertText('Só é possível entrar uma vez na lista de espera.');
@@ -45,7 +43,7 @@ export default function WaitingList(props) {
             return;
         }
 
-        const response = await api.post('/waitingList', {
+        await api.post('/waitingList', {
             email: props.location.state.psychologist.email,
             emailPatient: props.location.state.data.email,
             namePatient: `${props.location.state.data.name} ${props.location.state.data.lastName}`,
