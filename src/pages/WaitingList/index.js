@@ -35,7 +35,7 @@ export default function WaitingList(props) {
     async function registerOnWaitingList() {
         if (
             waitingList.find((element) => element.emailPatient === props.location.state.data.email)
-            ) {
+        ) {
             setShow(true);
             setVariant('danger');
             setAlertText('Só é possível entrar uma vez na lista de espera.');
