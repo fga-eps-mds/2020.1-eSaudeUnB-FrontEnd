@@ -66,8 +66,8 @@ export default function UserMain(props) {
                 email,
                 weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
@@ -153,11 +153,11 @@ export default function UserMain(props) {
                                 </div>
                                 <div className="schedule-buttons">
                                     <button type="submit">Agendar</button>
-                                    <button className="cancelSchedule" onClick={() => setUserSelected("")}>Cancelar</button>
+                                    <button className="cancelSchedule" onClick={() => setUserSelected('')}>Cancelar</button>
                                     <button
                                         className="waiting-list"
                                         onClick={() => history.push({
-                                            pathname: `/waiting-list`,
+                                            pathname: '/waiting-list',
                                             state: {
                                                 data: props.location.state.data,
                                                 psychologist: userSelected,

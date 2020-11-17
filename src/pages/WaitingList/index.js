@@ -18,23 +18,22 @@ export default function WaitingList(props) {
 
     useEffect(() => {
         api.get(`/waitingList/${props.location.state.psychologist.email}`, {
-            headers: { authorization: accessToken }
+            headers: { authorization: accessToken },
         }).then((response) => {
-                setWaitingList(response.data);
-            });
-
+            setWaitingList(response.data);
+        });
     }, []);
 
-    async function getOutOfWaitingList(){
+    async function getOutOfWaitingList() {
         const response = await api.delete(`/waitingList/${props.location.state.data.email}`, {
-            headers: { authorization: accessToken }
+            headers: { authorization: accessToken },
         });
 
         window.location.reload();
     }
 
     async function registerOnWaitingList() {
-        if(waitingList.find(element => element.emailPatient === props.location.state.data.email)){
+        if (waitingList.find((element) => element.emailPatient === props.location.state.data.email)) {
             setShow(true);
             setVariant('danger');
             setAlertText('Só é possível entrar uma vez na lista de espera.');
@@ -47,7 +46,7 @@ export default function WaitingList(props) {
         const response = await api.post('/waitingList', {
             email: props.location.state.psychologist.email,
             emailPatient: props.location.state.data.email,
-            namePatient: props.location.state.data.name + " " + props.location.state.data.lastName
+            namePatient: `${props.location.state.data.name} ${props.location.state.data.lastName}`,
         },
         { headers: { authorization: accessToken } });
         window.location.reload();
@@ -57,12 +56,12 @@ export default function WaitingList(props) {
         <div className="waiting-list-container">
             <NavBar className="navBar" bond="Patient" actualUser={props.location.state.data} />
             {show ? (
-                    <Alert className="alert" variant={variant}>
-                        {alertText}
-                    </Alert>
-                ) : (
-                    <div></div>
-                )}
+                <Alert className="alert" variant={variant}>
+                    {alertText}
+                </Alert>
+            ) : (
+                <div></div>
+            )}
             <div className="content">
                 <div className="list">
                     <div className="list-title">
@@ -77,14 +76,12 @@ export default function WaitingList(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {waitingList.map((item, index) => {
-                                    return (
-                                        <tr key={index} className="waiting-list-item">
-                                            <td>{`${index + 1}º`}</td>
-                                            <td>{`${item.namePatient}`}</td>
-                                        </tr>
-                                    );
-                                })}
+                                {waitingList.map((item, index) => (
+                                    <tr key={index} className="waiting-list-item">
+                                        <td>{`${index + 1}º`}</td>
+                                        <td>{`${item.namePatient}`}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                     </div>
@@ -94,7 +91,7 @@ export default function WaitingList(props) {
                         <button
                             className="goBackButton"
                             onClick={() => history.push({
-                                pathname: `/main`,
+                                pathname: '/main',
                                 state: {
                                     data: props.location.state.data,
                                 },
