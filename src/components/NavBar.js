@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import userIcon from '../assets/images/userIcon.svg';
-import logoQuadrado from '../assets/images/esaude_logo.svg';
+import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
@@ -46,13 +46,13 @@ export default function NavBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        }());
+        })();
     }, [actualUser, bond]);
 
     return (
         <Navbar className="navBarComponent" bg="light" expand="lg">
             <Navbar.Brand href="#home">
-                <img className="logoQuadrado" src={logoQuadrado}></img>
+                <img className="logoSquare" src={logoSquare}></img>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -93,7 +93,7 @@ export default function NavBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-                                    Lista de Psicologos
+                                Lista de Psicologos
                             </Link>
                             <Link
                                 className="a"
@@ -104,7 +104,7 @@ export default function NavBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-                                    Agendamentos
+                                Agendamentos
                             </Link>
                             <Link
                                 className="a"
@@ -115,7 +115,7 @@ export default function NavBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-                                    Consultas Marcadas
+                                Consultas Marcadas
                             </Link>
                         </div>
                     )}
@@ -136,8 +136,9 @@ export default function NavBar({ actualUser, bond }) {
                             }}
                         >
                             Perfil
-                        </Link>)
-                        : (<Link
+                        </Link>
+                    ) : (
+                        <Link
                             className="dropNone"
                             to={{
                                 pathname: '/profile',
@@ -147,8 +148,8 @@ export default function NavBar({ actualUser, bond }) {
                             }}
                         >
                             Perfil
-                        </Link>)
-                    }
+                        </Link>
+                    )}
                     <Link
                         className="dropNone"
                         to={{
@@ -173,21 +174,20 @@ export default function NavBar({ actualUser, bond }) {
                                     }}
                                 >
                                     Perfil
-                                </Link>)
-
-                                : (
-                                    <Link
-                                        className="profileDropDown"
-                                        to={{
-                                            pathname: '/profile',
-                                            state: {
-                                                data: actualUser,
-                                            },
-                                        }}
-                                    >
+                                </Link>
+                            ) : (
+                                <Link
+                                    className="profileDropDown"
+                                    to={{
+                                        pathname: '/profile',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
                                     Perfil
-                                    </Link>)
-                            }
+                                </Link>
+                            )}
                         </NavDropdown.Item>
 
                         <NavDropdown.Divider />

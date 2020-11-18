@@ -4,7 +4,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.navBarComponent .logoQuadrado {
+.navBarComponent .logoSquare {
     width: 175px !important;
     height: 80px !important;
 }
@@ -69,7 +69,7 @@
     .navBarComponent .navLinks a:first-child {
         margin-top: 30px;
     }
-    
+
     .navbar .navbar-collapse {
         z-index: 1;
         border-radius: 0 0 15px 15px;
@@ -98,12 +98,12 @@
         margin-bottom: 20px;
         color: red;
     }
-    .navbar a.dropNone:hover{
+    .navbar a.dropNone:hover {
         opacity: 0.6;
     }
     .navbar .dropNone.dropDivider.dropdown-divider {
-        border-top: 1px solid #0459ae!important;
-        margin: 0 30px;      
+        border-top: 1px solid #0459ae !important;
+        margin: 0 30px;
     }
     a.profileDropDown {
         padding: 12px 72px 12px 0px !important;
