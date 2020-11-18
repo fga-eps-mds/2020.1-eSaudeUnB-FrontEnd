@@ -1,10 +1,10 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../assets/styles/LandingNavBar.css';
 
 import logo from '../assets/images/esaude_logo.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav } from 'react-bootstrap';
 
 export default function LandingNavBar() {
     return (

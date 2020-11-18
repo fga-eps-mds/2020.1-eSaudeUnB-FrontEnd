@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import userIcon from '../assets/images/userIcon.svg';
 import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 export default function NavBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
@@ -46,7 +47,7 @@ export default function NavBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        })();
+        }());
     }, [actualUser, bond]);
 
     return (
