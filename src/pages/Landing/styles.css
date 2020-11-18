@@ -19,22 +19,20 @@
 .page-landing .content .main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    padding-top: 100px;
-
-    width: 100%;
-    height: 100%;
+    padding-top: 110px;
 }
 
 .page-landing .content .main .landing-img {
-    height: 60vh;
-    justify-self: center;
+    width: 60vw;
     margin-top: -90px;
 }
 
 .page-landing .content .main .wave-animation {
     width: 100%;
-    margin-top: -35px;
+    margin-top: -85px;
 }
 
 .page-landing .content .main .wave-animation .wave {
@@ -93,6 +91,7 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+    margin-top: 25px;
 
     width: 100%;
 }
@@ -110,8 +109,15 @@
     color: #eee;
 }
 
-.page-landing .content .main .above-img .buttons-container {
+.page-landing .content .main .above-img .buttons-container{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-landing .content .main .above-img .buttons-container .btts{
+    display: flex;  
 }
 
 .page-landing .content .main .above-img .buttons-container a {
@@ -142,11 +148,9 @@
 }
 
 .page-landing .content .main .above-img .buttons-container .know-more-btn {
-    position: relative;
     font: 500 26px Poppins;
-    top: 85px;
-    right: 375px;
 
+    margin-top: 15px;
     color: #eee;
     transition: 0.2s all;
 }
@@ -278,4 +282,123 @@
 
 .page-landing .content footer img {
     width: 250px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .page-landing .content .main .landing-img {
+        width: 85vw;
+    }
+    
+    .page-landing .content .main .above-img h1 {
+        margin-left: 15px;
+        font-size: 48px;
+        margin-bottom: 0;
+    }
+    .page-landing .content .main .above-img h2 {
+        margin-left: 15px;
+        margin-top: -10px;
+        text-align: justify;
+        font-size: 20px;
+    }
+
+    .page-landing .content .main .above-img {
+        flex-direction: column;
+    }
+
+    .page-landing .content .main .above-img .buttons-container{
+        margin-top: 30px;
+    }
+
+    .page-landing .content .main .above-img .buttons-container a {
+        width: 150px;
+        height: 45px;
+        font-size: 20px;
+    }
+    .page-landing .content .main .above-img .buttons-container .know-more-btn {
+        font-size: 20px;
+    }
+    .page-landing .content .main .above-img .buttons-container a:first-child {
+        margin-right: 15px;
+    }
+    .page-landing .content .about{
+        height: auto;
+        padding-bottom: 60px;
+    }
+    .page-landing .content .about h1{
+        font-size: 26px;
+    }
+    .page-landing .content .about h2 {
+        margin-top: 50px;
+        font-size: 16px;
+    }
+    .page-landing .content .how-it-work h1{
+        font-size: 26px;
+    }
+    .page-landing .content .how-it-work h2{
+        font-size: 22px;
+    }
+    .page-landing .content .how-it-work {
+        margin-top: 0px;
+    }
+    .page-landing .content .how-it-work .hiw-cards {
+        flex-direction: column;
+    }
+    .hiw-card {
+        margin-left: 0px !important; 
+        margin-bottom: 10px;
+    }
+    .page-landing .content .how-it-work {
+        height: auto;
+        padding: 0 0 40px 0;
+    }
+    .page-landing .faq-card {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .page-landing .content .faq {
+        height: auto;
+        margin-bottom: 60px;
+    }
+    .page-landing .content .who-behind {
+        height: auto;
+        padding-bottom: 50px;
+    }
+    .page-landing .content .who-behind h1{
+        font-size: 26px;
+    }
+    .page-landing .content .who-behind h2{
+        margin-top: 50px;
+        font-size: 16px;
+    }
+    .page-landing h1, h1 {
+        text-align: center;
+    }
+    .page-landing .content footer {
+        height: 100%;
+    }
+
+    @keyframes animate {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: 10000%;
+        }
+    }
+    @keyframes animate2 {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: 10000%;
+        }
+    }
+}
+@media only screen and (max-width: 315px) {
+    .page-landing .content .main .above-img .buttons-container a {
+        width: 110px;
+        height: 35px;
+        font-size: 14px;
+    }
 }

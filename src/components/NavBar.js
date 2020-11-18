@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import userIcon from '../assets/images/userIcon.svg';
-import arrow from '../assets/images/up.svg';
-import logoQuadrado from '../assets/images/esaude_logo.svg';
+import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
 export default function NavBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
-    const [dropDown, setDropDown] = useState(false);
 
     useEffect(() => {
         (async function renderImage() {
@@ -46,182 +47,156 @@ export default function NavBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        })();
+        }());
     }, [actualUser, bond]);
 
-    function showDropDown() {
-        setDropDown(!dropDown ? true : false);
-    }
-
     return (
-        <nav className="navBarComponent">
-            <div className="logo">
-                <img
-                    className="logoQuadrado"
-                    src={logoQuadrado}
-                    alt="icone de usuario"
-                />
-            </div>
-            {bond === 'Psychologist' ? (
-                <div className="navLinks">
-                    {/* <Link className="a" to="" >Próximos Eventos</Link> */}
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/patient/list',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Lista de Pacientes
-                    </Link>
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/psychologist/events',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Agendamentos
-                    </Link>
-                    <div className="dropdown">
-                        <div className="images">
-                            <img
-                                className="userIcon"
-                                src={userImage || userIcon}
-                                alt="icone de usuario"
-                            />
-                            <img
-                                className="arrow"
-                                src={arrow}
-                                alt="menu"
-                                onClick={() => showDropDown()}
-                            />
+        <Navbar className="navBarComponent" bg="light" expand="lg">
+            <Navbar.Brand href="#home">
+                <img className="logoSquare" src={logoSquare}></img>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="ml-auto">
+                    {bond === 'Psychologist' ? (
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/patient/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Lista de Pacientes
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/events',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Agendamentos
+                            </Link>
                         </div>
-                        {dropDown ? (
-                            <ul className="dropdown-items">
-                                <li>
-                                    <Link
-                                        className="a"
-                                        to={{
-                                            pathname: '/psychologist/profile',
-                                            state: {
-                                                data: actualUser,
-                                            },
-                                        }}
-                                    >
-                                        Perfil
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        className="a"
-                                        to={{
-                                            pathname: '/',
-                                            state: {
-                                                data: actualUser,
-                                            },
-                                        }}
-                                    >
-                                        Sair
-                                    </Link>
-                                </li>
-                            </ul>
-                        ) : (
-                            <div></div>
-                        )}
-                    </div>
-                </div>
-            ) : (
-                <div className="navLinks">
-                    {/* <Link className="a" to="" >Próximos Eventos</Link> */}
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/psychologist/list',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Lista de Psicologos
-                    </Link>
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/main',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Agendamentos
-                    </Link>
-                    <Link
-                        className="a"
-                        to={{
-                            pathname: '/events',
-                            state: {
-                                data: actualUser,
-                            },
-                        }}
-                    >
-                        Consultas Marcadas
-                    </Link>
-                   
-                    <div className="dropdown">
-                        <div className="images">
-                            <img
-                                className="userIcon"
-                                src={userImage || userIcon}
-                                alt="icone de usuario"
-                            />
-                            <img
-                                className="arrow"
-                                src={arrow}
-                                alt="menu"
-                                onClick={() => showDropDown()}
-                            />
+                    ) : (
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Lista de Psicologos
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/main',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Agendamentos
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/events',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Consultas Marcadas
+                            </Link>
                         </div>
-                        {dropDown ? (
-                            <ul className="dropdown-items">
-                                <li>
-                                    <Link
-                                        className="a"
-                                        to={{
-                                            pathname: '/profile',
-                                            state: {
-                                                data: actualUser,
-                                            },
-                                        }}
-                                    >
-                                        Perfil
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        className="a"
-                                        to={{
-                                            pathname: '/',
-                                            state: {
-                                                data: actualUser,
-                                            },
-                                        }}
-                                    >
-                                        Sair
-                                    </Link>
-                                </li>
-                            </ul>
-                        ) : (
-                            <div></div>
-                        )}
-                    </div>
-                </div>
-            )}
-        </nav>
+                    )}
+                    <img
+                        className="userIcon"
+                        src={userImage || userIcon}
+                        alt="icone de usuario"
+                    />
+                    <NavDropdown.Divider className="dropNone dropDivider" />
+                    {bond === 'Psychologist' ? (
+                        <Link
+                            className="dropNone"
+                            to={{
+                                pathname: '/psychologist/profile',
+                                state: {
+                                    data: actualUser,
+                                },
+                            }}
+                        >
+                            Perfil
+                        </Link>
+                    ) : (
+                        <Link
+                            className="dropNone"
+                            to={{
+                                pathname: '/profile',
+                                state: {
+                                    data: actualUser,
+                                },
+                            }}
+                        >
+                            Perfil
+                        </Link>
+                    )}
+                    <Link
+                        className="dropNone"
+                        to={{
+                            pathname: '/',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Sair
+                    </Link>
+                    <NavDropdown title="" id="basic-nav-dropdown" drop="left">
+                        <NavDropdown.Item>
+                            {bond === 'Psychologist' ? (
+                                <Link
+                                    className="profileDropDown"
+                                    to={{
+                                        pathname: '/psychologist/profile',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Perfil
+                                </Link>
+                            ) : (
+                                <Link
+                                    className="profileDropDown"
+                                    to={{
+                                        pathname: '/profile',
+                                        state: {
+                                            data: actualUser,
+                                        },
+                                    }}
+                                >
+                                    Perfil
+                                </Link>
+                            )}
+                        </NavDropdown.Item>
+
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/">Sair</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     );
 }
 

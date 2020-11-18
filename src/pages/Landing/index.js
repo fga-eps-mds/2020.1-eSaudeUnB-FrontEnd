@@ -16,7 +16,7 @@ export default function Landing() {
         <div className="page-landing">
             <LandingNavBar />
             <div className="content">
-                <div className="main" id="main">
+                <div className="main" id="home">
                     <img
                         className="landing-img"
                         src={landingImg}
@@ -29,13 +29,16 @@ export default function Landing() {
                         </div>
 
                         <div className="buttons-container">
-                            <Link to="/registration" className="registration">
-                                Registrar
-                            </Link>
+                            <div className="btts">
+                                <Link to="/registration" className="registration">
+                                    Registrar
+                                </Link>
 
-                            <Link to="/login" className="login">
-                                Entrar
-                            </Link>
+                                <Link to="/login" className="login">
+                                    Entrar
+                                </Link>
+
+                            </div>
                             <a className="know-more-btn" href="#about">
                                 Saiba mais
                                 <img src={down} alt="seta para baixo" />

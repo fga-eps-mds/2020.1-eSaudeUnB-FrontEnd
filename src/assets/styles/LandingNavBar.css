@@ -16,36 +16,40 @@
 .landingNavBarComponent img {
     width: 150px;
     height: 50px;
-}
-
-.landingNavBarComponent .links {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-evenly;
+    margin-top: 12px !important;
 }
 
 .landingNavBarComponent .links a {
-    padding: 13px;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.2s all;
+    padding: 13px !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transition: 0.2s all !important;
+    margin-left: 60px !important;
 }
 
 .landingNavBarComponent .links a:hover {
-    color: #b5e1f7;
+    color: #b5e1f7 !important;
 }
 
 .landingNavBarComponent .links .registration-link,
 .login-link {
-    margin-right: -26px;
+    margin-right: 20px !important;
 }
 
 .landingNavBarComponent .links .registration-link:hover {
-    background: #0459ae;
-    color: #fff;
+    background: #0459ae !important;
+    color: #fff !important;
 }
-.landingNavBarComponent .links .login-link:hover {
-    background: #0459ae;
-    color: #fff;
+.login-link:hover {
+    background: #0459ae !important;
+    color: #fff !important;
+}
+@media only screen and (max-width: 991px) {
+    .landingNavBarComponent{
+        display: flex;
+        justify-content: space-between;
+    }
+    .landingNavBarComponent .links a {
+        color: #0459ae !important;
+    }
 }

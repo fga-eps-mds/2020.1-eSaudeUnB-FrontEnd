@@ -39,9 +39,8 @@ export default function SideBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        })();
+        }());
     }, [actualUser, bond]);
-    
 
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
