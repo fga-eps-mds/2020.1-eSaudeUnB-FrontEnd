@@ -174,6 +174,15 @@ Sobrenome precisa possuir mais de 2 letras.
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
                         </select>
+                        <select
+                            name="bond"
+                            onChange={(e) => setGender(e.target.value)}
+                        >
+                            <option value=""> Vínculo </option>
+                            <option value="F">Psicólogo</option>
+                            <option value="M">Nutricionista</option>
+                            <option value="I">Assistente social</option>
+                        </select>
                         <div className="alertContent">
                             <p></p>
                         </div>
