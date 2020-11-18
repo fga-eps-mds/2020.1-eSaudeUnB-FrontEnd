@@ -87,6 +87,17 @@ export default function NavBar({ actualUser, bond }) {
                     >
                         Agendamentos
                     </Link>
+                    <Link
+                        className="a"
+                        to={{
+                            pathname: '/psychologist/schedule',
+                            state: {
+                                data: actualUser,
+                            },
+                        }}
+                    >
+                        Horários
+                    </Link>
                     <div className="dropdown">
                         <div className="images">
                             <img

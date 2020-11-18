@@ -15,7 +15,7 @@ export default function PsychologistCreate() {
     const [biography] = useState('');
     const [phone] = useState('');
     const [gender, setGender] = useState('');
-    const [bond] = useState('Psychologist');
+    const [bond, setBond] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
@@ -46,7 +46,7 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization) {
+            if (!name || !lastName || !email || !gender || !specialization || !bond) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
@@ -176,12 +176,12 @@ Sobrenome precisa possuir mais de 2 letras.
                         </select>
                         <select
                             name="bond"
-                            onChange={(e) => setGender(e.target.value)}
+                            onChange={(e) => setBond(e.target.value)}
                         >
                             <option value=""> Vínculo </option>
-                            <option value="F">Psicólogo</option>
-                            <option value="M">Nutricionista</option>
-                            <option value="I">Assistente social</option>
+                            <option value="P">Psicólogo</option>
+                            <option value="N">Nutricionista</option>
+                            <option value="A">Assistente social</option>
                         </select>
                         <div className="alertContent">
                             <p></p>
