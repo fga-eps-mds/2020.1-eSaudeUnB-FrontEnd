@@ -72,6 +72,7 @@ export default function UserMain() {
         window.location.reload();
     }
 
+
     return (
         <div className="usercalendar">
             <NavBar className="navBar" bond="Patient" actualUser={user} />
@@ -92,6 +93,8 @@ export default function UserMain() {
                         <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
                         <div className="schedules">
                             {psychologists.map((psychologist, index) => (
+
+
                                 <div
                                     key={index}
                                     className="schedule-box"
@@ -105,7 +108,10 @@ export default function UserMain() {
 
                                                 >
                                                     <button onClick={() => setUserSelected(psychologist)}>
-                                                        <h3>Profissional: {psychologist.name} {psychologist.lastName}</h3>
+                                                        <h3>{psychologist.bond == 'P' ? 'Psicólogo' :
+                                                                psychologist.bond == 'N' ? 'Nutricionista' :
+                                                                psychologist.bond == 'A' ? 'Assistente Social' : 
+                                                                'Profissional'}: {psychologist.name} {psychologist.lastName}</h3>
                                                     </button>
 
                                                 </div>

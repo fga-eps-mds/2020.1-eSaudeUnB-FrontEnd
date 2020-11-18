@@ -158,7 +158,7 @@ export default function NavBar({ actualUser, bond }) {
                             },
                         }}
                     >
-                        Lista de Psicologos
+                        Lista de Profissionais
                     </Link>
                     <Link
                         className="a"

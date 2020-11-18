@@ -36,7 +36,7 @@ export default function PsychologistList(props) {
                     }, 2000);
                 }
             });
-        setActualUser(props.location.state.data);
+        setActualUser(localStorage.getItem('user'));
     }, []);
 
     return (
@@ -81,6 +81,10 @@ export default function PsychologistList(props) {
                                                 {`${psy.name} ${psy.lastName}`}
                                             </p>
                                             <p>email: {psy.email}</p>
+                                            <p>Vínculo: {psy.bond == 'P' ? 'Psicólogo' :
+                                                            psy.bond == 'N' ? 'Nutricionista' :
+                                                            psy.bond == 'A' ? 'Assistente Social' : 
+                                                            'Profissional'}</p>
 
                                             <Accordion.Collapse eventKey="0">
                                                 <div className="cardToggle">

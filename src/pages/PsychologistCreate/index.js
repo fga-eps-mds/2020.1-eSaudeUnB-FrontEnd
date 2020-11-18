@@ -131,7 +131,7 @@ export default function PsychologistCreate() {
             )}
             <div className="psychologist-create">
                 <form className="form" onSubmit={handlePsychologistCreation}>
-                    <h2>Cadastro de Psicólogo</h2>
+                    <h2>Cadastro de Profissionais</h2>
                     <div className="psyCreate">
                         <Input
                             placeholder="Nome"
