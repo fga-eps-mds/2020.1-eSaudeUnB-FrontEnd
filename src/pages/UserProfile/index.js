@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-    Alert, Modal, Button, Col, Row, Container,
+    Alert, Modal, Button,
 } from 'react-bootstrap';
 
 import api from '../../services/api';
@@ -55,8 +55,6 @@ export default function UserProfile(props) {
     const [actualPassword, setActualPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
-
-    const [alertDanger, setAlertDanger] = useState(false);
 
     function closeAlerts() {
         setAlertContentName(false);
