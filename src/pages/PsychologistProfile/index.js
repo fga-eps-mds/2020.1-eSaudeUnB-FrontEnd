@@ -88,7 +88,7 @@ export default function PsychologistProfile(props) {
                     oldPassword: actualPassword,
                     password: newPassword,
                 },
-                { headers: { authorization: accessToken } });
+                    { headers: { authorization: accessToken } });
 
                 if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
@@ -127,7 +127,7 @@ export default function PsychologistProfile(props) {
                 biography,
                 userImage: currentImage,
             },
-            { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -256,8 +256,8 @@ export default function PsychologistProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="content">
                     <div className="firstColumn">
                         <form className="formColumn" onSubmit={updateInfos}>
@@ -310,10 +310,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <Input
                                         placeholder="Sobrenome"
@@ -328,10 +328,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <Input
                                         placeholder="Email"
@@ -346,10 +346,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="inputs">
@@ -363,10 +363,10 @@ export default function PsychologistProfile(props) {
                                             <p>Informe a Especialização.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
 
                                     <Input
                                         placeholder="DDD + Telefone"
@@ -378,10 +378,10 @@ export default function PsychologistProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     <div className="selects">
                                         <select
                                             name="gender"
@@ -425,20 +425,20 @@ export default function PsychologistProfile(props) {
                                                 <p>Selecione um gênero.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                         <div className="space"></div>
                                         {alertContentBond ? (
                                             <div className="alertContent">
                                                 <p>Selecione um vínculo.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
                             </div>
@@ -456,10 +456,10 @@ export default function PsychologistProfile(props) {
                                     </p>
                                 </div>
                             ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                             <div className="buttons">
                                 <button className="button-change" onClick={() => setShowModal(true)}>
@@ -484,51 +484,36 @@ export default function PsychologistProfile(props) {
                                 >
                                     <Modal.Header closeButton>
                                         <Modal.Title id="contained-modal-title-vcenter">
-                                    Mudar Senha
+                                            Mudar Senha
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <Container>
-                                            <Row>
-                                                <Col xs={6} md={4}>
-                                                    <Input
-                                                        placeholder="Senha Atual"
-                                                        value={actualPassword}
-                                                        onChange={setActualPassword}
-                                                    />
-                                                </Col>
-                                                <Col xs={6} md={4}>
-                                                    <Input
-                                                        placeholder="Nova senha"
-                                                        value={newPassword}
-                                                        onChange={setNewPassword}
-                                                    />
-                                                </Col>
-                                                <Col xs={6} md={4}>
-                                                    <Input
-                                                        placeholder="Confirmar nova senha"
-                                                        value={confirmNewPassword}
-                                                        onChange={setConfirmNewPassword}
-                                                    />
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col xs={18} md={12}>
-                                                    {alertConfirmPassword ? (
-                                                        <div className="alertContent">
-                                                            <p>
-                                                                {alertPasswordText}
-                                                            </p>
-                                                        </div>
-                                                    ) : (
-                                                        <div className="alertContent">
-                                                            <p></p>
-                                                        </div>
-                                                    )}
-                                                </Col>
-                                            </Row>
-                                        </Container>
+                                        <Input
+                                            placeholder="Senha Atual"
+                                            value={actualPassword}
+                                            onChange={setActualPassword}
+                                        />
+                                        <Input
+                                            placeholder="Nova senha"
+                                            value={newPassword}
+                                            onChange={setNewPassword}
+                                        />
+                                        <Input
+                                            placeholder="Confirmar nova senha"
+                                            value={confirmNewPassword}
+                                            onChange={setConfirmNewPassword}
+                                        />
+                                        {alertConfirmPassword ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    {alertPasswordText}
+                                                </p>
+                                            </div>
+                                        ) : (
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button variant="success" onClick={updatePassword}>Confirmar</Button>
@@ -544,7 +529,7 @@ export default function PsychologistProfile(props) {
                                                 }
                                             }
                                         >
-                                    Cancelar
+                                            Cancelar
                                         </Button>
                                     </Modal.Footer>
                                 </Modal>
