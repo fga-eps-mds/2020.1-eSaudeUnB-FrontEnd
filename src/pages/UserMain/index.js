@@ -62,8 +62,8 @@ export default function UserMain() {
                 email,
                 weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
@@ -72,6 +72,11 @@ export default function UserMain() {
         window.location.reload();
     }
 
+    function professionalType(bond) {
+        if (bond === 'P') return 'Psicólogo';
+        if (bond === 'N') return 'Nutricionista';
+        return 'Assistente Social';
+    }
 
     return (
         <div className="usercalendar">
@@ -94,7 +99,6 @@ export default function UserMain() {
                         <div className="schedules">
                             {psychologists.map((psychologist, index) => (
 
-
                                 <div
                                     key={index}
                                     className="schedule-box"
@@ -107,11 +111,10 @@ export default function UserMain() {
                                                     key={index}
 
                                                 >
-                                                    <button onClick={() => setUserSelected(psychologist)}>
-                                                        <h3>{psychologist.bond == 'P' ? 'Psicólogo' :
-                                                                psychologist.bond == 'N' ? 'Nutricionista' :
-                                                                psychologist.bond == 'A' ? 'Assistente Social' : 
-                                                                'Profissional'}: {psychologist.name} {psychologist.lastName}</h3>
+                                                    <button
+                                                        onClick={() => setUserSelected(psychologist)}>
+                                                        <h3>{professionalType(psychologist.bond)}:
+                                                            {psychologist.name} {psychologist.lastName}</h3>
                                                     </button>
 
                                                 </div>

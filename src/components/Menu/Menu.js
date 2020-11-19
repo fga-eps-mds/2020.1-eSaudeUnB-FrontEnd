@@ -10,7 +10,7 @@ function Menu() {
                     <a id="name" href="/">eSaudeUnB</a>
                     <li><a id="icone"><img src={Union} /></a></li>
                     <li><a href="#">Perfil</a></li>
-                    <li><a href="#">Lista de Psicologos</a></li>
+                    <li><a href="#">Lista de Profissionais</a></li>
                     <li><a href="#">Proximos Eventos</a></li>
                     <li><a href="#">Agendar Atendimento</a></li>
                 </ul>

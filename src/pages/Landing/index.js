@@ -80,7 +80,7 @@ export default function Landing() {
                                 Você só precisa se registrar em
                                 nossa plataforma, e atualizar seus
                                 dados de perfil.Após isso já terá
-                                acesso a uma lista de psicólogos
+                                acesso a uma lista de profissionais
                                 com seus horários disponíveis para
                                 solicitação de atendimentos.
                             </span>
@@ -88,7 +88,7 @@ export default function Landing() {
                         <div className="hiw-card">
                             <h2>Quero Atender</h2>
                             <span>
-                                Atualmente para um psicólogo se
+                                Atualmente para um profissional se
                                 registrar na plataforma, ele deve
                                 entrar em contato com um
                                 administrador que irá cadastrá-lo.
@@ -99,9 +99,9 @@ export default function Landing() {
                             <span>
                                 Para um paciente, após já estar
                                 com o cadastro completo. Basta entrar
-                                na &rdquo;lista de psicólogos&rdquo; e escolher o psicólogo
+                                na &rdquo;lista de profissionais&rdquo; e escolher o profissional
                                 e horário da sua preferência.
-                                Já para um psicólogo basta estar com o cadastro completo
+                                Já para um profissional basta estar com o cadastro completo
                                 e o perfil atualizado para esperar que alguém solicite uma
                                 consulta.
                             </span>
@@ -129,7 +129,8 @@ export default function Landing() {
                             <span>
                                 Após já estar cadastrado e já ter atualizado as
                                 informações de perfil. Basta realizar o login
-                                e clicar em &rdquo;lista de Psicólogos&rdquo;, escolher o psicólogo
+                                e clicar em &rdquo;lista de profissionais&rdquo;,
+                                escolher o profissional
                                 e o horário de sua preferência.
                             </span>
                         </div>

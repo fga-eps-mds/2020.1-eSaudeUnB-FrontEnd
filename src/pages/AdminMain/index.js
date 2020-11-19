@@ -58,7 +58,7 @@ export default function AdminMain() {
             {show ? (
                 <header className="alert-component">
                     <Alert className="alert" variant="secondary">
-                        Deseja mesmo excluir este psicólogo?
+                        Deseja mesmo excluir este profissional?
                         <hr />
                         <div className="d-flex justify-content-end">
                             <Button
@@ -85,10 +85,10 @@ export default function AdminMain() {
             <div className="psychologist-list">
                 <div className="nav">
                     <button className="new-psychologist" onClick={() => history.push('/admin/psychologist/create')}>
-                        Cadastrar novo Psicólogo
+                        Cadastrar novo Profissional
                     </button>
                     <div className="count">
-                        <p>Psicólogos cadastrados: {psyArray.length}</p>
+                        <p>Profissionais cadastrados: {psyArray.length}</p>
                     </div>
                     <button className="get-out" onClick={getOut}>
                         Sair
@@ -116,7 +116,7 @@ export default function AdminMain() {
                                 onClick={() => showConfirmation(psychologist.email)
                                 }
                             >
-                                Excluir Psicólogo
+                                Excluir Profissional
                             </button>
                         </article>
                     ))}

@@ -13,7 +13,7 @@ import userIcon from '../../assets/images/userIcon.svg';
 import NavBar from '../../components/NavBar';
 import SearchBar from '../../components/SearchBar';
 
-export default function PsychologistList(props) {
+export default function PsychologistList() {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
     const [actualUser, setActualUser] = useState({});
@@ -38,6 +38,12 @@ export default function PsychologistList(props) {
             });
         setActualUser(localStorage.getItem('user'));
     }, []);
+
+    function professionalType(bond) {
+        if (bond === 'P') return 'Psicólogo';
+        if (bond === 'N') return 'Nutricionista';
+        return 'Assistente Social';
+    }
 
     return (
         <div className="psychologistListContainer">
@@ -81,10 +87,8 @@ export default function PsychologistList(props) {
                                                 {`${psy.name} ${psy.lastName}`}
                                             </p>
                                             <p>email: {psy.email}</p>
-                                            <p>Vínculo: {psy.bond == 'P' ? 'Psicólogo' :
-                                                            psy.bond == 'N' ? 'Nutricionista' :
-                                                            psy.bond == 'A' ? 'Assistente Social' : 
-                                                            'Profissional'}</p>
+                                            <p>Vínculo: {professionalType(psy.bond)}
+                                            </p>
 
                                             <Accordion.Collapse eventKey="0">
                                                 <div className="cardToggle">

@@ -46,11 +46,11 @@ export default function NavBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        })();
+        }());
     }, [actualUser, bond]);
 
     function showDropDown() {
-        setDropDown(!dropDown ? true : false);
+        setDropDown(!dropDown);
     }
 
     return (
@@ -182,7 +182,7 @@ export default function NavBar({ actualUser, bond }) {
                     >
                         Consultas Marcadas
                     </Link>
-                   
+
                     <div className="dropdown">
                         <div className="images">
                             <img
