@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar';
 
 export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
-    const { email } = localStorage.getItem('user');
+    const email = localStorage.getItem('user');
     const [selectedValue, setSelectedValue] = useState();
     const accessToken = localStorage.getItem('accessToken');
 
@@ -41,7 +41,7 @@ export default function UserSchedule(props) {
 
     useEffect(() => {
         async function getData() {
-            const response = await api.get(`/psychologist/${email}`, {
+            const response = await api.get(`/psychologist/${props.location.state.data}`, {
                 headers: { authorization: accessToken },
             });
             setPsychologist(response.data);
@@ -51,9 +51,10 @@ export default function UserSchedule(props) {
 
     async function saveAppointment(event) {
         event.preventDefault();
-        const response = await api.get(`/user/${localStorage.getItem('user')}`, {
+        const response = await api.get(`/user/${email}`, {
             headers: { authorization: accessToken },
         });
+        console.log(response)
         const { _id, name, lastName } = response.data;
 
         psychologist.weekDay.map((workDay) => {
@@ -62,6 +63,7 @@ export default function UserSchedule(props) {
                     appointment.scheduled = true;
                     appointment.user = _id;
                     appointment.name = `${name} ${lastName}`;
+                    console.log(name, lastName, appointment._id, psychologist)
                 }
             });
         });
