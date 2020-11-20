@@ -26,7 +26,7 @@ export default function UserProfile(props) {
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
     const [userImage, setUserImage] = useState('');
-    //novos campos
+    // novos campos
     const [race, setRace] = useState('');
     const [sexualOrientation, setSexualOrientation] = useState('');
     const [children, setChildren] = useState('');
@@ -42,7 +42,7 @@ export default function UserProfile(props) {
     const [affiliationPhone, setAffiliationPhone] = useState('');
     const [mainComplaint, setMainComplaint] = useState('');
 
-    //fim novos campos
+    // fim novos campos
     const [currentImage, setCurrentImage] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -65,7 +65,7 @@ export default function UserProfile(props) {
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(
         false,
     );
-    //novos campos
+    // novos campos
     const [alertContentRace, setAlertContentRace] = useState(false);
     const [alertContentSexualOrientation, setAlertContentSexualOrientation] = useState(false);
     const [alertContentEmergencyContactName, setAlertContentEmergencyContactName] = useState(false);
@@ -92,7 +92,7 @@ export default function UserProfile(props) {
         setAlertContentGender(false);
         setAlertContentBond(false);
         setAlertContentCivilStatus(false);
-        //novos campos
+        // novos campos
         setAlertContentRace(false);
         setAlertContentSexualOrientation(false);
         setAlertContentEmergencyContactName(false);
@@ -128,7 +128,7 @@ export default function UserProfile(props) {
                     oldPassword: actualPassword,
                     password: newPassword,
                 },
-                    { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
                 if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
@@ -171,7 +171,7 @@ export default function UserProfile(props) {
                 civilStatus,
                 religion,
                 userImage: currentImage,
-                //novos campos
+                // novos campos
                 race,
                 sexualOrientation,
                 children,
@@ -187,7 +187,7 @@ export default function UserProfile(props) {
                 medication,
                 mainComplaint,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 console.log(response.data.error.details);
@@ -222,7 +222,7 @@ export default function UserProfile(props) {
                     if (details[value].path[0] === 'civilStatus') {
                         setAlertContentCivilStatus(true);
                     }
-                    //novos campos
+                    // novos campos
                     if (details[value].path[0] === 'race') {
                         setAlertContentRace(true);
                     }
@@ -313,7 +313,7 @@ export default function UserProfile(props) {
                         ),
                     );
                 }
-                //novos campos
+                // novos campos
                 setRace(response.data.race);
                 setSexualOrientation(response.data.sexualOrientation);
                 setChildren(response.data.children);
@@ -323,7 +323,7 @@ export default function UserProfile(props) {
                 setEmergencyContactName(response.data.emergencyContactName);
                 setEmergencyContactPhone(response.data.emergencyContactPhone);
                 setEmergencyContactBond(response.data.emergencyContactBond);
-                setMedication(response.data.medication)
+                setMedication(response.data.medication);
                 setMotherName(response.data.motherName);
                 setFatherName(response.data.fatherName);
                 setAffiliationPhone(response.data.affiliationPhone);
@@ -357,8 +357,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -410,10 +410,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <Input
                                     placeholder="Sobrenome"
@@ -428,10 +428,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <Input
                                     placeholder="Email"
@@ -446,10 +446,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <Input
                                     placeholder="Matrícula UnB"
@@ -461,10 +461,10 @@ export default function UserProfile(props) {
                                         <p>Insira uma matrícula válida.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <select
                                     className="selectsLargest"
@@ -487,10 +487,10 @@ export default function UserProfile(props) {
                                         <p>Selecione um vínculo.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <Input
                                     placeholder="Nome contato de emergência"
                                     value={emergencyContactName || ''}
@@ -504,10 +504,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <Input
                                     placeholder="Telefone contato de emergência"
                                     value={emergencyContactPhone || ''}
@@ -521,10 +521,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <Input
                                     placeholder="Vínculo contato de emergência"
                                     value={emergencyContactBond || ''}
@@ -538,10 +538,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <Input
                                     placeholder="Nome da mãe"
@@ -556,10 +556,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <Input
                                     placeholder="Nome do pai"
                                     value={fatherName || ''}
@@ -573,19 +573,19 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 <Input
                                     placeholder="Telefone"
                                     value={affiliationPhone}
                                     onChange={setAffiliationPhone}
                                 />
-                                    <div className="alertContent">
-                                        <p>
-                                        </p>
-                                    </div>                      
+                                <div className="alertContent">
+                                    <p>
+                                    </p>
+                                </div>
 
                             </div>
 
@@ -600,10 +600,10 @@ export default function UserProfile(props) {
                                         <p>Insira um telefone válido.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <select
                                     className="selectsLargest"
@@ -624,11 +624,11 @@ export default function UserProfile(props) {
                                         <p>Selecione um gênero.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                {/*campo novo de orientação sexual*/}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                {/* campo novo de orientação sexual */}
                                 <select
                                     className="selectsLargest"
                                     name="sexualOrientation"
@@ -649,10 +649,10 @@ export default function UserProfile(props) {
                                         <p>Selecione uma orientação sexual.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <select
                                     className="selectsLargest"
@@ -672,10 +672,10 @@ export default function UserProfile(props) {
                                         <p>Selecione uma orientação sexual.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <select
                                     className="selectsLargest"
@@ -702,10 +702,10 @@ export default function UserProfile(props) {
                                         <p>Informe o estado civil.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                                 {/* novos campos */}
                                 <select
                                     className="selectsLargest"
@@ -728,10 +728,10 @@ export default function UserProfile(props) {
                                         <p>Selecione uma Etnia/Raça.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <select
                                     className="selectsLargest"
@@ -746,8 +746,8 @@ export default function UserProfile(props) {
                                     <option value="nao">Não</option>
                                 </select>
                                 <div className="alertContent">
-                                            <p></p>
-                                        </div>
+                                    <p></p>
+                                </div>
 
                                 <select
                                     className="selectsLargest"
@@ -762,9 +762,9 @@ export default function UserProfile(props) {
                                     <option value="nao">Não</option>
                                 </select>
                                 <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                
+                                    <p></p>
+                                </div>
+
                                 <select
                                     className="selectsLargest"
                                     name="psychiatricFollowUp"
@@ -784,54 +784,54 @@ export default function UserProfile(props) {
                                         <p>Campo obrigatório.</p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
                                 <Input
                                     placeholder="Usa medicação'?. Se sim, qual?"
                                     value={medication || ''}
                                     onChange={setMedication}
                                 />
-                                 <div className="alertContent">
-                                            <p></p>
-                                        </div>
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
 
                                 <select
-                                className="selectsLargest"
-                                name="mainComplaint"
-                                value={mainComplaint || ''}
-                                onChange={(e) => setMainComplaint(e.target.value)}
-                            >
-                                <option value="" disabled>
+                                    className="selectsLargest"
+                                    name="mainComplaint"
+                                    value={mainComplaint || ''}
+                                    onChange={(e) => setMainComplaint(e.target.value)}
+                                >
+                                    <option value="" disabled>
                                     Principal queixa
-                                </option>
-                                <option value="Ansiedade">Ansiedade</option>
-                                <option value="Autoconhecimento">Autoconhecimento</option>
-                                <option value="Conflito no trabalho">Conflito no trabalho</option>
-                                <option value="Depressão">Depressão</option>
-                                <option value="Dificuldades academicas">Dificuldades acadêmicas</option>
-                                <option value="Ideacao suicida">Ideação suicida</option>
-                                <option value="Problemas afetivos">Problemas afetivos</option>
-                                <option value="Problemas de saude">Problemas de saúde</option>
-                                <option value="Problemas familiares">Problemas familiares</option>
-                                <option value="Solicitação para psiquiatria">Solicitação para psiquiatria</option>
-                                <option value="Tentativa de suicidio">Tentativa de suicídio</option>
-                                <option value="Uso de drogas">Uso de drogas</option>
-                                <option value="Outros">Outros</option>
-                            </select>
+                                    </option>
+                                    <option value="Ansiedade">Ansiedade</option>
+                                    <option value="Autoconhecimento">Autoconhecimento</option>
+                                    <option value="Conflito no trabalho">Conflito no trabalho</option>
+                                    <option value="Depressão">Depressão</option>
+                                    <option value="Dificuldades academicas">Dificuldades acadêmicas</option>
+                                    <option value="Ideacao suicida">Ideação suicida</option>
+                                    <option value="Problemas afetivos">Problemas afetivos</option>
+                                    <option value="Problemas de saude">Problemas de saúde</option>
+                                    <option value="Problemas familiares">Problemas familiares</option>
+                                    <option value="Solicitação para psiquiatria">Solicitação para psiquiatria</option>
+                                    <option value="Tentativa de suicidio">Tentativa de suicídio</option>
+                                    <option value="Uso de drogas">Uso de drogas</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
 
-                            {alertContentMainComplaint ? (
-                                <div className="alertContent">
-                                    <p>Selecione uma queixa principal.</p>
-                                </div>
-                            ) : (
+                                {alertContentMainComplaint ? (
+                                    <div className="alertContent">
+                                        <p>Selecione uma queixa principal.</p>
+                                    </div>
+                                ) : (
                                     <div className="alertContent">
                                         <p></p>
                                     </div>
                                 )}
-                                    
+
                             </div>
 
                         </div>
@@ -848,7 +848,7 @@ export default function UserProfile(props) {
                                 <Modal.Header closeButton>
                                     <Modal.Title id="contained-modal-title-vcenter">
                                         Mudar Senha
-                                        </Modal.Title>
+                                    </Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <Input
@@ -873,10 +873,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button variant="success" onClick={updatePassword}>Confirmar</Button>
@@ -891,7 +891,7 @@ export default function UserProfile(props) {
                                         }}
                                     >
                                         Cancelar
-                                        </Button>
+                                    </Button>
                                 </Modal.Footer>
                             </Modal>
 

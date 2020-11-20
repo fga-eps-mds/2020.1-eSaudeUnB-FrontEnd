@@ -89,15 +89,15 @@ export default function PsychologistCalendar(props) {
                                         className="schedule-box"
                                     >
                                         <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
-                                                ? `0${restrict.month + 1}`
-                                                : `${restrict.month + 1}`
-                                            }/${restrict.year}`}</span>
+                                            ? `0${restrict.month + 1}`
+                                            : `${restrict.month + 1}`
+                                        }/${restrict.year}`}</span>
                                         <button
                                             type="button"
                                             onClick={() => removeRestrict(index)}
                                         >
                                             Remover
-                                    </button>
+                                        </button>
                                     </div>
                                 ))}
                             </div>
@@ -106,7 +106,7 @@ export default function PsychologistCalendar(props) {
                             </button>
                             <button type="button" onClick={() => putRestrict()}>
                                 Salvar
-                        </button>
+                            </button>
                         </div>
                     </div>
                 </div>
