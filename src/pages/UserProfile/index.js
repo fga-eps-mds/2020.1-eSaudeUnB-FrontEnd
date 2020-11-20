@@ -33,6 +33,14 @@ export default function UserProfile(props) {
     const [emergencyContactName, setEmergencyContactName] = useState('');
     const [emergencyContactPhone, setEmergencyContactPhone] = useState('');
     const [emergencyContactBond, setEmergencyContactBond] = useState('');
+    const [socialPrograms, setSocialPrograms] = useState('');
+    const [studentHouseResidence, setStudentHouseResidence] = useState('');
+    const [psychiatricFollowUp, setPsychiatricFollowUp] = useState('');
+    const [medication, setMedication] = useState('');
+    const [motherName, setMotherName] = useState('');
+    const [fatherName, setFatherName] = useState('');
+    const [affiliationPhone, setAffiliationPhone] = useState('');
+    const [mainComplaint, setMainComplaint] = useState('');
 
     //fim novos campos
     const [currentImage, setCurrentImage] = useState('');
@@ -63,6 +71,10 @@ export default function UserProfile(props) {
     const [alertContentEmergencyContactName, setAlertContentEmergencyContactName] = useState(false);
     const [alertContentEmergencyContactPhone, setAlertContentEmergencyContactPhone] = useState(false);
     const [alertContentEmergencyContactBond, setAlertContentEmergencyContactBond] = useState(false);
+    const [alertContentMotherName, setAlertContentMotherName] = useState(false);
+    const [alertContentFatherName, setAlertContentFatherName] = useState(false);
+    const [alertPsychiatricFollowUp, setAlertPsychiatricFollowUp] = useState(false);
+    const [alertContentMainComplaint, setAlertContentMainComplaint] = useState(false);
 
     const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
     const [alertPasswordText, setAlertPasswordtext] = useState(false);
@@ -86,6 +98,10 @@ export default function UserProfile(props) {
         setAlertContentEmergencyContactName(false);
         setAlertContentEmergencyContactPhone(false);
         setAlertContentEmergencyContactBond(false);
+        setAlertContentMotherName(false);
+        setAlertContentFatherName(false);
+        setAlertPsychiatricFollowUp(false);
+        setAlertContentMainComplaint(false);
     }
 
     function getOut(event) {
@@ -124,6 +140,9 @@ export default function UserProfile(props) {
                     setShow(true);
                     setVariant('success');
                     setAlertText('Senha alterada com sucesso.');
+                    setTimeout(() => {
+                        setShow(false);
+                    }, 2000);
                 }
             } catch (err) {
                 if (err.response.status === 400) {
@@ -159,6 +178,13 @@ export default function UserProfile(props) {
                 emergencyContactName,
                 emergencyContactPhone,
                 emergencyContactBond,
+                motherName,
+                fatherName,
+                affiliationPhone,
+                socialPrograms,
+                studentHouseResidence,
+                psychiatricFollowUp,
+                mainComplaint,
             },
                 { headers: { authorization: accessToken } });
 
@@ -211,7 +237,18 @@ export default function UserProfile(props) {
                     if (details[value].path[0] === 'emergencyContactBond') {
                         setAlertContentEmergencyContactBond(true);
                     }
-
+                    if (details[value].path[0] === 'motherName') {
+                        setAlertContentMotherName(true);
+                    }
+                    if (details[value].path[0] === 'fatherName') {
+                        setAlertContentFatherName(true);
+                    }
+                    if (details[value].path[0] === 'psychiatricFollowUp') {
+                        setAlertPsychiatricFollowUp(true);
+                    }
+                    if (details[value].path[0] === 'psychiatricFollowUp') {
+                        setAlertContentMainComplaint(true);
+                    }
                 }
 
                 setTimeout(() => {
@@ -279,9 +316,15 @@ export default function UserProfile(props) {
                 setRace(response.data.race);
                 setSexualOrientation(response.data.sexualOrientation);
                 setChildren(response.data.children);
+                setSocialPrograms(response.data.socialPrograms);
+                setStudentHouseResidence(response.data.studentHouseResidence);
+                setPsychiatricFollowUp(response.data.psychiatricFollowUp);
                 setEmergencyContactName(response.data.emergencyContactName);
                 setEmergencyContactPhone(response.data.emergencyContactPhone);
                 setEmergencyContactBond(response.data.emergencyContactBond);
+                setMotherName(response.data.motherName);
+                setFatherName(response.data.fatherName);
+                setMainComplaint(response.data.mainComplaint);
             }
         } catch (err2) {
             if (err2.response.status === 401) {
@@ -496,6 +539,60 @@ export default function UserProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
+
+
+
+
+
+
+
+
+                                <Input
+                                    placeholder="Nome da mãe"
+                                    value={motherName || ''}
+                                    onChange={setMotherName}
+                                />
+
+                                {alertContentMotherName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Campo obrigatório. Nome deve possuir mais de 2 letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                <Input
+                                    placeholder="Nome do pai"
+                                    value={fatherName || ''}
+                                    onChange={setFatherName}
+                                />
+
+                                {alertContentFatherName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Campo obrigatório. Insira um número válido.
+                                        </p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                <Input
+                                    placeholder="Telefone"
+                                    value={affiliationPhone}
+                                    onChange={setAffiliationPhone}
+                                />
+                                    <div className="alertContent">
+                                        <p>
+                                        </p>
+                                    </div>
+                                
+
+
                             </div>
 
                             <div className="form">
@@ -642,8 +739,107 @@ export default function UserProfile(props) {
                                         </div>
                                     )}
 
+                                <select
+                                    className="selectsLargest"
+                                    name="socialPrograms"
+                                    value={socialPrograms || ''}
+                                    onChange={(e) => setSocialPrograms(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Programas assistenciais da UnB?
+                                    </option>
+                                    <option value="sim">Sim</option>
+                                    <option value="nao">Não</option>
+                                </select>
+                                <div className="alertContent">
+                                            <p></p>
+                                        </div>
 
+                                <select
+                                    className="selectsLargest"
+                                    name="studentHouseResidence"
+                                    value={studentHouseResidence || ''}
+                                    onChange={(e) => setStudentHouseResidence(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Mora na casa do Estudante Universitário?
+                                    </option>
+                                    <option value="sim">Sim</option>
+                                    <option value="nao">Não</option>
+                                </select>
+                                <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                
+                                <select
+                                    className="selectsLargest"
+                                    name="psychiatricFollowUp"
+                                    value={psychiatricFollowUp || ''}
+                                    onChange={(e) => setPsychiatricFollowUp(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Já fez acompanhamento psiquiátrico?
+                                    </option>
+                                    <option value="past">No passado</option>
+                                    <option value="actually">Atualmente</option>
+                                    <option value="never">Nunca fiz</option>
+                                </select>
+
+                                {alertPsychiatricFollowUp ? (
+                                    <div className="alertContent">
+                                        <p>Campo obrigatório.</p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
+                                <Input
+                                    placeholder="Usa medicação'?. Se sim, qual?"
+                                    value={medication || ''}
+                                    onChange={setMedication}
+                                />
+                                 <div className="alertContent">
+                                            <p></p>
+                                        </div>
+
+                                <select
+                                className="selectsLargest"
+                                name="mainComplaint"
+                                value={mainComplaint || ''}
+                                onChange={(e) => setMainComplaint(e.target.value)}
+                            >
+                                <option value="" disabled>
+                                    Principal queixa
+                                </option>
+                                <option value="Ansiedade">Ansiedade</option>
+                                <option value="Autoconhecimento">Autoconhecimento</option>
+                                <option value="Conflito no trabalho">Conflito no trabalho</option>
+                                <option value="Depressão">Depressão</option>
+                                <option value="Dificuldades academicas">Dificuldades acadêmicas</option>
+                                <option value="Ideacao suicida">Ideação suicida</option>
+                                <option value="Problemas afetivos">Problemas afetivos</option>
+                                <option value="Problemas de saude">Problemas de saúde</option>
+                                <option value="Problemas familiares">Problemas familiares</option>
+                                <option value="Solicitação para psiquiatria">Solicitação para psiquiatria</option>
+                                <option value="Tentativa de suicidio">Tentativa de suicídio</option>
+                                <option value="Uso de drogas">Uso de drogas</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+
+                            {alertContentMainComplaint ? (
+                                <div className="alertContent">
+                                    <p>Selecione uma queixa principal.</p>
+                                </div>
+                            ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                    
                             </div>
+
                         </div>
                         <div className="buttons">
                             <button className="button-change" onClick={() => setShowModal(true)}>Alterar senha</button>
