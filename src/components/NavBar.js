@@ -48,7 +48,7 @@ export default function NavBar({ actualUser, bond }) {
                 // Erro ao renderizar imagem
             }
         }());
-    });
+    }, []);
 
     return (
         <Navbar className="navBarComponent" bg="light" expand="lg">
@@ -64,9 +64,6 @@ export default function NavBar({ actualUser, bond }) {
                                 className="a"
                                 to={{
                                     pathname: '/psychologist/schedule',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Configurar meu Cronograma
@@ -75,9 +72,6 @@ export default function NavBar({ actualUser, bond }) {
                                 className="a"
                                 to={{
                                     pathname: '/patient/list',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Lista de Pacientes
@@ -86,9 +80,6 @@ export default function NavBar({ actualUser, bond }) {
                                 className="a"
                                 to={{
                                     pathname: '/psychologist/events',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Agendamentos
@@ -100,9 +91,6 @@ export default function NavBar({ actualUser, bond }) {
                                     className="a"
                                     to={{
                                         pathname: '/psychologist/list',
-                                        state: {
-                                            data: actualUser,
-                                        },
                                     }}
                                 >
                                     Lista de Psicologos
@@ -111,9 +99,6 @@ export default function NavBar({ actualUser, bond }) {
                                     className="a"
                                     to={{
                                         pathname: '/main',
-                                        state: {
-                                            data: actualUser,
-                                        },
                                     }}
                                 >
                                     Agendamentos
@@ -122,9 +107,6 @@ export default function NavBar({ actualUser, bond }) {
                                     className="a"
                                     to={{
                                         pathname: '/events',
-                                        state: {
-                                            data: actualUser,
-                                        },
                                     }}
                                 >
                                     Consultas Marcadas
@@ -142,9 +124,6 @@ export default function NavBar({ actualUser, bond }) {
                             className="dropNone"
                             to={{
                                 pathname: '/psychologist/profile',
-                                state: {
-                                    data: actualUser,
-                                },
                             }}
                         >
                             Perfil
@@ -154,9 +133,6 @@ export default function NavBar({ actualUser, bond }) {
                                 className="dropNone"
                                 to={{
                                     pathname: '/profile',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Perfil
@@ -166,9 +142,6 @@ export default function NavBar({ actualUser, bond }) {
                         className="dropNone"
                         to={{
                             pathname: '/',
-                            state: {
-                                data: actualUser,
-                            },
                         }}
                     >
                         Sair
@@ -180,9 +153,6 @@ export default function NavBar({ actualUser, bond }) {
                                     className="profileDropDown"
                                     to={{
                                         pathname: '/psychologist/profile',
-                                        state: {
-                                            data: actualUser,
-                                        },
                                     }}
                                 >
                                     Perfil
@@ -192,9 +162,6 @@ export default function NavBar({ actualUser, bond }) {
                                         className="profileDropDown"
                                         to={{
                                             pathname: '/profile',
-                                            state: {
-                                                data: actualUser,
-                                            },
                                         }}
                                     >
                                         Perfil
