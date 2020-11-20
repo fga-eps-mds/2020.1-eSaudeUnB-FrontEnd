@@ -205,7 +205,7 @@ export default function UserProfile(props) {
                 //novos campos
                 setRace(response.data.race);
                 setSexualOrientation(response.data.sexualOrientation);
-                setChildren(response.data.sexualOrientation);
+                setChildren(response.data.children);
             }
         } catch (err2) {
             if (err2.response.status === 401) {
