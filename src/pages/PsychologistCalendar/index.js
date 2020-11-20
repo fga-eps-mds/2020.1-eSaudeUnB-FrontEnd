@@ -61,56 +61,57 @@ export default function PsychologistCalendar(props) {
     }
 
     return (
-        <div className="psychologistcalendar" onLoad={handleRestrict}>
+        <>
             <NavBar
                 className="navBar"
                 bond="Psychologist"
                 actualUser={props.location.state.data}
             />
-            <div className="content">
-                <div className="tabela">
-                    <div className="calendar">
-                        <Calendar
-                            onChange={(currentDate) => {
-                                setDate(currentDate);
-                            }}
-                            value={date}
-                            next2Label={null}
-                            prev2Label={null}
-                        />
-                    </div>
-                    <div className="table-right">
-                        <h1>Suas Restrições:</h1>
-                        <div className="schedules">
-                            {restricts.map((restrict, index) => (
-                                <div
-                                    key={index}
-                                    className="schedule-box"
-                                >
-                                    <span>{`restrição dia ${restrict.day}/${
-                                        restrict.month + 1 < 10
-                                            ? `0${restrict.month + 1}`
-                                            : `${restrict.month + 1}`
-                                    }/${restrict.year}`}</span>
-                                    <button
-                                        type="button"
-                                        onClick={() => removeRestrict(index)}
-                                    >
-                                        Remover
-                                    </button>
-                                </div>
-                            ))}
+            <div className="psychologistcalendar" onLoad={handleRestrict}>
+                <div className="content">
+                    <div className="tabela">
+                        <div className="calendar">
+                            <Calendar
+                                onChange={(currentDate) => {
+                                    setDate(currentDate);
+                                }}
+                                value={date}
+                                next2Label={null}
+                                prev2Label={null}
+                            />
                         </div>
-                        <button type="button" onClick={() => updateRestricts()}>
-                            {`Adicionar Restrição ao dia ${date.getDate()}`}
+                        <div className="table-right">
+                            <h1>Suas Restrições:</h1>
+                            <div className="schedules">
+                                {restricts.map((restrict, index) => (
+                                    <div
+                                        key={index}
+                                        className="schedule-box"
+                                    >
+                                        <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
+                                                ? `0${restrict.month + 1}`
+                                                : `${restrict.month + 1}`
+                                            }/${restrict.year}`}</span>
+                                        <button
+                                            type="button"
+                                            onClick={() => removeRestrict(index)}
+                                        >
+                                            Remover
+                                    </button>
+                                    </div>
+                                ))}
+                            </div>
+                            <button type="button" onClick={() => updateRestricts()}>
+                                {`Adicionar Restrição ao dia ${date.getDate()}`}
+                            </button>
+                            <button type="button" onClick={() => putRestrict()}>
+                                Salvar
                         </button>
-                        <button type="button" onClick={() => putRestrict()}>
-                            Salvar
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

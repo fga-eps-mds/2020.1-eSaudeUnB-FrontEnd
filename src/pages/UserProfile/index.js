@@ -62,7 +62,7 @@ export default function UserProfile(props) {
     const [alertContentSexualOrientation, setAlertContentSexualOrientation] = useState(false);
     const [alertContentEmergencyContactName, setAlertContentEmergencyContactName] = useState(false);
     const [alertContentEmergencyContactPhone, setAlertContentEmergencyContactPhone] = useState(false);
-    const [alertContentEmergencyContactBond, setAlertContentEmergencyContactBond] = useState(false);   
+    const [alertContentEmergencyContactBond, setAlertContentEmergencyContactBond] = useState(false);
 
     const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
     const [alertPasswordText, setAlertPasswordtext] = useState(false);
@@ -243,7 +243,7 @@ export default function UserProfile(props) {
             setVariant('danger');
             setAlertText('Falha na atualização dos dados, tente novamente');
         }
-        setInterval(() => {
+        setTimeout(() => {
             setShow(false);
         }, 2000);
 
@@ -296,7 +296,7 @@ export default function UserProfile(props) {
             setVariant('danger');
             setAlertText('Erro ao carregar dados');
         }
-        setInterval(() => {
+        setTimeout(() => {
             setShow(false);
         }, 2000);
     }
@@ -419,7 +419,7 @@ export default function UserProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
-                                
+
                                 <select
                                     className="selectsLargest"
                                     name="bond"
@@ -445,7 +445,7 @@ export default function UserProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
-                                 <Input
+                                <Input
                                     placeholder="Nome contato de emergência"
                                     value={emergencyContactName || ''}
                                     onChange={setEmergencyContactName}
@@ -462,7 +462,7 @@ export default function UserProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
-                                    <Input
+                                <Input
                                     placeholder="Telefone contato de emergência"
                                     value={emergencyContactPhone || ''}
                                     onChange={setEmergencyContactPhone}
@@ -479,13 +479,13 @@ export default function UserProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
-                                    <Input
+                                <Input
                                     placeholder="Vínculo contato de emergência"
                                     value={emergencyContactBond || ''}
                                     onChange={setEmergencyContactBond}
                                 />
 
-                                {alertContentEmergencyContactBond? (
+                                {alertContentEmergencyContactBond ? (
                                     <div className="alertContent">
                                         <p>
                                             Campo obrigatório. Deve possuir mais de 2 letras.
@@ -646,68 +646,68 @@ export default function UserProfile(props) {
                             </div>
                         </div>
                         <div className="buttons">
-                        <button className="button-change" onClick={() => setShowModal(true)}>Alterar senha</button>
-                <Modal
-                    show={showModal}
-                    onHide={() => setShowModal(false)}
-                    backdrop="static"
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-vcenter">
-                            Mudar Senha
+                            <button className="button-change" onClick={() => setShowModal(true)}>Alterar senha</button>
+                            <Modal
+                                show={showModal}
+                                onHide={() => setShowModal(false)}
+                                backdrop="static"
+                                size="lg"
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title id="contained-modal-title-vcenter">
+                                        Mudar Senha
                                         </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Input
-                            placeholder="Senha Atual"
-                            value={actualPassword}
-                            onChange={setActualPassword}
-                        />
-                        <Input
-                            placeholder="Nova senha"
-                            value={newPassword}
-                            onChange={setNewPassword}
-                        />
-                        <Input
-                            placeholder="Confirmar nova senha"
-                            value={confirmNewPassword}
-                            onChange={setConfirmNewPassword}
-                        />
-                        {alertConfirmPassword ? (
-                            <div className="alertContent">
-                                <p>
-                                    {alertPasswordText}
-                                </p>
-                            </div>
-                        ) : (
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-                            )}
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="success" onClick={updatePassword}>Confirmar</Button>
-                        <Button
-                            variant="danger"
-                            onClick={() => {
-                                setAlertConfirmPassword(false);
-                                setShowModal(false);
-                                setActualPassword('');
-                                setNewPassword('');
-                                setConfirmNewPassword('');
-                            }}
-                        >
-                            Cancelar
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <Input
+                                        placeholder="Senha Atual"
+                                        value={actualPassword}
+                                        onChange={setActualPassword}
+                                    />
+                                    <Input
+                                        placeholder="Nova senha"
+                                        value={newPassword}
+                                        onChange={setNewPassword}
+                                    />
+                                    <Input
+                                        placeholder="Confirmar nova senha"
+                                        value={confirmNewPassword}
+                                        onChange={setConfirmNewPassword}
+                                    />
+                                    {alertConfirmPassword ? (
+                                        <div className="alertContent">
+                                            <p>
+                                                {alertPasswordText}
+                                            </p>
+                                        </div>
+                                    ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="success" onClick={updatePassword}>Confirmar</Button>
+                                    <Button
+                                        variant="danger"
+                                        onClick={() => {
+                                            setAlertConfirmPassword(false);
+                                            setShowModal(false);
+                                            setActualPassword('');
+                                            setNewPassword('');
+                                            setConfirmNewPassword('');
+                                        }}
+                                    >
+                                        Cancelar
                                         </Button>
-                    </Modal.Footer>
-                </Modal>
+                                </Modal.Footer>
+                            </Modal>
 
-                <button className="button-salvar" type="submit">
-                    Salvar
-                                </button>
+                            <button className="button-salvar" type="submit">
+                                Salvar
+                            </button>
                         </div>
                     </form>
                 </div>
