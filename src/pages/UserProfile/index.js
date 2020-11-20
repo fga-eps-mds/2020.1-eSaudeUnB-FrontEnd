@@ -826,7 +826,7 @@ export default function UserProfile(props) {
                                         <option value="nao">Não</option>
                                     </select>
                                     <div className="alertContent">
-                                        <p></p>
+                                        <p>Selecione uma orientação sexual.</p>
                                     </div>
                                 </div>
 
@@ -884,7 +884,7 @@ export default function UserProfile(props) {
                                         onChange={setMedication}
                                     />
                                     <div className="alertContent">
-                                        <p></p>
+                                        <p>Selecione uma Etnia/Raça.</p>
                                     </div>
                                 </div>
 
