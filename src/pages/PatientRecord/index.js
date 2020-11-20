@@ -46,7 +46,7 @@ export default function PatientRecord(props) {
         getData();
     });
 
-    function changeSession(index) {
+    async function changeSession(index) {
         setTabContent(false);
         setMainComplaint(sessions[index].mainComplaint);
         setSecondaryComplaint(sessions[index].secondaryComplaint);
@@ -54,7 +54,7 @@ export default function PatientRecord(props) {
         setProfessional(sessions[index].professional);
     }
 
-    function changeAllSession(index) {
+    async function changeAllSession(index) {
         setTabContent(false);
         setMainComplaint(allSessions[index].mainComplaint);
         setSecondaryComplaint(allSessions[index].secondaryComplaint);
@@ -68,7 +68,7 @@ export default function PatientRecord(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Psychologist" />
             <div className="patientRecord">
                 <div className="content">
                     <div className="patientInfo">
@@ -123,7 +123,7 @@ export default function PatientRecord(props) {
                                 className="tabLink"
                                 onClick={() => openShowAll()}
                             >
-                            Mostrar Todos
+                                Mostrar Todos
                             </button>
                             {sessions.map((session, index) => (
                                 <div key={session._id} className="buttons">
@@ -148,7 +148,7 @@ export default function PatientRecord(props) {
                                 })
                                 }
                             >
-                            Novo atendimento
+                                Novo atendimento
                             </button>
                         </div>
 
@@ -166,11 +166,11 @@ export default function PatientRecord(props) {
                                                 <div className="minSession">
                                                     <p>Data: 12/12/2012 </p>
                                                     <p className="info">
-                                                    Profissional:{' '}
+                                                        Profissional:{' '}
                                                         {session.professional}
                                                     </p>
                                                     <p className="info">
-                                                    Encaminhamento: Rede Interna
+                                                        Encaminhamento: Rede Interna
                                                     </p>
                                                 </div>
                                             </div>

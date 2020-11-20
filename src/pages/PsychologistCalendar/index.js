@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
@@ -10,8 +9,6 @@ export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
     const [restricts, setRestricts] = useState([]);
     const accessToken = localStorage.getItem('accessToken');
-
-    const history = useHistory();
 
     async function putRestrict() {
         await api.put('/calendary/update/', {
@@ -68,7 +65,6 @@ export default function PsychologistCalendar(props) {
             <NavBar
                 className="navBar"
                 bond="Psychologist"
-                actualUser={props.location.state.data}
             />
             <div className="content">
                 <div className="tabela">
@@ -90,11 +86,10 @@ export default function PsychologistCalendar(props) {
                                     key={index}
                                     className="schedule-box"
                                 >
-                                    <span>{`restrição dia ${restrict.day}/${
-                                        restrict.month + 1 < 10
-                                            ? `0${restrict.month + 1}`
-                                            : `${restrict.month + 1}`
-                                    }/${restrict.year}`}</span>
+                                    <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
+                                        ? `0${restrict.month + 1}`
+                                        : `${restrict.month + 1}`
+                                        }/${restrict.year}`}</span>
                                     <button
                                         type="button"
                                         onClick={() => removeRestrict(index)}

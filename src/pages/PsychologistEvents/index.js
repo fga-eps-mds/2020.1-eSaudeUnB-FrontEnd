@@ -16,7 +16,7 @@ export default function PsychologistEvents() {
         }).then((response) => {
             setPsychologist(response.data);
         });
-    }, []);
+    });
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
@@ -28,7 +28,7 @@ export default function PsychologistEvents() {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Psychologist" actualUser={localStorage.getItem('user')} />
+            <NavBar className="navBar" bond="Psychologist" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">

@@ -20,7 +20,7 @@ export default function UserMain() {
         }).then((response) => {
             setPsychologists(response.data);
         });
-    }, []);
+    });
 
     function dateCheck(weekDay) {
         if (weekDay === date.getDay()) {
@@ -74,7 +74,7 @@ export default function UserMain() {
 
     return (
         <div className="usercalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={user} />
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -125,7 +125,7 @@ export default function UserMain() {
                             <h3>{userSelected.biography}</h3>
                         </div>
                         <div className="column2">
-                            <h3>Horários Disponíveis:</h3>
+                            <h3>{'Horários Disponíveis:'}</h3>
                             <form onSubmit={saveAppointment}>
                                 <div className="hours-disponibility">
                                     {userSelected.weekDay !== undefined

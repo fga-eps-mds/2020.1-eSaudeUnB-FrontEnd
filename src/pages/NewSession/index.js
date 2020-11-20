@@ -39,9 +39,9 @@ export default function NewSession(props) {
             complaintEvolution,
             professional,
         },
-        {
-            headers: { authorization: accessToken },
-        });
+            {
+                headers: { authorization: accessToken },
+            });
 
         history.push({
             pathname: `patient/list/${patient.email}`,
@@ -54,7 +54,7 @@ export default function NewSession(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Psychologist" />
             <div className="newSession">
                 <div className="content">
                     <div className="patientInfo">

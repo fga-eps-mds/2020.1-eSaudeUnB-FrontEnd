@@ -81,7 +81,7 @@ export default function UserProfile(props) {
                 religion,
                 userImage: currentImage,
             },
-            { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -195,12 +195,12 @@ export default function UserProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 2000);
+        }, 10000);
     }
 
     return (
         <div>
-            <NavBar actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Patient" />
 
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
@@ -208,8 +208,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -218,12 +218,20 @@ export default function UserProfile(props) {
                                 <input
                                     id="image"
                                     type="file"
+                                    accept=".png, .jpg, .jpeg"
                                     onChange={async (e) => {
-                                        uploadImage(e);
-                                        const image = await convertBase64(
-                                            e.target.files[0],
-                                        );
-                                        setCurrentImage(image);
+                                        const compar = e.target.files[0].type.split("/")
+                                        if (compar[0] === "image") {
+                                            uploadImage(e);
+                                            const image = await convertBase64(
+                                                e.target.files[0],
+                                            );
+                                            setCurrentImage(image);
+                                        } else {
+                                            setShow(true);
+                                            setVariant('danger');
+                                            setAlertText('Formato de arquivo não aceito como Foto');
+                                        }
                                     }}
                                 />
                                 <figure className="personal-figure">
@@ -261,10 +269,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <Input
                                     placeholder="Sobrenome"
@@ -279,10 +287,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <Input
                                     placeholder="Email"
@@ -297,10 +305,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <Input
                                     placeholder="Matrícula UnB"
@@ -312,10 +320,10 @@ export default function UserProfile(props) {
                                         <p>Insira uma matrícula válida.</p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                             </div>
 
                             <div className="form">
@@ -329,10 +337,10 @@ export default function UserProfile(props) {
                                         <p>Insira um telefone válido.</p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <select
                                     className="selectsLargest"
@@ -353,10 +361,10 @@ export default function UserProfile(props) {
                                         <p>Selecione um gênero.</p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <select
                                     className="selectsLargest"
@@ -379,10 +387,10 @@ export default function UserProfile(props) {
                                         <p>Selecione um vínculo.</p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <select
                                     className="selectsLargest"
@@ -409,10 +417,10 @@ export default function UserProfile(props) {
                                         <p>Informe o estado civil.</p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                             </div>
                         </div>
                         <div className="buttons">

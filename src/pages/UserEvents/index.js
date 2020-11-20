@@ -10,12 +10,16 @@ export default function UserEvents() {
     const [user, setUser] = useState({});
     const accessToken = localStorage.getItem('accessToken');
 
-    useEffect(() => {
+    async function conectar() {
         api.get(`user/${localStorage.getItem('user')}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setUser(response.data);
         });
+    }
+
+    useEffect(() => {
+        conectar();
     }, []);
 
     function dateCheck(weekDay) {
@@ -27,7 +31,7 @@ export default function UserEvents() {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={'user'} />
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -57,7 +61,7 @@ export default function UserEvents() {
                                             >
                                                 <h3>{`- ${appointment.time}`}</h3>
                                                 <h3>
-                                                Atendimento com {appointment.psychologistName}
+                                                    Atendimento com {appointment.psychologistName}
                                                 </h3>
                                             </div>
                                             : <div></div>

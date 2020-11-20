@@ -71,13 +71,13 @@ export default function UserSchedule(props) {
                 email: psychologist.email,
                 weekDay: psychologist.weekDay,
             }, {
-                headers: { authorization: accessToken },
-            });
+            headers: { authorization: accessToken },
+        });
     }
 
     return (
         <div className="userScheduleContainer">
-            <NavBar actualUser={localStorage.getItem('user')} />
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
