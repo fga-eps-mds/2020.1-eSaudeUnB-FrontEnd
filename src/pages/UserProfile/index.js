@@ -28,6 +28,10 @@ export default function UserProfile(props) {
     const [race, setRace] = useState('');
     const [sexualOrientation, setSexualOrientation] = useState('');
     const [children, setChildren] = useState('');
+    const [emergencyContactName, setEmergencyContactName] = useState('');
+    const [emergencyContactPhone, setEmergencyContactPhone] = useState('');
+    const [emergencyContactBond, setEmergencyContactBond] = useState('');    
+                
 
     //fim novos campos
     const [currentImage, setCurrentImage] = useState('');
@@ -55,6 +59,10 @@ export default function UserProfile(props) {
     //novos campos
     const [alertContentRace, setAlertContentRace] = useState(false);
     const [alertContentSexualOrientation, setAlertContentSexualOrientation] = useState(false);
+    const [alertContentEmergencyContactName, setAlertContentEmergencyContactName] = useState(false);
+    const [alertContentEmergencyContactPhone, setAlertContentEmergencyContactPhone] = useState(false);
+    const [alertContentEmergencyContactBond, setAlertContentEmergencyContactBond] = useState(false);   
+    
 
     function closeAlerts() {
         setAlertContentName(false);
@@ -68,6 +76,9 @@ export default function UserProfile(props) {
         //novos campos
         setAlertContentRace(false);
         setAlertContentSexualOrientation(false);
+        setAlertContentEmergencyContactName(false);
+        setAlertContentEmergencyContactPhone(false);
+        setAlertContentEmergencyContactBond(false);
     }
 
     function getOut(event) {
@@ -96,10 +107,14 @@ export default function UserProfile(props) {
                 race,
                 sexualOrientation,
                 children,
+                emergencyContactName,
+                emergencyContactPhone,
+                emergencyContactBond,
             },
                 { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
+                console.log(response.data.error.details);
                 const { details } = response.data.error;
                 closeAlerts();
                 for (
@@ -137,6 +152,15 @@ export default function UserProfile(props) {
                     }
                     if (details[value].path[0] === 'sexualOrientation') {
                         setAlertContentSexualOrientation(true);
+                    }
+                    if (details[value].path[0] === 'emergencyContactName') {
+                        setAlertContentEmergencyContactName(true);
+                    }
+                    if (details[value].path[0] === 'emergencyContactPhone') {
+                        setAlertContentEmergencyContactPhone(true);
+                    }
+                    if (details[value].path[0] === 'emergencyContactBond') {
+                        setAlertContentEmergencyContactBond(true);
                     }
 
                 }
@@ -206,6 +230,9 @@ export default function UserProfile(props) {
                 setRace(response.data.race);
                 setSexualOrientation(response.data.sexualOrientation);
                 setChildren(response.data.children);
+                setEmergencyContactName(response.data.emergencyContactName);
+                setEmergencyContactPhone(response.data.emergencyContactPhone);
+                setEmergencyContactBond(response.data.emergencyContactBond);
             }
         } catch (err2) {
             if (err2.response.status === 401) {
@@ -343,7 +370,7 @@ export default function UserProfile(props) {
                                             <p></p>
                                         </div>
                                     )}
-
+                                
                                 <select
                                     className="selectsLargest"
                                     name="bond"
@@ -363,6 +390,57 @@ export default function UserProfile(props) {
                                 {alertContentBond ? (
                                     <div className="alertContent">
                                         <p>Selecione um vínculo.</p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                 <Input
+                                    placeholder="Nome contato de emergência"
+                                    value={emergencyContactName || ''}
+                                    onChange={setEmergencyContactName}
+                                />
+
+                                {alertContentEmergencyContactName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Campo obrigatório. Nome deve possuir mais de 2 letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                    <Input
+                                    placeholder="Telefone contato de emergência"
+                                    value={emergencyContactPhone || ''}
+                                    onChange={setEmergencyContactPhone}
+                                />
+
+                                {alertContentEmergencyContactPhone ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Campo obrigatório. Insira um número válido.
+                                        </p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                    <Input
+                                    placeholder="Vínculo contato de emergência"
+                                    value={emergencyContactBond || ''}
+                                    onChange={setEmergencyContactBond}
+                                />
+
+                                {alertContentEmergencyContactBond? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Campo obrigatório. Deve possuir mais de 2 letras.
+                                        </p>
                                     </div>
                                 ) : (
                                         <div className="alertContent">
