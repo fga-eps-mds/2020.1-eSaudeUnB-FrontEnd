@@ -789,7 +789,7 @@ export default function UserProfile(props) {
                                 )}
 
                                 <Input
-                                    placeholder="Usa medicação'?. Se sim, qual?"
+                                    placeholder="Usa medicação?. Se sim, qual?"
                                     value={medication || ''}
                                     onChange={setMedication}
                                 />
