@@ -27,6 +27,7 @@ export default function PatientRecord(props) {
     useEffect(() => {
         async function getData() {
             const { email } = props.match.params;
+            console.log(props.match)
             const response = await api.get(`/user/${email}`,
                 {
                     headers: { authorization: accessToken },

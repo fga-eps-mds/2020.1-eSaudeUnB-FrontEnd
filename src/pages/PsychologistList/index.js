@@ -16,7 +16,6 @@ import SearchBar from '../../components/SearchBar';
 export default function PsychologistList(props) {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
-    const [actualUser, setActualUser] = useState({});
 
     const history = useHistory();
 
@@ -36,7 +35,6 @@ export default function PsychologistList(props) {
                     }, 2000);
                 }
             });
-        setActualUser(props.location.state.data);
     }, []);
 
     return (
@@ -93,7 +91,7 @@ export default function PsychologistList(props) {
                                                             to={{
                                                                 pathname: `/psychologist/list/schedule/${psy.email}`,
                                                                 state: {
-                                                                    data: actualUser,
+                                                                    data: psy.email,
                                                                 },
                                                             }}
                                                         >
@@ -160,7 +158,7 @@ export default function PsychologistList(props) {
                                                                 to={{
                                                                     pathname: `/psychologist/list/schedule/${psy.email}`,
                                                                     state: {
-                                                                        data: actualUser,
+                                                                        data: psy.email,
                                                                     },
                                                                 }}
                                                             >
