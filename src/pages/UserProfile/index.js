@@ -24,6 +24,12 @@ export default function UserProfile(props) {
     const [civilStatus, setCivilStatus] = useState('');
     const [religion, setReligion] = useState('');
     const [userImage, setUserImage] = useState('');
+    //novos campos
+    const [race, setRace] = useState('');
+    const [sexualOrientation, setSexualOrientation] = useState('');
+    const [children, setChildren] = useState('');
+
+    //fim novos campos
     const [currentImage, setCurrentImage] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -46,6 +52,9 @@ export default function UserProfile(props) {
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(
         false,
     );
+    //novos campos
+    const [alertContentRace, setAlertContentRace] = useState(false);
+    const [alertContentSexualOrientation, setAlertContentSexualOrientation] = useState(false);
 
     function closeAlerts() {
         setAlertContentName(false);
@@ -56,6 +65,9 @@ export default function UserProfile(props) {
         setAlertContentGender(false);
         setAlertContentBond(false);
         setAlertContentCivilStatus(false);
+        //novos campos
+        setAlertContentRace(false);
+        setAlertContentSexualOrientation(false);
     }
 
     function getOut(event) {
@@ -80,13 +92,16 @@ export default function UserProfile(props) {
                 civilStatus,
                 religion,
                 userImage: currentImage,
+                //novos campos
+                race,
+                sexualOrientation,
+                children,
             },
-            { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
                 closeAlerts();
-
                 for (
                     let value = 0;
                     value < response.data.error.details.length;
@@ -116,6 +131,14 @@ export default function UserProfile(props) {
                     if (details[value].path[0] === 'civilStatus') {
                         setAlertContentCivilStatus(true);
                     }
+                    //novos campos
+                    if (details[value].path[0] === 'race') {
+                        setAlertContentRace(true);
+                    }
+                    if (details[value].path[0] === 'sexualOrientation') {
+                        setAlertContentSexualOrientation(true);
+                    }
+
                 }
 
                 setTimeout(() => {
@@ -179,6 +202,10 @@ export default function UserProfile(props) {
                         ),
                     );
                 }
+                //novos campos
+                setRace(response.data.race);
+                setSexualOrientation(response.data.sexualOrientation);
+                setChildren(response.data.sexualOrientation);
             }
         } catch (err2) {
             if (err2.response.status === 401) {
@@ -208,8 +235,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -261,10 +288,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <Input
                                     placeholder="Sobrenome"
@@ -279,10 +306,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <Input
                                     placeholder="Email"
@@ -297,10 +324,10 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <Input
                                     placeholder="Matrícula UnB"
@@ -312,51 +339,10 @@ export default function UserProfile(props) {
                                         <p>Insira uma matrícula válida.</p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="form">
-                                <Input
-                                    placeholder="DDD + Telefone"
-                                    value={phone || ''}
-                                    onChange={setPhone}
-                                />
-                                {alertContentPhone ? (
-                                    <div className="alertContent">
-                                        <p>Insira um telefone válido.</p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-
-                                <select
-                                    className="selectsLargest"
-                                    name="gender"
-                                    value={gender || ''}
-                                    onChange={(e) => setGender(e.target.value)}
-                                >
-                                    <option value="" disabled>
-                                        Gênero
-                                    </option>
-                                    <option value="F">Feminino</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="I">Não Identificar</option>
-                                </select>
-
-                                {alertContentGender ? (
-                                    <div className="alertContent">
-                                        <p>Selecione um gênero.</p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <select
                                     className="selectsLargest"
@@ -379,10 +365,99 @@ export default function UserProfile(props) {
                                         <p>Selecione um vínculo.</p>
                                     </div>
                                 ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                            </div>
+
+                            <div className="form">
+                                <Input
+                                    placeholder="DDD + Telefone"
+                                    value={phone || ''}
+                                    onChange={setPhone}
+                                />
+                                {alertContentPhone ? (
                                     <div className="alertContent">
-                                        <p></p>
+                                        <p>Insira um telefone válido.</p>
                                     </div>
-                                )}
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
+                                <select
+                                    className="selectsLargest"
+                                    name="gender"
+                                    value={gender || ''}
+                                    onChange={(e) => setGender(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Gênero
+                                    </option>
+                                    <option value="F">Feminino</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="I">Não Identificar</option>
+                                </select>
+
+                                {alertContentGender ? (
+                                    <div className="alertContent">
+                                        <p>Selecione um gênero.</p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                {/*campo novo de orientação sexual*/}
+                                <select
+                                    className="selectsLargest"
+                                    name="sexualOrientation"
+                                    value={sexualOrientation || ''}
+                                    onChange={(e) => setSexualOrientation(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Orientação Sexual
+                                    </option>
+                                    <option value="homossexual">Homossexual</option>
+                                    <option value="bissexual">Bissexual</option>
+                                    <option value="heterossexual">Heterossexual</option>
+                                    <option value="prefiroNaoDizer">Prefiro não dizer</option>
+                                </select>
+
+                                {alertContentSexualOrientation ? (
+                                    <div className="alertContent">
+                                        <p>Selecione uma orientação sexual.</p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
+                                <select
+                                    className="selectsLargest"
+                                    name="children"
+                                    value={children || ''}
+                                    onChange={(e) => setChildren(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Tem filhos?
+                                    </option>
+                                    <option value="sim">Possuo filha(o)/filhas(os)</option>
+                                    <option value="nao">Não possuo filha(o)/filhas(os)</option>
+                                </select>
+
+                                {alertContentSexualOrientation ? (
+                                    <div className="alertContent">
+                                        <p>Selecione uma orientação sexual.</p>
+                                    </div>
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                 <select
                                     className="selectsLargest"
@@ -409,10 +484,38 @@ export default function UserProfile(props) {
                                         <p>Informe o estado civil.</p>
                                     </div>
                                 ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+                                {/* novos campos */}
+                                <select
+                                    className="selectsLargest"
+                                    name="race"
+                                    value={race || ''}
+                                    onChange={(e) => setRace(e.target.value)}
+                                >
+                                    <option value="" disabled>
+                                        Etnia/Raça
+                                    </option>
+                                    <option value="preta(o)">Preta(o)</option>
+                                    <option value="parda(o)">Parda(o)</option>
+                                    <option value="indigena">Índigena)</option>
+                                    <option value="branca(o)">Branca(o)</option>
+                                    <option value="prefiroNaoDizer">Prefiro não dizer</option>
+                                </select>
+
+                                {alertContentRace ? (
                                     <div className="alertContent">
-                                        <p></p>
+                                        <p>Selecione uma Etnia/Raça.</p>
                                     </div>
-                                )}
+                                ) : (
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
+
+
                             </div>
                         </div>
                         <div className="buttons">
