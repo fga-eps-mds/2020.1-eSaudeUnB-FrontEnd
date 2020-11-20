@@ -190,7 +190,6 @@ export default function UserProfile(props) {
             { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
-                console.log(response.data.error.details);
                 const { details } = response.data.error;
                 closeAlerts();
                 for (
