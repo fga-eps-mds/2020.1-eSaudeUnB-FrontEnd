@@ -184,6 +184,7 @@ export default function UserProfile(props) {
                 socialPrograms,
                 studentHouseResidence,
                 psychiatricFollowUp,
+                medication,
                 mainComplaint,
             },
                 { headers: { authorization: accessToken } });
@@ -246,7 +247,7 @@ export default function UserProfile(props) {
                     if (details[value].path[0] === 'psychiatricFollowUp') {
                         setAlertPsychiatricFollowUp(true);
                     }
-                    if (details[value].path[0] === 'psychiatricFollowUp') {
+                    if (details[value].path[0] === 'mainComplaint') {
                         setAlertContentMainComplaint(true);
                     }
                 }
@@ -322,8 +323,10 @@ export default function UserProfile(props) {
                 setEmergencyContactName(response.data.emergencyContactName);
                 setEmergencyContactPhone(response.data.emergencyContactPhone);
                 setEmergencyContactBond(response.data.emergencyContactBond);
+                setMedication(response.data.medication)
                 setMotherName(response.data.motherName);
                 setFatherName(response.data.fatherName);
+                setAffiliationPhone(response.data.affiliationPhone);
                 setMainComplaint(response.data.mainComplaint);
             }
         } catch (err2) {
@@ -540,13 +543,6 @@ export default function UserProfile(props) {
                                         </div>
                                     )}
 
-
-
-
-
-
-
-
                                 <Input
                                     placeholder="Nome da mãe"
                                     value={motherName || ''}
@@ -589,9 +585,7 @@ export default function UserProfile(props) {
                                     <div className="alertContent">
                                         <p>
                                         </p>
-                                    </div>
-                                
-
+                                    </div>                      
 
                             </div>
 
