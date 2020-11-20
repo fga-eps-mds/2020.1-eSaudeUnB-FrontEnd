@@ -85,7 +85,8 @@
     height: 41px;
 }
 
-.userProfileContainer .formColumn .buttons .button-salvar {
+.userProfileContainer .content .formColumn .buttons .button-salvar,
+.button-change {
     width: 130px;
     height: 40px;
 
@@ -98,6 +99,22 @@
 
     font-size: 18px;
     line-height: 36px;
+}
+
+.userProfileContainer .content .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
+    margin-right: 420px;
+}
+
+.userProfileContainer .formColumn .buttons .button-salvar:hover {
+    background: #0a84e3;
+}
+
+.userProfileContainer .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
+    margin-left: 35px;
 }
 
 .userProfileContainer .formColumn .buttons .button-salvar:hover {
@@ -113,7 +130,7 @@
 
 .userProfileContainer .buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 93.7%;
     margin-top: -5px;
 }
