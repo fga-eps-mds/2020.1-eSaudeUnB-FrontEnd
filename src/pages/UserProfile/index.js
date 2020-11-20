@@ -83,6 +83,9 @@ export default function UserProfile(props) {
         //novos campos
         setAlertContentRace(false);
         setAlertContentSexualOrientation(false);
+        setAlertContentEmergencyContactName(false);
+        setAlertContentEmergencyContactPhone(false);
+        setAlertContentEmergencyContactBond(false);
     }
 
     function getOut(event) {
@@ -153,10 +156,14 @@ export default function UserProfile(props) {
                 race,
                 sexualOrientation,
                 children,
+                emergencyContactName,
+                emergencyContactPhone,
+                emergencyContactBond,
             },
                 { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
+                console.log(response.data.error.details);
                 const { details } = response.data.error;
                 closeAlerts();
                 for (
@@ -194,6 +201,15 @@ export default function UserProfile(props) {
                     }
                     if (details[value].path[0] === 'sexualOrientation') {
                         setAlertContentSexualOrientation(true);
+                    }
+                    if (details[value].path[0] === 'emergencyContactName') {
+                        setAlertContentEmergencyContactName(true);
+                    }
+                    if (details[value].path[0] === 'emergencyContactPhone') {
+                        setAlertContentEmergencyContactPhone(true);
+                    }
+                    if (details[value].path[0] === 'emergencyContactBond') {
+                        setAlertContentEmergencyContactBond(true);
                     }
 
                 }
@@ -263,6 +279,9 @@ export default function UserProfile(props) {
                 setRace(response.data.race);
                 setSexualOrientation(response.data.sexualOrientation);
                 setChildren(response.data.children);
+                setEmergencyContactName(response.data.emergencyContactName);
+                setEmergencyContactPhone(response.data.emergencyContactPhone);
+                setEmergencyContactBond(response.data.emergencyContactBond);
             }
         } catch (err2) {
             if (err2.response.status === 401) {
