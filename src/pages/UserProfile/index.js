@@ -128,7 +128,7 @@ export default function UserProfile(props) {
                     oldPassword: actualPassword,
                     password: newPassword,
                 },
-                { headers: { authorization: accessToken } });
+                    { headers: { authorization: accessToken } });
 
                 if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
@@ -187,7 +187,7 @@ export default function UserProfile(props) {
                 medication,
                 mainComplaint,
             },
-            { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -356,8 +356,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -411,10 +411,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -432,10 +432,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -453,10 +453,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -471,10 +471,10 @@ export default function UserProfile(props) {
                                             <p>Insira uma matrícula válida.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -513,10 +513,10 @@ export default function UserProfile(props) {
                                             <p>Selecione um vínculo.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -537,10 +537,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     <hr />
                                     <label className="upLabel">Telefone</label>
                                     <Input
@@ -556,10 +556,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     <hr />
                                     <label className="upLabel">Vínculo</label>
                                     <Input
@@ -575,10 +575,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -597,10 +597,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -618,10 +618,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -636,7 +636,6 @@ export default function UserProfile(props) {
                                         </p>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div className="form">
@@ -652,10 +651,10 @@ export default function UserProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -676,16 +675,15 @@ export default function UserProfile(props) {
                                         <option value="nao-binario">Não-Binário</option>
                                         <option value="prefiro nao dizer">Prefiro não dizer</option>
                                     </select>
-
                                     {alertContentGender ? (
                                         <div className="alertContent">
                                             <p>Selecione um gênero.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
                                 {/* campo novo de orientação sexual */}
                                 <div className="fieldDiv">
@@ -710,10 +708,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma orientação sexual.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -736,10 +734,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma orientação sexual.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -776,10 +774,10 @@ export default function UserProfile(props) {
                                             <p>Informe o estado civil.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
                                 {/* novos campos */}
                                 <div className="fieldDiv">
@@ -806,10 +804,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma Etnia/Raça.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -871,10 +869,10 @@ export default function UserProfile(props) {
                                             <p>Campo obrigatório.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -920,15 +918,15 @@ export default function UserProfile(props) {
                                             <p>Selecione uma queixa principal.</p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </div>
 
-                            </div>
+                            </div >
 
-                        </div>
+                        </div >
                         <div className="buttons">
                             <button className="button-change" onClick={() => setShowModal(true)}>Alterar senha</button>
                             <Modal
@@ -967,10 +965,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button variant="success" onClick={updatePassword}>Confirmar</Button>
@@ -993,9 +991,9 @@ export default function UserProfile(props) {
                                 Salvar
                             </button>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </form >
+                </div >
+            </div >
         </div >
     );
 }
