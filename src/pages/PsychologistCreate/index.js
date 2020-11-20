@@ -46,7 +46,7 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization || !bond) {
+            if (!(name && lastName) || !(email && gender) || !(specialization && bond)) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
