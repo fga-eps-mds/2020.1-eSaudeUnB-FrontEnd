@@ -218,8 +218,8 @@ export default function PsychologistProfile(props) {
                                             type="file"
                                             accept=".png, .jpg, .jpeg"
                                             onChange={async (e) => {
-                                                const compar = e.target.files[0].type.split("/")
-                                                if (compar[0] === "image") {
+                                                const compar = e.target.files[0].type.split('/');
+                                                if (compar[0] === 'image') {
                                                     uploadImage(e);
                                                     const image = await convertBase64(
                                                         e.target.files[0],

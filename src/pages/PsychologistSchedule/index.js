@@ -25,7 +25,7 @@ export default function PsychologistSchedule() {
         ).then((response) => {
             setScheduleItems(response.data);
         });
-    }, []);
+    }, [accessToken, user]);
 
     const weekDays = [
         {
@@ -237,8 +237,8 @@ export default function PsychologistSchedule() {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <form className="form" onSubmit={putCalendar, putCalendar}>
                     <div className="formContent">
                         <legend className="legend">

@@ -35,7 +35,7 @@ export default function PsychologistList(props) {
                     }, 2000);
                 }
             });
-    }, []);
+    }, [history]);
 
     return (
         <>
