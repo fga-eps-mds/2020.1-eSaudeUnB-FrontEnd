@@ -40,9 +40,6 @@ export default function RealizeSearch(props) {
                             className="button"
                             to={{
                                 pathname: `/patient/list/${patient.email}`,
-                                state: {
-                                    data: location.state.data,
-                                },
                             }}
                         >
                             <img src={go} alt="go" />{' '}
@@ -50,8 +47,8 @@ export default function RealizeSearch(props) {
                     </div>
                 ))
         ) : (
-            <SearchedPatients patients={patients} location={location} search={search} />
-        )
+                <SearchedPatients patients={patients} location={location} search={search} />
+            )
     );
 }
 
