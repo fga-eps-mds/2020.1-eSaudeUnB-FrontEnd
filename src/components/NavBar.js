@@ -170,7 +170,7 @@ export default function NavBar({ bond }) {
                         </NavDropdown.Item>
 
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="/">Sair</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => localStorage.clear()} href="/">Sair</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
