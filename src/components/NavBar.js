@@ -9,7 +9,7 @@ import userIcon from '../assets/images/userIcon.svg';
 import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
-export default function NavBar({ actualUser, bond }) {
+export default function NavBar({ bond }) {
     const [userImage, setUserImage] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
@@ -48,7 +48,7 @@ export default function NavBar({ actualUser, bond }) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, []);
+    }, [accessToken, bond, user]);
 
     return (
         <Navbar className="navBarComponent" bg="light" expand="lg">
