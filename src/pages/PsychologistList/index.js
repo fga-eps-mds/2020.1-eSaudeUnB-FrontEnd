@@ -39,12 +39,6 @@ export default function PsychologistList() {
         setActualUser(localStorage.getItem('user'));
     }, []);
 
-    function professionalType(bond) {
-        if (bond === 'P') return 'Psicólogo';
-        if (bond === 'N') return 'Nutricionista';
-        return 'Assistente Social';
-    }
-
     return (
         <div className="psychologistListContainer">
             <NavBar className="navBar" actualUser={actualUser} />
@@ -87,7 +81,7 @@ export default function PsychologistList() {
                                                 {`${psy.name} ${psy.lastName}`}
                                             </p>
                                             <p>email: {psy.email}</p>
-                                            <p>Vínculo: {professionalType(psy.bond)}
+                                            <p>Vínculo: {psy.bond}
                                             </p>
 
                                             <Accordion.Collapse eventKey="0">

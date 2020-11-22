@@ -72,12 +72,6 @@ export default function UserMain() {
         window.location.reload();
     }
 
-    function professionalType(bond) {
-        if (bond === 'P') return 'Psicólogo';
-        if (bond === 'N') return 'Nutricionista';
-        return 'Assistente Social';
-    }
-
     return (
         <div className="usercalendar">
             <NavBar className="navBar" bond="Patient" actualUser={user} />
@@ -113,7 +107,7 @@ export default function UserMain() {
                                                 >
                                                     <button
                                                         onClick={() => setUserSelected(psychologist)}>
-                                                        <h3>{professionalType(psychologist.bond)}:
+                                                        <h3>{psychologist.bond}:
                                                             {psychologist.name} {psychologist.lastName}</h3>
                                                     </button>
 

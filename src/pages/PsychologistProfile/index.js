@@ -358,14 +358,14 @@ export default function PsychologistProfile(props) {
                                             <option value="" disabled>
                                                 Vínculo
                                             </option>
-                                            <option value="graduando">
-                                                Graduando
+                                            <option value="Psicologo">
+                                                Psicólogo
                                             </option>
-                                            <option value="posGraduando">
-                                                Pós-Graduando
+                                            <option value="Nutricionista">
+                                                Nutricionista
                                             </option>
-                                            <option value="professor">
-                                                Professor
+                                            <option value="Assistente Social">
+                                                Assistente Social
                                             </option>
                                         </select>
                                     </div>

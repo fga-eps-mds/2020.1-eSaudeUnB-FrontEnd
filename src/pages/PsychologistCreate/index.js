@@ -46,7 +46,7 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!(name && lastName) || !(email && gender) || !(specialization && bond)) {
+            if (!name || !lastName || !email || !gender || !specialization || !bond) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
@@ -179,9 +179,9 @@ Sobrenome precisa possuir mais de 2 letras.
                             onChange={(e) => setBond(e.target.value)}
                         >
                             <option value=""> Vínculo </option>
-                            <option value="P">Psicólogo</option>
-                            <option value="N">Nutricionista</option>
-                            <option value="A">Assistente social</option>
+                            <option value="Psicologo">Psicólogo</option>
+                            <option value="Nutricionista">Nutricionista</option>
+                            <option value="Assistente Social">Assistente social</option>
                         </select>
                         <div className="alertContent">
                             <p></p>
