@@ -47,14 +47,13 @@ export default function UserSchedule(props) {
             setPsychologist(response.data);
         }
         getData();
-    }, [props]);
+    }, [props, accessToken]);
 
     async function saveAppointment(event) {
         event.preventDefault();
         const response = await api.get(`/user/${email}`, {
             headers: { authorization: accessToken },
         });
-        console.log(response)
         const { _id, name, lastName } = response.data;
 
         psychologist.weekDay.map((workDay) => {
@@ -63,7 +62,6 @@ export default function UserSchedule(props) {
                     appointment.scheduled = true;
                     appointment.user = _id;
                     appointment.name = `${name} ${lastName}`;
-                    console.log(name, lastName, appointment._id, psychologist)
                 }
             });
         });

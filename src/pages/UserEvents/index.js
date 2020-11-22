@@ -9,18 +9,15 @@ export default function UserEvents() {
     const [date, setDate] = useState(new Date());
     const [user, setUser] = useState({});
     const accessToken = localStorage.getItem('accessToken');
+    const email = localStorage.getItem('user');
 
-    async function conectar() {
-        api.get(`user/${localStorage.getItem('user')}`, {
+    useEffect(() => {
+        api.get(`user/${email}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setUser(response.data);
         });
-    }
-
-    useEffect(() => {
-        conectar();
-    }, []);
+    }, [accessToken, email]);
 
     function dateCheck(weekDay) {
         if (weekDay === date.getDay()) {
