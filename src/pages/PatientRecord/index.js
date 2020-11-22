@@ -27,7 +27,6 @@ export default function PatientRecord(props) {
     useEffect(() => {
         async function getData() {
             const { email } = props.match.params;
-            console.log(props.match)
             const response = await api.get(`/user/${email}`,
                 {
                     headers: { authorization: accessToken },
@@ -45,7 +44,7 @@ export default function PatientRecord(props) {
             setAllSessions(responseAllsessions.data);
         }
         getData();
-    });
+    }, []);
 
     async function changeSession(index) {
         setTabContent(false);
@@ -144,7 +143,6 @@ export default function PatientRecord(props) {
                                     pathname: '/new-session',
                                     state: {
                                         email: patient.email,
-                                        data: props.location.state.data,
                                     },
                                 })
                                 }
