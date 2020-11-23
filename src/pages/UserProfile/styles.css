@@ -212,29 +212,41 @@
 @media only screen and (max-width: 900px) {
     .userProfileContainer .formColumn {
         width: 300px;
-        height: 1850px;
+        height: 3250px;
         align-items: center;
         justify-content: center;
         margin: auto;
         margin-top: 50px;
         margin-bottom: 50px;
     }
+    .userProfileContainer .formColumn .personal-image {
+        margin-bottom: 50px;
+    }
     .userProfileContainer .formColumn .inputs {
         margin: 400px 0 0 0;
         width: 300px;
-        height: 850px;
+        height: 750px;
         display: flex;
         flex-direction: column;
         overflow-y: visible;
     }
     .userProfileContainer .form {
         width: 300px;
+        margin-top: 700px;
     }
     .userProfileContainer .form:first-of-type {
         margin-right: 0px;
     }
     .userProfileContainer .form .input {
         width: 200px;
+    }
+    .userProfileContainer .form .fieldDiv{
+        display: flex;
+        flex-direction: column;
+        border: solid 1px #ccc;
+        padding: 5px 5px 5px 5px;
+        border-radius: 8px;
+        margin-bottom: 10px;
     }
     .userProfileContainer .content .formColumn .form .selectsLargest {
         width: 200px;
@@ -252,7 +264,7 @@
         margin-right: 15px;
     }
     .userProfileContainer .content .formColumn .buttons {
-        margin-top: 350px;
+        margin-top: 1850px;
     }
     .userProfileContainer .personal-image {
         margin-left: 90px;
