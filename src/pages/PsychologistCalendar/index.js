@@ -5,15 +5,16 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function PsychologistCalendar(props) {
+export default function PsychologistCalendar() {
     const [date, setDate] = useState(new Date());
     const [restricts, setRestricts] = useState([]);
     const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user');
 
     async function putRestrict() {
         await api.put('/calendary/update/', {
-            header: localStorage.getItem('acessToken'),
-            email: localStorage.getItem('user'),
+            headers: { authorization: accessToken },
+            email: user,
             restrict: [...restricts],
         }, []);
         window.location.reload();
@@ -47,7 +48,7 @@ export default function PsychologistCalendar(props) {
 
     async function handleRestrict() {
         const Restricts = await api.post('/calendary/restrict', {
-            email: localStorage.getItem('user'),
+            email: user,
         }, {
             headers: { authorization: accessToken },
         });
@@ -89,7 +90,7 @@ export default function PsychologistCalendar(props) {
                                     <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
                                         ? `0${restrict.month + 1}`
                                         : `${restrict.month + 1}`
-                                    }/${restrict.year}`}</span>
+                                        }/${restrict.year}`}</span>
                                     <button
                                         type="button"
                                         onClick={() => removeRestrict(index)}
