@@ -22,6 +22,15 @@
     align-items: center;
 }
 
+.userProfileContainer .form .fieldDiv{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #ccc;
+    padding: 5px 5px 5px 5px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 .userProfileContainer .form:first-of-type {
     margin-right: 100px;
 }
