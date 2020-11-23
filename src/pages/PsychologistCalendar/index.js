@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
@@ -10,8 +9,6 @@ export default function PsychologistCalendar(props) {
     const [date, setDate] = useState(new Date());
     const [restricts, setRestricts] = useState([]);
     const accessToken = localStorage.getItem('accessToken');
-
-    const history = useHistory();
 
     async function putRestrict() {
         await api.put('/calendary/update/', {

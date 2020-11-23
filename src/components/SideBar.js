@@ -74,7 +74,7 @@ export default function SideBar({ actualUser, bond }) {
                     />
                     <p>{actualUser.name}</p>
                     <a href="/">Proximos Eventos</a>
-                    <a href="/">Lista de Psicologos</a>
+                    <a href="/">Lista de Profissionais</a>
                     <a href="/">Meu Perfil</a>
                     <a href="/">eSaude</a>
                 </div>
