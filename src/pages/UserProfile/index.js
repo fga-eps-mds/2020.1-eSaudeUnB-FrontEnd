@@ -532,7 +532,8 @@ export default function UserProfile(props) {
                                     {alertContentEmergencyContactName ? (
                                         <div className="alertContent">
                                             <p>
-                                                Campo obrigatório. Nome deve possuir mais de 2 letras.
+                                                Campo obrigatório. 
+                                                Nome deve possuir mais de 2 letras.
                                             </p>
                                         </div>
                                     ) : (
@@ -591,7 +592,8 @@ export default function UserProfile(props) {
                                     {alertContentMotherName ? (
                                         <div className="alertContent">
                                             <p>
-                                                Campo obrigatório. Nome deve possuir mais de 2 letras.
+                                                Campo obrigatório. 
+                                                Nome deve possuir mais de 2 letras.
                                             </p>
                                         </div>
                                     ) : (
