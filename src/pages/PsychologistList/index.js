@@ -67,12 +67,12 @@ export default function PsychologistList() {
                                                     alt={psy.name}
                                                 />
                                             ) : (
-                                                    <img
-                                                        className="patientImg"
-                                                        src={userIcon}
-                                                        alt={psy.name}
-                                                    />
-                                                )}
+                                                <img
+                                                    className="patientImg"
+                                                    src={userIcon}
+                                                    alt={psy.name}
+                                                />
+                                            )}
 
                                             <div className="minPatient">
                                                 <p className="cardName">
@@ -139,12 +139,12 @@ export default function PsychologistList() {
                                                         alt={psy.name}
                                                     />
                                                 ) : (
-                                                        <img
-                                                            className="patientImg"
-                                                            src={userIcon}
-                                                            alt={psy.name}
-                                                        />
-                                                    )}
+                                                    <img
+                                                        className="patientImg"
+                                                        src={userIcon}
+                                                        alt={psy.name}
+                                                    />
+                                                )}
                                                 <div className="minPatient">
                                                     <p className="cardName">
                                                         Nome:{' '}

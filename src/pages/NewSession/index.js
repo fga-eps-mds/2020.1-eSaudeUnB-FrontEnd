@@ -17,7 +17,7 @@ export default function NewSession(props) {
 
     useEffect(() => {
         async function getData() {
-            const email = props.location.state.email;
+            const { email } = props.location.state;
             const response = await api.get(`/user/${email}`, {
                 headers: { authorization: accessToken },
             });
@@ -39,9 +39,9 @@ export default function NewSession(props) {
             complaintEvolution,
             professional,
         },
-            {
-                headers: { authorization: accessToken },
-            });
+        {
+            headers: { authorization: accessToken },
+        });
 
         history.push({
             pathname: `patient/list/${patient.email}`,

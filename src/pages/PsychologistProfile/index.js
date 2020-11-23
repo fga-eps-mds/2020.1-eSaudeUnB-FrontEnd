@@ -127,7 +127,7 @@ export default function PsychologistProfile(props) {
                 biography,
                 userImage: currentImage,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -255,8 +255,8 @@ export default function PsychologistProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="content">
                     <div className="firstColumn">
                         <form className="formColumn" onSubmit={updateInfos}>
@@ -317,10 +317,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Sobrenome"
@@ -335,10 +335,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Email"
@@ -353,10 +353,10 @@ export default function PsychologistProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="inputs">
@@ -370,10 +370,10 @@ export default function PsychologistProfile(props) {
                                             <p>Informe a Especialização.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="DDD + Telefone"
@@ -385,10 +385,10 @@ export default function PsychologistProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                     <div className="selects">
                                         <select
                                             name="gender"
@@ -432,20 +432,20 @@ export default function PsychologistProfile(props) {
                                                 <p>Selecione um gênero.</p>
                                             </div>
                                         ) : (
-                                                <div className="alertContent">
-                                                    <p></p>
-                                                </div>
-                                            )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                         <div className="space"></div>
                                         {alertContentBond ? (
                                             <div className="alertContent">
                                                 <p>Selecione um vínculo.</p>
                                             </div>
                                         ) : (
-                                                <div className="alertContent">
-                                                    <p></p>
-                                                </div>
-                                            )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -463,10 +463,10 @@ export default function PsychologistProfile(props) {
                                     </p>
                                 </div>
                             ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+                            )}
 
                             <div className="buttons">
                                 <button className="button-change" onClick={() => setShowModal(true)}>

@@ -47,8 +47,8 @@ export default function RealizeSearch(props) {
                     </div>
                 ))
         ) : (
-                <SearchedPatients patients={patients} location={location} search={search} />
-            )
+            <SearchedPatients patients={patients} location={location} search={search} />
+        )
     );
 }
 

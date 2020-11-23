@@ -71,8 +71,8 @@ export default function UserSchedule(props) {
                 email: psychologist.email,
                 weekDay: psychologist.weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
     }
 
     return (

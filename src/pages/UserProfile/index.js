@@ -91,7 +91,7 @@ export default function UserProfile(props) {
                     oldPassword: actualPassword,
                     password: newPassword,
                 },
-                    { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
                 if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
@@ -132,7 +132,7 @@ export default function UserProfile(props) {
                 religion,
                 userImage: currentImage,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -259,8 +259,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
 
                 <div className="content">
 
@@ -323,10 +323,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Sobrenome"
@@ -341,10 +341,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Email"
@@ -359,10 +359,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <Input
                                         placeholder="Matrícula UnB"
@@ -374,10 +374,10 @@ export default function UserProfile(props) {
                                             <p>Insira uma matrícula válida.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="form">
@@ -391,10 +391,10 @@ export default function UserProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <select
                                         className="selectsLargest"
@@ -414,10 +414,10 @@ export default function UserProfile(props) {
                                             <p>Selecione um gênero.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                     {/* <div className="space"></div> */}
                                     <select
                                         className="selectsLargest"
@@ -439,10 +439,10 @@ export default function UserProfile(props) {
                                             <p>Selecione um vínculo.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
 
                                     <select className="selectsLargest" value={civilStatus || 'naoInformado'} name="civilStatus" onChange={(e) => setCivilStatus(e.target.value)}>
                                         <option value="naoInformado" disabled>Estado Civil</option>
@@ -456,10 +456,10 @@ export default function UserProfile(props) {
                                             <p>Informe o estado civil.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -501,10 +501,10 @@ export default function UserProfile(props) {
                                                 </p>
                                             </div>
                                         ) : (
-                                                <div className="alertContent">
-                                                    <p></p>
-                                                </div>
-                                            )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button variant="success" onClick={updatePassword}>Confirmar</Button>

@@ -94,33 +94,33 @@ export default function NavBar({ bond }) {
                             </Link>
                         </div>
                     ) : (
-                            <div className="navLinks">
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/psychologist/list',
-                                    }}
-                                >
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/list',
+                                }}
+                            >
                                     Lista de Psicologos
                             </Link>
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/main',
-                                    }}
-                                >
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/main',
+                                }}
+                            >
                                     Agendamentos
                             </Link>
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/events',
-                                    }}
-                                >
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/events',
+                                }}
+                            >
                                     Consultas Marcadas
                             </Link>
-                            </div>
-                        )}
+                        </div>
+                    )}
                     <img
                         className="userIcon"
                         src={userImage || userIcon}
@@ -137,15 +137,15 @@ export default function NavBar({ bond }) {
                             Perfil
                         </Link>
                     ) : (
-                            <Link
-                                className="dropNone"
-                                to={{
-                                    pathname: '/profile',
-                                }}
-                            >
+                        <Link
+                            className="dropNone"
+                            to={{
+                                pathname: '/profile',
+                            }}
+                        >
                                 Perfil
-                            </Link>
-                        )}
+                        </Link>
+                    )}
                     <Link
                         className="dropNone"
                         to={{
@@ -166,15 +166,15 @@ export default function NavBar({ bond }) {
                                     Perfil
                                 </Link>
                             ) : (
-                                    <Link
-                                        className="profileDropDown"
-                                        to={{
-                                            pathname: '/profile',
-                                        }}
-                                    >
+                                <Link
+                                    className="profileDropDown"
+                                    to={{
+                                        pathname: '/profile',
+                                    }}
+                                >
                                         Perfil
-                                    </Link>
-                                )}
+                                </Link>
+                            )}
                         </NavDropdown.Item>
 
                         <NavDropdown.Divider />
