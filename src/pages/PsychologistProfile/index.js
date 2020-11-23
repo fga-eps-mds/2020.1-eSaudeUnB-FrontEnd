@@ -14,7 +14,7 @@ import figureCaption from '../../assets/images/figureCaption.png';
 import api from '../../services/api';
 import './styles.css';
 
-export default function PsychologistProfile(props) {
+export default function PsychologistProfile() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -242,6 +242,7 @@ export default function PsychologistProfile(props) {
         setInterval(() => {
             setShow(false);
         }, 10000);
+        return [];
     }
 
     return (

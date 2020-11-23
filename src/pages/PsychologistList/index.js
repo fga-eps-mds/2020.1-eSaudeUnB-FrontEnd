@@ -34,6 +34,7 @@ export default function PsychologistList() {
                         history.push('/');
                     }, 2000);
                 }
+                return [];
             });
     }, [history]);
 
