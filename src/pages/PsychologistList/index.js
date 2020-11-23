@@ -13,7 +13,7 @@ import userIcon from '../../assets/images/userIcon.svg';
 import NavBar from '../../components/NavBar';
 import SearchBar from '../../components/SearchBar';
 
-export default function PsychologistList(props) {
+export default function PsychologistList() {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
 
@@ -86,6 +86,10 @@ export default function PsychologistList(props) {
                                                         <p>
                                                             Biografia:{' '}
                                                             {`${psy.biography}`}
+                                                        </p>
+                                                        <p>
+                                                            Vínculo:{' '}
+                                                            {`${psy.bond}`}
                                                         </p>
                                                         <Link
                                                             to={{

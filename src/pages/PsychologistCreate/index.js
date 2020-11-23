@@ -15,7 +15,7 @@ export default function PsychologistCreate() {
     const [biography] = useState('');
     const [phone] = useState('');
     const [gender, setGender] = useState('');
-    const [bond] = useState('Psychologist');
+    const [bond, setBond] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
@@ -46,7 +46,7 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization) {
+            if (!name || !lastName || !email || !gender || !specialization || !bond) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
@@ -131,7 +131,7 @@ export default function PsychologistCreate() {
             )}
             <div className="psychologist-create">
                 <form className="form" onSubmit={handlePsychologistCreation}>
-                    <h2>Cadastro de Psicólogo</h2>
+                    <h2>Cadastro de Profissionais</h2>
                     <div className="psyCreate">
                         <Input
                             placeholder="Nome"
@@ -173,6 +173,15 @@ Sobrenome precisa possuir mais de 2 letras.
                             <option value="F">Feminino</option>
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
+                        </select>
+                        <select
+                            name="bond"
+                            onChange={(e) => setBond(e.target.value)}
+                        >
+                            <option value=""> Vínculo </option>
+                            <option value="Psicologo">Psicólogo</option>
+                            <option value="Nutricionista">Nutricionista</option>
+                            <option value="Assistente Social">Assistente social</option>
                         </select>
                         <div className="alertContent">
                             <p></p>

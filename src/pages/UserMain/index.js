@@ -62,8 +62,8 @@ export default function UserMain() {
                 email,
                 weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
@@ -92,6 +92,7 @@ export default function UserMain() {
                         <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
                         <div className="schedules">
                             {psychologists.map((psychologist, index) => (
+
                                 <div
                                     key={index}
                                     className="schedule-box"
@@ -104,8 +105,10 @@ export default function UserMain() {
                                                     key={index}
 
                                                 >
-                                                    <button onClick={() => setUserSelected(psychologist)}>
-                                                        <h3>Profissional: {psychologist.name} {psychologist.lastName}</h3>
+                                                    <button
+                                                        onClick={() => setUserSelected(psychologist)}>
+                                                        <h3>{psychologist.bond}:
+                                                            {psychologist.name} {psychologist.lastName}</h3>
                                                     </button>
 
                                                 </div>
