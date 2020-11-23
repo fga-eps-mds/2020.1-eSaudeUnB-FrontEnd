@@ -128,7 +128,7 @@ export default function UserProfile(props) {
                     oldPassword: actualPassword,
                     password: newPassword,
                 },
-                    { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
                 if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
@@ -187,7 +187,7 @@ export default function UserProfile(props) {
                 medication,
                 mainComplaint,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -356,8 +356,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -408,13 +408,13 @@ export default function UserProfile(props) {
                                             <p>
                                                 Nome precisa possuir mais de 2
                                                 letras.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -429,13 +429,13 @@ export default function UserProfile(props) {
                                             <p>
                                                 Sobrenome precisa possuir mais de 2
                                                 letras.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -450,13 +450,13 @@ export default function UserProfile(props) {
                                             <p>
                                                 E-mail não foi preenchido
                                                 corretamente.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -471,10 +471,10 @@ export default function UserProfile(props) {
                                             <p>Insira uma matrícula válida.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -505,7 +505,7 @@ export default function UserProfile(props) {
                                         </option>
                                         <option value="sem vinculo">
                                             Não tenho Vínculo com a UnB
-                                    </option>
+                                        </option>
                                     </select>
 
                                     {alertContentBond ? (
@@ -513,10 +513,10 @@ export default function UserProfile(props) {
                                             <p>Selecione um vínculo.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -533,13 +533,13 @@ export default function UserProfile(props) {
                                         <div className="alertContent">
                                             <p>
                                                 Campo obrigatório. Nome deve possuir mais de 2 letras.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                     <hr />
                                     <label className="upLabel">Telefone</label>
                                     <Input
@@ -552,13 +552,13 @@ export default function UserProfile(props) {
                                         <div className="alertContent">
                                             <p>
                                                 Campo obrigatório. Insira um número válido.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                     <hr />
                                     <label className="upLabel">Vínculo</label>
                                     <Input
@@ -571,13 +571,13 @@ export default function UserProfile(props) {
                                         <div className="alertContent">
                                             <p>
                                                 Campo obrigatório. Deve possuir mais de 2 letras.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -592,13 +592,13 @@ export default function UserProfile(props) {
                                         <div className="alertContent">
                                             <p>
                                                 Campo obrigatório. Nome deve possuir mais de 2 letras.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -613,13 +613,13 @@ export default function UserProfile(props) {
                                         <div className="alertContent">
                                             <p>
                                                 Campo obrigatório. Insira um número válido.
-                                        </p>
+                                            </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -650,10 +650,10 @@ export default function UserProfile(props) {
                                             <p>Insira um telefone válido.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -666,7 +666,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="mulher">Mulher</option>
                                         <option value="homem">Homem</option>
                                         <option value="mulher trans">Mulher Trans</option>
@@ -680,10 +680,10 @@ export default function UserProfile(props) {
                                             <p>Selecione um gênero.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
                                 {/* campo novo de orientação sexual */}
                                 <div className="fieldDiv">
@@ -696,7 +696,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="homossexual">Homossexual</option>
                                         <option value="bissexual">Bissexual</option>
                                         <option value="heterossexual">Heterossexual</option>
@@ -708,10 +708,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma orientação sexual.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -724,7 +724,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="sim">Possuo filha(o)/filhas(os)</option>
                                         <option value="nao">Não possuo filha(o)/filhas(os)</option>
                                     </select>
@@ -734,10 +734,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma orientação sexual.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -751,22 +751,22 @@ export default function UserProfile(props) {
                                     >
                                         <option value="naoInformado" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="Solteiro(a)">
                                             Solteiro
-                                    </option>
+                                        </option>
                                         <option value="Divorciado(a)">
                                             Divorciado
-                                    </option>
+                                        </option>
                                         <option value="Casado(a)">
                                             Casado
-                                    </option>
+                                        </option>
                                         <option value="Viuvo(a)">
                                             Viuvo
-                                    </option>
+                                        </option>
                                         <option value="Uniao Estavel">
                                             União Estável
-                                    </option>
+                                        </option>
                                     </select>
 
                                     {alertContentCivilStatus ? (
@@ -774,10 +774,10 @@ export default function UserProfile(props) {
                                             <p>Informe o estado civil.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
                                 {/* novos campos */}
                                 <div className="fieldDiv">
@@ -790,7 +790,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="preta(o)">Preta(o)</option>
                                         <option value="parda(o)">Parda(o)</option>
                                         <option value="indigena">Índigena</option>
@@ -804,10 +804,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma Etnia/Raça.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -820,7 +820,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="sim">Sim</option>
                                         <option value="nao">Não</option>
                                     </select>
@@ -839,7 +839,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="sim">Sim</option>
                                         <option value="nao">Não</option>
                                     </select>
@@ -858,7 +858,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Selecione uma opção
-                                    </option>
+                                        </option>
                                         <option value="past">No passado</option>
                                         <option value="actually">Atualmente</option>
                                         <option value="never">Nunca fiz</option>
@@ -869,10 +869,10 @@ export default function UserProfile(props) {
                                             <p>Campo obrigatório.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="fieldDiv">
@@ -897,7 +897,7 @@ export default function UserProfile(props) {
                                     >
                                         <option value="" disabled>
                                             Principal queixa
-                                    </option>
+                                        </option>
                                         <option value="Ansiedade">Ansiedade</option>
                                         <option value="Autoconhecimento">Autoconhecimento</option>
                                         <option value="Conflito no trabalho">Conflito no trabalho</option>
@@ -918,10 +918,10 @@ export default function UserProfile(props) {
                                             <p>Selecione uma queixa principal.</p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </div>
 
                             </div>
@@ -965,10 +965,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button variant="success" onClick={updatePassword}>Confirmar</Button>
