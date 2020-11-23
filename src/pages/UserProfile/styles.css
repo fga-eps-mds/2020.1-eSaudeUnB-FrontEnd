@@ -85,7 +85,8 @@
     height: 41px;
 }
 
-.userProfileContainer .formColumn .buttons .button-salvar {
+.userProfileContainer .content .formColumn .buttons .button-salvar,
+.button-change {
     width: 130px;
     height: 40px;
 
@@ -98,6 +99,22 @@
 
     font-size: 18px;
     line-height: 36px;
+}
+
+.userProfileContainer .content .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
+    margin-right: 420px;
+}
+
+.userProfileContainer .formColumn .buttons .button-salvar:hover {
+    background: #0a84e3;
+}
+
+.userProfileContainer .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
+    margin-left: 35px;
 }
 
 .userProfileContainer .formColumn .buttons .button-salvar:hover {
@@ -113,7 +130,7 @@
 
 .userProfileContainer .buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 93.7%;
     margin-top: -5px;
 }
@@ -190,4 +207,59 @@
     margin-top: 32.5px;
     width: 50px;
     height: 50px;
+}
+@media only screen and (max-width: 900px) {
+    .userProfileContainer .formColumn {
+        width: 300px;
+        height: 850px;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .userProfileContainer .formColumn .inputs {
+        margin: 150px 0 0 0;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    .userProfileContainer .form {
+        width: 300px;
+    }
+    .userProfileContainer .form:first-of-type {
+        margin-right: 0px;
+    }
+    .userProfileContainer .form .input {
+        width: 200px;
+    }
+    .userProfileContainer .content .formColumn .form .selectsLargest {
+        width: 200px;
+    }
+    .userProfileContainer .formColumn .buttons .button-salvar {
+        width: 100px;
+        height: 35px;
+        font-size: 14px;
+        margin-right: 13px;
+    }
+    .userProfileContainer .content .formColumn .buttons .button-change {
+        width: 120px;
+        height: 35px;
+        font-size: 13px;
+        margin-right: 15px;
+    }
+    .userProfileContainer .content .formColumn .buttons {
+        margin-top: 130px;
+    }
+    .userProfileContainer .personal-image {
+        margin-left: 90px;
+        margin-top: 50px;
+    }
+    .userProfileContainer .form .alertContent {
+        width: 200px;
+    }
+    .userProfileContainer .form input {
+        width: 200px; 
+        
+    }
 }

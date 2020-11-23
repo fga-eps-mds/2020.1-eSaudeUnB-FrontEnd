@@ -40,89 +40,20 @@ export default function PsychologistList() {
     }, []);
 
     return (
-        <div className="psychologistListContainer">
+        <>
             <NavBar className="navBar" actualUser={actualUser} />
-            <div className="content">
-                <SearchBar
-                    placeholder="Pesquisar"
-                    className="searchBar"
-                    value={search}
-                    onChange={setSearch}
-                    icon={MagnifyingGlass}
-                />
-                <div className="psy">
-                    {!search
-                        ? psychologist.map((psy) => (
-                            <Accordion key={psy.email}>
-                                <div className="patientTab">
-                                    <div className="patientInfos">
-                                        {psy.userImage != null ? (
-                                            <img
-                                                className="patientImg"
-                                                src={atob(
-                                                    Buffer.from(
-                                                        psy.userImage,
-                                                        'binary',
-                                                    ).toString('base64'),
-                                                )}
-                                                alt={psy.name}
-                                            />
-                                        ) : (
-                                            <img
-                                                className="patientImg"
-                                                src={userIcon}
-                                                alt={psy.name}
-                                            />
-                                        )}
-
-                                        <div className="minPatient">
-                                            <p className="cardName">
-                                                  Nome:{' '}
-                                                {`${psy.name} ${psy.lastName}`}
-                                            </p>
-                                            <p>email: {psy.email}</p>
-                                            <p>Vínculo: {psy.bond}
-                                            </p>
-
-                                            <Accordion.Collapse eventKey="0">
-                                                <div className="cardToggle">
-                                                    <p>
-                                                          Biografia:{' '}
-                                                        {`${psy.biography}`}
-                                                    </p>
-                                                    <Link
-                                                        to={{
-                                                            pathname: `/psychologist/list/schedule/${psy.email}`,
-                                                            state: {
-                                                                data: actualUser,
-                                                            },
-                                                        }}
-                                                    >
-                                                        <button>
-                                                              Agendar
-                                                              atendimento
-                                                        </button>
-                                                    </Link>
-                                                </div>
-                                            </Accordion.Collapse>
-                                        </div>
-                                    </div>
-                                    <Accordion.Toggle eventKey="0">
-                                        <Link className="button" to={'#'}>
-                                            <img src={go} alt="go" />{' '}
-                                        </Link>
-                                    </Accordion.Toggle>
-                                </div>
-                            </Accordion>
-                        ))
-                        : psychologist
-                            .filter((psy) => {
-                                const fullName = `${psy.name} ${psy.lastName}`;
-                                return fullName
-                                    .toUpperCase()
-                                    .includes(search.toUpperCase());
-                            })
-                            .map((psy) => (
+            <div className="psychologistListContainer">
+                <div className="content">
+                    <SearchBar
+                        placeholder="Pesquisar"
+                        className="searchBar"
+                        value={search}
+                        onChange={setSearch}
+                        icon={MagnifyingGlass}
+                    />
+                    <div className="psy">
+                        {!search
+                            ? psychologist.map((psy) => (
                                 <Accordion key={psy.email}>
                                     <div className="patientTab">
                                         <div className="patientInfos">
@@ -144,9 +75,10 @@ export default function PsychologistList() {
                                                     alt={psy.name}
                                                 />
                                             )}
+
                                             <div className="minPatient">
                                                 <p className="cardName">
-                                                      Nome:{' '}
+                                                Nome:{' '}
                                                     {`${psy.name} ${psy.lastName}`}
                                                 </p>
                                                 <p>email: {psy.email}</p>
@@ -154,8 +86,12 @@ export default function PsychologistList() {
                                                 <Accordion.Collapse eventKey="0">
                                                     <div className="cardToggle">
                                                         <p>
-                                                              Bibliografia:{' '}
-                                                            {`${psy.bibliography}`}
+                                                        Biografia:{' '}
+                                                            {`${psy.biography}`}
+                                                        </p>
+                                                        <p>
+                                                        Vínculo:{' '}
+                                                            {`${psy.bond}`}
                                                         </p>
                                                         <Link
                                                             to={{
@@ -166,8 +102,8 @@ export default function PsychologistList() {
                                                             }}
                                                         >
                                                             <button>
-                                                                  Agendar
-                                                                  atendimento
+                                                            Agendar
+                                                            atendimento
                                                             </button>
                                                         </Link>
                                                     </div>
@@ -181,10 +117,78 @@ export default function PsychologistList() {
                                         </Accordion.Toggle>
                                     </div>
                                 </Accordion>
-                            ))}
+                            ))
+                            : psychologist
+                                .filter((psy) => {
+                                    const fullName = `${psy.name} ${psy.lastName}`;
+                                    return fullName
+                                        .toUpperCase()
+                                        .includes(search.toUpperCase());
+                                })
+                                .map((psy) => (
+                                    <Accordion key={psy.email}>
+                                        <div className="patientTab">
+                                            <div className="patientInfos">
+                                                {psy.userImage != null ? (
+                                                    <img
+                                                        className="patientImg"
+                                                        src={atob(
+                                                            Buffer.from(
+                                                                psy.userImage,
+                                                                'binary',
+                                                            ).toString('base64'),
+                                                        )}
+                                                        alt={psy.name}
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        className="patientImg"
+                                                        src={userIcon}
+                                                        alt={psy.name}
+                                                    />
+                                                )}
+                                                <div className="minPatient">
+                                                    <p className="cardName">
+                                                    Nome:{' '}
+                                                        {`${psy.name} ${psy.lastName}`}
+                                                    </p>
+                                                    <p>email: {psy.email}</p>
+
+                                                    <Accordion.Collapse eventKey="0">
+                                                        <div className="cardToggle">
+                                                            <p>
+                                                            Bibliografia:{' '}
+                                                                {`${psy.bibliography}`}
+                                                            </p>
+                                                            <Link
+                                                                to={{
+                                                                    pathname: `/psychologist/list/schedule/${psy.email}`,
+                                                                    state: {
+                                                                        data: actualUser,
+                                                                    },
+                                                                }}
+                                                            >
+                                                                <button>
+                                                                Agendar
+                                                                atendimento
+                                                                </button>
+                                                            </Link>
+                                                        </div>
+                                                    </Accordion.Collapse>
+                                                </div>
+                                            </div>
+                                            <Accordion.Toggle eventKey="0">
+                                                <Link className="button" to={'#'}>
+                                                    <img src={go} alt="go" />{' '}
+                                                </Link>
+                                            </Accordion.Toggle>
+                                        </div>
+                                    </Accordion>
+                                ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
