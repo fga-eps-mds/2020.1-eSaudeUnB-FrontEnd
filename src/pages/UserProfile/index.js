@@ -128,7 +128,7 @@ export default function UserProfile(props) {
                     oldPassword: actualPassword,
                     password: newPassword,
                 },
-                { headers: { authorization: accessToken } });
+                    { headers: { authorization: accessToken } });
 
                 if (response.status === 203) {
                     setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
@@ -187,7 +187,7 @@ export default function UserProfile(props) {
                 medication,
                 mainComplaint,
             },
-            { headers: { authorization: accessToken } });
+                { headers: { authorization: accessToken } });
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -356,8 +356,8 @@ export default function UserProfile(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -965,10 +965,10 @@ export default function UserProfile(props) {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button variant="success" onClick={updatePassword}>Confirmar</Button>
