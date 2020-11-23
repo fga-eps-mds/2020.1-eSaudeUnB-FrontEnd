@@ -20,7 +20,7 @@ export default function UserMain() {
         }).then((response) => {
             setPsychologists(response.data);
         });
-    });
+    }, [accessToken]);
 
     function dateCheck(weekDay) {
         if (weekDay === date.getDay()) {
@@ -51,7 +51,9 @@ export default function UserMain() {
                         duration: workDay.duration,
                     });
                 }
+                return [];
             });
+            return [];
         });
 
         const { email, weekDay } = userSelected;

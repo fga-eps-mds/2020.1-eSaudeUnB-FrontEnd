@@ -15,7 +15,7 @@ import figureCaption from '../../assets/images/figureCaption.png';
 
 import Input from '../../components/Input';
 
-export default function UserProfile(props) {
+export default function UserProfile() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -247,6 +247,7 @@ export default function UserProfile(props) {
         setInterval(() => {
             setShow(false);
         }, 10000);
+        return [];
     }
 
     return (

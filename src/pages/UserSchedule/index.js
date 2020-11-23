@@ -63,7 +63,9 @@ export default function UserSchedule(props) {
                     appointment.user = _id;
                     appointment.name = `${name} ${lastName}`;
                 }
+                return 0;
             });
+            return 0;
         });
 
         await api.put('/calendary/update',
@@ -90,7 +92,7 @@ export default function UserSchedule(props) {
                                     <select value={selectedValue}
                                         onChange={(e) => setSelectedValue(e.target.value)}>
                                         {workDay.appointment.map((appointment) => (
-                                            <option value={appointment._id}>
+                                            <option value={appointment._id} key={appointment._id}>
                                                 Horário de começo: {appointment.time}
                                             </option>
                                         ))}
