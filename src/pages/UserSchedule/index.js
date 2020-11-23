@@ -77,7 +77,7 @@ export default function UserSchedule(props) {
 
     return (
         <div className="userScheduleContainer">
-            <NavBar actualUser={localStorage.getItem('user')} />
+            <NavBar actualUser={props.location.state.data} />
             <div className="content">
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>

@@ -233,7 +233,7 @@
 .usercalendar .column2 .schedule-buttons{
     display: flex;
 
-    width: 400px;
+    width: 600px;
     justify-content: space-between;
 }
 .usercalendar .column2 .schedule-buttons button{
@@ -245,6 +245,10 @@
 }
 .usercalendar .column2 .schedule-buttons .cancelSchedule {
     background-color: red;
+}
+
+.usercalendar .column2 .schedule-buttons .waiting-list {
+    background-color: #0459ae;
 }
 
 .usercalendar .alert {

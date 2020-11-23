@@ -5,7 +5,7 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function UserEvents() {
+export default function UserEvents(props) {
     const [date, setDate] = useState(new Date());
     const [user, setUser] = useState({});
     const accessToken = localStorage.getItem('accessToken');
@@ -27,7 +27,7 @@ export default function UserEvents() {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={'user'} />
+            <NavBar className="navBar" bond="Patient" actualUser={props.location.state.data} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
