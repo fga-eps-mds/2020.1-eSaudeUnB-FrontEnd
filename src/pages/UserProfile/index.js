@@ -69,7 +69,7 @@ export default function UserProfile(props) {
     const [alertContentRace, setAlertContentRace] = useState(false);
     const [alertContentSexualOrientation, setAlertContentSexualOrientation] = useState(false);
     const [alertContentEmergencyContactName, setAlertContentEmergencyContactName] = useState(false);
-    const [alertContentEmergencyContactPhone, setAlertContentEmergencyContactPhone] = useState(false);
+    const [alertContentEmergencyContactPhone, setAlertContentEmergencyContactPhone]=useState(false);
     const [alertContentEmergencyContactBond, setAlertContentEmergencyContactBond] = useState(false);
     const [alertContentMotherName, setAlertContentMotherName] = useState(false);
     const [alertContentFatherName, setAlertContentFatherName] = useState(false);
@@ -532,7 +532,7 @@ export default function UserProfile(props) {
                                     {alertContentEmergencyContactName ? (
                                         <div className="alertContent">
                                             <p>
-                                                Campo obrigatório.
+                                                Campo obrigatório. 
                                                 Nome deve possuir mais de 2 letras.
                                             </p>
                                         </div>
@@ -592,7 +592,7 @@ export default function UserProfile(props) {
                                     {alertContentMotherName ? (
                                         <div className="alertContent">
                                             <p>
-                                                Campo obrigatório.
+                                                Campo obrigatório. 
                                                 Nome deve possuir mais de 2 letras.
                                             </p>
                                         </div>
