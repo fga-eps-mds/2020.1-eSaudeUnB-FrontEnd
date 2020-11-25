@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function UserMain() {
+export default function UserMain(props) {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
     const [userSelected, setUserSelected] = useState({});
@@ -13,6 +14,8 @@ export default function UserMain() {
     const [selectedValue, setSelectedValue] = useState();
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
+
+    const history = useHistory();
 
     useEffect(() => {
         api.get('/psychologists', {
@@ -64,8 +67,8 @@ export default function UserMain() {
                 email,
                 weekDay,
             }, {
-            headers: { authorization: accessToken },
-        });
+                headers: { authorization: accessToken },
+            });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
@@ -155,6 +158,17 @@ export default function UserMain() {
                                 <div className="schedule-buttons">
                                     <button type="submit">Agendar</button>
                                     <button className="cancelSchedule" onClick={() => setUserSelected('')}>Cancelar</button>
+                                    <button
+                                        className="waiting-list"
+                                        onClick={() => history.push({
+                                            pathname: '/waiting-list',
+                                            state: {
+                                                data: props.location.state.data,
+                                                psychologist: userSelected,
+                                            },
+                                        })}>
+                                        Lista de espera
+                                    </button>
                                 </div>
                             </form>
                         </div>
