@@ -64,8 +64,8 @@ export default function UserMain() {
                 email,
                 weekDay,
             }, {
-                headers: { authorization: accessToken },
-            });
+            headers: { authorization: accessToken },
+        });
 
         await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
             headers: { authorization: accessToken },
@@ -91,7 +91,9 @@ export default function UserMain() {
                         />
                     </div>
                     <div className="table-right">
-                        <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                        <div className="calendar-title">
+                            <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                        </div>
                         <div className="schedules">
                             {psychologists.map((psychologist, index) => (
 
