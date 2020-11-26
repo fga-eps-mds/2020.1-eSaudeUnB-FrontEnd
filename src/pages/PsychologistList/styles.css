@@ -131,9 +131,12 @@
     .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
         font: 700 26px Poppins;
     }
+    .psychologistListContainer .cardToggle > a {
+        text-align: center;
+    }
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 613px) {
     .psychologistListContainer .patientInfos {
         flex-direction: column;
     }
@@ -153,5 +156,12 @@
     }
     .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
         font: 700 22px Poppins;
+    }
+    .psychologistListContainer .minPatient {
+        width: 100%;
+    }
+    .psychologistListContainer .cardToggle button {
+        width: 200px;
+        font-size: 16px;
     }
 }
