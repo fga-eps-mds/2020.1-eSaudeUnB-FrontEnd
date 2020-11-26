@@ -167,13 +167,18 @@
 .userProfileContainer .personal-image {
     margin-left: 50px;
     margin-top: 45.5px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
     height: 125px;
 }
 
 .userProfileContainer .personal-image input[type='file'] {
     display: none;
 }
+
+.userProfileContainer .personal-image .label {
+    margin-top: 45.5px;
+}
+
 .userProfileContainer .personal-figure {
     position: relative;
     width: 125px;
@@ -278,13 +283,13 @@
     .userProfileContainer .personal-image {
         margin-left: 90px;
         margin-top: 50px;
+        margin-bottom: 190px;
     }
     .userProfileContainer .form .alertContent {
         width: 200px;
         font-size: 11px;
     }
     .userProfileContainer .form input {
-        width: 200px; 
-        
+        width: 200px;
     }
 }
