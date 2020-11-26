@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-.userProfileContainer .form .fieldDiv{
+.userProfileContainer .form .fieldDiv {
     display: flex;
     flex-direction: column;
     border: solid 1px #ccc;
@@ -254,7 +254,7 @@
     .userProfileContainer .form .input {
         width: 200px;
     }
-    .userProfileContainer .form .fieldDiv{
+    .userProfileContainer .form .fieldDiv {
         display: flex;
         flex-direction: column;
         border: solid 1px #ccc;

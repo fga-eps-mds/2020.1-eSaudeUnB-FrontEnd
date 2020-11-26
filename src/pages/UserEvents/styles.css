@@ -1,4 +1,4 @@
-.psyEventsCalendar {
+.usrEventsCalendar {
     width: 100%;
     height: 100vh;
     color: #eee;
@@ -9,41 +9,39 @@
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
-.psyEventsCalendar .content {
+.usrEventsCalendar .content {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.psyEventsCalendar .tabela {
-    width: 1400px;
+.usrEventsCalendar .tabela {
     border-radius: 15px;
     display: flex;
     background-color: #eee;
     height: 690px;
 }
 
-.psyEventsCalendar .tabela .calendar {
+.usrEventsCalendar .tabela .calendar {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.psyEventsCalendar .table-right {
-    
+.usrEventsCalendar .table-right {
     width: 740px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.psyEventsCalendar .table-right h1 {
+.usrEventsCalendar .table-right h1 {
     justify-self: center;
     font: 500 2.5rem Poppins;
     color: #0459ae;
     display: flex;
 }
 
-.psyEventsCalendar .table-right button {
+.usrEventsCalendar .table-right button {
     border: none;
     color: #d10000;
     font: 500 1.3rem Poppins;
@@ -53,38 +51,37 @@
     height: 3rem;
     align-self: center;
 }
-.psyEventsCalendar .table-right button:hover {
+.usrEventsCalendar .table-right button:hover {
     color: #eee;
     background-color: #d10000;
 }
 
-.psyEventsCalendar .table-right button + button {
+.usrEventsCalendar .table-right button + button {
     margin-bottom: 25px;
     margin-top: 10px;
     color: #0459ae;
 }
-.psyEventsCalendar .table-right button + button:hover {
+.usrEventsCalendar .table-right button + button:hover {
     color: #eee;
     background-color: #0459ae;
 }
 
-.psyEventsCalendar .schedules {
+.usrEventsCalendar .schedules {
     width: 90%;
     height: 80%;
-    
+
     border-left: 2px solid #0459ae;
     overflow: auto;
     font: 500 1.3rem Poppins;
     color: #07387e;
 }
 
-.psyEventsCalendar .schedules .schedule-box {
-
+.usrEventsCalendar .schedules .schedule-box {
     text-align: left;
     display: flex;
 }
 
-.psyEventsCalendar .schedules .schedule-box button {
+.usrEventsCalendar .schedules .schedule-box button {
     background: none;
     border: none;
     font: 700 1rem Poppins;
@@ -94,7 +91,7 @@
     width: 30%;
     transition: 0.2s;
 }
-.psyEventsCalendar .schedules .schedule-box button:hover {
+.usrEventsCalendar .schedules .schedule-box button:hover {
     color: #bdc2c9;
 }
 
@@ -190,9 +187,18 @@
     background-color: #e6e6e6;
 }
 
-.psyEventsCalendar .calendar-title{
+.usrEventsCalendar .calendar-title {
     display: flex;
     justify-content: center;
+}
+
+.usrEventsCalendar .schedules .schedule-box .testeTotal {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+    height: 80px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -202,10 +208,10 @@
         width: 300px;
         flex-direction: column;
     }
-    .calendar{
+    .calendar {
         width: 500px;
     }
-    .calendar-title{
+    .calendar-title {
         display: flex;
         align-items: center;
         justify-content: center;
