@@ -88,6 +88,7 @@
     .patientListContainer .content {
         width: 90%;
         margin: auto;
+        margin-top: 50px;
     }
     .patientListContainer .patients {
         width: 90%;
