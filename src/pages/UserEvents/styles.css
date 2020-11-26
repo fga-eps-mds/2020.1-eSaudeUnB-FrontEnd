@@ -239,9 +239,11 @@
         border: none;
         margin-bottom: 155px;
     }
+
     .usrEventsCalendar .react-calendar__month-view__days {
         height: 100%;
     }
+    
     .usrEventsCalendar .react-calendar {
         height: 100%;
         margin-top: 90px;
