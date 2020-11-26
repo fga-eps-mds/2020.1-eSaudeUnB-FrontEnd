@@ -16,7 +16,7 @@
     align-items: center;
 }
 .usercalendar .tabela {
-    width: 1400px;
+    margin: 80px 0 80px 0;
     border-radius: 15px;
     display: flex;
     background-color: #eee;
@@ -33,10 +33,9 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    
 }
 .usercalendar .table-right h1 {
-    justify-self: center;
+    margin-top: 30px;
     justify-content: center;
     font: 500 2.5rem Poppins;
     color: #0459ae;
@@ -80,97 +79,6 @@
     color: #bdc2c9;
 }
 
-/* Calendar \/ */
- .react-calendar {
-    margin: 30px;
-    width: 600px;
-    height: 630px;
-    background: #eee;
-    border-radius: 15px;
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.25));
-}
-
-.react-calendar button {
-    margin: 0;
-    border: 0;
-    outline: none;
-}
-.react-calendar button:enabled:hover {
-    cursor: pointer;
-}
-.react-calendar__navigation {
-    height: 90px;
-}
-.react-calendar__navigation button {
-    width: 80px;
-    font-size: 30px;
-    color: #07387e;
-    border-radius: 15px;
-    background: none;
-}
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
-}
-.react-calendar__navigation button[disabled] {
-    background-color: #f0f0f0;
-}
-.react-calendar__month-view__weekdays {
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-}
-.react-calendar__month-view__weekdays__weekday {
-    color: #757575;
-}
-.react-calendar__month-view__days__day--weekend {
-    color: #d10000;
-}
-.react-calendar__month-view__days__day--neighboringMonth {
-    color: #c4c4c4;
-}
-
-.react-calendar__tile {
-    border-radius: 100%;
-    max-width: 100%;
-    text-align: center;
-    padding: 33px 20px;
-    background: none;
-}
-.react-calendar__tile:disabled {
-    background-color: #f0f0f0;
-}
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-    background-color: #e6e6e6;
-}
-.react-calendar__tile--now {
-    background: #c4c4c4;
-}
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-    background: #49cdf5;
-}
-.react-calendar__tile--hasActive {
-    background: #76baff;
-}
-.react-calendar__tile--hasActive:enabled:hover,
-.react-calendar__tile--hasActive:enabled:focus {
-    background: #a9d4ff;
-}
-.react-calendar__tile--active {
-    background: #006edc;
-    color: white;
-}
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-    background: #1087ff;
-}
-.react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: #e6e6e6;
-}
 .usercalendar .psy-card {
     display: flex;
     height: 100px;
@@ -190,6 +98,12 @@
     padding-left: 20px;
     border-radius: 15px;
     justify-content: space-around;
+}
+.usercalendar .testecalendar {
+    display: flex;
+    width: 800px;
+    margin: 0px;
+    flex-direction: column;
 }
 .usercalendar .checkboxColumn {
     display: flex;
@@ -265,35 +179,24 @@
     align-items: center;
     justify-content: center;
 }
-.usercalendar .table-right .calendar-title{
-    display: flex;
-    height: 103px;
-    text-align: center;
-    padding: 33px 20px;
-    justify-content: center;
-}
 
-@media only screen and (max-width: 1000px) {
-    .tabela {
-        display: flex;
-        align-items: center;
-        width: 300px;
+@media only screen and (max-width: 1300px) {
+    .usercalendar .tabela {
         flex-direction: column;
+        width: 550px;
+        min-height: 800px;
+        margin: 80px 0 80px 0;
     }
-    .calendar {
-        width: 500px;
+
+    .usercalendar .table-right {
+        width: 550px;
     }
+
+    .usercalendar .schedules {
+        border: none;
+    }
+
     .usercalendar .table-right h1 {
-        justify-self: center;
-        justify-content: center;
-        font: 500 1.5rem Poppins;
-        color: #0459ae;
-        display: flex;
-        font-weight: bold;
-    }
-    .calendar-title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        font: 500 2rem Poppins;
     }
 }
