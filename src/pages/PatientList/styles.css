@@ -21,6 +21,7 @@
     flex-direction: column;
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
     overflow: auto;
+    min-width: 300px;
 }
 
 .patientListContainer .searcBarComponent {
@@ -57,6 +58,8 @@
     padding: 10px 20px 10px 20px;
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+    min-width: 275px;
 }
 
 .patientListContainer .patientInfos {
@@ -81,3 +84,41 @@
     width: 40px;
     height: 40px;
 }
+@media only screen and (max-width: 950px) {
+    .patientListContainer .content {
+        width: 90%;
+        margin: auto;
+    }
+    .patientListContainer .patients {
+        width: 90%;
+    }
+    .patientListContainer .searcBarComponent {
+        justify-content: center;
+        width: 200%;
+    }
+    .patientListContainer .searcBarComponent input {
+        height: 30px;
+        width: 30%;
+       
+    }
+    .patientListContainer .searcBarComponent img {
+        height: 18px;
+        margin-left: -45px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .patientListContainer .patientInfos {
+        flex-direction: column;
+    }
+    .patientListContainer .patientTab{
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+    .patientListContainer .content {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        overflow-x: hidden;
+    }
+}
+
