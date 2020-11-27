@@ -29,7 +29,6 @@
     justify-content: center;
 }
 .psyEventsCalendar .table-right {
-    
     width: 740px;
     text-align: center;
     display: flex;
@@ -71,7 +70,7 @@
 .psyEventsCalendar .schedules {
     width: 90%;
     height: 80%;
-    
+
     border-left: 2px solid #0459ae;
     overflow: auto;
     font: 500 1.3rem Poppins;
@@ -79,7 +78,6 @@
 }
 
 .psyEventsCalendar .schedules .schedule-box {
-
     text-align: left;
     display: flex;
 }
@@ -98,17 +96,20 @@
     color: #bdc2c9;
 }
 
-.psyEventsCalendar .calendar-title{
+.psyEventsCalendar .calendar-title {
     display: flex;
     justify-content: center;
 }
-.psyEventsCalendar .schedules .schedule-box .testeTotal{
+.psyEventsCalendar .schedules .schedule-box .testeTotal {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     width: 100%;
     height: 80px;
+}
+.psyEventsCalendar .navBarComponent .navLinks {
+    display: none !important;
 }
 @media only screen and (max-width: 1300px) {
     .psyEventsCalendar .tabela {
@@ -123,12 +124,17 @@
         padding-bottom: 30px;
     }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 994px) {
     .psyEventsCalendar .tabela {
         width: 65%;
     }
+    .psyEventsCalendar .SideBar {
+        display: none;
+    }
+    .psyEventsCalendar .navBarComponent .navLinks {
+        display: flex !important;
+    }
 }
-
 
 @media only screen and (max-width: 553px) {
     .psyEventsCalendar .tabela {
