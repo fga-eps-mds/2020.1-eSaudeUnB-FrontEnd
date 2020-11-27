@@ -311,12 +311,13 @@ export default function PsychologistSchedule() {
                                     </div>
 
                                     <div className="input-box">
-                                        <label>Duração da consulta (minutos)</label>
+                                        <label>Duração da consulta</label>
                                         <input
                                             name="duration"
                                             label="duration"
                                             type="number"
                                             min="0"
+                                            placeHolder="Minutos"
                                             value={scheduleItem.duration}
                                             onChange={(e) => setScheduleItemsValue(
                                                 index,
