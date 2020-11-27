@@ -200,3 +200,12 @@
         font: 500 2rem Poppins;
     }
 }
+@media only screen and (max-width: 910px){
+    .usercalendar .tabela {
+        width: 85%;
+    }
+
+    .usercalendar .table-right {
+        width: 100%;
+    }
+}

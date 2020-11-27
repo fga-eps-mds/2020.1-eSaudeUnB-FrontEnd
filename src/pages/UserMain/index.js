@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
+import '../../assets/styles/Calendar.css'
 import NavBar from '../../components/NavBar';
 
 export default function UserMain(props) {
