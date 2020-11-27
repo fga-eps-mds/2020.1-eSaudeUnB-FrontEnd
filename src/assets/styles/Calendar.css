@@ -20,7 +20,7 @@
 }
 .react-calendar__navigation button {
     width: 80px;
-    font-size: 30px;
+    font-size: 2vw;
     color: #07387e;
     border-radius: 15px;
     background: none;
@@ -100,6 +100,13 @@
 }
 
 @media only screen and (max-width: 553px) {
+    .react-calendar {
+        margin: 15px;
+        padding: 5px 10px;
+    }
+    .react-calendar__navigation {
+        height: 50px;
+    }
     .react-calendar__navigation button {
         font-size: 20px;
     }
@@ -110,4 +117,7 @@
         min-height: 35px;
     }
 
+    .react-calendar__navigation button {
+        width: 40px;
+    }
 }
