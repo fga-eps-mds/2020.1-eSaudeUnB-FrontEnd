@@ -91,11 +91,7 @@ export default function NavBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-<<<<<<< HEAD
-                                Horários
-=======
                                 Ajustar cronograma
->>>>>>> a8c6fa1 (fix: fix somre bugs)
                             </Link>
                         </div>
                     ) : (
