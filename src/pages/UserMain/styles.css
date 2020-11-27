@@ -6,11 +6,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
 .usercalendar .content {
     height: 100%;
+    margin: auto;
+    width: 65%;
+    max-width: 1360px;
+    min-width: 1150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +98,7 @@
     background-color: #eee;
     color: #07387e;
     flex-direction: row;
-    width: 1400px;
+    width: 1360px;
     padding-top: 20px;
     padding-left: 20px;
     border-radius: 15px;
@@ -168,16 +173,17 @@
     padding-bottom: 20px;
 }
 .usercalendar .noHours {
-    display: flex;
     background-color: #ff2c00;
     color: #4a0d00;
-    flex-direction: row;
-    width: 1400px;
+    border-radius: 15px;
     padding-top: 20px;
     padding-left: 20px;
-    border-radius: 15px;
-    align-items: center;
-    justify-content: center;
+
+    width: 100%;
+    
+}
+.usercalendar .navBarComponent .navLinks {
+    display: none !important;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -199,13 +205,36 @@
     .usercalendar .table-right h1 {
         font: 500 2rem Poppins;
     }
+    .usercalendar .content {
+        max-width: 550px;
+        min-width: 0px;
+    }
+}
+@media only screen and (max-width: 994px){
+    .usercalendar .navBarComponent .navLinks {
+        display: flex !important;
+    }
+    .usercalendar .sidebar {
+        display: none !important;
+    }
 }
 @media only screen and (max-width: 910px){
     .usercalendar .tabela {
         width: 85%;
+        min-width: 280px;
+    }
+    .usercalendar .navBarComponent .navLinks {
+        display: flex !important;
+    }
+    .usercalendar .sidebar {
+        display: none !important;
     }
 
     .usercalendar .table-right {
         width: 100%;
+    }
+    .usercalendar .noHours {
+        width: 85%;
+        min-width: 280px;
     }
 }

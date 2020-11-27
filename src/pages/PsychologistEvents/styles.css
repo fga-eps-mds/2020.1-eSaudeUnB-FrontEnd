@@ -110,3 +110,28 @@
     width: 100%;
     height: 80px;
 }
+@media only screen and (max-width: 1300px) {
+    .psyEventsCalendar .tabela {
+        margin: auto;
+        margin-top: 50px;
+        height: auto;
+        flex-direction: column;
+        width: 550px;
+    }
+    .psyEventsCalendar .table-right {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .psyEventsCalendar .tabela {
+        width: 65%;
+    }
+}
+
+
+@media only screen and (max-width: 553px) {
+    .psyEventsCalendar .tabela {
+        width: 90%;
+    }
+}

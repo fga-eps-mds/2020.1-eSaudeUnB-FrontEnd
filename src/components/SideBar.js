@@ -7,6 +7,7 @@ import '../assets/styles/SideBar.css';
 
 export default function SideBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
+    const [userName, setUserName] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
 
@@ -17,7 +18,7 @@ export default function SideBar({ actualUser, bond }) {
                     const response = await api.get(`/psychologist/${user}`, {
                         headers: { authorization: accessToken },
                     });
-
+                    setUserName(response.data.name);
                     setUserImage(
                         atob(
                             Buffer.from(
@@ -27,11 +28,10 @@ export default function SideBar({ actualUser, bond }) {
                         ),
                     );
                 } else {
-                    const response = await api.get(`/user/${user}`,
-                        {
-                            headers: { authorization: accessToken },
-                        });
-
+                    const response = await api.get(`/user/${user}`, {
+                        headers: { authorization: accessToken },
+                    });
+                    setUserName(response.data.name);
                     setUserImage(
                         atob(
                             Buffer.from(
@@ -44,7 +44,7 @@ export default function SideBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        }());
+        })();
     }, [bond]);
 
     function openNav() {
@@ -77,7 +77,7 @@ export default function SideBar({ actualUser, bond }) {
                         src={userImage || userIcon}
                         alt="menu"
                     />
-                    <p>{actualUser.name}</p>
+                    <p>{userName}</p>
                     <a href="/">Proximos Eventos</a>
                     <a href="/">Lista de Profissionais</a>
                     <a href="/">Meu Perfil</a>
