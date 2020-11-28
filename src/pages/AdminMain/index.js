@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert, Button } from 'react-bootstrap';
@@ -6,8 +7,8 @@ import api from '../../services/api';
 import './styles.css';
 
 export default function AdminMain() {
-    const [psyArray, setPsyArray] = useState([]);
-    const [actualPsyEmail, setActualPsyEmail] = useState('');
+    const [psychologists, setPsychologists] = useState([]);
+    const [currentPsychologyEmail, setCurrentPsychologyEmail] = useState('');
     const [show, setShow] = useState(false);
 
     const history = useHistory();
@@ -23,8 +24,7 @@ export default function AdminMain() {
         api.get('/psychologists', {
             headers: { authorization: accessToken },
         }).then((response) => {
-            setPsyArray(response.data);
-            return 204;
+            setPsychologists(response.data);
         }).catch((err) => {
             if (err.response.status === 401) {
                 return setTimeout(() => {
@@ -32,24 +32,27 @@ export default function AdminMain() {
                     history.push('/admin');
                 }, 2000);
             }
-            return [];
         });
     }, [history]);
 
+    useEffect(() => () => {
+        setPsychologists([]);
+    }, []);
+
     const showConfirmation = (email) => {
-        setActualPsyEmail(email);
+        setCurrentPsychologyEmail(email);
         setShow(true);
     };
 
     const deletePsychologist = async () => {
         const accessToken = localStorage.getItem('accessToken');
 
-        await api.delete(`/psychologist/${actualPsyEmail}`,
+        await api.delete(`/psychologist/${currentPsychologyEmail}`,
             { headers: { authorization: accessToken } });
         const response = await api.get('/psychologists', {
             headers: { authorization: accessToken },
         });
-        setPsyArray(response.data);
+        setPsychologists(response.data);
         setShow(false);
     };
 
@@ -63,7 +66,7 @@ export default function AdminMain() {
                         <div className="d-flex justify-content-end">
                             <Button
                                 className="react-bootstrap-button"
-                                onClick={deletePsychologist}
+                                onClick={() => deletePsychologist()}
                                 variant="outline-success"
                             >
                                 Sim
@@ -80,7 +83,7 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                <div></div>
+                <></>
             )}
             <div className="psychologist-list">
                 <div className="nav">
@@ -88,14 +91,14 @@ export default function AdminMain() {
                         Cadastrar novo Profissional
                     </button>
                     <div className="count">
-                        <p>Profissionais cadastrados: {psyArray.length}</p>
+                        <p>Profissionais cadastrados: {psychologists.length}</p>
                     </div>
-                    <button className="get-out" onClick={getOut}>
+                    <button className="get-out" onClick={() => getOut()}>
                         Sair
                     </button>
                 </div>
                 <div className="psychologists-cards">
-                    {psyArray.map((psychologist) => (
+                    {psychologists.map((psychologist) => (
                         <article key={psychologist.email}>
                             <p>
                                 <strong>Nome: </strong>
@@ -113,8 +116,7 @@ export default function AdminMain() {
                                     : 'Não informado'}
                             </p>
                             <button
-                                onClick={() => showConfirmation(psychologist.email)
-                                }
+                                onClick={() => showConfirmation(psychologist.email)}
                             >
                                 Excluir Profissional
                             </button>
