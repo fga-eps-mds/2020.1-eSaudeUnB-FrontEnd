@@ -62,7 +62,7 @@ export default function PsychologistCalendar() {
     }
 
     return (
-        <>
+        <div className="psychologistcalendar" onLoad={handleRestrict}>
             <NavBar
                 className="navBar"
                 bond="Psychologist"
@@ -100,10 +100,16 @@ export default function PsychologistCalendar() {
                                 </div>
                             ))}
                         </div>
+                        <button type="button" onClick={() => updateRestricts()}>
+                            {`Adicionar Restrição ao dia ${date.getDate()}`}
+                        </button>
+                        <button type="button" onClick={() => putRestrict()}>
+                            Salvar
+                        </button>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
