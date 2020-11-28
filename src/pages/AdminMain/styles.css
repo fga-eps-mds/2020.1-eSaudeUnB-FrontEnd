@@ -112,20 +112,16 @@
     justify-content: center;
 
     font-size: 16px;
-    background-color:  #00417e;
+    background-color:  #003A70;
     color: #fff;
     cursor: pointer;
-    border: 1px solid blue;
     border-radius: 5px;
     margin-top: 10px;
     font-weight: bold;
 }
 
 .psychologist-list .new-psychologist:hover{
-    opacity: 0.6;
-    background-color: #fff;
-    color: #0459AE;
-    transition:all 0.3s;
+    filter: brightness(150%);
 }
 
 .psychologist-list .nav .get-out {
@@ -135,10 +131,14 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #FF2C00;
+    background-color: #C10015;
     font-weight: bold;
 
     line-height: 36px;
+}
+
+.psychologist-list .nav .get-out:hover {
+    filter: brightness(150%);
 }
 
 .psychologist-list .psychologists-wrapper {
@@ -162,7 +162,7 @@
 
 .psychologists-wrapper .message-warning span {
     font-size: 30px;
-    color: #0459AE;
+    color: #003A70;
     font-weight: bold;
     margin-left: 10px;
 }

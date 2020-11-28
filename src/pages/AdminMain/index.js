@@ -146,7 +146,7 @@ export default function AdminMain() {
 
                                         <p>
                                             <strong>Especialização:</strong>
-                                            {psychologist.specialization
+                                            {' '}{psychologist.specialization
                                                 ? psychologist.specialization
                                                 : 'Não informado'}
                                         </p>
