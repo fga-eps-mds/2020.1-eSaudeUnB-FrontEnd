@@ -2,14 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert, Button } from 'react-bootstrap';
+import { FaTimesCircle } from 'react-icons/fa';
 
 import api from '../../services/api';
 import './styles.css';
+import SearchBar from '../../components/SearchBar';
+import MagnifyingGlass from '../../assets/images/lupa.svg';
 
 export default function AdminMain() {
     const [psychologists, setPsychologists] = useState([]);
     const [currentPsychologyEmail, setCurrentPsychologyEmail] = useState('');
     const [show, setShow] = useState(false);
+    const [queryValue, setQueryValue] = useState('');
 
     const history = useHistory();
 
@@ -18,21 +22,39 @@ export default function AdminMain() {
         history.push('/admin');
     }
 
-    useEffect(() => {
+    const loadPsychologists = async () => {
         const accessToken = localStorage.getItem('accessToken');
 
-        api.get('/psychologists', {
-            headers: { authorization: accessToken },
-        }).then((response) => {
-            setPsychologists(response.data);
-        }).catch((err) => {
-            if (err.response.status === 401) {
+        try {
+            const response = await api.get('/psychologists', {
+                headers: { authorization: accessToken },
+            });
+
+            let recoverPsychology = response.data;
+
+            if (queryValue !== '') {
+                recoverPsychology = response.data.filter(
+                    (psychologist) => psychologist.name.toLowerCase().includes(
+                        queryValue.toLowerCase(),
+                    ) || psychologist.lastName.toLowerCase().includes(
+                        queryValue.toLowerCase(),
+                    ),
+                );
+            }
+
+            setPsychologists(recoverPsychology);
+        } catch (error) {
+            if (error.response.status === 401) {
                 return setTimeout(() => {
                     localStorage.removeItem('accessToken');
                     history.push('/admin');
                 }, 2000);
             }
-        });
+        }
+    };
+
+    useEffect(() => {
+        loadPsychologists();
     }, [history]);
 
     useEffect(() => () => {
@@ -97,31 +119,51 @@ export default function AdminMain() {
                         Sair
                     </button>
                 </div>
-                <div className="psychologists-cards">
-                    {psychologists.map((psychologist) => (
-                        <article key={psychologist.email}>
-                            <p>
-                                <strong>Nome: </strong>
-                                {`${psychologist.name} ${psychologist.lastName}`}
-                            </p>
+                <div className="psychologists-wrapper">
+                    <div className="search-psychologists">
+                        <SearchBar
+                            placeholder="Pesquisar"
+                            className="searchBar"
+                            value={queryValue}
+                            onChange={setQueryValue}
+                            icon={MagnifyingGlass}
+                            triggerQuery={loadPsychologists}
+                        />
+                    </div>
+                    {
+                        psychologists.length !== 0 ? (
+                            <div className="psychologists-cards">
+                                {psychologists.map((psychologist) => (
+                                    <article key={psychologist.email}>
+                                        <p>
+                                            <strong>Nome: </strong>
+                                            {`${psychologist.name} ${psychologist.lastName}`}
+                                        </p>
 
-                            <p>
-                                <strong>E-mail:</strong> {psychologist.email}
-                            </p>
+                                        <p>
+                                            <strong>E-mail:</strong> {psychologist.email}
+                                        </p>
 
-                            <p>
-                                <strong>Especialização:</strong>
-                                {psychologist.specialization
-                                    ? psychologist.specialization
-                                    : 'Não informado'}
-                            </p>
-                            <button
-                                onClick={() => showConfirmation(psychologist.email)}
-                            >
-                                Excluir Profissional
-                            </button>
-                        </article>
-                    ))}
+                                        <p>
+                                            <strong>Especialização:</strong>
+                                            {psychologist.specialization
+                                                ? psychologist.specialization
+                                                : 'Não informado'}
+                                        </p>
+                                        <button
+                                            onClick={() => showConfirmation(psychologist.email)}
+                                        >
+                                            Excluir Profissional
+                                        </button>
+                                    </article>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="message-warning">
+                                <FaTimesCircle color="#0459AE" size="2em" /> <span>Nenhum profissional foi encontrado</span>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>
