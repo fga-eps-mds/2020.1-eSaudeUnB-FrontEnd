@@ -91,7 +91,7 @@ export default function AdminMain() {
                         Cadastrar novo Profissional
                     </button>
                     <div className="count">
-                        <p>Profissionais cadastrados: {psychologists.length}</p>
+                        <p><strong>Profissionais cadastrados:</strong> {psychologists.length}</p>
                     </div>
                     <button className="get-out" onClick={() => getOut()}>
                         Sair
