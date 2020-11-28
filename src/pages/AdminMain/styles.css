@@ -14,7 +14,7 @@
 .list-container .alert-component {
     position: fixed;
     width: 350px;
-    height: 122px;
+    height: 153px;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
@@ -30,7 +30,7 @@
 }
 
 .list-container .psychologist-list {
-    display: grid;
+    display: flex;
     grid-template-columns: 280px 1fr;
     grid-template-rows: 100%;
     grid-template-areas: 'nav' 'cards';
@@ -93,7 +93,9 @@
 
 .psychologist-list .nav {
     grid-area: 'nav';
-
+    width: 350px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -135,23 +137,33 @@
 
     line-height: 36px;
 }
-@media only screen and (max-width: 553px) {
-    .react-calendar {
-        margin: 15px;
-        padding: 5px 10px;
+@media only screen and (max-width: 450px) {
+    .list-container .psychologist-list {
+        align-items: center;
+        justify-content: center;
     }
-    .react-calendar__navigation button {
-        height: 50px !important;
-        font-size: 20px;
+    .psychologist-list .psychologists-cards {
+        align-items: center;
+        justify-content: center;
     }
-
-    .react-calendar__tile {
-        width: 1.65vw;
-        height: 6vw;
-        min-height: 35px;
+    .psychologist-list article {
+        margin: 0 0 20px 0;
+        width: 90%;
     }
-
-    .react-calendar__navigation button {
-        width: 40px;
+    .psychologist-list .nav {
+        margin: 0 0 20px 0;
+        width: 90%;
+    }
+    .psychologist-list .new-psychologist {
+        width: 220px;
+        height: 60px;
+    }
+    .list-container .count {
+        margin-top: 20px;
+        font-size: 13px;
+    }
+    .list-container .alert-component {
+        width: 81%;
+        height: 150px;
     }
 }

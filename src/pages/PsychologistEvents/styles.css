@@ -123,6 +123,9 @@
         width: 100%;
         padding-bottom: 30px;
     }
+    .psyEventsCalendar .table-right h1 {
+        font-size: 2rem;
+    }
 }
 @media only screen and (max-width: 994px) {
     .psyEventsCalendar .tabela {
@@ -139,5 +142,8 @@
 @media only screen and (max-width: 553px) {
     .psyEventsCalendar .tabela {
         width: 90%;
+    }
+    .psyEventsCalendar .table-right h1 {
+        font-size: 1.5rem;
     }
 }
