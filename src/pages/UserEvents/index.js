@@ -50,10 +50,9 @@ export default function UserEvents() {
                             <h1>{'Próximos Eventos'}</h1>
                         </div>
                         <div className="schedules">
-                            {user.appointments &&
-                            user.appointments.length > 0 ? (
-                                user.appointments.map((appointment, index) =>
-                                    dateCheck(appointment.weekDay) ? (
+                            {user.appointments
+                            && user.appointments.length > 0 ? (
+                                    user.appointments.map((appointment, index) => (dateCheck(appointment.weekDay) ? (
                                         <div
                                             // eslint-disable-next-line no-underscore-dangle
                                             key={index}
@@ -66,11 +65,10 @@ export default function UserEvents() {
                                         </div>
                                     ) : (
                                         <div></div>
-                                    ),
-                                )
-                            ) : (
-                                <div></div>
-                            )}
+                                    )))
+                                ) : (
+                                    <div></div>
+                                )}
                         </div>
                     </div>
                 </div>
