@@ -78,6 +78,14 @@ export default function LandingLogin() {
             if (responseUser.status === 200 || responseUser.status === 201) {
                 localStorage.setItem('accessToken', responseUser.data.accessToken);
                 localStorage.setItem('user', email);
+                if(responseUser.data.user.ForgetPassWord == 1){
+                    history.push({
+                        pathname: '/change-password',
+                        state: {
+                            data: responseUser.data.user,
+                        },
+                    });
+                }
                 history.push({
                     pathname: '/profile',
                     state: {
@@ -96,6 +104,14 @@ export default function LandingLogin() {
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
                     localStorage.setItem('accessToken', responsePsy.data.accessToken);
                     localStorage.setItem('user', email);
+                    if(responsePsy.data.user.ForgetPassWord == 1){
+                        history.push({
+                            pathname: '/change-password',
+                            state: {
+                                data: responsePsy.data.user,
+                            },
+                        });
+                    }
                     history.push({
                         pathname: '/psychologist/profile',
                         state: {
