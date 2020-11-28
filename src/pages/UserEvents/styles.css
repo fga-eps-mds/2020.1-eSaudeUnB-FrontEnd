@@ -36,7 +36,7 @@
 }
 .usrEventsCalendar .table-right h1 {
     justify-self: center;
-    font: 500 2.5rem Poppins;
+    font: 500 2.5rem;
     color: #0459ae;
     display: flex;
 }
@@ -44,7 +44,7 @@
 .usrEventsCalendar .table-right button {
     border: none;
     color: #d10000;
-    font: 500 1.3rem Poppins;
+    font: 500 1.3rem;
     transition: 0.2s;
     border-radius: 8px;
     width: 60%;
@@ -72,7 +72,7 @@
 
     border-left: 2px solid #0459ae;
     overflow: auto;
-    font: 500 1.3rem Poppins;
+    font: 500 1.3rem;
     color: #07387e;
 }
 
@@ -84,7 +84,7 @@
 .usrEventsCalendar .schedules .schedule-box button {
     background: none;
     border: none;
-    font: 700 1rem Poppins;
+    font: 700 1rem;
     color: #0459ae;
     cursor: pointer;
     padding: 0.6rem;
@@ -136,16 +136,14 @@
     .usrEventsCalendar .table-right {
         width: 100%;
         margin-top: 50px;
-
     }
 
     .usrEventsCalendar .table-right h1 {
-        font: 500 1.8rem Poppins; 
+        font: 500 1.8rem;
     }
 
     .usrEventsCalendar .schedules {
         border: none;
         margin-bottom: 155px;
     }
-
 }
