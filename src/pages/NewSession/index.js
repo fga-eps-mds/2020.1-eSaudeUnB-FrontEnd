@@ -47,14 +47,13 @@ export default function NewSession(props) {
             pathname: `patient/list/${patient.email}`,
             state: {
                 email,
-                data: props.location.state.data,
             },
         });
     }
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Psychologist" />
             <div className="newSession">
                 <div className="content">
                     <div className="patientInfo">

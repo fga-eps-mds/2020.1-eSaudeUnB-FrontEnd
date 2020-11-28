@@ -15,7 +15,7 @@ import figureCaption from '../../assets/images/figureCaption.png';
 
 import Input from '../../components/Input';
 
-export default function UserProfile(props) {
+export default function UserProfile() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -246,12 +246,13 @@ export default function UserProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 2000);
+        }, 10000);
+        return [];
     }
 
     return (
         <div>
-            <NavBar actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Patient" />
 
             <div onLoad={renderPage} className="userProfileContainer">
                 {show ? (
@@ -272,16 +273,37 @@ export default function UserProfile(props) {
                                     <input
                                         id="image"
                                         type="file"
+                                        accept=".png, .jpg, .jpeg"
                                         onChange={async (e) => {
-                                            uploadImage(e);
-                                            const image = await convertBase64(e.target.files[0]);
-                                            setCurrentImage(image);
+                                            const compar = e.target.files[0].type.split('/');
+                                            if (compar[0] === 'image') {
+                                                uploadImage(e);
+                                                const image = await convertBase64(
+                                                    e.target.files[0],
+                                                );
+                                                setCurrentImage(image);
+                                            } else {
+                                                setShow(true);
+                                                setVariant('danger');
+                                                setAlertText('Formato de arquivo não aceito como Foto');
+                                            }
                                         }}
                                     />
                                     <figure className="personal-figure">
-                                        <img src={currentImage || userImage || userIcon} className="personal-avatar" alt="avatar" />
+                                        <img
+                                            src={
+                                                currentImage
+                                                || userImage
+                                                || userIcon
+                                            }
+                                            className="personal-avatar"
+                                            alt="avatar"
+                                        />
                                         <figcaption className="personal-figcaption">
-                                            <img src={figureCaption} alt="figureCaption" />
+                                            <img
+                                                src={figureCaption}
+                                                alt="figureCaption"
+                                            />
                                         </figcaption>
                                     </figure>
                                 </label>

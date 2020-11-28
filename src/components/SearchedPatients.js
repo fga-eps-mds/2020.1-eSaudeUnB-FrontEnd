@@ -7,7 +7,7 @@ import userIcon from '../assets/images/userIcon.svg';
 
 export default function SearchedPatients(props) {
     const {
-        patients, search, location,
+        patients, search,
     } = props;
 
     return (
@@ -28,7 +28,19 @@ export default function SearchedPatients(props) {
                     .map((patient) => (
                         <div key={patient.email} className="patientTab">
                             <div className="patientInfos">
-                                <img className="patientImg" src={userIcon} alt={patient.name} />
+                                {patient.userImage != null ? (
+                                    <img
+                                        className="patientImg"
+                                        src={atob(Buffer.from(patient.userImage, 'binary').toString('base64'))}
+                                        alt={patient.name}
+                                    />
+                                )
+                                    : (
+                                        <img
+                                            className="patientImg"
+                                            src={userIcon}
+                                            alt={patient.name}
+                                        />)}
                                 <div className="minPatient">
                                     <p>{`${patient.name} ${patient.lastName}`}</p>
                                     <p>{patient.email}</p>
@@ -39,9 +51,6 @@ export default function SearchedPatients(props) {
                                 className="button"
                                 to={{
                                     pathname: `/patient/list/${patient.email}`,
-                                    state: {
-                                        data: location.state.data,
-                                    },
                                 }}>
                                 <img src={go} alt="go" />{' '}
                             </Link>

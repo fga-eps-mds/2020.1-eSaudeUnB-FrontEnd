@@ -5,7 +5,7 @@ import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function PsychologistEvents(props) {
+export default function PsychologistEvents() {
     const [date, setDate] = useState(new Date());
     const [psychologist, setPsychologist] = useState({});
     const accessToken = localStorage.getItem('accessToken');
@@ -16,7 +16,7 @@ export default function PsychologistEvents(props) {
         }).then((response) => {
             setPsychologist(response.data);
         });
-    }, []);
+    });
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
@@ -28,7 +28,7 @@ export default function PsychologistEvents(props) {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Psychologist" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">

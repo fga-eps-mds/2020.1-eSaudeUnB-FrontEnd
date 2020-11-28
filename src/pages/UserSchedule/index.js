@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar';
 
 export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
-    const { email } = localStorage.getItem('user');
+    const email = localStorage.getItem('user');
     const [selectedValue, setSelectedValue] = useState();
     const accessToken = localStorage.getItem('accessToken');
 
@@ -41,17 +41,17 @@ export default function UserSchedule(props) {
 
     useEffect(() => {
         async function getData() {
-            const response = await api.get(`/psychologist/${email}`, {
+            const response = await api.get(`/psychologist/${props.location.state.data}`, {
                 headers: { authorization: accessToken },
             });
             setPsychologist(response.data);
         }
         getData();
-    }, [props]);
+    }, [props, accessToken]);
 
     async function saveAppointment(event) {
         event.preventDefault();
-        const response = await api.get(`/user/${localStorage.getItem('user')}`, {
+        const response = await api.get(`/user/${email}`, {
             headers: { authorization: accessToken },
         });
         const { _id, name, lastName } = response.data;
@@ -63,7 +63,9 @@ export default function UserSchedule(props) {
                     appointment.user = _id;
                     appointment.name = `${name} ${lastName}`;
                 }
+                return 0;
             });
+            return 0;
         });
 
         await api.put('/calendary/update',
@@ -77,7 +79,7 @@ export default function UserSchedule(props) {
 
     return (
         <div className="userScheduleContainer">
-            <NavBar actualUser={props.location.state.data} />
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
@@ -90,7 +92,7 @@ export default function UserSchedule(props) {
                                     <select value={selectedValue}
                                         onChange={(e) => setSelectedValue(e.target.value)}>
                                         {workDay.appointment.map((appointment) => (
-                                            <option value={appointment._id}>
+                                            <option value={appointment._id} key={appointment._id}>
                                                 Horário de começo: {appointment.time}
                                             </option>
                                         ))}

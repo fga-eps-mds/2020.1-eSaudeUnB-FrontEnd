@@ -9,7 +9,7 @@ import userIcon from '../assets/images/userIcon.svg';
 import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
-export default function NavBar({ actualUser, bond }) {
+export default function NavBar({ bond }) {
     const [userImage, setUserImage] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
@@ -48,12 +48,12 @@ export default function NavBar({ actualUser, bond }) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, [actualUser, bond]);
+    }, [accessToken, bond, user]);
 
     return (
         <Navbar className="navBarComponent" bg="light" expand="lg">
             <Navbar.Brand href="#home">
-                <img className="logoSquare" src={logoSquare}></img>
+                <img className="logoSquare" src={logoSquare} alt="Square Logo"></img>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -63,10 +63,15 @@ export default function NavBar({ actualUser, bond }) {
                             <Link
                                 className="a"
                                 to={{
+                                    pathname: '/psychologist/schedule',
+                                }}
+                            >
+                                Configurar meu Cronograma
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
                                     pathname: '/patient/list',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Lista de Pacientes
@@ -75,9 +80,6 @@ export default function NavBar({ actualUser, bond }) {
                                 className="a"
                                 to={{
                                     pathname: '/psychologist/events',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Agendamentos
@@ -86,9 +88,6 @@ export default function NavBar({ actualUser, bond }) {
                                 className="a"
                                 to={{
                                     pathname: '/psychologist/schedule',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
                                 Horários
@@ -100,34 +99,25 @@ export default function NavBar({ actualUser, bond }) {
                                 className="a"
                                 to={{
                                     pathname: '/psychologist/list',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
-                                Lista de Psicologos
+                                    Lista de Psicologos
                             </Link>
                             <Link
                                 className="a"
                                 to={{
                                     pathname: '/main',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
-                                Agendamentos
+                                    Agendamentos
                             </Link>
                             <Link
                                 className="a"
                                 to={{
                                     pathname: '/events',
-                                    state: {
-                                        data: actualUser,
-                                    },
                                 }}
                             >
-                                Consultas Marcadas
+                                    Consultas Marcadas
                             </Link>
                         </div>
                     )}
@@ -142,9 +132,6 @@ export default function NavBar({ actualUser, bond }) {
                             className="dropNone"
                             to={{
                                 pathname: '/psychologist/profile',
-                                state: {
-                                    data: actualUser,
-                                },
                             }}
                         >
                             Perfil
@@ -154,21 +141,15 @@ export default function NavBar({ actualUser, bond }) {
                             className="dropNone"
                             to={{
                                 pathname: '/profile',
-                                state: {
-                                    data: actualUser,
-                                },
                             }}
                         >
-                            Perfil
+                                Perfil
                         </Link>
                     )}
                     <Link
                         className="dropNone"
                         to={{
                             pathname: '/',
-                            state: {
-                                data: actualUser,
-                            },
                         }}
                     >
                         Sair
@@ -180,9 +161,6 @@ export default function NavBar({ actualUser, bond }) {
                                     className="profileDropDown"
                                     to={{
                                         pathname: '/psychologist/profile',
-                                        state: {
-                                            data: actualUser,
-                                        },
                                     }}
                                 >
                                     Perfil
@@ -192,18 +170,15 @@ export default function NavBar({ actualUser, bond }) {
                                     className="profileDropDown"
                                     to={{
                                         pathname: '/profile',
-                                        state: {
-                                            data: actualUser,
-                                        },
                                     }}
                                 >
-                                    Perfil
+                                        Perfil
                                 </Link>
                             )}
                         </NavDropdown.Item>
 
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="/">Sair</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => localStorage.clear()} href="/">Sair</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>

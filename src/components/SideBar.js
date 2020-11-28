@@ -7,14 +7,16 @@ import '../assets/styles/SideBar.css';
 
 export default function SideBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
+    const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
         (async function renderImage() {
             try {
                 if (bond === 'Psychologist') {
-                    const response = await api.get(
-                        `/psychologist/${actualUser.email}`,
-                    );
+                    const response = await api.get(`/psychologist/${user}`, {
+                        headers: { authorization: accessToken },
+                    });
 
                     setUserImage(
                         atob(
@@ -25,7 +27,10 @@ export default function SideBar({ actualUser, bond }) {
                         ),
                     );
                 } else {
-                    const response = await api.get(`/user/${actualUser.email}`);
+                    const response = await api.get(`/user/${user}`,
+                        {
+                            headers: { authorization: accessToken },
+                        });
 
                     setUserImage(
                         atob(
@@ -40,7 +45,7 @@ export default function SideBar({ actualUser, bond }) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, [actualUser, bond]);
+    }, [bond]);
 
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
