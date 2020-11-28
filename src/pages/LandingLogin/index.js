@@ -29,7 +29,15 @@ export default function LandingLogin() {
         try {
             const responseUser = await api.put(`/userForgetPassword/${registeredEmail}`);
             if (responseUser.status === 200) {
-                alert("usuario");
+                setShowModal(false);
+                setShow(true);
+                setVariant('success');
+                setAlertText(
+                    'Verifique o seu e-mail para recebimento da nova senha de acesso.',
+                );
+                setTimeout(() => {
+                    setShow(false);
+                }, 2000);
             }
         } catch (err) {
             console.log(err.response);
@@ -38,7 +46,15 @@ export default function LandingLogin() {
                     const responsePsy = await api.put(`/psyForgetPassword/${registeredEmail}`);
 
                     if (responsePsy.status === 200) {
-                        alert("psicologo");
+                        setShowModal(false);
+                        setShow(true);
+                        setVariant('success');
+                        setAlertText(
+                            'Verifique o seu e-mail para recebimento da nova senha de acesso.',
+                        );
+                        setTimeout(() => {
+                            setShow(false);
+                        }, 2000);
                     }
                 } catch (err2) {
                     if(err2.response.status === 500) {
@@ -123,7 +139,7 @@ export default function LandingLogin() {
                 }
             }
         }
-        setInterval(() => {
+        setTimeout(() => {
             setShow(false);
         }, 2000);
     }
