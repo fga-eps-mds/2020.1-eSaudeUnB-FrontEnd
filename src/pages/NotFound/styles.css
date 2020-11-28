@@ -11,7 +11,7 @@
     height: 100vh;
 }
 .Container .div p{
-    font: 500 4.0rem Poppins;
+    font: 500 4.0rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #095db8;
   	
 }

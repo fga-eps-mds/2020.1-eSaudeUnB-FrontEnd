@@ -8,7 +8,7 @@
     justify-content: center;
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 
-    font-family: Poppins, sans-serif;
+    font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
     font-style: normal;
     font-weight: normal;
 }
@@ -81,7 +81,7 @@
     color: #0459ae;
     margin: 50px 0 50px 0;
 
-    font-family: Poppins, sans-serif;
+    font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
     font-style: normal;
     font-weight: normal;
 }

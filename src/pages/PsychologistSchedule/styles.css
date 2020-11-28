@@ -43,7 +43,7 @@
 
 .psychologistSchedule .content .form .legend {
     color: #07387e;
-    font: 700 1.5rem Poppins;
+    font: 700 1.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -60,7 +60,7 @@
     background: none;
     border: none;
     width: 250px;
-    font: 700 16px Poppins;
+    font: 700 16px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #0459ae;
     cursor: pointer;
     transition: color 0.2s;
@@ -91,7 +91,7 @@
 }
 
 .psychologistSchedule .content .form .schedule label {
-    font: 500 14px Poppins;
+    font: 500 14px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #909090;
     margin-top: 20px;
 }

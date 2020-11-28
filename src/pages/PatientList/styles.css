@@ -45,7 +45,7 @@
     align-items: center;
     justify-content: space-between;
 
-    font: 500 18px Poppins;
+    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
 
     background-color: #eee;
@@ -74,7 +74,7 @@
 
 .patientListContainer .patientTab .patientInfos .minPatient p:first-of-type {
     margin: 16px 0 0 0;
-    font: 700 32px Poppins;
+    font: 700 32px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .patientListContainer .patientTab .button img {

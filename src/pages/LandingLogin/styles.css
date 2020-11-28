@@ -35,13 +35,13 @@
 }
 
 .loginContainer .section p {
-    font: 500 24px Poppins;
+    font: 500 24px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #fff;
 }
 
 .loginContainer .section p:first-of-type {
     margin-top: 50px;
-    font: 700 66px Poppins;
+    font: 700 66px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 53px;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .loginContainer .form span {
-    font: 500 26px Poppins;
+    font: 500 26px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .loginContainer .form .input {
@@ -142,7 +142,7 @@
         width: 240px;
     }
     .loginContainer .form span {
-        font: 500 20px Poppins;
+        font: 500 20px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
     .loginContainer .form .button {
         width: 120px;

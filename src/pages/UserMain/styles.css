@@ -38,7 +38,7 @@
 .usercalendar .table-right h1 {
     justify-self: center;
     justify-content: center;
-    font: 500 2.5rem Poppins;
+    font: 500 2.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #0459ae;
     display: flex;
 }
@@ -58,7 +58,7 @@
     height: 80%;
     border-left: 2px solid #0459ae;
     overflow: auto;
-    font: 500 1.3rem Poppins;
+    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
 }
 
@@ -286,7 +286,7 @@
     .usercalendar .table-right h1 {
         justify-self: center;
         justify-content: center;
-        font: 500 1.5rem Poppins;
+        font: 500 1.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: #0459ae;
         display: flex;
         font-weight: bold;
