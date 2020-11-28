@@ -23,7 +23,7 @@ export default function UserMain(props) {
         }).then((response) => {
             setPsychologists(response.data);
         });
-    }, []);
+    }, [accessToken]);
 
     function dateCheck(weekDay) {
         if (weekDay === date.getDay()) {
@@ -54,7 +54,9 @@ export default function UserMain(props) {
                         duration: workDay.duration,
                     });
                 }
+                return [];
             });
+            return [];
         });
 
         const { email, weekDay } = userSelected;
@@ -77,7 +79,7 @@ export default function UserMain(props) {
 
     return (
         <div className="usercalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={user} />
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -92,7 +94,9 @@ export default function UserMain(props) {
                         />
                     </div>
                     <div className="table-right">
-                        <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                        <div className="calendar-title">
+                            <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                        </div>
                         <div className="schedules">
                             {psychologists.map((psychologist, index) => (
 
@@ -131,7 +135,7 @@ export default function UserMain(props) {
                             <h3>{userSelected.biography}</h3>
                         </div>
                         <div className="column2">
-                            <h3>Horários Disponíveis:</h3>
+                            <h3>{'Horários Disponíveis:'}</h3>
                             <form onSubmit={saveAppointment}>
                                 <div className="hours-disponibility">
                                     {userSelected.weekDay !== undefined
