@@ -28,6 +28,14 @@
     margin-left: 20px;
 }
 
+.alert-component .danger-button {
+    background-color: #C10015 !important;
+}
+
+.alert-component .success-button {
+    background-color: #003A70 !important;
+}
+
 .list-container .psychologist-list{
     display: grid;
     grid-template-columns: 280px 1fr;

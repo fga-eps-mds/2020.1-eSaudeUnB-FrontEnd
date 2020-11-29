@@ -87,17 +87,15 @@ export default function AdminMain() {
                         <hr />
                         <div className="d-flex justify-content-end">
                             <Button
-                                className="react-bootstrap-button"
+                                className="react-bootstrap-button success-button"
                                 onClick={() => deletePsychologist()}
-                                variant="outline-success"
                             >
                                 Sim
                             </Button>
 
                             <Button
-                                className="react-bootstrap-button"
+                                className="react-bootstrap-button danger-button"
                                 onClick={() => setShow(false)}
-                                variant="outline-danger"
                             >
                                 Não
                             </Button>
