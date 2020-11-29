@@ -244,7 +244,7 @@ export default function Landing() {
                     <div className="professionals">
                         <span className="professional">
                             <img src={priscilaCol} alt="col-priscila" />
-                            <span className="colaborator_name">Pricila Almeida</span>
+                            <span className="colaborator_name">Priscila Almeida</span>
                         </span>
                         <span className="professional">
                             <img src={cristineideCol} alt="col-cristineide" />
