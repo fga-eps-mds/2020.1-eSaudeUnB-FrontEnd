@@ -92,6 +92,9 @@ export default function PsychologistCalendar(props) {
         setScheduleItems([
             ...scheduleItems,
             {
+                day:date.getDate(),
+                month:date.getMonth(),
+                year:date.getFullYear(),
                 weekDay: date.getDay(),
                 from: '',
                 to: '',
@@ -252,7 +255,7 @@ export default function PsychologistCalendar(props) {
                         />
                     </div>
                     <div className="table-right">
-                        <h1>Suas Restrições:</h1>
+                        <h1>Seus horários dia {date.getDate()}/{date.getMonth()+1}:</h1>
                         <form className="form" onSubmit={putCalendar}>
                     <div className="formContent">
                         <legend className="legend">
@@ -264,6 +267,9 @@ export default function PsychologistCalendar(props) {
 
                         <div className="schedule">
                             {scheduleItems.map((scheduleItem, index) => (
+                                scheduleItem.day === date.getDate() &&
+                                scheduleItem.month === date.getMonth() &&
+                                scheduleItem.year === date.getFullYear() ?
                                 <div
                                     key={scheduleItem._id || scheduleItem.id}
                                     className="schedule-item"
@@ -324,6 +330,7 @@ export default function PsychologistCalendar(props) {
                                         Remover
                                     </button>
                                 </div>
+                                : ""
                             ))}
                         </div>
 
