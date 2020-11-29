@@ -8,6 +8,7 @@ import {
 import api from '../../services/api';
 import './styles.css';
 
+import Footer from '../../components/Footer';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import { convertBase64, uploadImage } from '../../components/UserImage';
@@ -995,6 +996,8 @@ export default function UserProfile() {
                     </form >
                 </div >
             </div >
+        <Footer />
+
         </div >
     );
 }
