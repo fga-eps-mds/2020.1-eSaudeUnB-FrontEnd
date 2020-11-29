@@ -44,6 +44,10 @@
     font-size: 30px;
 }
 
+.dropleft .dropdown-toggle:hover {
+    opacity: 0.6;
+}
+
 .navBarComponent .dropdown-menu {
     margin: 57px -57px 0 0 !important;
     transform: rotate(0deg);
