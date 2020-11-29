@@ -10,6 +10,20 @@ import landingImg from '../../assets/images/logo.svg';
 import down from '../../assets/images/down.svg';
 import logo from '../../assets/images/esaude_logo.svg';
 import calendarImg from '../../assets/images/undraw_calendar.svg';
+import priscilaCol from '../../assets/images/priscila_colaborador.jpg';
+import laerciaCol from '../../assets/images/laercia_colaborarador.jpg';
+import anaCol from '../../assets/images/ana_valeria_colaborador.jpeg';
+import cristineideCol from '../../assets/images/cristineide_colaborador.jpg';
+import carlaCol from '../../assets/images/carla_colaborador.jpeg';
+import hilmerCol from '../../assets/images/hilmer_colaborador.jpg';
+import joaoCol from '../../assets/images/joao_pedro_colaborador.jpeg';
+import danielCol from '../../assets/images/daniel_colaborador.jpeg';
+import joberthCol from '../../assets/images/joberth_colaborador.jpeg';
+import pedroCol from '../../assets/images/pedro_colaborador.jpeg';
+import luisCol from '../../assets/images/luis_colaborador.jpeg';
+import rafaelCol from '../../assets/images/rafael_colaborador.jpeg';
+import abnerCol from '../../assets/images/abner_colaborador.jpeg';
+import viniciusCol from '../../assets/images/vinicius_colaborador.jpeg';
 
 import './styles.css';
 import '../../assets/styles/HiwCard.css';
@@ -49,11 +63,17 @@ export default function Landing() {
                             </a>
                         </div>
                     </div>
-                    <section className="wave-animation">
-                        <div className="wave wave1"></div>
-                        <div className="wave wave2"></div>
-                        <div className="wave wave3"></div>
-                    </section>
+                    {
+                        window.innerWidth >= 1400 ? (
+                            <section className="wave-animation">
+                                <div className="wave wave1"></div>
+                                <div className="wave wave2"></div>
+                                <div className="wave wave3"></div>
+                            </section>
+                        ) : (
+                            <></>
+                        )
+                    }
                 </div>
                 <div id="about" className="about">
                     <span className="title">Sobre</span>
@@ -221,34 +241,67 @@ export default function Landing() {
                 </div>
                 <div id="who-behind" className="who-behind">
                     <h1>Quem está por trás desta rede</h1>
-                    <h2>
-                        <li>
-                            Carla Silva Rocha Aguiar - Engenharia de Software - campus Gama Unb FGA
-                        </li>
-                        <li>
-                            Pricila Almeida Andrade - Curso de graduação em Saúde Coletiva/UnB -
-                            campus Ceilândia e membro do COES de Saúde Mental da Dasu/DAC
-                        </li>
-                        <li>
-                            Laércia Abreu Vasconcelos -
-                            Departamento de Processos Psicológicos
-                            Básicos/Instituto de Psicologia/ UnB -
-                            campus Darcy e membro do COES de Saúde Mental da Dasu/DAC
-                        </li>
-                        <li>
-                            Ana Valéria Machado Mendonça -
-                            Departamento de Saúde Coletiva/ Faculdade de Ciências da Saúde -
-                            Campus Darcy e membro do Coes-UnB
-                        </li>
-                        <li>
-                            Cristineide Leandro França -
-                            psicóloga, coordenadora da Coordenação de Prevenção (Cooprev/Dasu/DAC) e
-                            membro do COES de Saúde Mental da Dasu/DAC
-                        </li>
-                        <li>
-                            alunos de graduação e pós graduação
-                        </li>
-                    </h2>
+                    <div className="professionals">
+                        <span className="professional">
+                            <img src={priscilaCol} alt="col-priscila" />
+                            <span className="colaborator_name">Pricila Almeida</span>
+                        </span>
+                        <span className="professional">
+                            <img src={cristineideCol} alt="col-cristineide" />
+                            <span className="colaborator_name">Cristineide França</span>
+                        </span>
+                        <span className="professional">
+                            <img src={laerciaCol} alt="col-laercia"/>
+                            <span className="colaborator_name">Laércia Abreu</span>
+                        </span>
+                        <span className="professional">
+                            <img src={anaCol} alt="col-ana"/>
+                            <span className="colaborator_name">Ana Valéria</span>
+                        </span>
+                        <span className="professional">
+                            <img src={carlaCol} alt="col-carla"/>
+                            <span className="colaborator_name">Carla Aguiar</span>
+                        </span>
+                        <span className="professional">
+                            <img src={hilmerCol} alt="col-hilmer"/>
+                            <span className="colaborator_name">Hilmer Neri</span>
+                        </span>
+                        <span className="professional">
+                            <img src={joaoCol} alt="col-joao"/>
+                            <span className="colaborator_name">João Pedro</span>
+                        </span>
+                        <span className="professional">
+                            <img src={danielCol} alt="col-daniel"/>
+                            <span className="colaborator_name">Daniel Maike</span>
+                        </span>
+                        <span className="professional">
+                            <img src={joberthCol} alt="col-joberth"/>
+                            <span className="colaborator_name">Joberth Rogers</span>
+                        </span>
+                        <span className="professional">
+                            <img src={abnerCol} alt="col-abner"/>
+                            <span className="colaborator_name">Abner Filipe</span>
+                        </span>
+                        <span className="professional">
+                            <img src={rafaelCol} alt="col-rafael"/>
+                            <span className="colaborator_name">Rafael Leão</span>
+                        </span>
+                        <span className="professional">
+                            <img src={viniciusCol} alt="col-vinicius"/>
+                            <span className="colaborator_name">Vinicius Ferreira</span>
+                        </span>
+                        <span className="professional">
+                            <img src={pedroCol} alt="col-pedro"/>
+                            <span className="colaborator_name">Pedro Henrique</span>
+                        </span>
+                        <span className="professional">
+                            <img src={luisCol} alt="col-luis"/>
+                            <span className="colaborator_name">Luis Gustavo</span>
+                        </span>
+                        {/* <span className="professional">
+                            <img src={''} alt="col-caio"/>
+                        </span> */}
+                    </div>
                 </div>
                 <footer>
                     <a href="#main">
