@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #003A70;
 }
 
 .signUp01Container .content {
@@ -53,7 +53,7 @@
 
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
 
-    color: #0459ae;
+    color: #003A70;
 }
 
 .signUp01Container .form span {
@@ -62,7 +62,7 @@
 
 .signUp01Container .form .input {
     display: flex;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 }
 
 .signUp01Container .form input {
@@ -70,7 +70,7 @@
     height: 33px;
 
     background-color: transparent;
-    color: #0459ae;
+    color: #003A70;
     border: 0;
 
     font-size: 18px;
@@ -104,7 +104,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003A70;
 
     text-decoration: none;
     display: flex;
