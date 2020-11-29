@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IoIosHelpCircle } from 'react-icons/io';
+import { IoChatbubblesSharp } from 'react-icons/io5';
+import { FaUsers } from 'react-icons/fa';
 
 import LandingNavBar from '../../components/LandingNavBar';
 
 import landingImg from '../../assets/images/logo.svg';
 import down from '../../assets/images/down.svg';
 import logo from '../../assets/images/esaude_logo.svg';
+import calendarImg from '../../assets/images/undraw_calendar.svg';
 
 import './styles.css';
 import '../../assets/styles/HiwCard.css';
@@ -52,34 +56,45 @@ export default function Landing() {
                     </section>
                 </div>
                 <div id="about" className="about">
-                    <h1>Sobre</h1>
-                    <h2>
-                        A eSaúdeUnB é uma plataforma online criada com o intuido de:
-                        <li>
-                            facilitar o atendimento médico para pacientes
-                        </li>
-                        <li>
-                            auxiliar profissionais da saúde na gestão dos
-                            prontuários médicos desses pacientes
-                        </li>
-                        <li>
-                            além de permitir aos gestores o acesso aos dados dos atendimentos
-                            realizados pelos profissionais de forma a otimizar tempo e recursos
-                            e auxiliá-los na tomada de decisões.
-                        </li>
-                        <li>
-                            atualizar o atendimento na área de saúde mental decorrentes do
-                            isolamento social, a fim de lidar com a fase de recuperação
-                            da pandemia do Covid-19
-                        </li>
-                    </h2>
+                    <span className="title">Sobre</span>
+                    <div className="content-about">
+                        <img className="calendar-img" src={calendarImg} alt="calendar"/>
+                        <div className="summary">
+                            <span>
+                                O eSaúdeUnB é uma plataforma online criada com o intuito de:
+                            </span>
+                            <ul className="content">
+                                <li>
+                                    facilitar o atendimento médico para pacientes
+                                </li>
+                                <li>
+                                    auxiliar profissionais da saúde na gestão dos
+                                    prontuários médicos desses pacientes
+                                </li>
+                                <li>
+                                    além de permitir aos gestores o acesso aos dados dos
+                                    atendimentos realizados pelos profissionais de forma
+                                    a otimizar tempo e recursos e auxiliá-los na tomada
+                                    de decisões.
+                                </li>
+                                <li>
+                                    atualizar o atendimento na área de saúde mental decorrentes do
+                                    isolamento social, a fim de lidar com a fase de recuperação
+                                    da pandemia do Covid-19
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div id="how-it-work" className="how-it-work">
                     <h1>Como funciona</h1>
                     <div className="hiw-cards">
                         <div className="hiw-card">
-                            <h2>Preciso de ajuda</h2>
-                            <span>
+                            <span className="title-hiw">
+                                <IoIosHelpCircle color="#003A70" size="2em"/>
+                                <h2>Preciso de ajuda</h2>
+                            </span>
+                            <span className="hiw-content">
                                 Você só precisa se registrar em
                                 nossa plataforma, e atualizar seus
                                 dados de perfil.Após isso já terá
@@ -89,8 +104,11 @@ export default function Landing() {
                             </span>
                         </div>
                         <div className="hiw-card">
-                            <h2>Quero Atender</h2>
-                            <span>
+                            <span className="title-hiw">
+                                <IoChatbubblesSharp color="#003A70" size="2em"/>
+                                <h2>Quero Atender</h2>
+                            </span>
+                            <span className="hiw-content">
                                 Atualmente para um profissional se
                                 registrar na plataforma, ele deve
                                 entrar em contato com um
@@ -98,8 +116,11 @@ export default function Landing() {
                             </span>
                         </div>
                         <div className="hiw-card">
-                            <h2>Realizar conexão</h2>
-                            <span>
+                            <span className="title-hiw">
+                                <FaUsers color="#003A70" size="2em"/>
+                                <h2>Realizar conexão</h2>
+                            </span>
+                            <span className="hiw-content">
                                 Para um paciente, após já estar
                                 com o cadastro completo. Basta entrar
                                 na &rdquo;lista de profissionais&rdquo; e escolher o profissional
