@@ -18,12 +18,12 @@
 
 .loginContainer .content {
     width: 100vw;
-
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background-color: #003A70 !important;
 }
 
 .loginContainer .section{
@@ -47,19 +47,15 @@
 
 .loginContainer .form {
     height: 580px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
     background-color: #eee;
     border-radius: 15px;
     padding: 90px 60px 40px 60px;
-
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
-
-    color: #0459ae;
+    color: #003A70;
 }
 
 .loginContainer .form span {
@@ -67,7 +63,7 @@
 }
 
 .loginContainer .form .input {
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 }
 
 .loginContainer .form input {
@@ -75,7 +71,7 @@
     height: 33px;
 
     background-color: transparent;
-    color: #0459ae;
+    color: #003A70;
     border: 0;
 
     font-size: 18px;
@@ -93,7 +89,7 @@
     border-radius: 25px;
     border: 0;
     color: #eee;
-    background-color: #0459ae;
+    background-color: #003A70;
 
     font-size: 24px;
     line-height: 36px;
@@ -106,7 +102,7 @@
     width: 250px;
     height: 20px;
     text-decoration: underline;
-    color: #0459ae;
+    color: #003A70;
 
     font-size: 14px;
     line-height: 16px;
