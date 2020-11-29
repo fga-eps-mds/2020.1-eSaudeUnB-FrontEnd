@@ -9,6 +9,9 @@ import userIcon from '../assets/images/userIcon.svg';
 import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
 
+import { IoMdExit } from "react-icons/io";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+
 export default function NavBar({ bond }) {
     const [userImage, setUserImage] = useState('');
     const accessToken = localStorage.getItem('accessToken');
@@ -126,7 +129,6 @@ export default function NavBar({ bond }) {
                         src={userImage || userIcon}
                         alt="icone de usuario"
                     />
-                    <NavDropdown.Divider className="dropNone dropDivider" />
                     {bond === 'Psychologist' ? (
                         <Link
                             className="dropNone"
@@ -155,30 +157,32 @@ export default function NavBar({ bond }) {
                         Sair
                     </Link>
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
-                        <NavDropdown.Item>
-                            {bond === 'Psychologist' ? (
-                                <Link
-                                    className="profileDropDown"
-                                    to={{
-                                        pathname: '/psychologist/profile',
-                                    }}
-                                >
-                                    Perfil
-                                </Link>
-                            ) : (
-                                <Link
-                                    className="profileDropDown"
-                                    to={{
-                                        pathname: '/profile',
-                                    }}
-                                >
-                                        Perfil
-                                </Link>
-                            )}
-                        </NavDropdown.Item>
-
+                        {bond === 'Psychologist' ? (
+                            <NavDropdown.Item
+                                className="profileDropDown"
+                                to={{
+                                    pathname: '/psychologist/profile',
+                                }}
+                            >
+                                <BsFillPersonLinesFill />
+                                <span className="dropDownItemText">Perfil</span>
+                            </NavDropdown.Item>
+                        ) : (
+                            <NavDropdown.Item
+                                className="profileDropDown"
+                                to={{
+                                    pathname: '/profile',
+                                }}
+                            >
+                                <BsFillPersonLinesFill />
+                                <span className="dropDownItemText">Perfil</span>
+                            </NavDropdown.Item>
+                        )}
                         <NavDropdown.Divider />
-                        <NavDropdown.Item onClick={() => localStorage.clear()} href="/">Sair</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => localStorage.clear()} href="/">
+                            <IoMdExit />
+                            <span className="dropDownItemText">Sair</span>
+                        </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>

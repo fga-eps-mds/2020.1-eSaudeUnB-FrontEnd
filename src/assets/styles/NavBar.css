@@ -31,13 +31,50 @@
 }
 
 .navBarComponent .dropdown-toggle {
-    margin: 5px 0 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 0 5px;
     transform: rotate(-90deg);
+    color: white !important;
+    
+}
+
+.dropleft .dropdown-toggle::before {
+    font-size: 30px;
 }
 
 .navBarComponent .dropdown-menu {
-    margin: 65px -50px 0 0 !important;
+    margin: 57px -57px 0 0 !important;
     transform: rotate(0deg);
+    background-color: #003A70;
+}
+
+.navBarComponent .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: white;
+}
+
+.dropDownItemText {
+    margin-left: 10px;
+}
+
+.navBarComponent .dropdown-item:hover {
+    color: white;
+    background-color: #004585;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.navBarComponent .dropdown-divider {
+    height: 0;
+    margin: .5rem auto;
+    overflow: hidden;
+    width: 80%;
+    border-top: 1px solid #ddd;
 }
 
 .navBarComponent .show .dropdown-toggle {
@@ -80,7 +117,7 @@
     .navBarComponent .navLinks .a {
         text-decoration: none;
         margin-right: 30px;
-        color: #0a84e3;
+        color: red;
     }
     .navbar .ml-auto .userIcon,
     .dropdown-toggle {
@@ -107,8 +144,9 @@
     }
     a.profileDropDown {
         padding: 12px 72px 12px 0px !important;
+        color: white !important;
     }
     .navbar-toggler {
-        background-color: #eee;
+        background-color: red;
     }
 }
