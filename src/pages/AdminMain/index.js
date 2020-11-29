@@ -54,7 +54,27 @@ export default function AdminMain() {
     };
 
     useEffect(() => {
-        loadPsychologists();
+        const loadProfessionals = async () => {
+            const accessToken = localStorage.getItem('accessToken');
+
+            try {
+                const responseProfessional = await api.get('/psychologists', {
+                    headers: { authorization: accessToken },
+                });
+
+                setPsychologists(responseProfessional.data);
+            } catch (error) {
+                const { status } = error.response;
+                if (status === 401) {
+                    return setTimeout(() => {
+                        localStorage.removeItem('accessToken');
+                        history.push('/admin');
+                    }, 2000);
+                }
+            }
+        };
+
+        loadProfessionals();
     }, [history]);
 
     useEffect(() => () => {
