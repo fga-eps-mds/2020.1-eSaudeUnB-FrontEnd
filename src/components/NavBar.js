@@ -90,7 +90,7 @@ export default function NavBar({ bond }) {
                                     pathname: '/psychologist/schedule',
                                 }}
                             >
-                                Horários
+                                Ajustar cronograma
                             </Link>
                         </div>
                     ) : (
