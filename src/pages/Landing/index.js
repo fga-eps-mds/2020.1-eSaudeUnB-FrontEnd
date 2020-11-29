@@ -5,10 +5,10 @@ import { IoChatbubblesSharp } from 'react-icons/io5';
 import { FaUsers } from 'react-icons/fa';
 
 import LandingNavBar from '../../components/LandingNavBar';
+import Footer from '../../components/Footer';
 
 import landingImg from '../../assets/images/logo.svg';
 import down from '../../assets/images/down.svg';
-import logo from '../../assets/images/esaude_logo.svg';
 import calendarImg from '../../assets/images/undraw_calendar.svg';
 import priscilaCol from '../../assets/images/priscila_colaborador.jpg';
 import laerciaCol from '../../assets/images/laercia_colaborarador.jpg';
@@ -303,12 +303,7 @@ export default function Landing() {
                         </span> */}
                     </div>
                 </div>
-                <footer>
-                    <a href="#main">
-                        <img src={logo} alt="Logo e-saude unb" />
-                    </a>
-                    <div className="foot-links"></div>
-                </footer>
+                <Footer />
             </div>
         </div>
     );

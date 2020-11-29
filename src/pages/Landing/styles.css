@@ -330,17 +330,6 @@
     font-size: 20px;
 }
 
-.page-landing .content footer {
-    padding: 0 20px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-}
-
-.page-landing .content footer img {
-    width: 250px;
-}
-
 .professionals {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -460,9 +449,6 @@
     }
     .page-landing h1, h1 {
         text-align: center;
-    }
-    .page-landing .content footer {
-        height: 100%;
     }
 
     .about .content-about {
