@@ -626,7 +626,7 @@ export default function UserProfile() {
                                 </div>
 
                                 <div className="fieldDiv">
-                                    <label className="upLabel">Telefene da(o) mãe/pai</label>
+                                    <label className="upLabel">Telefone da(o) mãe/pai</label>
                                     <Input
                                         placeholder="Preencha aqui"
                                         value={affiliationPhone}
@@ -877,7 +877,7 @@ export default function UserProfile() {
                                 </div>
 
                                 <div className="fieldDiv">
-                                    <label className="upLabel">Você faz uso de<br />alguma medicação<br /> para tratamento<br /> psiquiátrico?</label>
+                                    <label className="upLabel">Você faz uso de alguma<br />medicação para tratamento<br /> psiquiátrico?</label>
                                     <Input
                                         placeholder="Preencha aqui"
                                         value={medication || ''}
