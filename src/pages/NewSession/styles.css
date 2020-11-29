@@ -147,12 +147,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #197fe5;
+    background: #003A70;
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0459ae;
+    background: #0E84E3;
 }
 
 .newSession .patientHistory .tabContent h1 {
