@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff !important;
 }
 
 .usercalendar .content {
@@ -15,11 +15,13 @@
     justify-content: center;
     align-items: center;
 }
+
 .usercalendar .tabela {
     width: 1400px;
     border-radius: 15px;
     display: flex;
     background-color: #eee;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
     height: 690px;
 }
 
@@ -39,27 +41,27 @@
     justify-self: center;
     justify-content: center;
     font: 500 2.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #0459ae;
+    color: #003A70;
     display: flex;
 }
 
 .usercalendar .table-right button + button {
     margin-bottom: 25px;
     margin-top: 10px;
-    color: #0459ae;
+    color: #003A70;
 }
 .usercalendar .table-right button + button:hover {
     color: #eee;
-    background-color: #0459ae;
+    background-color: #003A70;
 }
 
 .usercalendar .schedules {
     width: 90%;
     height: 80%;
-    border-left: 2px solid #0459ae;
+    border-left: 2px solid #003A70;
     overflow: auto;
     font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #07387e;
+    color: #003A70;
 }
 
 .usercalendar .schedules .schedule-box {
@@ -176,7 +178,7 @@
     height: 100px;
     width: 100%;
     margin: 0px;
-    background-color: #0459ae;
+    background-color: #003A70;
 
     flex-direction: column;
 }
@@ -193,7 +195,7 @@
 }
 .usercalendar .checkboxColumn {
     display: flex;
-    background-color: #0459ae;
+    background-color: #003A70;
     flex-direction: column;
 }
 .usercalendar button {
@@ -217,7 +219,7 @@
     display: flex;
     width: 700px;
     flex-direction: column;
-    border-left: 2px solid #0459ae;
+    border-left: 2px solid #003A70;
     padding-left: 20px;
     height: 100%;
 }
@@ -239,7 +241,7 @@
 }
 
 .usercalendar .column2 .schedule-buttons .waiting-list {
-    background-color: #0459ae;
+    background-color: #003A70;
 }
 
 .usercalendar .alert {
@@ -287,7 +289,7 @@
         justify-self: center;
         justify-content: center;
         font: 500 1.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #0459ae;
+        color: #003A70;
         display: flex;
         font-weight: bold;
     }

@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psyEventsCalendar .content {
@@ -19,7 +19,8 @@
     width: 1400px;
     border-radius: 15px;
     display: flex;
-    background-color: #eee;
+    background-color: #ddd;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
     height: 690px;
 }
 
