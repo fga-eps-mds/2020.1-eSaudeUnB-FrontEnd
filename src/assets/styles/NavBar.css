@@ -49,9 +49,10 @@
 }
 
 .navBarComponent .dropdown-menu {
-    margin: 57px -57px 0 0 !important;
+    margin: 50px -40px 0 0 !important;
     transform: rotate(0deg);
     background-color: #003A70;
+    border-radius: 8%;
 }
 
 .navBarComponent .dropdown-item {
