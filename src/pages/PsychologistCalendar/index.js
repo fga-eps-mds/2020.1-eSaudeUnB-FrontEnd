@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
 
-export default function PsychologistCalendar(props) {
+export default function PsychologistCalendar() {
     const [date, setDate] = useState(new Date());
-    const [restricts, setRestricts] = useState([]);
     const accessToken = localStorage.getItem('accessToken');
     const [scheduleItems, setScheduleItems] = useState([]);
     const [show, setShow] = useState(false);
@@ -58,12 +57,6 @@ export default function PsychologistCalendar(props) {
             setScheduleItems(response.data);
         });
     }, []);
-
-    function removeRestrict(index) {
-        const temp = [...restricts];
-        temp.splice(index, 1);
-        setRestricts(temp);
-    }
 
     async function putCalendar(event) {
         event.preventDefault();
@@ -240,9 +233,15 @@ export default function PsychologistCalendar(props) {
             <NavBar
                 className="navBar"
                 bond="Psychologist"
-                actualUser={props.location.state.data}
             />
             <div className="content">
+                {show ? (
+                    <Alert className="alert" variant={variant}>
+                        {alertText}
+                    </Alert>
+                ) : (
+                    <div></div>
+                )}
                 <div className="tabela">
                     <div className="calendar">
                         <Calendar
