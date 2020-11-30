@@ -30,13 +30,12 @@ export default function LandingLogin() {
             if (responseUser.status === 200 || responseUser.status === 201) {
                 localStorage.setItem('accessToken', responseUser.data.accessToken);
                 localStorage.setItem('user', email);
-                history.push({
+                return history.push({
                     pathname: '/profile',
                     state: {
                         data: responseUser.data.user,
                     },
                 });
-                return;
             }
         } catch (err) {
             try {
@@ -48,7 +47,7 @@ export default function LandingLogin() {
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
                     localStorage.setItem('accessToken', responsePsy.data.accessToken);
                     localStorage.setItem('user', email);
-                    history.push({
+                    return history.push({
                         pathname: '/psychologist/profile',
                         state: {
                             data: responsePsy.data.user,
@@ -91,7 +90,8 @@ export default function LandingLogin() {
                 }
             }
         }
-        setInterval(() => {
+
+        return setInterval(() => {
             setShow(false);
         }, 2000);
     }
