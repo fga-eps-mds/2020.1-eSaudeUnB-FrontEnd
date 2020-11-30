@@ -240,7 +240,7 @@ export default function Landing() {
                     </div>
                 </div>
                 <div id="who-behind" className="who-behind">
-                    <h1>Quem está por trás desta rede</h1>
+                    <h1>Nossa equipe</h1>
                     <div className="professionals">
                         <span className="professional">
                             <img src={priscilaCol} alt="col-priscila" />
