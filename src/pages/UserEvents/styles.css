@@ -76,6 +76,16 @@
     overflow: auto;
     font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.marked-schedule {
+    display: flex;
+}
+
+.time-schedule {
+    margin-right: 10px;
 }
 
 .psyEventsCalendar .schedules .schedule-box {

@@ -4,13 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { IoMdExit } from 'react-icons/io';
 import api from '../services/api';
 import userIcon from '../assets/images/userIcon.svg';
 import logoSquare from '../assets/images/esaude_logo.svg';
 import '../assets/styles/NavBar.css';
-
-import { IoMdExit } from "react-icons/io";
-import { BsFillPersonLinesFill } from "react-icons/bs";
 
 export default function NavBar({ bond }) {
     const [userImage, setUserImage] = useState('');
@@ -56,12 +55,19 @@ export default function NavBar({ bond }) {
     return (
         <Navbar className="navBarComponent" bg="light" expand="lg">
             <Navbar.Brand href="#home">
-                <img className="logoSquare" src={logoSquare} alt="Square Logo"></img>
+                <Link
+                    className="a"
+                    to={{
+                        pathname: bond === 'Professional' ? '/psychologist/profile' : '/profile',
+                    }}
+                >
+                    <img className="logoSquare" src={logoSquare} alt="Square Logo"></img>
+                </Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    {bond === 'Psychologist' ? (
+                    {bond === 'Professional' ? (
                         <div className="navLinks">
                             <Link
                                 className="a"
@@ -152,9 +158,7 @@ export default function NavBar({ bond }) {
                         {bond === 'Psychologist' ? (
                             <NavDropdown.Item
                                 className="profileDropDown"
-                                to={{
-                                    pathname: '/psychologist/profile',
-                                }}
+                                href="/psychologist/profile"
                             >
                                 <BsFillPersonLinesFill />
                                 <span className="dropDownItemText">Perfil</span>
@@ -162,9 +166,7 @@ export default function NavBar({ bond }) {
                         ) : (
                             <NavDropdown.Item
                                 className="profileDropDown"
-                                to={{
-                                    pathname: '/profile',
-                                }}
+                                href="/profile"
                             >
                                 <BsFillPersonLinesFill />
                                 <span className="dropDownItemText">Perfil</span>

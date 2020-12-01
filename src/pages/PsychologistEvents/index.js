@@ -67,7 +67,7 @@ export default function PsychologistEvents() {
                                                         : <div></div>
                                                 ))}
                                             </div>
-                                            : <div></div>
+                                            : <div key={index}></div>
                                     ))
                                     : <div></div>}
 

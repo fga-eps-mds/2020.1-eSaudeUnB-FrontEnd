@@ -81,53 +81,56 @@ export default function UserMain(props) {
         <div className="usercalendar">
             <NavBar className="navBar" bond="Patient" />
             <div className="content">
-                <div className="tabela">
-                    <div className="calendar">
-                        <Calendar
-                            onChange={(currentDate) => {
-                                setDate(currentDate);
-                                setUserSelected('');
-                            }}
-                            value={date}
-                            next2Label={null}
-                            prev2Label={null}
-                        />
-                    </div>
-                    <div className="table-right">
-                        <div className="calendar-title">
-                            <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                {!userSelected.weekDay ? (
+
+                    <div className="tabela">
+                        <div className="calendar">
+                            <Calendar
+                                onChange={(currentDate) => {
+                                    setDate(currentDate);
+                                    setUserSelected('');
+                                }}
+                                value={date}
+                                next2Label={null}
+                                prev2Label={null}
+                            />
                         </div>
-                        <div className="schedules">
-                            {psychologists.map((psychologist, index) => (
+                        <div className="table-right">
+                            <div className="calendar-title">
+                                <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                            </div>
+                            <div className="schedules">
+                                {psychologists.map((psychologist, index) => (
 
-                                <div
-                                    key={index}
-                                    className="schedule-box"
-                                >
-                                    {psychologist.weekDay.map((workDay, index) => (
-                                        dateCheck(workDay.weekDay)
-                                            ? <div className="testecalendar" key={index}>
-                                                {show ? setShow(false) : ''}
-                                                <div className="psy-card"
-                                                    key={index}
+                                    <div
+                                        key={index}
+                                        className="schedule-box"
+                                    >
+                                        {psychologist.weekDay.map((workDay, index) => (
+                                            dateCheck(workDay.weekDay)
+                                                ? <div className="testecalendar" key={index}>
+                                                    {show ? setShow(false) : ''}
+                                                    <div className="psy-card"
+                                                        key={index}
 
-                                                >
-                                                    <button
-                                                        onClick={() => setUserSelected(psychologist)}>
-                                                        <h3>{psychologist.bond}:
-                                                            {psychologist.name} {psychologist.lastName}</h3>
-                                                    </button>
+                                                    >
+                                                        <button
+                                                            onClick={() => setUserSelected(psychologist)}>
+                                                            <h3>{psychologist.bond}:
+                                                                {psychologist.name} {psychologist.lastName}</h3>
+                                                        </button>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            : <div key={index}>{!show ? setShow(true) : ''}</div>
-                                    ))}
-                                </div>
-                            ))}
+                                                : <div key={index}>{!show ? setShow(true) : ''}</div>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
+                ) : (<></>) }
                 {userSelected.weekDay !== undefined
                     ? <div className="dropDown-calendar">
                         <div className="column1">
