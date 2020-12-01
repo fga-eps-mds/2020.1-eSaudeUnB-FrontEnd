@@ -46,7 +46,14 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization || !bond) {
+            if (
+                !name ||
+                !lastName ||
+                !email ||
+                !gender ||
+                !specialization ||
+                !bond
+            ) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
@@ -57,15 +64,15 @@ export default function PsychologistCreate() {
             }
 
             const accessToken = localStorage.getItem('accessToken');
-            await api.post('/psychologist', user, {
-                headers: { authorization: accessToken },
-            })
-                // eslint-disable-next-line consistent-return
+            await api
+                .post('/psychologist', user, {
+                    headers: { authorization: accessToken },
+                })
                 .then((response) => {
                     if (response.status === 203) {
                         const { details } = response.data.error;
                         closeAlerts();
-
+                        console.log('asdasd' + response.data.error);
                         for (
                             let value = 0;
                             value < response.data.error.details.length;
@@ -177,6 +184,9 @@ export default function PsychologistCreate() {
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
                         </select>
+                        <div className="alertContent">
+                            <p></p>
+                        </div>
                         <select
                             name="bond"
                             onChange={(e) => setBond(e.target.value)}
@@ -184,7 +194,9 @@ export default function PsychologistCreate() {
                             <option value=""> Vínculo </option>
                             <option value="Psicologo">Psicólogo</option>
                             <option value="Nutricionista">Nutricionista</option>
-                            <option value="Assistente Social">Assistente social</option>
+                            <option value="Assistente Social">
+                                Assistente social
+                            </option>
                         </select>
                         <div className="alertContent">
                             <p></p>
