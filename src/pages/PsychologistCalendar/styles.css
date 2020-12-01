@@ -69,10 +69,9 @@
     background-color: #0459ae;
 }
 
-.psychologistcalendar .content .tabela .table-right .form 
-.schedule .schedule-item input{
+.psychologistcalendar .table-right .schedule-item input{
     color: #07387e;
-    align-self: center;
+    align-self: ce;
     height: 35px;
     width: 150px;
     border-radius: 8px;
