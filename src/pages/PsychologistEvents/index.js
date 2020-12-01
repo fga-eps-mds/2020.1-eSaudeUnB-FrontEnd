@@ -8,15 +8,15 @@ import NavBar from '../../components/NavBar';
 export default function PsychologistEvents() {
     const [date, setDate] = useState(new Date());
     const [psychologist, setPsychologist] = useState({});
-    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
         api.get(`/psychologist/${localStorage.getItem('user')}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPsychologist(response.data);
         });
-    });
+    }, []);
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
