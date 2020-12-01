@@ -49,7 +49,7 @@
 
 .psychologistcalendar .table-right button {
     border: none;
-    color: #d10000;
+    color: #0459ae;
     font: 500 18px Poppins;
     transition: 0.2s;
     width: 100%;
@@ -58,15 +58,38 @@
 }
 .psychologistcalendar .table-right button:hover {
     color: #eee;
-    background-color: #d10000;
+    background-color: #0459ae;
 }
 
-.psychologistcalendar .table-right button + button {
+.psychologistcalendar .table-right .schedule-button + button {
     color: #0459ae;
 }
 .psychologistcalendar .table-right button + button:hover {
     color: #eee;
     background-color: #0459ae;
+}
+
+.psychologistcalendar .table-right .schedule-item input{
+    color: #07387e;
+    align-self: ce;
+    height: 35px;
+    width: 150px;
+    border-radius: 8px;
+    border: 1px solid #c4c4c4;
+    outline: 0;
+    padding: 0 1.6rem;
+    font-size: 1rem;
+}
+
+.psychologistcalendar .table-right .schedule-item label{
+    font: 500 14px Poppins;
+    color: #909090;
+    margin-top: 20px;
+}
+
+.psychologistcalendar .table-right .input-box{
+    display: flex;
+    flex-direction: column;
 }
 
 .psychologistcalendar .schedules {
