@@ -18,14 +18,13 @@
     align-items: center;
     justify-content: space-around;
 }
-.signUp01Container .section{
+.signUp01Container .section {
     width: 40vw;
 }
 
 .signUp01Container .section img {
     width: 120%;
     max-width: 1300px;
-
 }
 
 .signUp01Container .section p {
@@ -136,14 +135,12 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .signUp01Container .section .logoImg {
-        display: none;
-    }
     .signUp01Container .content {
         background-image: url('../../assets/images/logo.svg');
         background-repeat: no-repeat;
         background-position: center;
-    }    .signUp01Container .form {
+    }
+    .signUp01Container .form {
         height: 520px;
         width: 330px;
         margin: auto;
@@ -172,6 +169,13 @@
         width: 240px;
         font-size: 10px;
     }
-    
-    
+    .signUp01Container section.section.logoImg {
+        display: none;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .signUp01Container .form {
+        height: 540px;
+        width: 90%;
+    }
 }
