@@ -217,6 +217,49 @@
     width: 50px;
     height: 50px;
 }
+.buttonConfirm {
+    background-color: #003A70;
+}
+
+.modalTitle {
+    color: #003A70;
+}
+
+.modalFormDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+}
+
+.modalLabel {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #003A70;
+}
+
+.modalInput {
+    background-color: transparent;
+    line-height: 27px;
+    border: 2px solid #003A70;
+    padding-top: 20px;
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 4px;
+    width: 300px;
+}
+
+.alertContent {
+    color: red;
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
 @media only screen and (max-width: 900px) {
     .userProfileContainer .formColumn {
         width: 300px;
