@@ -36,7 +36,7 @@ export default function ChangePassword(props) {
                         oldPassword: props.location.state.oldPassword,
                         password,
                     },
-                        { headers: { authorization: accessToken } });
+                    { headers: { authorization: accessToken } });
 
                     if (responseUser.status === 203) {
                         setShow(true);
@@ -71,7 +71,7 @@ export default function ChangePassword(props) {
                         oldPassword: props.location.state.oldPassword,
                         password,
                     },
-                        { headers: { authorization: accessToken } });
+                    { headers: { authorization: accessToken } });
 
                     if (responsePsy.status === 203) {
                         setShow(true);
@@ -110,8 +110,8 @@ export default function ChangePassword(props) {
                     {alertText}
                 </Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
                 <form className="form" onSubmit={handleNewPassword}>
                     <h2 className="pageTitle">Mudança de Senha</h2>

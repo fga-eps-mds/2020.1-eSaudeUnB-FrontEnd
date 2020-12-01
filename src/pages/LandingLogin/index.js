@@ -57,7 +57,7 @@ export default function LandingLogin() {
                     }
                 } catch (err2) {
                     if (err2.response.status === 500) {
-                        setAlertEmailtext("Email não encontrado");
+                        setAlertEmailtext('Email não encontrado');
                         setAlertEmail(true);
                     }
                 }
@@ -103,7 +103,7 @@ export default function LandingLogin() {
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
                     localStorage.setItem('accessToken', responsePsy.data.accessToken);
                     localStorage.setItem('user', email);
-                    if (responsePsy.data.user.ForgetPassWord == 1) {
+                    if (responsePsy.data.user.ForgetPassWord === 1) {
                         history.push({
                             pathname: '/change-password',
                             state: {
@@ -166,8 +166,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
                 <Logo />
 
@@ -222,10 +222,10 @@ export default function LandingLogin() {
                                         </p>
                                     </div>
                                 ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={resetPassword}>Confirmar</Button>
@@ -238,7 +238,7 @@ export default function LandingLogin() {
                                     }}
                                 >
                                     Cancelar
-                                        </Button>
+                                </Button>
                             </Modal.Footer>
                         </Modal>
 
