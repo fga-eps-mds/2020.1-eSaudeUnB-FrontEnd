@@ -24,11 +24,10 @@ export default function ChangePassword(props) {
 
     async function handleNewPassword(event) {
         event.preventDefault();
-        console.log(props);
         if (password !== confirmPassword) {
             setShow(true);
-            setVariant("danger");
-            setAlertText("As senhas não são iguais");
+            setVariant('danger');
+            setAlertText('As senhas não são iguais');
         } else {
             setShow(false);
             if (props.location.state.type === 'user') {
@@ -41,8 +40,8 @@ export default function ChangePassword(props) {
 
                     if (responseUser.status === 203) {
                         setShow(true);
-                        setVariant("danger");
-                        setAlertText("A nova senha deve ter no mínimo 8 caracteres");
+                        setVariant('danger');
+                        setAlertText('A nova senha deve ter no mínimo 8 caracteres');
                     }
 
                     if (responseUser.status === 200) {
@@ -57,13 +56,13 @@ export default function ChangePassword(props) {
                 } catch (err) {
                     if (err.response.status === 400) {
                         setShow(true);
-                        setVariant("danger");
-                        setAlertText("Erro");
+                        setVariant('danger');
+                        setAlertText('Erro');
                         return;
                     }
                     setShow(true);
-                    setVariant("danger");
-                    setAlertText("Ocorreu algum erro ao atualizar a senha, tente novamente.");
+                    setVariant('danger');
+                    setAlertText('Ocorreu algum erro ao atualizar a senha, tente novamente.');
                 }
             }
             if (props.location.state.type === 'professional') {
@@ -76,8 +75,8 @@ export default function ChangePassword(props) {
 
                     if (responsePsy.status === 203) {
                         setShow(true);
-                        setVariant("danger");
-                        setAlertText("A nova senha deve ter no mínimo 8 caracteres");
+                        setVariant('danger');
+                        setAlertText('A nova senha deve ter no mínimo 8 caracteres');
                     }
 
                     if (responsePsy.status === 200) {
@@ -92,13 +91,13 @@ export default function ChangePassword(props) {
                 } catch (err) {
                     if (err.response.status === 400) {
                         setShow(true);
-                        setVariant("danger");
-                        setAlertText("Erro");
+                        setVariant('danger');
+                        setAlertText('Erro');
                         return;
                     }
                     setShow(true);
-                    setVariant("danger");
-                    setAlertText("Ocorreu algum erro ao atualizar a senha, tente novamente.");
+                    setVariant('danger');
+                    setAlertText('Ocorreu algum erro ao atualizar a senha, tente novamente.');
                 }
             }
         }

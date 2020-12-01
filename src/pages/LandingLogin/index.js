@@ -40,7 +40,6 @@ export default function LandingLogin() {
                 }, 2000);
             }
         } catch (err) {
-            console.log(err.response);
             if (err.response.status === 500) {
                 try {
                     const responsePsy = await api.put(`/psyForgetPassword/${registeredEmail}`);
@@ -78,23 +77,20 @@ export default function LandingLogin() {
             if (responseUser.status === 200 || responseUser.status === 201) {
                 localStorage.setItem('accessToken', responseUser.data.accessToken);
                 localStorage.setItem('user', email);
-                if (responseUser.data.user.ForgetPassword) {
+                if (responseUser.data.user.ForgetPassWord === 1) {
                     history.push({
                         pathname: '/change-password',
-                        state: {
-                            data: responseUser.data.user,
-                            type: 'user',
-                            oldPassword: password,
-                        },
-                    });
-                } else {
-                    history.push({
-                        pathname: '/profile',
                         state: {
                             data: responseUser.data.user,
                         },
                     });
                 }
+                history.push({
+                    pathname: '/profile',
+                    state: {
+                        data: responseUser.data.user,
+                    },
+                });
                 return;
             }
         } catch (err) {
@@ -107,23 +103,20 @@ export default function LandingLogin() {
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
                     localStorage.setItem('accessToken', responsePsy.data.accessToken);
                     localStorage.setItem('user', email);
-                    if (responsePsy.data.user.ForgetPassword) {
+                    if (responsePsy.data.user.ForgetPassWord == 1) {
                         history.push({
                             pathname: '/change-password',
-                            state: {
-                                data: responsePsy.data.user,
-                                type: 'professional',
-                                oldPassword: password,
-                            },
-                        });
-                    } else {
-                        history.push({
-                            pathname: '/psychologist/profile',
                             state: {
                                 data: responsePsy.data.user,
                             },
                         });
                     }
+                    history.push({
+                        pathname: '/psychologist/profile',
+                        state: {
+                            data: responsePsy.data.user,
+                        },
+                    });
                 }
 
                 if (
