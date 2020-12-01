@@ -16,7 +16,6 @@ import SearchBar from '../../components/SearchBar';
 export default function PsychologistList() {
     const [search, setSearch] = useState('');
     const [psychologist, setPsychologist] = useState([]);
-    const [actualUser, setActualUser] = useState({});
 
     const history = useHistory();
 
@@ -35,13 +34,13 @@ export default function PsychologistList() {
                         history.push('/');
                     }, 2000);
                 }
+                return [];
             });
-        setActualUser(localStorage.getItem('user'));
-    }, []);
+    }, [history]);
 
     return (
         <>
-            <NavBar className="navBar" actualUser={actualUser} />
+            <NavBar className="navBar" />
             <div className="psychologistListContainer">
                 <div className="content">
                     <SearchBar
@@ -78,7 +77,7 @@ export default function PsychologistList() {
 
                                             <div className="minPatient">
                                                 <p className="cardName">
-                                                Nome:{' '}
+                                                    Nome:{' '}
                                                     {`${psy.name} ${psy.lastName}`}
                                                 </p>
                                                 <p>email: {psy.email}</p>
@@ -86,24 +85,24 @@ export default function PsychologistList() {
                                                 <Accordion.Collapse eventKey="0">
                                                     <div className="cardToggle">
                                                         <p>
-                                                        Biografia:{' '}
+                                                            Biografia:{' '}
                                                             {`${psy.biography}`}
                                                         </p>
                                                         <p>
-                                                        Vínculo:{' '}
+                                                            Vínculo:{' '}
                                                             {`${psy.bond}`}
                                                         </p>
                                                         <Link
                                                             to={{
                                                                 pathname: `/psychologist/list/schedule/${psy.email}`,
                                                                 state: {
-                                                                    data: actualUser,
+                                                                    data: psy.email,
                                                                 },
                                                             }}
                                                         >
                                                             <button>
-                                                            Agendar
-                                                            atendimento
+                                                                Agendar
+                                                                atendimento
                                                             </button>
                                                         </Link>
                                                     </div>
@@ -149,7 +148,7 @@ export default function PsychologistList() {
                                                 )}
                                                 <div className="minPatient">
                                                     <p className="cardName">
-                                                    Nome:{' '}
+                                                        Nome:{' '}
                                                         {`${psy.name} ${psy.lastName}`}
                                                     </p>
                                                     <p>email: {psy.email}</p>
@@ -157,20 +156,20 @@ export default function PsychologistList() {
                                                     <Accordion.Collapse eventKey="0">
                                                         <div className="cardToggle">
                                                             <p>
-                                                            Bibliografia:{' '}
+                                                                Bibliografia:{' '}
                                                                 {`${psy.bibliography}`}
                                                             </p>
                                                             <Link
                                                                 to={{
                                                                     pathname: `/psychologist/list/schedule/${psy.email}`,
                                                                     state: {
-                                                                        data: actualUser,
+                                                                        data: psy.email,
                                                                     },
                                                                 }}
                                                             >
                                                                 <button>
-                                                                Agendar
-                                                                atendimento
+                                                                    Agendar
+                                                                    atendimento
                                                                 </button>
                                                             </Link>
                                                         </div>

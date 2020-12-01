@@ -28,7 +28,6 @@ export default function PatientList(props) {
             <NavBar
                 className="navBar"
                 bond="Psychologist"
-                actualUser={props.location.state.data}
             />
             <div className="patientListContainer">
                 <div className="content">
@@ -42,7 +41,7 @@ export default function PatientList(props) {
                     <div className="patients">
                         {patients.length === 0 ? (
                             <div className="patientTab noPatients">
-                            Não há pacientes cadastrados
+                                Não há pacientes cadastrados
                             </div>
                         ) : (
                             <RealizeSearch

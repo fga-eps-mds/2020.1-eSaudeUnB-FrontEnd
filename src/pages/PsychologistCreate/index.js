@@ -60,6 +60,7 @@ export default function PsychologistCreate() {
             await api.post('/psychologist', user, {
                 headers: { authorization: accessToken },
             })
+                // eslint-disable-next-line consistent-return
                 .then((response) => {
                     if (response.status === 203) {
                         const { details } = response.data.error;
@@ -100,6 +101,7 @@ export default function PsychologistCreate() {
                     if (response.status === 201) {
                         return history.push('/admin/psychologist/list');
                     }
+                    return [];
                 })
                 .catch((err) => {
                     if (err.response.status === 401) {
@@ -107,6 +109,7 @@ export default function PsychologistCreate() {
                             history.push('/admin');
                         }, 2000);
                     }
+                    return [];
                 });
         } catch (err) {
             setShow(true);
@@ -156,7 +159,7 @@ export default function PsychologistCreate() {
                         {alertContentLastName ? (
                             <div className="alertContent">
                                 <p>
-Sobrenome precisa possuir mais de 2 letras.
+                                    Sobrenome precisa possuir mais de 2 letras.
                                 </p>
                             </div>
                         ) : (
@@ -208,7 +211,7 @@ Sobrenome precisa possuir mais de 2 letras.
                         />
 
                         <button className="button" type="submit">
-Registrar
+                            Registrar
                         </button>
                     </div>
                 </form>

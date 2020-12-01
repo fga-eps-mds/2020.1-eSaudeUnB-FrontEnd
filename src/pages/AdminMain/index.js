@@ -14,7 +14,6 @@ export default function AdminMain() {
 
     function getOut() {
         localStorage.removeItem('accessToken');
-
         history.push('/admin');
     }
 
@@ -29,12 +28,13 @@ export default function AdminMain() {
         }).catch((err) => {
             if (err.response.status === 401) {
                 return setTimeout(() => {
-                    getOut();
+                    localStorage.removeItem('accessToken');
+                    history.push('/admin');
                 }, 2000);
             }
-            return 401;
+            return [];
         });
-    }, []);
+    }, [history]);
 
     const showConfirmation = (email) => {
         setActualPsyEmail(email);

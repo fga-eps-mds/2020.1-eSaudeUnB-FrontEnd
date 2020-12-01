@@ -25,7 +25,7 @@ export default function PsychologistSchedule() {
         ).then((response) => {
             setScheduleItems(response.data);
         });
-    }, []);
+    }, [accessToken, user]);
 
     const weekDays = [
         {
@@ -239,7 +239,7 @@ export default function PsychologistSchedule() {
                 ) : (
                     <div></div>
                 )}
-                <form className="form" onSubmit={putCalendar, putCalendar}>
+                <form className="form" onSubmit={putCalendar}>
                     <div className="formContent">
                         <legend className="legend">
                             Cadastrar horários disponíveis
