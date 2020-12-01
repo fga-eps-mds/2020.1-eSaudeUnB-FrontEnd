@@ -242,10 +242,18 @@ export default function PsychologistSchedule() {
                 <form className="form" onSubmit={putCalendar}>
                     <div className="formContent">
                         <legend className="legend">
-                            Cadastrar horários disponíveis
-                            <button type="button" onClick={addNewScheduleItem}>
+                            Horários Cadastrados
+                            <Link
+                                className="link"
+                                to={{
+                                    pathname: '/psychologist/calendar',
+                                    state: {
+                                        data: user,
+                                    },
+                                }}
+                            >
                                 + Novo Horário
-                            </button>
+                            </Link>
                         </legend>
 
                         <div className="schedule">
@@ -255,27 +263,12 @@ export default function PsychologistSchedule() {
                                     className="schedule-item"
                                 >
                                     <div className="select-box">
-                                        <label>Dia da Semana</label>
-                                        <select
-                                            value={scheduleItem.weekDay}
+                                        <label>Data</label>
+                                        <input
+                                            value={scheduleItem.day+'/'+scheduleItem.month+'/'+scheduleItem.year}
                                             name="weekDay"
                                             label="Dia da semana"
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'weekDay',
-                                                e.target.value,
-                                            )
-                                            }
-                                        >
-                                            {weekDays.map((option) => (
-                                                <option
-                                                    key={option.value}
-                                                    value={option.value}
-                                                >
-                                                    {option.label}
-                                                </option>
-                                            ))}
-                                        </select>
+                                        />
                                     </div>
 
                                     <div className="input-box">
@@ -285,12 +278,7 @@ export default function PsychologistSchedule() {
                                             label="Das"
                                             type="time"
                                             value={scheduleItem.from}
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'from',
-                                                e.target.value,
-                                            )
-                                            }
+                                            readOnly="true"
                                         />
                                     </div>
 
@@ -301,29 +289,7 @@ export default function PsychologistSchedule() {
                                             label="Até"
                                             type="time"
                                             value={scheduleItem.to}
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'to',
-                                                e.target.value,
-                                            )
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="input-box">
-                                        <label>Duração da consulta (minutos)</label>
-                                        <input
-                                            name="duration"
-                                            label="duration"
-                                            type="number"
-                                            min="0"
-                                            value={scheduleItem.duration}
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'duration',
-                                                e.target.value,
-                                            )
-                                            }
+                                            readOnly="true"
                                         />
                                     </div>
                                     <button
@@ -338,17 +304,6 @@ export default function PsychologistSchedule() {
                         </div>
 
                         <footer className="footer">
-                            <Link
-                                className="link"
-                                to={{
-                                    pathname: '/psychologist/calendar',
-                                    state: {
-                                        data: user,
-                                    },
-                                }}
-                            >
-                                Configurações avançadas
-                            </Link>
                             <button type="submit">
                                 Salvar cadastro
                             </button>
