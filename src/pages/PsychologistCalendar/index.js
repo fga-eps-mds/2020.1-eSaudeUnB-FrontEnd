@@ -13,10 +13,10 @@ export default function PsychologistCalendar() {
 
     async function putRestrict() {
         await api.put('/calendary/update/', {
-            headers: { authorization: accessToken },
             email: user,
             restrict: [...restricts],
-        }, []);
+        },
+        { headers: { authorization: accessToken } });
         window.location.reload();
     }
 

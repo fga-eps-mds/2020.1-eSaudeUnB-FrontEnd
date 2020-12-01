@@ -1,12 +1,11 @@
 .psychologistcalendar {
     width: 100%;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psychologistcalendar .content {
@@ -32,7 +31,7 @@
     justify-content: center;
 }
 .psychologistcalendar .table-right {
-    border-left: 2px solid #0459ae;
+    border-left: 2px solid #07387e;
     height: 530px;
     width: 500px;
     text-align: center;
@@ -43,7 +42,7 @@
 .psychologistcalendar .table-right h1 {
     margin-left: 30px;
     font: 500 34px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #0459ae;
+    color: #07387e;
     display: flex;
     text-align: center;
 }
@@ -63,11 +62,11 @@
 }
 
 .psychologistcalendar .table-right button + button {
-    color: #0459ae;
+    color: #07387e;
 }
 .psychologistcalendar .table-right button + button:hover {
     color: #eee;
-    background-color: #0459ae;
+    background-color: #07387e;
 }
 
 .psychologistcalendar .schedules {
@@ -95,7 +94,7 @@
     background: none;
     border: none;
     font: 700 1rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #0459ae;
+    color: #07387e;
     cursor: pointer;
     padding: 0.6rem;
     width: 30%;
