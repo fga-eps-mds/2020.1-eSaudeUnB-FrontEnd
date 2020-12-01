@@ -66,14 +66,6 @@ export default function NavBar({ bond }) {
                             <Link
                                 className="a"
                                 to={{
-                                    pathname: '/psychologist/schedule',
-                                }}
-                            >
-                                Configurar meu Cronograma
-                            </Link>
-                            <Link
-                                className="a"
-                                to={{
                                     pathname: '/patient/list',
                                 }}
                             >
