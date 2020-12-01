@@ -41,9 +41,12 @@ export default function UserSchedule(props) {
 
     useEffect(() => {
         async function getData() {
-            const response = await api.get(`/psychologist/${props.location.state.data}`, {
-                headers: { authorization: accessToken },
-            });
+            const response = await api.get(
+                `/psychologist/${props.location.state.data}`,
+                {
+                    headers: { authorization: accessToken },
+                },
+            );
             setPsychologist(response.data);
         }
         getData();
@@ -68,47 +71,64 @@ export default function UserSchedule(props) {
             return 0;
         });
 
-        await api.put('/calendary/update',
+        await api.put(
+            '/calendary/update',
             {
                 email: psychologist.email,
                 weekDay: psychologist.weekDay,
-            }, {
+            },
+            {
                 headers: { authorization: accessToken },
-            });
+            },
+        );
     }
 
     return (
-        <div className="userScheduleContainer">
+        <>
             <NavBar className="navBar" bond="Patient" />
-            <div className="content">
+            <div className="userScheduleContainer">
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
                     <div className="times">
-                        {psychologist.weekDay !== undefined && psychologist.weekDay.length > 0
-                            ? psychologist.weekDay.map((workDay) => (
+                        {psychologist.weekDay !== undefined &&
+                        psychologist.weekDay.length > 0 ? (
+                            psychologist.weekDay.map((workDay) => (
                                 <div key={workDay.id} className="psyList">
                                     <h1>{weekDays[workDay.weekDay].label}</h1>
-                                    <h2>Duração da consulta: {workDay.duration} minutos</h2>
-                                    <select value={selectedValue}
-                                        onChange={(e) => setSelectedValue(e.target.value)}>
-                                        {workDay.appointment.map((appointment) => (
-                                            <option value={appointment._id} key={appointment._id}>
-                                                Horário de começo: {appointment.time}
-                                            </option>
-                                        ))}
+                                    <h2>
+                                        Duração da consulta: {workDay.duration}{' '}
+                                        minutos
+                                    </h2>
+                                    <select
+                                        value={selectedValue}
+                                        onChange={(e) =>
+                                            setSelectedValue(e.target.value)
+                                        }
+                                    >
+                                        {workDay.appointment.map(
+                                            (appointment) => (
+                                                <option
+                                                    value={appointment._id}
+                                                    key={appointment._id}
+                                                >
+                                                    Horário de começo:{' '}
+                                                    {appointment.time}
+                                                </option>
+                                            ),
+                                        )}
                                     </select>
                                 </div>
                             ))
-                            : <div>
+                        ) : (
+                            <div>
                                 <h2>Não possui horários disponíveis</h2>
                             </div>
-                        }
+                        )}
                     </div>
                     <button type="submit">Salvar</button>
-
                 </form>
             </div>
-        </div>
+        </>
     );
 }
 

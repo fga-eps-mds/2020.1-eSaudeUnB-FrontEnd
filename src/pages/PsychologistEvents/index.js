@@ -32,12 +32,12 @@ export default function PsychologistEvents() {
             <NavBar
                 className="navBar"
                 bond="Psychologist"
-                actualUser={props.location.state.data}
+                actualUser={psychologist}
             />
             <SideBar
                 className="sidebar"
                 bond="Psychologist"
-                actualUser={props.location.state.data}
+                actualUser={psychologist}
             />
             <div className="content">
                 <div className="tabela">
@@ -56,36 +56,39 @@ export default function PsychologistEvents() {
                             <h1>{'Próximos Eventos'}</h1>
                         </div>
                         <div className="schedules">
-                            {psychologist.weekDay
-                            && psychologist.weekDay.length > 0 ? (
-                                    psychologist.weekDay.map((workDay, index) => (dateCheck(workDay) ? (
+                            {psychologist.weekDay &&
+                            psychologist.weekDay.length > 0 ? (
+                                psychologist.weekDay.map((workDay, index) =>
+                                    dateCheck(workDay) ? (
                                         <div
                                             eslint-disable-next-line
                                             no-underscore-dangle
                                             key={index}
                                         >
                                             {workDay.appointment.map(
-                                                (appointment) => (appointment.scheduled ? (
-                                                    <div className="testeTotal">
-                                                        <h3>{`- ${appointment.time}`}</h3>
-                                                        <h3>
+                                                (appointment) =>
+                                                    appointment.scheduled ? (
+                                                        <div className="testeTotal">
+                                                            <h3>{`- ${appointment.time}`}</h3>
+                                                            <h3>
                                                                 Atendimento com{' '}
-                                                            {
-                                                                appointment.name
-                                                            }
-                                                        </h3>
-                                                    </div>
-                                                ) : (
-                                                    <div></div>
-                                                )),
+                                                                {
+                                                                    appointment.name
+                                                                }
+                                                            </h3>
+                                                        </div>
+                                                    ) : (
+                                                        <div></div>
+                                                    ),
                                             )}
                                         </div>
                                     ) : (
                                         <div></div>
-                                    )))
-                                ) : (
-                                    <div></div>
-                                )}
+                                    ),
+                                )
+                            ) : (
+                                <div></div>
+                            )}
                         </div>
                     </div>
                 </div>

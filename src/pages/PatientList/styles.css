@@ -105,6 +105,16 @@
         height: 18px;
         margin-left: -45px;
     }
+    .patientListContainer .minPatient {
+        word-break: break-word;
+    }
+    .patientListContainer
+        .patientTab
+        .patientInfos
+        .minPatient
+        p:first-of-type {
+        font: 700 22px Poppins;
+    }
 }
 
 @media only screen and (max-width: 550px) {

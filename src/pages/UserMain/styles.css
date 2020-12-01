@@ -19,6 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .usercalendar .tabela {
     margin: 80px 0 80px 0;
@@ -180,7 +181,6 @@
     padding-left: 20px;
 
     width: 100%;
-    
 }
 .usercalendar .navBarComponent .navLinks {
     display: none !important;
@@ -210,7 +210,7 @@
         min-width: 0px;
     }
 }
-@media only screen and (max-width: 994px){
+@media only screen and (max-width: 994px) {
     .usercalendar .navBarComponent .navLinks {
         display: flex !important;
     }
@@ -218,7 +218,7 @@
         display: none !important;
     }
 }
-@media only screen and (max-width: 910px){
+@media only screen and (max-width: 910px) {
     .usercalendar .tabela {
         width: 85%;
         min-width: 280px;
