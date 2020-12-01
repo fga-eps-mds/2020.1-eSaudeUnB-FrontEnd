@@ -71,11 +71,7 @@ export default function PsychologistCalendar() {
 
     return (
         <>
-            <NavBar
-                className="navBar"
-                bond="Psychologist"
-                actualUser={props.location.state.data}
-            />
+            <NavBar className="navBar" bond="Psychologist" actualUser={user} />
             <div className="psychologistcalendar" onLoad={handleRestrict}>
                 <div className="content">
                     <div className="tabela">

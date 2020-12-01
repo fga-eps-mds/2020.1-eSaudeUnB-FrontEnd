@@ -100,7 +100,6 @@
     .patientListContainer .searcBarComponent input {
         height: 30px;
         width: 30%;
-       
     }
     .patientListContainer .searcBarComponent img {
         height: 18px;
@@ -111,8 +110,9 @@
 @media only screen and (max-width: 550px) {
     .patientListContainer .patientInfos {
         flex-direction: column;
+        align-items: flex-start;
     }
-    .patientListContainer .patientTab{
+    .patientListContainer .patientTab {
         margin: 0px;
         margin-bottom: 20px;
     }
@@ -122,4 +122,3 @@
         overflow-x: hidden;
     }
 }
-
