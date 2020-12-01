@@ -45,7 +45,7 @@ export default function SideBar({ actualUser, bond }) {
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        }());
+        })();
     }, [actualUser, bond]);
 
     function openNav() {
@@ -101,7 +101,7 @@ export default function SideBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-                                Horários
+                                Configurar meu cronograma
                             </Link>
                         </div>
                     ) : (
