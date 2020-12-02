@@ -153,3 +153,53 @@
     color: #eee;
     background-color: #07387e;
 }
+
+@media only screen and (max-width: 944px) {
+    .psychologistSchedule .content {
+        justify-content: normal;
+    }
+    .psychologistSchedule .content .form {
+        margin: 30px 0 20px 0;
+        width: 92%;
+    }
+    .psychologistSchedule .content .form .footer .link {
+        margin-right: 40%;
+    }
+    .psychologistSchedule .content .form .schedule .schedule-item {
+        flex-direction: column;
+        align-items: center;
+    }
+    .psychologistSchedule .content .form .schedule .schedule-item:nth-child(even) {
+        background: #e5e5e5;
+        border-radius: 15px;
+    }
+
+    .psychologistSchedule .content .form .schedule button {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .psychologistSchedule .content .form .schedule .input-box{
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 495px) {
+    .psychologistSchedule .content .form {
+        width: 92%;
+    }
+    .psychologistSchedule .content .form .footer .link {
+        margin-right: 3%;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .psychologistSchedule .content .form {
+        width: 92%;
+    }
+    .psychologistSchedule .content .form .footer .link {
+        margin-right: 3%;
+        font-size: 14px;
+    }
+    .psychologistSchedule .content .form footer button {
+        padding: 0px;
+    }
+}

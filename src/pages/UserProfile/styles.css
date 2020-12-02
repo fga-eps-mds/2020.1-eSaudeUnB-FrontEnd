@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-.userProfileContainer .form .fieldDiv{
+.userProfileContainer .form .fieldDiv {
     display: flex;
     flex-direction: column;
     border: solid 1px #ccc;
@@ -167,13 +167,14 @@
 .userProfileContainer .personal-image {
     margin-left: 50px;
     margin-top: 45.5px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
     height: 125px;
 }
 
 .userProfileContainer .personal-image input[type='file'] {
     display: none;
 }
+
 .userProfileContainer .personal-figure {
     position: relative;
     width: 125px;
@@ -249,7 +250,7 @@
     .userProfileContainer .form .input {
         width: 200px;
     }
-    .userProfileContainer .form .fieldDiv{
+    .userProfileContainer .form .fieldDiv {
         display: flex;
         flex-direction: column;
         border: solid 1px #ccc;
@@ -278,13 +279,13 @@
     .userProfileContainer .personal-image {
         margin-left: 90px;
         margin-top: 50px;
+        margin-bottom: 190px;
     }
     .userProfileContainer .form .alertContent {
         width: 200px;
         font-size: 11px;
     }
     .userProfileContainer .form input {
-        width: 200px; 
-        
+        width: 200px;
     }
 }

@@ -12,11 +12,15 @@ export default function PsychologistCalendar() {
     const user = localStorage.getItem('user');
 
     async function putRestrict() {
-        await api.put('/calendary/update/', {
-            headers: { authorization: accessToken },
-            email: user,
-            restrict: [...restricts],
-        }, []);
+        await api.put(
+            '/calendary/update/',
+            {
+                headers: { authorization: accessToken },
+                email: user,
+                restrict: [...restricts],
+            },
+            [],
+        );
         window.location.reload();
     }
 
@@ -47,11 +51,15 @@ export default function PsychologistCalendar() {
     }
 
     async function handleRestrict() {
-        const Restricts = await api.post('/calendary/restrict', {
-            email: user,
-        }, {
-            headers: { authorization: accessToken },
-        });
+        const Restricts = await api.post(
+            '/calendary/restrict',
+            {
+                email: user,
+            },
+            {
+                headers: { authorization: accessToken },
+            },
+        );
         setRestricts(Restricts.data);
     }
 
@@ -62,54 +70,55 @@ export default function PsychologistCalendar() {
     }
 
     return (
-        <div className="psychologistcalendar" onLoad={handleRestrict}>
-            <NavBar
-                className="navBar"
-                bond="Psychologist"
-            />
-            <div className="content">
-                <div className="tabela">
-                    <div className="calendar">
-                        <Calendar
-                            onChange={(currentDate) => {
-                                setDate(currentDate);
-                            }}
-                            value={date}
-                            next2Label={null}
-                            prev2Label={null}
-                        />
-                    </div>
-                    <div className="table-right">
-                        <h1>Suas Restrições:</h1>
-                        <div className="schedules">
-                            {restricts.map((restrict, index) => (
-                                <div
-                                    key={index}
-                                    className="schedule-box"
-                                >
-                                    <span>{`restrição dia ${restrict.day}/${restrict.month + 1 < 10
-                                        ? `0${restrict.month + 1}`
-                                        : `${restrict.month + 1}`
-                                    }/${restrict.year}`}</span>
-                                    <button
-                                        type="button"
-                                        onClick={() => removeRestrict(index)}
-                                    >
-                                        Remover
-                                    </button>
-                                </div>
-                            ))}
+        <>
+            <NavBar className="navBar" bond="Psychologist" actualUser={user} />
+            <div className="psychologistcalendar" onLoad={handleRestrict}>
+                <div className="content">
+                    <div className="tabela">
+                        <div className="calendar">
+                            <Calendar
+                                onChange={(currentDate) => {
+                                    setDate(currentDate);
+                                }}
+                                value={date}
+                                next2Label={null}
+                                prev2Label={null}
+                            />
                         </div>
-                        <button type="button" onClick={() => updateRestricts()}>
-                            {`Adicionar Restrição ao dia ${date.getDate()}`}
-                        </button>
-                        <button type="button" onClick={() => putRestrict()}>
-                            Salvar
-                        </button>
+                        <div className="table-right">
+                            <h1>Suas Restrições:</h1>
+                            <div className="schedules">
+                                {restricts.map((restrict, index) => (
+                                    <div key={index} className="schedule-box">
+                                        <span>{`restrição dia ${restrict.day}/${
+                                            restrict.month + 1 < 10
+                                                ? `0${restrict.month + 1}`
+                                                : `${restrict.month + 1}`
+                                        }/${restrict.year}`}</span>
+                                        <button
+                                            type="button"
+                                            onClick={() => removeRestrict(index)
+                                            }
+                                        >
+                                            Remover
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => updateRestricts()}
+                            >
+                                {`Adicionar Restrição ao dia ${date.getDate()}`}
+                            </button>
+                            <button type="button" onClick={() => putRestrict()}>
+                                Salvar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
