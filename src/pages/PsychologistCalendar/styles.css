@@ -40,11 +40,18 @@
 }
 .psychologistcalendar .table-right {
     width: 100%;
+    height: 90%;
+    margin-top: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    overflow-y:scroll;
+    overflow: scroll;
 }
+
+.psychologistcalendar .table-right .form-content{
+    overflow: scroll;
+}
+
 .psychologistcalendar .table-right h1 {
     justify-self: center;
     margin-left: 30px;
@@ -52,6 +59,8 @@
     color: #0459ae;
     display: flex;
     text-align: center;
+    font-size: 28px;
+    margin: 0;
 }
 
 .psychologistcalendar .table-right button {
