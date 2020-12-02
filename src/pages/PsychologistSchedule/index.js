@@ -223,11 +223,9 @@ export default function PsychologistSchedule() {
     }
 
     function calculateAttendance(start, end, duration) {
-        start =
-            parseInt(start.substring(0, 2)) * 60 +
-            parseInt(start.substring(3, 5));
-        end =
-            parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
+        start = parseInt(start.substring(0, 2)) * 60
+            + parseInt(start.substring(3, 5));
+        end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
         duration = parseInt(duration);
 
         const number = end - start;
@@ -276,12 +274,11 @@ export default function PsychologistSchedule() {
                                                 value={scheduleItem.weekDay}
                                                 name="weekDay"
                                                 label="Dia da semana"
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'weekDay',
-                                                        e.target.value,
-                                                    )
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'weekDay',
+                                                    e.target.value,
+                                                )
                                                 }
                                             >
                                                 {weekDays.map((option) => (
@@ -302,12 +299,11 @@ export default function PsychologistSchedule() {
                                                 label="Das"
                                                 type="time"
                                                 value={scheduleItem.from}
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'from',
-                                                        e.target.value,
-                                                    )
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'from',
+                                                    e.target.value,
+                                                )
                                                 }
                                             />
                                         </div>
@@ -319,12 +315,11 @@ export default function PsychologistSchedule() {
                                                 label="Até"
                                                 type="time"
                                                 value={scheduleItem.to}
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'to',
-                                                        e.target.value,
-                                                    )
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'to',
+                                                    e.target.value,
+                                                )
                                                 }
                                             />
                                         </div>
@@ -338,19 +333,17 @@ export default function PsychologistSchedule() {
                                                 min="0"
                                                 placeHolder="Minutos"
                                                 value={scheduleItem.duration}
-                                                onChange={(e) =>
-                                                    setScheduleItemsValue(
-                                                        index,
-                                                        'duration',
-                                                        e.target.value,
-                                                    )
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'duration',
+                                                    e.target.value,
+                                                )
                                                 }
                                             />
                                         </div>
                                         <button
                                             type="button"
-                                            onClick={() =>
-                                                removeScheduleItem(index)
+                                            onClick={() => removeScheduleItem(index)
                                             }
                                         >
                                             Remover

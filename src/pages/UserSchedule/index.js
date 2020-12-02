@@ -90,40 +90,39 @@ export default function UserSchedule(props) {
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
                     <div className="times">
-                        {psychologist.weekDay !== undefined &&
-                        psychologist.weekDay.length > 0 ? (
-                            psychologist.weekDay.map((workDay) => (
-                                <div key={workDay.id} className="psyList">
-                                    <h1>{weekDays[workDay.weekDay].label}</h1>
-                                    <h2>
+                        {psychologist.weekDay !== undefined
+                        && psychologist.weekDay.length > 0 ? (
+                                psychologist.weekDay.map((workDay) => (
+                                    <div key={workDay.id} className="psyList">
+                                        <h1>{weekDays[workDay.weekDay].label}</h1>
+                                        <h2>
                                         Duração da consulta: {workDay.duration}{' '}
                                         minutos
-                                    </h2>
-                                    <select
-                                        value={selectedValue}
-                                        onChange={(e) =>
-                                            setSelectedValue(e.target.value)
-                                        }
-                                    >
-                                        {workDay.appointment.map(
-                                            (appointment) => (
-                                                <option
-                                                    value={appointment._id}
-                                                    key={appointment._id}
-                                                >
+                                        </h2>
+                                        <select
+                                            value={selectedValue}
+                                            onChange={(e) => setSelectedValue(e.target.value)
+                                            }
+                                        >
+                                            {workDay.appointment.map(
+                                                (appointment) => (
+                                                    <option
+                                                        value={appointment._id}
+                                                        key={appointment._id}
+                                                    >
                                                     Horário de começo:{' '}
-                                                    {appointment.time}
-                                                </option>
-                                            ),
-                                        )}
-                                    </select>
+                                                        {appointment.time}
+                                                    </option>
+                                                ),
+                                            )}
+                                        </select>
+                                    </div>
+                                ))
+                            ) : (
+                                <div>
+                                    <h2>Não possui horários disponíveis</h2>
                                 </div>
-                            ))
-                        ) : (
-                            <div>
-                                <h2>Não possui horários disponíveis</h2>
-                            </div>
-                        )}
+                            )}
                     </div>
                     <button type="submit">Salvar</button>
                 </form>

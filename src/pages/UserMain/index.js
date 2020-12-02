@@ -114,48 +114,46 @@ export default function UserMain(props) {
                                 {psychologists.map((psychologist, index) => (
                                     <div key={index} className="schedule-box">
                                         {psychologist.weekDay.map(
-                                            (workDay, index) =>
-                                                dateCheck(workDay.weekDay) ? (
+                                            (workDay, index) => (dateCheck(workDay.weekDay) ? (
+                                                <div
+                                                    className="testecalendar"
+                                                    key={index}
+                                                >
+                                                    {show
+                                                        ? setShow(false)
+                                                        : ''}
                                                     <div
-                                                        className="testecalendar"
+                                                        className="psy-card"
                                                         key={index}
                                                     >
-                                                        {show
-                                                            ? setShow(false)
-                                                            : ''}
-                                                        <div
-                                                            className="psy-card"
-                                                            key={index}
+                                                        <button
+                                                            onClick={() => setUserSelected(
+                                                                psychologist,
+                                                            )
+                                                            }
                                                         >
-                                                            <button
-                                                                onClick={() =>
-                                                                    setUserSelected(
-                                                                        psychologist,
-                                                                    )
+                                                            <h3>
+                                                                {
+                                                                    psychologist.bond
                                                                 }
-                                                            >
-                                                                <h3>
-                                                                    {
-                                                                        psychologist.bond
-                                                                    }
                                                                     :
-                                                                    {
-                                                                        psychologist.name
-                                                                    }{' '}
-                                                                    {
-                                                                        psychologist.lastName
-                                                                    }
-                                                                </h3>
-                                                            </button>
-                                                        </div>
+                                                                {
+                                                                    psychologist.name
+                                                                }{' '}
+                                                                {
+                                                                    psychologist.lastName
+                                                                }
+                                                            </h3>
+                                                        </button>
                                                     </div>
-                                                ) : (
-                                                    <div key={index}>
-                                                        {!show
-                                                            ? setShow(true)
-                                                            : ''}
-                                                    </div>
-                                                ),
+                                                </div>
+                                            ) : (
+                                                <div key={index}>
+                                                    {!show
+                                                        ? setShow(true)
+                                                        : ''}
+                                                </div>
+                                            )),
                                         )}
                                     </div>
                                 ))}
@@ -176,14 +174,12 @@ export default function UserMain(props) {
                                     <div className="hours-disponibility">
                                         {userSelected.weekDay !== undefined ? (
                                             userSelected.weekDay.map(
-                                                (workDay) =>
-                                                    dateCheck(
-                                                        workDay.weekDay,
-                                                    ) ? (
+                                                (workDay) => (dateCheck(
+                                                    workDay.weekDay,
+                                                ) ? (
                                                         workDay.appointment.map(
-                                                            (appointment) =>
-                                                                appointment.scheduled ===
-                                                                false ? (
+                                                            (appointment) => (appointment.scheduled
+                                                                === false ? (
                                                                     <label>
                                                                         <input
                                                                             type="radio"
@@ -194,10 +190,9 @@ export default function UserMain(props) {
                                                                             value={
                                                                                 appointment._id
                                                                             }
-                                                                            onChange={() =>
-                                                                                setSelectedValue(
-                                                                                    appointment._id,
-                                                                                )
+                                                                            onChange={() => setSelectedValue(
+                                                                                appointment._id,
+                                                                            )
                                                                             }
                                                                         />
                                                                         {
@@ -206,11 +201,11 @@ export default function UserMain(props) {
                                                                     </label>
                                                                 ) : (
                                                                     ''
-                                                                ),
+                                                                )),
                                                         )
                                                     ) : (
                                                         <div></div>
-                                                    ),
+                                                    )),
                                             )
                                         ) : (
                                             <div></div>
@@ -226,16 +221,15 @@ export default function UserMain(props) {
                                         </button>
                                         <button
                                             className="waiting-list"
-                                            onClick={() =>
-                                                history.push({
-                                                    pathname: '/waiting-list',
-                                                    state: {
-                                                        data:
+                                            onClick={() => history.push({
+                                                pathname: '/waiting-list',
+                                                state: {
+                                                    data:
                                                             props.location.state
                                                                 .data,
-                                                        psychologist: userSelected,
-                                                    },
-                                                })
+                                                    psychologist: userSelected,
+                                                },
+                                            })
                                             }
                                         >
                                             Lista de espera

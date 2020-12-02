@@ -47,12 +47,12 @@ export default function PsychologistCreate() {
             };
 
             if (
-                !name ||
-                !lastName ||
-                !email ||
-                !gender ||
-                !specialization ||
-                !bond
+                !name
+                || !lastName
+                || !email
+                || !gender
+                || !specialization
+                || !bond
             ) {
                 setShow(true);
                 setVariant('danger');
@@ -72,7 +72,7 @@ export default function PsychologistCreate() {
                     if (response.status === 203) {
                         const { details } = response.data.error;
                         closeAlerts();
-                        console.log('asdasd' + response.data.error);
+                        console.log(`asdasd${response.data.error}`);
                         for (
                             let value = 0;
                             value < response.data.error.details.length;

@@ -27,9 +27,9 @@ export default function PsychologistCalendar() {
     function checkRepeat() {
         for (const item of restricts) {
             if (
-                date.getDate() === item.day &&
-                date.getMonth() === item.month &&
-                date.getFullYear() === item.year
+                date.getDate() === item.day
+                && date.getMonth() === item.month
+                && date.getFullYear() === item.year
             ) {
                 return false;
             }
@@ -97,8 +97,7 @@ export default function PsychologistCalendar() {
                                         }/${restrict.year}`}</span>
                                         <button
                                             type="button"
-                                            onClick={() =>
-                                                removeRestrict(index)
+                                            onClick={() => removeRestrict(index)
                                             }
                                         >
                                             Remover
