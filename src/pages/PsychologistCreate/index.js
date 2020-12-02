@@ -46,7 +46,14 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization || !bond) {
+            if (
+                !name
+                || !lastName
+                || !email
+                || !gender
+                || !specialization
+                || !bond
+            ) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
@@ -57,14 +64,15 @@ export default function PsychologistCreate() {
             }
 
             const accessToken = localStorage.getItem('accessToken');
-            await api.post('/psychologist', user, {
-                headers: { authorization: accessToken },
-            })
+            await api
+                .post('/psychologist', user, {
+                    headers: { authorization: accessToken },
+                })
                 .then((response) => {
                     if (response.status === 203) {
                         const { details } = response.data.error;
                         closeAlerts();
-
+                        console.log(`asdasd${response.data.error}`);
                         for (
                             let value = 0;
                             value < response.data.error.details.length;
@@ -100,6 +108,7 @@ export default function PsychologistCreate() {
                     if (response.status === 201) {
                         return history.push('/admin/psychologist/list');
                     }
+                    return [];
                 })
                 .catch((err) => {
                     if (err.response.status === 401) {
@@ -107,6 +116,7 @@ export default function PsychologistCreate() {
                             history.push('/admin');
                         }, 2000);
                     }
+                    return [];
                 });
         } catch (err) {
             setShow(true);
@@ -156,7 +166,7 @@ export default function PsychologistCreate() {
                         {alertContentLastName ? (
                             <div className="alertContent">
                                 <p>
-Sobrenome precisa possuir mais de 2 letras.
+                                    Sobrenome precisa possuir mais de 2 letras.
                                 </p>
                             </div>
                         ) : (
@@ -174,6 +184,9 @@ Sobrenome precisa possuir mais de 2 letras.
                             <option value="M">Masculino</option>
                             <option value="I">Não Identificar</option>
                         </select>
+                        <div className="alertContent">
+                            <p></p>
+                        </div>
                         <select
                             name="bond"
                             onChange={(e) => setBond(e.target.value)}
@@ -181,7 +194,9 @@ Sobrenome precisa possuir mais de 2 letras.
                             <option value=""> Vínculo </option>
                             <option value="Psicologo">Psicólogo</option>
                             <option value="Nutricionista">Nutricionista</option>
-                            <option value="Assistente Social">Assistente social</option>
+                            <option value="Assistente Social">
+                                Assistente social
+                            </option>
                         </select>
                         <div className="alertContent">
                             <p></p>
@@ -208,7 +223,7 @@ Sobrenome precisa possuir mais de 2 letras.
                         />
 
                         <button className="button" type="submit">
-Registrar
+                            Registrar
                         </button>
                     </div>
                 </form>

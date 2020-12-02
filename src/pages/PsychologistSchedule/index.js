@@ -25,7 +25,7 @@ export default function PsychologistSchedule() {
         ).then((response) => {
             setScheduleItems(response.data);
         });
-    }, []);
+    }, [accessToken, user]);
 
     const weekDays = [
         {
@@ -91,7 +91,9 @@ export default function PsychologistSchedule() {
                 actualMinutes += duration;
             }
             hour = {
-                time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`}`,
+                time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${
+                    actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`
+                }`,
                 scheduled: false,
             };
             if (hour.time !== end) {
@@ -170,7 +172,11 @@ export default function PsychologistSchedule() {
                 return false;
             }
             // function to be edited earlier
-            minutes = calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            minutes = calculateAttendance(
+                scheduleItems[i].from,
+                scheduleItems[i].to,
+                scheduleItems[i].duration,
+            );
 
             if (minutes > 0) {
                 setShow(true);
@@ -183,7 +189,11 @@ export default function PsychologistSchedule() {
                 }, 3500);
                 return false;
             }
-            const value = appointmentHours(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            const value = appointmentHours(
+                scheduleItems[i].from,
+                scheduleItems[i].to,
+                scheduleItems[i].duration,
+            );
             scheduleItems[i].appointment = value;
         }
 
@@ -213,11 +223,12 @@ export default function PsychologistSchedule() {
     }
 
     function calculateAttendance(start, end, duration) {
-        start = parseInt(start.substring(0, 2)) * 60 + parseInt(start.substring(3, 5));
+        start = parseInt(start.substring(0, 2)) * 60
+            + parseInt(start.substring(3, 5));
         end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
         duration = parseInt(duration);
 
-        const number = (end - start);
+        const number = end - start;
         let minutesRemaining = 0;
         if (number % duration !== 0) {
             minutesRemaining = number % duration;
@@ -292,17 +303,9 @@ export default function PsychologistSchedule() {
                                             readOnly="true"
                                         />
                                     </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => removeScheduleItem(index)
-                                        }
-                                    >
-                                        Remover
-                                    </button>
                                 </div>
-                            ))}
-                        </div>
-
+                                ))}
+                            </div>
                         <footer className="footer">
                             <button type="submit">
                                 Salvar cadastro

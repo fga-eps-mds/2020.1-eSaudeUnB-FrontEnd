@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar';
 
 export default function UserSchedule(props) {
     const [psychologist, setPsychologist] = useState({});
-    const { email } = localStorage.getItem('user');
+    const email = localStorage.getItem('user');
     const [selectedValue, setSelectedValue] = useState();
     const accessToken = localStorage.getItem('accessToken');
 
@@ -41,17 +41,20 @@ export default function UserSchedule(props) {
 
     useEffect(() => {
         async function getData() {
-            const response = await api.get(`/psychologist/${email}`, {
-                headers: { authorization: accessToken },
-            });
+            const response = await api.get(
+                `/psychologist/${props.location.state.data}`,
+                {
+                    headers: { authorization: accessToken },
+                },
+            );
             setPsychologist(response.data);
         }
         getData();
-    }, [props]);
+    }, [props, accessToken]);
 
     async function saveAppointment(event) {
         event.preventDefault();
-        const response = await api.get(`/user/${localStorage.getItem('user')}`, {
+        const response = await api.get(`/user/${email}`, {
             headers: { authorization: accessToken },
         });
         const { _id, name, lastName } = response.data;
@@ -63,50 +66,68 @@ export default function UserSchedule(props) {
                     appointment.user = _id;
                     appointment.name = `${name} ${lastName}`;
                 }
+                return 0;
             });
+            return 0;
         });
 
-        await api.put('/calendary/update',
+        await api.put(
+            '/calendary/update',
             {
                 email: psychologist.email,
                 weekDay: psychologist.weekDay,
-            }, {
+            },
+            {
                 headers: { authorization: accessToken },
-            });
+            },
+        );
     }
 
     return (
-        <div className="userScheduleContainer">
-            <NavBar actualUser={props.location.state.data} />
-            <div className="content">
+        <>
+            <NavBar className="navBar" bond="Patient" />
+            <div className="userScheduleContainer">
                 <form className="forms" onSubmit={saveAppointment}>
                     <h1>Dias de atendimento</h1>
                     <div className="times">
-                        {psychologist.weekDay !== undefined && psychologist.weekDay.length > 0
-                            ? psychologist.weekDay.map((workDay) => (
-                                <div key={workDay.id} className="psyList">
-                                    <h1>{weekDays[workDay.weekDay].label}</h1>
-                                    <h2>Duração da consulta: {workDay.duration} minutos</h2>
-                                    <select value={selectedValue}
-                                        onChange={(e) => setSelectedValue(e.target.value)}>
-                                        {workDay.appointment.map((appointment) => (
-                                            <option value={appointment._id}>
-                                                Horário de começo: {appointment.time}
-                                            </option>
-                                        ))}
-                                    </select>
+                        {psychologist.weekDay !== undefined
+                        && psychologist.weekDay.length > 0 ? (
+                                psychologist.weekDay.map((workDay) => (
+                                    <div key={workDay.id} className="psyList">
+                                        <h1>{weekDays[workDay.weekDay].label}</h1>
+                                        <h2>
+                                        Duração da consulta: {workDay.duration}{' '}
+                                        minutos
+                                        </h2>
+                                        <select
+                                            value={selectedValue}
+                                            onChange={(e) => setSelectedValue(e.target.value)
+                                            }
+                                        >
+                                            {workDay.appointment.map(
+                                                (appointment) => (
+                                                    <option
+                                                        value={appointment._id}
+                                                        key={appointment._id}
+                                                    >
+                                                    Horário de começo:{' '}
+                                                        {appointment.time}
+                                                    </option>
+                                                ),
+                                            )}
+                                        </select>
+                                    </div>
+                                ))
+                            ) : (
+                                <div>
+                                    <h2>Não possui horários disponíveis</h2>
                                 </div>
-                            ))
-                            : <div>
-                                <h2>Não possui horários disponíveis</h2>
-                            </div>
-                        }
+                            )}
                     </div>
                     <button type="submit">Salvar</button>
-
                 </form>
             </div>
-        </div>
+        </>
     );
 }
 

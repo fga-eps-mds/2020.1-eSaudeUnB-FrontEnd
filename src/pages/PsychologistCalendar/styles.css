@@ -11,6 +11,7 @@
 
 .psychologistcalendar .content {
     height: 100%;
+    min-height: 530px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +25,12 @@
     display: flex;
     background-color: #eee;
     height: 690px;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    min-height: 572px;
+    border-radius: 15px;
+    display: flex;
+    background-color: #eee;
 }
 
 .psychologistcalendar .tabela .calendar {
@@ -216,4 +223,31 @@
 }
 .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: #e6e6e6;
+@media only screen and (max-width: 1000px) {
+    .psychologistcalendar .content {
+        width: auto;
+    }
+    .psychologistcalendar .tabela {
+        flex-direction: column;
+        width: auto;
+    }
+
+    .psychologistcalendar .table-right {
+        border-left: none;
+        width: 300px;
+        height: auto;
+    }
+    .psychologistcalendar .table-right h1 {
+        text-align: center;
+        font-size: 28px;
+        margin: 0;
+    }
+    .psychologistcalendar .schedules {
+        padding: 0;
+        min-height: 100px;
+    }
+    .psychologistcalendar .table-right button {
+        width: 300px;
+    }
+}
 }

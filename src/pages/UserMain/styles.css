@@ -1,23 +1,28 @@
 .usercalendar {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     color: #eee;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
     background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
 }
 
 .usercalendar .content {
     height: 100%;
+    margin: auto;
+    width: 65%;
+    max-width: 1360px;
+    min-width: 1150px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 .usercalendar .tabela {
-    width: 1400px;
+    margin: 80px 0 80px 0;
     border-radius: 15px;
     display: flex;
     background-color: #eee;
@@ -30,13 +35,14 @@
     justify-content: center;
 }
 .usercalendar .table-right {
-    width: 100%;
+    width: 740px;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 .usercalendar .table-right h1 {
-    justify-self: center;
+    margin-top: 30px;
+    justify-content: center;
     font: 500 2.5rem Poppins;
     color: #0459ae;
     display: flex;
@@ -74,155 +80,60 @@
 
 .usercalendar .schedules .schedule-box button {
     text-align: left;
-
 }
 .usercalendar .schedules .schedule-box button:hover {
     color: #bdc2c9;
 }
 
-/* Calendar \/ */
-.usercalendar .react-calendar {
-    margin: 30px;
-    width: 600px;
-    height: 630px;
-    background: #eee;
-    border-radius: 15px;
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.25));
-}
-
-.usercalendar .react-calendar button {
-    margin: 0;
-    border: 0;
-    outline: none;
-}
-.usercalendar .react-calendar button:enabled:hover {
-    cursor: pointer;
-}
-.usercalendar .react-calendar__navigation {
-    height: 90px;
-}
-.usercalendar .react-calendar__navigation button {
-    width: 80px;
-    font-size: 30px;
-    color: #07387e;
-    border-radius: 15px;
-    background: none;
-}
-.usercalendar .react-calendar__navigation button:enabled:hover,
-.usercalendar .react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
-}
-.usercalendar .react-calendar__navigation button[disabled] {
-    background-color: #f0f0f0;
-}
-.usercalendar .react-calendar__month-view__weekdays {
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-}
-.usercalendar .react-calendar__month-view__weekdays__weekday {
-    color: #757575;
-}
-.usercalendar .react-calendar__month-view__days__day--weekend {
-    color: #d10000;
-}
-.usercalendar .react-calendar__month-view__days__day--neighboringMonth {
-    color: #c4c4c4;
-}
-
-.usercalendar .react-calendar__tile {
-    border-radius: 100%;
-    max-width: 100%;
-    text-align: center;
-    padding: 33px 20px;
-    background: none;
-}
-.usercalendar .react-calendar__tile:disabled {
-    background-color: #f0f0f0;
-}
-.usercalendar .react-calendar__tile:enabled:hover,
-.usercalendar .react-calendar__tile:enabled:focus {
-    background-color: #e6e6e6;
-}
-.usercalendar .react-calendar__tile--now {
-    background: #c4c4c4;
-}
-.usercalendar .react-calendar__tile--now:enabled:hover,
-.usercalendar .react-calendar__tile--now:enabled:focus {
-    background: #49cdf5;
-}
-.usercalendar .react-calendar__tile--hasActive {
-    background: #76baff;
-}
-.usercalendar .react-calendar__tile--hasActive:enabled:hover,
-.usercalendar .react-calendar__tile--hasActive:enabled:focus {
-    background: #a9d4ff;
-}
-.usercalendar .react-calendar__tile--active {
-    background: #006edc;
-    color: white;
-}
-.usercalendar .react-calendar__tile--active:enabled:hover,
-.usercalendar .react-calendar__tile--active:enabled:focus {
-    background: #1087ff;
-}
-.usercalendar .react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: #e6e6e6;
-}
-.usercalendar .psy-card{
+.usercalendar .psy-card {
     display: flex;
     height: 100px;
     width: 100%;
     margin: 0px;
     background-color: #0459ae;
 
-
     flex-direction: column;
 }
-.usercalendar .dropDown-calendar{
+.usercalendar .dropDown-calendar {
     display: flex;
     background-color: #eee;
     color: #07387e;
     flex-direction: row;
-    width: 1400px;
+    width: 1360px;
     padding-top: 20px;
     padding-left: 20px;
     border-radius: 15px;
     justify-content: space-around;
 }
-.usercalendar .testecalendar{
+.usercalendar .testecalendar {
     display: flex;
     width: 800px;
     margin: 0px;
     flex-direction: column;
 }
-.usercalendar .checkboxColumn{
+.usercalendar .checkboxColumn {
     display: flex;
     background-color: #0459ae;
     flex-direction: column;
 }
-.usercalendar  button{
+.usercalendar button {
     text-decoration: none;
-    border-color:transparent;
+    border-color: transparent;
     outline: transparent;
 }
-.usercalendar .psy-card button{
+.usercalendar .psy-card button {
     height: 100%;
 }
-.usercalendar .psy-card button:focus{
-    background-color: #C4C4C4;
-    
+.usercalendar .psy-card button:focus {
+    background-color: #c4c4c4;
 }
-.usercalendar .column1{
+.usercalendar .column1 {
     display: flex;
     flex-direction: column;
     width: 520px;
     padding-right: 20px;
-    
 }
-.usercalendar .column2{
+.usercalendar .column2 {
     display: flex;
     width: 700px;
     flex-direction: column;
@@ -230,14 +141,14 @@
     padding-left: 20px;
     height: 100%;
 }
-.usercalendar .column2 .schedule-buttons{
+.usercalendar .column2 .schedule-buttons {
     display: flex;
 
     width: 600px;
     justify-content: space-between;
 }
-.usercalendar .column2 .schedule-buttons button{
-    background-color: #00C048;
+.usercalendar .column2 .schedule-buttons button {
+    background-color: #00c048;
     color: #f0f0f0;
     width: 176px;
     height: 47px;
@@ -256,21 +167,74 @@
     width: 800px;
     align-self: flex-end;
 }
-.usercalendar .hours-disponibility{
+.usercalendar .hours-disponibility {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
     padding-bottom: 20px;
 }
-.usercalendar .noHours{
-    display: flex;
-    background-color:#FF2C00;
-    color: #4A0D00;
-    flex-direction: row;
-    width: 1400px;
+.usercalendar .noHours {
+    background-color: #ff2c00;
+    color: #4a0d00;
+    border-radius: 15px;
     padding-top: 20px;
     padding-left: 20px;
-    border-radius: 15px;
-    align-items: center;
-    justify-content: center;
+
+    width: 100%;
+}
+.usercalendar .navBarComponent .navLinks {
+    display: none !important;
+}
+
+@media only screen and (max-width: 1300px) {
+    .usercalendar .tabela {
+        flex-direction: column;
+        width: 550px;
+        min-height: 800px;
+        margin: 80px 0 80px 0;
+    }
+
+    .usercalendar .table-right {
+        width: 550px;
+    }
+
+    .usercalendar .schedules {
+        border: none;
+    }
+
+    .usercalendar .table-right h1 {
+        font: 500 2rem Poppins;
+    }
+    .usercalendar .content {
+        max-width: 550px;
+        min-width: 0px;
+    }
+}
+@media only screen and (max-width: 994px) {
+    .usercalendar .navBarComponent .navLinks {
+        display: flex !important;
+    }
+    .usercalendar .sidebar {
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 910px) {
+    .usercalendar .tabela {
+        width: 85%;
+        min-width: 280px;
+    }
+    .usercalendar .navBarComponent .navLinks {
+        display: flex !important;
+    }
+    .usercalendar .sidebar {
+        display: none !important;
+    }
+
+    .usercalendar .table-right {
+        width: 100%;
+    }
+    .usercalendar .noHours {
+        width: 85%;
+        min-width: 280px;
+    }
 }

@@ -14,7 +14,7 @@ import figureCaption from '../../assets/images/figureCaption.png';
 import api from '../../services/api';
 import './styles.css';
 
-export default function PsychologistProfile(props) {
+export default function PsychologistProfile() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -241,13 +241,13 @@ export default function PsychologistProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 2000);
+        }, 10000);
+        return [];
     }
 
     return (
         <>
             <NavBar
-                actualUser={props.location.state.data}
                 bond="Psychologist"
             />
             <div className="psyProfileContainer" onLoad={renderPage}>
@@ -267,12 +267,20 @@ export default function PsychologistProfile(props) {
                                         <input
                                             id="image"
                                             type="file"
+                                            accept=".png, .jpg, .jpeg"
                                             onChange={async (e) => {
-                                                uploadImage(e);
-                                                const image = await convertBase64(
-                                                    e.target.files[0],
-                                                );
-                                                setCurrentImage(image);
+                                                const compar = e.target.files[0].type.split('/');
+                                                if (compar[0] === 'image') {
+                                                    uploadImage(e);
+                                                    const image = await convertBase64(
+                                                        e.target.files[0],
+                                                    );
+                                                    setCurrentImage(image);
+                                                } else {
+                                                    setShow(true);
+                                                    setVariant('danger');
+                                                    setAlertText('Formato de arquivo não aceito como Foto');
+                                                }
                                             }}
                                         />
                                     }

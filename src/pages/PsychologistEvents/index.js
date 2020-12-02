@@ -4,8 +4,9 @@ import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
+import SideBar from '../../components/SideBar';
 
-export default function PsychologistEvents(props) {
+export default function PsychologistEvents() {
     const [date, setDate] = useState(new Date());
     const [psychologist, setPsychologist] = useState({});
     const accessToken = localStorage.getItem('accessToken');
@@ -16,7 +17,7 @@ export default function PsychologistEvents(props) {
         }).then((response) => {
             setPsychologist(response.data);
         });
-    }, []);
+    });
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
@@ -28,7 +29,16 @@ export default function PsychologistEvents(props) {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Psychologist" actualUser={props.location.state.data} />
+            <NavBar
+                className="navBar"
+                bond="Psychologist"
+                actualUser={psychologist}
+            />
+            <SideBar
+                className="sidebar"
+                bond="Psychologist"
+                actualUser={psychologist}
+            />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -46,36 +56,41 @@ export default function PsychologistEvents(props) {
                             <h1>{'Próximos Eventos'}</h1>
                         </div>
                         <div className="schedules">
-                            {
-                                psychologist.weekDay
-                                    && psychologist.weekDay.length > 0
-                                    ? psychologist.weekDay.map((workDay, index) => (
-                                        dateCheck(workDay)
-                                            ? <div
-                                                eslint-disable-next-line no-underscore-dangle
-                                                key={index}
-
-                                            >
-                                                {workDay.appointment.map((appointment) => (
-                                                    appointment.scheduled
-                                                        ? <div className="testeTotal">
-                                                            <h3>{`- ${appointment.time}`}</h3>
-                                                            <h3>
-                                                                Atendimento com {appointment.name}
-                                                            </h3>
-                                                        </div>
-                                                        : <div></div>
-                                                ))}
-                                            </div>
-                                            : <div></div>
-                                    ))
-                                    : <div></div>}
-
+                            {psychologist.weekDay
+                            && psychologist.weekDay.length > 0 ? (
+                                    psychologist.weekDay.map((workDay, index) => (dateCheck(workDay) ? (
+                                        <div
+                                            eslint-disable-next-line
+                                            no-underscore-dangle
+                                            key={index}
+                                        >
+                                            {workDay.appointment.map(
+                                                (appointment) => (appointment.scheduled ? (
+                                                    <div className="testeTotal">
+                                                        <h3>{`- ${appointment.time}`}</h3>
+                                                        <h3>
+                                                                Atendimento com{' '}
+                                                            {
+                                                                appointment.name
+                                                            }
+                                                        </h3>
+                                                    </div>
+                                                ) : (
+                                                    <div></div>
+                                                )),
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <div></div>
+                                    )))
+                                ) : (
+                                    <div></div>
+                                )}
                         </div>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
