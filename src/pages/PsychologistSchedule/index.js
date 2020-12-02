@@ -93,7 +93,7 @@ export default function PsychologistSchedule() {
                                     <div className="select-box">
                                         <label>Data</label>
                                         <input
-                                            value={scheduleItem.day+'/'+scheduleItem.month+'/'+scheduleItem.year}
+                                            value={`${scheduleItem.day}/${scheduleItem.month}/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"
                                         />
@@ -128,8 +128,8 @@ export default function PsychologistSchedule() {
                                         Remover
                                     </button>
                                 </div>
-                                ))}
-                            </div>
+                            ))}
+                        </div>
                         <footer className="footer">
                             <button type="submit">
                                 Salvar cadastro

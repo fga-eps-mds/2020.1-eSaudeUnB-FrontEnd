@@ -190,9 +190,10 @@ export default function UserMain(props) {
                                                                             value={
                                                                                 appointment._id
                                                                             }
-                                                                            onChange={() => setSelectedValue(
-                                                                                appointment._id,
-                                                                            )
+                                                                            onChange={
+                                                                                () => setSelectedValue(
+                                                                                    appointment._id,
+                                                                                )
                                                                             }
                                                                         />
                                                                         {
