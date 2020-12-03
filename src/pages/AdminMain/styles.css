@@ -1,4 +1,4 @@
-.list-container{
+.list-container {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -14,13 +14,13 @@
 .list-container .alert-component {
     position: fixed;
     width: 350px;
-    height: 122px;
+    height: 153px;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
 }
 
-.list-container .alert{
+.list-container .alert {
     width: 100%;
 }
 
@@ -36,25 +36,24 @@
     background-color: #003A70 !important;
 }
 
-.list-container .psychologist-list{
-    display: grid;
+.list-container .psychologist-list {
+    display: flex;
     grid-template-columns: 280px 1fr;
     grid-template-rows: 100%;
-    grid-template-areas: "nav" "cards";
-    margin-top: 20px;
-    
-    width: 100%;    
+    grid-template-areas: 'nav' 'cards';
+    flex-wrap: wrap;
+    width: 100%;
     height: 98vh;
     padding: 0 20px;
 }
 
-.list-container .count{
+.list-container .count {
     margin-top: 30px;
     color: #333;
 }
 
 .psychologist-list .psychologists-cards {
-    grid-area: "cards";
+    grid-area: 'cards';
 
     margin-top: 10px;
 
@@ -63,7 +62,7 @@
     align-self: flex-start;
 }
 
-.psychologist-list article{
+.psychologist-list article {
     width: 350px;
     height: 280px;
     word-wrap: break-word;
@@ -99,19 +98,21 @@
 .psychologist-list article button:hover{
     filter: brightness(150%);
     color: white;
-    transition:all 0.3s;
+    transition: all 0.3s;
 }
 
 .psychologist-list .nav {
-    grid-area: "nav";
-
+    grid-area: 'nav';
+    width: 350px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 
-.psychologist-list .new-psychologist{
+.psychologist-list .new-psychologist {
     width: 260px;
     height: 60px;
 
@@ -173,4 +174,35 @@
     color: #003A70;
     font-weight: bold;
     margin-left: 10px;
+}
+
+@media only screen and (max-width: 450px) {
+    .list-container .psychologist-list {
+        align-items: center;
+        justify-content: center;
+    }
+    .psychologist-list .psychologists-cards {
+        align-items: center;
+        justify-content: center;
+    }
+    .psychologist-list article {
+        margin: 0 0 20px 0;
+        width: 90%;
+    }
+    .psychologist-list .nav {
+        margin: 0 0 20px 0;
+        width: 90%;
+    }
+    .psychologist-list .new-psychologist {
+        width: 220px;
+        height: 60px;
+    }
+    .list-container .count {
+        margin-top: 20px;
+        font-size: 13px;
+    }
+    .list-container .alert-component {
+        width: 81%;
+        height: 150px;
+    }
 }

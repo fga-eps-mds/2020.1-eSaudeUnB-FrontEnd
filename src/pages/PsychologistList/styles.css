@@ -28,11 +28,6 @@
     justify-content: flex-start;
 }
 
-.psychologistListContainer .psy {
-    align-self: center;
-    margin-top: 1.5rem;
-    width: 915px;
-}
 .psychologistListContainer .cardToggle {
     display: flex;
     align-items: bottom;
@@ -72,6 +67,8 @@
     padding: 10px 20px 10px 20px;
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+    min-width: 230px;
 }
 
 .psychologistListContainer .patientInfos {
@@ -105,4 +102,69 @@
 }
 .psychologistListContainer button {
     border-color: transparent;
+}
+
+@media only screen and (max-width: 950px) {
+    .psychologistListContainer .content {
+        width: 90%;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .psychologistListContainer .patients {
+        width: 90%;
+    }
+    .psychologistListContainer .searcBarComponent {
+        justify-content: center;
+        width: 200%;
+    }
+    .psychologistListContainer .searcBarComponent input {
+        height: 30px;
+        width: 30%;
+    }
+    .psychologistListContainer .searcBarComponent img {
+        height: 18px;
+        margin-left: -45px;
+    }
+    .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
+        font: 700 26px Poppins;
+    }
+    .psychologistListContainer .cardToggle > a {
+        text-align: center;
+    }
+    .psychologistListContainer .patientTab .patientInfos .minPatient {
+        word-break: break-word;
+    }
+}
+
+@media only screen and (max-width: 613px) {
+    .psychologistListContainer .patientInfos {
+        flex-direction: column;
+    }
+    .psychologistListContainer .patientTab {
+        margin: 0px;
+        margin: 20px 18px 50px 18px;
+        padding: 14px;
+        flex-direction: column;
+    }
+    .psychologistListContainer .content {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        overflow-x: hidden;
+    }
+    .psychologistListContainer .patientTab .patientInfos .patientImg {
+        margin: 0px;
+    }
+    .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
+        font: 700 22px Poppins;
+    }
+    .psychologistListContainer .minPatient {
+        width: 100%;
+    }
+    .psychologistListContainer .cardToggle button {
+        width: 200px;
+        font-size: 16px;
+    }
+    .psychologistListContainer .patientTab button {
+        margin-top: 20px;
+    }
 }

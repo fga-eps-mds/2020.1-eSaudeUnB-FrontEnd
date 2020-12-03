@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
+import '../../assets/styles/Calendar.css';
 import NavBar from '../../components/NavBar';
+import SideBar from '../../components/SideBar';
 
 export default function UserMain(props) {
     const [date, setDate] = useState(new Date());
@@ -62,27 +64,34 @@ export default function UserMain(props) {
         const { email, weekDay } = userSelected;
         const { appointments } = userPatient;
 
-        await api.put('/calendary/update',
+        await api.put(
+            '/calendary/update',
             {
                 email,
                 weekDay,
-            }, {
+            },
+            {
                 headers: { authorization: accessToken },
-            });
+            },
+        );
 
-        await api.put(`/user/schedule/${userPatient.email}`, { appointments }, {
-            headers: { authorization: accessToken },
-        });
+        await api.put(
+            `/user/schedule/${userPatient.email}`,
+            { appointments },
+            {
+                headers: { authorization: accessToken },
+            },
+        );
 
         window.location.reload();
     }
 
     return (
-        <div className="usercalendar">
-            <NavBar className="navBar" bond="Patient" />
-            <div className="content">
-                {!userSelected.weekDay ? (
-
+        <>
+            <NavBar className="navBar" bond="Patient" actualUser={user} />
+            <div className="usercalendar">
+                <SideBar className="sidebar" bond="Patient" actualUser={user} />
+                <div className="content">
                     <div className="tabela">
                         <div className="calendar">
                             <Calendar
@@ -97,98 +106,154 @@ export default function UserMain(props) {
                         </div>
                         <div className="table-right">
                             <div className="calendar-title">
-                                <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1}`}</h1>
+                                <h1>{`Horários disponíveis em ${date.getDate()}/${
+                                    date.getMonth() + 1
+                                }`}</h1>
                             </div>
                             <div className="schedules">
                                 {psychologists.map((psychologist, index) => (
-
-                                    <div
-                                        key={index}
-                                        className="schedule-box"
-                                    >
-                                        {psychologist.weekDay.map((workDay, index) => (
-                                            dateCheck(workDay.weekDay)
-                                                ? <div className="testecalendar" key={index}>
-                                                    {show ? setShow(false) : ''}
-                                                    <div className="psy-card"
+                                    <div key={index} className="schedule-box">
+                                        {psychologist.weekDay.map(
+                                            (workDay, index) => (dateCheck(workDay.weekDay) ? (
+                                                <div
+                                                    className="testecalendar"
+                                                    key={index}
+                                                >
+                                                    {show
+                                                        ? setShow(false)
+                                                        : ''}
+                                                    <div
+                                                        className="psy-card"
                                                         key={index}
-
                                                     >
                                                         <button
-                                                            onClick={() => setUserSelected(psychologist)}>
-                                                            <h3>{psychologist.bond}:
-                                                                {psychologist.name} {psychologist.lastName}</h3>
+                                                            onClick={() => setUserSelected(
+                                                                psychologist,
+                                                            )
+                                                            }
+                                                        >
+                                                            <h3>
+                                                                {
+                                                                    psychologist.bond
+                                                                }
+                                                                    :
+                                                                {
+                                                                    psychologist.name
+                                                                }{' '}
+                                                                {
+                                                                    psychologist.lastName
+                                                                }
+                                                            </h3>
                                                         </button>
-
                                                     </div>
                                                 </div>
-                                                : <div key={index}>{!show ? setShow(true) : ''}</div>
-                                        ))}
+                                            ) : (
+                                                <div key={index}>
+                                                    {!show
+                                                        ? setShow(true)
+                                                        : ''}
+                                                </div>
+                                            )),
+                                        )}
                                     </div>
                                 ))}
                             </div>
                         </div>
-
                     </div>
-                ) : (<></>) }
-                {userSelected.weekDay !== undefined
-                    ? <div className="dropDown-calendar">
-                        <div className="column1">
-                            <h3>{userSelected.name} {userSelected.lastName}</h3>
-                            <h3>{userSelected.biography}</h3>
+                    {userSelected.weekDay !== undefined ? (
+                        <div className="dropDown-calendar">
+                            <div className="column1">
+                                <h3>
+                                    {userSelected.name} {userSelected.lastName}
+                                </h3>
+                                <h3>{userSelected.biography}</h3>
+                            </div>
+                            <div className="column2">
+                                <h3>{'Horários Disponíveis:'}</h3>
+                                <form onSubmit={saveAppointment}>
+                                    <div className="hours-disponibility">
+                                        {userSelected.weekDay !== undefined ? (
+                                            userSelected.weekDay.map(
+                                                (workDay) => (dateCheck(
+                                                    workDay.weekDay,
+                                                ) ? (
+                                                        workDay.appointment.map(
+                                                            (appointment) => (appointment.scheduled
+                                                                === false ? (
+                                                                    <label>
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="hour"
+                                                                            key={
+                                                                                appointment._id
+                                                                            }
+                                                                            value={
+                                                                                appointment._id
+                                                                            }
+                                                                            onChange={() => setSelectedValue(
+                                                                                appointment._id,
+                                                                            )
+                                                                            }
+                                                                        />
+                                                                        {
+                                                                            appointment.time
+                                                                        }
+                                                                    </label>
+                                                                ) : (
+                                                                    ''
+                                                                )),
+                                                        )
+                                                    ) : (
+                                                        <div></div>
+                                                    )),
+                                            )
+                                        ) : (
+                                            <div></div>
+                                        )}
+                                    </div>
+                                    <div className="schedule-buttons">
+                                        <button type="submit">Agendar</button>
+                                        <button
+                                            className="cancelSchedule"
+                                            onClick={() => setUserSelected('')}
+                                        >
+                                            Cancelar
+                                        </button>
+                                        <button
+                                            className="waiting-list"
+                                            onClick={() => history.push({
+                                                pathname: '/waiting-list',
+                                                state: {
+                                                    data:
+                                                            props.location.state
+                                                                .data,
+                                                    psychologist: userSelected,
+                                                },
+                                            })
+                                            }
+                                        >
+                                            Lista de espera
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div className="column2">
-                            <h3>{'Horários Disponíveis:'}</h3>
-                            <form onSubmit={saveAppointment}>
-                                <div className="hours-disponibility">
-                                    {userSelected.weekDay !== undefined
-                                        ? userSelected.weekDay.map((workDay) => (
-                                            dateCheck(workDay.weekDay)
-                                                ? workDay.appointment.map((appointment) => (
-                                                    appointment.scheduled === false ? (
-                                                        <label >
-                                                            <input type="radio" name="hour" key={appointment._id} value={appointment._id}
-                                                                onChange={() => setSelectedValue(appointment._id)} />
-                                                            {appointment.time}
-                                                        </label>
-                                                    )
-                                                        : ''
-                                                ))
-                                                : <div></div>))
-                                        : <div></div>
-                                    }
-                                </div>
-                                <div className="schedule-buttons">
-                                    <button type="submit">Agendar</button>
-                                    <button className="cancelSchedule" onClick={() => setUserSelected('')}>Cancelar</button>
-                                    <button
-                                        className="waiting-list"
-                                        onClick={() => history.push({
-                                            pathname: '/waiting-list',
-                                            state: {
-                                                data: props.location.state.data,
-                                                psychologist: userSelected,
-                                            },
-                                        })}>
-                                        Lista de espera
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div> : ''
-                }
-                <div>
-                    {show
-                        ? <div className="noHours">
+                    ) : (
+                        ''
+                    )}
+                    {show ? (
+                        <div className="noHours">
                             <h3>
-                                Desculpe, não temos horários disponíveis em {date.getDate()}/{date.getMonth() + 1}
+                                Desculpe, não temos horários disponíveis em{' '}
+                                {date.getDate()}/{date.getMonth() + 1}
                             </h3>
                         </div>
-                        : <div></div>
-                    }
+                    ) : (
+                        <div></div>
+                    )}
                 </div>
             </div>
-        </div >
+        </>
     );
 }
 

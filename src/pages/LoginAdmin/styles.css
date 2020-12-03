@@ -49,7 +49,7 @@
     color: #003A70;
     border: 0;
 
-    font-size: 14px;
+    font-size: 16px;
     line-height: 27px;
 }
 
@@ -91,4 +91,21 @@
     transform: translateX(-50%);
     top: 0;
     left: 50%;
+}
+
+@media only screen and (max-width: 553px) {
+    .loginAdminContainer .form {
+        width: 280px; 
+        height: 450px;
+    }
+    .loginAdminContainer .form input {
+        width: 240px;
+        font-size: 14px;  
+    }
+
+    .loginAdminContainer .form .button {
+        width: 150px;
+        height: 35px;
+        font-size: 16px;
+    }
 }

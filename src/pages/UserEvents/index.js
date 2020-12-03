@@ -27,8 +27,8 @@ export default function UserEvents() {
     }
 
     return (
-        <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" />
+        <div className="usrEventsCalendar">
+            <NavBar className="navBar" bond="Patient" actualUser={user} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">

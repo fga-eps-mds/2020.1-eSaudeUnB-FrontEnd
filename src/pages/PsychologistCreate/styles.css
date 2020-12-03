@@ -159,3 +159,35 @@
       transform: rotate(360deg);
     }
   }
+  
+@media only screen and (max-width: 600px) {
+    .psychologist-container .psychologist-create .form {
+        margin: 120px 0 20px 0;
+        width: 85%;
+        height: auto;
+    }
+    .psychologist-container .psychologist-create .form h2 {
+        font-size: 28px;
+    }
+
+    .psychologist-container .psychologist-create .form .psyCreate input {
+        width: 100%;
+    }
+
+    .psychologist-container .psychologist-create .form .psyCreate .input {
+        width: 70%;
+    }
+    .psychologist-container .psychologist-create .form .psyCreate select {
+        width: 70%;
+    }
+    .psychologist-container .form .alertContent {
+        width: 70%;
+    }
+
+    .psychologist-container .psychologist-create .form .psyCreate .button {
+        font-size: 20px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        width: 150px;
+    }
+}
