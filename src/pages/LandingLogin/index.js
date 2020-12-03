@@ -166,8 +166,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                    <div></div>
-                )}
+                <div></div>
+            )}
             <div className="content">
                 <Logo />
 
@@ -225,10 +225,10 @@ export default function LandingLogin() {
                                                 </p>
                                             </div>
                                         ) : (
-                                                <div className="alertContent">
-                                                    <p></p>
-                                                </div>
-                                            )}
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </Modal.Body>
