@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import userIcon from '../assets/images/userIcon.svg';
@@ -7,6 +8,7 @@ import '../assets/styles/SideBar.css';
 
 export default function SideBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
+    const [userName, setUserName] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
 
@@ -17,7 +19,7 @@ export default function SideBar({ actualUser, bond }) {
                     const response = await api.get(`/psychologist/${user}`, {
                         headers: { authorization: accessToken },
                     });
-
+                    setUserName(response.data.name);
                     setUserImage(
                         atob(
                             Buffer.from(
@@ -27,11 +29,10 @@ export default function SideBar({ actualUser, bond }) {
                         ),
                     );
                 } else {
-                    const response = await api.get(`/user/${user}`,
-                        {
-                            headers: { authorization: accessToken },
-                        });
-
+                    const response = await api.get(`/user/${user}`, {
+                        headers: { authorization: accessToken },
+                    });
+                    setUserName(response.data.name);
                     setUserImage(
                         atob(
                             Buffer.from(
@@ -45,7 +46,7 @@ export default function SideBar({ actualUser, bond }) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, [bond]);
+    }, [actualUser, bond]);
 
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
@@ -64,35 +65,78 @@ export default function SideBar({ actualUser, bond }) {
         <div className="SideBar">
             <div id="mySidebar" className="sidebar">
                 <div id="sideBarInterior">
-                    <arrow
+                    <div
                         /* eslint-disable-next-line */
                         href="javascript:void(0)"
                         className="closebtn"
                         onClick={() => closeNav()}
                     >
                         <img className="arrow" src={arrow} alt="menu" />
-                    </arrow>
+                    </div>
                     <img
                         className="userIcon"
                         src={userImage || userIcon}
                         alt="menu"
                     />
-                    <p>{actualUser.name}</p>
-                    <a href="/">Proximos Eventos</a>
-                    <a href="/">Lista de Profissionais</a>
-                    <a href="/">Meu Perfil</a>
-                    <a href="/">eSaude</a>
+                    <p>{userName}</p>
+                    {bond === 'Psychologist' ? (
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/patient/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Lista de Pacientes
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/schedule',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Configurar meu cronograma
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Lista de Psicologos
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/events',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Consultas Marcadas
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
 
             <div id="main">
-                <arrow
-                    id="openbtn"
-                    className="openbtn"
-                    onClick={() => openNav()}
-                >
+                <div id="openbtn" className="openbtn" onClick={() => openNav()}>
                     <img className="arrowOpen" src={arrow} alt="menu" />
-                </arrow>
+                </div>
             </div>
         </div>
     );

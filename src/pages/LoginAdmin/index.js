@@ -43,14 +43,15 @@ export default function AdminLogin() {
 
             if (response.status === 200) {
                 localStorage.setItem('accessToken', response.data.accessToken);
-                history.push('/admin/psychologist/list');
+                return history.push('/admin/psychologist/list');
             }
         } catch (err) {
             setShow(true);
             setVariant('danger');
             setAlertText('Ocorreu algum erro no seu login, tente novamente.');
         }
-        setInterval(() => {
+
+        return setInterval(() => {
             setShow(false);
         }, 2000);
     }

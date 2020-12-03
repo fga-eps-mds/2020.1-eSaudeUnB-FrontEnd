@@ -73,9 +73,9 @@ export default function PsychologistSchedule() {
     }
 
     function appointmentHours(start, end, duration) {
-        let actualHour = parseInt(start.substring(0, 2));
-        let actualMinutes = parseInt(start.substring(3, 5));
-        duration = parseInt(duration);
+        let actualHour = parseInt(start.substring(0, 2), 10);
+        let actualMinutes = parseInt(start.substring(3, 5), 10);
+        const durationParse = parseInt(duration, 10);
         let hour = {};
         const hours = [{}];
         hours[0] = {
@@ -84,14 +84,16 @@ export default function PsychologistSchedule() {
         };
 
         do {
-            if (actualMinutes + duration >= 60) {
+            if (actualMinutes + durationParse >= 60) {
                 actualHour += 1;
-                actualMinutes = 60 - (actualMinutes + duration);
+                actualMinutes = 60 - (actualMinutes + durationParse);
             } else {
-                actualMinutes += duration;
+                actualMinutes += durationParse;
             }
             hour = {
-                time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`}`,
+                time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${
+                    actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`
+                }`,
                 scheduled: false,
             };
             if (hour.time !== end) {
@@ -131,6 +133,21 @@ export default function PsychologistSchedule() {
         setScheduleItems(temp);
     }
 
+    function calculateAttendance(start, end, duration) {
+        const startTimeParser = parseInt(start.substring(0, 2), 10) * 60
+            + parseInt(start.substring(3, 5), 10);
+        const endTimeParser = parseInt(end.substring(0, 2), 10) * 60
+                + parseInt(end.substring(3, 5), 10);
+        const durationParser = parseInt(duration, 10);
+
+        const differenceRangeTime = (endTimeParser - startTimeParser);
+        let minutesRemaining = 0;
+        if (differenceRangeTime % durationParser !== 0) {
+            minutesRemaining = differenceRangeTime % durationParser;
+        }
+        return minutesRemaining;
+    }
+
     function verifyCalendarData() {
         let minutes;
         for (let i = 0; i < scheduleItems.length; i++) {
@@ -146,7 +163,7 @@ export default function PsychologistSchedule() {
                 return false;
             }
 
-            if (!scheduleItems[i].from || !scheduleItems[i].to) {
+            if (!scheduleItems[i].from || !scheduleItems[i].to || !scheduleItems[i].duration) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -158,7 +175,7 @@ export default function PsychologistSchedule() {
                 return false;
             }
 
-            if (scheduleItems[i].duration <= 0) {
+            if (scheduleItems[i].duration && scheduleItems[i].duration <= 0) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -169,8 +186,11 @@ export default function PsychologistSchedule() {
                 }, 3500);
                 return false;
             }
-            // function to be edited earlier
-            minutes = calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            minutes = calculateAttendance(
+                scheduleItems[i].from,
+                scheduleItems[i].to,
+                scheduleItems[i].duration,
+            );
 
             if (minutes > 0) {
                 setShow(true);
@@ -183,7 +203,11 @@ export default function PsychologistSchedule() {
                 }, 3500);
                 return false;
             }
-            const value = appointmentHours(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            const value = appointmentHours(
+                scheduleItems[i].from,
+                scheduleItems[i].to,
+                scheduleItems[i].duration,
+            );
             scheduleItems[i].appointment = value;
         }
 
@@ -212,151 +236,141 @@ export default function PsychologistSchedule() {
         }
     }
 
-    function calculateAttendance(start, end, duration) {
-        start = parseInt(start.substring(0, 2)) * 60 + parseInt(start.substring(3, 5));
-        end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
-        duration = parseInt(duration);
-
-        const number = (end - start);
-        let minutesRemaining = 0;
-        if (number % duration !== 0) {
-            minutesRemaining = number % duration;
-        }
-        return minutesRemaining;
-    }
-
     return (
-        <div className="psychologistSchedule">
-            <NavBar
-                className="navBar"
-                bond="Psychologist"
-            />
-            <div className="content">
-                {show ? (
-                    <Alert className="alert" variant={variant}>
-                        {alertText}
-                    </Alert>
-                ) : (
-                    <div></div>
-                )}
-                <form className="form" onSubmit={putCalendar}>
-                    <div className="formContent">
-                        <legend className="legend">
-                            Cadastrar horários disponíveis
-                            <button type="button" onClick={addNewScheduleItem}>
-                                + Novo Horário
-                            </button>
-                        </legend>
-
-                        <div className="schedule">
-                            {scheduleItems.map((scheduleItem, index) => (
-                                <div
-                                    key={scheduleItem._id || scheduleItem.id}
-                                    className="schedule-item"
+        <>
+            <NavBar className="navBar" bond="Psychologist" />
+            <div className="psychologistSchedule">
+                <div className="content">
+                    {show ? (
+                        <Alert className="alert" variant={variant}>
+                            {alertText}
+                        </Alert>
+                    ) : (
+                        <div></div>
+                    )}
+                    <form className="form" onSubmit={putCalendar}>
+                        <div className="formContent">
+                            <legend className="legend">
+                                Cadastrar horários disponíveis
+                                <button
+                                    type="button"
+                                    onClick={addNewScheduleItem}
                                 >
-                                    <div className="select-box">
-                                        <label>Dia da Semana</label>
-                                        <select
-                                            value={scheduleItem.weekDay}
-                                            name="weekDay"
-                                            label="Dia da semana"
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'weekDay',
-                                                e.target.value,
-                                            )
+                                    + Novo Horário
+                                </button>
+                            </legend>
+
+                            <div className="schedule">
+                                {scheduleItems.map((scheduleItem, index) => (
+                                    <div
+                                        key={
+                                            scheduleItem._id || scheduleItem.id
+                                        }
+                                        className="schedule-item"
+                                    >
+                                        <div className="select-box">
+                                            <label>Dia da Semana</label>
+                                            <select
+                                                value={scheduleItem.weekDay}
+                                                name="weekDay"
+                                                label="Dia da semana"
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'weekDay',
+                                                    e.target.value,
+                                                )
+                                                }
+                                            >
+                                                {weekDays.map((option) => (
+                                                    <option
+                                                        key={option.value}
+                                                        value={option.value}
+                                                    >
+                                                        {option.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <label>Das</label>
+                                            <input
+                                                name="from"
+                                                label="Das"
+                                                type="time"
+                                                value={scheduleItem.from}
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'from',
+                                                    e.target.value,
+                                                )
+                                                }
+                                            />
+                                        </div>
+
+                                        <div className="input-box">
+                                            <label>Até</label>
+                                            <input
+                                                name="to"
+                                                label="Até"
+                                                type="time"
+                                                value={scheduleItem.to}
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'to',
+                                                    e.target.value,
+                                                )
+                                                }
+                                            />
+                                        </div>
+
+                                        <div className="input-box">
+                                            <label>Duração da consulta</label>
+                                            <input
+                                                name="duration"
+                                                label="duration"
+                                                type="number"
+                                                min="0"
+                                                placeHolder="Minutos"
+                                                value={scheduleItem.duration}
+                                                onChange={(e) => setScheduleItemsValue(
+                                                    index,
+                                                    'duration',
+                                                    e.target.value,
+                                                )
+                                                }
+                                            />
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => removeScheduleItem(index)
                                             }
                                         >
-                                            {weekDays.map((option) => (
-                                                <option
-                                                    key={option.value}
-                                                    value={option.value}
-                                                >
-                                                    {option.label}
-                                                </option>
-                                            ))}
-                                        </select>
+                                            Remover
+                                        </button>
                                     </div>
+                                ))}
+                            </div>
 
-                                    <div className="input-box">
-                                        <label>Das</label>
-                                        <input
-                                            name="from"
-                                            label="Das"
-                                            type="time"
-                                            value={scheduleItem.from}
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'from',
-                                                e.target.value,
-                                            )
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="input-box">
-                                        <label>Até</label>
-                                        <input
-                                            name="to"
-                                            label="Até"
-                                            type="time"
-                                            value={scheduleItem.to}
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'to',
-                                                e.target.value,
-                                            )
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="input-box">
-                                        <label>Duração da consulta (minutos)</label>
-                                        <input
-                                            name="duration"
-                                            label="duration"
-                                            type="number"
-                                            min="0"
-                                            value={scheduleItem.duration}
-                                            onChange={(e) => setScheduleItemsValue(
-                                                index,
-                                                'duration',
-                                                e.target.value,
-                                            )
-                                            }
-                                        />
-                                    </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => removeScheduleItem(index)
-                                        }
-                                    >
-                                        Remover
-                                    </button>
-                                </div>
-                            ))}
+                            <footer className="footer">
+                                <Link
+                                    className="link"
+                                    to={{
+                                        pathname: '/psychologist/calendar',
+                                        state: {
+                                            data: user,
+                                        },
+                                    }}
+                                >
+                                    Configurações avançadas
+                                </Link>
+                                <button type="submit">Salvar cadastro</button>
+                            </footer>
                         </div>
-
-                        <footer className="footer">
-                            <Link
-                                className="link"
-                                to={{
-                                    pathname: '/psychologist/calendar',
-                                    state: {
-                                        data: user,
-                                    },
-                                }}
-                            >
-                                Configurações avançadas
-                            </Link>
-                            <button type="submit">
-                                Salvar cadastro
-                            </button>
-                        </footer>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

@@ -1,17 +1,16 @@
 .psychologistcalendar {
     width: 100%;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psychologistcalendar .content {
-    width: 915px;
     height: 100%;
+    min-height: 530px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,11 +18,10 @@
 .psychologistcalendar .tabela {
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
     align-items: center;
-    width: 1400px;
+    min-height: 572px;
     border-radius: 15px;
     display: flex;
     background-color: #eee;
-    height: 600px;
 }
 
 .psychologistcalendar .tabela .calendar {
@@ -32,7 +30,7 @@
     justify-content: center;
 }
 .psychologistcalendar .table-right {
-    border-left: 2px solid #0459ae;
+    border-left: 2px solid #07387e;
     height: 530px;
     width: 500px;
     text-align: center;
@@ -42,8 +40,8 @@
 }
 .psychologistcalendar .table-right h1 {
     margin-left: 30px;
-    font: 500 34px Poppins;
-    color: #0459ae;
+    font: 500 34px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #07387e;
     display: flex;
     text-align: center;
 }
@@ -51,7 +49,7 @@
 .psychologistcalendar .table-right button {
     border: none;
     color: #d10000;
-    font: 500 18px Poppins;
+    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     transition: 0.2s;
     width: 100%;
     height: 40px;
@@ -63,11 +61,11 @@
 }
 
 .psychologistcalendar .table-right button + button {
-    color: #0459ae;
+    color: #07387e;
 }
 .psychologistcalendar .table-right button + button:hover {
     color: #eee;
-    background-color: #0459ae;
+    background-color: #07387e;
 }
 
 .psychologistcalendar .schedules {
@@ -75,7 +73,7 @@
     height: 80%;
     padding-left: 30px;
     overflow: auto;
-    font: 500 1.3rem Poppins;
+    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
 }
 
@@ -94,8 +92,8 @@
 .psychologistcalendar .schedules .schedule-box button {
     background: none;
     border: none;
-    font: 700 1rem Poppins;
-    color: #0459ae;
+    font: 700 1rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #07387e;
     cursor: pointer;
     padding: 0.6rem;
     width: 30%;
@@ -105,94 +103,30 @@
     color: red;
 }
 
-/* Calendar \/ */
-.react-calendar {
-    margin: 30px;
-    width: 500px;
-    height: 530px;
-    background: #eee;
-    border-radius: 15px;
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.25));
-}
+@media only screen and (max-width: 1000px) {
+    .psychologistcalendar .content {
+        width: auto;
+    }
+    .psychologistcalendar .tabela {
+        flex-direction: column;
+        width: auto;
+    }
 
-.react-calendar button {
-    margin: 0;
-    border: 0;
-    outline: none;
-}
-.react-calendar button:enabled:hover {
-    cursor: pointer;
-}
-.react-calendar__navigation {
-    height: 70px;
-}
-.react-calendar__navigation button {
-    width: 40px;
-    font-size: 25px;
-    color: #07387e;
-    border-radius: 15px;
-    background: none;
-}
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
-}
-.react-calendar__navigation button[disabled] {
-    background-color: #f0f0f0;
-}
-.react-calendar__month-view__weekdays {
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-}
-.react-calendar__month-view__weekdays__weekday {
-    color: #757575;
-}
-.react-calendar__month-view__days__day--weekend {
-    color: #d10000;
-}
-.react-calendar__month-view__days__day--neighboringMonth {
-    color: #c4c4c4;
-}
-
-.react-calendar__tile {
-    border-radius: 100%;
-    max-width: 100%;
-    text-align: center;
-    padding: 23px 20px;
-    background: none;
-}
-.react-calendar__tile:disabled {
-    background-color: #f0f0f0;
-}
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-    background-color: #e6e6e6;
-}
-.react-calendar__tile--now {
-    background: #c4c4c4;
-}
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-    background: #49cdf5;
-}
-.react-calendar__tile--hasActive {
-    background: #76baff;
-}
-.react-calendar__tile--hasActive:enabled:hover,
-.react-calendar__tile--hasActive:enabled:focus {
-    background: #a9d4ff;
-}
-.react-calendar__tile--active {
-    background: #006edc;
-    color: white;
-}
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-    background: #1087ff;
-}
-.react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: #e6e6e6;
+    .psychologistcalendar .table-right {
+        border-left: none;
+        width: 300px;
+        height: auto;
+    }
+    .psychologistcalendar .table-right h1 {
+        text-align: center;
+        font-size: 28px;
+        margin: 0;
+    }
+    .psychologistcalendar .schedules {
+        padding: 0;
+        min-height: 100px;
+    }
+    .psychologistcalendar .table-right button {
+        width: 300px;
+    }
 }

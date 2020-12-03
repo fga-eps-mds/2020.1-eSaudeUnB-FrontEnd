@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+import { BiLoaderCircle } from 'react-icons/bi';
 
 import api from '../../services/api';
 import Input from '../../components/Input';
@@ -19,6 +20,7 @@ export default function PsychologistCreate() {
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
+    const [loadingRequest, setLoadingRequest] = useState(false);
     const history = useHistory();
 
     const [alertContentName, setAlertContentName] = useState(false);
@@ -34,6 +36,7 @@ export default function PsychologistCreate() {
     async function handlePsychologistCreation(event) {
         try {
             event.preventDefault();
+            setLoadingRequest(true);
 
             const user = {
                 name,
@@ -46,7 +49,14 @@ export default function PsychologistCreate() {
                 bond,
             };
 
-            if (!name || !lastName || !email || !gender || !specialization || !bond) {
+            if (
+                !name
+                || !lastName
+                || !email
+                || !gender
+                || !specialization
+                || !bond
+            ) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
@@ -57,15 +67,14 @@ export default function PsychologistCreate() {
             }
 
             const accessToken = localStorage.getItem('accessToken');
-            await api.post('/psychologist', user, {
-                headers: { authorization: accessToken },
-            })
-                // eslint-disable-next-line consistent-return
+            await api
+                .post('/psychologist', user, {
+                    headers: { authorization: accessToken },
+                })
                 .then((response) => {
                     if (response.status === 203) {
                         const { details } = response.data.error;
                         closeAlerts();
-
                         for (
                             let value = 0;
                             value < response.data.error.details.length;
@@ -84,7 +93,8 @@ export default function PsychologistCreate() {
 
                         setInterval(() => {
                             setShow(false);
-                        }, 3500);
+                        }, 6500);
+                        setLoadingRequest(false);
                         return history.push('/admin/psychologist/create');
                     }
 
@@ -95,12 +105,20 @@ export default function PsychologistCreate() {
                         setInterval(() => {
                             setShow(false);
                         }, 6500);
+                        setLoadingRequest(false);
                         return history.push('/admin/psychologist/create');
                     }
 
                     if (response.status === 201) {
+                        setLoadingRequest(false);
+                        setVariant('success');
+                        setAlertText('Profissional criado com sucesso!');
+                        setInterval(() => {
+                            setShow(false);
+                        }, 6500);
                         return history.push('/admin/psychologist/list');
                     }
+
                     return [];
                 })
                 .catch((err) => {
@@ -133,88 +151,98 @@ export default function PsychologistCreate() {
                 <div></div>
             )}
             <div className="psychologist-create">
-                <form className="form" onSubmit={handlePsychologistCreation}>
-                    <h2>Cadastro de Profissionais</h2>
-                    <div className="psyCreate">
-                        <Input
-                            placeholder="Nome"
-                            value={name}
-                            onChange={setName}
-                        />
-                        {alertContentName ? (
-                            <div className="alertContent">
-                                <p>Nome precisa possuir mais de 2 letras.</p>
-                            </div>
-                        ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                {
+                    !loadingRequest ? (
 
-                        <Input
-                            placeholder="Sobrenome"
-                            value={lastName}
-                            onChange={setLastName}
-                        />
-                        {alertContentLastName ? (
-                            <div className="alertContent">
-                                <p>
-                                    Sobrenome precisa possuir mais de 2 letras.
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
+                        <form className="form" onSubmit={handlePsychologistCreation}>
+                            <h2>Cadastro de Profissionais</h2>
+                            <div className="psyCreate">
+                                <Input
+                                    placeholder="Nome"
+                                    value={name}
+                                    onChange={setName}
+                                />
+                                {alertContentName ? (
+                                    <div className="alertContent">
+                                        <p>Nome precisa possuir mais de 2 letras.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
 
-                        <select
-                            name="gender"
-                            onChange={(e) => setGender(e.target.value)}
-                        >
-                            <option value=""> Gênero </option>
-                            <option value="F">Feminino</option>
-                            <option value="M">Masculino</option>
-                            <option value="I">Não Identificar</option>
-                        </select>
-                        <select
-                            name="bond"
-                            onChange={(e) => setBond(e.target.value)}
-                        >
-                            <option value=""> Vínculo </option>
-                            <option value="Psicologo">Psicólogo</option>
-                            <option value="Nutricionista">Nutricionista</option>
-                            <option value="Assistente Social">Assistente social</option>
-                        </select>
-                        <div className="alertContent">
-                            <p></p>
+                                <Input
+                                    placeholder="Sobrenome"
+                                    value={lastName}
+                                    onChange={setLastName}
+                                />
+                                {alertContentLastName ? (
+                                    <div className="alertContent">
+                                        <p>
+                                            Sobrenome precisa possuir mais de 2 letras.
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+
+                                <select
+                                    name="gender"
+                                    className="gender_selection"
+                                    onChange={(e) => setGender(e.target.value)}
+                                >
+                                    <option value=""> Gênero </option>
+                                    <option value="F">Feminino</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="I">Não Identificar</option>
+                                </select>
+                                <select
+                                    name="bond"
+                                    onChange={(e) => setBond(e.target.value)}
+                                >
+                                    <option value=""> Vínculo </option>
+                                    <option value="Psicologo">Psicólogo</option>
+                                    <option value="Nutricionista">Nutricionista</option>
+                                    <option value="Assistente Social">Assistente social</option>
+                                </select>
+                                <div className="alertContent">
+                                    <p></p>
+                                </div>
+
+                                <Input
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={setEmail}
+                                />
+                                {alertContentEmail ? (
+                                    <div className="alertContent">
+                                        <p>E-mail não foi preenchido corretamente.</p>
+                                    </div>
+                                ) : (
+                                    <div className="alertContent">
+                                        <p></p>
+                                    </div>
+                                )}
+                                <Input
+                                    placeholder="Especialidade"
+                                    value={specialization}
+                                    onChange={setSpecialization}
+                                />
+
+                                <button className="button" type="submit">
+                                    Registrar
+                                </button>
+                            </div>
+                        </form>
+                    ) : (
+                        <div className="loading">
+                            <BiLoaderCircle className="load-icon" color="#fff" size="4em" />
                         </div>
-
-                        <Input
-                            placeholder="Email"
-                            value={email}
-                            onChange={setEmail}
-                        />
-                        {alertContentEmail ? (
-                            <div className="alertContent">
-                                <p>E-mail não foi preenchido corretamente.</p>
-                            </div>
-                        ) : (
-                            <div className="alertContent">
-                                <p></p>
-                            </div>
-                        )}
-                        <Input
-                            placeholder="Especialidade"
-                            value={specialization}
-                            onChange={setSpecialization}
-                        />
-
-                        <button className="button" type="submit">
-                            Registrar
-                        </button>
-                    </div>
-                </form>
+                    )
+                }
             </div>
         </div>
     );

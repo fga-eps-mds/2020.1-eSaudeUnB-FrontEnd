@@ -1,11 +1,11 @@
 .userScheduleContainer {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .userScheduleContainer .content {
@@ -13,7 +13,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
+
 .userScheduleContainer .forms {
     display: flex;
     flex-direction: column;
@@ -23,42 +25,116 @@
     border-radius: 15px;
     padding-top: 1.5rem;
     align-items: center;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    margin-top: 100px;
 }
 
 .userScheduleContainer .times {
     height: 100%;
+    width: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    margin-top: 25px;
 }
-.userScheduleContainer .forms button{
+.userScheduleContainer .forms button {
     width: 150px;
     height: 50px;
 
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459AE;
+    background-color: #07387e;
 
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 30px;
 }
-.userScheduleContainer h1{
+
+.psyList {
+    margin-bottom: 20px;
+}
+
+.userScheduleContainer h1 {
     color: #07387e;
+    font-size: 30px;
+}
+
+.userScheduleContainer h2 {
+    color: #07387e;
+    font-size: 20px;
 }
 
 .userScheduleContainer .content .forms select {
-    width: 400px;
+    width: 100%;
     height: 41px;
 
-    color: #fff;
+    color: #003A70;
 
+    padding-top: 15px;
     border: 0px;
-    background-color: #0459ae;
-    border-bottom: 3px solid #0459ae;
+    background-color: transparent;
+    border-bottom: 3px solid #003A70;
 
-    border-radius: 5px;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 27px;
+    margin: -3px 0 10.5px 0;
+}
+.userScheduleContainer .psyList {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 1000px) {
+    .userScheduleContainer .forms {
+        width: 90%;
+        margin-bottom: 100px;
+        height: auto;
+
+        min-height: 500px;
+        max-height: 600px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .userScheduleContainer h1 {
+        font-size: 30px;
+    }
+    .userScheduleContainer h2 {
+        font-size: 18px;
+    }
+    .userScheduleContainer select {
+        font-size: 18px;
+    }
+    .userScheduleContainer .psyList {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .userScheduleContainer h2 {
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .userScheduleContainer .forms select {
+        width: 260px;
+        height: 26px;
+        color: #fff;
+        border: 0px;
+        background-color: #0459ae;
+        border-bottom: 3px solid #0459ae;
+        border-radius: 5px;
+        font-size: 14px;
+        line-height: 27px;
+    }
+}
+@media only screen and (max-width: 280px) {
+    .userScheduleContainer .forms select {
+        width: 230px;
+    }
 }

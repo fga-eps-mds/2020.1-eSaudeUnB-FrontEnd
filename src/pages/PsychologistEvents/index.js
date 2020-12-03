@@ -4,19 +4,20 @@ import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
 import NavBar from '../../components/NavBar';
+import SideBar from '../../components/SideBar';
 
 export default function PsychologistEvents() {
     const [date, setDate] = useState(new Date());
     const [psychologist, setPsychologist] = useState({});
-    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
         api.get(`/psychologist/${localStorage.getItem('user')}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPsychologist(response.data);
         });
-    });
+    }, []);
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
@@ -28,7 +29,16 @@ export default function PsychologistEvents() {
 
     return (
         <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Psychologist" />
+            <NavBar
+                className="navBar"
+                bond="Psychologist"
+                actualUser={psychologist}
+            />
+            <SideBar
+                className="sidebar"
+                bond="Psychologist"
+                actualUser={psychologist}
+            />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -67,7 +77,7 @@ export default function PsychologistEvents() {
                                                         : <div></div>
                                                 ))}
                                             </div>
-                                            : <div></div>
+                                            : <div key={index}></div>
                                     ))
                                     : <div></div>}
 
@@ -75,7 +85,7 @@ export default function PsychologistEvents() {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 

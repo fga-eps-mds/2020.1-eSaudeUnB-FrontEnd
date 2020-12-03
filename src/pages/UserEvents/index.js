@@ -27,8 +27,8 @@ export default function UserEvents() {
     }
 
     return (
-        <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" />
+        <div className="usrEventsCalendar">
+            <NavBar className="navBar" bond="Patient" actualUser={user} />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -54,16 +54,16 @@ export default function UserEvents() {
                                             ? <div
                                                 // eslint-disable-next-line no-underscore-dangle
                                                 key={index}
-
+                                                className="marked-schedule"
                                             >
-                                                <h3>{`- ${appointment.time}`}</h3>
+                                                <h3 className="time-schedule">{`- ${appointment.time}`}</h3>
                                                 <h3>
                                                     Atendimento com {appointment.psychologistName}
                                                 </h3>
                                             </div>
                                             : <div></div>
                                     ))
-                                    : <div></div>}
+                                    : <div ></div>}
                         </div>
                     </div>
                 </div>

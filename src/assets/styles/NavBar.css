@@ -1,6 +1,7 @@
 .navBarComponent {
+    width: 100%;
     height: 70px !important;
-    background: #0a84e3 !important;
+    background: #003A70 !important;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -31,13 +32,55 @@
 }
 
 .navBarComponent .dropdown-toggle {
-    margin: 5px 0 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 0 5px;
     transform: rotate(-90deg);
+    color: white !important;
+    
+}
+
+.dropleft .dropdown-toggle::before {
+    font-size: 30px;
+}
+
+.dropleft .dropdown-toggle:hover {
+    opacity: 0.6;
 }
 
 .navBarComponent .dropdown-menu {
-    margin: 65px -50px 0 0 !important;
+    margin: 50px -40px 0 0 !important;
     transform: rotate(0deg);
+    background-color: #003A70;
+    border-radius: 8%;
+}
+
+.navBarComponent .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+}
+
+.dropDownItemText {
+    margin-left: 10px;
+}
+
+.navBarComponent .dropdown-item:hover {
+    color: white;
+    background-color: #004585;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.navBarComponent .dropdown-divider {
+    height: 0;
+    margin: .5rem auto;
+    overflow: hidden;
+    width: 80%;
+    border-top: 1px solid #ddd;
 }
 
 .navBarComponent .show .dropdown-toggle {
@@ -73,7 +116,7 @@
     .navbar .navbar-collapse {
         z-index: 1;
         border-radius: 0 0 15px 15px;
-        margin-bottom: -290px;
+        margin-bottom: -254px;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
         background: #eee;
     }
@@ -84,31 +127,29 @@
     }
     .navbar .ml-auto .userIcon,
     .dropdown-toggle {
-        display: none;
+        display: none !important;
     }
     .navbar a.dropNone {
         display: block;
         text-align: center;
-        margin-top: 20px;
         text-decoration: none;
-        margin-right: 30px;
+        margin-right: 10px;
+        margin-bottom: 10px;
         color: #0a84e3;
     }
     .navbar a.dropNone:nth-child(odd) {
-        margin-bottom: 20px;
-        color: red;
+        margin-bottom: 10px;
+        color: #0a84e3;
     }
     .navbar a.dropNone:hover {
         opacity: 0.6;
     }
     .navbar .dropNone.dropDivider.dropdown-divider {
-        border-top: 1px solid #0459ae !important;
+        border-top: 1px solid #003A70 !important;
         margin: 0 30px;
     }
     a.profileDropDown {
         padding: 12px 72px 12px 0px !important;
-    }
-    .navbar-toggler {
-        background-color: #eee;
+        color: white !important;
     }
 }

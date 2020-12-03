@@ -1,12 +1,12 @@
-.list-container{
+.list-container {
     width: 100%;
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(90deg, #0A84E3 0%, #0A9BE3 100%);
+    background: #FFF;
 
-    font-family: Poppins, sans-serif;
+    font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
     font-style: normal;
     font-weight: normal;
 }
@@ -14,39 +14,46 @@
 .list-container .alert-component {
     position: fixed;
     width: 350px;
-    height: 122px;
+    height: 153px;
     transform: translateX(-50%);
     top: 0;
     left: 50%;
 }
 
-.list-container .alert{
+.list-container .alert {
     width: 100%;
-    height: 100%;
 }
 
 .list-container .alert .react-bootstrap-button {
     margin-left: 20px;
 }
 
-.list-container .psychologist-list{
-    display: grid;
+.alert-component .danger-button {
+    background-color: #C10015 !important;
+}
+
+.alert-component .success-button {
+    background-color: #003A70 !important;
+}
+
+.list-container .psychologist-list {
+    display: flex;
     grid-template-columns: 280px 1fr;
     grid-template-rows: 100%;
-    grid-template-areas: "nav" "cards";
-    
-    width: 100%;    
-    height: 100%;
+    grid-template-areas: 'nav' 'cards';
+    flex-wrap: wrap;
+    width: 100%;
+    height: 98vh;
     padding: 0 20px;
 }
 
-.list-container .count{
+.list-container .count {
     margin-top: 30px;
-    color: #fff;
+    color: #333;
 }
 
 .psychologist-list .psychologists-cards {
-    grid-area: "cards";
+    grid-area: 'cards';
 
     margin-top: 10px;
 
@@ -55,7 +62,7 @@
     align-self: flex-start;
 }
 
-.psychologist-list article{
+.psychologist-list article {
     width: 350px;
     height: 280px;
     word-wrap: break-word;
@@ -65,42 +72,47 @@
     justify-content: space-between;
     flex-direction: column;
 
-    background: #fff;
+    background: #eee;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
     margin: 0 0 20px 30px;  
+    box-shadow: 2px 2px 6px #999;
 }
 
 .psychologist-list article p {
-    font-size: 16px;
+    font-size: 18px;
     color: #000;
     line-height: 24px;
 }
 .psychologist-list article button {
-    color: red;
+    color: #fff;
+    font-weight: bold;
+    background-color: #C10015;
     font-size:18px;
     cursor:pointer;
-    border: 2px solid red;
-    border-radius: 2px;
+    border: 2px solid #C10015;
+    border-radius: 5px;
 }
+
 .psychologist-list article button:hover{
-    opacity: 0.6;
-    background-color: #9C1C00;
+    filter: brightness(150%);
     color: white;
-    transition:all 0.3s;
+    transition: all 0.3s;
 }
 
 .psychologist-list .nav {
-    grid-area: "nav";
-
+    grid-area: 'nav';
+    width: 350px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 
-.psychologist-list .new-psychologist{
+.psychologist-list .new-psychologist {
     width: 260px;
     height: 60px;
 
@@ -109,20 +121,16 @@
     justify-content: center;
 
     font-size: 16px;
-    background-color:  #0459AE;
+    background-color:  #003A70;
     color: #fff;
     cursor: pointer;
-    border: 1px solid blue;
     border-radius: 5px;
-    margin-top: 30px;
-    
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 .psychologist-list .new-psychologist:hover{
-    opacity: 0.6;
-    background-color: #fff;
-    color: #0459AE;
-    transition:all 0.3s;
+    filter: brightness(150%);
 }
 
 .psychologist-list .nav .get-out {
@@ -132,7 +140,77 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #FF2C00;
+    background-color: #C10015;
+    font-weight: bold;
 
     line-height: 36px;
+}
+
+.psychologist-list .nav .get-out:hover {
+    filter: brightness(150%);
+}
+
+.psychologist-list .psychologists-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-psychologists {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.psychologists-wrapper .message-warning {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.psychologists-wrapper .message-warning span {
+    font-size: 30px;
+    color: #003A70;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 450px) {
+    .list-container .psychologist-list {
+        align-items: center;
+        justify-content: center;
+    }
+    .searcBarComponent input {
+        width: 350px !important;
+    }
+    .psychologist-list .psychologists-cards {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .psychologist-list article {
+        margin: 0 0 20px 0;
+        width: 90%;
+    }
+    .psychologist-list .nav {
+        margin: 0 0 20px 0;
+        width: 90%;
+    }
+    .psychologist-list .new-psychologist {
+        width: 220px;
+        height: 60px;
+    }
+    .list-container .count {
+        margin-top: 20px;
+        font-size: 13px;
+    }
+    .list-container .alert-component {
+        width: 81%;
+        height: 150px;
+    }
+
+    .psychologists-wrapper .message-warning span {
+        font-size: 14px;
+    }
 }

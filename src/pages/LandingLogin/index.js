@@ -77,6 +77,7 @@ export default function LandingLogin() {
             if (responseUser.status === 200 || responseUser.status === 201) {
                 localStorage.setItem('accessToken', responseUser.data.accessToken);
                 localStorage.setItem('user', email);
+<<<<<<< HEAD
                 if (responseUser.data.user.ForgetPassWord === 1) {
                     history.push({
                         pathname: '/change-password',
@@ -86,12 +87,14 @@ export default function LandingLogin() {
                     });
                 }
                 history.push({
+=======
+                return history.push({
+>>>>>>> develop
                     pathname: '/profile',
                     state: {
                         data: responseUser.data.user,
                     },
                 });
-                return;
             }
         } catch (err) {
             try {
@@ -111,7 +114,7 @@ export default function LandingLogin() {
                             },
                         });
                     }
-                    history.push({
+                    return history.push({
                         pathname: '/psychologist/profile',
                         state: {
                             data: responsePsy.data.user,
@@ -154,7 +157,8 @@ export default function LandingLogin() {
                 }
             }
         }
-        setTimeout(() => {
+
+        return setInterval(() => {
             setShow(false);
         }, 2000);
     }
@@ -166,8 +170,8 @@ export default function LandingLogin() {
                     {alertText}
                 </Alert>
             ) : (
-                <div></div>
-            )}
+                    <div></div>
+                )}
             <div className="content">
                 <Logo />
 
@@ -222,10 +226,10 @@ export default function LandingLogin() {
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    )}
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={resetPassword}>Confirmar</Button>
