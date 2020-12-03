@@ -449,9 +449,9 @@ export default function UserProfile() {
                                     <figure className="personal-figure">
                                         <img
                                             src={
-                                                currentImage ||
-                                                userImage ||
-                                                userIcon
+                                                currentImage
+                                                || userImage
+                                                || userIcon
                                             }
                                             className="personal-avatar"
                                             alt="avatar"
@@ -566,8 +566,7 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="bond"
                                             value={bond || ''}
-                                            onChange={(e) =>
-                                                setBond(e.target.value)
+                                            onChange={(e) => setBond(e.target.value)
                                             }
                                         >
                                             <option value="" disabled>
@@ -772,8 +771,7 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="gender"
                                             value={gender || ''}
-                                            onChange={(e) =>
-                                                setGender(e.target.value)
+                                            onChange={(e) => setGender(e.target.value)
                                             }
                                         >
                                             <option value="" disabled>
@@ -815,10 +813,9 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="sexualOrientation"
                                             value={sexualOrientation || ''}
-                                            onChange={(e) =>
-                                                setSexualOrientation(
-                                                    e.target.value,
-                                                )
+                                            onChange={(e) => setSexualOrientation(
+                                                e.target.value,
+                                            )
                                             }
                                         >
                                             <option value="" disabled>
@@ -866,8 +863,7 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="children"
                                             value={children || ''}
-                                            onChange={(e) =>
-                                                setChildren(e.target.value)
+                                            onChange={(e) => setChildren(e.target.value)
                                             }
                                         >
                                             <option value="" disabled>
@@ -905,8 +901,7 @@ export default function UserProfile() {
                                                 civilStatus || 'naoInformado'
                                             }
                                             name="civilStatus"
-                                            onChange={(e) =>
-                                                setCivilStatus(e.target.value)
+                                            onChange={(e) => setCivilStatus(e.target.value)
                                             }
                                         >
                                             <option
@@ -951,8 +946,7 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="race"
                                             value={race || ''}
-                                            onChange={(e) =>
-                                                setRace(e.target.value)
+                                            onChange={(e) => setRace(e.target.value)
                                             }
                                         >
                                             <option value="" disabled>
@@ -997,10 +991,9 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="socialPrograms"
                                             value={socialPrograms || ''}
-                                            onChange={(e) =>
-                                                setSocialPrograms(
-                                                    e.target.value,
-                                                )
+                                            onChange={(e) => setSocialPrograms(
+                                                e.target.value,
+                                            )
                                             }
                                         >
                                             <option value="" disabled>
@@ -1026,10 +1019,9 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="studentHouseResidence"
                                             value={studentHouseResidence || ''}
-                                            onChange={(e) =>
-                                                setStudentHouseResidence(
-                                                    e.target.value,
-                                                )
+                                            onChange={(e) => setStudentHouseResidence(
+                                                e.target.value,
+                                            )
                                             }
                                         >
                                             <option value="" disabled>
@@ -1053,10 +1045,9 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="psychiatricFollowUp"
                                             value={psychiatricFollowUp || ''}
-                                            onChange={(e) =>
-                                                setPsychiatricFollowUp(
-                                                    e.target.value,
-                                                )
+                                            onChange={(e) => setPsychiatricFollowUp(
+                                                e.target.value,
+                                            )
                                             }
                                         >
                                             <option value="" disabled>
@@ -1110,8 +1101,7 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="mainComplaint"
                                             value={mainComplaint || ''}
-                                            onChange={(e) =>
-                                                setMainComplaint(e.target.value)
+                                            onChange={(e) => setMainComplaint(e.target.value)
                                             }
                                         >
                                             <option value="" disabled>
