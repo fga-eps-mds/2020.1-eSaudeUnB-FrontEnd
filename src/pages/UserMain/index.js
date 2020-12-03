@@ -225,8 +225,7 @@ export default function UserMain(props) {
                                                 pathname: '/waiting-list',
                                                 state: {
                                                     data:
-                                                            props.location.state
-                                                                .data,
+                                                            user,
                                                     psychologist: userSelected,
                                                 },
                                             })
