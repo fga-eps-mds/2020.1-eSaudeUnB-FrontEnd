@@ -967,8 +967,9 @@ export default function UserProfile() {
                                             <option value="Ansiedade">
                                                 Ansiedade
                                             </option>
-                                            <option value="Autoconhecimento">
-                                                Autoconhecimento
+                                            <option value="Assédio, discriminação ou outro tipo de violência">
+                                                Assédio, discriminação ou outro
+                                                tipo de violência
                                             </option>
                                             <option value="Conflito no trabalho">
                                                 Conflito no trabalho
@@ -979,8 +980,9 @@ export default function UserProfile() {
                                             <option value="Dificuldades academicas">
                                                 Dificuldades acadêmicas
                                             </option>
-                                            <option value="Ideacao suicida">
-                                                Ideação suicida
+                                            <option value="Luto">Luto</option>
+                                            <option value="Pensamentos suicidas">
+                                                Pensamentos suicidas
                                             </option>
                                             <option value="Problemas afetivos">
                                                 Problemas afetivos
