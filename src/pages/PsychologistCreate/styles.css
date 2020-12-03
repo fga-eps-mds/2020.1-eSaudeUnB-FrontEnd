@@ -162,7 +162,7 @@
   
 @media only screen and (max-width: 600px) {
     .psychologist-container .psychologist-create .form {
-        margin: 120px 0 20px 0;
+        margin: 0px 0 20px 0;
         width: 85%;
         height: auto;
     }

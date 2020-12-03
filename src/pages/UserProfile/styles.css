@@ -262,6 +262,10 @@
 }
 
 @media only screen and (max-width: 900px) {
+    .userProfileContainer {
+        height: 100% !important;
+    }
+
     .userProfileContainer .formColumn {
         width: 300px;
         height: 3250px;

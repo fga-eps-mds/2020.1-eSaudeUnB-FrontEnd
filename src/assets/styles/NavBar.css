@@ -123,23 +123,23 @@
     .navBarComponent .navLinks .a {
         text-decoration: none;
         margin-right: 30px;
-        color: red;
+        color: #0a84e3;
     }
     .navbar .ml-auto .userIcon,
     .dropdown-toggle {
-        display: none;
+        display: none !important;
     }
     .navbar a.dropNone {
         display: block;
         text-align: center;
-        margin-top: 20px;
         text-decoration: none;
-        margin-right: 30px;
+        margin-right: 10px;
+        margin-bottom: 10px;
         color: #0a84e3;
     }
     .navbar a.dropNone:nth-child(odd) {
-        margin-bottom: 20px;
-        color: red;
+        margin-bottom: 10px;
+        color: #0a84e3;
     }
     .navbar a.dropNone:hover {
         opacity: 0.6;

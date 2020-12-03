@@ -181,9 +181,13 @@
         align-items: center;
         justify-content: center;
     }
+    .searcBarComponent input {
+        width: 350px !important;
+    }
     .psychologist-list .psychologists-cards {
         align-items: center;
         justify-content: center;
+        width: 100%;
     }
     .psychologist-list article {
         margin: 0 0 20px 0;
@@ -204,5 +208,9 @@
     .list-container .alert-component {
         width: 81%;
         height: 150px;
+    }
+
+    .psychologists-wrapper .message-warning span {
+        font-size: 14px;
     }
 }

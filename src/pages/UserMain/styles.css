@@ -248,6 +248,9 @@
     }
 }
 @media only screen and (max-width: 994px) {
+    .usercalendar {
+        height: 100% !important;
+    }
     .usercalendar .navBarComponent .navLinks {
         display: flex !important;
     }
@@ -255,7 +258,11 @@
         display: none !important;
     }
 }
+
 @media only screen and (max-width: 910px) {
+    .usercalendar {
+        height: 100% !important;
+    }
     .usercalendar .tabela {
         width: 85%;
         min-width: 280px;
