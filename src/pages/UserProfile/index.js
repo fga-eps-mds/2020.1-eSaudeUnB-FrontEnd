@@ -100,7 +100,6 @@ export default function UserProfile() {
 
     const [showPassword, setShowPassword] = useState(false);
 
-
     function closeAlerts() {
         setAlertContentName(false);
         setAlertContentLastName(false);
@@ -1086,7 +1085,7 @@ export default function UserProfile() {
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? "text" : "password"}
+                                            type={showPassword ? 'text' : 'password'}
                                             value={actualPassword}
                                             onChange={setActualPassword}
                                         />
@@ -1096,7 +1095,7 @@ export default function UserProfile() {
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? "text" : "password"}
+                                            type={showPassword ? 'text' : 'password'}
                                             value={newPassword}
                                             onChange={setNewPassword}
                                         />
@@ -1106,7 +1105,7 @@ export default function UserProfile() {
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? "text" : "password"}
+                                            type={showPassword ? 'text' : 'password'}
                                             value={confirmNewPassword}
                                             onChange={setConfirmNewPassword}
                                         />
@@ -1124,20 +1123,20 @@ export default function UserProfile() {
                                     </div>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                        <Button onClick={toggleShow}>{showPassword ? "Esconder campos" : "Mostrar campos"}</Button>
-                                        <Button
-                                            variant="danger"
-                                            onClick={() => {
-                                                setAlertConfirmPassword(false);
-                                                setShowModal(false);
-                                                setActualPassword('');
-                                                setNewPassword('');
-                                                setConfirmNewPassword('');
-                                            }}
-                                        >
+                                    <Button onClick={toggleShow}>{showPassword ? 'Esconder campos' : 'Mostrar campos'}</Button>
+                                    <Button
+                                        variant="danger"
+                                        onClick={() => {
+                                            setAlertConfirmPassword(false);
+                                            setShowModal(false);
+                                            setActualPassword('');
+                                            setNewPassword('');
+                                            setConfirmNewPassword('');
+                                        }}
+                                    >
                                             Cancelar
-                                        </Button>
-                                        <Button className="buttonConfirm" onClick={updatePassword}>Confirmar</Button>
+                                    </Button>
+                                    <Button className="buttonConfirm" onClick={updatePassword}>Confirmar</Button>
                                 </Modal.Footer>
                             </Modal>
 
@@ -1148,7 +1147,7 @@ export default function UserProfile() {
                     </form >
                 </div >
             </div >
-        <Footer />
+            <Footer />
 
         </div >
     );

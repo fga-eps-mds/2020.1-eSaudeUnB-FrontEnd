@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Input({
-    placeholder, value, onChange, type, className
+    placeholder, value, onChange, type, className,
 }) {
     return (
         <div className="input">
@@ -18,6 +18,7 @@ export default function Input({
 }
 Input.propTypes = {
     placeholder: PropTypes.string,
+    className: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
     type: PropTypes.string,

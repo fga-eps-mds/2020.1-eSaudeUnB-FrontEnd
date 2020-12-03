@@ -145,7 +145,7 @@ export default function NavBar({ bond }) {
                         }}
                     >
                         Sair
-                    </Link> 
+                    </Link>
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
                         {bond === 'Psychologist' ? (
                             <NavDropdown.Item

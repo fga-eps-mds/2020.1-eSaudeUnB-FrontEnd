@@ -21,16 +21,18 @@ export default function PsychologistCalendar() {
     }
 
     function checkRepeat() {
-        for (const item of restricts) {
+        let repeat = true;
+        restricts.forEach((item) => {
             if (
                 date.getDate() === item.day
                 && date.getMonth() === item.month
                 && date.getFullYear() === item.year
             ) {
-                return false;
+                repeat = false;
             }
-        }
-        return true;
+        });
+
+        return repeat;
     }
 
     function updateRestricts() {
