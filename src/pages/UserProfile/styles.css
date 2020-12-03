@@ -18,6 +18,7 @@
     padding: 25px 0;
 }
 .userProfileContainer .formColumn .fieldDiv {
+    width: 312px;
     display: flex;
     flex-direction: column;
     border: solid 1px #ccc;

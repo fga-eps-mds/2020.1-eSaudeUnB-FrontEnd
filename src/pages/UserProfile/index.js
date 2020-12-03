@@ -632,230 +632,6 @@ export default function UserProfile() {
                             <div className="form">
                                 <div className="formLeft">
                                     <div className="fieldDiv">
-                                        <label>Contato de emergência</label>
-                                        <hr />
-                                        <label className="upLabel">Nome</label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={emergencyContactName || ''}
-                                            onChange={setEmergencyContactName}
-                                        />
-
-                                        {alertContentEmergencyContactName ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    Campo obrigatório. Nome deve
-                                                    possuir mais de 2 letras.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                        <hr />
-                                        <label className="upLabel">
-                                            Telefone
-                                        </label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={emergencyContactPhone || ''}
-                                            onChange={setEmergencyContactPhone}
-                                        />
-
-                                        {alertContentEmergencyContactPhone ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    Campo obrigatório. Insira um
-                                                    número válido.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                        <hr />
-                                        <label className="upLabel">
-                                            Vínculo
-                                        </label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={emergencyContactBond || ''}
-                                            onChange={setEmergencyContactBond}
-                                        />
-
-                                        {alertContentEmergencyContactBond ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    Campo obrigatório. Deve
-                                                    possuir mais de 2 letras.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="fieldDiv">
-                                        <label className="upLabel">
-                                            Nome da mãe
-                                        </label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={motherName || ''}
-                                            onChange={setMotherName}
-                                        />
-
-                                        {alertContentMotherName ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    Campo obrigatório. Nome deve
-                                                    possuir mais de 2 letras.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="formRight">
-                                    <div className="fieldDiv">
-                                        <label className="upLabel">
-                                            Nome do pai
-                                        </label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={fatherName || ''}
-                                            onChange={setFatherName}
-                                        />
-
-                                        {alertContentFatherName ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    Campo obrigatório. Insira um
-                                                    número válido.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="fieldDiv">
-                                        <label className="upLabel">
-                                            Telefene da(o) mãe/pai
-                                        </label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={affiliationPhone}
-                                            onChange={setAffiliationPhone}
-                                        />
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    </div>
-
-                                    <div className="fieldDiv">
-                                        <label className="upLabel">
-                                            Gênero
-                                        </label>
-                                        <select
-                                            className="selectsLargest"
-                                            name="gender"
-                                            value={gender || ''}
-                                            onChange={(e) => setGender(e.target.value)
-                                            }
-                                        >
-                                            <option value="" disabled>
-                                                Selecione uma opção
-                                            </option>
-                                            <option value="mulher">
-                                                Mulher
-                                            </option>
-                                            <option value="homem">Homem</option>
-                                            <option value="mulher trans">
-                                                Mulher Trans
-                                            </option>
-                                            <option value="homen trans">
-                                                Homen Trans
-                                            </option>
-                                            <option value="nao binario">
-                                                Não-Binário
-                                            </option>
-                                            <option value="prefiro nao dizer">
-                                                Prefiro não dizer
-                                            </option>
-                                        </select>
-                                        {alertContentGender ? (
-                                            <div className="alertContent">
-                                                <p>Selecione um gênero.</p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                    </div>
-                                    {/* campo novo de orientação sexual */}
-                                    <div className="fieldDiv">
-                                        <label className="upLabel">
-                                            Orientação Sexual
-                                        </label>
-                                        <select
-                                            className="selectsLargest"
-                                            name="sexualOrientation"
-                                            value={sexualOrientation || ''}
-                                            onChange={(e) => setSexualOrientation(
-                                                e.target.value,
-                                            )
-                                            }
-                                        >
-                                            <option value="" disabled>
-                                                Selecione uma opção
-                                            </option>
-                                            <option value="homossexual">
-                                                Homossexual
-                                            </option>
-                                            <option value="bissexual">
-                                                Bissexual
-                                            </option>
-                                            <option value="heterossexual">
-                                                Heterossexual
-                                            </option>
-                                            <option value="prefiroNaoDizer">
-                                                Prefiro não dizer
-                                            </option>
-                                        </select>
-
-                                        {alertContentSexualOrientation ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    Selecione uma orientação
-                                                    sexual.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="page page3" id="page3">
-                            <div className="form">
-                                <div className="formLeft">
-                                    <div className="fieldDiv">
                                         <label className="upLabel">
                                             Tem filhos?
                                         </label>
@@ -1006,9 +782,108 @@ export default function UserProfile() {
                                             <p></p>
                                         </div>
                                     </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Você faz uso de alguma medicação
+                                            <br /> para tratamento psiquiátrico?
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={medication || ''}
+                                            onChange={setMedication}
+                                        />
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="formRight">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Gênero
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="gender"
+                                            value={gender || ''}
+                                            onChange={(e) => setGender(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="mulher">
+                                                Mulher
+                                            </option>
+                                            <option value="homem">Homem</option>
+                                            <option value="mulher trans">
+                                                Mulher Trans
+                                            </option>
+                                            <option value="homen trans">
+                                                Homen Trans
+                                            </option>
+                                            <option value="nao binario">
+                                                Não-Binário
+                                            </option>
+                                            <option value="prefiro nao dizer">
+                                                Prefiro não dizer
+                                            </option>
+                                        </select>
+                                        {alertContentGender ? (
+                                            <div className="alertContent">
+                                                <p>Selecione um gênero.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {/* campo novo de orientação sexual */}
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Orientação Sexual
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="sexualOrientation"
+                                            value={sexualOrientation || ''}
+                                            onChange={(e) => setSexualOrientation(
+                                                e.target.value,
+                                            )
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="homossexual">
+                                                Homossexual
+                                            </option>
+                                            <option value="bissexual">
+                                                Bissexual
+                                            </option>
+                                            <option value="heterossexual">
+                                                Heterossexual
+                                            </option>
+                                            <option value="prefiroNaoDizer">
+                                                Prefiro não dizer
+                                            </option>
+                                        </select>
+
+                                        {alertContentSexualOrientation ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Selecione uma orientação
+                                                    sexual.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
                                     <div className="fieldDiv">
                                         <label className="upLabel">
                                             Mora da casa do
@@ -1073,24 +948,6 @@ export default function UserProfile() {
                                                 <p></p>
                                             </div>
                                         )}
-                                    </div>
-
-                                    <div className="fieldDiv">
-                                        <label className="upLabel">
-                                            Você faz uso de
-                                            <br />
-                                            alguma medicação
-                                            <br /> para tratamento
-                                            <br /> psiquiátrico?
-                                        </label>
-                                        <Input
-                                            placeholder="Preencha aqui"
-                                            value={medication || ''}
-                                            onChange={setMedication}
-                                        />
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
                                     </div>
 
                                     <div className="fieldDiv">
@@ -1160,6 +1017,137 @@ export default function UserProfile() {
                                                 <p></p>
                                             </div>
                                         )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="page page3" id="page3">
+                            <div className="form">
+                                <div className="formLeft">
+                                    <div className="fieldDiv">
+                                        <label>Contato de emergência</label>
+                                        <hr />
+                                        <label className="upLabel">Nome</label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={emergencyContactName || ''}
+                                            onChange={setEmergencyContactName}
+                                        />
+
+                                        {alertContentEmergencyContactName ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Nome deve possuir mais de 2
+                                                    letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                        <hr />
+                                        <label className="upLabel">
+                                            Telefone
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={emergencyContactPhone || ''}
+                                            onChange={setEmergencyContactPhone}
+                                        />
+
+                                        {alertContentEmergencyContactPhone ? (
+                                            <div className="alertContent">
+                                                <p>Insira um número válido.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                        <hr />
+                                        <label className="upLabel">
+                                            Vínculo
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={emergencyContactBond || ''}
+                                            onChange={setEmergencyContactBond}
+                                        />
+
+                                        {alertContentEmergencyContactBond ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Deve possuir mais de 2
+                                                    letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="formRight">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Nome da mãe
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={motherName || ''}
+                                            onChange={setMotherName}
+                                        />
+
+                                        {alertContentMotherName ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Nome deve possuir mais de 2
+                                                    letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Nome do pai
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={fatherName || ''}
+                                            onChange={setFatherName}
+                                        />
+
+                                        {alertContentFatherName ? (
+                                            <div className="alertContent">
+                                                <p>Insira um número válido.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Telefene da(o) mãe/pai
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={affiliationPhone}
+                                            onChange={setAffiliationPhone}
+                                        />
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
