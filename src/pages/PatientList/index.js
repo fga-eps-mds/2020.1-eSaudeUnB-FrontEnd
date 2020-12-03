@@ -13,15 +13,15 @@ import RealizeSearch from '../../components/RealizeSearch';
 export default function PatientList(props) {
     const [search, setSearch] = useState('');
     const [patients, setPatients] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
         api.get('/users', {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPatients(response.data);
         });
-    });
+    }, []);
 
     return (
         <>
@@ -38,10 +38,12 @@ export default function PatientList(props) {
                         onChange={setSearch}
                         icon={MagnifyingGlass}
                     />
-                    <div className="patients">
+                    <>
                         {patients.length === 0 ? (
-                            <div className="patientTab noPatients">
-                                Não há pacientes cadastrados
+                            <div className="warningLabel">
+                                <div className="noPatients">
+                                    Não há pacientes cadastrados
+                                </div>
                             </div>
                         ) : (
                             <RealizeSearch
@@ -51,7 +53,7 @@ export default function PatientList(props) {
                                 search={search}
                             />
                         )}
-                    </div>
+                    </>
                 </div>
             </div>
         </>

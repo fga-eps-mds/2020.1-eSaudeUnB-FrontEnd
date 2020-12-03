@@ -111,8 +111,8 @@ export default function UserMain(props) {
                                 }`}</h1>
                             </div>
                             <div className="schedules">
-                                {psychologists.map((psychologist, index) => (
-                                    <div key={index} className="schedule-box">
+                                {psychologists.map((psychologist, i) => (
+                                    <div key={i} className="schedule-box">
                                         {psychologist.weekDay.map(
                                             (workDay, index) => (dateCheck(workDay.weekDay) ? (
                                                 <div
@@ -127,16 +127,18 @@ export default function UserMain(props) {
                                                         key={index}
                                                     >
                                                         <button
-                                                            onClick={() => setUserSelected(
-                                                                psychologist,
-                                                            )
+                                                            onClick={
+                                                                /* eslint-disable max-len */
+                                                                () => setUserSelected(
+                                                                    psychologist,
+                                                                )
                                                             }
                                                         >
                                                             <h3>
                                                                 {
                                                                     psychologist.bond
                                                                 }
-                                                                    :
+                                                                :
                                                                 {
                                                                     psychologist.name
                                                                 }{' '}
@@ -176,10 +178,11 @@ export default function UserMain(props) {
                                             userSelected.weekDay.map(
                                                 (workDay) => (dateCheck(
                                                     workDay.weekDay,
-                                                ) ? (
+                                                )
+                                                    ? (
                                                         workDay.appointment.map(
                                                             (appointment) => (appointment.scheduled
-                                                                === false ? (
+                                                        === false ? (
                                                                     <label>
                                                                         <input
                                                                             type="radio"

@@ -57,8 +57,10 @@ export default function SearchedPatients(props) {
                         </div>
                     ))
             ) : (
-                <div className="patientTab noPatients">
-                    Não há pacientes cadastrados com esse nome
+                <div className="warningLabel">
+                    <div className="noPatients">
+                        Não foram encontrados pacientes.
+                    </div>
                 </div>
             )
     );

@@ -6,6 +6,7 @@ import { Alert, Modal, Button } from 'react-bootstrap';
 import api from '../../services/api';
 import './styles.css';
 
+import Footer from '../../components/Footer';
 import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import { convertBase64, uploadImage } from '../../components/UserImage';
@@ -97,6 +98,8 @@ export default function UserProfile() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
+    const [showPassword, setShowPassword] = useState(false);
+
     function closeAlerts() {
         setAlertContentName(false);
         setAlertContentLastName(false);
@@ -125,11 +128,16 @@ export default function UserProfile() {
         history.push('/');
     }
 
+    function toggleShow(event) {
+        event.preventDefault();
+        setShowPassword(!showPassword);
+    }
+
     async function updatePassword(event) {
         event.preventDefault();
 
         if (newPassword !== confirmNewPassword) {
-            setAlertPasswordtext('As senhas devem ser iguais');
+            setAlertPasswordtext('As senhas devem ser iguais.');
             setAlertConfirmPassword(true);
             return;
         }
@@ -656,9 +664,7 @@ export default function UserProfile() {
                                 </div>
 
                                 <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Telefene da(o) mãe/pai
-                                    </label>
+                                    <label className="upLabel">Telefone da(o) mãe/pai</label>
                                     <Input
                                         placeholder="Preencha aqui"
                                         value={affiliationPhone}
@@ -975,13 +981,7 @@ export default function UserProfile() {
                                 </div>
 
                                 <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Você faz uso de
-                                        <br />
-                                        alguma medicação
-                                        <br /> para tratamento
-                                        <br /> psiquiátrico?
-                                    </label>
+                                    <label className="upLabel">Você faz uso de alguma<br />medicação para tratamento<br /> psiquiátrico?</label>
                                     <Input
                                         placeholder="Preencha aqui"
                                         value={medication || ''}
@@ -1075,43 +1075,55 @@ export default function UserProfile() {
                                 centered
                             >
                                 <Modal.Header closeButton>
-                                    <Modal.Title id="contained-modal-title-vcenter">
-                                        Mudar Senha
+                                    <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
+                                        Alterar Senha
                                     </Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    <Input
-                                        placeholder="Senha Atual"
-                                        value={actualPassword}
-                                        onChange={setActualPassword}
-                                    />
-                                    <Input
-                                        placeholder="Nova senha"
-                                        value={newPassword}
-                                        onChange={setNewPassword}
-                                    />
-                                    <Input
-                                        placeholder="Confirmar nova senha"
-                                        value={confirmNewPassword}
-                                        onChange={setConfirmNewPassword}
-                                    />
-                                    {alertConfirmPassword ? (
-                                        <div className="alertContent">
-                                            <p>{alertPasswordText}</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                    <div className="modalFormDiv">
+                                        <label className="modalLabel">Senha Atual</label>
+                                        <Input
+                                            className="modalInput"
+                                            placeholder=""
+                                            type={showPassword ? 'text' : 'password'}
+                                            value={actualPassword}
+                                            onChange={setActualPassword}
+                                        />
+                                    </div>
+                                    <div className="modalFormDiv">
+                                        <label className="modalLabel">Nova senha</label>
+                                        <Input
+                                            className="modalInput"
+                                            placeholder=""
+                                            type={showPassword ? 'text' : 'password'}
+                                            value={newPassword}
+                                            onChange={setNewPassword}
+                                        />
+                                    </div>
+                                    <div className="modalFormDiv">
+                                        <label className="modalLabel">Confirmar nova senha</label>
+                                        <Input
+                                            className="modalInput"
+                                            placeholder=""
+                                            type={showPassword ? 'text' : 'password'}
+                                            value={confirmNewPassword}
+                                            onChange={setConfirmNewPassword}
+                                        />
+                                    </div>
+                                    <div className="modalFormDiv">
+                                        {alertConfirmPassword ? (
+                                            <div className="alertContent">
+                                                <p>{alertPasswordText}</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button
-                                        variant="success"
-                                        onClick={updatePassword}
-                                    >
-                                        Confirmar
-                                    </Button>
+                                    <Button onClick={toggleShow}>{showPassword ? 'Esconder campos' : 'Mostrar campos'}</Button>
                                     <Button
                                         variant="danger"
                                         onClick={() => {
@@ -1122,8 +1134,9 @@ export default function UserProfile() {
                                             setConfirmNewPassword('');
                                         }}
                                     >
-                                        Cancelar
+                                            Cancelar
                                     </Button>
+                                    <Button className="buttonConfirm" onClick={updatePassword}>Confirmar</Button>
                                 </Modal.Footer>
                             </Modal>
 
@@ -1131,10 +1144,12 @@ export default function UserProfile() {
                                 Salvar
                             </button>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                    </form >
+                </div >
+            </div >
+            <Footer />
+
+        </div >
     );
 }
 UserProfile.propTypes = {

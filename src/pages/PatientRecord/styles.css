@@ -1,13 +1,13 @@
 .patientRecord {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 70px);
     color: #eee;
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 
 }
 
@@ -20,14 +20,12 @@
 
 .patientRecord .patientInfo {
     display: flex;
-    font: 500 18px Poppins;
+    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
     background-color: #eee;
     border-radius: 15px;
     line-height: 3rem;
-
     margin-top: 50px;
-
     width: 1400px;
 }
 
@@ -35,6 +33,9 @@
     display: flex;
     align-items: center;
     width: 100%;
+    background-color: #eee;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
 }
 
 .patientRecord .patientInfo .patient .patientImg {
@@ -104,10 +105,10 @@
     margin-bottom: -10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 
-    font: 500 14px Poppins;
+    font: 500 14px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #eee;
     float: left;
-    background-color: #197fe5;
+    background-color: #3d7dca;
     border: none;
     border-radius: 0.7vw;
     outline: none;
@@ -123,7 +124,7 @@
 }
 
 .patientRecord .patientHistory #mostrarTodos {
-    background-color: #197fe5;
+    background-color: #3d7dca;
     float: left;
 }
 .patientRecord .patientHistory #mostrarTodos:hover {
@@ -131,10 +132,10 @@
 }
 .patientRecord .patientHistory #novoAtendimento {
     float: right;
-    background-color: #0459ae;
+    background-color: #003A70;
 }
 .patientRecord .patientHistory #novoAtendimento:hover {
-    background-color: #197fe5;
+    background-color: #3d7dca;
 }
 
 .patientRecord .patientHistory .tab button:hover {
@@ -144,8 +145,7 @@
 .patientRecord .patientHistory .tabContent {
     display: flex;
     flex-direction: column;
-
-    font: 500 14px Poppins;
+    font: 500 14px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #000;
     background-color: #eee;
     border-bottom-left-radius: 15px;
@@ -153,7 +153,7 @@
     width: 1400px;
     padding: 1rem 2rem 0 2rem;
     height: 550px;
-
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.25);
     overflow: auto;
 }
 ::-webkit-scrollbar {
@@ -161,12 +161,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #197fe5;
+    background: #003A70;
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0459ae;
+    background: #0E84E3;
 }
 
 .patientRecord .patientHistory .tabContent h1,
@@ -181,7 +181,7 @@ h2 {
 }
 
 .patientRecord .patientHistory .tabContent h2 {
-    font: 100 16px Poppins;
+    font: 100 16px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1rem;
 }
 
@@ -200,7 +200,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font: 500 1.2rem Poppins;
+    font: 500 1.2rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 
@@ -231,7 +231,7 @@ h2 {
 }
 
 .patientRecord .noSession {
-    font: 100 32px Poppins;
+    font: 100 32px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1rem;
     color: #07387e;
     text-align: center;

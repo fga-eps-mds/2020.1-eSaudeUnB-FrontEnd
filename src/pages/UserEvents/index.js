@@ -46,25 +46,24 @@ export default function UserEvents() {
                             <h1>{'Próximos Eventos'}</h1>
                         </div>
                         <div className="schedules">
-                            {user.appointments
-                            && user.appointments.length > 0 ? (
-                                    user.appointments.map((appointment, index) => (dateCheck(appointment.weekDay) ? (
-                                        <div
-                                            // eslint-disable-next-line no-underscore-dangle
-                                            key={index}
-                                        >
-                                            <h3>{`- ${appointment.time}`}</h3>
-                                            <h3>
-                                                Atendimento com{' '}
-                                                {appointment.psychologistName}
-                                            </h3>
-                                        </div>
-                                    ) : (
-                                        <div></div>
-                                    )))
-                                ) : (
-                                    <div></div>
-                                )}
+                            {
+                                user.appointments
+                                    && user.appointments.length > 0
+                                    ? user.appointments.map((appointment, index) => (
+                                        dateCheck(appointment.weekDay)
+                                            ? <div
+                                                // eslint-disable-next-line no-underscore-dangle
+                                                key={index}
+                                                className="marked-schedule"
+                                            >
+                                                <h3 className="time-schedule">{`- ${appointment.time}`}</h3>
+                                                <h3>
+                                                    Atendimento com {appointment.psychologistName}
+                                                </h3>
+                                            </div>
+                                            : <div></div>
+                                    ))
+                                    : <div ></div>}
                         </div>
                     </div>
                 </div>

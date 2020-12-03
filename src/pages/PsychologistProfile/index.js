@@ -542,7 +542,7 @@ export default function PsychologistProfile() {
                                     </Modal.Footer>
                                 </Modal>
 
-                                <button className="button-salvar" type="submit">
+                                <button className="button-save" type="submit">
                                     Salvar
                                 </button>
                             </div>

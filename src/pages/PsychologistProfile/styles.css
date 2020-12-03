@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psyProfileContainer .content .firstColumn {
@@ -51,16 +51,16 @@
     height: 41px;
 
     background-color: transparent;
-    color: #0459ae;
+    color: #003A70;
     border: 0;
     padding-top: 20px;
     font-size: 15px;
     line-height: 27px;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 }
 
 .psyProfileContainer .formColumn input::placeholder {
-    color: #0459ae;
+    color: #003A70;
 }
 
 .psyProfileContainer .content .firstColumn .form {
@@ -79,11 +79,11 @@
     width: 140px;
     height: 41px;
 
-    color: #0459ae;
+    color: #003A70;
 
     border: 0px;
     background-color: transparent;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 
     font-size: 14px;
     line-height: 27px;
@@ -108,7 +108,7 @@
 
     font-size: 14px;
     padding: 10px;
-    color: #0459ae;
+    color: #003A70;
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -128,29 +128,33 @@
     align-self: flex-end;
     justify-content: space-between;
 }
-.psyProfileContainer .content .formColumn .buttons .button-salvar,
+.psyProfileContainer .content .formColumn .buttons .button-save,
 .psyProfileContainer .content .formColumn .buttons .button-change {
     width: 130px;
     height: 40px;
-
+    font-weight: 500;
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
-
+    background-color: #003A70;
     cursor: pointer;
-
     font-size: 18px;
     line-height: 36px;
 }
-.psyProfileContainer .content .formColumn .buttons .button-salvar:hover {
-    background: #0a84e3;
+
+.psyProfileContainer .content .formColumn .buttons .button-save:hover {
+    filter: brightness(80%);
 }
 
 .psyProfileContainer .content .formColumn .buttons .button-change {
     width: 150px;
-    background: #909090;
+    background: #3d7dca;
     margin-right: 420px;
+    font-weight: 500;
+}
+
+.buttons .button-change:hover {
+    filter: brightness(80%);
 }
 
 .psyProfileContainer .alert {
@@ -226,7 +230,8 @@
     .psyProfileContainer textarea {
         width: 200px;
         height: 150px;
-    }    .psyProfileContainer .content {
+    }    
+    .psyProfileContainer .content {
         margin: auto;
         margin-top: 300px;
         margin-bottom: 50px;
@@ -272,7 +277,7 @@
         width: 300px;
         flex-direction: column;
     }
-    .psyProfileContainer .content .formColumn .buttons .button-salvar {
+    .psyProfileContainer .content .formColumn .buttons .button-save {
         width: 100px;
         height: 35px;
         font-size: 13px;
@@ -288,6 +293,22 @@
     }
     .psyProfileContainer .formColumn .alertContent {
         width: 200px;
+    }
+}
+
+@media only screen and (max-width: 900px) { 
+    .psyProfileContainer {
+        height: 100%;
+    }
+
+    .psyProfileContainer .formColumn {
+        margin: 30px 0 !important;
+    }
+
+    .psyProfileContainer .content {
+        margin: auto;
+        margin-top: 0;
+        margin-bottom: 50px;
     }
 }
 
