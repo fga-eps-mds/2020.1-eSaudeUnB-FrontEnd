@@ -23,7 +23,7 @@ export default function UserProfile() {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
-    const [religion, setReligion] = useState('');
+    // const [religion, setReligion] = useState('');
     const [userImage, setUserImage] = useState('');
     // novos campos
     const [race, setRace] = useState('');
@@ -200,7 +200,7 @@ export default function UserProfile() {
                     gender,
                     bond,
                     civilStatus,
-                    religion,
+                    // religion,
                     userImage: currentImage,
                     // novos campos
                     race,
@@ -329,7 +329,7 @@ export default function UserProfile() {
                 setName(response.data.name);
                 setLastName(response.data.lastName);
                 setPhone(response.data.phone);
-                setReligion(response.data.religion);
+                // setReligion(response.data.religion);
                 setUnbRegistration(response.data.unbRegistration);
                 setGender(response.data.gender);
                 setBond(response.data.bond);
