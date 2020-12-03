@@ -15,9 +15,10 @@ export default function WaitingList(props) {
 
     const history = useHistory();
     const accessToken = localStorage.getItem('accessToken');
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
-        api.get(`/waitingList/${props.location.state.psychologist.email}`, {
+        api.get(`/waitingList`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setWaitingList(response.data);
@@ -25,7 +26,7 @@ export default function WaitingList(props) {
     }, []);
 
     async function getOutOfWaitingList() {
-        await api.delete(`/waitingList/${props.location.state.data.email}`, {
+        await api.delete(`/waitingList/${user}`, {
             headers: { authorization: accessToken },
         });
 
@@ -34,7 +35,7 @@ export default function WaitingList(props) {
 
     async function registerOnWaitingList() {
         if (
-            waitingList.find((element) => element.emailPatient === props.location.state.data.email)
+            waitingList.find((element) => element.emailPatient === user)
         ) {
             setShow(true);
             setVariant('danger');
@@ -46,9 +47,7 @@ export default function WaitingList(props) {
         }
 
         await api.post('/waitingList', {
-            email: props.location.state.psychologist.email,
-            emailPatient: props.location.state.data.email,
-            namePatient: `${props.location.state.data.name} ${props.location.state.data.lastName}`,
+            emailPatient: user,
         },
         { headers: { authorization: accessToken } });
         window.location.reload();
