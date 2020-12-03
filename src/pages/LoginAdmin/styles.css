@@ -6,9 +6,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #003A70;
 
-    font-family: Poppins, sans-serif;
+    font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
     font-style: normal;
     font-weight: normal;
 }
@@ -38,7 +38,7 @@
 .loginAdminContainer .form .input {
     margin: 25px 0 25px 0;
     display: flex;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 }
 
 .loginAdminContainer .form input {
@@ -46,7 +46,7 @@
     height: 33px;
 
     background-color: transparent;
-    color: #0459ae;
+    color: #003A70;
     border: 0;
 
     font-size: 16px;
@@ -64,7 +64,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003A70;
     margin-top: 50px;
 
     font-size: 24px;
@@ -72,16 +72,16 @@
     cursor: pointer;
 }
 .loginAdminContainer .form .button:hover {
-    background: #0a84e3;
+    filter: brightness(140%);
 }
 
 .loginAdminContainer .form .pageTitle {
     font-size: 20px;
     line-height: 30px;
-    color: #0459ae;
+    color: #003A70;
     margin: 50px 0 50px 0;
 
-    font-family: Poppins, sans-serif;
+    font-family: "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
     font-style: normal;
     font-weight: normal;
 }

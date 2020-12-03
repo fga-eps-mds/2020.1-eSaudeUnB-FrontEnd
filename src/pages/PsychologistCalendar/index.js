@@ -12,29 +12,27 @@ export default function PsychologistCalendar() {
     const user = localStorage.getItem('user');
 
     async function putRestrict() {
-        await api.put(
-            '/calendary/update/',
-            {
-                headers: { authorization: accessToken },
-                email: user,
-                restrict: [...restricts],
-            },
-            [],
-        );
+        await api.put('/calendary/update/', {
+            email: user,
+            restrict: [...restricts],
+        },
+        { headers: { authorization: accessToken } });
         window.location.reload();
     }
 
     function checkRepeat() {
-        for (const item of restricts) {
+        let repeat = true;
+        restricts.forEach((item) => {
             if (
                 date.getDate() === item.day
                 && date.getMonth() === item.month
                 && date.getFullYear() === item.year
             ) {
-                return false;
+                repeat = false;
             }
-        }
-        return true;
+        });
+
+        return repeat;
     }
 
     function updateRestricts() {

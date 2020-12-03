@@ -16,7 +16,7 @@ export default function LandingNavBar() {
                 <Nav className="ml-auto links">
                     <Nav.Link href="#about">Como Funciona</Nav.Link>
                     <Nav.Link href="#faq">FAQ</Nav.Link>
-                    <Nav.Link href="#who-behind">Quem está por trás</Nav.Link>
+                    <Nav.Link href="#who-behind">Equipe</Nav.Link>
                     <Nav.Link className="registration-link" href="/registration">Registrar</Nav.Link>
                     <Nav.Link className="login-link" href="/login">Entrar</Nav.Link>
                 </Nav>

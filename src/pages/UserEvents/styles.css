@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .usrEventsCalendar .content {
@@ -20,6 +20,7 @@
     display: flex;
     background-color: #eee;
     height: 690px;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
 }
 
 .usrEventsCalendar .tabela .calendar {
@@ -36,7 +37,7 @@
 }
 .usrEventsCalendar .table-right h1 {
     justify-self: center;
-    font: 500 2.5rem;
+    font: 500 2.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #0459ae;
     display: flex;
 }
@@ -44,7 +45,7 @@
 .usrEventsCalendar .table-right button {
     border: none;
     color: #d10000;
-    font: 500 1.3rem;
+    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     transition: 0.2s;
     border-radius: 8px;
     width: 60%;
@@ -72,8 +73,18 @@
 
     border-left: 2px solid #0459ae;
     overflow: auto;
-    font: 500 1.3rem;
+    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.marked-schedule {
+    display: flex;
+}
+
+.time-schedule {
+    margin-right: 10px;
 }
 
 .usrEventsCalendar .schedules .schedule-box {
@@ -84,7 +95,7 @@
 .usrEventsCalendar .schedules .schedule-box button {
     background: none;
     border: none;
-    font: 700 1rem;
+    font: 700 1rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #0459ae;
     cursor: pointer;
     padding: 0.6rem;
@@ -127,6 +138,10 @@
 }
 
 @media only screen and (max-width: 553px) {
+    .usrEventsCalendar .table-right h1 {
+        font-size: 25px !important;
+    }
+
     .usrEventsCalendar .tabela {
         width: 90%;
         margin: auto;

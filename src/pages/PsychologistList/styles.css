@@ -1,16 +1,15 @@
 .psychologistListContainer {
     width: 100%;
-    height: 100%;
-    color: #eee;
+    height: calc(100vh - 70px);
+    color: #ddd;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psychologistListContainer .content {
-    width: 915px;
     height: 700px;
     display: flex;
     background: #eeeeee;
@@ -43,7 +42,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003A70;
 
     cursor: pointer;
 
@@ -56,7 +55,7 @@
     align-items: center;
     justify-content: space-between;
 
-    font: 500 18px Poppins;
+    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
 
     background-color: #eee;
@@ -87,7 +86,7 @@
 
 .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
     margin: 16px 0 0 0;
-    font: 700 32px Poppins;
+    font: 700 32px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .psychologistListContainer .patientTab .button {
     width: 3rem;

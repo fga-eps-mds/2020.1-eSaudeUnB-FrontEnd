@@ -1,7 +1,8 @@
 .psychologist-container {
     width: 100vw;
     height: 100vh;
-    color: #0459ae;
+    color: #003A70;
+    background-color: #003A70;
 
     display: flex;
     align-items: center;
@@ -39,18 +40,18 @@
 .psychologist-container .psychologist-create .form .psyCreate input {
     width: 400px;
     height: 41px;
-    color: #0459ae;
+    color: #003A70;
 
     background-color: transparent;
     border: 0;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 
     font-size: 18px;
 }
 .psychologist-container .psychologist-create .form h2 {
     text-align: center;
     margin-top: 50px;
-    color: #0459ae;
+    color: #003A70;
 }
 .psychologist-container
     .psychologist-create
@@ -67,25 +68,25 @@
     border-radius: 25px;
     border: none;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003A70;
     margin-top: 70px;
     font-size: 24px;
     line-height: 36px;
 }
 
 .psychologist-container .psychologist-create .form .psyCreate .button:hover {
-    background: #0a84e3;
+    background: #003A70;
 }
 
 .psychologist-container .psychologist-create .form .psyCreate select {
     width: 400px;
     height: 41px;
 
-    color: #0459ae;
+    color: #003A70;
 
     border: 0px;
     background-color: transparent;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003A70;
 
     font-size: 18px;
     line-height: 27px;
@@ -97,6 +98,7 @@
     top: 0;
     left: 50%;
 }
+
 .psychologist-container .form .alertContent {
     margin: 5px 0 5px 0;
     color: red;
@@ -105,9 +107,62 @@
     height: 20px;
     font-size: 14px;
 }
+
+.psychologist-container .gender_selection {
+    margin-bottom: 30px;
+}
+
+.psychologist-container .loading {
+    height: 100vh;
+    width: 100vw;
+    background-color: #003A70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.psychologist-container .loading .load-icon {
+    -webkit-animation: rotating 2s linear infinite;
+    -moz-animation: rotating 2s linear infinite;
+    -ms-animation: rotating 2s linear infinite;
+    -o-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+}
+
+
+@-webkit-keyframes rotating  {
+    from {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+}
+
+@keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
 @media only screen and (max-width: 600px) {
     .psychologist-container .psychologist-create .form {
-        margin: 120px 0 20px 0;
+        margin: 0px 0 20px 0;
         width: 85%;
         height: auto;
     }

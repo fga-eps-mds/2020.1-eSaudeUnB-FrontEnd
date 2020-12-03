@@ -2,12 +2,11 @@
     width: 100%;
     height: 100vh;
     color: #eee;
-
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .newSession .content {
@@ -19,14 +18,13 @@
 
 .newSession .patientInfo {
     display: flex;
-    font: 500 18px Poppins;
+    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
     background-color: #eee;
     border-radius: 15px;
     line-height: 3rem;
-
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.4);
     width: 1400px;
-
     margin-top: 50px;
 }
 
@@ -102,7 +100,7 @@
     width: 233.3px;
     margin-bottom: -10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    font: 500 1.2rem Poppins;
+    font: 500 1.2rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #eee;
     float: left;
     background-color: #197fe5;
@@ -128,31 +126,28 @@
 .newSession .patientHistory .tabContent {
     display: flex;
     flex-direction: column;
-
-    font: 500 14px Poppins;
+    font: 500 14px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #000;
-
-    background-color: #eee;
+    background-color: #eee !important;
     border-radius: 15px;
-
     width: 1400px;
-
     padding: 1rem 2rem 0 2rem;
     height: 55vh;
-
     overflow: auto;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.4);
 }
+
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #197fe5;
+    background: #003A70;
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0459ae;
+    background: #0E84E3;
 }
 
 .newSession .patientHistory .tabContent h1 {
@@ -167,7 +162,7 @@ h2 {
 }
 
 .newSession .patientHistory .tabContent h2 {
-    font: 100 16px Poppins;
+    font: 100 16px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1rem;
 }
 
@@ -220,13 +215,13 @@ h2 {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
-    font: 500 16px Poppins;
+    font: 500 16px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: left;
 }
 
 .newSession input {
     width: 600px;
-    font: 500 16px Poppins;
+    font: 500 16px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding-left: 10px;
     padding-right: 10px;
 }
