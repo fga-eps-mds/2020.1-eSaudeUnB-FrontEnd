@@ -73,9 +73,9 @@ export default function PsychologistSchedule() {
     }
 
     function appointmentHours(start, end, duration) {
-        let actualHour = parseInt(start.substring(0, 2));
-        let actualMinutes = parseInt(start.substring(3, 5));
-        duration = parseInt(duration);
+        let actualHour = parseInt(start.substring(0, 2), 10);
+        let actualMinutes = parseInt(start.substring(3, 5), 10);
+        const durationParse = parseInt(duration, 10);
         let hour = {};
         const hours = [{}];
         hours[0] = {
@@ -84,11 +84,11 @@ export default function PsychologistSchedule() {
         };
 
         do {
-            if (actualMinutes + duration >= 60) {
+            if (actualMinutes + durationParse >= 60) {
                 actualHour += 1;
-                actualMinutes = 60 - (actualMinutes + duration);
+                actualMinutes = 60 - (actualMinutes + durationParse);
             } else {
-                actualMinutes += duration;
+                actualMinutes += durationParse;
             }
             hour = {
                 time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${
@@ -133,6 +133,21 @@ export default function PsychologistSchedule() {
         setScheduleItems(temp);
     }
 
+    function calculateAttendance(start, end, duration) {
+        const startTimeParser = parseInt(start.substring(0, 2), 10) * 60
+            + parseInt(start.substring(3, 5), 10);
+        const endTimeParser = parseInt(end.substring(0, 2), 10) * 60
+                + parseInt(end.substring(3, 5), 10);
+        const durationParser = parseInt(duration, 10);
+
+        const differenceRangeTime = (endTimeParser - startTimeParser);
+        let minutesRemaining = 0;
+        if (differenceRangeTime % durationParser !== 0) {
+            minutesRemaining = differenceRangeTime % durationParser;
+        }
+        return minutesRemaining;
+    }
+
     function verifyCalendarData() {
         let minutes;
         for (let i = 0; i < scheduleItems.length; i++) {
@@ -148,7 +163,7 @@ export default function PsychologistSchedule() {
                 return false;
             }
 
-            if (!scheduleItems[i].from || !scheduleItems[i].to) {
+            if (!scheduleItems[i].from || !scheduleItems[i].to || !scheduleItems[i].duration) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -160,7 +175,7 @@ export default function PsychologistSchedule() {
                 return false;
             }
 
-            if (scheduleItems[i].duration <= 0) {
+            if (scheduleItems[i].duration && scheduleItems[i].duration <= 0) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
@@ -171,7 +186,6 @@ export default function PsychologistSchedule() {
                 }, 3500);
                 return false;
             }
-            // function to be edited earlier
             minutes = calculateAttendance(
                 scheduleItems[i].from,
                 scheduleItems[i].to,
@@ -220,20 +234,6 @@ export default function PsychologistSchedule() {
                 setShow(false);
             }, 3000);
         }
-    }
-
-    function calculateAttendance(start, end, duration) {
-        start = parseInt(start.substring(0, 2)) * 60
-            + parseInt(start.substring(3, 5));
-        end = parseInt(end.substring(0, 2)) * 60 + parseInt(end.substring(3, 5));
-        duration = parseInt(duration);
-
-        const number = end - start;
-        let minutesRemaining = 0;
-        if (number % duration !== 0) {
-            minutesRemaining = number % duration;
-        }
-        return minutesRemaining;
     }
 
     return (

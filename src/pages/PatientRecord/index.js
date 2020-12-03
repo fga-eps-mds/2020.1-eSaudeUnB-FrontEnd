@@ -66,6 +66,14 @@ export default function PatientRecord(props) {
         setTabContent(true);
     }
 
+    function formatDate(date) {
+        const parteDate = new Date(date);
+        const day = parteDate.getDay();
+        const month = parteDate.getMonth();
+        const year = parteDate.getFullYear();
+        return `${String(day) < 10 ? `0${day}` : day}/${month}/${year}`;
+    }
+
     return (
         <>
             <NavBar className="navBar" bond="Psychologist" />
@@ -132,7 +140,7 @@ export default function PatientRecord(props) {
                                         className="tablink"
                                         onClick={() => changeSession(index)}
                                     >
-                                        {index}
+                                        {formatDate(session.createdAt)}
                                     </button>
                                 </div>
                             ))}
