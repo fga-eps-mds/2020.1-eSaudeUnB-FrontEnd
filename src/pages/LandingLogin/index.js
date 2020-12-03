@@ -77,7 +77,6 @@ export default function LandingLogin() {
             if (responseUser.status === 200 || responseUser.status === 201) {
                 localStorage.setItem('accessToken', responseUser.data.accessToken);
                 localStorage.setItem('user', email);
-<<<<<<< HEAD
                 if (responseUser.data.user.ForgetPassWord === 1) {
                     history.push({
                         pathname: '/change-password',
@@ -86,10 +85,7 @@ export default function LandingLogin() {
                         },
                     });
                 }
-                history.push({
-=======
                 return history.push({
->>>>>>> develop
                     pathname: '/profile',
                     state: {
                         data: responseUser.data.user,
@@ -208,28 +204,33 @@ export default function LandingLogin() {
                             centered
                         >
                             <Modal.Header closeButton>
-                                <Modal.Title id="contained-modal-title-vcenter">
+                                <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
                                     Recuperar senha
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <p>Indique o e-mail usado para cadastrar a sua conta</p>
-                                <Input
-                                    placeholder="Email registrado"
-                                    value={registeredEmail}
-                                    onChange={setRegisteredEmail}
-                                />
-                                {alertEmail ? (
-                                    <div className="alertContent">
-                                        <p>
-                                            {alertEmailText}
-                                        </p>
+                                <div className="modalFormDiv">
+                                    <label className="modalLabel">Indique o e-mail usado para cadastrar a sua conta</label>
+                                    <Input
+                                        className="modalInput"
+                                        placeholder="Email registrado"
+                                        value={registeredEmail}
+                                        onChange={setRegisteredEmail}
+                                    />
+                                    <div className="modalFormDiv">
+                                        {alertEmail ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    {alertEmailText}
+                                                </p>
+                                            </div>
+                                        ) : (
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
-                                ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
+                                </div>
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={resetPassword}>Confirmar</Button>
