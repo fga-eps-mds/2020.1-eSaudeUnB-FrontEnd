@@ -13,16 +13,22 @@ export default function NewSession(props) {
     const [secondaryComplaint, setSecondaryComplaint] = useState('');
     const [complaintEvolution, setComplaintEvolution] = useState('');
     const [professional, setProfessional] = useState('');
+    const [date, SetDate] = useState('');
+    const [hour, SetHour] = useState('');
+
 
     useEffect(() => {
         async function getData() {
             const { email } = props.location.state;
             const accessToken = localStorage.getItem('accessToken');
-
+            const psy = await api.get(`/psychologist/${localStorage.getItem('user')}`, {
+                headers: { authorization: accessToken },
+            });
             const response = await api.get(`/user/${email}`, {
                 headers: { authorization: accessToken },
             });
             setPatient(response.data);
+            setProfessional(psy.data);
         }
 
         getData();
@@ -35,18 +41,18 @@ export default function NewSession(props) {
 
         const { email } = patient;
         const accessToken = localStorage.getItem('accessToken');
-
-        await api.post('/session', {
+        const dia = Date.parse((date + "T" + hour));
+        const respose = await api.post('/session', {
             email,
             mainComplaint,
             secondaryComplaint,
+            date: dia,
             complaintEvolution,
-            professional,
+            professional: "bbb",
         },
-        {
-            headers: { authorization: accessToken },
-        });
-
+            {
+                headers: { authorization: accessToken },
+            });
         history.push({
             pathname: `patient/list/${patient.email}`,
             state: {
@@ -119,18 +125,37 @@ export default function NewSession(props) {
                         <form className="form" onSubmit={sendSession}>
                             <div className="tabContent">
                                 <div className="record">
-                                    <h2>Profissional: Xxx</h2>
-                                    <h2>Data: 07/SET/2020</h2>
-                                    <h2>Encaminhamento: Rede Interna</h2>
+                                    <div className="infos">
+                                        <div className="professional">
+                                            <p>Profissional:&nbsp;</p>
+                                            <span> {professional.name}</span>
 
-                                    <div className="recordText" id="professional">
-                                        <h1>Profissional</h1>
-                                        <input
-                                            value={professional}
-                                            onChange={(e) => setProfessional(e.target.value)}
-                                            type="professional"
-                                        />
+                                        </div>
+
+                                        <div className="infoInputs">
+
+                                            <div className="input-box">
+                                                <label>Data</label>
+                                                <input
+                                                    type="date"
+                                                    onChange={(e) => SetDate(e.target.value)}
+                                                />
+                                            </div>
+
+                                            <div className="input-box">
+                                                <label>Horário</label>
+                                                <input
+                                                    type="time"
+                                                    onChange={(e) => SetHour(e.target.value)}
+                                                />
+                                                {/*2020-01-29-12:50Z*/}
+                                            </div>
+                                        </div>
+
+
+                                        {/* <>Encaminhamento: SELECT</> */}
                                     </div>
+
 
                                     <div className="recordText" id="mainComplaint" >
                                         <h1>Queixa Principal</h1>

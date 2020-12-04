@@ -1152,7 +1152,7 @@ export default function UserProfile() {
                                         </label>
                                         <Input
                                             placeholder="Preencha aqui"
-                                            value={affiliationPhone}
+                                            value={affiliationPhone || ''}
                                             onChange={setAffiliationPhone}
                                         />
                                         <div className="alertContent">
