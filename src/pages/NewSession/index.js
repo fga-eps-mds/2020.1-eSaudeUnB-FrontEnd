@@ -42,7 +42,7 @@ export default function NewSession(props) {
         const { email } = patient;
         const accessToken = localStorage.getItem('accessToken');
         const dia = Date.parse((date + "T" + hour));
-        const respose = await api.post('/session', {
+        await api.post('/session', {
             email,
             mainComplaint,
             secondaryComplaint,

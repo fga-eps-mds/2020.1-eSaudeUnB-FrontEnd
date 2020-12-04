@@ -20,6 +20,7 @@ export default function PatientRecord(props) {
     const [complaintEvolution, setComplaintEvolution] = useState('');
     const [professional, setProfessional] = useState('');
     const [tabContent, setTabContent] = useState(true);
+    const [dia, SetDate] = useState('');
     const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
@@ -46,12 +47,20 @@ export default function PatientRecord(props) {
         getData();
     }, [accessToken, props]);
 
+    function haddleDate(session) {
+
+        const data = session.date.split(/[-T]/, 3);
+        return (data[2] + "/" + data[1] + "/" + data[0]);
+    }
+
     async function changeSession(index) {
         setTabContent(false);
         setMainComplaint(sessions[index].mainComplaint);
         setSecondaryComplaint(sessions[index].secondaryComplaint);
         setComplaintEvolution(sessions[index].complaintEvolution);
         setProfessional(sessions[index].professional);
+        const data = sessions[index].date.split(/[-T]/, 3);
+        SetDate(data[2] + "/" + data[1] + "/" + data[0])
     }
 
     async function changeAllSession(index) {
@@ -60,18 +69,12 @@ export default function PatientRecord(props) {
         setSecondaryComplaint(allSessions[index].secondaryComplaint);
         setComplaintEvolution(allSessions[index].complaintEvolution);
         setProfessional(allSessions[index].professional);
+        const data = allSessions[index].date.split(/[-T]/, 3);
+        SetDate(data[2] + "/" + data[1] + "/" + data[0])
     }
 
     function openShowAll() {
         setTabContent(true);
-    }
-
-    function formatDate(date) {
-        const parteDate = new Date(date);
-        const day = parteDate.getDay();
-        const month = parteDate.getMonth();
-        const year = parteDate.getFullYear();
-        return `${String(day) < 10 ? `0${day}` : day}/${month}/${year}`;
     }
 
     return (
@@ -140,7 +143,7 @@ export default function PatientRecord(props) {
                                         className="tablink"
                                         onClick={() => changeSession(index)}
                                     >
-                                        {formatDate(session.createdAt)}
+                                        {haddleDate(session)}
                                     </button>
                                 </div>
                             ))}
@@ -171,7 +174,7 @@ export default function PatientRecord(props) {
                                         >
                                             <div className="sessionInfos">
                                                 <div className="minSession">
-                                                    <p>Data: 12/12/2012 </p>
+                                                    <p>Data: {haddleDate(session)} </p>
                                                     <p className="info">
                                                         Profissional:{' '}
                                                         {session.professional}
@@ -198,7 +201,7 @@ export default function PatientRecord(props) {
                                 ) : (
                                     <div className="record">
                                         <h2>Profissional: {`${professional}`}</h2>
-                                        <h2>Data: 07/SET/2020</h2>
+                                        <h2>Data: {`${(dia)}`}</h2>
                                         <h2>Encaminhamento: Rede Interna</h2>
 
                                         <div className="recordText" id="mainComplaint">
