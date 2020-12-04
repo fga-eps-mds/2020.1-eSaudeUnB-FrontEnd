@@ -99,6 +99,8 @@ export default function UserProfile() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
+    const [complaint, setComplaint] = useState(false);
+
     const [showPassword, setShowPassword] = useState(false);
 
     function closeAlerts() {
@@ -966,7 +968,15 @@ export default function UserProfile() {
                                             className="selectsLargest"
                                             name="mainComplaint"
                                             value={mainComplaint || ''}
-                                            onChange={(e) => setMainComplaint(e.target.value)
+                                            onChange={(e) => {
+                                                setMainComplaint(e.target.value)
+                                                if (e.target.value === "Outros") {
+                                                    setComplaint(true);
+                                                } else {
+                                                    setComplaint(false);
+                                                }
+                                            }
+
                                             }
                                         >
                                             <option value="" disabled>
@@ -1028,6 +1038,18 @@ export default function UserProfile() {
                                                 </div>
                                             )}
                                     </div>
+                                    {complaint ? (
+                                        <div className="fieldDiv">
+                                            <label className="upLabel">
+                                                Qual sua queixa?
+                                            </label>
+                                            <Input
+                                                placeholder="Preencha aqui"
+                                                onChange={setMainComplaint}
+                                            />
+                                            {console.log(mainComplaint)}
+                                        </div>
+                                    ) : (<div></div>)}
                                 </div>
                             </div>
                         </div>

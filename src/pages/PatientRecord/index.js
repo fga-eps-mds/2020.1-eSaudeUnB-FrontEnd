@@ -179,9 +179,9 @@ export default function PatientRecord(props) {
                                                         Profissional:{' '}
                                                         {session.professional}
                                                     </p>
-                                                    <p className="info">
+                                                    {/* <p className="info">
                                                         Encaminhamento: Rede Interna
-                                                    </p>
+                                                    </p> */}
                                                 </div>
                                             </div>
 
@@ -202,7 +202,7 @@ export default function PatientRecord(props) {
                                     <div className="record">
                                         <h2>Profissional: {`${professional}`}</h2>
                                         <h2>Data: {`${(dia)}`}</h2>
-                                        <h2>Encaminhamento: Rede Interna</h2>
+                                        {/* <h2>Encaminhamento: Rede Interna</h2> */}
 
                                         <div className="recordText" id="mainComplaint">
                                             <h1>Queixa Principal</h1>
