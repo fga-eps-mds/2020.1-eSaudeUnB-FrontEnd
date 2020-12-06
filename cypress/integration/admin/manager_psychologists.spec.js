@@ -65,7 +65,7 @@ describe('Admin Register an Professional', () => {
       cy.get('.psychologists-cards article').should('have.length', 6);
     });
 
-    it.only("should remove an professional", () => {
+    it("should remove an professional", () => {
       cy.route('DELETE', '**psychologist/**', {});
       cy.route('GET', '**psychologists*', 'fixture:psychologist_list_remove');
 
