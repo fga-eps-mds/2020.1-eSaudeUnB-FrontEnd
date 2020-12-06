@@ -14,9 +14,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-
+.psychologistcalendar .content .alert {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 70px;
+    left: 50%;
+}
 
 .psychologistcalendar .tabela {
     width: 1400px;
