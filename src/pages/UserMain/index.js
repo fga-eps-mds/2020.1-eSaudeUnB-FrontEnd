@@ -343,11 +343,19 @@ export default function UserMain(props) {
                                                     </Modal.Title>
                                                 </Modal.Header>
                                                 <Modal.Body>
-                                                    <p>teste</p>
+                                                    {action === 'register' ? (
+                                                        <div className="modalFormDiv">
+                                                            <p className="modalLabel">Realmente deseja entrar para a lista de espera?</p>
+                                                        </div>
+                                                    ):(
+                                                        <div className="modalFormDiv">
+                                                            <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
+                                                        </div>
+                                                    )}
                                                 </Modal.Body>
                                                 <Modal.Footer>
-                                                    <Button onClick={doAction}>Confirmar</Button>
-                                                    <Button onClick={() => setShowModal(false)}>Cancelar</Button>
+                                                    <Button className="buttonYes" onClick={doAction}>sim</Button>
+                                                    <Button className="buttonNo" onClick={() => setShowModal(false)}>não</Button>
                                                 </Modal.Footer>
                                             </Modal>
                                         </div>
