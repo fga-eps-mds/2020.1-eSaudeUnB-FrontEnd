@@ -72,7 +72,7 @@ export default function UserMain(props) {
     async function doAction(event) {
         event.preventDefault();
         if (action === 'register') {
-            if(!actualUser.canSchedule){
+            if (!actualUser.canSchedule) {
                 setShowAlert(true);
                 setVariant('danger');
                 setAlertText('Complete o seu cadastro antes de entrar em uma lista de espera.');
@@ -92,11 +92,14 @@ export default function UserMain(props) {
                 setTimeout(() => {
                     setShowAlert(false);
                 }, 2000);
+                setShowModal(false);
+                setUserSelected('');
                 return;
             }
 
             await api.post('/waitingList', {
                 emailPatient: user,
+                score: actualUser.score,
             },
                 { headers: { authorization: accessToken } });
 
@@ -109,6 +112,7 @@ export default function UserMain(props) {
 
             setShowModal(false);
             setUserSelected('');
+            window.location.reload();
         }
     }
 
@@ -167,14 +171,14 @@ export default function UserMain(props) {
     return (
         <>
             <NavBar className="navBar" bond="Patient" actualUser={user} />
-            {showAlert ? (
-                <Alert className="alert" variant={variant}>
-                    {alertText}
-                </Alert>
-            ) : (
-                    <div></div>
-                )}
             <div className="usercalendar">
+                {showAlert ? (
+                    <Alert className="alert" variant={variant}>
+                        {alertText}
+                    </Alert>
+                ) : (
+                        <div></div>
+                    )}
                 <SideBar className="sidebar" bond="Patient" actualUser={user} />
                 <div className="content">
                     <div className="tabela">

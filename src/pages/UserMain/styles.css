@@ -21,6 +21,14 @@
     flex-direction: column;
 }
 
+.usercalendar .alert{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 70px;
+    right: 30%;
+}
+
 .usercalendar .tabela {
     margin: 80px 0 80px 0;
     border-radius: 15px;
