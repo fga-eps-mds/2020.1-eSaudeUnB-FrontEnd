@@ -60,9 +60,10 @@ export default function PsychologistCreate() {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Os campos não foram preenchidos corretamente');
+                setLoadingRequest(false);
                 setInterval(() => {
                     setShow(false);
-                }, 3500);
+                }, 6000);
                 return history.push('/admin/psychologist/create');
             }
 
