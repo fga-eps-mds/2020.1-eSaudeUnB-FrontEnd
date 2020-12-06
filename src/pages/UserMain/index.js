@@ -54,17 +54,17 @@ export default function UserMain(props) {
         event.preventDefault();
         setShowModal(true);
 
-        if(action === 'register'){
+        if (action === 'register') {
             setAction('register');
         }
-        else if(action === 'getOut'){
+        else if (action === 'getOut') {
             setAction('getOut');
         }
     }
 
-    async function doAction(event){
+    async function doAction(event) {
         event.preventDefault();
-        if(action === 'register'){
+        if (action === 'register') {
             if (
                 waitingList.find((element) => element.emailPatient === user)
             ) {
@@ -76,14 +76,14 @@ export default function UserMain(props) {
                 }, 2000);
                 return;
             }
-    
+
             await api.post('/waitingList', {
                 emailPatient: user,
             },
                 { headers: { authorization: accessToken } });
 
             setShowModal(false);
-        }else if(action === 'getOut') {
+        } else if (action === 'getOut') {
             await api.delete(`/waitingList/${user}`, {
                 headers: { authorization: accessToken },
             });
@@ -223,18 +223,20 @@ export default function UserMain(props) {
                                                                 )
                                                             }
                                                         >
-                                                            <h3>
-                                                                {
-                                                                    psychologist.bond
-                                                                }
+                                                            <a href="#dropDown">
+                                                                <h3>
+                                                                    {
+                                                                        psychologist.bond
+                                                                    }
                                                                 :
                                                                 {
-                                                                    psychologist.name
-                                                                }{' '}
-                                                                {
-                                                                    psychologist.lastName
-                                                                }
-                                                            </h3>
+                                                                        psychologist.name
+                                                                    }{' '}
+                                                                    {
+                                                                        psychologist.lastName
+                                                                    }
+                                                                </h3>
+                                                            </a>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -252,7 +254,7 @@ export default function UserMain(props) {
                         </div>
                     </div>
                     {userSelected.weekDay !== undefined ? (
-                        <div className="dropDown-calendar">
+                        <div id="dropDown" className="dropDown-calendar">
                             <div className="column1">
                                 <h3>
                                     {userSelected.name} {userSelected.lastName}
@@ -349,11 +351,11 @@ export default function UserMain(props) {
                                                         <div className="modalFormDiv">
                                                             <p className="modalLabel">Realmente deseja entrar para a lista de espera?</p>
                                                         </div>
-                                                    ):(
-                                                        <div className="modalFormDiv">
-                                                            <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
-                                                        </div>
-                                                    )}
+                                                    ) : (
+                                                            <div className="modalFormDiv">
+                                                                <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
+                                                            </div>
+                                                        )}
                                                 </Modal.Body>
                                                 <Modal.Footer>
                                                     <Button className="buttonYes" onClick={doAction}>sim</Button>
