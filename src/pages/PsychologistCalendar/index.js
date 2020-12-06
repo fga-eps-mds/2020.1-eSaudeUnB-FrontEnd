@@ -63,7 +63,7 @@ export default function PsychologistCalendar() {
                 setAlertText(
                     'O horario de término não pode ser menor que o de ínicio',
                 );
-                setInterval(() => {
+                setTimeout(() => {
                     setShow(false);
                 }, 3500);
                 return false;
@@ -75,7 +75,7 @@ export default function PsychologistCalendar() {
                 setAlertText(
                     'Todos os campos devem ser preenchidos, alterações não foram salvas',
                 );
-                setInterval(() => {
+                setTimeout(() => {
                     setShow(false);
                 }, 3500);
                 return false;
@@ -87,7 +87,7 @@ export default function PsychologistCalendar() {
                 setAlertText(
                     'A duração da consulta deve ser maior que 0 minutos',
                 );
-                setInterval(() => {
+                setTimeout(() => {
                     setShow(false);
                 }, 3500);
                 return false;
@@ -191,7 +191,7 @@ export default function PsychologistCalendar() {
             setShow(true);
             setVariant('success');
             setAlertText('Suas alterações foram salvas');
-            setInterval(() => {
+            setTimeout(() => {
                 setShow(false);
             }, 3000);
         }
