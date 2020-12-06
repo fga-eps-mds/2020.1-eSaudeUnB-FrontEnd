@@ -50,7 +50,8 @@ export default function UserMain(props) {
         return false;
     }
 
-    function openModal(action) {
+    function openModal(action, event) {
+        event.preventDefault();
         setShowModal(true);
 
         if(action === 'register'){
@@ -61,7 +62,8 @@ export default function UserMain(props) {
         }
     }
 
-    async function doAction(){
+    async function doAction(event){
+        event.preventDefault();
         if(action === 'register'){
             if (
                 waitingList.find((element) => element.emailPatient === user)
@@ -327,8 +329,8 @@ export default function UserMain(props) {
                                             Lista de espera
                                         </button> */}
                                         <div className="row2">
-                                            <button className="waitingListButton waiting-list" onClick={() => openModal('register')}>Entrar para a lista de espera</button>
-                                            <button className="getOutOfWLButton waiting-list" onClick={() => openModal('getOut')}>Sair da lista de espera</button>
+                                            <button className="waitingListButton waiting-list" onClick={(event) => openModal('register', event)}>Entrar para a lista de espera</button>
+                                            <button className="getOutOfWLButton waiting-list" onClick={(event) => openModal('getOut', event)}>Sair da lista de espera</button>
                                             <Modal
                                                 show={showModal}
                                                 onHide={() => setShowModal(false)}
