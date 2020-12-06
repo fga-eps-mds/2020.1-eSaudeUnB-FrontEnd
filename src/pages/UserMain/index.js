@@ -92,31 +92,6 @@ export default function UserMain(props) {
         }
     }
 
-    // async function getOutOfWaitingList() {
-    //     await api.delete(`/waitingList/${user}`, {
-    //         headers: { authorization: accessToken },
-    //     });
-    // }
-
-    // async function registerOnWaitingList() {
-    //     if (
-    //         waitingList.find((element) => element.emailPatient === user)
-    //     ) {
-    //         setShowAlert(true);
-    //         setVariant('danger');
-    //         setAlertText('Só é possível entrar uma vez na lista de espera.');
-    //         setInterval(() => {
-    //             setShowAlert(false);
-    //         }, 2000);
-    //         return;
-    //     }
-
-    //     await api.post('/waitingList', {
-    //         emailPatient: user,
-    //     },
-    //         { headers: { authorization: accessToken } });
-    // }
-
     async function saveAppointment(event) {
         event.preventDefault();
         const response = await api.get(`/user/${user}`, {
