@@ -1,5 +1,4 @@
-  
-describe('Corporations page test', () => {
+describe('Login Admin User', () => {
     beforeEach(() => {
       cy.visit('/admin');
       cy.server();
