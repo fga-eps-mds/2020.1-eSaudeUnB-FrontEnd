@@ -39,6 +39,7 @@
 }
 .psychologistcalendar .table-right {
     border-left: 2px solid #07387e;
+    padding-left: 30px;
     height: 530px;
     width: 500px;
     text-align: center;
