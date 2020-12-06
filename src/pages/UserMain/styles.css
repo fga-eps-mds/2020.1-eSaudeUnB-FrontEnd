@@ -139,7 +139,11 @@
 .usercalendar .psy-card button {
     height: 100%;
 }
-.usercalendar .psy-card button:focus {
+
+.usercalendar .psy-card button a{
+    text-decoration: none;
+}
+.usercalendar .psy-card button:hover {
     background-color: #c4c4c4;
 }
 .usercalendar .column1 {
