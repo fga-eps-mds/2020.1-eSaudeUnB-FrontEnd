@@ -93,7 +93,8 @@ export default function PsychologistCalendar() {
                 return false;
             }
             // function to be edited earlier
-            minutes = calculateAttendance(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            minutes = calculateAttendance(scheduleItems[i].from,
+                scheduleItems[i].to, scheduleItems[i].duration);
 
             if (minutes > 0) {
                 setShow(true);
@@ -106,7 +107,8 @@ export default function PsychologistCalendar() {
                 }, 3500);
                 return false;
             }
-            const value = appointmentHours(scheduleItems[i].from, scheduleItems[i].to, scheduleItems[i].duration);
+            const value = appointmentHours(scheduleItems[i].from,
+                scheduleItems[i].to, scheduleItems[i].duration);
             scheduleItems[i].appointment = value;
         }
 
