@@ -26,6 +26,7 @@ export default function UserMain(props) {
 
     const [showModal, setShowModal] = useState(false);
     const [action, setAction] = useState('');
+    const [actualUser, setActualUser] = useState({});
 
     const history = useHistory();
 
@@ -40,6 +41,12 @@ export default function UserMain(props) {
             headers: { authorization: accessToken },
         }).then((response) => {
             setWaitingList(response.data);
+        });
+
+        api.get(`/user/${user}`, {
+            headers: { authorization: accessToken },
+        }).then((response) => {
+            setActualUser(response.data);
         });
     }, [accessToken]);
 
@@ -65,13 +72,24 @@ export default function UserMain(props) {
     async function doAction(event) {
         event.preventDefault();
         if (action === 'register') {
+            if(!actualUser.canSchedule){
+                setShowAlert(true);
+                setVariant('danger');
+                setAlertText('Complete o seu cadastro antes de entrar em uma lista de espera.');
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 2000);
+                setShowModal(false);
+                setUserSelected('');
+                return;
+            }
             if (
                 waitingList.find((element) => element.emailPatient === user)
             ) {
                 setShowAlert(true);
                 setVariant('danger');
                 setAlertText('Só é possível entrar uma vez na lista de espera.');
-                setInterval(() => {
+                setTimeout(() => {
                     setShowAlert(false);
                 }, 2000);
                 return;
@@ -83,12 +101,14 @@ export default function UserMain(props) {
                 { headers: { authorization: accessToken } });
 
             setShowModal(false);
+            setUserSelected('');
         } else if (action === 'getOut') {
             await api.delete(`/waitingList/${user}`, {
                 headers: { authorization: accessToken },
             });
 
             setShowModal(false);
+            setUserSelected('');
         }
     }
 
