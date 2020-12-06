@@ -234,6 +234,43 @@
     display: none !important;
 }
 
+.buttonYes {
+    background-color: #08a102;
+}
+
+.buttonYes:hover {
+    opacity: 0.5;
+    background-color: #08a102;
+}
+
+.buttonNo {
+    background-color: #c20707;
+}
+
+.buttonNo:hover {
+    opacity: 0.5;
+    background-color: #c20707;
+}
+
+.modalTitle {
+    color: #003A70;
+}
+
+.modalFormDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+}
+
+.modalLabel {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #003A70;
+}
+
 @media only screen and (max-width: 1300px) {
     .usercalendar .tabela {
         flex-direction: column;
