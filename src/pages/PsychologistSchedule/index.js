@@ -93,7 +93,7 @@ export default function PsychologistSchedule() {
                                     <div className="select-box">
                                         <label>Data</label>
                                         <input
-                                            value={`${scheduleItem.day}/${scheduleItem.month}/${scheduleItem.year}`}
+                                            value={`${scheduleItem.day}/${scheduleItem.month+1}/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"
                                         />
