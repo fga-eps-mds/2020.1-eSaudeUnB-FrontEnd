@@ -7,6 +7,7 @@ import './styles.css';
 import '../../assets/styles/Calendar.css';
 import NavBar from '../../components/NavBar';
 import SideBar from '../../components/SideBar';
+import { Alert, Modal, Button } from 'react-bootstrap';
 
 export default function UserMain(props) {
     const [date, setDate] = useState(new Date());
@@ -17,6 +18,15 @@ export default function UserMain(props) {
     const accessToken = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');
 
+    const [waitingList, setWaitingList] = useState([]);
+
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertText, setAlertText] = useState('');
+    const [variant, setVariant] = useState('');
+
+    const [showModal, setShowModal] = useState(false);
+    const [action, setAction] = useState('');
+
     const history = useHistory();
 
     useEffect(() => {
@@ -24,6 +34,12 @@ export default function UserMain(props) {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPsychologists(response.data);
+        });
+
+        api.get(`/waitingList`, {
+            headers: { authorization: accessToken },
+        }).then((response) => {
+            setWaitingList(response.data);
         });
     }, [accessToken]);
 
@@ -33,6 +49,71 @@ export default function UserMain(props) {
         }
         return false;
     }
+
+    function openModal(action) {
+        setShowModal(true);
+
+        if(action === 'register'){
+            setAction('register');
+        }
+        else if(action === 'getOut'){
+            setAction('getOut');
+        }
+    }
+
+    async function doAction(){
+        if(action === 'register'){
+            if (
+                waitingList.find((element) => element.emailPatient === user)
+            ) {
+                setShowAlert(true);
+                setVariant('danger');
+                setAlertText('Só é possível entrar uma vez na lista de espera.');
+                setInterval(() => {
+                    setShowAlert(false);
+                }, 2000);
+                return;
+            }
+    
+            await api.post('/waitingList', {
+                emailPatient: user,
+            },
+                { headers: { authorization: accessToken } });
+
+            setShowModal(false);
+        }else if(action === 'getOut') {
+            await api.delete(`/waitingList/${user}`, {
+                headers: { authorization: accessToken },
+            });
+
+            setShowModal(false);
+        }
+    }
+
+    // async function getOutOfWaitingList() {
+    //     await api.delete(`/waitingList/${user}`, {
+    //         headers: { authorization: accessToken },
+    //     });
+    // }
+
+    // async function registerOnWaitingList() {
+    //     if (
+    //         waitingList.find((element) => element.emailPatient === user)
+    //     ) {
+    //         setShowAlert(true);
+    //         setVariant('danger');
+    //         setAlertText('Só é possível entrar uma vez na lista de espera.');
+    //         setInterval(() => {
+    //             setShowAlert(false);
+    //         }, 2000);
+    //         return;
+    //     }
+
+    //     await api.post('/waitingList', {
+    //         emailPatient: user,
+    //     },
+    //         { headers: { authorization: accessToken } });
+    // }
 
     async function saveAppointment(event) {
         event.preventDefault();
@@ -83,12 +164,19 @@ export default function UserMain(props) {
             },
         );
 
-        window.location.reload();
+        setUserSelected('');
     }
 
     return (
         <>
             <NavBar className="navBar" bond="Patient" actualUser={user} />
+            {showAlert ? (
+                <Alert className="alert" variant={variant}>
+                    {alertText}
+                </Alert>
+            ) : (
+                    <div></div>
+                )}
             <div className="usercalendar">
                 <SideBar className="sidebar" bond="Patient" actualUser={user} />
                 <div className="content">
@@ -106,9 +194,8 @@ export default function UserMain(props) {
                         </div>
                         <div className="table-right">
                             <div className="calendar-title">
-                                <h1>{`Horários disponíveis em ${date.getDate()}/${
-                                    date.getMonth() + 1
-                                }`}</h1>
+                                <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1
+                                    }`}</h1>
                             </div>
                             <div className="schedules">
                                 {psychologists.map((psychologist, i) => (
@@ -150,12 +237,12 @@ export default function UserMain(props) {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                <div key={index}>
-                                                    {!show
-                                                        ? setShow(true)
-                                                        : ''}
-                                                </div>
-                                            )),
+                                                    <div key={index}>
+                                                        {!show
+                                                            ? setShow(true)
+                                                            : ''}
+                                                    </div>
+                                                )),
                                         )}
                                     </div>
                                 ))}
@@ -182,7 +269,7 @@ export default function UserMain(props) {
                                                     ? (
                                                         workDay.appointment.map(
                                                             (appointment) => (appointment.scheduled
-                                                        === false ? (
+                                                                === false ? (
                                                                     <label>
                                                                         <input
                                                                             type="radio"
@@ -212,38 +299,65 @@ export default function UserMain(props) {
                                                     )),
                                             )
                                         ) : (
-                                            <div></div>
-                                        )}
+                                                <div></div>
+                                            )}
                                     </div>
                                     <div className="schedule-buttons">
-                                        <button type="submit">Agendar</button>
-                                        <button
-                                            className="cancelSchedule"
-                                            onClick={() => setUserSelected('')}
-                                        >
-                                            Cancelar
-                                        </button>
-                                        <button
+                                        <div className="row1">
+                                            <button type="submit">Agendar</button>
+                                            <button
+                                                className="cancelSchedule"
+                                                onClick={() => setUserSelected('')}
+                                            >
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                        {/* <button
                                             className="waiting-list"
                                             onClick={() => history.push({
                                                 pathname: '/waiting-list',
                                                 state: {
                                                     data:
-                                                            user,
+                                                        user,
                                                     psychologist: userSelected,
                                                 },
                                             })
                                             }
                                         >
                                             Lista de espera
-                                        </button>
+                                        </button> */}
+                                        <div className="row2">
+                                            <button className="waitingListButton waiting-list" onClick={() => openModal('register')}>Entrar para a lista de espera</button>
+                                            <button className="getOutOfWLButton waiting-list" onClick={() => openModal('getOut')}>Sair da lista de espera</button>
+                                            <Modal
+                                                show={showModal}
+                                                onHide={() => setShowModal(false)}
+                                                backdrop="static"
+                                                size="lg"
+                                                aria-labelledby="contained-modal-title-vcenter"
+                                                centered
+                                            >
+                                                <Modal.Header closeButton>
+                                                    <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
+                                                        Confirmar ação
+                                                    </Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <p>teste</p>
+                                                </Modal.Body>
+                                                <Modal.Footer>
+                                                    <Button onClick={doAction}>Confirmar</Button>
+                                                    <Button onClick={() => setShowModal(false)}>Cancelar</Button>
+                                                </Modal.Footer>
+                                            </Modal>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     ) : (
-                        ''
-                    )}
+                            ''
+                        )}
                     {show ? (
                         <div className="noHours">
                             <h3>
@@ -252,8 +366,8 @@ export default function UserMain(props) {
                             </h3>
                         </div>
                     ) : (
-                        <div></div>
-                    )}
+                            <div></div>
+                        )}
                 </div>
             </div>
         </>

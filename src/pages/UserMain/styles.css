@@ -158,8 +158,10 @@
 }
 .usercalendar .column2 .schedule-buttons {
     display: flex;
+    flex-direction: column;
 
     width: 600px;
+    height: 150px;
     margin-bottom: 20px;
     justify-content: space-between;
 }
@@ -176,6 +178,20 @@
 
 .usercalendar .column2 .schedule-buttons .waiting-list {
     background-color: #003A70;
+    width: 350px;
+}
+
+.usercalendar .column2 .schedule-buttons .row1,
+.usercalendar .column2 .schedule-buttons .row2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.usercalendar .column2 .schedule-buttons .row1 button,
+.usercalendar .column2 .schedule-buttons .row2 button {
+    margin-left: 10px;
 }
 
 .usercalendar .alert {
