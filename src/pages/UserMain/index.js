@@ -99,7 +99,7 @@ export default function UserMain(props) {
 
             await api.post('/waitingList', {
                 emailPatient: user,
-                score: actualUser.score,
+                patientScore: actualUser.score,
             },
                 { headers: { authorization: accessToken } });
 
