@@ -53,7 +53,7 @@ export default function AdminLogin() {
 
         return setInterval(() => {
             setShow(false);
-        }, 2000);
+        }, 5000);
     }
 
     return (

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from './pages/Landing';
-import Home from './pages/Home';
 import LandingLogin from './pages/LandingLogin';
 import LandingSignUp from './pages/LandingSignUp';
 import UserMain from './pages/UserMain';
@@ -29,7 +28,6 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Landing} />
-                <Route path="/home" exact component={Home} />
                 <Route path="/main" component={UserMain} />
                 <Route path="/psychologist/events" component={PsychologistEvents} />
                 <Route path="/profile" component={UserProfile} />
