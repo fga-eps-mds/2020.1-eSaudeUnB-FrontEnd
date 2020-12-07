@@ -16,7 +16,6 @@ export default function NewSession(props) {
     const [date, SetDate] = useState('');
     const [hour, SetHour] = useState('');
 
-
     useEffect(() => {
         async function getData() {
             const { email } = props.location.state;
@@ -41,18 +40,18 @@ export default function NewSession(props) {
 
         const { email } = patient;
         const accessToken = localStorage.getItem('accessToken');
-        const dia = Date.parse((date + "T" + hour));
+        const dia = Date.parse((`${date}T${hour}`));
         await api.post('/session', {
             email,
             mainComplaint,
             secondaryComplaint,
             date: dia,
             complaintEvolution,
-            professional: "bbb",
+            professional: 'bbb',
         },
-            {
-                headers: { authorization: accessToken },
-            });
+        {
+            headers: { authorization: accessToken },
+        });
         history.push({
             pathname: `patient/list/${patient.email}`,
             state: {
@@ -148,14 +147,12 @@ export default function NewSession(props) {
                                                     type="time"
                                                     onChange={(e) => SetHour(e.target.value)}
                                                 />
-                                                {/*2020-01-29-12:50Z*/}
+                                                {/* 2020-01-29-12:50Z */}
                                             </div>
                                         </div>
 
-
                                         {/* <>Encaminhamento: SELECT</> */}
                                     </div>
-
 
                                     <div className="recordText" id="mainComplaint" >
                                         <h1>Queixa Principal</h1>
