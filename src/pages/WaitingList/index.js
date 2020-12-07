@@ -18,7 +18,7 @@ export default function WaitingList(props) {
     const user = localStorage.getItem('user');
 
     useEffect(() => {
-        api.get(`/waitingList`, {
+        api.get('/waitingList', {
             headers: { authorization: accessToken },
         }).then((response) => {
             setWaitingList(response.data);

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import { useHistory } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
+import { Alert, Modal, Button } from 'react-bootstrap';
 import api from '../../services/api';
 import './styles.css';
 import '../../assets/styles/Calendar.css';
 import NavBar from '../../components/NavBar';
 import SideBar from '../../components/SideBar';
-import { Alert, Modal, Button } from 'react-bootstrap';
 
-export default function UserMain(props) {
+export default function UserMain() {
     const [date, setDate] = useState(new Date());
     const [psychologists, setPsychologists] = useState([]);
     const [userSelected, setUserSelected] = useState({});
@@ -28,7 +28,7 @@ export default function UserMain(props) {
     const [action, setAction] = useState('');
     const [actualUser, setActualUser] = useState({});
 
-    const history = useHistory();
+    // const history = useHistory();
 
     useEffect(() => {
         api.get('/psychologists', {
@@ -37,7 +37,7 @@ export default function UserMain(props) {
             setPsychologists(response.data);
         });
 
-        api.get(`/waitingList`, {
+        api.get('/waitingList', {
             headers: { authorization: accessToken },
         }).then((response) => {
             setWaitingList(response.data);
@@ -57,16 +57,15 @@ export default function UserMain(props) {
         return false;
     }
 
-    function openModal(action, event) {
+    function openModal(buttonAction, event) {
         event.preventDefault();
-        setShowModal(true);
 
-        if (action === 'register') {
+        if (buttonAction === 'register') {
             setAction('register');
-        }
-        else if (action === 'getOut') {
+        } else if (buttonAction === 'getOut') {
             setAction('getOut');
         }
+        setShowModal(true);
     }
 
     async function doAction(event) {
@@ -101,7 +100,7 @@ export default function UserMain(props) {
                 emailPatient: user,
                 patientScore: actualUser.score,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             setShowModal(false);
             setUserSelected('');
@@ -177,8 +176,8 @@ export default function UserMain(props) {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <SideBar className="sidebar" bond="Patient" actualUser={user} />
                 <div className="content">
                     <div className="tabela">
@@ -196,7 +195,7 @@ export default function UserMain(props) {
                         <div className="table-right">
                             <div className="calendar-title">
                                 <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1
-                                    }`}</h1>
+                                }`}</h1>
                             </div>
                             <div className="schedules">
                                 {psychologists.map((psychologist, i) => (
@@ -228,7 +227,7 @@ export default function UserMain(props) {
                                                                         psychologist.bond
                                                                     }
                                                                 :
-                                                                {
+                                                                    {
                                                                         psychologist.name
                                                                     }{' '}
                                                                     {
@@ -240,12 +239,12 @@ export default function UserMain(props) {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                    <div key={index}>
-                                                        {!show
-                                                            ? setShow(true)
-                                                            : ''}
-                                                    </div>
-                                                )),
+                                                <div key={index}>
+                                                    {!show
+                                                        ? setShow(true)
+                                                        : ''}
+                                                </div>
+                                            )),
                                         )}
                                     </div>
                                 ))}
@@ -302,8 +301,8 @@ export default function UserMain(props) {
                                                     )),
                                             )
                                         ) : (
-                                                <div></div>
-                                            )}
+                                            <div></div>
+                                        )}
                                     </div>
                                     <div className="schedule-buttons">
                                         <div className="row1">
@@ -351,10 +350,10 @@ export default function UserMain(props) {
                                                             <p className="modalLabel">Realmente deseja entrar para a lista de espera?</p>
                                                         </div>
                                                     ) : (
-                                                            <div className="modalFormDiv">
-                                                                <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
-                                                            </div>
-                                                        )}
+                                                        <div className="modalFormDiv">
+                                                            <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
+                                                        </div>
+                                                    )}
                                                 </Modal.Body>
                                                 <Modal.Footer>
                                                     <Button className="buttonYes" onClick={doAction}>sim</Button>
@@ -367,8 +366,8 @@ export default function UserMain(props) {
                             </div>
                         </div>
                     ) : (
-                            ''
-                        )}
+                        ''
+                    )}
                     {show ? (
                         <div className="noHours">
                             <h3>
@@ -377,14 +376,14 @@ export default function UserMain(props) {
                             </h3>
                         </div>
                     ) : (
-                            <div></div>
-                        )}
+                        <div></div>
+                    )}
                 </div>
             </div>
         </>
     );
 }
 
-UserMain.propTypes = {
-    location: PropTypes.object,
-};
+// UserMain.propTypes = {
+//     location: PropTypes.object,
+// };
