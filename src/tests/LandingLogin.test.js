@@ -4,5 +4,5 @@ import LandingLogin from '../pages/LandingLogin';
 
 it('Expect to render LandingLogin Page', () => {
     expect(shallow(<LandingLogin
-     />).length).toEqual(1);
+    />).length).toEqual(1);
 });
