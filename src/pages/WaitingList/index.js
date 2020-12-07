@@ -23,7 +23,7 @@ export default function WaitingList(props) {
         }).then((response) => {
             setWaitingList(response.data);
         });
-    }, []);
+    }, [accessToken]);
 
     async function getOutOfWaitingList() {
         await api.delete(`/waitingList/${user}`, {

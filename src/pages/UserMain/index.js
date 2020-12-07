@@ -48,7 +48,7 @@ export default function UserMain() {
         }).then((response) => {
             setActualUser(response.data);
         });
-    }, [accessToken]);
+    }, [accessToken, user]);
 
     function dateCheck(weekDay) {
         if (weekDay === date.getDay()) {

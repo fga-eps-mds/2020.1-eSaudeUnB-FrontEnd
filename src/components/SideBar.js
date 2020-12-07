@@ -46,7 +46,7 @@ export default function SideBar({ actualUser, bond }) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, [actualUser, bond]);
+    }, [actualUser, bond, user, accessToken]);
 
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
