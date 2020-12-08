@@ -19,7 +19,7 @@ export default function NavBar({ bond }) {
     useEffect(() => {
         (async function renderImage() {
             try {
-                if (bond === 'Psychologist') {
+                if (bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') {
                     const response = await api.get(`/psychologist/${user}`, {
                         headers: { authorization: accessToken },
                     });
@@ -58,7 +58,7 @@ export default function NavBar({ bond }) {
                 <Link
                     className="a"
                     to={{
-                        pathname: bond === 'Professional' ? '/psychologist/profile' : '/profile',
+                        pathname: (bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? '/psychologist/profile' : '/profile',
                     }}
                 >
                     <img className="logoSquare" src={logoSquare} alt="Square Logo"></img>
@@ -67,7 +67,7 @@ export default function NavBar({ bond }) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    {bond === 'Psychologist' ? (
+                    {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
                         <div className="navLinks">
                             <Link
                                 className="a"
@@ -119,7 +119,7 @@ export default function NavBar({ bond }) {
                         src={userImage || userIcon}
                         alt="icone de usuario"
                     />
-                    {bond === 'Psychologist' ? (
+                    {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
                         <Link
                             className="dropNone"
                             to={{
@@ -147,7 +147,7 @@ export default function NavBar({ bond }) {
                         Sair
                     </Link>
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
-                        {bond === 'Psychologist' ? (
+                        {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
                             <NavDropdown.Item
                                 className="profileDropDown"
                                 href="/psychologist/profile"

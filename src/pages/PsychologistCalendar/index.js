@@ -69,7 +69,7 @@ export default function PsychologistCalendar() {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" actualUser={user} />
+            <NavBar className="navBar" bond="Psicologo" actualUser={user} />
             <div className="psychologistcalendar" onLoad={handleRestrict}>
                 <div className="content">
                     <div className="tabela">

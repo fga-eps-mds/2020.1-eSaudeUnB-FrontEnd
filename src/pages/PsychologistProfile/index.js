@@ -248,7 +248,7 @@ export default function PsychologistProfile() {
     return (
         <>
             <NavBar
-                bond="Psychologist"
+                bond="Psicologo"
             />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (

@@ -31,12 +31,12 @@ export default function PsychologistEvents() {
         <div className="psyEventsCalendar">
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Psicologo"
                 actualUser={psychologist}
             />
             <SideBar
                 className="sidebar"
-                bond="Psychologist"
+                bond="Psicologo"
                 actualUser={psychologist}
             />
             <div className="content">

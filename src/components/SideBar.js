@@ -15,7 +15,7 @@ export default function SideBar({ actualUser, bond }) {
     useEffect(() => {
         (async function renderImage() {
             try {
-                if (bond === 'Psychologist') {
+                if (bond === 'Psicologo') {
                     const response = await api.get(`/psychologist/${user}`, {
                         headers: { authorization: accessToken },
                     });
@@ -79,7 +79,7 @@ export default function SideBar({ actualUser, bond }) {
                         alt="menu"
                     />
                     <p>{userName}</p>
-                    {bond === 'Psychologist' ? (
+                    {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
                         <div className="navLinks">
                             <Link
                                 className="a"
