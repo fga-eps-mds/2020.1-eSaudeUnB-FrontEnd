@@ -15,7 +15,7 @@ export default function NewSession(props) {
     const [professional, setProfessional] = useState('');
     const [date, SetDate] = useState('');
     const [hour, SetHour] = useState('');
-    const today = new Date()
+    const today = new Date();
 
     useEffect(() => {
         async function getData() {
@@ -50,9 +50,9 @@ export default function NewSession(props) {
             complaintEvolution,
             professional: 'bbb',
         },
-            {
-                headers: { authorization: accessToken },
-            });
+        {
+            headers: { authorization: accessToken },
+        });
         history.push({
             pathname: `patient/list/${patient.email}`,
             state: {
@@ -146,7 +146,7 @@ export default function NewSession(props) {
                                                 <label>Horário</label>
                                                 <input
                                                     type="time"
-                                                    defaultValue={new Date().getHours() + ':' + new Date().getMinutes()}
+                                                    defaultValue={`${new Date().getHours()}:${new Date().getMinutes()}`}
                                                     onChange={(e) => SetHour(e.target.value)}
                                                 />
                                                 {/* 2020-01-29-12:50Z */}

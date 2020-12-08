@@ -433,7 +433,10 @@ export default function UserProfile() {
                     <form className="formColumn" onSubmit={updateInfos}>
                         <button
                             className="button-page previousButton"
-                            onClick={() => handlePages('prev')}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handlePages('prev');
+                            }}
                         >
                             <img
                                 src={arrow}
@@ -969,15 +972,17 @@ export default function UserProfile() {
                                             name="mainComplaint"
                                             value={mainComplaint || ''}
                                             onChange={(e) => {
-                                                setMainComplaint(e.target.value);
-                                                if (e.target.value === 'Outros') {
+                                                setMainComplaint(
+                                                    e.target.value,
+                                                );
+                                                if (
+                                                    e.target.value === 'Outros'
+                                                ) {
                                                     setComplaint(true);
                                                 } else {
                                                     setComplaint(false);
                                                 }
-                                            }
-
-                                            }
+                                            }}
                                         >
                                             <option value="" disabled>
                                                 Principal queixa
@@ -1048,7 +1053,9 @@ export default function UserProfile() {
                                                 onChange={setMainComplaint}
                                             />
                                         </div>
-                                    ) : (<div></div>)}
+                                    ) : (
+                                        <div></div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -1186,7 +1193,10 @@ export default function UserProfile() {
 
                         <button
                             className="button-page"
-                            onClick={() => handlePages('next')}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handlePages('next');
+                            }}
                         >
                             <img
                                 src={arrow}
@@ -1211,37 +1221,58 @@ export default function UserProfile() {
                                 centered
                             >
                                 <Modal.Header closeButton>
-                                    <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
+                                    <Modal.Title
+                                        className="modalTitle"
+                                        id="contained-modal-title-vcenter"
+                                    >
                                         Alterar Senha
                                     </Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <div className="modalFormDiv">
-                                        <label className="modalLabel">Senha Atual</label>
+                                        <label className="modalLabel">
+                                            Senha Atual
+                                        </label>
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? 'text' : 'password'}
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             value={actualPassword}
                                             onChange={setActualPassword}
                                         />
                                     </div>
                                     <div className="modalFormDiv">
-                                        <label className="modalLabel">Nova senha</label>
+                                        <label className="modalLabel">
+                                            Nova senha
+                                        </label>
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? 'text' : 'password'}
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             value={newPassword}
                                             onChange={setNewPassword}
                                         />
                                     </div>
                                     <div className="modalFormDiv">
-                                        <label className="modalLabel">Confirmar nova senha</label>
+                                        <label className="modalLabel">
+                                            Confirmar nova senha
+                                        </label>
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? 'text' : 'password'}
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             value={confirmNewPassword}
                                             onChange={setConfirmNewPassword}
                                         />
@@ -1259,7 +1290,11 @@ export default function UserProfile() {
                                     </div>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button onClick={toggleShow}>{showPassword ? 'Esconder campos' : 'Mostrar campos'}</Button>
+                                    <Button onClick={toggleShow}>
+                                        {showPassword
+                                            ? 'Esconder campos'
+                                            : 'Mostrar campos'}
+                                    </Button>
                                     <Button
                                         variant="danger"
                                         onClick={() => {
@@ -1272,7 +1307,12 @@ export default function UserProfile() {
                                     >
                                         Cancelar
                                     </Button>
-                                    <Button className="buttonConfirm" onClick={updatePassword}>Confirmar</Button>
+                                    <Button
+                                        className="buttonConfirm"
+                                        onClick={updatePassword}
+                                    >
+                                        Confirmar
+                                    </Button>
                                 </Modal.Footer>
                             </Modal>
 
@@ -1280,12 +1320,11 @@ export default function UserProfile() {
                                 Salvar
                             </button>
                         </div>
-                    </form >
-                </div >
-            </div >
+                    </form>
+                </div>
+            </div>
             <Footer />
-
-        </div >
+        </div>
     );
 }
 UserProfile.propTypes = {
