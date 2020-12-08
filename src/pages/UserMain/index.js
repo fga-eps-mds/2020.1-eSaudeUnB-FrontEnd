@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import { Alert, Modal, Button } from 'react-bootstrap';
 import api from '../../services/api';
@@ -27,8 +25,6 @@ export default function UserMain() {
     const [showModal, setShowModal] = useState(false);
     const [action, setAction] = useState('');
     const [actualUser, setActualUser] = useState({});
-
-    // const history = useHistory();
 
     useEffect(() => {
         api.get('/psychologists', {
@@ -314,20 +310,6 @@ export default function UserMain() {
                                                 Cancelar
                                             </button>
                                         </div>
-                                        {/* <button
-                                            className="waiting-list"
-                                            onClick={() => history.push({
-                                                pathname: '/waiting-list',
-                                                state: {
-                                                    data:
-                                                        user,
-                                                    psychologist: userSelected,
-                                                },
-                                            })
-                                            }
-                                        >
-                                            Lista de espera
-                                        </button> */}
                                         <div className="row2">
                                             <button className="waitingListButton waiting-list" onClick={(event) => openModal('register', event)}>Entrar para a lista de espera</button>
                                             <button className="getOutOfWLButton waiting-list" onClick={(event) => openModal('getOut', event)}>Sair da lista de espera</button>
@@ -383,7 +365,3 @@ export default function UserMain() {
         </>
     );
 }
-
-// UserMain.propTypes = {
-//     location: PropTypes.object,
-// };
