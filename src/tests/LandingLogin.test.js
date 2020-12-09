@@ -6,5 +6,5 @@ import LandingLogin from '../pages/LandingLogin';
 it('Expect to render LandingLogin Page', () => {
     expect(shallow(<MemoryRouter>
         <LandingLogin
-    /></MemoryRouter>).length).toEqual(1);
+        /></MemoryRouter>).length).toEqual(1);
 });
