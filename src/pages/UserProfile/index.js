@@ -426,8 +426,8 @@ export default function UserProfile() {
                         {alertText}
                     </Alert>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
@@ -451,12 +451,20 @@ export default function UserProfile() {
                                     <input
                                         id="image"
                                         type="file"
+                                        accept=".png, .jpg, .jpeg"
                                         onChange={async (e) => {
-                                            uploadImage(e);
-                                            const image = await convertBase64(
-                                                e.target.files[0],
-                                            );
-                                            setCurrentImage(image);
+                                            const compar = e.target.files[0].type.split('/');
+                                            if (compar[0] === 'image') {
+                                                uploadImage(e);
+                                                const image = await convertBase64(
+                                                    e.target.files[0],
+                                                );
+                                                setCurrentImage(image);
+                                            } else {
+                                                setShow(true);
+                                                setVariant('danger');
+                                                setAlertText('Formato de arquivo não aceito como Foto');
+                                            }
                                         }}
                                     />
                                     <figure className="personal-figure">
@@ -497,10 +505,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -520,10 +528,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -541,10 +549,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
 
@@ -565,10 +573,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -610,10 +618,10 @@ export default function UserProfile() {
                                                 <p>Selecione um vínculo.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -632,10 +640,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
                             </div>
@@ -674,10 +682,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -721,10 +729,10 @@ export default function UserProfile() {
                                                 <p>Informe o estado civil.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                     {/* novos campos */}
                                     <div className="fieldDiv">
@@ -766,10 +774,10 @@ export default function UserProfile() {
                                                 <p>Selecione uma Etnia/Raça.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                     <div className="fieldDiv">
                                         <label className="upLabel">
@@ -848,10 +856,10 @@ export default function UserProfile() {
                                                 <p>Selecione um gênero.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                     {/* campo novo de orientação sexual */}
                                     <div className="fieldDiv">
@@ -892,10 +900,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                     <div className="fieldDiv">
                                         <label className="upLabel">
@@ -957,10 +965,10 @@ export default function UserProfile() {
                                                 <p>Campo obrigatório.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -1038,10 +1046,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                     {complaint ? (
                                         <div className="fieldDiv">
@@ -1054,8 +1062,8 @@ export default function UserProfile() {
                                             />
                                         </div>
                                     ) : (
-                                        <div></div>
-                                    )}
+                                            <div></div>
+                                        )}
                                 </div>
                             </div>
                         </div>
@@ -1081,10 +1089,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                         <hr />
                                         <label className="upLabel">
                                             Telefone
@@ -1100,10 +1108,10 @@ export default function UserProfile() {
                                                 <p>Insira um número válido.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                         <hr />
                                         <label className="upLabel">
                                             Vínculo
@@ -1122,10 +1130,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
 
@@ -1148,10 +1156,10 @@ export default function UserProfile() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                     <div className="fieldDiv">
                                         <label className="upLabel">
@@ -1168,10 +1176,10 @@ export default function UserProfile() {
                                                 <p>Insira um número válido.</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
 
                                     <div className="fieldDiv">
@@ -1283,10 +1291,10 @@ export default function UserProfile() {
                                                 <p>{alertPasswordText}</p>
                                             </div>
                                         ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
                                     </div>
                                 </Modal.Body>
                                 <Modal.Footer>
