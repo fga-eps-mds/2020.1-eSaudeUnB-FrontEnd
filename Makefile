@@ -43,7 +43,7 @@ down-remove-images:
 	docker-compose -f ${file} down --rmi local -v
 
 test:
-	docker-compose -f ${file} run --rm e-saude-frontend npm run test
+	docker-compose -f ${file} run --rm e-saude-frontend npm test -- --coverage
 
 lint:
 	docker-compose -f ${file} run --rm e-saude-frontend npm run lint
