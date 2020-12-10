@@ -136,7 +136,7 @@
         align-items: flex-start;
     }
     .patientListContainer .patientTab {
-        margin-bottom: 20px;
+        margin: 0 15px 20px 15px;
     }
     .patientListContainer .content {
         margin-top: 50px;
