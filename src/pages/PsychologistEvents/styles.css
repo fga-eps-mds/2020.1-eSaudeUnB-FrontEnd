@@ -16,7 +16,7 @@
     align-items: center;
 }
 .psyEventsCalendar .tabela {
-    width: 1400px;
+    width: 1300px;
     border-radius: 15px;
     display: flex;
     background-color: #eee;
@@ -71,7 +71,6 @@
 }
 
 .psyEventsCalendar .schedules {
-    width: 90%;
     height: 80%;
 
     border-left: 2px solid #0459ae;
@@ -132,7 +131,12 @@
         font-size: 2rem;
     }
     .psyEventsCalendar .schedules {
+        width: 100%;
+        border: 0;
         max-height: 300px;
+    }
+    .psyEventsCalendar .schedules .testeTotal h3 {
+        font-size: 24px;
     }
 }
 @media only screen and (max-width: 994px) {
