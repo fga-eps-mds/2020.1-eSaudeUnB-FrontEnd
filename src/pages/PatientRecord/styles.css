@@ -8,7 +8,6 @@
     justify-content: center;
     flex-direction: column;
     background: #fff;
-
 }
 
 .patientRecord .content {
@@ -20,13 +19,14 @@
 
 .patientRecord .patientInfo {
     display: flex;
-    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 18px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #07387e;
     background-color: #eee;
     border-radius: 15px;
     line-height: 3rem;
     margin-top: 50px;
-    width: 1400px;
+    width: 1300px;
 }
 
 .patientRecord .patientInfo .patient {
@@ -35,7 +35,7 @@
     width: 100%;
     background-color: #eee;
     box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .patientRecord .patientInfo .patient .patientImg {
@@ -45,7 +45,7 @@
     margin: 1rem 2rem 1rem 1rem;
 }
 .patientRecord .patientInfo .patient .info {
-    width: 1400px;
+    width: 1300px;
     display: flex;
     flex-direction: column;
 }
@@ -81,7 +81,8 @@
     height: 2.5rem;
 }
 
-.patientRecord .patientInfo .patient .info .emailAndPhone {
+.patientRecord .patientInfo .patient .info .emailAndPhone,
+.patientRecord .patientInfo .patient .info .hidden {
     display: flex;
     flex-direction: row;
 }
@@ -90,32 +91,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 1300px;
 }
 
 .patientRecord .patientHistory .tab {
     margin-top: 3rem;
-    width: 1400px;
-
+    width: 1300px;
     overflow: hidden;
     background-color: none;
 }
 
 .patientRecord .patientHistory .tab button {
-    width: 233.3px;
-    margin-bottom: -10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    width: 216.6px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
-    font: 500 14px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 14px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #eee;
     float: left;
     background-color: #3d7dca;
     border: none;
-    border-radius: 0.7vw;
+    border-radius: 15px 15px 0 0;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 12px 0;
     transition: 0.2s;
-    outline: none;
 }
 
 .patientRecord .patientHistory .tab button:focus {
@@ -132,7 +132,7 @@
 }
 .patientRecord .patientHistory #novoAtendimento {
     float: right;
-    background-color: #003A70;
+    background-color: #003a70;
 }
 .patientRecord .patientHistory #novoAtendimento:hover {
     background-color: #3d7dca;
@@ -145,35 +145,35 @@
 .patientRecord .patientHistory .tabContent {
     display: flex;
     flex-direction: column;
-    font: 500 14px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 14px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #000;
     background-color: #eee;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    width: 1400px;
-    padding: 1rem 2rem 0 2rem;
+    border-radius: 0 0 15px 15px;
+    width: 1300px;
+    padding: 10px 20px 10px 20px;
     height: 550px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.25);
     overflow: auto;
+    margin-bottom: 30px;
 }
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #003A70;
+    background: #003a70;
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0E84E3;
+    background: #0e84e3;
 }
 
 .patientRecord .patientHistory .tabContent h1,
 h2 {
     margin: 1rem 0 1.5rem 0;
     color: #07387e;
-
 }
 
 .patientRecord .patientHistory .tabContent h1 {
@@ -181,12 +181,13 @@ h2 {
 }
 
 .patientRecord .patientHistory .tabContent h2 {
-    font: 100 16px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 100 16px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     line-height: 1rem;
 }
 
 .patientRecord .patientHistory .tabContent p {
-    line-height: 2rem;
+    margin: 0;
 }
 
 .patientRecord .patientHistory .tabContent .recordText {
@@ -200,26 +201,29 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font: 500 1.2rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 18px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #07387e;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 
     width: 100%;
-    height: 25%;
-    align-self: flex-start;
-
     border-radius: 15px;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 2rem 0.5rem 1rem;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    min-height: auto;
+}
+.patientRecord .sessionInfos {
+    width: 100%;
+    max-width: 800px;
 }
 .patientRecord .minSession {
     display: flex;
-    align-items: center;
-    margin-left: 15px;
+    margin-left: 30px;
+    justify-content: space-between;
 }
-.patientRecord .tabContent .info {
-    width: 200px;
-    margin-left: 300px;
+
+.patientRecord .sessionTab .button {
+    margin: 0 15px;
 }
 
 .patientRecord .sessions {
@@ -231,10 +235,66 @@ h2 {
 }
 
 .patientRecord .noSession {
-    font: 100 32px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 100 32px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     line-height: 1rem;
     color: #07387e;
     text-align: center;
     align-self: center;
     margin: auto;
+}
+
+@media only screen and (max-width: 1300px) {
+    .patientRecord .patientInfo,
+    .patientRecord .patientInfo .patient .info,
+    .patientRecord .patientHistory .tab,
+    .patientRecord .patientHistory .tabContent {
+        width: 90vw;
+    }
+
+    .patientRecord .patientHistory .tab .buttons {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .patientRecord .patientInfo .patient {
+        flex-direction: column;
+        align-items: start;
+    }
+    .patientRecord .patientInfo .patient .info .emailAndPhone,
+    .patientRecord .patientInfo .patient .info .hidden {
+        display: flex;
+        flex-direction: column;
+    }
+    .patientRecord .patientInfo .patient .patientImg {
+        margin: 10px 0 0 20px;
+    }
+    .patientRecord .patientInfo .patient .info {
+        padding: 5px 30px;
+    }
+    .patientRecord .patientInfo .patient .info .name {
+        width: 100%;
+    }
+    .patientRecord .minSession {
+        flex-direction: column;
+    }
+    .patientRecord .patientHistory .tabContent p {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 481px) {
+    .patientRecord .patientHistory .tab {
+        display: flex;
+        flex-direction: column;
+    }
+    .patientRecord .patientHistory .tab .tabLink {
+        height: 50px;
+        font-size: 18px;
+        width: 90vw;
+    }
+    .patientRecord .patientHistory .tab .tabLink:last-child {
+        border-radius: 0;
+    }
 }
