@@ -94,6 +94,8 @@
     align-items: center;
     justify-content: space-between;
     flex-flow: column nowrap;
+    height: 400px;
+    margin: 40px 0px 40px 0px;
 }
 
 .signUp01Container .form .button {
@@ -141,10 +143,11 @@
         background-position: center;
     }
     .signUp01Container .form {
-        height: 520px;
+        height: auto;
         width: 330px;
         margin: auto;
         padding-top: 50px;
+        padding-bottom: 50px;
     }
     .signUp01Container .form input {
         width: 240px;
@@ -175,7 +178,6 @@
 }
 @media only screen and (max-width: 320px) {
     .signUp01Container .form {
-        height: 540px;
         width: 90%;
     }
 }
