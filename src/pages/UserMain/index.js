@@ -222,7 +222,7 @@ export default function UserMain() {
                                                                     {
                                                                         psychologist.bond
                                                                     }
-                                                                :
+                                                                :&nbsp;
                                                                     {
                                                                         psychologist.name
                                                                     }{' '}
