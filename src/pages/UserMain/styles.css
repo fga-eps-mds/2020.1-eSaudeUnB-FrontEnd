@@ -289,7 +289,9 @@
     .usercalendar .tabela {
         flex-direction: column;
         width: 550px;
+        height: auto;
         min-height: 900px;
+        padding-bottom: 10px;
         margin: 80px 0 80px 0;
     }
 
@@ -304,6 +306,7 @@
 
     .usercalendar .schedules {
         border: none;
+        max-height: 350px;
     }
 
     .usercalendar .schedules .schedule-box {
