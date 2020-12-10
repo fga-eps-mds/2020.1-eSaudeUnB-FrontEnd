@@ -10,6 +10,7 @@
 }
 
 .psychologistListContainer .content {
+    width: 915px;
     height: 700px;
     display: flex;
     background: #eeeeee;

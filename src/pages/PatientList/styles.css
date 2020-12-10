@@ -101,6 +101,7 @@
         width: 90%;
         margin: auto;
         margin-top: 50px;
+        overflow-x: hidden;
     }
     .patientListContainer .patients {
         width: 90%;
