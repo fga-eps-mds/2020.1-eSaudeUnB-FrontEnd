@@ -109,6 +109,7 @@
         width: 90%;
         margin: auto;
         margin-top: 50px;
+        overflow-x: hidden;
     }
     .psychologistListContainer .patients {
         width: 90%;

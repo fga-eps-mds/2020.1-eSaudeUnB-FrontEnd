@@ -108,6 +108,7 @@
     }
     .navBarComponent .navLinks a {
         margin-bottom: 20px !important;
+        margin-right: 0px !important;
     }
     .navBarComponent .navLinks a:first-child {
         margin-top: 30px;

@@ -181,8 +181,11 @@
         align-items: center;
         justify-content: center;
     }
-    .searcBarComponent input {
-        width: 350px !important;
+    .search-psychologists{
+        justify-content: center;
+    }
+    .search-psychologists .searcBarComponent input {
+        width: 100%;
     }
     .psychologist-list .psychologists-cards {
         align-items: center;
