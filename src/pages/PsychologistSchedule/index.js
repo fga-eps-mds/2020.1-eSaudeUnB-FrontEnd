@@ -121,8 +121,7 @@ export default function PsychologistSchedule() {
                                     </div>
                                     <button
                                         type="button"
-                                        onClick={() =>
-                                            removeScheduleItem(index)
+                                        onClick={() => removeScheduleItem(index)
                                         }
                                     >
                                         Remover

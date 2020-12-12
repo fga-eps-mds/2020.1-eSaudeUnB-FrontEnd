@@ -50,12 +50,12 @@ export default function PsychologistCreate() {
             };
 
             if (
-                !name ||
-                !lastName ||
-                !email ||
-                !gender ||
-                !specialization ||
-                !bond
+                !name
+                || !lastName
+                || !email
+                || !gender
+                || !specialization
+                || !bond
             ) {
                 setShow(true);
                 setVariant('danger');

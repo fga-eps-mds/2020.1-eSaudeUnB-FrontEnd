@@ -168,13 +168,12 @@ export default function PatientRecord(props) {
                             <button
                                 id="novoAtendimento"
                                 className="tabLink"
-                                onClick={() =>
-                                    history.push({
-                                        pathname: '/new-session',
-                                        state: {
-                                            email: patient.email,
-                                        },
-                                    })
+                                onClick={() => history.push({
+                                    pathname: '/new-session',
+                                    state: {
+                                        email: patient.email,
+                                    },
+                                })
                                 }
                             >
                                 Novo atendimento

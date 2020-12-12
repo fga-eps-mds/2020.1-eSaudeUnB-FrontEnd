@@ -203,52 +203,50 @@ export default function UserMain() {
                                 {psychologists.map((psychologist, i) => (
                                     <div key={i} className="schedule-box">
                                         {psychologist.weekDay.map(
-                                            (workDay, index) =>
-                                                dateCheck(workDay.weekDay) ? (
+                                            (workDay, index) => (dateCheck(workDay.weekDay) ? (
+                                                <div
+                                                    className="testecalendar"
+                                                    key={index}
+                                                >
+                                                    {show
+                                                        ? setShow(false)
+                                                        : ''}
                                                     <div
-                                                        className="testecalendar"
+                                                        className="psy-card"
                                                         key={index}
                                                     >
-                                                        {show
-                                                            ? setShow(false)
-                                                            : ''}
-                                                        <div
-                                                            className="psy-card"
-                                                            key={index}
+                                                        <button
+                                                            onClick={
+                                                                /* eslint-disable max-len */
+                                                                () => setUserSelected(
+                                                                    psychologist,
+                                                                )
+                                                            }
                                                         >
-                                                            <button
-                                                                onClick={
-                                                                    /* eslint-disable max-len */
-                                                                    () =>
-                                                                        setUserSelected(
-                                                                            psychologist,
-                                                                        )
-                                                                }
-                                                            >
-                                                                <a href="#dropDown">
-                                                                    <h3>
-                                                                        {
-                                                                            psychologist.bond
-                                                                        }
+                                                            <a href="#dropDown">
+                                                                <h3>
+                                                                    {
+                                                                        psychologist.bond
+                                                                    }
                                                                         :&nbsp;
-                                                                        {
-                                                                            psychologist.name
-                                                                        }{' '}
-                                                                        {
-                                                                            psychologist.lastName
-                                                                        }
-                                                                    </h3>
-                                                                </a>
-                                                            </button>
-                                                        </div>
+                                                                    {
+                                                                        psychologist.name
+                                                                    }{' '}
+                                                                    {
+                                                                        psychologist.lastName
+                                                                    }
+                                                                </h3>
+                                                            </a>
+                                                        </button>
                                                     </div>
-                                                ) : (
-                                                    <div key={index}>
-                                                        {!show
-                                                            ? setShow(true)
-                                                            : ''}
-                                                    </div>
-                                                ),
+                                                </div>
+                                            ) : (
+                                                <div key={index}>
+                                                    {!show
+                                                        ? setShow(true)
+                                                        : ''}
+                                                </div>
+                                            )),
                                         )}
                                     </div>
                                 ))}
@@ -269,14 +267,12 @@ export default function UserMain() {
                                     <div className="hours-disponibility">
                                         {userSelected.weekDay !== undefined ? (
                                             userSelected.weekDay.map(
-                                                (workDay) =>
-                                                    dateCheck(
-                                                        workDay.weekDay,
-                                                    ) ? (
+                                                (workDay) => (dateCheck(
+                                                    workDay.weekDay,
+                                                ) ? (
                                                         workDay.appointment.map(
-                                                            (appointment) =>
-                                                                appointment.scheduled ===
-                                                                false ? (
+                                                            (appointment) => (appointment.scheduled
+                                                                === false ? (
                                                                     <label>
                                                                         <input
                                                                             type="radio"
@@ -287,10 +283,9 @@ export default function UserMain() {
                                                                             value={
                                                                                 appointment._id
                                                                             }
-                                                                            onChange={() =>
-                                                                                setSelectedValue(
-                                                                                    appointment._id,
-                                                                                )
+                                                                            onChange={() => setSelectedValue(
+                                                                                appointment._id,
+                                                                            )
                                                                             }
                                                                         />
                                                                         {
@@ -299,11 +294,11 @@ export default function UserMain() {
                                                                     </label>
                                                                 ) : (
                                                                     ''
-                                                                ),
+                                                                )),
                                                         )
                                                     ) : (
                                                         <div></div>
-                                                    ),
+                                                    )),
                                             )
                                         ) : (
                                             <div></div>
@@ -316,8 +311,7 @@ export default function UserMain() {
                                             </button>
                                             <button
                                                 className="cancelSchedule"
-                                                onClick={() =>
-                                                    setUserSelected('')
+                                                onClick={() => setUserSelected('')
                                                 }
                                             >
                                                 Cancelar
@@ -326,24 +320,21 @@ export default function UserMain() {
                                         <div className="row2">
                                             <button
                                                 className="waitingListButton waiting-list"
-                                                onClick={(event) =>
-                                                    openModal('register', event)
+                                                onClick={(event) => openModal('register', event)
                                                 }
                                             >
                                                 Entrar para a lista de espera
                                             </button>
                                             <button
                                                 className="getOutOfWLButton waiting-list"
-                                                onClick={(event) =>
-                                                    openModal('getOut', event)
+                                                onClick={(event) => openModal('getOut', event)
                                                 }
                                             >
                                                 Sair da lista de espera
                                             </button>
                                             <Modal
                                                 show={showModal}
-                                                onHide={() =>
-                                                    setShowModal(false)
+                                                onHide={() => setShowModal(false)
                                                 }
                                                 backdrop="static"
                                                 size="lg"
@@ -386,8 +377,7 @@ export default function UserMain() {
                                                     </Button>
                                                     <Button
                                                         className="buttonNo"
-                                                        onClick={() =>
-                                                            setShowModal(false)
+                                                        onClick={() => setShowModal(false)
                                                         }
                                                     >
                                                         não

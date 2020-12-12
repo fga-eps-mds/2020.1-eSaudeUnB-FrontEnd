@@ -227,11 +227,11 @@ export default function PsychologistCalendar() {
                     <div className="table-right">
                         <h1>Seus horários dia {date.getDate()}/{date.getMonth() + 1}:</h1>
                         <form className="form" onSubmit={putCalendar}>
-                                <legend className="legend">
-                                    <button type="button" onClick={addNewScheduleItem}>
+                            <legend className="legend">
+                                <button type="button" onClick={addNewScheduleItem}>
                                 + Novo Horário
-                                    </button>
-                                </legend>
+                                </button>
+                            </legend>
                             <div className="formContent">
 
                                 <div className="schedule">
@@ -304,11 +304,10 @@ export default function PsychologistCalendar() {
                                     ))}
                                 </div>
 
-
                             </div>
-                                <button className="savebutton" type="submit">
+                            <button className="savebutton" type="submit">
                             Salvar cadastro
-                                </button>
+                            </button>
                         </form>
                     </div>
                 </div>
