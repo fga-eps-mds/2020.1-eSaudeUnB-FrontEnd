@@ -49,6 +49,7 @@ export default function PsychologistProfile() {
     const [actualPassword, setActualPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const accessToken = localStorage.getItem('accessToken');
     const userEmail = localStorage.getItem('user');
 
@@ -69,6 +70,10 @@ export default function PsychologistProfile() {
         localStorage.removeItem('user');
 
         history.push('/');
+    }
+    function toggleShow(event) {
+        event.preventDefault();
+        setShowPassword(!showPassword);
     }
 
     async function updatePassword(event) {
@@ -476,68 +481,104 @@ export default function PsychologistProfile() {
 
                                 <Modal
                                     show={showModal}
-                                    onHide={
-                                        () => {
-                                            setAlertConfirmPassword(false);
-                                            setShowModal(false);
-                                            setActualPassword('');
-                                            setNewPassword('');
-                                            setConfirmNewPassword('');
-                                        }
-                                    }
+                                    onHide={() => setShowModal(false)}
                                     backdrop="static"
                                     size="lg"
                                     aria-labelledby="contained-modal-title-vcenter"
                                     centered
                                 >
                                     <Modal.Header closeButton>
-                                        <Modal.Title id="contained-modal-title-vcenter">
-                                            Mudar Senha
+                                        <Modal.Title
+                                            className="modalTitle"
+                                            id="contained-modal-title-vcenter"
+                                        >
+                                        Alterar Senha
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <Input
-                                            placeholder="Senha Atual"
-                                            value={actualPassword}
-                                            onChange={setActualPassword}
-                                        />
-                                        <Input
-                                            placeholder="Nova senha"
-                                            value={newPassword}
-                                            onChange={setNewPassword}
-                                        />
-                                        <Input
-                                            placeholder="Confirmar nova senha"
-                                            value={confirmNewPassword}
-                                            onChange={setConfirmNewPassword}
-                                        />
-                                        {alertConfirmPassword ? (
-                                            <div className="alertContent">
-                                                <p>
-                                                    {alertPasswordText}
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <div className="alertContent">
-                                                <p></p>
-                                            </div>
-                                        )}
+                                        <div className="modalFormDiv">
+                                            <label className="modalLabel">
+                                            Senha Atual
+                                            </label>
+                                            <Input
+                                                className="modalInput"
+                                                placeholder=""
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                value={actualPassword}
+                                                onChange={setActualPassword}
+                                            />
+                                        </div>
+                                        <div className="modalFormDiv">
+                                            <label className="modalLabel">
+                                            Nova senha
+                                            </label>
+                                            <Input
+                                                className="modalInput"
+                                                placeholder=""
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                value={newPassword}
+                                                onChange={setNewPassword}
+                                            />
+                                        </div>
+                                        <div className="modalFormDiv">
+                                            <label className="modalLabel">
+                                            Confirmar nova senha
+                                            </label>
+                                            <Input
+                                                className="modalInput"
+                                                placeholder=""
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                value={confirmNewPassword}
+                                                onChange={setConfirmNewPassword}
+                                            />
+                                        </div>
+                                        <div className="modalFormDiv">
+                                            {alertConfirmPassword ? (
+                                                <div className="alertContent">
+                                                    <p>{alertPasswordText}</p>
+                                                </div>
+                                            ) : (
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
+                                        </div>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button variant="success" onClick={updatePassword}>Confirmar</Button>
+                                        <Button onClick={toggleShow}>
+                                            {showPassword
+                                                ? 'Esconder campos'
+                                                : 'Mostrar campos'}
+                                        </Button>
                                         <Button
                                             variant="danger"
-                                            onClick={
-                                                () => {
-                                                    setAlertConfirmPassword(false);
-                                                    setShowModal(false);
-                                                    setActualPassword('');
-                                                    setNewPassword('');
-                                                    setConfirmNewPassword('');
-                                                }
-                                            }
+                                            onClick={() => {
+                                                setAlertConfirmPassword(false);
+                                                setShowModal(false);
+                                                setActualPassword('');
+                                                setNewPassword('');
+                                                setConfirmNewPassword('');
+                                            }}
                                         >
-                                            Cancelar
+                                        Cancelar
+                                        </Button>
+                                        <Button
+                                            className="buttonConfirm"
+                                            onClick={updatePassword}
+                                        >
+                                        Confirmar
                                         </Button>
                                     </Modal.Footer>
                                 </Modal>

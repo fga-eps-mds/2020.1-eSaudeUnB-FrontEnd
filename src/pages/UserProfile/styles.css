@@ -228,6 +228,9 @@
     padding: 4px;
     width: 300px;
 }
+.btn:not(:disabled):not(.disabled) {
+    border-radius: 18px;
+}
 
 .alertContent {
     color: red;

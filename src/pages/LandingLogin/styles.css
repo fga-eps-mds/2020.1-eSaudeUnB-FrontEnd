@@ -188,9 +188,23 @@
 		font-size: 12px;
 	}
 }
+@media only screen and (max-width: 375px) {
+	.modalFormDiv .modalInput {
+		width: 300px;
+	}
+	.modal-content {
+		width: 330px;
+	}
+}
 @media only screen and (max-width: 320px) {
 	.loginContainer .form {
 		height: 540px;
 		width: 90%;
+	}
+	.modalFormDiv .modalInput {
+		width: 225px;
+	}
+	.modal-content {
+		width: 255px;
 	}
 }
