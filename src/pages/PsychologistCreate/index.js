@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
-import { BiLoaderCircle } from 'react-icons/bi';
 
 import api from '../../services/api';
 import Input from '../../components/Input';
@@ -20,7 +19,6 @@ export default function PsychologistCreate() {
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
     const [variant, setVariant] = useState('');
-    const [loadingRequest, setLoadingRequest] = useState(false);
     const history = useHistory();
 
     const [alertContentName, setAlertContentName] = useState(false);
@@ -36,7 +34,6 @@ export default function PsychologistCreate() {
     async function handlePsychologistCreation(event) {
         try {
             event.preventDefault();
-            setLoadingRequest(true);
 
             const user = {
                 name,
@@ -94,7 +91,7 @@ export default function PsychologistCreate() {
                         setInterval(() => {
                             setShow(false);
                         }, 6500);
-                        setLoadingRequest(false);
+
                         return history.push('/admin/psychologist/create');
                     }
 
@@ -105,12 +102,11 @@ export default function PsychologistCreate() {
                         setInterval(() => {
                             setShow(false);
                         }, 6500);
-                        setLoadingRequest(false);
+
                         return history.push('/admin/psychologist/create');
                     }
 
                     if (response.status === 201) {
-                        setLoadingRequest(false);
                         setVariant('success');
                         setAlertText('Profissional criado com sucesso!');
                         setInterval(() => {
