@@ -50,12 +50,12 @@ export default function PsychologistCreate() {
             };
 
             if (
-                !name
-                || !lastName
-                || !email
-                || !gender
-                || !specialization
-                || !bond
+                !name ||
+                !lastName ||
+                !email ||
+                !gender ||
+                !specialization ||
+                !bond
             ) {
                 setShow(true);
                 setVariant('danger');
@@ -151,98 +151,91 @@ export default function PsychologistCreate() {
                 <div></div>
             )}
             <div className="psychologist-create">
-                {
-                    !loadingRequest ? (
-
-                        <form className="form" onSubmit={handlePsychologistCreation}>
-                            <h2>Cadastro de Profissionais</h2>
-                            <div className="psyCreate">
-                                <Input
-                                    placeholder="Nome"
-                                    value={name}
-                                    onChange={setName}
-                                />
-                                {alertContentName ? (
-                                    <div className="alertContent">
-                                        <p>Nome precisa possuir mais de 2 letras.</p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-
-                                <Input
-                                    placeholder="Sobrenome"
-                                    value={lastName}
-                                    onChange={setLastName}
-                                />
-                                {alertContentLastName ? (
-                                    <div className="alertContent">
-                                        <p>
-                                            Sobrenome precisa possuir mais de 2 letras.
-                                        </p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-
-                                <select
-                                    name="gender"
-                                    className="gender_selection"
-                                    onChange={(e) => setGender(e.target.value)}
-                                >
-                                    <option value=""> Gênero </option>
-                                    <option value="F">Feminino</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="I">Não Identificar</option>
-                                </select>
-                                <select
-                                    name="bond"
-                                    onChange={(e) => setBond(e.target.value)}
-                                >
-                                    <option value=""> Vínculo </option>
-                                    <option value="Psicologo">Psicólogo</option>
-                                    <option value="Nutricionista">Nutricionista</option>
-                                    <option value="Assistente Social">Assistente social</option>
-                                </select>
-                                <div className="alertContent">
-                                    <p></p>
-                                </div>
-
-                                <Input
-                                    placeholder="Email"
-                                    value={email}
-                                    onChange={setEmail}
-                                />
-                                {alertContentEmail ? (
-                                    <div className="alertContent">
-                                        <p>E-mail não foi preenchido corretamente.</p>
-                                    </div>
-                                ) : (
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                )}
-                                <Input
-                                    placeholder="Especialidade"
-                                    value={specialization}
-                                    onChange={setSpecialization}
-                                />
-
-                                <button className="button" type="submit">
-                                    Registrar
-                                </button>
+                <form className="form" onSubmit={handlePsychologistCreation}>
+                    <h2>Cadastro de Profissionais</h2>
+                    <div className="psyCreate">
+                        <Input
+                            placeholder="Nome"
+                            value={name}
+                            onChange={setName}
+                        />
+                        {alertContentName ? (
+                            <div className="alertContent">
+                                <p>Nome precisa possuir mais de 2 letras.</p>
                             </div>
-                        </form>
-                    ) : (
-                        <div className="loading">
-                            <BiLoaderCircle className="load-icon" color="#fff" size="4em" />
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
+
+                        <Input
+                            placeholder="Sobrenome"
+                            value={lastName}
+                            onChange={setLastName}
+                        />
+                        {alertContentLastName ? (
+                            <div className="alertContent">
+                                <p>
+                                    Sobrenome precisa possuir mais de 2 letras.
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
+
+                        <select
+                            name="gender"
+                            className="gender_selection"
+                            onChange={(e) => setGender(e.target.value)}
+                        >
+                            <option value=""> Gênero </option>
+                            <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
+                            <option value="I">Não Identificar</option>
+                        </select>
+                        <select
+                            name="bond"
+                            onChange={(e) => setBond(e.target.value)}
+                        >
+                            <option value=""> Vínculo </option>
+                            <option value="Psicologo">Psicólogo</option>
+                            <option value="Nutricionista">Nutricionista</option>
+                            <option value="Assistente Social">
+                                Assistente social
+                            </option>
+                        </select>
+                        <div className="alertContent">
+                            <p></p>
                         </div>
-                    )
-                }
+
+                        <Input
+                            placeholder="Email"
+                            value={email}
+                            onChange={setEmail}
+                        />
+                        {alertContentEmail ? (
+                            <div className="alertContent">
+                                <p>E-mail não foi preenchido corretamente.</p>
+                            </div>
+                        ) : (
+                            <div className="alertContent">
+                                <p></p>
+                            </div>
+                        )}
+                        <Input
+                            placeholder="Especialidade"
+                            value={specialization}
+                            onChange={setSpecialization}
+                        />
+
+                        <button className="button" type="submit">
+                            Registrar
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );
