@@ -203,7 +203,7 @@ export default function PsychologistCalendar() {
         <div className="psychologistcalendar">
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Psicologo"
             />
             <div className="content">
                 {show ? (

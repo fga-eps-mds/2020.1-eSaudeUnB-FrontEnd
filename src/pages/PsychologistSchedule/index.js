@@ -57,7 +57,7 @@ export default function PsychologistSchedule() {
         <div className="psychologistSchedule">
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Psicologo"
             />
             <div className="content">
                 {show ? (

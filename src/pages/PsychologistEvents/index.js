@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import api from '../../services/api';
 import './styles.css';
@@ -9,6 +9,8 @@ import SideBar from '../../components/SideBar';
 export default function PsychologistEvents() {
     const [date, setDate] = useState(new Date());
     const [psychologist, setPsychologist] = useState({});
+
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken');
@@ -32,12 +34,12 @@ export default function PsychologistEvents() {
             <NavBar
                 className="navBar"
                 bond="Psicologo"
-                actualUser={psychologist}
+                actualUser={user}
             />
             <SideBar
                 className="sidebar"
                 bond="Psicologo"
-                actualUser={psychologist}
+                actualUser={user}
             />
             <div className="content">
                 <div className="tabela">
@@ -89,6 +91,6 @@ export default function PsychologistEvents() {
     );
 }
 
-PsychologistEvents.propTypes = {
-    location: PropTypes.object,
-};
+// PsychologistEvents.propTypes = {
+//     location: PropTypes.object,
+// };
