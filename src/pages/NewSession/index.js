@@ -72,7 +72,7 @@ export default function NewSession(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" />
+            <NavBar className="navBar" bond="Psicologo" />
             <div className="newSession">
                 <div className="content">
                     <div className="patientInfo">

@@ -78,7 +78,7 @@ export default function PatientRecord(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" />
+            <NavBar className="navBar" bond="Psicologo" />
             <div className="patientRecord">
                 <div className="content">
                     <div className="patientInfo">
