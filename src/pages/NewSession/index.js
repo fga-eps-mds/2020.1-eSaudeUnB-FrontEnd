@@ -72,7 +72,7 @@ export default function NewSession(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" />
+            <NavBar className="navBar" bond="Psicologo" />
             <div className="newSession">
                 <div className="content">
                     <div className="patientInfo">
@@ -140,13 +140,14 @@ export default function NewSession(props) {
                             <button
                                 id="voltar"
                                 className="tabLink"
-                                onClick={() => history.push({
-                                    pathname: `/patient/list/${patient.email}`,
-                                    state: {
-                                        email: patient.email,
-                                        data: props.location.state.data,
-                                    },
-                                })
+                                onClick={() =>
+                                    history.push({
+                                        pathname: `/patient/list/${patient.email}`,
+                                        state: {
+                                            email: patient.email,
+                                            data: props.location.state.data,
+                                        },
+                                    })
                                 }
                             >
                                 Voltar
@@ -173,7 +174,8 @@ export default function NewSession(props) {
                                                     defaultValue={today
                                                         .toISOString()
                                                         .slice(0, 10)}
-                                                    onChange={(e) => SetDate(e.target.value)
+                                                    onChange={(e) =>
+                                                        SetDate(e.target.value)
                                                     }
                                                 />
                                             </div>
@@ -182,7 +184,8 @@ export default function NewSession(props) {
                                                 <input
                                                     type="time"
                                                     defaultValue={`${today.getHours()}:${today.getMinutes()}`}
-                                                    onChange={(e) => SetHour(e.target.value)
+                                                    onChange={(e) =>
+                                                        SetHour(e.target.value)
                                                     }
                                                 />
                                                 {/* 2020-01-29-12:50Z */}
@@ -197,7 +200,8 @@ export default function NewSession(props) {
                                     >
                                         <h1>Queixa Principal</h1>
                                         <textarea
-                                            onChange={(e) => setMainComplaint(e.target.value)
+                                            onChange={(e) =>
+                                                setMainComplaint(e.target.value)
                                             }
                                             type="mainComplaint"
                                         />
@@ -210,9 +214,10 @@ export default function NewSession(props) {
                                         <h1>Queixa Secundaria</h1>
                                         <textarea
                                             value={secondaryComplaint}
-                                            onChange={(e) => setSecondaryComplaint(
-                                                e.target.value,
-                                            )
+                                            onChange={(e) =>
+                                                setSecondaryComplaint(
+                                                    e.target.value,
+                                                )
                                             }
                                             type="secondaryComplaint"
                                         />
@@ -225,9 +230,10 @@ export default function NewSession(props) {
                                         <h1>Evolução das queixas</h1>
                                         <textarea
                                             value={complaintEvolution}
-                                            onChange={(e) => setComplaintEvolution(
-                                                e.target.value,
-                                            )
+                                            onChange={(e) =>
+                                                setComplaintEvolution(
+                                                    e.target.value,
+                                                )
                                             }
                                             type="complaintEvolution"
                                         />

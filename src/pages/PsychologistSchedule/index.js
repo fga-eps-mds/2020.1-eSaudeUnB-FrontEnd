@@ -55,10 +55,7 @@ export default function PsychologistSchedule() {
 
     return (
         <div className="psychologistSchedule">
-            <NavBar
-                className="navBar"
-                bond="Psychologist"
-            />
+            <NavBar className="navBar" bond="Psicologo" />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
@@ -93,7 +90,9 @@ export default function PsychologistSchedule() {
                                     <div className="select-box">
                                         <label>Data</label>
                                         <input
-                                            value={`${scheduleItem.day}/${scheduleItem.month + 1}/${scheduleItem.year}`}
+                                            value={`${scheduleItem.day}/${
+                                                scheduleItem.month + 1
+                                            }/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"
                                         />
@@ -122,7 +121,8 @@ export default function PsychologistSchedule() {
                                     </div>
                                     <button
                                         type="button"
-                                        onClick={() => removeScheduleItem(index)
+                                        onClick={() =>
+                                            removeScheduleItem(index)
                                         }
                                     >
                                         Remover
@@ -131,9 +131,7 @@ export default function PsychologistSchedule() {
                             ))}
                         </div>
                         <footer className="footer">
-                            <button type="submit">
-                                Salvar cadastro
-                            </button>
+                            <button type="submit">Salvar cadastro</button>
                         </footer>
                     </div>
                 </form>

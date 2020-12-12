@@ -203,7 +203,7 @@ export default function PsychologistCalendar() {
         <div className="psychologistcalendar">
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Psicolog"
             />
             <div className="content">
                 {show ? (
@@ -227,13 +227,12 @@ export default function PsychologistCalendar() {
                     <div className="table-right">
                         <h1>Seus horários dia {date.getDate()}/{date.getMonth() + 1}:</h1>
                         <form className="form" onSubmit={putCalendar}>
-                            <div className="formContent">
                                 <legend className="legend">
-                            Cadastrar horários disponíveis
                                     <button type="button" onClick={addNewScheduleItem}>
                                 + Novo Horário
                                     </button>
                                 </legend>
+                            <div className="formContent">
 
                                 <div className="schedule">
                                     {scheduleItems.map((scheduleItem, index) => (
@@ -277,8 +276,9 @@ export default function PsychologistCalendar() {
                                                 </div>
 
                                                 <div className="input-box">
-                                                    <label>Duração da consulta (minutos)</label>
+                                                    <label>Duração da consulta</label>
                                                     <input
+                                                        placeholder="Minutos"
                                                         name="duration"
                                                         label="duration"
                                                         type="number"
@@ -304,12 +304,11 @@ export default function PsychologistCalendar() {
                                     ))}
                                 </div>
 
-                                <footer className="footer">
-                                    <button type="submit">
-                                Salvar cadastro
-                                    </button>
-                                </footer>
+
                             </div>
+                                <button className="savebutton" type="submit">
+                            Salvar cadastro
+                                </button>
                         </form>
                     </div>
                 </div>
