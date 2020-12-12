@@ -1216,6 +1216,7 @@ export default function UserProfile() {
                         <div className="buttons">
                             <button
                                 className="button-change"
+                                type="button"
                                 onClick={() => setShowModal(true)}
                             >
                                 Alterar senha

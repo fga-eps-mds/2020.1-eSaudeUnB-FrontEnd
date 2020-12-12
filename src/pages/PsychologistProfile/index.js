@@ -470,7 +470,11 @@ export default function PsychologistProfile() {
                             )}
 
                             <div className="buttons">
-                                <button className="button-change" onClick={() => setShowModal(true)}>
+                                <button 
+                                    className="button-change"
+                                    type="button"
+                                    onClick={() => setShowModal(true)}
+                                >
                                     Alterar Senha
                                 </button>
 
