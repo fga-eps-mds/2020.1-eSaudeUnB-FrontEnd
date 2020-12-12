@@ -187,7 +187,7 @@ h2 {
 }
 
 .patientRecord .patientHistory .tabContent p {
-    margin: 0;
+    margin: auto;
 }
 
 .patientRecord .patientHistory .tabContent .recordText {
@@ -285,9 +285,6 @@ h2 {
     }
     .patientRecord .minSession {
         flex-direction: column;
-    }
-    .patientRecord .patientHistory .tabContent p {
-        margin-top: 10px;
     }
 }
 
