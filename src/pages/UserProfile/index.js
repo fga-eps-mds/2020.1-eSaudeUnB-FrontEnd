@@ -11,6 +11,7 @@ import NavBar from '../../components/NavBar';
 import userIcon from '../../assets/images/userIcon.svg';
 import { convertBase64, uploadImage } from '../../components/UserImage';
 import figureCaption from '../../assets/images/figureCaption.png';
+import arrow from '../../assets/images/go.svg';
 
 import Input from '../../components/Input';
 
@@ -23,7 +24,7 @@ export default function UserProfile() {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
-    const [religion, setReligion] = useState('');
+    // const [religion, setReligion] = useState('');
     const [userImage, setUserImage] = useState('');
     // novos campos
     const [race, setRace] = useState('');
@@ -97,6 +98,8 @@ export default function UserProfile() {
     const [actualPassword, setActualPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+    const [complaint, setComplaint] = useState(false);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -200,7 +203,7 @@ export default function UserProfile() {
                     gender,
                     bond,
                     civilStatus,
-                    religion,
+                    // religion,
                     userImage: currentImage,
                     // novos campos
                     race,
@@ -329,7 +332,7 @@ export default function UserProfile() {
                 setName(response.data.name);
                 setLastName(response.data.lastName);
                 setPhone(response.data.phone);
-                setReligion(response.data.religion);
+                // setReligion(response.data.religion);
                 setUnbRegistration(response.data.unbRegistration);
                 setGender(response.data.gender);
                 setBond(response.data.bond);
@@ -379,6 +382,40 @@ export default function UserProfile() {
         return [];
     }
 
+    const [currentPage, setCurrentPage] = useState(1);
+
+    function openPage1() {
+        document.getElementById('page1').style.display = 'flex';
+        document.getElementById('page2').style.display = 'none';
+        document.getElementById('page3').style.display = 'none';
+        setCurrentPage(1);
+    }
+    function openPage2() {
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('page2').style.display = 'flex';
+        document.getElementById('page3').style.display = 'none';
+        setCurrentPage(2);
+    }
+    function openPage3() {
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('page2').style.display = 'none';
+        document.getElementById('page3').style.display = 'flex';
+        setCurrentPage(3);
+    }
+
+    function handlePages(way) {
+        if (currentPage === 1) {
+            way === 'next' ? openPage2() : setCurrentPage(1);
+        } else if (currentPage === 2) {
+            way === 'next' ? openPage3() : openPage1();
+        } else if (currentPage === 3) {
+            way === 'next' ? setCurrentPage(3) : openPage2();
+        } else {
+            openPage1();
+            setCurrentPage(1);
+        }
+    }
+
     return (
         <div>
             <NavBar className="navBar" bond="Patient" />
@@ -389,676 +426,793 @@ export default function UserProfile() {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
+                    <></>
                 )}
 
                 <div className="content">
                     <form className="formColumn" onSubmit={updateInfos}>
-                        <div className="personal-image">
-                            <label className="label">
-                                <input
-                                    id="image"
-                                    type="file"
-                                    onChange={async (e) => {
-                                        uploadImage(e);
-                                        const image = await convertBase64(
-                                            e.target.files[0],
-                                        );
-                                        setCurrentImage(image);
-                                    }}
-                                />
-                                <figure className="personal-figure">
-                                    <img
-                                        src={
-                                            currentImage
-                                            || userImage
-                                            || userIcon
-                                        }
-                                        className="personal-avatar"
-                                        alt="avatar"
+                        <button
+                            className="button-page previousButton"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handlePages('prev');
+                            }}
+                        >
+                            <img
+                                src={arrow}
+                                className="arrowButton"
+                                alt="Previous"
+                            ></img>
+                        </button>
+
+                        <div className="page page1" id="page1">
+                            <div className="personal-image">
+                                <label className="label">
+                                    <input
+                                        id="image"
+                                        type="file"
+                                        accept=".png, .jpg, .jpeg"
+                                        onChange={async (e) => {
+                                            const compar = e.target.files[0].type.split('/');
+                                            if (compar[0] === 'image') {
+                                                uploadImage(e);
+                                                const image = await convertBase64(
+                                                    e.target.files[0],
+                                                );
+                                                setCurrentImage(image);
+                                            } else {
+                                                setShow(true);
+                                                setVariant('danger');
+                                                setAlertText('Formato de arquivo não aceito como Foto');
+                                            }
+                                        }}
                                     />
-                                    <figcaption className="personal-figcaption">
+                                    <figure className="personal-figure">
                                         <img
-                                            src={figureCaption}
-                                            alt="figureCaption"
+                                            src={
+                                                currentImage
+                                                || userImage
+                                                || userIcon
+                                            }
+                                            className="personal-avatar"
+                                            alt="avatar"
                                         />
-                                    </figcaption>
-                                </figure>
-                            </label>
-                        </div>
-                        <div className="inputs">
-                            <div className="form">
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Nome</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={name}
-                                        onChange={setName}
-                                    />
-
-                                    {alertContentName ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Nome precisa possuir mais de 2
-                                                letras.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Sobrenome</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={lastName}
-                                        onChange={setLastName}
-                                    />
-                                    {alertContentLastName ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Sobrenome precisa possuir mais
-                                                de 2 letras.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Email</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={email}
-                                        onChange={setEmail}
-                                    />
-                                    {alertContentEmail ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                E-mail não foi preenchido
-                                                corretamente.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Matrícula</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={unbRegistration || ''}
-                                        onChange={setUnbRegistration}
-                                    />
-                                    {alertContentUnbRegistration ? (
-                                        <div className="alertContent">
-                                            <p>Insira uma matrícula válida.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Vínculo</label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="bond"
-                                        value={bond || ''}
-                                        onChange={(e) => setBond(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione
-                                        </option>
-                                        <option value="docente">Docente</option>
-                                        <option value="estudante de graduacao">
-                                            Estudante de Graduação
-                                        </option>
-                                        <option value="estudante de mestrado">
-                                            Estudante de Mestrado
-                                        </option>
-                                        <option value="estudante de doutorado">
-                                            Estudante de Doutorado
-                                        </option>
-                                        <option value="tecnico-administrativo">
-                                            Técnico-Administrativo
-                                        </option>
-                                        <option value="sem vinculo">
-                                            Não tenho Vínculo com a UnB
-                                        </option>
-                                    </select>
-
-                                    {alertContentBond ? (
-                                        <div className="alertContent">
-                                            <p>Selecione um vínculo.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label>Contato de emergência</label>
-                                    <hr />
-                                    <label className="upLabel">Nome</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={emergencyContactName || ''}
-                                        onChange={setEmergencyContactName}
-                                    />
-
-                                    {alertContentEmergencyContactName ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Campo obrigatório. Nome deve
-                                                possuir mais de 2 letras.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                    <hr />
-                                    <label className="upLabel">Telefone</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={emergencyContactPhone || ''}
-                                        onChange={setEmergencyContactPhone}
-                                    />
-
-                                    {alertContentEmergencyContactPhone ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Campo obrigatório. Insira um
-                                                número válido.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                    <hr />
-                                    <label className="upLabel">Vínculo</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={emergencyContactBond || ''}
-                                        onChange={setEmergencyContactBond}
-                                    />
-
-                                    {alertContentEmergencyContactBond ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Campo obrigatório. Deve possuir
-                                                mais de 2 letras.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Nome da mãe
-                                    </label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={motherName || ''}
-                                        onChange={setMotherName}
-                                    />
-
-                                    {alertContentMotherName ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Campo obrigatório. Nome deve
-                                                possuir mais de 2 letras.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Nome do pai
-                                    </label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={fatherName || ''}
-                                        onChange={setFatherName}
-                                    />
-
-                                    {alertContentFatherName ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Campo obrigatório. Insira um
-                                                número válido.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Telefone da(o) mãe/pai</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={affiliationPhone}
-                                        onChange={setAffiliationPhone}
-                                    />
-                                    <div className="alertContent">
-                                        <p></p>
-                                    </div>
-                                </div>
+                                        <figcaption className="personal-figcaption">
+                                            <img
+                                                src={figureCaption}
+                                                alt="figureCaption"
+                                            />
+                                        </figcaption>
+                                    </figure>
+                                </label>
                             </div>
 
                             <div className="form">
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Telefone Pessoal
-                                    </label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={phone || ''}
-                                        onChange={setPhone}
-                                    />
-                                    {alertContentPhone ? (
-                                        <div className="alertContent">
-                                            <p>Insira um telefone válido.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
+                                <div className="formLeft">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">Nome</label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={name}
+                                            onChange={setName}
+                                        />
 
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Gênero</label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="gender"
-                                        value={gender || ''}
-                                        onChange={(e) => setGender(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="mulher">Mulher</option>
-                                        <option value="homem">Homem</option>
-                                        <option value="mulher trans">
-                                            Mulher Trans
-                                        </option>
-                                        <option value="homen trans">
-                                            Homen Trans
-                                        </option>
-                                        <option value="nao binario">
-                                            Não-Binário
-                                        </option>
-                                        <option value="prefiro nao dizer">
-                                            Prefiro não dizer
-                                        </option>
-                                    </select>
-                                    {alertContentGender ? (
-                                        <div className="alertContent">
-                                            <p>Selecione um gênero.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-                                {/* campo novo de orientação sexual */}
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Orientação Sexual
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="sexualOrientation"
-                                        value={sexualOrientation || ''}
-                                        onChange={(e) => setSexualOrientation(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="homossexual">
-                                            Homossexual
-                                        </option>
-                                        <option value="bissexual">
-                                            Bissexual
-                                        </option>
-                                        <option value="heterossexual">
-                                            Heterossexual
-                                        </option>
-                                        <option value="prefiroNaoDizer">
-                                            Prefiro não dizer
-                                        </option>
-                                    </select>
+                                        {alertContentName ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Nome precisa possuir mais de
+                                                    2 letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
 
-                                    {alertContentSexualOrientation ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Selecione uma orientação sexual.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Sobrenome
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={lastName}
+                                            onChange={setLastName}
+                                        />
+                                        {alertContentLastName ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Sobrenome precisa possuir
+                                                    mais de 2 letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
 
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Tem filhos?
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="children"
-                                        value={children || ''}
-                                        onChange={(e) => setChildren(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="sim">
-                                            Possuo filha(o)/filhas(os)
-                                        </option>
-                                        <option value="nao">
-                                            Não possuo filha(o)/filhas(os)
-                                        </option>
-                                    </select>
-
-                                    {alertContentSexualOrientation ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Selecione uma orientação sexual.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Estado Civil
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        value={civilStatus || 'naoInformado'}
-                                        name="civilStatus"
-                                        onChange={(e) => setCivilStatus(e.target.value)
-                                        }
-                                    >
-                                        <option value="naoInformado" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="Solteiro(a)">
-                                            Solteiro
-                                        </option>
-                                        <option value="Divorciado(a)">
-                                            Divorciado
-                                        </option>
-                                        <option value="Casado(a)">
-                                            Casado
-                                        </option>
-                                        <option value="Viuvo(a)">Viuvo</option>
-                                        <option value="Uniao Estavel">
-                                            União Estável
-                                        </option>
-                                    </select>
-
-                                    {alertContentCivilStatus ? (
-                                        <div className="alertContent">
-                                            <p>Informe o estado civil.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-                                {/* novos campos */}
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Etnia/Raça
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="race"
-                                        value={race || ''}
-                                        onChange={(e) => setRace(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="preta(o)">
-                                            Preta(o)
-                                        </option>
-                                        <option value="parda(o)">
-                                            Parda(o)
-                                        </option>
-                                        <option value="indigena">
-                                            Índigena
-                                        </option>
-                                        <option value="branca(o)">
-                                            Branca(o)
-                                        </option>
-                                        <option value="amarela(o)">
-                                            Amarela(o)
-                                        </option>
-                                        <option value="prefiroNaoDizer">
-                                            Prefiro não dizer
-                                        </option>
-                                    </select>
-
-                                    {alertContentRace ? (
-                                        <div className="alertContent">
-                                            <p>Selecione uma Etnia/Raça.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Programas assistenciais <br /> da UnB?
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="socialPrograms"
-                                        value={socialPrograms || ''}
-                                        onChange={(e) => setSocialPrograms(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="sim">Sim</option>
-                                        <option value="nao">Não</option>
-                                    </select>
-                                    <div className="alertContent">
-                                        <p></p>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">Email</label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={email}
+                                            onChange={setEmail}
+                                        />
+                                        {alertContentEmail ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    E-mail não foi preenchido
+                                                    corretamente.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
 
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Mora da casa do
-                                        <br />
-                                        Estudante Universitário?
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="studentHouseResidence"
-                                        value={studentHouseResidence || ''}
-                                        onChange={(e) => setStudentHouseResidence(
-                                            e.target.value,
-                                        )
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="sim">Sim</option>
-                                        <option value="nao">Não</option>
-                                    </select>
-                                    <div className="alertContent">
-                                        <p></p>
+                                <div className="formRight">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Matrícula
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={unbRegistration || ''}
+                                            onChange={setUnbRegistration}
+                                        />
+                                        {alertContentUnbRegistration ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Insira uma matrícula válida.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Vínculo
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="bond"
+                                            value={bond || ''}
+                                            onChange={(e) => setBond(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione
+                                            </option>
+                                            <option value="docente">
+                                                Docente
+                                            </option>
+                                            <option value="estudante de graduacao">
+                                                Estudante de Graduação
+                                            </option>
+                                            <option value="estudante de mestrado">
+                                                Estudante de Mestrado
+                                            </option>
+                                            <option value="estudante de doutorado">
+                                                Estudante de Doutorado
+                                            </option>
+                                            <option value="tecnico-administrativo">
+                                                Técnico-Administrativo
+                                            </option>
+                                            <option value="sem vinculo">
+                                                Não tenho Vínculo com a UnB
+                                            </option>
+                                        </select>
+
+                                        {alertContentBond ? (
+                                            <div className="alertContent">
+                                                <p>Selecione um vínculo.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Telefone Pessoal
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={phone || ''}
+                                            onChange={setPhone}
+                                        />
+                                        {alertContentPhone ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Insira um telefone válido.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Já fez acompanhamento
-                                        <br />
-                                        psiquiátrico?
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="psychiatricFollowUp"
-                                        value={psychiatricFollowUp || ''}
-                                        onChange={(e) => setPsychiatricFollowUp(
-                                            e.target.value,
-                                        )
-                                        }
-                                    >
-                                        <option value="" disabled>
-                                            Selecione uma opção
-                                        </option>
-                                        <option value="past">No passado</option>
-                                        <option value="actually">
-                                            Atualmente
-                                        </option>
-                                        <option value="never">Nunca fiz</option>
-                                    </select>
+                        <div className="page page2" id="page2">
+                            <div className="form">
+                                <div className="formLeft">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Tem filhos?
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="children"
+                                            value={children || ''}
+                                            onChange={(e) => setChildren(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="sim">
+                                                Possuo filha(o)/filhas(os)
+                                            </option>
+                                            <option value="nao">
+                                                Não possuo filha(o)/filhas(os)
+                                            </option>
+                                        </select>
 
-                                    {alertPsychiatricFollowUp ? (
-                                        <div className="alertContent">
-                                            <p>Campo obrigatório.</p>
-                                        </div>
-                                    ) : (
+                                        {alertContentSexualOrientation ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Selecione uma orientação
+                                                    sexual.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Estado Civil
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            value={
+                                                civilStatus || 'naoInformado'
+                                            }
+                                            name="civilStatus"
+                                            onChange={(e) => setCivilStatus(e.target.value)
+                                            }
+                                        >
+                                            <option
+                                                value="naoInformado"
+                                                disabled
+                                            >
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="Solteiro(a)">
+                                                Solteiro
+                                            </option>
+                                            <option value="Divorciado(a)">
+                                                Divorciado
+                                            </option>
+                                            <option value="Casado(a)">
+                                                Casado
+                                            </option>
+                                            <option value="Viuvo(a)">
+                                                Viuvo
+                                            </option>
+                                            <option value="Uniao Estavel">
+                                                União Estável
+                                            </option>
+                                        </select>
+
+                                        {alertContentCivilStatus ? (
+                                            <div className="alertContent">
+                                                <p>Informe o estado civil.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {/* novos campos */}
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Etnia/Raça
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="race"
+                                            value={race || ''}
+                                            onChange={(e) => setRace(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="preta(o)">
+                                                Preta(o)
+                                            </option>
+                                            <option value="parda(o)">
+                                                Parda(o)
+                                            </option>
+                                            <option value="indigena">
+                                                Índigena
+                                            </option>
+                                            <option value="branca(o)">
+                                                Branca(o)
+                                            </option>
+                                            <option value="amarela(o)">
+                                                Amarela(o)
+                                            </option>
+                                            <option value="prefiroNaoDizer">
+                                                Prefiro não dizer
+                                            </option>
+                                        </select>
+
+                                        {alertContentRace ? (
+                                            <div className="alertContent">
+                                                <p>Selecione uma Etnia/Raça.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Programas assistenciais <br /> da
+                                            UnB?
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="socialPrograms"
+                                            value={socialPrograms || ''}
+                                            onChange={(e) => setSocialPrograms(
+                                                e.target.value,
+                                            )
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="sim">Sim</option>
+                                            <option value="nao">Não</option>
+                                        </select>
                                         <div className="alertContent">
                                             <p></p>
                                         </div>
-                                    )}
-                                </div>
-
-                                <div className="fieldDiv">
-                                    <label className="upLabel">Você faz uso de alguma<br />medicação para tratamento<br /> psiquiátrico?</label>
-                                    <Input
-                                        placeholder="Preencha aqui"
-                                        value={medication || ''}
-                                        onChange={setMedication}
-                                    />
-                                    <div className="alertContent">
-                                        <p></p>
+                                    </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Você faz uso de alguma medicação
+                                            <br /> para tratamento psiquiátrico?
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={medication || ''}
+                                            onChange={setMedication}
+                                        />
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="fieldDiv">
-                                    <label className="upLabel">
-                                        Principal queixa
-                                    </label>
-                                    <select
-                                        className="selectsLargest"
-                                        name="mainComplaint"
-                                        value={mainComplaint || ''}
-                                        onChange={(e) => setMainComplaint(e.target.value)
-                                        }
-                                    >
-                                        <option value="" disabled>
+                                <div className="formRight">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Gênero
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="gender"
+                                            value={gender || ''}
+                                            onChange={(e) => setGender(e.target.value)
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="mulher">
+                                                Mulher
+                                            </option>
+                                            <option value="homem">Homem</option>
+                                            <option value="mulher trans">
+                                                Mulher Trans
+                                            </option>
+                                            <option value="homen trans">
+                                                Homen Trans
+                                            </option>
+                                            <option value="nao binario">
+                                                Não-Binário
+                                            </option>
+                                            <option value="prefiro nao dizer">
+                                                Prefiro não dizer
+                                            </option>
+                                        </select>
+                                        {alertContentGender ? (
+                                            <div className="alertContent">
+                                                <p>Selecione um gênero.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {/* campo novo de orientação sexual */}
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Orientação Sexual
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="sexualOrientation"
+                                            value={sexualOrientation || ''}
+                                            onChange={(e) => setSexualOrientation(
+                                                e.target.value,
+                                            )
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="homossexual">
+                                                Homossexual
+                                            </option>
+                                            <option value="bissexual">
+                                                Bissexual
+                                            </option>
+                                            <option value="heterossexual">
+                                                Heterossexual
+                                            </option>
+                                            <option value="prefiroNaoDizer">
+                                                Prefiro não dizer
+                                            </option>
+                                        </select>
+
+                                        {alertContentSexualOrientation ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Selecione uma orientação
+                                                    sexual.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Mora da casa do
+                                            <br />
+                                            Estudante Universitário?
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="studentHouseResidence"
+                                            value={studentHouseResidence || ''}
+                                            onChange={(e) => setStudentHouseResidence(
+                                                e.target.value,
+                                            )
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="sim">Sim</option>
+                                            <option value="nao">Não</option>
+                                        </select>
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Já fez acompanhamento
+                                            <br />
+                                            psiquiátrico?
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="psychiatricFollowUp"
+                                            value={psychiatricFollowUp || ''}
+                                            onChange={(e) => setPsychiatricFollowUp(
+                                                e.target.value,
+                                            )
+                                            }
+                                        >
+                                            <option value="" disabled>
+                                                Selecione uma opção
+                                            </option>
+                                            <option value="past">
+                                                No passado
+                                            </option>
+                                            <option value="actually">
+                                                Atualmente
+                                            </option>
+                                            <option value="never">
+                                                Nunca fiz
+                                            </option>
+                                        </select>
+
+                                        {alertPsychiatricFollowUp ? (
+                                            <div className="alertContent">
+                                                <p>Campo obrigatório.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
                                             Principal queixa
-                                        </option>
-                                        <option value="Ansiedade">
-                                            Ansiedade
-                                        </option>
-                                        <option value="Autoconhecimento">
-                                            Autoconhecimento
-                                        </option>
-                                        <option value="Conflito no trabalho">
-                                            Conflito no trabalho
-                                        </option>
-                                        <option value="Depressão">
-                                            Depressão
-                                        </option>
-                                        <option value="Dificuldades academicas">
-                                            Dificuldades acadêmicas
-                                        </option>
-                                        <option value="Ideacao suicida">
-                                            Ideação suicida
-                                        </option>
-                                        <option value="Problemas afetivos">
-                                            Problemas afetivos
-                                        </option>
-                                        <option value="Problemas de saude">
-                                            Problemas de saúde
-                                        </option>
-                                        <option value="Problemas familiares">
-                                            Problemas familiares
-                                        </option>
-                                        <option value="Solicitação para psiquiatria">
-                                            Solicitação para psiquiatria
-                                        </option>
-                                        <option value="Tentativa de suicidio">
-                                            Tentativa de suicídio
-                                        </option>
-                                        <option value="Uso de drogas">
-                                            Uso de drogas
-                                        </option>
-                                        <option value="Outros">Outros</option>
-                                    </select>
+                                        </label>
+                                        <select
+                                            className="selectsLargest"
+                                            name="mainComplaint"
+                                            value={mainComplaint || ''}
+                                            onChange={(e) => {
+                                                setMainComplaint(
+                                                    e.target.value,
+                                                );
+                                                if (
+                                                    e.target.value === 'Outros'
+                                                ) {
+                                                    setComplaint(true);
+                                                } else {
+                                                    setComplaint(false);
+                                                }
+                                            }}
+                                        >
+                                            <option value="" disabled>
+                                                Principal queixa
+                                            </option>
+                                            <option value="Ansiedade">
+                                                Ansiedade
+                                            </option>
+                                            <option value="Assédio, discriminação ou outro tipo de violência">
+                                                Assédio, discriminação ou outro
+                                                tipo de violência
+                                            </option>
+                                            <option value="Conflito no trabalho">
+                                                Conflito no trabalho
+                                            </option>
+                                            <option value="Depressão">
+                                                Depressão
+                                            </option>
+                                            <option value="Dificuldades academicas">
+                                                Dificuldades acadêmicas
+                                            </option>
+                                            <option value="Luto">Luto</option>
+                                            <option value="Pensamentos suicidas">
+                                                Pensamentos suicidas
+                                            </option>
+                                            <option value="Problemas afetivos">
+                                                Problemas afetivos
+                                            </option>
+                                            <option value="Problemas de saude">
+                                                Problemas de saúde
+                                            </option>
+                                            <option value="Problemas familiares">
+                                                Problemas familiares
+                                            </option>
+                                            <option value="Solicitação para psiquiatria">
+                                                Solicitação para psiquiatria
+                                            </option>
+                                            <option value="Tentativa de suicidio">
+                                                Tentativa de suicídio
+                                            </option>
+                                            <option value="Uso de drogas">
+                                                Uso de drogas
+                                            </option>
+                                            <option value="Outros">
+                                                Outros
+                                            </option>
+                                        </select>
 
-                                    {alertContentMainComplaint ? (
-                                        <div className="alertContent">
-                                            <p>
-                                                Selecione uma queixa principal.
-                                            </p>
+                                        {alertContentMainComplaint ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Selecione uma queixa
+                                                    principal.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {complaint ? (
+                                        <div className="fieldDiv">
+                                            <label className="upLabel">
+                                                Qual sua queixa?
+                                            </label>
+                                            <Input
+                                                placeholder="Preencha aqui"
+                                                onChange={setMainComplaint}
+                                            />
                                         </div>
                                     ) : (
-                                        <div className="alertContent">
-                                            <p></p>
-                                        </div>
+                                        <div></div>
                                     )}
                                 </div>
                             </div>
                         </div>
+
+                        <div className="page page3" id="page3">
+                            <div className="form">
+                                <div className="formLeft">
+                                    <div className="fieldDiv">
+                                        <label>Contato de emergência</label>
+                                        <hr />
+                                        <label className="upLabel">Nome</label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={emergencyContactName || ''}
+                                            onChange={setEmergencyContactName}
+                                        />
+
+                                        {alertContentEmergencyContactName ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Nome deve possuir mais de 2
+                                                    letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                        <hr />
+                                        <label className="upLabel">
+                                            Telefone
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={emergencyContactPhone || ''}
+                                            onChange={setEmergencyContactPhone}
+                                        />
+
+                                        {alertContentEmergencyContactPhone ? (
+                                            <div className="alertContent">
+                                                <p>Insira um número válido.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                        <hr />
+                                        <label className="upLabel">
+                                            Vínculo
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={emergencyContactBond || ''}
+                                            onChange={setEmergencyContactBond}
+                                        />
+
+                                        {alertContentEmergencyContactBond ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Deve possuir mais de 2
+                                                    letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="formRight">
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Nome da mãe
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={motherName || ''}
+                                            onChange={setMotherName}
+                                        />
+
+                                        {alertContentMotherName ? (
+                                            <div className="alertContent">
+                                                <p>
+                                                    Nome deve possuir mais de 2
+                                                    letras.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Nome do pai
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={fatherName || ''}
+                                            onChange={setFatherName}
+                                        />
+
+                                        {alertContentFatherName ? (
+                                            <div className="alertContent">
+                                                <p>Insira um número válido.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="alertContent">
+                                                <p></p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="fieldDiv">
+                                        <label className="upLabel">
+                                            Telefene da(o) mãe/pai
+                                        </label>
+                                        <Input
+                                            placeholder="Preencha aqui"
+                                            value={affiliationPhone || ''}
+                                            onChange={setAffiliationPhone}
+                                        />
+                                        <div className="alertContent">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            className="button-page"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handlePages('next');
+                            }}
+                        >
+                            <img
+                                src={arrow}
+                                className="arrowButton"
+                                alt="Next"
+                            ></img>
+                        </button>
+
                         <div className="buttons">
                             <button
                                 className="button-change"
@@ -1075,37 +1229,58 @@ export default function UserProfile() {
                                 centered
                             >
                                 <Modal.Header closeButton>
-                                    <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
+                                    <Modal.Title
+                                        className="modalTitle"
+                                        id="contained-modal-title-vcenter"
+                                    >
                                         Alterar Senha
                                     </Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <div className="modalFormDiv">
-                                        <label className="modalLabel">Senha Atual</label>
+                                        <label className="modalLabel">
+                                            Senha Atual
+                                        </label>
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? 'text' : 'password'}
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             value={actualPassword}
                                             onChange={setActualPassword}
                                         />
                                     </div>
                                     <div className="modalFormDiv">
-                                        <label className="modalLabel">Nova senha</label>
+                                        <label className="modalLabel">
+                                            Nova senha
+                                        </label>
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? 'text' : 'password'}
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             value={newPassword}
                                             onChange={setNewPassword}
                                         />
                                     </div>
                                     <div className="modalFormDiv">
-                                        <label className="modalLabel">Confirmar nova senha</label>
+                                        <label className="modalLabel">
+                                            Confirmar nova senha
+                                        </label>
                                         <Input
                                             className="modalInput"
                                             placeholder=""
-                                            type={showPassword ? 'text' : 'password'}
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             value={confirmNewPassword}
                                             onChange={setConfirmNewPassword}
                                         />
@@ -1123,7 +1298,11 @@ export default function UserProfile() {
                                     </div>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button onClick={toggleShow}>{showPassword ? 'Esconder campos' : 'Mostrar campos'}</Button>
+                                    <Button onClick={toggleShow}>
+                                        {showPassword
+                                            ? 'Esconder campos'
+                                            : 'Mostrar campos'}
+                                    </Button>
                                     <Button
                                         variant="danger"
                                         onClick={() => {
@@ -1134,9 +1313,14 @@ export default function UserProfile() {
                                             setConfirmNewPassword('');
                                         }}
                                     >
-                                            Cancelar
+                                        Cancelar
                                     </Button>
-                                    <Button className="buttonConfirm" onClick={updatePassword}>Confirmar</Button>
+                                    <Button
+                                        className="buttonConfirm"
+                                        onClick={updatePassword}
+                                    >
+                                        Confirmar
+                                    </Button>
                                 </Modal.Footer>
                             </Modal>
 
@@ -1144,12 +1328,11 @@ export default function UserProfile() {
                                 Salvar
                             </button>
                         </div>
-                    </form >
-                </div >
-            </div >
+                    </form>
+                </div>
+            </div>
             <Footer />
-
-        </div >
+        </div>
     );
 }
 UserProfile.propTypes = {

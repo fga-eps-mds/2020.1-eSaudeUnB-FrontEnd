@@ -27,7 +27,7 @@ export default function PatientList(props) {
         <>
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Psicologo"
             />
             <div className="patientListContainer">
                 <div className="content">

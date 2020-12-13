@@ -20,7 +20,6 @@ import PsychologistCalendar from './pages/PsychologistCalendar';
 import PsychologistList from './pages/PsychologistList';
 import userSchedule from './pages/UserSchedule';
 import NotFound from './pages/NotFound';
-import WaitingList from './pages/WaitingList';
 import ChangePassword from './pages/ChangePassword';
 
 export default function Routes() {
@@ -45,7 +44,6 @@ export default function Routes() {
                 <Route path="/psychologist/schedule" component={PsychologistSchedule} />
                 <Route path="/psychologist/calendar" component={PsychologistCalendar} />
                 <Route path="/new-session" component={NewSession} />
-                <Route path="/waiting-list" component={WaitingList} />
                 <Route path="/change-password" component={ChangePassword} />
                 <Route path="*" component={NotFound} />
             </Switch>
