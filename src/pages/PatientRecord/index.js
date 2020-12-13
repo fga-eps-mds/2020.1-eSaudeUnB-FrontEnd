@@ -48,7 +48,7 @@ export default function PatientRecord(props) {
     }, [accessToken, props]);
 
     function haddleDate(session) {
-        const data = session.date.split(/[-T]/, 3);
+        const data = session.createdAt.split(/[-T]/, 3);
         return (`${data[2]}/${data[1]}/${data[0]}`);
     }
 
@@ -58,7 +58,7 @@ export default function PatientRecord(props) {
         setSecondaryComplaint(sessions[index].secondaryComplaint);
         setComplaintEvolution(sessions[index].complaintEvolution);
         setProfessional(sessions[index].professional);
-        const data = sessions[index].date.split(/[-T]/, 3);
+        const data = sessions[index].createdAt.split(/[-T]/, 3);
         SetDate(`${data[2]}/${data[1]}/${data[0]}`);
     }
 
@@ -68,7 +68,7 @@ export default function PatientRecord(props) {
         setSecondaryComplaint(allSessions[index].secondaryComplaint);
         setComplaintEvolution(allSessions[index].complaintEvolution);
         setProfessional(allSessions[index].professional);
-        const data = allSessions[index].date.split(/[-T]/, 3);
+        const data = allSessions[index].createdAt.split(/[-T]/, 3);
         SetDate(`${data[2]}/${data[1]}/${data[0]}`);
     }
 
