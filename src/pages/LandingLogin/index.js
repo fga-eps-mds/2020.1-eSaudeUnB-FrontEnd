@@ -53,7 +53,7 @@ export default function LandingLogin() {
                         );
                         setTimeout(() => {
                             setShow(false);
-                        }, 2000);
+                        }, 5000);
                     }
                 } catch (err2) {
                     if (err2.response.status === 500) {

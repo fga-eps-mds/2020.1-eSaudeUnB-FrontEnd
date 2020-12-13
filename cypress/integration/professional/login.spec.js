@@ -90,5 +90,85 @@ describe("Login Professional User", () => {
   it("should return 404 page", () => {
       cy.visit('/test');
       cy.get('p').contains('Oops! Página não encontrada');
-  })
+  });
+
+  it("should reset user password", () => {
+    cy.route({
+        method: "PUT",
+        url: "**/userForgetPassword/user@esaude.com",
+        response: {},
+    });
+
+    cy.visit("/login");
+
+    cy.get('[href=""]').click();
+    cy.get('.modalInput').type('user@esaude.com');
+    cy.get('.btn-success').click();
+    cy.get('.fade').contains('Verifique o seu e-mail para recebimento da nova senha de acesso.');
+    cy.wait(3000);
+  });
+
+  it("should reset user password", () => {
+    cy.route({
+        method: "PUT",
+        url: "**/userForgetPassword/user@esaude.com",
+        response: {},
+    });
+
+    cy.visit("/login");
+
+    cy.get('[href=""]').click();
+    cy.get('.modalInput').type('user@esaude.com');
+    cy.get('.btn-success').click();
+    cy.get('.fade').contains('Verifique o seu e-mail para recebimento da nova senha de acesso.');
+    cy.wait(3000);
+  });
+
+
+  it("should return an error when server not deal well with request rest password to patient", () => {
+    cy.route({
+        method: "PUT",
+        url: "**/userForgetPassword/user@esaude.com",
+        status: 500,
+        response: {},
+    });
+
+    cy.route({
+        method: "PUT",
+        url: "**psyForgetPassword/user@esaude.com",
+        response: {},
+    });
+
+    cy.visit("/login");
+
+    cy.get('[href=""]').click();
+    cy.get('.modalInput').type('user@esaude.com');
+    cy.get('.btn-success').click();
+    cy.get('.fade').contains('Verifique o seu e-mail para recebimento da nova senha de acesso.');
+    cy.wait(6000);
+  });
+
+  it("should return an error when server not deal well with request rest password to psychologist", () => {
+    cy.route({
+        method: "PUT",
+        url: "**/userForgetPassword/user@esaude.com",
+        status: 500,
+        response: {},
+    });
+
+    cy.route({
+        method: "PUT",
+        url: "**psyForgetPassword/user@esaude.com",
+        status: 500,
+        response: {},
+    });
+
+    cy.visit("/login");
+
+    cy.get('[href=""]').click();
+    cy.get('.modalInput').type('user@esaude.com');
+    cy.get('.btn-success').click();
+    cy.get('.alertContent > p').contains('Email não encontrado');
+    cy.wait(6000);
+  });
 });
