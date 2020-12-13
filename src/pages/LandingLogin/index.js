@@ -117,23 +117,6 @@ export default function LandingLogin() {
                         },
                     });
                 }
-
-                if (
-                    err.response.status === 404
-                    || err.response.status === 400
-                ) {
-                    setShow(true);
-                    setVariant('danger');
-                    setAlertText('Email/Senha incorretos, digite novamente.');
-                }
-
-                if (err.response.status === 500) {
-                    setShow(true);
-                    setVariant('danger');
-                    setAlertText(
-                        'Ocorreu algum erro no seu login, tente novamente.',
-                    );
-                }
             } catch (err2) {
                 if (
                     err2.response.status === 404
