@@ -21,7 +21,9 @@ export default function SearchBar({
                 onKeyPress={(e) => handleKeyPress(e)}
             />
 
-            <button onClick={() => triggerQuery()}>
+            {//<button onClick={() => triggerQuery()}> RETIRANDO PARA TESTE
+            }
+            <button>
                 <img src={icon} alt="searchIcon" />
             </button>
         </div>
