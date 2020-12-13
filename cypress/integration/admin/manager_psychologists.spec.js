@@ -63,6 +63,51 @@ describe('Admin Register an Professional', () => {
 
       cy.get('.button').click();
       cy.get('.psychologists-cards article').should('have.length', 6);
+      cy.wait(7000);
+    });
+
+    it("should return error when token is not valid", () => {
+      cy.get('.new-psychologist').click();
+      cy.get(':nth-child(1) > input').type('user');
+      cy.get(':nth-child(3) > input').type('surname');
+      cy.get('.gender_selection').select('Masculino');
+      cy.get('[name="bond"]').select('Psicólogo');
+      cy.get(':nth-child(8) > input').type('user@esaude.com');
+      cy.get(':nth-child(10) > input').type('Clínica');
+
+      cy.route('GET', '**psychologists', 'fixture:psychologist_list_add');
+
+      cy.route({
+        method: 'POST',
+        url: '**/psychologist',
+        status: 401,
+        response: {}
+      });
+
+      cy.get('.button').click();
+      cy.wait(3000);
+    });
+
+    it("should return erro when there is no data to create psychologist", () => {
+      cy.route('GET', '**psychologists', 'fixture:psychologist_list_add');
+
+      cy.route({
+        method: 'POST',
+        url: '**/psychologist',
+        status: 203,
+        response: {
+          data: {
+            error: {
+              details: ['name']
+            }
+          }
+        },
+      });
+
+      cy.get('.new-psychologist').click();
+      cy.get('.button').click();
+      cy.get('.fade').contains('Os campos não foram preenchidos corretamente');
+      cy.wait(7000);
     });
 
     it("should remove an professional", () => {
