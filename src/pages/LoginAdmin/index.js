@@ -27,28 +27,22 @@ export default function AdminLogin() {
                 password,
             });
 
-            if (response.status === 404 || response.status === 400) {
+            if (response.status === 200) {
+                localStorage.setItem('accessToken', response.data.accessToken);
+                return history.push('/admin/psychologist/list');
+            }
+        } catch (err) {
+            if (err.response.status === 404 || err.response.status === 400) {
                 setShow(true);
                 setVariant('danger');
                 setAlertText('Email/Senha incorretos, digite novamente.');
-            }
-
-            if (response.status === 500) {
+            } else {
                 setShow(true);
                 setVariant('danger');
                 setAlertText(
                     'Ocorreu algum erro no seu login, tente novamente.',
                 );
             }
-
-            if (response.status === 200) {
-                localStorage.setItem('accessToken', response.data.accessToken);
-                return history.push('/admin/psychologist/list');
-            }
-        } catch (err) {
-            setShow(true);
-            setVariant('danger');
-            setAlertText('Ocorreu algum erro no seu login, tente novamente.');
         }
 
         return setInterval(() => {
