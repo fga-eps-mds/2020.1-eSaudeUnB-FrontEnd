@@ -54,6 +54,46 @@ describe("Login Professional User", () => {
     cy.get('[href="/psychologist/events"]').contains("Agendamento");
   });
 
+
+  it("should return error when session is expired", () => {
+    cy.route({
+      method: "POST",
+      url: "**/login/psychologist",
+      response: {
+        user: {
+          name: "test",
+          lastName: "sobrenome",
+          email: "test@esaude.com",
+          gender: "M",
+          bond: "Psicologo",
+          password: "Zgrqab_P",
+          ForgetPassword: false,
+          phone: "",
+          specialization: "testt",
+          biography: "",
+          weekDay: [],
+          restrict: [],
+        },
+      },
+    });
+
+    cy.route({
+      method: "GET",
+      url: "**/psychologist/test@esaude.com",
+      status: 401,
+      response: {},
+    });
+
+    cy.visit("/login");
+
+    cy.get(":nth-child(2) > input").type("test@esaude.com");
+    cy.get(":nth-child(3) > input").type("password");
+    cy.get(".button").click();
+    cy.get('[href="/patient/list"]').contains("Lista de Pacientes");
+    cy.get('[href="/psychologist/events"]').contains("Agendamento");
+    cy.wait(11000);
+  });
+
   it("should return an error when not found an professional", () => {
     cy.route({
       method: "POST",

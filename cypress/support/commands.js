@@ -107,78 +107,48 @@ Cypress.Commands.add("loginAdmin", (type = '') => {
 
     cy.route({
       method: "POST",
-      url: "**/login/patient",
+      url: "**/login/psychologist",
       response: {
         user: {
-          phone: null,
-          gender: null,
-          unbRegistration: null,
-          bond: "user",
-          civilStatus: null,
-          race: null,
-          sexualOrientation: null,
-          children: null,
-          emergencyContactName: null,
-          emergencyContactPhone: null,
-          emergencyContactBond: null,
-          motherName: null,
-          fatherName: null,
-          affiliationPhone: null,
-          socialPrograms: null,
-          studentHouseResidence: null,
-          psychiatricFollowUp: null,
-          medication: null,
-          mainComplaint: null,
-          sessions: [],
-          name: "teste",
-          lastName: "test",
-          email: "test@gmail.com",
+          name: "test",
+          lastName: "sobrenome",
+          email: "test@esaude.com",
+          gender: "M",
+          bond: "Psicologo",
+          password: "Zgrqab_P",
           ForgetPassword: false,
-          appointments: [],
-          __v: 0,
+          phone: "",
+          specialization: "testt",
+          biography: "",
+          weekDay: [],
+          restrict: [],
         },
       },
     });
 
     cy.route({
       method: "GET",
-      url: "**/user/paciente@gmail.com",
+      url: "**/psychologist/test@esaude.com",
       response: {
-        phone: null,
-        gender: null,
-        unbRegistration: null,
-        bond: "user",
-        civilStatus: null,
-        race: null,
-        sexualOrientation: null,
-        children: null,
-        emergencyContactName: null,
-        emergencyContactPhone: null,
-        emergencyContactBond: null,
-        motherName: null,
-        fatherName: null,
-        affiliationPhone: null,
-        socialPrograms: null,
-        studentHouseResidence: null,
-        psychiatricFollowUp: null,
-        medication: null,
-        mainComplaint: null,
-        sessions: [],
-        name: "teste",
-        lastName: "test",
-        email: "test@gmail.com",
+        name: "test",
+        lastName: "sobrenome",
+        email: "test@esaude.com",
+        gender: "M",
+        bond: "Psicologo",
+        password: "Zgrqab_P",
         ForgetPassword: false,
-        appointments: [],
+        phone: "",
+        specialization: "testt",
+        biography: "",
+        weekDay: [],
+        restrict: [],
         __v: 0,
       },
     });
 
     cy.visit("/login");
 
-    cy.get(":nth-child(2) > input").type("paciente@gmail.com");
+    cy.get(":nth-child(2) > input").type("test@esaude.com");
     cy.get(":nth-child(3) > input").type("password");
     cy.get(".button").click();
-    cy.get('[href="/psychologist/list"]').contains('Lista de Psicologos');
-    cy.get('[href="/main"]').contains('Agendamento');
-    cy.get('[href="/events"]').contains('Consultas Marcadas');
  })
