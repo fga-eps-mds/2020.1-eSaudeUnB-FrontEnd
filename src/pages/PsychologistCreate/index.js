@@ -60,7 +60,6 @@ export default function PsychologistCreate() {
                 setInterval(() => {
                     setShow(false);
                 }, 3500);
-                setLoadingRequest(false);
                 return history.push('/admin/psychologist/create');
             }
 
