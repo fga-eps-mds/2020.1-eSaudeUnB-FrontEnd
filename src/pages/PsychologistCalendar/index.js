@@ -303,7 +303,7 @@ export default function PsychologistCalendar() {
                                                         label="duration"
                                                         type="number"
                                                         min="0"
-                                                        value={
+                                                        defaultValue={
                                                             scheduleItem.duration
                                                         }
                                                         onChange={(e) => setScheduleItemsValue(
