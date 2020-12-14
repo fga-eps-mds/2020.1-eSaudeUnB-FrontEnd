@@ -56,7 +56,7 @@ export default function NewSession(props) {
                 secondaryComplaint,
                 date: dia,
                 complaintEvolution,
-                professional: 'bbb',
+                professional: `${professional.name} ${professional.lastName}`,
             },
             {
                 headers: { authorization: accessToken },
