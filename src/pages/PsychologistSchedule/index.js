@@ -95,6 +95,7 @@ export default function PsychologistSchedule() {
                                             }/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"
+                                            readOnly={true}
                                         />
                                     </div>
 
@@ -105,7 +106,7 @@ export default function PsychologistSchedule() {
                                             label="Das"
                                             type="time"
                                             value={scheduleItem.from}
-                                            readOnly="true"
+                                            readOnly={true}
                                         />
                                     </div>
 
@@ -116,7 +117,7 @@ export default function PsychologistSchedule() {
                                             label="Até"
                                             type="time"
                                             value={scheduleItem.to}
-                                            readOnly="true"
+                                            readOnly={true}
                                         />
                                     </div>
                                     <button
