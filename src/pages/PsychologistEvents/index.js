@@ -56,31 +56,35 @@ export default function PsychologistEvents() {
                             <h1>{'Próximos Eventos'}</h1>
                         </div>
                         <div className="schedules">
-                            {
-                                psychologist.weekDay
-                                    && psychologist.weekDay.length > 0
-                                    ? psychologist.weekDay.map((workDay, index) => (
-                                        dateCheck(workDay)
-                                            ? <div
-                                                eslint-disable-next-line no-underscore-dangle
-                                                key={index}
-
-                                            >
-                                                {workDay.appointment.map((appointment) => (
-                                                    appointment.scheduled
-                                                        ? <div className="testeTotal">
-                                                            <h3>{`- ${appointment.time}`}</h3>
-                                                            <h3>
-                                                                Atendimento com {appointment.name}
-                                                            </h3>
-                                                        </div>
-                                                        : <div></div>
-                                                ))}
-                                            </div>
-                                            : <div key={index}></div>
-                                    ))
-                                    : <div></div>}
-
+                            {psychologist.weekDay
+                            && psychologist.weekDay.length > 0 ? (
+                                    psychologist.weekDay.map((workDay, index) => (dateCheck(workDay) ? (
+                                        <div key={index}>
+                                            {workDay.appointment.map(
+                                                (appointment, i) => (appointment.scheduled ? (
+                                                    <div
+                                                        className="testeTotal"
+                                                        key={i}
+                                                    >
+                                                        <h3>{`- ${appointment.time}`}</h3>
+                                                        <h3>
+                                                                Atendimento com{' '}
+                                                            {
+                                                                appointment.name
+                                                            }
+                                                        </h3>
+                                                    </div>
+                                                ) : (
+                                                    <div key={i}></div>
+                                                )),
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <div key={index}></div>
+                                    )))
+                                ) : (
+                                    <div></div>
+                                )}
                         </div>
                     </div>
                 </div>
