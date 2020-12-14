@@ -168,4 +168,73 @@ describe("Login Patient User", () => {
     cy.get('[href="/main"]').contains('Agendamento');
     cy.get('[href="/events"]').contains('Consultas Marcadas');
   });
+
+  it("should remove scheduler from psychologist", () => {
+    cy.visit("/psychologist/events");
+  });
+
+  it("should list psychologist", () => {
+    cy.route({
+      method: "GET",
+      url: "**/psychologists",
+      response: [
+        {
+          _id: "5fcc82789cbfe53a70867380",
+          name: "usuário",
+          lastName: "sobrenome",
+          email: "test@esaude.com",
+          gender: "M",
+          bond: "Psicologo",
+          ForgetPassword: false,
+          phone: "",
+          specialization: "testt",
+          biography: "",
+          weekDay: [],
+          restrict: [],
+          __v: 0,
+        },
+      ],
+    });
+
+    cy.visit("/psychologist/list");
+  });
+
+  it("should filter psychologist", () => {
+    cy.route({
+      method: "GET",
+      url: "**/psychologists",
+      response: [
+        {
+          _id: "5fcc82789cbfe53a70867380",
+          name: "usuário",
+          lastName: "sobrenome",
+          email: "test@esaude.com",
+          gender: "M",
+          bond: "Psicologo",
+          ForgetPassword: false,
+          phone: "",
+          specialization: "testt",
+          biography: "",
+          weekDay: [],
+          restrict: [],
+          __v: 0,
+        },
+      ],
+    });
+
+    cy.visit("/psychologist/list");
+    cy.get('input').type('usuário');
+  });
+
+  it("should return error when user is not authenticated", () => {
+    cy.route({
+      method: "GET",
+      url: "**/psychologists",
+      status: 401,
+      response: {},
+    });
+
+    cy.visit("/psychologist/list");
+    cy.wait(3000);
+  });
 });

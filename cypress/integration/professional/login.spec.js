@@ -184,7 +184,6 @@ describe("Login Professional User", () => {
     cy.get('[href=""]').click();
     cy.get('.modalInput').type('user@esaude.com');
     cy.get('.btn-success').click();
-    cy.get('.fade').contains('Verifique o seu e-mail para recebimento da nova senha de acesso.');
     cy.wait(6000);
   });
 

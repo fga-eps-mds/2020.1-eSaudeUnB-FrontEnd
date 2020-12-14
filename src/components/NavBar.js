@@ -67,7 +67,7 @@ export default function NavBar({ bond }) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
+                    {(bond === 'Psychologist' || bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
                         <div className="navLinks">
                             <Link
                                 className="a"
