@@ -101,7 +101,7 @@
     align-items: center;
 }
 .psychologist-list .psychologists-wrapper {
-    width: calc(100% - 560px);
+    max-width: 1140px;
     display: flex;
     flex-direction: column;
 }

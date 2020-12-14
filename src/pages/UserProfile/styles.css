@@ -1,10 +1,12 @@
 .userProfileContainer {
     width: 100%;
-    height: calc(100vh - 170px);
-
     display: flex;
     justify-content: center;
     background: #fff;
+}
+.userProfileContainer .content {
+    min-height: calc(100vh - 200px);
+    margin-bottom: 30px;
 }
 .userProfileContainer .formColumn {
     display: grid;
