@@ -58,7 +58,6 @@ export default function LandingSignUp() {
             }
 
             const response = await api.post('/users', user);
-            console.log(response);
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -100,7 +99,7 @@ export default function LandingSignUp() {
             }
         } catch (err) {
             if (err.response && err.response.status === 409) {
-                setShow(true)
+                setShow(true);
                 setVariant('danger');
                 setAlertText('Email já cadastrado');
                 setInterval(() => {
@@ -114,7 +113,6 @@ export default function LandingSignUp() {
             setInterval(() => {
                 setShow(false);
             }, 6500);
-            return;
         }
         setInterval(() => {
             setShow(false);
