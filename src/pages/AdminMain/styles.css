@@ -41,7 +41,7 @@
     grid-template-columns: 280px 1fr;
     grid-template-rows: 100%;
     grid-template-areas: 'nav' 'cards';
-    flex-wrap: wrap;
+    
     width: 100%;
     height: 98vh;
     padding: 0 20px;
@@ -176,10 +176,11 @@
     margin-left: 10px;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 720px) {
     .list-container .psychologist-list {
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
     }
     .searcBarComponent input {
         width: 350px !important;

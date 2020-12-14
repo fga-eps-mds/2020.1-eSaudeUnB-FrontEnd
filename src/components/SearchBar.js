@@ -7,7 +7,7 @@ export default function SearchBar({
     value, onChange, icon, placeholder, triggerQuery,
 }) {
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && triggerQuery) {
             triggerQuery();
         }
     };
@@ -21,9 +21,10 @@ export default function SearchBar({
                 onKeyPress={(e) => handleKeyPress(e)}
             />
 
-            <button onClick={() => triggerQuery()}>
+            <button onClick={triggerQuery ? (() => triggerQuery()) : ('')}>
                 <img src={icon} alt="searchIcon" />
             </button>
+
         </div>
     );
 }

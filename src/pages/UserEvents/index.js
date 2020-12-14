@@ -28,7 +28,7 @@ export default function UserEvents() {
 
     return (
         <div className="usrEventsCalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={user} />
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -61,7 +61,7 @@ export default function UserEvents() {
                                                     Atendimento com {appointment.psychologistName}
                                                 </h3>
                                             </div>
-                                            : <div></div>
+                                            : <div key={index}></div>
                                     ))
                                     : <div ></div>}
                         </div>

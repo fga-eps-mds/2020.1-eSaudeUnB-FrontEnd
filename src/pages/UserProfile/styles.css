@@ -8,6 +8,7 @@
 }
 .userProfileContainer .formColumn {
 	display: grid;
+	height: 600px;
 	grid-template-areas:
 		'buttonLeft form buttonRight'
 		'none buttons nothing';

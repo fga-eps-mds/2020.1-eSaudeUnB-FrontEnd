@@ -191,9 +191,9 @@ export default function LandingLogin() {
                         Entrar
                     </button>
                     <div className="forgot">
-                        <Link className="a" onClick={() => setShowModal(true)}>
+                        <button type="button" className="forgotPasswordLink" onClick={() => setShowModal(true)}>
                             Esqueci a minha senha
-                        </Link>
+                        </button>
 
                         <Modal
                             show={showModal}

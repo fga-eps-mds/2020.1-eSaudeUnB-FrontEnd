@@ -393,6 +393,7 @@ export default function UserProfile() {
     function openPage2() {
         document.getElementById('page1').style.display = 'none';
         document.getElementById('page2').style.display = 'flex';
+        document.getElementById('page2').style.overflow = 'scroll';
         document.getElementById('page3').style.display = 'none';
         setCurrentPage(2);
     }
@@ -1216,6 +1217,7 @@ export default function UserProfile() {
                         <div className="buttons">
                             <button
                                 className="button-change"
+                                type="button"
                                 onClick={() => setShowModal(true)}
                             >
                                 Alterar senha
