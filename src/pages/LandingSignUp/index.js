@@ -58,6 +58,7 @@ export default function LandingSignUp() {
             }
 
             const response = await api.post('/users', user);
+            console.log(response);
 
             if (response.status === 203) {
                 const { details } = response.data.error;
@@ -84,24 +85,12 @@ export default function LandingSignUp() {
                         return setAlertContentConfirmPassword(true);
                     }
                 }
-
-                setInterval(() => {
-                    setShow(false);
-                }, 3500);
-                return history.push('/registration');
-            }
-
-            if (response.status === 409) {
-                setShow(true);
-                setVariant('danger');
-                setAlertText('Email já cadastrado');
-                setInterval(() => {
-                    setShow(false);
-                }, 6500);
-                return history.push('/registration');
-            }
-
-            if (response.status === 201) {
+                if (show) {
+                    setInterval(() => {
+                        setShow(false);
+                    }, 6500);
+                }
+            } else if (response.status === 201) {
                 return history.push({
                     pathname: '/login',
                     state: {
@@ -110,14 +99,26 @@ export default function LandingSignUp() {
                 });
             }
         } catch (err) {
+            if (err.response && err.response.status === 409) {
+                setShow(true)
+                setVariant('danger');
+                setAlertText('Email já cadastrado');
+                setInterval(() => {
+                    setShow(false);
+                }, 6500);
+                return history.push('/registration');
+            }
             setShow(true);
             setVariant('danger');
             setAlertText('Erro no cadastro, tente novamente.');
+            setInterval(() => {
+                setShow(false);
+            }, 6500);
+            return;
         }
         setInterval(() => {
             setShow(false);
-        }, 2000);
-
+        }, 6500);
         return 0;
     }
 
