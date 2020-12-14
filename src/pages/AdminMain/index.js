@@ -125,8 +125,8 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                    <></>
-                )}
+                <></>
+            )}
             <div className="psychologist-list">
                 <div className="nav">
                     <button className="new-psychologist" onClick={() => history.push('/admin/psychologist/create')}>

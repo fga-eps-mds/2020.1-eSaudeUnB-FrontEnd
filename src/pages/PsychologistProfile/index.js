@@ -470,7 +470,7 @@ export default function PsychologistProfile() {
                             )}
 
                             <div className="buttons">
-                                <button 
+                                <button
                                     className="button-change"
                                     type="button"
                                     onClick={() => setShowModal(true)}

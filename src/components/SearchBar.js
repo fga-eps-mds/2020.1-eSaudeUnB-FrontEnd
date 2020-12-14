@@ -24,7 +24,7 @@ export default function SearchBar({
             <button onClick={triggerQuery ? (() => triggerQuery()) : ('')}>
                 <img src={icon} alt="searchIcon" />
             </button>
-            
+
         </div>
     );
 }
