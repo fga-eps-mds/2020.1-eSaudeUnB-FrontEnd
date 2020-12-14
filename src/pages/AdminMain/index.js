@@ -9,6 +9,8 @@ import './styles.css';
 import SearchBar from '../../components/SearchBar';
 import MagnifyingGlass from '../../assets/images/lupa.svg';
 
+// import RealizeSearch from '../../components/RealizeSearch';
+
 export default function AdminMain() {
     const [psychologists, setPsychologists] = useState([]);
     const [currentPsychologyEmail, setCurrentPsychologyEmail] = useState('');
@@ -123,8 +125,8 @@ export default function AdminMain() {
                     </Alert>
                 </header>
             ) : (
-                <></>
-            )}
+                    <></>
+                )}
             <div className="psychologist-list">
                 <div className="nav">
                     <button className="new-psychologist" onClick={() => history.push('/admin/psychologist/create')}>
