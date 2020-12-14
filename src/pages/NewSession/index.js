@@ -72,7 +72,7 @@ export default function NewSession(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psychologist" />
+            <NavBar className="navBar" bond="Professional" />
             <div className="newSession">
                 <div className="content">
                     <div className="patientInfo">
@@ -89,12 +89,12 @@ export default function NewSession(props) {
                                     alt={patient.name}
                                 />
                             ) : (
-                                <img
-                                    className="patientImg"
-                                    src={userIcon}
-                                    alt={patient.name}
-                                />
-                            )}
+                                    <img
+                                        className="patientImg"
+                                        src={userIcon}
+                                        alt={patient.name}
+                                    />
+                                )}
                             <div className="info">
                                 <div className="name">
                                     <span className="prop">Nome: </span>

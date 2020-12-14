@@ -57,7 +57,7 @@ export default function PsychologistSchedule() {
         <div className="psychologistSchedule">
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Professional"
             />
             <div className="content">
                 {show ? (
@@ -65,8 +65,8 @@ export default function PsychologistSchedule() {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <form className="form" onSubmit={putCalendar}>
                     <div className="formContent">
                         <legend className="legend">

@@ -25,7 +25,7 @@ export default function PsychologistCalendar() {
         ).then((response) => {
             setScheduleItems(response.data);
         });
-    }, []);
+    }, [accessToken, user]);
 
     function handleId() {
         let newID = 0;
@@ -203,7 +203,7 @@ export default function PsychologistCalendar() {
         <div className="psychologistcalendar">
             <NavBar
                 className="navBar"
-                bond="Psychologist"
+                bond="Professional"
             />
             <div className="content">
                 {show ? (
@@ -211,8 +211,8 @@ export default function PsychologistCalendar() {
                         {alertText}
                     </Alert>
                 ) : (
-                    <div></div>
-                )}
+                        <div></div>
+                    )}
                 <div className="tabela">
                     <div className="calendar">
                         <Calendar
@@ -229,17 +229,17 @@ export default function PsychologistCalendar() {
                         <form className="form" onSubmit={putCalendar}>
                             <div className="formContent">
                                 <legend className="legend">
-                            Cadastrar horários disponíveis
+                                    Cadastrar horários disponíveis
                                     <button type="button" onClick={addNewScheduleItem}>
-                                + Novo Horário
+                                        + Novo Horário
                                     </button>
                                 </legend>
 
                                 <div className="schedule">
                                     {scheduleItems.map((scheduleItem, index) => (
                                         scheduleItem.day === date.getDate()
-                                && scheduleItem.month === date.getMonth()
-                                && scheduleItem.year === date.getFullYear()
+                                            && scheduleItem.month === date.getMonth()
+                                            && scheduleItem.year === date.getFullYear()
                                             ? <div
                                                 key={scheduleItem._id || scheduleItem.id}
                                                 className="schedule-item"
@@ -297,7 +297,7 @@ export default function PsychologistCalendar() {
                                                     onClick={() => removeScheduleItem(index)
                                                     }
                                                 >
-                                        Remover
+                                                    Remover
                                                 </button>
                                             </div>
                                             : ''
@@ -306,7 +306,7 @@ export default function PsychologistCalendar() {
 
                                 <footer className="footer">
                                     <button type="submit">
-                                Salvar cadastro
+                                        Salvar cadastro
                                     </button>
                                 </footer>
                             </div>

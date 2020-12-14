@@ -27,7 +27,7 @@ export default function PatientList(props) {
         <>
             <NavBar
                 className="navBar"
-                bond="Psicologo"
+                bond="Professional"
             />
             <div className="patientListContainer">
                 <div className="content">
@@ -46,13 +46,13 @@ export default function PatientList(props) {
                                 </div>
                             </div>
                         ) : (
-                            <RealizeSearch
-                                patients={patients}
-                                location={props.location}
-                                src={MagnifyingGlass}
-                                search={search}
-                            />
-                        )}
+                                <RealizeSearch
+                                    patients={patients}
+                                    location={props.location}
+                                    src={MagnifyingGlass}
+                                    search={search}
+                                />
+                            )}
                     </>
                 </div>
             </div>
