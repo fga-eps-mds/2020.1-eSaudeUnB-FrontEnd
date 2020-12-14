@@ -65,8 +65,8 @@ export default function PsychologistSchedule() {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <form className="form" onSubmit={putCalendar}>
                     <div className="formContent">
                         <legend className="legend">

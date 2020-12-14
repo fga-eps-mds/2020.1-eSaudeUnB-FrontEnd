@@ -211,8 +211,8 @@ export default function PsychologistCalendar() {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="tabela">
                     <div className="calendar">
                         <Calendar

@@ -96,7 +96,7 @@ export default function UserMain() {
                 emailPatient: user,
                 patientScore: actualUser.score,
             },
-                { headers: { authorization: accessToken } });
+            { headers: { authorization: accessToken } });
 
             setShowModal(false);
             setUserSelected('');
@@ -172,8 +172,8 @@ export default function UserMain() {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <SideBar className="sidebar" bond="Patient" />
                 <div className="content">
                     <div className="tabela">
@@ -191,7 +191,7 @@ export default function UserMain() {
                         <div className="table-right">
                             <div className="calendar-title">
                                 <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1
-                                    }`}</h1>
+                                }`}</h1>
                             </div>
                             <div className="schedules">
                                 {psychologists.map((psychologist, i) => (
@@ -235,12 +235,12 @@ export default function UserMain() {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                    <div key={index}>
-                                                        {!show
-                                                            ? setShow(true)
-                                                            : ''}
-                                                    </div>
-                                                )),
+                                                <div key={index}>
+                                                    {!show
+                                                        ? setShow(true)
+                                                        : ''}
+                                                </div>
+                                            )),
                                         )}
                                     </div>
                                 ))}
@@ -297,8 +297,8 @@ export default function UserMain() {
                                                     )),
                                             )
                                         ) : (
-                                                <div></div>
-                                            )}
+                                            <div></div>
+                                        )}
                                     </div>
                                     <div className="schedule-buttons">
                                         <div className="row1">
@@ -332,10 +332,10 @@ export default function UserMain() {
                                                             <p className="modalLabel">Realmente deseja entrar para a lista de espera?</p>
                                                         </div>
                                                     ) : (
-                                                            <div className="modalFormDiv">
-                                                                <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
-                                                            </div>
-                                                        )}
+                                                        <div className="modalFormDiv">
+                                                            <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
+                                                        </div>
+                                                    )}
                                                 </Modal.Body>
                                                 <Modal.Footer>
                                                     <Button className="buttonYes" onClick={doAction}>sim</Button>
@@ -348,8 +348,8 @@ export default function UserMain() {
                             </div>
                         </div>
                     ) : (
-                            ''
-                        )}
+                        ''
+                    )}
                     {show ? (
                         <div className="noHours">
                             <h3>
@@ -358,8 +358,8 @@ export default function UserMain() {
                             </h3>
                         </div>
                     ) : (
-                            <div></div>
-                        )}
+                        <div></div>
+                    )}
                 </div>
             </div>
         </>

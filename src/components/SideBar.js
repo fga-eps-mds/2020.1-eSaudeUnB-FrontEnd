@@ -15,7 +15,6 @@ export default function SideBar({ actualUser, bond }) {
     useEffect(() => {
         (async function renderImage() {
             try {
-
                 if (bond === 'Professional') {
                     const responsePsy = await api.get(`/psychologist/${email}`, {
                         headers: { authorization: accessToken },
@@ -98,31 +97,31 @@ export default function SideBar({ actualUser, bond }) {
                             </Link>
                         </div>
                     ) : (
-                            <div className="navLinks">
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/psychologist/list',
-                                        state: {
-                                            data: actualUser,
-                                        },
-                                    }}
-                                >
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
                                     Lista de Psicologos
                             </Link>
-                                <Link
-                                    className="a"
-                                    to={{
-                                        pathname: '/events',
-                                        state: {
-                                            data: actualUser,
-                                        },
-                                    }}
-                                >
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/events',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
                                     Consultas Marcadas
                             </Link>
-                            </div>
-                        )}
+                        </div>
+                    )}
                 </div>
             </div>
 
