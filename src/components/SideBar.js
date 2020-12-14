@@ -8,7 +8,6 @@ import '../assets/styles/SideBar.css';
 
 export default function SideBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
-    const [userName, setUserName] = useState('');
     const accessToken = localStorage.getItem('accessToken');
     const email = localStorage.getItem('user');
     const [user, setUser] = useState('');
@@ -72,7 +71,7 @@ export default function SideBar({ actualUser, bond }) {
                         src={userImage || userIcon}
                         alt="menu"
                     />
-                    <p>{userName}</p>
+                    <p>{user.name}</p>
                     {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
                         <div className="navLinks">
                             <Link

@@ -112,33 +112,6 @@ export default function NavBar({ bond }) {
                         src={userImage || userIcon}
                         alt="icone de usuario"
                     />
-                    {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
-                        <Link
-                            className="dropNone"
-                            to={{
-                                pathname: '/psychologist/profile',
-                            }}
-                        >
-                            Perfil
-                        </Link>
-                    ) : (
-                            <Link
-                                className="dropNone"
-                                to={{
-                                    pathname: '/profile',
-                                }}
-                            >
-                                Perfil
-                            </Link>
-                        )}
-                    <Link
-                        className="dropNone"
-                        to={{
-                            pathname: '/',
-                        }}
-                    >
-                        Sair
-                    </Link>
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
                         {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
                             <NavDropdown.Item
