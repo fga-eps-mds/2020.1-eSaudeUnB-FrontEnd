@@ -271,9 +271,9 @@ export default function UserMain() {
                                                     workDay.weekDay,
                                                 ) ? (
                                                         workDay.appointment.map(
-                                                            (appointment) => (appointment.scheduled
+                                                            (appointment, index) => (appointment.scheduled
                                                                 === false ? (
-                                                                    <label>
+                                                                    <label key={index}>
                                                                         <input
                                                                             type="radio"
                                                                             name="hour"

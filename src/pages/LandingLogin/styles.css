@@ -122,6 +122,17 @@
 	text-align: center;
 	flex-direction: column;
 }
+
+.loginContainer .form .forgot .forgotPasswordLink {
+	cursor: pointer;
+	text-decoration: underline;
+	border: none;
+	color: #003a70;
+
+	font-size: 14px;
+	line-height: 16px;
+}
+
 .modalTitle {
 	color: #003a70;
 	align-items: center;

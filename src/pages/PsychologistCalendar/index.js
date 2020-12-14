@@ -25,7 +25,7 @@ export default function PsychologistCalendar() {
         ).then((response) => {
             setScheduleItems(response.data);
         });
-    }, []);
+    }, [accessToken, user]);
 
     function handleId() {
         let newID = 0;

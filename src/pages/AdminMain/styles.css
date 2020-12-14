@@ -182,6 +182,7 @@
     .psychologist-list .psychologists-cards {
         width: 400px;
         justify-content: center;
+        flex-wrap: wrap;
     }
     .psychologist-list article {
         padding: 20px;
