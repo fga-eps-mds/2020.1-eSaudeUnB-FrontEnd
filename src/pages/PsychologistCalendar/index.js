@@ -89,7 +89,7 @@ export default function PsychologistCalendar() {
             }
             hour = {
                 time: `${actualHour >= 10 ? actualHour : `0${actualHour}`}:${actualMinutes >= 10 ? actualMinutes : `0${actualMinutes}`
-                    }`,
+                }`,
                 scheduled: false,
             };
             if (hour.time !== end) {
@@ -249,86 +249,87 @@ export default function PsychologistCalendar() {
                             </legend>
                             <div className="formContent">
                                 <div className="schedule">
-                                    {scheduleItems.map((scheduleItem, index) => (scheduleItem.day === date.getDate()
+                                    {scheduleItems.map((scheduleItem, index) => (
+                                        scheduleItem.day === date.getDate()
                                         && scheduleItem.month
                                         === date.getMonth()
                                         && scheduleItem.year
                                         === date.getFullYear() ? (
-                                            <div
-                                                key={
-                                                    scheduleItem._id
+                                                <div
+                                                    key={
+                                                        scheduleItem._id
                                                     || scheduleItem.id
-                                                }
-                                                className="schedule-item"
-                                            >
-                                                <div className="input-box">
-                                                    <label>Das</label>
-                                                    <input
-                                                        name="from"
-                                                        label="Das"
-                                                        type="time"
-                                                        value={
-                                                            scheduleItem.from
-                                                        }
-                                                        onChange={(e) => setScheduleItemsValue(
-                                                            index,
-                                                            'from',
-                                                            e.target.value,
-                                                        )
-                                                        }
-                                                    />
-                                                </div>
-
-                                                <div className="input-box">
-                                                    <label>Até</label>
-                                                    <input
-                                                        name="to"
-                                                        label="Até"
-                                                        type="time"
-                                                        value={scheduleItem.to}
-                                                        onChange={(e) => setScheduleItemsValue(
-                                                            index,
-                                                            'to',
-                                                            e.target.value,
-                                                        )
-                                                        }
-                                                    />
-                                                </div>
-
-                                                <div className="input-box">
-                                                    <label>
-                                                        Duração da consulta
-                                                    </label>
-                                                    <input
-                                                        placeholder="Minutos"
-                                                        name="duration"
-                                                        label="duration"
-                                                        type="number"
-                                                        min="0"
-                                                        defaultValue={
-                                                            scheduleItem.duration
-                                                        }
-                                                        onChange={(e) => setScheduleItemsValue(
-                                                            index,
-                                                            'duration',
-                                                            e.target.value,
-                                                        )
-                                                        }
-                                                    />
-                                                </div>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => removeScheduleItem(
-                                                        index,
-                                                    )
                                                     }
+                                                    className="schedule-item"
                                                 >
+                                                    <div className="input-box">
+                                                        <label>Das</label>
+                                                        <input
+                                                            name="from"
+                                                            label="Das"
+                                                            type="time"
+                                                            value={
+                                                                scheduleItem.from
+                                                            }
+                                                            onChange={(e) => setScheduleItemsValue(
+                                                                index,
+                                                                'from',
+                                                                e.target.value,
+                                                            )
+                                                            }
+                                                        />
+                                                    </div>
+
+                                                    <div className="input-box">
+                                                        <label>Até</label>
+                                                        <input
+                                                            name="to"
+                                                            label="Até"
+                                                            type="time"
+                                                            value={scheduleItem.to}
+                                                            onChange={(e) => setScheduleItemsValue(
+                                                                index,
+                                                                'to',
+                                                                e.target.value,
+                                                            )
+                                                            }
+                                                        />
+                                                    </div>
+
+                                                    <div className="input-box">
+                                                        <label>
+                                                        Duração da consulta
+                                                        </label>
+                                                        <input
+                                                            placeholder="Minutos"
+                                                            name="duration"
+                                                            label="duration"
+                                                            type="number"
+                                                            min="0"
+                                                            defaultValue={
+                                                                scheduleItem.duration
+                                                            }
+                                                            onChange={(e) => setScheduleItemsValue(
+                                                                index,
+                                                                'duration',
+                                                                e.target.value,
+                                                            )
+                                                            }
+                                                        />
+                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => removeScheduleItem(
+                                                            index,
+                                                        )
+                                                        }
+                                                    >
                                                     Remover
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            ''
-                                        )))}
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )))}
                                 </div>
                             </div>
                             <button className="savebutton" type="submit">

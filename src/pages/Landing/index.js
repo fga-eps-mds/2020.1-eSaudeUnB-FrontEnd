@@ -25,7 +25,6 @@ import rafaelCol from '../../assets/images/rafael_colaborador.jpeg';
 import abnerCol from '../../assets/images/abner_colaborador.jpeg';
 import viniciusCol from '../../assets/images/vinicius_colaborador.jpeg';
 import caioCol from '../../assets/images/caio_colaborador.jpeg';
-import tiringaCol from '../../assets/images/tiringa_colaborador.jpg';
 
 import './styles.css';
 import '../../assets/styles/HiwCard.css';
@@ -196,7 +195,8 @@ export default function Landing() {
                                 Preciso necessariamente ser um aluno da UnB?
                             </h2>
                             <span>
-                                Não, a plataforma atende quaisquer pessoas que necessitam de apoio, porém quem tem vínculo com a UnB possui prioridade.
+                                Não, a plataforma atende quaisquer pessoas que necessitam de apoio,
+                                porém quem tem vínculo com a UnB possui prioridade.
                             </span>
                         </div>
                         <div className="faq-card">
@@ -298,12 +298,6 @@ export default function Landing() {
                             <img src={caioCol} alt="col-caio"/>
                             <span className="colaborator_name">
                                 Caio Martins
-                            </span>
-                        </span>
-                        <span className="professional">
-                            <img src={tiringaCol} alt="col-tiringa"/>
-                            <span className="colaborator_name">
-                                Tiringa
                             </span>
                         </span>
                     </div>
