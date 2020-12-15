@@ -14,43 +14,35 @@ import '../assets/styles/NavBar.css';
 export default function NavBar({ bond }) {
     const [userImage, setUserImage] = useState('');
     const accessToken = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user');
-
+    const email = localStorage.getItem('user');
+    const [user, setUser] = useState('');
     useEffect(() => {
         (async function renderImage() {
             try {
-                if (bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') {
-                    const response = await api.get(`/psychologist/${user}`, {
+                if (bond === 'Professional') {
+                    const responsePsy = await api.get(`/psychologist/${email}`, {
                         headers: { authorization: accessToken },
                     });
-
-                    setUserImage(
-                        atob(
-                            Buffer.from(
-                                response.data.userImage,
-                                'binary',
-                            ).toString('base64'),
-                        ),
-                    );
+                    setUser(responsePsy.data);
                 } else {
-                    const response = await api.get(`/user/${user}`, {
+                    const responseUser = await api.get(`/user/${email}`, {
                         headers: { authorization: accessToken },
                     });
-
-                    setUserImage(
-                        atob(
-                            Buffer.from(
-                                response.data.userImage,
-                                'binary',
-                            ).toString('base64'),
-                        ),
-                    );
+                    setUser(responseUser.data);
                 }
+                setUserImage(
+                    atob(
+                        Buffer.from(
+                            user.userImage,
+                            'binary',
+                        ).toString('base64'),
+                    ),
+                );
             } catch (err) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, [accessToken, bond, user]);
+    }, [accessToken, bond, user, email, setUser]);
 
     return (
         <Navbar className="navBarComponent" bg="light" expand="lg">
@@ -58,7 +50,7 @@ export default function NavBar({ bond }) {
                 <Link
                     className="a"
                     to={{
-                        pathname: (bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? '/psychologist/profile' : '/profile',
+                        pathname: (user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? '/psychologist/profile' : '/profile',
                     }}
                 >
                     <img className="logoSquare" src={logoSquare} alt="Square Logo"></img>
@@ -67,7 +59,7 @@ export default function NavBar({ bond }) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    {(bond === 'Psychologist' || bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
+                    {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
                         <div className="navLinks">
                             <Link
                                 className="a"
@@ -94,7 +86,7 @@ export default function NavBar({ bond }) {
                                     pathname: '/psychologist/list',
                                 }}
                             >
-                                    Lista de Psicologos
+                                    Lista de Profissionais
                             </Link>
                             <Link
                                 className="a"
@@ -119,35 +111,8 @@ export default function NavBar({ bond }) {
                         src={userImage || userIcon}
                         alt="icone de usuario"
                     />
-                    {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
-                        <Link
-                            className="dropNone"
-                            to={{
-                                pathname: '/psychologist/profile',
-                            }}
-                        >
-                            Perfil
-                        </Link>
-                    ) : (
-                        <Link
-                            className="dropNone"
-                            to={{
-                                pathname: '/profile',
-                            }}
-                        >
-                                Perfil
-                        </Link>
-                    )}
-                    <Link
-                        className="dropNone"
-                        to={{
-                            pathname: '/',
-                        }}
-                    >
-                        Sair
-                    </Link>
                     <NavDropdown title="" id="basic-nav-dropdown" drop="left">
-                        {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
+                        {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
                             <NavDropdown.Item
                                 className="profileDropDown"
                                 href="/psychologist/profile"
@@ -178,5 +143,5 @@ export default function NavBar({ bond }) {
 
 NavBar.propTypes = {
     bond: PropTypes.string,
-    actualUser: PropTypes.object,
+    actualUser: PropTypes.string,
 };

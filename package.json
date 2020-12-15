@@ -16,7 +16,7 @@
     "react-dom": "^16.13.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"		
+	"react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
@@ -26,9 +26,9 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "dev": "start-test 3000 cy:run",
-		"test": "react-scripts test --watchAll=false --coverage",
-		"test-watch": "react-scripts test --watchAll",
-		"coverage": "react-scripts test --watchAll=false --detectOpenHandles --coverage --coverageReporters=cobertura"
+	"test": "react-scripts test --watchAll=false --coverage",
+	"test-watch": "react-scripts test --watchAll",
+	"coverage": "react-scripts test --watchAll=false --detectOpenHandles --coverage --coverageReporters=cobertura"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -57,6 +57,6 @@
     "eslint-plugin-react-hooks": "^4.1.0",
     "start-server-and-test": "^1.11.6",
     "enzyme": "^3.11.0",
-		"enzyme-adapter-react-16": "^1.15.5"
+	"enzyme-adapter-react-16": "^1.15.5"
   }
 }

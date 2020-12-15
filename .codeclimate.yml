@@ -19,7 +19,7 @@ checks:
     similar-code:
         enabled: false
     identical-code:
-        enabled: true
+        enabled: false
 plugins:
     eslint:
         enabled: true

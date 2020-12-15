@@ -8,45 +8,37 @@ import '../assets/styles/SideBar.css';
 
 export default function SideBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
-    const [userName, setUserName] = useState('');
     const accessToken = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user');
+    const email = localStorage.getItem('user');
+    const [user, setUser] = useState('');
 
     useEffect(() => {
         (async function renderImage() {
             try {
-                if (bond === 'Psicologo') {
-                    const response = await api.get(`/psychologist/${user}`, {
+                if (bond === 'Professional') {
+                    const responsePsy = await api.get(`/psychologist/${email}`, {
                         headers: { authorization: accessToken },
                     });
-                    setUserName(response.data.name);
-                    setUserImage(
-                        atob(
-                            Buffer.from(
-                                response.data.userImage,
-                                'binary',
-                            ).toString('base64'),
-                        ),
-                    );
+                    setUser(responsePsy.data);
                 } else {
-                    const response = await api.get(`/user/${user}`, {
+                    const responseUser = await api.get(`/user/${email}`, {
                         headers: { authorization: accessToken },
                     });
-                    setUserName(response.data.name);
-                    setUserImage(
-                        atob(
-                            Buffer.from(
-                                response.data.userImage,
-                                'binary',
-                            ).toString('base64'),
-                        ),
-                    );
+                    setUser(responseUser.data);
                 }
+                setUserImage(
+                    atob(
+                        Buffer.from(
+                            user.userImage,
+                            'binary',
+                        ).toString('base64'),
+                    ),
+                );
             } catch (err) {
                 // Erro ao renderizar imagem
             }
         }());
-    }, [actualUser, bond, user, accessToken]);
+    }, [accessToken, bond, user, email, setUser]);
 
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
@@ -78,8 +70,8 @@ export default function SideBar({ actualUser, bond }) {
                         src={userImage || userIcon}
                         alt="menu"
                     />
-                    <p>{userName}</p>
-                    {(bond === 'Psicologo' || bond === 'Nutricionista' || bond === 'Assistente Social') ? (
+                    <p>{user.name}</p>
+                    {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
                         <div className="navLinks">
                             <Link
                                 className="a"
@@ -115,7 +107,7 @@ export default function SideBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-                                Lista de Psicologos
+                                    Lista de Psicologos
                             </Link>
                             <Link
                                 className="a"
@@ -126,7 +118,7 @@ export default function SideBar({ actualUser, bond }) {
                                     },
                                 }}
                             >
-                                Consultas Marcadas
+                                    Consultas Marcadas
                             </Link>
                         </div>
                     )}
@@ -144,5 +136,5 @@ export default function SideBar({ actualUser, bond }) {
 
 SideBar.propTypes = {
     bond: PropTypes.string,
-    actualUser: PropTypes.object,
+    actualUser: PropTypes.string,
 };

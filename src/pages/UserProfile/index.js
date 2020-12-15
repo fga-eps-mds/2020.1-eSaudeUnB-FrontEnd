@@ -24,9 +24,7 @@ export default function UserProfile() {
     const [gender, setGender] = useState('');
     const [bond, setBond] = useState('');
     const [civilStatus, setCivilStatus] = useState('');
-    // const [religion, setReligion] = useState('');
     const [userImage, setUserImage] = useState('');
-    // novos campos
     const [race, setRace] = useState('');
     const [sexualOrientation, setSexualOrientation] = useState('');
     const [children, setChildren] = useState('');
@@ -41,8 +39,6 @@ export default function UserProfile() {
     const [fatherName, setFatherName] = useState('');
     const [affiliationPhone, setAffiliationPhone] = useState('');
     const [mainComplaint, setMainComplaint] = useState('');
-
-    // fim novos campos
     const [currentImage, setCurrentImage] = useState('');
     const [show, setShow] = useState(false);
     const [alertText, setAlertText] = useState('');
@@ -65,7 +61,7 @@ export default function UserProfile() {
     const [alertContentCivilStatus, setAlertContentCivilStatus] = useState(
         false,
     );
-    // novos campos
+
     const [alertContentRace, setAlertContentRace] = useState(false);
     const [
         alertContentSexualOrientation,
@@ -112,7 +108,6 @@ export default function UserProfile() {
         setAlertContentGender(false);
         setAlertContentBond(false);
         setAlertContentCivilStatus(false);
-        // novos campos
         setAlertContentRace(false);
         setAlertContentSexualOrientation(false);
         setAlertContentEmergencyContactName(false);
@@ -203,9 +198,7 @@ export default function UserProfile() {
                     gender,
                     bond,
                     civilStatus,
-                    // religion,
                     userImage: currentImage,
-                    // novos campos
                     race,
                     sexualOrientation,
                     children,
@@ -256,7 +249,6 @@ export default function UserProfile() {
                     if (details[value].path[0] === 'civilStatus') {
                         setAlertContentCivilStatus(true);
                     }
-                    // novos campos
                     if (details[value].path[0] === 'race') {
                         setAlertContentRace(true);
                     }
@@ -332,7 +324,6 @@ export default function UserProfile() {
                 setName(response.data.name);
                 setLastName(response.data.lastName);
                 setPhone(response.data.phone);
-                // setReligion(response.data.religion);
                 setUnbRegistration(response.data.unbRegistration);
                 setGender(response.data.gender);
                 setBond(response.data.bond);
@@ -347,7 +338,6 @@ export default function UserProfile() {
                         ),
                     );
                 }
-                // novos campos
                 setRace(response.data.race);
                 setSexualOrientation(response.data.sexualOrientation);
                 setChildren(response.data.children);
@@ -393,6 +383,7 @@ export default function UserProfile() {
     function openPage2() {
         document.getElementById('page1').style.display = 'none';
         document.getElementById('page2').style.display = 'flex';
+        document.getElementById('page2').style.overflow = 'scroll';
         document.getElementById('page3').style.display = 'none';
         setCurrentPage(2);
     }
@@ -405,10 +396,13 @@ export default function UserProfile() {
 
     function handlePages(way) {
         if (currentPage === 1) {
+            // eslint-disable-next-line
             way === 'next' ? openPage2() : setCurrentPage(1);
         } else if (currentPage === 2) {
+            /* eslint-disable-next-line */
             way === 'next' ? openPage3() : openPage1();
         } else if (currentPage === 3) {
+            /* eslint-disable-next-line */
             way === 'next' ? setCurrentPage(3) : openPage2();
         } else {
             openPage1();
@@ -453,7 +447,9 @@ export default function UserProfile() {
                                         type="file"
                                         accept=".png, .jpg, .jpeg"
                                         onChange={async (e) => {
-                                            const compar = e.target.files[0].type.split('/');
+                                            const compar = e.target.files[0].type.split(
+                                                '/',
+                                            );
                                             if (compar[0] === 'image') {
                                                 uploadImage(e);
                                                 const image = await convertBase64(
@@ -463,7 +459,9 @@ export default function UserProfile() {
                                             } else {
                                                 setShow(true);
                                                 setVariant('danger');
-                                                setAlertText('Formato de arquivo não aceito como Foto');
+                                                setAlertText(
+                                                    'Formato de arquivo não aceito como Foto',
+                                                );
                                             }
                                         }}
                                     />
@@ -593,22 +591,22 @@ export default function UserProfile() {
                                             <option value="" disabled>
                                                 Selecione
                                             </option>
-                                            <option value="docente">
+                                            <option value="Docente">
                                                 Docente
                                             </option>
-                                            <option value="estudante de graduacao">
+                                            <option value="Estudante de graduação">
                                                 Estudante de Graduação
                                             </option>
-                                            <option value="estudante de mestrado">
+                                            <option value="Estudante de mestrado">
                                                 Estudante de Mestrado
                                             </option>
-                                            <option value="estudante de doutorado">
+                                            <option value="Estudante de doutorado">
                                                 Estudante de Doutorado
                                             </option>
-                                            <option value="tecnico-administrativo">
+                                            <option value="Técnico-administrativo">
                                                 Técnico-Administrativo
                                             </option>
-                                            <option value="sem vinculo">
+                                            <option value="Sem vínculo">
                                                 Não tenho Vínculo com a UnB
                                             </option>
                                         </select>
@@ -1216,6 +1214,7 @@ export default function UserProfile() {
                         <div className="buttons">
                             <button
                                 className="button-change"
+                                type="button"
                                 onClick={() => setShowModal(true)}
                             >
                                 Alterar senha

@@ -1,7 +1,7 @@
 .navBarComponent {
     width: 100%;
     height: 70px !important;
-    background: #003A70 !important;
+    background: #003a70 !important;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -38,7 +38,6 @@
     margin: 5px 0 0 5px;
     transform: rotate(-90deg);
     color: white !important;
-    
 }
 
 .dropleft .dropdown-toggle::before {
@@ -52,7 +51,7 @@
 .navBarComponent .dropdown-menu {
     margin: 50px -40px 0 0 !important;
     transform: rotate(0deg);
-    background-color: #003A70;
+    background-color: #003a70;
     border-radius: 8%;
 }
 
@@ -77,7 +76,7 @@
 
 .navBarComponent .dropdown-divider {
     height: 0;
-    margin: .5rem auto;
+    margin: 0.5rem auto;
     overflow: hidden;
     width: 80%;
     border-top: 1px solid #ddd;
@@ -88,15 +87,21 @@
     transform: rotate(90deg);
 }
 
+.navBarComponent .navbar-toggler {
+    background-color: #eee !important;
+}
+
 .navbar {
     margin: 0;
     padding: 0 16px 0 16px;
     align-items: center;
 }
+
 .navbar .navbar-brand {
     height: 70px !important;
     margin-top: -15px;
 }
+
 .navbar a.dropNone {
     display: none;
 }
@@ -108,6 +113,7 @@
     }
     .navBarComponent .navLinks a {
         margin-bottom: 20px !important;
+        margin-right: 0px !important;
     }
     .navBarComponent .navLinks a:first-child {
         margin-top: 30px;
@@ -133,7 +139,6 @@
         display: block;
         text-align: center;
         text-decoration: none;
-        margin-right: 10px;
         margin-bottom: 10px;
         color: #0a84e3;
     }
@@ -145,7 +150,7 @@
         opacity: 0.6;
     }
     .navbar .dropNone.dropDivider.dropdown-divider {
-        border-top: 1px solid #003A70 !important;
+        border-top: 1px solid #003a70 !important;
         margin: 0 30px;
     }
     a.profileDropDown {
