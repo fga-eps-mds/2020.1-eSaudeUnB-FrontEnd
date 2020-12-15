@@ -86,7 +86,7 @@ export default function NavBar({ bond }) {
                                     pathname: '/psychologist/list',
                                 }}
                             >
-                                    Lista de Professionais
+                                    Lista de Profissionais
                             </Link>
                             <Link
                                 className="a"
