@@ -72,6 +72,14 @@ export default function NavBar({ bond }) {
                             <Link
                                 className="a"
                                 to={{
+                                    pathname: '/waiting-list',
+                                }}
+                            >
+                                Lista de Espera
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
                                     pathname: '/psychologist/events',
                                 }}
                             >
