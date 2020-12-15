@@ -591,22 +591,22 @@ export default function UserProfile() {
                                             <option value="" disabled>
                                                 Selecione
                                             </option>
-                                            <option value="docente">
+                                            <option value="Docente">
                                                 Docente
                                             </option>
-                                            <option value="estudante de graduacao">
+                                            <option value="Estudante de graduação">
                                                 Estudante de Graduação
                                             </option>
-                                            <option value="estudante de mestrado">
+                                            <option value="Estudante de mestrado">
                                                 Estudante de Mestrado
                                             </option>
-                                            <option value="estudante de doutorado">
+                                            <option value="Estudante de doutorado">
                                                 Estudante de Doutorado
                                             </option>
-                                            <option value="tecnico-administrativo">
+                                            <option value="Técnico-administrativo">
                                                 Técnico-Administrativo
                                             </option>
-                                            <option value="sem vinculo">
+                                            <option value="Sem vínculo">
                                                 Não tenho Vínculo com a UnB
                                             </option>
                                         </select>

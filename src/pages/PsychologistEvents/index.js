@@ -19,7 +19,7 @@ export default function PsychologistEvents() {
         }).then((response) => {
             setPsychologist(response.data);
         });
-    }, []);
+    }, [user]);
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {

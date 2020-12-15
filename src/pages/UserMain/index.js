@@ -170,7 +170,6 @@ export default function UserMain() {
 
     return (
         <>
-            <NavBar className="navBar" bond="Patient" />
             <div className="usercalendar">
                 <NavBar className="navBar" bond="Patient" actualUser={user} />
                 {showAlert ? (
