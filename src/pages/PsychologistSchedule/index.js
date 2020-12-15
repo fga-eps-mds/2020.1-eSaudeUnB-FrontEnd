@@ -55,7 +55,10 @@ export default function PsychologistSchedule() {
 
     return (
         <div className="psychologistSchedule">
-            <NavBar className="navBar" bond="Psicologo" />
+            <NavBar
+                className="navBar"
+                bond="Professional"
+            />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
@@ -90,8 +93,7 @@ export default function PsychologistSchedule() {
                                     <div className="select-box">
                                         <label>Data</label>
                                         <input
-                                            value={`${scheduleItem.day}/${
-                                                scheduleItem.month + 1
+                                            value={`${scheduleItem.day}/${scheduleItem.month + 1
                                             }/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"

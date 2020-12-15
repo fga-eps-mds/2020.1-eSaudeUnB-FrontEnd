@@ -56,7 +56,7 @@ export default function NewSession(props) {
                 secondaryComplaint,
                 date: dia,
                 complaintEvolution,
-                professional: 'bbb',
+                professional: `${professional.name} ${professional.lastName}`,
             },
             {
                 headers: { authorization: accessToken },
@@ -72,7 +72,7 @@ export default function NewSession(props) {
 
     return (
         <>
-            <NavBar className="navBar" bond="Psicologo" />
+            <NavBar className="navBar" bond="Professional" />
             <div className="newSession">
                 <div className="content">
                     <div className="patientInfo">

@@ -14,12 +14,12 @@ export default function PsychologistEvents() {
 
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken');
-        api.get(`/psychologist/${localStorage.getItem('user')}`, {
+        api.get(`/psychologist/${user}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPsychologist(response.data);
         });
-    }, []);
+    }, [user]);
 
     function dateCheck(workday) {
         if (workday.weekDay === date.getDay()) {
@@ -33,13 +33,11 @@ export default function PsychologistEvents() {
         <div className="psyEventsCalendar">
             <NavBar
                 className="navBar"
-                bond="Psicologo"
-                actualUser={user}
+                bond="Professional"
             />
             <SideBar
                 className="sidebar"
-                bond="Psicologo"
-                actualUser={user}
+                bond="Professional"
             />
             <div className="content">
                 <div className="tabela">
@@ -59,31 +57,32 @@ export default function PsychologistEvents() {
                         </div>
                         <div className="schedules">
                             {psychologist.weekDay
-                            && psychologist.weekDay.length > 0 ? (
-                                    psychologist.weekDay.map((workDay, index) => (dateCheck(workDay) ? (
-                                        <div key={index}>
-                                            {workDay.appointment.map(
-                                                (appointment, i) => (appointment.scheduled ? (
-                                                    <div
-                                                        className="testeTotal"
-                                                        key={i}
-                                                    >
-                                                        <h3>{`- ${appointment.time}`}</h3>
-                                                        <h3>
-                                                                Atendimento com{' '}
-                                                            {
-                                                                appointment.name
-                                                            }
-                                                        </h3>
-                                                    </div>
-                                                ) : (
-                                                    <div key={i}></div>
-                                                )),
-                                            )}
-                                        </div>
-                                    ) : (
-                                        <div key={index}></div>
-                                    )))
+                                && psychologist.weekDay.length > 0 ? (
+                                    psychologist.weekDay.map((workDay, index) => (
+                                        dateCheck(workDay) ? (
+                                            <div key={index}>
+                                                {workDay.appointment.map(
+                                                    (appointment, i) => (appointment.scheduled ? (
+                                                        <div
+                                                            className="testeTotal"
+                                                            key={i}
+                                                        >
+                                                            <h3>{`- ${appointment.time}`}</h3>
+                                                            <h3>
+                                                            Atendimento com{' '}
+                                                                {
+                                                                    appointment.name
+                                                                }
+                                                            </h3>
+                                                        </div>
+                                                    ) : (
+                                                        <div key={i}></div>
+                                                    )),
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div key={index}></div>
+                                        )))
                                 ) : (
                                     <div></div>
                                 )}

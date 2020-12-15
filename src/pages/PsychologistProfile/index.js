@@ -253,7 +253,7 @@ export default function PsychologistProfile() {
     return (
         <>
             <NavBar
-                bond="Psicologo"
+                bond="Professional"
             />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (

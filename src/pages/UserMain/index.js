@@ -179,7 +179,7 @@ export default function UserMain() {
                 ) : (
                     <div></div>
                 )}
-                <SideBar className="sidebar" bond="Patient" actualUser={user} />
+                <SideBar className="sidebar" bond="Patient" />
                 <div className="content">
                     <div className="tabela">
                         <div className="calendar">
@@ -195,8 +195,7 @@ export default function UserMain() {
                         </div>
                         <div className="table-right">
                             <div className="calendar-title">
-                                <h1>{`Horários disponíveis em ${date.getDate()}/${
-                                    date.getMonth() + 1
+                                <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1
                                 }`}</h1>
                             </div>
                             <div className="schedules">
@@ -361,9 +360,9 @@ export default function UserMain() {
                                                     ) : (
                                                         <div className="modalFormDiv">
                                                             <p className="modalLabel">
-                                                                Realmente deseja
-                                                                sair da lista de
-                                                                espera?
+                                                                    Realmente deseja
+                                                                    sair da lista de
+                                                                    espera?
                                                             </p>
                                                         </div>
                                                     )}
