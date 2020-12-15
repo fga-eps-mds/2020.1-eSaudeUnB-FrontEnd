@@ -70,7 +70,9 @@ export default function UserMain() {
             if (!actualUser.canSchedule) {
                 setShowAlert(true);
                 setVariant('danger');
-                setAlertText('Complete o seu cadastro antes de entrar em uma lista de espera.');
+                setAlertText(
+                    'Complete o seu cadastro antes de entrar em uma lista de espera.',
+                );
                 setTimeout(() => {
                     setShowAlert(false);
                 }, 2000);
@@ -78,12 +80,12 @@ export default function UserMain() {
                 setUserSelected('');
                 return;
             }
-            if (
-                waitingList.find((element) => element.emailPatient === user)
-            ) {
+            if (waitingList.find((element) => element.emailPatient === user)) {
                 setShowAlert(true);
                 setVariant('danger');
-                setAlertText('Só é possível entrar uma vez na lista de espera.');
+                setAlertText(
+                    'Só é possível entrar uma vez na lista de espera.',
+                );
                 setTimeout(() => {
                     setShowAlert(false);
                 }, 2000);
@@ -92,11 +94,14 @@ export default function UserMain() {
                 return;
             }
 
-            await api.post('/waitingList', {
-                emailPatient: user,
-                patientScore: actualUser.score,
-            },
-            { headers: { authorization: accessToken } });
+            await api.post(
+                '/waitingList',
+                {
+                    emailPatient: user,
+                    patientScore: actualUser.score,
+                },
+                { headers: { authorization: accessToken } },
+            );
 
             setShowModal(false);
             setUserSelected('');
@@ -165,8 +170,8 @@ export default function UserMain() {
 
     return (
         <>
-            <NavBar className="navBar" bond="Patient" actualUser={user} />
             <div className="usercalendar">
+                <NavBar className="navBar" bond="Patient" actualUser={user} />
                 {showAlert ? (
                     <Alert className="alert" variant={variant}>
                         {alertText}
@@ -190,7 +195,8 @@ export default function UserMain() {
                         </div>
                         <div className="table-right">
                             <div className="calendar-title">
-                                <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1
+                                <h1>{`Horários disponíveis em ${date.getDate()}/${
+                                    date.getMonth() + 1
                                 }`}</h1>
                             </div>
                             <div className="schedules">
@@ -222,7 +228,7 @@ export default function UserMain() {
                                                                     {
                                                                         psychologist.bond
                                                                     }
-                                                                :
+                                                                        :&nbsp;
                                                                     {
                                                                         psychologist.name
                                                                     }{' '}
@@ -263,8 +269,7 @@ export default function UserMain() {
                                             userSelected.weekDay.map(
                                                 (workDay) => (dateCheck(
                                                     workDay.weekDay,
-                                                )
-                                                    ? (
+                                                ) ? (
                                                         workDay.appointment.map(
                                                             (appointment, index) => (appointment.scheduled
                                                                 === false ? (
@@ -278,10 +283,9 @@ export default function UserMain() {
                                                                             value={
                                                                                 appointment._id
                                                                             }
-                                                                            onChange={
-                                                                                () => setSelectedValue(
-                                                                                    appointment._id,
-                                                                                )
+                                                                            onChange={() => setSelectedValue(
+                                                                                appointment._id,
+                                                                            )
                                                                             }
                                                                         />
                                                                         {
@@ -302,44 +306,82 @@ export default function UserMain() {
                                     </div>
                                     <div className="schedule-buttons">
                                         <div className="row1">
-                                            <button type="submit">Agendar</button>
+                                            <button type="submit">
+                                                Agendar
+                                            </button>
                                             <button
                                                 className="cancelSchedule"
-                                                onClick={() => setUserSelected('')}
+                                                onClick={() => setUserSelected('')
+                                                }
                                             >
                                                 Cancelar
                                             </button>
                                         </div>
                                         <div className="row2">
-                                            <button className="waitingListButton waiting-list" onClick={(event) => openModal('register', event)}>Entrar para a lista de espera</button>
-                                            <button className="getOutOfWLButton waiting-list" onClick={(event) => openModal('getOut', event)}>Sair da lista de espera</button>
+                                            <button
+                                                className="waitingListButton waiting-list"
+                                                onClick={(event) => openModal('register', event)
+                                                }
+                                            >
+                                                Entrar para a lista de espera
+                                            </button>
+                                            <button
+                                                className="getOutOfWLButton waiting-list"
+                                                onClick={(event) => openModal('getOut', event)
+                                                }
+                                            >
+                                                Sair da lista de espera
+                                            </button>
                                             <Modal
                                                 show={showModal}
-                                                onHide={() => setShowModal(false)}
+                                                onHide={() => setShowModal(false)
+                                                }
                                                 backdrop="static"
                                                 size="lg"
                                                 aria-labelledby="contained-modal-title-vcenter"
                                                 centered
                                             >
                                                 <Modal.Header closeButton>
-                                                    <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
+                                                    <Modal.Title
+                                                        className="modalTitle"
+                                                        id="contained-modal-title-vcenter"
+                                                    >
                                                         Confirmar ação
                                                     </Modal.Title>
                                                 </Modal.Header>
                                                 <Modal.Body>
                                                     {action === 'register' ? (
                                                         <div className="modalFormDiv">
-                                                            <p className="modalLabel">Realmente deseja entrar para a lista de espera?</p>
+                                                            <p className="modalLabel">
+                                                                Realmente deseja
+                                                                entrar para a
+                                                                lista de espera?
+                                                            </p>
                                                         </div>
                                                     ) : (
                                                         <div className="modalFormDiv">
-                                                            <p className="modalLabel">Realmente deseja sair da lista de espera?</p>
+                                                            <p className="modalLabel">
+                                                                Realmente deseja
+                                                                sair da lista de
+                                                                espera?
+                                                            </p>
                                                         </div>
                                                     )}
                                                 </Modal.Body>
                                                 <Modal.Footer>
-                                                    <Button className="buttonYes" onClick={doAction}>sim</Button>
-                                                    <Button className="buttonNo" onClick={() => setShowModal(false)}>não</Button>
+                                                    <Button
+                                                        className="buttonYes"
+                                                        onClick={doAction}
+                                                    >
+                                                        sim
+                                                    </Button>
+                                                    <Button
+                                                        className="buttonNo"
+                                                        onClick={() => setShowModal(false)
+                                                        }
+                                                    >
+                                                        não
+                                                    </Button>
                                                 </Modal.Footer>
                                             </Modal>
                                         </div>

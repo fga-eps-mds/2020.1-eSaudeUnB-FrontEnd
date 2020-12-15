@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {
-    Alert, Modal, Button,
-} from 'react-bootstrap';
+import { Alert, Modal, Button } from 'react-bootstrap';
 
 import api from '../../services/api';
 import './styles.css';
@@ -27,7 +25,9 @@ export default function LandingLogin() {
 
     async function resetPassword() {
         try {
-            const responseUser = await api.put(`/userForgetPassword/${registeredEmail}`);
+            const responseUser = await api.put(
+                `/userForgetPassword/${registeredEmail}`,
+            );
             if (responseUser.status === 200) {
                 setShowModal(false);
                 setShow(true);
@@ -42,7 +42,9 @@ export default function LandingLogin() {
         } catch (err) {
             if (err.response.status === 500) {
                 try {
-                    const responsePsy = await api.put(`/psyForgetPassword/${registeredEmail}`);
+                    const responsePsy = await api.put(
+                        `/psyForgetPassword/${registeredEmail}`,
+                    );
 
                     if (responsePsy.status === 200) {
                         setShowModal(false);
@@ -75,7 +77,10 @@ export default function LandingLogin() {
             });
 
             if (responseUser.status === 200 || responseUser.status === 201) {
-                localStorage.setItem('accessToken', responseUser.data.accessToken);
+                localStorage.setItem(
+                    'accessToken',
+                    responseUser.data.accessToken,
+                );
                 localStorage.setItem('user', email);
                 if (responseUser.data.user.ForgetPassWord === 1) {
                     history.push({
@@ -100,7 +105,10 @@ export default function LandingLogin() {
                 });
 
                 if (responsePsy.status === 200 || responsePsy.status === 201) {
-                    localStorage.setItem('accessToken', responsePsy.data.accessToken);
+                    localStorage.setItem(
+                        'accessToken',
+                        responsePsy.data.accessToken,
+                    );
                     localStorage.setItem('user', email);
                     if (responsePsy.data.user.ForgetPassWord === 1) {
                         history.push({
@@ -204,13 +212,19 @@ export default function LandingLogin() {
                             centered
                         >
                             <Modal.Header closeButton>
-                                <Modal.Title className="modalTitle" id="contained-modal-title-vcenter">
+                                <Modal.Title
+                                    className="modalTitle"
+                                    id="contained-modal-title-vcenter"
+                                >
                                     Recuperar senha
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <div className="modalFormDiv">
-                                    <label className="modalLabel">Indique o e-mail usado para cadastrar a sua conta</label>
+                                    <label className="modalLabel">
+                                        Indique o e-mail usado para cadastrar a
+                                        sua conta
+                                    </label>
                                     <Input
                                         className="modalInput"
                                         placeholder="Email registrado"
@@ -220,9 +234,7 @@ export default function LandingLogin() {
                                     <div className="modalFormDiv">
                                         {alertEmail ? (
                                             <div className="alertContent">
-                                                <p>
-                                                    {alertEmailText}
-                                                </p>
+                                                <p>{alertEmailText}</p>
                                             </div>
                                         ) : (
                                             <div className="alertContent">
@@ -233,7 +245,12 @@ export default function LandingLogin() {
                                 </div>
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="success" onClick={resetPassword}>Confirmar</Button>
+                                <Button
+                                    variant="success"
+                                    onClick={resetPassword}
+                                >
+                                    Confirmar
+                                </Button>
                                 <Button
                                     variant="danger"
                                     onClick={() => {

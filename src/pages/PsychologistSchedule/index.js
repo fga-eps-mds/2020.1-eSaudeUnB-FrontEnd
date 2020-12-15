@@ -55,10 +55,7 @@ export default function PsychologistSchedule() {
 
     return (
         <div className="psychologistSchedule">
-            <NavBar
-                className="navBar"
-                bond="Psicologo"
-            />
+            <NavBar className="navBar" bond="Psicologo" />
             <div className="content">
                 {show ? (
                     <Alert className="alert" variant={variant}>
@@ -93,9 +90,12 @@ export default function PsychologistSchedule() {
                                     <div className="select-box">
                                         <label>Data</label>
                                         <input
-                                            value={`${scheduleItem.day}/${scheduleItem.month + 1}/${scheduleItem.year}`}
+                                            value={`${scheduleItem.day}/${
+                                                scheduleItem.month + 1
+                                            }/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"
+                                            readOnly={true}
                                         />
                                     </div>
 
@@ -106,7 +106,7 @@ export default function PsychologistSchedule() {
                                             label="Das"
                                             type="time"
                                             value={scheduleItem.from}
-                                            readOnly="true"
+                                            readOnly={true}
                                         />
                                     </div>
 
@@ -117,7 +117,7 @@ export default function PsychologistSchedule() {
                                             label="Até"
                                             type="time"
                                             value={scheduleItem.to}
-                                            readOnly="true"
+                                            readOnly={true}
                                         />
                                     </div>
                                     <button
@@ -131,9 +131,7 @@ export default function PsychologistSchedule() {
                             ))}
                         </div>
                         <footer className="footer">
-                            <button type="submit">
-                                Salvar cadastro
-                            </button>
+                            <button type="submit">Salvar cadastro</button>
                         </footer>
                     </div>
                 </form>

@@ -21,7 +21,7 @@
     flex-direction: column;
 }
 
-.usercalendar .alert{
+.usercalendar .alert {
     display: flex;
     justify-content: center;
     position: absolute;
@@ -30,7 +30,7 @@
 }
 
 .usercalendar .tabela {
-    margin: 80px 0 80px 0;
+    margin: 80px 0 40px 0;
     border-radius: 15px;
     display: flex;
     background-color: #eee;
@@ -52,33 +52,35 @@
 .usercalendar .table-right h1 {
     margin-top: 30px;
     justify-content: center;
-    font: 500 2.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #003A70;
+    font: 500 2.5rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
+    color: #003a70;
     display: flex;
 }
 
 .usercalendar .table-right button + button {
     margin-bottom: 25px;
     margin-top: 10px;
-    color: #003A70;
+    color: #003a70;
 }
 .usercalendar .table-right button + button:hover {
     color: #eee;
-    background-color: #003A70;
+    background-color: #003a70;
 }
 
 .usercalendar .schedules {
     width: 90%;
     height: 80%;
-    border-left: 2px solid #003A70;
-    overflow: auto;
-    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #003A70;
+    border-left: 2px solid #003a70;
+    overflow: hidden;
+    overflow-y: scroll;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
+    color: #003a70;
 }
 
 .usercalendar .schedules .schedule-box {
     width: 100%;
-    height: 90%;
     margin-top: 20px;
     padding: 10px;
     text-align: left;
@@ -95,13 +97,13 @@
     text-align: left;
     margin: 10px;
     border-radius: 10px;
-    border: 2px solid #003A70;
-    padding: 5px
+    border: 2px solid #003a70;
+    padding: 5px;
 }
 
 .usercalendar .schedules .schedule-box button h3 {
     margin: 0;
-    color: #003A70
+    color: #003a70;
 }
 
 .usercalendar .schedules .schedule-box button:hover {
@@ -121,7 +123,7 @@
     background-color: #eee;
     color: #07387e;
     flex-direction: row;
-    width: 1360px;
+    width: 1325px;
     padding-top: 20px;
     padding-left: 20px;
     border-radius: 15px;
@@ -136,7 +138,7 @@
 }
 .usercalendar .checkboxColumn {
     display: flex;
-    background-color: #003A70;
+    background-color: #003a70;
     flex-direction: column;
 }
 .usercalendar button {
@@ -148,7 +150,7 @@
     height: 100%;
 }
 
-.usercalendar .psy-card button a{
+.usercalendar .psy-card button a {
     text-decoration: none;
 }
 .usercalendar .psy-card button:hover {
@@ -162,34 +164,38 @@
 }
 .usercalendar .column2 {
     display: flex;
-    width: 700px;
+    width: 725px;
     flex-direction: column;
-    border-left: 2px solid #003A70;
+    border-left: 2px solid #003a70;
     padding-left: 20px;
     height: 100%;
 }
 .usercalendar .column2 .schedule-buttons {
     display: flex;
     flex-direction: column;
-
-    width: 600px;
-    height: 150px;
+    padding: 0 20px;
+    height: 110px;
     margin-bottom: 20px;
     justify-content: space-between;
 }
 .usercalendar .column2 .schedule-buttons button {
+    font-size: 18px;
     background-color: #006633;
     color: #f0f0f0;
     width: 176px;
     height: 47px;
     border-radius: 20px;
 }
+
+.usercalendar .column2 .schedule-buttons button + button {
+    margin-left: 15px;
+}
 .usercalendar .column2 .schedule-buttons .cancelSchedule {
     background-color: #d10000;
 }
 
 .usercalendar .column2 .schedule-buttons .waiting-list {
-    background-color: #003A70;
+    background-color: #003a70;
     width: 350px;
 }
 
@@ -197,13 +203,7 @@
 .usercalendar .column2 .schedule-buttons .row2 {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-}
-
-.usercalendar .column2 .schedule-buttons .row1 button,
-.usercalendar .column2 .schedule-buttons .row2 button {
-    margin-left: 10px;
 }
 
 .usercalendar .alert {
@@ -212,6 +212,7 @@
     align-self: flex-end;
 }
 .usercalendar .hours-disponibility {
+    font-size: 26px;
     display: flex;
     flex-direction: column;
     padding-left: 20px;
@@ -221,7 +222,7 @@
 }
 .usercalendar .noHours {
     display: flex;
-    background-color: #C10015;
+    background-color: #c10015;
     color: #4a0d00;
     flex-direction: row;
     width: 1400px;
@@ -235,13 +236,15 @@
     color: #fff;
 }
 
-.usercalendar .table-right .calendar-title{
+.usercalendar .table-right .calendar-title {
     display: flex;
-    height: 103px;
+    height: 60px;
     text-align: center;
-    padding: 33px 20px;
+    padding: 10px 10px;
+    margin-bottom: 30px;
     justify-content: center;
 }
+
 .usercalendar .navBarComponent .navLinks {
     display: none !important;
 }
@@ -265,7 +268,7 @@
 }
 
 .modalTitle {
-    color: #003A70;
+    color: #003a70;
 }
 
 .modalFormDiv {
@@ -280,30 +283,51 @@
     margin-top: 10px;
     margin-right: 10px;
     font-weight: bold;
-    color: #003A70;
+    color: #003a70;
 }
 
 @media only screen and (max-width: 1300px) {
     .usercalendar .tabela {
         flex-direction: column;
         width: 550px;
-        min-height: 800px;
+        height: auto;
+        min-height: 900px;
+        padding-bottom: 10px;
         margin: 80px 0 80px 0;
     }
 
+    .usercalendar .tabela .calendar {
+        margin-top: 4vw;
+    }
+
     .usercalendar .table-right {
+        align-items: center;
         width: 550px;
     }
 
     .usercalendar .schedules {
         border: none;
+        max-height: 350px;
+    }
+
+    .usercalendar .schedules .schedule-box {
+        margin: 0;
+    }
+
+    .usercalendar .schedules .schedule-box + .schedule-box {
+        margin: 0;
+    }
+
+    .usercalendar .schedules .schedule-box .psy-card h3 {
+        font-size: 18px;
     }
 
     .usercalendar .table-right h1 {
         justify-self: center;
         justify-content: center;
-        font: 500 1.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #003A70;
+        font: 500 1.5rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+            Arial, sans-serif;
+        color: #003a70;
         display: flex;
         font-weight: bold;
     }
@@ -311,11 +335,37 @@
         max-width: 550px;
         min-width: 0px;
     }
+
+    .usercalendar .dropDown-calendar {
+        padding: 0;
+        flex-direction: column;
+        width: 550px;
+        align-items: center;
+    }
+
+    .usercalendar .dropDown-calendar .column1,
+    .usercalendar .dropDown-calendar .column2 {
+        width: 550px;
+    }
+
+    .usercalendar .dropDown-calendar .column1 {
+        padding: 15px 15px;
+        min-height: 200px;
+    }
+
+    .usercalendar .dropDown-calendar .column2 {
+        padding: 15px 0 0 0;
+        border: 0;
+        border-top: 2px solid #003a70;
+        width: 520px;
+    }
+    .usercalendar .dropDown-calendar .column2 .hours-disponibility {
+        height: 200px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
 }
 @media only screen and (max-width: 994px) {
-    .usercalendar {
-        height: 100% !important;
-    }
     .usercalendar .navBarComponent .navLinks {
         display: flex !important;
     }
@@ -345,5 +395,32 @@
     .usercalendar .noHours {
         width: 85%;
         min-width: 280px;
+    }
+
+    .usercalendar .dropDown-calendar {
+        height: 100%;
+        width: 85%;
+        min-width: 280px;
+        margin-bottom: 15px;
+    }
+    .usercalendar .dropDown-calendar .column1,
+    .usercalendar .dropDown-calendar .column2 {
+        width: 100%;
+    }
+    .usercalendar .dropDown-calendar .column2 {
+        width: calc(100% - 30px);
+    }
+    .usercalendar .column2 .schedule-buttons {
+        height: auto;
+    }
+    .usercalendar .column2 .schedule-buttons .row2 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .usercalendar .column2 .schedule-buttons .row2 button {
+        width: 100%;
+        height: auto;
+        min-height: 47px;
+        margin: 15px 0 0 0;
     }
 }
