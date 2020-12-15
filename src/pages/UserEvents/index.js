@@ -61,7 +61,7 @@ export default function UserEvents() {
                                                     Atendimento com {appointment.psychologistName}
                                                 </h3>
                                             </div>
-                                            : <div></div>
+                                            : <div key={index}></div>
                                     ))
                                     : <div ></div>}
                         </div>

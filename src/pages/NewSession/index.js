@@ -89,12 +89,12 @@ export default function NewSession(props) {
                                     alt={patient.name}
                                 />
                             ) : (
-                                <img
-                                    className="patientImg"
-                                    src={userIcon}
-                                    alt={patient.name}
-                                />
-                            )}
+                                    <img
+                                        className="patientImg"
+                                        src={userIcon}
+                                        alt={patient.name}
+                                    />
+                                )}
                             <div className="info">
                                 <div className="name">
                                     <span className="prop">Nome: </span>

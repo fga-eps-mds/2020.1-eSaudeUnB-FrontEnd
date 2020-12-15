@@ -37,7 +37,8 @@
 }
 .usrEventsCalendar .table-right h1 {
     justify-self: center;
-    font: 500 2.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 2.5rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #0459ae;
     display: flex;
 }
@@ -45,7 +46,8 @@
 .usrEventsCalendar .table-right button {
     border: none;
     color: #d10000;
-    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     transition: 0.2s;
     border-radius: 8px;
     width: 60%;
@@ -73,7 +75,8 @@
 
     border-left: 2px solid #0459ae;
     overflow: auto;
-    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #07387e;
     padding-left: 20px;
     padding-top: 20px;
@@ -95,7 +98,8 @@
 .usrEventsCalendar .schedules .schedule-box button {
     background: none;
     border: none;
-    font: 700 1rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 700 1rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #0459ae;
     cursor: pointer;
     padding: 0.6rem;
@@ -133,7 +137,12 @@
     }
 
     .usrEventsCalendar .schedules {
+        max-height: 350px;
         border: none;
+    }
+
+    .usrEventsCalendar .schedules .marked-schedule h3 {
+        font-size: 18px;
     }
 }
 

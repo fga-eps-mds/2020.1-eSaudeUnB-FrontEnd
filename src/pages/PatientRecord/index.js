@@ -28,20 +28,17 @@ export default function PatientRecord(props) {
     useEffect(() => {
         async function getData() {
             const { email } = props.match.params;
-            const response = await api.get(`/user/${email}`,
-                {
-                    headers: { authorization: accessToken },
-                });
+            const response = await api.get(`/user/${email}`, {
+                headers: { authorization: accessToken },
+            });
             setPatient(response.data);
-            const responsesessions = await api.get(`/session/${email}`,
-                {
-                    headers: { authorization: accessToken },
-                });
+            const responsesessions = await api.get(`/session/${email}`, {
+                headers: { authorization: accessToken },
+            });
             setsessions(responsesessions.data);
-            const responseAllsessions = await api.get(`/sessions/${email}`,
-                {
-                    headers: { authorization: accessToken },
-                });
+            const responseAllsessions = await api.get(`/sessions/${email}`, {
+                headers: { authorization: accessToken },
+            });
             setAllSessions(responseAllsessions.data);
         }
         getData();
@@ -49,7 +46,7 @@ export default function PatientRecord(props) {
 
     function haddleDate(session) {
         const data = session.date.split(/[-T]/, 3);
-        return (`${data[2]}/${data[1]}/${data[0]}`);
+        return `${data[2]}/${data[1]}/${data[0]}`;
     }
 
     async function changeSession(index) {
@@ -86,11 +83,15 @@ export default function PatientRecord(props) {
                             {patient.userImage != null ? (
                                 <img
                                     className="patientImg"
-                                    src={atob(Buffer.from(patient.userImage, 'binary').toString('base64'))}
+                                    src={atob(
+                                        Buffer.from(
+                                            patient.userImage,
+                                            'binary',
+                                        ).toString('base64'),
+                                    )}
                                     alt={patient.name}
                                 />
-                            )
-                                : (
+                            ) : (
                                     <img
                                         className="patientImg"
                                         src={userIcon}
@@ -111,16 +112,34 @@ export default function PatientRecord(props) {
 
                                     <div className="phone">
                                         <span className="prop">Telefone: </span>
-                                        <span>{patient.phone ? patient.phone : 'não informado'}</span>
+                                        <span>
+                                            {patient.phone
+                                                ? patient.phone
+                                                : 'não informado'}
+                                        </span>
                                     </div>
                                 </div>
 
                                 <div className="hidden">
-                                    <span className="prop">Vinculo: </span>
-                                    <span>{patient.bond ? patient.bond : 'não informado'}</span>
+                                    <div className="bond">
+                                        <span className="prop">Vinculo: </span>
+                                        <span>
+                                            {patient.bond
+                                                ? patient.bond
+                                                : 'não informado'}
+                                        </span>
+                                    </div>
 
-                                    <span className="prop">Matricula: </span>
-                                    <span>{patient.unbRegistration ? patient.unbRegistration : 'não informado'}</span>
+                                    <div className="enrollment">
+                                        <span className="prop">
+                                            Matricula:{' '}
+                                        </span>
+                                        <span>
+                                            {patient.unbRegistration
+                                                ? patient.unbRegistration
+                                                : 'não informado'}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,10 +181,14 @@ export default function PatientRecord(props) {
                         </div>
 
                         <div className="tabContent">
-                            {tabContent
-
-                                ? (<div className="sessions">
-                                    {allSessions.length === 0 && <p className="noSession">O paciente não possui atendimentos anteriores</p>}
+                            {tabContent ? (
+                                <div className="sessions">
+                                    {allSessions.length === 0 && (
+                                        <p className="noSession">
+                                            O paciente não possui atendimentos
+                                            anteriores
+                                        </p>
+                                    )}
                                     {allSessions.map((session, index) => (
                                         <div
                                             key={session._id}
@@ -173,7 +196,10 @@ export default function PatientRecord(props) {
                                         >
                                             <div className="sessionInfos">
                                                 <div className="minSession">
-                                                    <p>Data: {haddleDate(session)} </p>
+                                                    <p>
+                                                        Data:{' '}
+                                                        {haddleDate(session)}{' '}
+                                                    </p>
                                                     <p className="info">
                                                         Profissional:{' '}
                                                         {session.professional}
@@ -197,13 +223,16 @@ export default function PatientRecord(props) {
                                         </div>
                                     ))}
                                 </div>
-                                ) : (
+                            ) : (
                                     <div className="record">
                                         <h2>Profissional: {`${professional}`}</h2>
-                                        <h2>Data: {`${(dia)}`}</h2>
+                                        <h2>Data: {`${dia}`}</h2>
                                         {/* <h2>Encaminhamento: Rede Interna</h2> */}
 
-                                        <div className="recordText" id="mainComplaint">
+                                        <div
+                                            className="recordText"
+                                            id="mainComplaint"
+                                        >
                                             <h1>Queixa Principal</h1>
                                             <p>{`${mainComplaint}`}</p>
                                         </div>

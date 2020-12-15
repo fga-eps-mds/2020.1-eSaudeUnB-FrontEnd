@@ -143,5 +143,5 @@ export default function NavBar({ bond }) {
 
 NavBar.propTypes = {
     bond: PropTypes.string,
-    actualUser: PropTypes.object,
+    actualUser: PropTypes.string,
 };

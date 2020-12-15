@@ -1,12 +1,10 @@
 {
     "env": {
         "es6": true,
-        "browser": true
+        "browser": true,
+        "jest": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb-base"
-    ],
+    "extends": ["plugin:react/recommended", "airbnb-base"],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -14,9 +12,7 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react"],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "indent": ["error", 4],

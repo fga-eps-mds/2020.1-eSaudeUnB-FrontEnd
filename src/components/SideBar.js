@@ -136,5 +136,5 @@ export default function SideBar({ actualUser, bond }) {
 
 SideBar.propTypes = {
     bond: PropTypes.string,
-    actualUser: PropTypes.object,
+    actualUser: PropTypes.string,
 };

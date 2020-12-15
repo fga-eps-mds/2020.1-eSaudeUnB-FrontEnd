@@ -122,6 +122,17 @@
 	text-align: center;
 	flex-direction: column;
 }
+
+.loginContainer .form .forgot .forgotPasswordLink {
+	cursor: pointer;
+	text-decoration: underline;
+	border: none;
+	color: #003a70;
+
+	font-size: 14px;
+	line-height: 16px;
+}
+
 .modalTitle {
 	color: #003a70;
 	align-items: center;
@@ -188,9 +199,23 @@
 		font-size: 12px;
 	}
 }
+@media only screen and (max-width: 375px) {
+	.modalFormDiv .modalInput {
+		width: 300px;
+	}
+	.modal-content {
+		width: 330px;
+	}
+}
 @media only screen and (max-width: 320px) {
 	.loginContainer .form {
 		height: 540px;
 		width: 90%;
+	}
+	.modalFormDiv .modalInput {
+		width: 225px;
+	}
+	.modal-content {
+		width: 255px;
 	}
 }

@@ -16,8 +16,9 @@
     align-items: center;
 }
 .psyEventsCalendar .tabela {
-    width: 1400px;
+    width: 1300px;
     border-radius: 15px;
+    margin-bottom: -80px;
     display: flex;
     background-color: #eee;
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
@@ -38,7 +39,8 @@
 }
 .psyEventsCalendar .table-right h1 {
     justify-self: center;
-    font: 500 2.5rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 2.5rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #0459ae;
     display: flex;
 }
@@ -46,7 +48,8 @@
 .psyEventsCalendar .table-right button {
     border: none;
     color: #d10000;
-    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     transition: 0.2s;
     border-radius: 8px;
     width: 60%;
@@ -69,12 +72,12 @@
 }
 
 .psyEventsCalendar .schedules {
-    width: 90%;
     height: 80%;
 
     border-left: 2px solid #0459ae;
     overflow: auto;
-    font: 500 1.3rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #07387e;
 }
 
@@ -86,7 +89,8 @@
 .psyEventsCalendar .schedules .schedule-box button {
     background: none;
     border: none;
-    font: 700 1rem "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 700 1rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #0459ae;
     cursor: pointer;
     padding: 0.6rem;
@@ -126,6 +130,14 @@
     }
     .psyEventsCalendar .table-right h1 {
         font-size: 2rem;
+    }
+    .psyEventsCalendar .schedules {
+        width: 100%;
+        border: 0;
+        max-height: 300px;
+    }
+    .psyEventsCalendar .schedules .testeTotal h3 {
+        font-size: 24px;
     }
 }
 @media only screen and (max-width: 994px) {
