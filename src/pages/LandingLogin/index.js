@@ -55,7 +55,7 @@ export default function LandingLogin() {
                         );
                         setTimeout(() => {
                             setShow(false);
-                        }, 2000);
+                        }, 5000);
                     }
                 } catch (err2) {
                     if (err2.response.status === 500) {
@@ -124,23 +124,6 @@ export default function LandingLogin() {
                             data: responsePsy.data.user,
                         },
                     });
-                }
-
-                if (
-                    err.response.status === 404
-                    || err.response.status === 400
-                ) {
-                    setShow(true);
-                    setVariant('danger');
-                    setAlertText('Email/Senha incorretos, digite novamente.');
-                }
-
-                if (err.response.status === 500) {
-                    setShow(true);
-                    setVariant('danger');
-                    setAlertText(
-                        'Ocorreu algum erro no seu login, tente novamente.',
-                    );
                 }
             } catch (err2) {
                 if (
