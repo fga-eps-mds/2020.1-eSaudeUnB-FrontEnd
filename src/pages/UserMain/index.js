@@ -170,10 +170,7 @@ export default function UserMain() {
 
     return (
         <>
-<<<<<<< HEAD
             <NavBar className="navBar" bond="Patient" />
-=======
->>>>>>> develop
             <div className="usercalendar">
                 <NavBar className="navBar" bond="Patient" actualUser={user} />
                 {showAlert ? (
@@ -199,8 +196,7 @@ export default function UserMain() {
                         </div>
                         <div className="table-right">
                             <div className="calendar-title">
-                                <h1>{`Horários disponíveis em ${date.getDate()}/${
-                                    date.getMonth() + 1
+                                <h1>{`Horários disponíveis em ${date.getDate()}/${date.getMonth() + 1
                                 }`}</h1>
                             </div>
                             <div className="schedules">
@@ -365,9 +361,9 @@ export default function UserMain() {
                                                     ) : (
                                                         <div className="modalFormDiv">
                                                             <p className="modalLabel">
-                                                                Realmente deseja
-                                                                sair da lista de
-                                                                espera?
+                                                                    Realmente deseja
+                                                                    sair da lista de
+                                                                    espera?
                                                             </p>
                                                         </div>
                                                     )}

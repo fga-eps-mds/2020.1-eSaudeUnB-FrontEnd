@@ -190,7 +190,7 @@ export default function Landing() {
                                 partaforma são gratuitas.
                             </span>
                         </div>
-                        
+
                         <div className="faq-card">
                             <h2>
                                 Preciso necessariamente ser um aluno da UnB?

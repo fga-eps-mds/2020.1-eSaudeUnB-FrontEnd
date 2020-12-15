@@ -220,8 +220,8 @@ export default function PsychologistCalendar() {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <div className="tabela">
                     <div className="calendar">
                         <Calendar
@@ -248,20 +248,17 @@ export default function PsychologistCalendar() {
                                 </button>
                             </legend>
                             <div className="formContent">
-                                <legend className="legend">
-                                    Cadastrar horários disponíveis
-                                    <button type="button" onClick={addNewScheduleItem}>
-                                        + Novo Horário
-                                    </button>
-                                </legend>
-
                                 <div className="schedule">
-                                    {scheduleItems.map((scheduleItem, index) => (
-                                        scheduleItem.day === date.getDate()
-                                            && scheduleItem.month === date.getMonth()
-                                            && scheduleItem.year === date.getFullYear()
-                                            ? <div
-                                                key={scheduleItem._id || scheduleItem.id}
+                                    {scheduleItems.map((scheduleItem, index) => (scheduleItem.day === date.getDate()
+                                        && scheduleItem.month
+                                        === date.getMonth()
+                                        && scheduleItem.year
+                                        === date.getFullYear() ? (
+                                            <div
+                                                key={
+                                                    scheduleItem._id
+                                                    || scheduleItem.id
+                                                }
                                                 className="schedule-item"
                                             >
                                                 <div className="input-box">

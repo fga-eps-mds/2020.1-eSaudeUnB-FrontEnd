@@ -65,8 +65,8 @@ export default function PsychologistSchedule() {
                         {alertText}
                     </Alert>
                 ) : (
-                        <div></div>
-                    )}
+                    <div></div>
+                )}
                 <form className="form" onSubmit={putCalendar}>
                     <div className="formContent">
                         <legend className="legend">
@@ -94,7 +94,7 @@ export default function PsychologistSchedule() {
                                         <label>Data</label>
                                         <input
                                             value={`${scheduleItem.day}/${scheduleItem.month + 1
-                                                }/${scheduleItem.year}`}
+                                            }/${scheduleItem.year}`}
                                             name="weekDay"
                                             label="Dia da semana"
                                             readOnly={true}

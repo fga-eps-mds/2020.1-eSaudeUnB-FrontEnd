@@ -75,13 +75,13 @@ export default function PsychologistEvents() {
                                                         </h3>
                                                     </div>
                                                 ) : (
-                                                        <div key={i}></div>
-                                                    )),
+                                                    <div key={i}></div>
+                                                )),
                                             )}
                                         </div>
                                     ) : (
-                                            <div key={index}></div>
-                                        )))
+                                        <div key={index}></div>
+                                    )))
                                 ) : (
                                     <div></div>
                                 )}

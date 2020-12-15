@@ -92,12 +92,12 @@ export default function PatientRecord(props) {
                                     alt={patient.name}
                                 />
                             ) : (
-                                    <img
-                                        className="patientImg"
-                                        src={userIcon}
-                                        alt={patient.name}
-                                    />
-                                )}
+                                <img
+                                    className="patientImg"
+                                    src={userIcon}
+                                    alt={patient.name}
+                                />
+                            )}
                             <div className="info">
                                 <div className="name">
                                     <span className="prop">Nome: </span>
@@ -224,34 +224,34 @@ export default function PatientRecord(props) {
                                     ))}
                                 </div>
                             ) : (
-                                    <div className="record">
-                                        <h2>Profissional: {`${professional}`}</h2>
-                                        <h2>Data: {`${dia}`}</h2>
-                                        {/* <h2>Encaminhamento: Rede Interna</h2> */}
+                                <div className="record">
+                                    <h2>Profissional: {`${professional}`}</h2>
+                                    <h2>Data: {`${dia}`}</h2>
+                                    {/* <h2>Encaminhamento: Rede Interna</h2> */}
 
-                                        <div
-                                            className="recordText"
-                                            id="mainComplaint"
-                                        >
-                                            <h1>Queixa Principal</h1>
-                                            <p>{`${mainComplaint}`}</p>
-                                        </div>
-                                        <div
-                                            className="recordText"
-                                            id="secondaryComplaint"
-                                        >
-                                            <h1>Queixa Secundaria</h1>
-                                            <p>{`${secondaryComplaint}`}</p>
-                                        </div>
-                                        <div
-                                            className="recordText"
-                                            id="complaintEvolution"
-                                        >
-                                            <h1>Evolução das queixas</h1>
-                                            <p>{`${complaintEvolution}`}</p>
-                                        </div>
+                                    <div
+                                        className="recordText"
+                                        id="mainComplaint"
+                                    >
+                                        <h1>Queixa Principal</h1>
+                                        <p>{`${mainComplaint}`}</p>
                                     </div>
-                                )}
+                                    <div
+                                        className="recordText"
+                                        id="secondaryComplaint"
+                                    >
+                                        <h1>Queixa Secundaria</h1>
+                                        <p>{`${secondaryComplaint}`}</p>
+                                    </div>
+                                    <div
+                                        className="recordText"
+                                        id="complaintEvolution"
+                                    >
+                                        <h1>Evolução das queixas</h1>
+                                        <p>{`${complaintEvolution}`}</p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
