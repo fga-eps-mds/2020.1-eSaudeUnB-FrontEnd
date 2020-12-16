@@ -1,122 +1,221 @@
 .loginContainer {
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
+	width: 100%;
+	height: 100vh;
+	margin: 0 auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .loginContainer .alert {
-    position: fixed;
-    transform: translateX(-50%);
-    top: 0;
-    left: 50%;
+	position: fixed;
+	transform: translateX(-50%);
+	top: 0;
+	left: 50%;
 }
 
 .loginContainer .content {
-    width: 100%;
-    height: 100vh;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+	background-color: #003a70 !important;
+}
 
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+.loginContainer .section {
+	width: 40vw;
 }
 
 .loginContainer .section img {
-    width: 1000px;
+	width: 100%;
 }
 
 .loginContainer .section p {
-    font: 500 24px Poppins;
-    color: #fff;
+	font: 500 24px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+		sans-serif;
+	color: #fff;
 }
 
 .loginContainer .section p:first-of-type {
-    margin-top: 50px;
-    font: 700 66px Poppins;
-    line-height: 53px;
+	margin-top: 50px;
+	font: 700 66px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+		sans-serif;
+	line-height: 53px;
 }
 
 .loginContainer .form {
-    height: 580px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: #eee;
-    border-radius: 15px;
-    padding: 90px 60px 40px 60px;
-
-    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
-
-    color: #0459ae;
+	height: 580px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #eee;
+	border-radius: 15px;
+	padding: 90px 60px 40px 60px;
+	box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+	color: #003a70;
 }
 
 .loginContainer .form span {
-    font: 500 26px Poppins;
+	font: 500 26px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+		sans-serif;
 }
 
 .loginContainer .form .input {
-    border-bottom: 3px solid #0459ae;
+	border-bottom: 3px solid #003a70;
 }
 
 .loginContainer .form input {
-    width: 320px;
-    height: 33px;
+	width: 320px;
+	height: 33px;
 
-    background-color: transparent;
-    color: #0459ae;
-    border: 0;
+	background-color: transparent;
+	color: #003a70;
+	border: 0;
 
-    font-size: 18px;
-    line-height: 27px;
+	font-size: 18px;
+	line-height: 27px;
 }
 
 .loginContainer .form input::placeholder {
-    color: #909090;
+	color: #909090;
 }
 
 .loginContainer .form .button {
-    width: 200px;
-    height: 50px;
+	width: 200px;
+	height: 50px;
 
-    border-radius: 25px;
-    border: 0;
-    color: #eee;
-    background-color: #0459ae;
+	border-radius: 25px;
+	border: 0;
+	color: #eee;
+	background-color: #003a70;
 
-    font-size: 24px;
-    line-height: 36px;
+	font-size: 24px;
+	line-height: 36px;
 }
 .loginContainer .form .button:hover {
-    background: #0a84e3;
+	background: #0a84e3;
 }
 
 .loginContainer .form a {
-    width: 250px;
-    height: 20px;
-    text-decoration: underline;
-    color: #0459ae;
+	width: 250px;
+	height: 20px;
+	text-decoration: underline;
+	color: #003a70;
 
-    font-size: 14px;
-    line-height: 16px;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 .loginContainer .form .userIcon {
-    width: 132px;
-    height: 132px;
+	width: 132px;
+	height: 132px;
 }
 
 .loginContainer .form .forgot {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+}
+
+.loginContainer .form .forgot .forgotPasswordLink {
+	cursor: pointer;
+	text-decoration: underline;
+	border: none;
+	color: #003a70;
+
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.modalTitle {
+	color: #003a70;
+	align-items: center;
+	justify-content: center;
+	justify-self: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.modalFormDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 6px;
+}
+
+.modalLabel {
+	margin-top: 10px;
+	margin-right: 10px;
+	font-weight: bold;
+	padding-bottom: 5px;
+	color: #003a70;
+}
+
+.modalFormDiv .modalInput {
+	background-color: transparent;
+	line-height: 27px;
+	border: 2px solid #003a70;
+	font-size: 15px;
+	border-radius: 10px;
+	padding: 4px;
+	width: 300px;
+}
+@media only screen and (max-width: 1000px) {
+	section.section.logoImg {
+		display: none;
+	}
+	.loginContainer .content {
+		display: flex;
+		flex-direction: column;
+		background-image: url('../../assets/images/logo.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	.loginContainer .form {
+		height: 450px;
+		width: 330px;
+		margin: auto;
+	}
+	.loginContainer .form input {
+		width: 240px;
+	}
+	.loginContainer .form span {
+		font: 500 20px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+			Arial, sans-serif;
+	}
+	.loginContainer .form .button {
+		width: 120px;
+		height: 35px;
+		font-size: 16px;
+	}
+	.loginContainer .form a {
+		font-size: 12px;
+	}
+}
+@media only screen and (max-width: 375px) {
+	.modalFormDiv .modalInput {
+		width: 300px;
+	}
+	.modal-content {
+		width: 330px;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.loginContainer .form {
+		height: 540px;
+		width: 90%;
+	}
+	.modalFormDiv .modalInput {
+		width: 225px;
+	}
+	.modal-content {
+		width: 255px;
+	}
 }

@@ -19,7 +19,7 @@ checks:
     similar-code:
         enabled: false
     identical-code:
-        enabled: true
+        enabled: false
 plugins:
     eslint:
         enabled: true
@@ -38,3 +38,4 @@ exclude_patterns:
 - "**/tests/"
 - "**/vendor/"
 - "**/*.d.ts"
+- "cypress/"

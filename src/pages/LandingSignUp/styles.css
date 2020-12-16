@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #003a70;
 }
 
 .signUp01Container .content {
@@ -18,18 +18,25 @@
     align-items: center;
     justify-content: space-around;
 }
+.signUp01Container .section {
+    width: 40vw;
+}
 
 .signUp01Container .section img {
-    width: 678px;
-    height: 341px;
+    width: 120%;
+    max-width: 1300px;
 }
 
 .signUp01Container .section p {
+    font: 500 24px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #fff;
 }
 
 .signUp01Container .section p:first-of-type {
-    font-size: 48px;
+    margin-top: 50px;
+    font: 700 66px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     line-height: 53px;
 }
 
@@ -47,16 +54,17 @@
 
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
 
-    color: #0459ae;
+    color: #003a70;
 }
 
 .signUp01Container .form span {
-    font: 500 26px Poppins;
+    font: 500 26px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
 }
 
 .signUp01Container .form .input {
     display: flex;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003a70;
 }
 
 .signUp01Container .form input {
@@ -64,7 +72,7 @@
     height: 33px;
 
     background-color: transparent;
-    color: #0459ae;
+    color: #003a70;
     border: 0;
 
     font-size: 18px;
@@ -89,6 +97,8 @@
     align-items: center;
     justify-content: space-between;
     flex-flow: column nowrap;
+    height: 400px;
+    margin: 40px 0px 40px 0px;
 }
 
 .signUp01Container .form .button {
@@ -98,7 +108,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003a70;
 
     text-decoration: none;
     display: flex;
@@ -110,6 +120,7 @@
 }
 .signUp01Container .form .alertContent {
     height: 30px;
+    margin-top: 0px;
 }
 
 .signUp01Container .alert {
@@ -127,4 +138,51 @@
 }
 .signUp01Container .form .back {
     text-decoration: underline;
+}
+
+@media only screen and (max-width: 1000px) {
+    .signUp01Container .content {
+        background-image: url('../../assets/images/logo.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .signUp01Container .form {
+        height: auto;
+        width: 330px;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .signUp01Container .form input {
+        width: 240px;
+        font-size: 14px;
+    }
+    .signUp01Container .form span {
+        font: 500 20px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+            Arial, sans-serif;
+        margin-bottom: 30px;
+    }
+    .signUp01Container .form .button {
+        width: 120px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .signUp01Container .form a {
+        font-size: 12px;
+    }
+    .signUp01Container .form .alertContent {
+        width: 240px;
+    }
+    .signUp01Container .form p {
+        width: 240px;
+        font-size: 10px;
+    }
+    .signUp01Container section.section.logoImg {
+        display: none;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .signUp01Container .form {
+        width: 90%;
+    }
 }

@@ -9,14 +9,15 @@ export default function UserEvents() {
     const [date, setDate] = useState(new Date());
     const [user, setUser] = useState({});
     const accessToken = localStorage.getItem('accessToken');
+    const email = localStorage.getItem('user');
 
     useEffect(() => {
-        api.get(`user/${localStorage.getItem('user')}`, {
+        api.get(`user/${email}`, {
             headers: { authorization: accessToken },
         }).then((response) => {
             setUser(response.data);
         });
-    }, []);
+    }, [accessToken, email]);
 
     function dateCheck(weekDay) {
         if (weekDay === date.getDay()) {
@@ -26,8 +27,8 @@ export default function UserEvents() {
     }
 
     return (
-        <div className="psyEventsCalendar">
-            <NavBar className="navBar" bond="Patient" actualUser={'user'} />
+        <div className="usrEventsCalendar">
+            <NavBar className="navBar" bond="Patient" />
             <div className="content">
                 <div className="tabela">
                     <div className="calendar">
@@ -53,16 +54,16 @@ export default function UserEvents() {
                                             ? <div
                                                 // eslint-disable-next-line no-underscore-dangle
                                                 key={index}
-
+                                                className="marked-schedule"
                                             >
-                                                <h3>{`- ${appointment.time}`}</h3>
+                                                <h3 className="time-schedule">{`- ${appointment.time}`}</h3>
                                                 <h3>
-                                                Atendimento com {appointment.psychologistName}
+                                                    Atendimento com {appointment.psychologistName}
                                                 </h3>
                                             </div>
-                                            : <div></div>
+                                            : <div key={index}></div>
                                     ))
-                                    : <div></div>}
+                                    : <div ></div>}
                         </div>
                     </div>
                 </div>

@@ -4,11 +4,11 @@ import logo from '../assets/images/logo.svg';
 
 export default function Logo() {
     return (
-        <section className="section">
-            <img src={logo} alt="logo-eSaude" />
+        <section className="section logoImg">
+            <img className="logoImg" src={logo} alt="logo-eSaude" />
 
-            <p>e-Saúde UnB</p>
-            <p>Mesmo à distância nós cuidamos de você</p>
+            <p className="logoImg">e-Saúde UnB</p>
+            <p className="logoImg">Mesmo à distância nós cuidamos de você</p>
         </section>
     );
 }

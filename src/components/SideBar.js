@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import userIcon from '../assets/images/userIcon.svg';
@@ -7,41 +8,37 @@ import '../assets/styles/SideBar.css';
 
 export default function SideBar({ actualUser, bond }) {
     const [userImage, setUserImage] = useState('');
+    const accessToken = localStorage.getItem('accessToken');
+    const email = localStorage.getItem('user');
+    const [user, setUser] = useState('');
 
     useEffect(() => {
         (async function renderImage() {
             try {
-                if (bond === 'Psychologist') {
-                    const response = await api.get(
-                        `/psychologist/${actualUser.email}`,
-                    );
-
-                    setUserImage(
-                        atob(
-                            Buffer.from(
-                                response.data.userImage,
-                                'binary',
-                            ).toString('base64'),
-                        ),
-                    );
+                if (bond === 'Professional') {
+                    const responsePsy = await api.get(`/psychologist/${email}`, {
+                        headers: { authorization: accessToken },
+                    });
+                    setUser(responsePsy.data);
                 } else {
-                    const response = await api.get(`/user/${actualUser.email}`);
-
-                    setUserImage(
-                        atob(
-                            Buffer.from(
-                                response.data.userImage,
-                                'binary',
-                            ).toString('base64'),
-                        ),
-                    );
+                    const responseUser = await api.get(`/user/${email}`, {
+                        headers: { authorization: accessToken },
+                    });
+                    setUser(responseUser.data);
                 }
+                setUserImage(
+                    atob(
+                        Buffer.from(
+                            user.userImage,
+                            'binary',
+                        ).toString('base64'),
+                    ),
+                );
             } catch (err) {
                 // Erro ao renderizar imagem
             }
-        })();
-    }, [actualUser, bond]);
-    
+        }());
+    }, [accessToken, bond, user, email, setUser]);
 
     function openNav() {
         document.getElementById('mySidebar').style.width = '300px';
@@ -60,35 +57,78 @@ export default function SideBar({ actualUser, bond }) {
         <div className="SideBar">
             <div id="mySidebar" className="sidebar">
                 <div id="sideBarInterior">
-                    <arrow
+                    <div
                         /* eslint-disable-next-line */
                         href="javascript:void(0)"
                         className="closebtn"
                         onClick={() => closeNav()}
                     >
                         <img className="arrow" src={arrow} alt="menu" />
-                    </arrow>
+                    </div>
                     <img
                         className="userIcon"
                         src={userImage || userIcon}
                         alt="menu"
                     />
-                    <p>{actualUser.name}</p>
-                    <a href="/">Proximos Eventos</a>
-                    <a href="/">Lista de Psicologos</a>
-                    <a href="/">Meu Perfil</a>
-                    <a href="/">eSaude</a>
+                    <p>{user.name}</p>
+                    {(user.bond === 'Psicologo' || user.bond === 'Nutricionista' || user.bond === 'Assistente Social') ? (
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/patient/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Lista de Pacientes
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/schedule',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                Configurar meu cronograma
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="navLinks">
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/psychologist/list',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                    Lista de Psicologos
+                            </Link>
+                            <Link
+                                className="a"
+                                to={{
+                                    pathname: '/events',
+                                    state: {
+                                        data: actualUser,
+                                    },
+                                }}
+                            >
+                                    Consultas Marcadas
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
 
             <div id="main">
-                <arrow
-                    id="openbtn"
-                    className="openbtn"
-                    onClick={() => openNav()}
-                >
+                <div id="openbtn" className="openbtn" onClick={() => openNav()}>
                     <img className="arrowOpen" src={arrow} alt="menu" />
-                </arrow>
+                </div>
             </div>
         </div>
     );
@@ -96,5 +136,5 @@ export default function SideBar({ actualUser, bond }) {
 
 SideBar.propTypes = {
     bond: PropTypes.string,
-    actualUser: PropTypes.object,
+    actualUser: PropTypes.string,
 };

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
+import {
+    Alert, Modal, Button,
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Input from '../../components/Input';
@@ -12,7 +14,7 @@ import figureCaption from '../../assets/images/figureCaption.png';
 import api from '../../services/api';
 import './styles.css';
 
-export default function PsychologistProfile(props) {
+export default function PsychologistProfile() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -41,6 +43,13 @@ export default function PsychologistProfile(props) {
     const [alertContentGender, setAlertContentGender] = useState(false);
     const [alertContentPhone, setAlertContentPhone] = useState(false);
     const [alertContentBond, setAlertContentBond] = useState(false);
+    const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
+    const [alertPasswordText, setAlertPasswordtext] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [actualPassword, setActualPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const accessToken = localStorage.getItem('accessToken');
     const userEmail = localStorage.getItem('user');
 
@@ -61,6 +70,52 @@ export default function PsychologistProfile(props) {
         localStorage.removeItem('user');
 
         history.push('/');
+    }
+    function toggleShow(event) {
+        event.preventDefault();
+        setShowPassword(!showPassword);
+    }
+
+    async function updatePassword(event) {
+        event.preventDefault();
+
+        if (newPassword !== confirmNewPassword) {
+            setAlertPasswordtext('As senhas devem ser iguais');
+            setAlertConfirmPassword(true);
+            return;
+        }
+
+        if (newPassword === confirmNewPassword) {
+            setAlertConfirmPassword(false);
+
+            try {
+                const response = await api.put(`/psyUpdatePassword/${userEmail}`, {
+                    oldPassword: actualPassword,
+                    password: newPassword,
+                },
+                { headers: { authorization: accessToken } });
+
+                if (response.status === 203) {
+                    setAlertPasswordtext('A nova senha deve ter no mínimo 8 caracteres.');
+                    setAlertConfirmPassword(true);
+                }
+
+                if (response.status === 200) {
+                    setShowModal(false);
+                    setShow(true);
+                    setVariant('success');
+                    setAlertText('Senha alterada com sucesso.');
+                }
+            } catch (err) {
+                if (err.response.status === 400) {
+                    setAlertPasswordtext('A senha atual está incorreta.');
+                    setAlertConfirmPassword(true);
+                    return;
+                }
+                setAlertPasswordtext('Ocorreu algum erro ao atualizar a senha, tente novamente.');
+                setAlertConfirmPassword(true);
+            }
+        }
     }
 
     async function updateInfos(event) {
@@ -191,14 +246,14 @@ export default function PsychologistProfile(props) {
         }
         setInterval(() => {
             setShow(false);
-        }, 2000);
+        }, 10000);
+        return [];
     }
 
     return (
         <>
             <NavBar
-                actualUser={props.location.state.data}
-                bond="Psychologist"
+                bond="Professional"
             />
             <div className="psyProfileContainer" onLoad={renderPage}>
                 {show ? (
@@ -217,12 +272,20 @@ export default function PsychologistProfile(props) {
                                         <input
                                             id="image"
                                             type="file"
+                                            accept=".png, .jpg, .jpeg"
                                             onChange={async (e) => {
-                                                uploadImage(e);
-                                                const image = await convertBase64(
-                                                    e.target.files[0],
-                                                );
-                                                setCurrentImage(image);
+                                                const compar = e.target.files[0].type.split('/');
+                                                if (compar[0] === 'image') {
+                                                    uploadImage(e);
+                                                    const image = await convertBase64(
+                                                        e.target.files[0],
+                                                    );
+                                                    setCurrentImage(image);
+                                                } else {
+                                                    setShow(true);
+                                                    setVariant('danger');
+                                                    setAlertText('Formato de arquivo não aceito como Foto');
+                                                }
                                             }}
                                         />
                                     }
@@ -358,14 +421,14 @@ export default function PsychologistProfile(props) {
                                             <option value="" disabled>
                                                 Vínculo
                                             </option>
-                                            <option value="graduando">
-                                                Graduando
+                                            <option value="Psicologo">
+                                                Psicólogo
                                             </option>
-                                            <option value="posGraduando">
-                                                Pós-Graduando
+                                            <option value="Nutricionista">
+                                                Nutricionista
                                             </option>
-                                            <option value="professor">
-                                                Professor
+                                            <option value="Assistente Social">
+                                                Assistente Social
                                             </option>
                                         </select>
                                     </div>
@@ -412,11 +475,119 @@ export default function PsychologistProfile(props) {
                             )}
 
                             <div className="buttons">
-                                <button className="button-change" type="submit">
+                                <button
+                                    className="button-change"
+                                    type="button"
+                                    onClick={() => setShowModal(true)}
+                                >
                                     Alterar Senha
                                 </button>
 
-                                <button className="button-salvar" type="submit">
+                                <Modal
+                                    show={showModal}
+                                    onHide={() => setShowModal(false)}
+                                    backdrop="static"
+                                    size="lg"
+                                    aria-labelledby="contained-modal-title-vcenter"
+                                    centered
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title
+                                            className="modalTitle"
+                                            id="contained-modal-title-vcenter"
+                                        >
+                                        Alterar Senha
+                                        </Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <div className="modalFormDiv">
+                                            <label className="modalLabel">
+                                            Senha Atual
+                                            </label>
+                                            <Input
+                                                className="modalInput"
+                                                placeholder=""
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                value={actualPassword}
+                                                onChange={setActualPassword}
+                                            />
+                                        </div>
+                                        <div className="modalFormDiv">
+                                            <label className="modalLabel">
+                                            Nova senha
+                                            </label>
+                                            <Input
+                                                className="modalInput"
+                                                placeholder=""
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                value={newPassword}
+                                                onChange={setNewPassword}
+                                            />
+                                        </div>
+                                        <div className="modalFormDiv">
+                                            <label className="modalLabel">
+                                            Confirmar nova senha
+                                            </label>
+                                            <Input
+                                                className="modalInput"
+                                                placeholder=""
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                value={confirmNewPassword}
+                                                onChange={setConfirmNewPassword}
+                                            />
+                                        </div>
+                                        <div className="modalFormDiv">
+                                            {alertConfirmPassword ? (
+                                                <div className="alertContent">
+                                                    <p>{alertPasswordText}</p>
+                                                </div>
+                                            ) : (
+                                                <div className="alertContent">
+                                                    <p></p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button onClick={toggleShow}>
+                                            {showPassword
+                                                ? 'Esconder campos'
+                                                : 'Mostrar campos'}
+                                        </Button>
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => {
+                                                setAlertConfirmPassword(false);
+                                                setShowModal(false);
+                                                setActualPassword('');
+                                                setNewPassword('');
+                                                setConfirmNewPassword('');
+                                            }}
+                                        >
+                                        Cancelar
+                                        </Button>
+                                        <Button
+                                            className="buttonConfirm"
+                                            onClick={updatePassword}
+                                        >
+                                        Confirmar
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
+
+                                <button className="button-save" type="submit">
                                     Salvar
                                 </button>
                             </div>

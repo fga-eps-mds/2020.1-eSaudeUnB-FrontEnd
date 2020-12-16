@@ -1,12 +1,12 @@
 .psychologistListContainer {
     width: 100%;
-    height: 100%;
-    color: #eee;
+    height: calc(100vh - 70px);
+    color: #ddd;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psychologistListContainer .content {
@@ -29,11 +29,6 @@
     justify-content: flex-start;
 }
 
-.psychologistListContainer .psy {
-    align-self: center;
-    margin-top: 1.5rem;
-    width: 915px;
-}
 .psychologistListContainer .cardToggle {
     display: flex;
     align-items: bottom;
@@ -48,7 +43,7 @@
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003A70;
 
     cursor: pointer;
 
@@ -61,7 +56,7 @@
     align-items: center;
     justify-content: space-between;
 
-    font: 500 18px Poppins;
+    font: 500 18px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #07387e;
 
     background-color: #eee;
@@ -73,6 +68,8 @@
     padding: 10px 20px 10px 20px;
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+    min-width: 230px;
 }
 
 .psychologistListContainer .patientInfos {
@@ -90,7 +87,7 @@
 
 .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
     margin: 16px 0 0 0;
-    font: 700 32px Poppins;
+    font: 700 32px "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .psychologistListContainer .patientTab .button {
     width: 3rem;
@@ -106,4 +103,70 @@
 }
 .psychologistListContainer button {
     border-color: transparent;
+}
+
+@media only screen and (max-width: 950px) {
+    .psychologistListContainer .content {
+        width: 90%;
+        margin: auto;
+        margin-top: 50px;
+        overflow-x: hidden;
+    }
+    .psychologistListContainer .patients {
+        width: 90%;
+    }
+    .psychologistListContainer .searcBarComponent {
+        justify-content: center;
+        width: 200%;
+    }
+    .psychologistListContainer .searcBarComponent input {
+        height: 30px;
+        width: 30%;
+    }
+    .psychologistListContainer .searcBarComponent img {
+        height: 18px;
+        margin-left: -45px;
+    }
+    .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
+        font: 700 26px Poppins;
+    }
+    .psychologistListContainer .cardToggle > a {
+        text-align: center;
+    }
+    .psychologistListContainer .patientTab .patientInfos .minPatient {
+        word-break: break-word;
+    }
+}
+
+@media only screen and (max-width: 613px) {
+    .psychologistListContainer .patientInfos {
+        flex-direction: column;
+    }
+    .psychologistListContainer .patientTab {
+        margin: 0px;
+        margin: 20px 18px 50px 18px;
+        padding: 14px;
+        flex-direction: column;
+    }
+    .psychologistListContainer .content {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        overflow-x: hidden;
+    }
+    .psychologistListContainer .patientTab .patientInfos .patientImg {
+        margin: 0px;
+    }
+    .psychologistListContainer .patientTab .patientInfos .minPatient .cardName {
+        font: 700 22px Poppins;
+    }
+    .psychologistListContainer .minPatient {
+        width: 100%;
+    }
+    .psychologistListContainer .cardToggle button {
+        width: 200px;
+        font-size: 16px;
+    }
+    .psychologistListContainer .patientTab button {
+        margin-top: 20px;
+    }
 }

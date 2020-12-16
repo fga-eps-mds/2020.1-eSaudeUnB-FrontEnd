@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .psyEventsCalendar .content {
@@ -16,10 +16,12 @@
     align-items: center;
 }
 .psyEventsCalendar .tabela {
-    width: 1400px;
+    width: 1300px;
     border-radius: 15px;
+    margin-bottom: -80px;
     display: flex;
     background-color: #eee;
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
     height: 690px;
 }
 
@@ -29,7 +31,6 @@
     justify-content: center;
 }
 .psyEventsCalendar .table-right {
-    
     width: 740px;
     text-align: center;
     display: flex;
@@ -38,7 +39,8 @@
 }
 .psyEventsCalendar .table-right h1 {
     justify-self: center;
-    font: 500 2.5rem Poppins;
+    font: 500 2.5rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #0459ae;
     display: flex;
 }
@@ -46,7 +48,8 @@
 .psyEventsCalendar .table-right button {
     border: none;
     color: #d10000;
-    font: 500 1.3rem Poppins;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     transition: 0.2s;
     border-radius: 8px;
     width: 60%;
@@ -69,17 +72,16 @@
 }
 
 .psyEventsCalendar .schedules {
-    width: 90%;
     height: 80%;
-    
+
     border-left: 2px solid #0459ae;
     overflow: auto;
-    font: 500 1.3rem Poppins;
+    font: 500 1.3rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #07387e;
 }
 
 .psyEventsCalendar .schedules .schedule-box {
-
     text-align: left;
     display: flex;
 }
@@ -87,7 +89,8 @@
 .psyEventsCalendar .schedules .schedule-box button {
     background: none;
     border: none;
-    font: 700 1rem Poppins;
+    font: 700 1rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #0459ae;
     cursor: pointer;
     padding: 0.6rem;
@@ -98,107 +101,62 @@
     color: #bdc2c9;
 }
 
-/* Calendar \/ */
-.react-calendar {
-    margin: 30px;
-    width: 600px;
-    height: 630px;
-    background: #eee;
-    border-radius: 15px;
-    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.25));
-}
-
-.react-calendar button {
-    margin: 0;
-    border: 0;
-    outline: none;
-}
-.react-calendar button:enabled:hover {
-    cursor: pointer;
-}
-.react-calendar__navigation {
-    height: 90px;
-}
-.react-calendar__navigation button {
-    width: 80px;
-    font-size: 30px;
-    color: #07387e;
-    border-radius: 15px;
-    background: none;
-}
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
-}
-.react-calendar__navigation button[disabled] {
-    background-color: #f0f0f0;
-}
-.react-calendar__month-view__weekdays {
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-}
-.react-calendar__month-view__weekdays__weekday {
-    color: #757575;
-}
-.react-calendar__month-view__days__day--weekend {
-    color: #d10000;
-}
-.react-calendar__month-view__days__day--neighboringMonth {
-    color: #c4c4c4;
-}
-
-.react-calendar__tile {
-    border-radius: 100%;
-    max-width: 100%;
-    text-align: center;
-    padding: 33px 20px;
-    background: none;
-}
-.react-calendar__tile:disabled {
-    background-color: #f0f0f0;
-}
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-    background-color: #e6e6e6;
-}
-.react-calendar__tile--now {
-    background: #c4c4c4;
-}
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-    background: #49cdf5;
-}
-.react-calendar__tile--hasActive {
-    background: #76baff;
-}
-.react-calendar__tile--hasActive:enabled:hover,
-.react-calendar__tile--hasActive:enabled:focus {
-    background: #a9d4ff;
-}
-.react-calendar__tile--active {
-    background: #006edc;
-    color: white;
-}
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-    background: #1087ff;
-}
-.react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: #e6e6e6;
-}
-
-.psyEventsCalendar .calendar-title{
+.psyEventsCalendar .calendar-title {
     display: flex;
     justify-content: center;
 }
-.psyEventsCalendar .schedules .schedule-box .testeTotal{
+.psyEventsCalendar .schedules .schedule-box .testeTotal {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     width: 100%;
     height: 80px;
+}
+.psyEventsCalendar .navBarComponent .navLinks {
+    display: none !important;
+}
+@media only screen and (max-width: 1300px) {
+    .psyEventsCalendar .tabela {
+        margin: auto;
+        margin-top: 50px;
+        height: auto;
+        flex-direction: column;
+        width: 550px;
+    }
+    .psyEventsCalendar .table-right {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+    .psyEventsCalendar .table-right h1 {
+        font-size: 2rem;
+    }
+    .psyEventsCalendar .schedules {
+        width: 100%;
+        border: 0;
+        max-height: 300px;
+    }
+    .psyEventsCalendar .schedules .testeTotal h3 {
+        font-size: 24px;
+    }
+}
+@media only screen and (max-width: 994px) {
+    .psyEventsCalendar .tabela {
+        width: 65%;
+    }
+    .psyEventsCalendar .SideBar {
+        display: none;
+    }
+    .psyEventsCalendar .navBarComponent .navLinks {
+        display: flex !important;
+    }
+}
+
+@media only screen and (max-width: 553px) {
+    .psyEventsCalendar .tabela {
+        width: 90%;
+    }
+    .psyEventsCalendar .table-right h1 {
+        font-size: 1.5rem;
+    }
 }

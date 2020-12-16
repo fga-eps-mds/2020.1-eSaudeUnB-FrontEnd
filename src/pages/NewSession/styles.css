@@ -2,12 +2,11 @@
     width: 100%;
     height: 100vh;
     color: #eee;
-
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 
 .newSession .content {
@@ -19,13 +18,15 @@
 
 .newSession .patientInfo {
     display: flex;
-    font: 500 18px Poppins;
+    font: 500 18px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #07387e;
     background-color: #eee;
     border-radius: 15px;
     line-height: 3rem;
-
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.4);
     width: 1400px;
+    margin-top: 50px;
 }
 
 .newSession .patientInfo .patient {
@@ -100,7 +101,8 @@
     width: 233.3px;
     margin-bottom: -10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    font: 500 1.2rem Poppins;
+    font: 500 1.2rem 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica,
+        Arial, sans-serif;
     color: #eee;
     float: left;
     background-color: #197fe5;
@@ -126,31 +128,29 @@
 .newSession .patientHistory .tabContent {
     display: flex;
     flex-direction: column;
-
-    font: 500 14px Poppins;
+    font: 500 14px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     color: #000;
-
-    background-color: #eee;
-    border-radius: 15px;
-
+    background-color: #eee !important;
+    border-radius: 0 0 15px 15px;
     width: 1400px;
-
     padding: 1rem 2rem 0 2rem;
     height: 55vh;
-
     overflow: auto;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.4);
 }
+
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #197fe5;
+    background: #003a70;
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0459ae;
+    background: #0e84e3;
 }
 
 .newSession .patientHistory .tabContent h1 {
@@ -159,13 +159,13 @@
 
 .newSession .patientHistory .tabContent h1,
 h2 {
-
     margin: 1rem 0 1.5rem 0;
     color: #07387e;
 }
 
 .newSession .patientHistory .tabContent h2 {
-    font: 100 16px Poppins;
+    font: 100 16px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     line-height: 1rem;
 }
 
@@ -178,6 +178,51 @@ h2 {
     padding: 1rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
     margin-bottom: 1.5rem;
+}
+
+.newSession .patientHistory .tabContent .record .infos {
+    margin-bottom: 30px;
+}
+
+.newSession .patientHistory .tabContent .record .infos .professional {
+    justify-content: left;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+.newSession .patientHistory .tabContent .record .infos label,
+.newSession .patientHistory .tabContent .record .infos p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #07387d;
+}
+.newSession .patientHistory .tabContent .record .infos .professional span {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+.newSession .patientHistory .tabContent .record .infos .infoInputs {
+    display: flex;
+}
+
+.newSession
+    .patientHistory
+    .tabContent
+    .record
+    .infos
+    .infoInputs
+    .input-box
+    + .input-box {
+    margin-left: 25px;
+}
+.newSession .patientHistory .tabContent .record .infos input {
+    width: 180px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid #c4c4c4;
+    outline: 0;
+    margin-left: -2px;
 }
 
 .newSession #professional {
@@ -218,13 +263,94 @@ h2 {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
-    font: 500 16px Poppins;
+    font: 500 16px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     text-align: left;
 }
 
 .newSession input {
     width: 600px;
-    font: 500 16px Poppins;
+    font: 500 16px 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     padding-left: 10px;
     padding-right: 10px;
+}
+@media only screen and (max-width: 1300px) {
+    .newSession .patientInfo,
+    .newSession .patientInfo .patient .info,
+    .newSession .patientHistory .tab,
+    .newSession .patientHistory .tabContent {
+        width: 90vw;
+    }
+
+    .newSession .patientHistory .tab button {
+        width: 15vw;
+        transition: 0s;
+    }
+    .newSession textarea {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .newSession .patientHistory .tab button {
+        width: 45vw;
+    }
+    .newSession .patientHistory .tab .tabLink {
+        height: 50px;
+        font-size: 18px;
+        width: 90vw;
+    }
+    .newSession .patientHistory .tab .buttons {
+        display: none;
+    }
+    .newSession .patientInfo .patient {
+        flex-direction: column;
+        align-items: start;
+    }
+    .newSession .patientInfo .patient .info .emailAndPhone,
+    .newSession .patientInfo .patient .info .hidden {
+        display: flex;
+        flex-direction: column;
+    }
+    .newSession .patientInfo .patient .patientImg {
+        margin: 10px 0 0 20px;
+    }
+    .newSession .patientInfo .patient .info {
+        padding: 5px 30px;
+    }
+    .newSession .patientInfo .patient .info .name {
+        width: 100%;
+    }
+    .newSession .minSession {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 481px) {
+    .newSession .patientHistory .tab {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .newSession .patientHistory .tab .tabLink:last-child {
+        border-radius: 15px;
+    }
+    .newSession .patientHistory .tabContent .record .infos .infoInputs {
+        flex-direction: column;
+    }
+    .newSession
+        .patientHistory
+        .tabContent
+        .record
+        .infos
+        .infoInputs
+        .input-box
+        + .input-box {
+        margin: 10px 0 0 0;
+    }
+    .newSession .sendButton {
+        width: 130px;
+        height: 40px;
+    }
 }

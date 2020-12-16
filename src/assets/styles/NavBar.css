@@ -1,20 +1,13 @@
 .navBarComponent {
     width: 100%;
-
-    background: #0a84e3;
+    height: 70px !important;
+    background: #003a70 !important;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 0 15px 0;
-    padding: 0px 15px 0 15px;
 }
 
-.navBarComponent .logo img {
-    width: 175px;
-    height: 80px;
+.navBarComponent .logoSquare {
+    width: 175px !important;
+    height: 80px !important;
 }
 
 .navBarComponent .navLinks {
@@ -29,75 +22,139 @@
 }
 
 .navBarComponent .navLinks .a:hover {
-    color: #eeeeee94;
+    opacity: 0.6;
 }
 
-.navBarComponent .navLinks .userIcon {
+.navBarComponent .userIcon {
     height: 46px;
     width: 46px;
     border-radius: 50%;
 }
 
-.navBarComponent .navLinks .arrow {
-    margin-top: 10px;
-    margin-left: 14px;
-    transform: rotate(180deg);
-}
-
-.navBarComponent .navLinks .dropdown {
-    margin: 0 50px 0 20px;
-    height: 42px;
-    width: 42px;
-
-    cursor: pointer;
-}
-
-.navBarComponent .navLinks .dropdown .images {
+.navBarComponent .dropdown-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 0 5px;
+    transform: rotate(-90deg);
+    color: white !important;
 }
 
-.navBarComponent .navLinks .dropdown .dropdown-items {
-    position: relative;
-    width: 150px;
-    right: 78px;
-
-    background: #eee;
-    padding: 10px 0 10px 0;
-    margin-top: 7px;
-
-    box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 15px 0 15px 15px;
+.dropleft .dropdown-toggle::before {
+    font-size: 30px;
 }
 
-.navBarComponent .navLinks .dropdown .dropdown-items::after {
-    border: 8px solid transparent;
-    border-bottom-color: #eee;
-    border-right-color: #eee;
-    content: '';
-    top: -15px;
-    right: 0px;
-    position: absolute;
+.dropleft .dropdown-toggle:hover {
+    opacity: 0.6;
 }
 
-.navBarComponent .navLinks .dropdown li {
-    padding: 10px;
-    list-style: none;
+.navBarComponent .dropdown-menu {
+    margin: 50px -40px 0 0 !important;
+    transform: rotate(0deg);
+    background-color: #003a70;
+    border-radius: 8%;
 }
 
-.navBarComponent .navLinks .dropdown li:hover {
-    background-color: #0459ae;
+.navBarComponent .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
 }
 
-.navBarComponent .navLinks .dropdown li:hover > a {
-    color: #eee;
+.dropDownItemText {
+    margin-left: 10px;
 }
 
-.navBarComponent .navLinks .dropdown li .a {
-    min-width: 150px;
-    height: 100%;
-    margin-top: 10px;
-    margin-left: -10px;
-    text-decoration: none;
-    color: #0459ae;
-    padding: 10px 95px 10px 17px;
+.navBarComponent .dropdown-item:hover {
+    color: white;
+    background-color: #004585;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.navBarComponent .dropdown-divider {
+    height: 0;
+    margin: 0.5rem auto;
+    overflow: hidden;
+    width: 80%;
+    border-top: 1px solid #ddd;
+}
+
+.navBarComponent .show .dropdown-toggle {
+    margin-top: 5px;
+    transform: rotate(90deg);
+}
+
+.navBarComponent .navbar-toggler {
+    background-color: #eee !important;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0 16px 0 16px;
+    align-items: center;
+}
+
+.navbar .navbar-brand {
+    height: 70px !important;
+    margin-top: -15px;
+}
+
+.navbar a.dropNone {
+    display: none;
+}
+
+@media only screen and (max-width: 991px) {
+    .navBarComponent .navLinks {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .navBarComponent .navLinks a {
+        margin-bottom: 20px !important;
+        margin-right: 0px !important;
+    }
+    .navBarComponent .navLinks a:first-child {
+        margin-top: 30px;
+    }
+
+    .navbar .navbar-collapse {
+        z-index: 1;
+        border-radius: 0 0 15px 15px;
+        margin-bottom: -254px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        background: #eee;
+    }
+    .navBarComponent .navLinks .a {
+        text-decoration: none;
+        margin-right: 30px;
+        color: #0a84e3;
+    }
+    .navbar .ml-auto .userIcon,
+    .dropdown-toggle {
+        display: none !important;
+    }
+    .navbar a.dropNone {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        margin-bottom: 10px;
+        color: #0a84e3;
+    }
+    .navbar a.dropNone:nth-child(odd) {
+        margin-bottom: 10px;
+        color: #0a84e3;
+    }
+    .navbar a.dropNone:hover {
+        opacity: 0.6;
+    }
+    .navbar .dropNone.dropDivider.dropdown-divider {
+        border-top: 1px solid #003a70 !important;
+        margin: 0 30px;
+    }
+    a.profileDropDown {
+        padding: 12px 72px 12px 0px !important;
+        color: white !important;
+    }
 }

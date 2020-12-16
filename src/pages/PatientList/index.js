@@ -13,47 +13,50 @@ import RealizeSearch from '../../components/RealizeSearch';
 export default function PatientList(props) {
     const [search, setSearch] = useState('');
     const [patients, setPatients] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
         api.get('/users', {
             headers: { authorization: accessToken },
         }).then((response) => {
             setPatients(response.data);
         });
-    });
+    }, []);
 
     return (
-        <div className="patientListContainer">
+        <>
             <NavBar
                 className="navBar"
-                bond="Psychologist"
-                actualUser={props.location.state.data}
+                bond="Professional"
             />
-            <div className="content">
-                <SearchBar
-                    placeholder="Pesquisar"
-                    className="searchBar"
-                    value={search}
-                    onChange={setSearch}
-                    icon={MagnifyingGlass}
-                />
-                <div className="patients">
-                    {patients.length === 0 ? (
-                        <div className="patientTab noPatients">
-                            Não há pacientes cadastrados
-                        </div>
-                    ) : (
-                        <RealizeSearch
-                            patients={patients}
-                            location={props.location}
-                            src={MagnifyingGlass}
-                            search={search}
-                        />
-                    )}
+            <div className="patientListContainer">
+                <div className="content">
+                    <SearchBar
+                        placeholder="Pesquisar"
+                        className="searchBar"
+                        value={search}
+                        onChange={setSearch}
+                        icon={MagnifyingGlass}
+                    />
+                    <>
+                        {patients.length === 0 ? (
+                            <div className="warningLabel">
+                                <div className="noPatients">
+                                    Não há pacientes cadastrados
+                                </div>
+                            </div>
+                        ) : (
+                            <RealizeSearch
+                                patients={patients}
+                                location={props.location}
+                                src={MagnifyingGlass}
+                                search={search}
+                            />
+                        )}
+                    </>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

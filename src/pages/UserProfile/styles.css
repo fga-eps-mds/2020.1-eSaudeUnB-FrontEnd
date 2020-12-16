@@ -1,50 +1,80 @@
 .userProfileContainer {
     width: 100%;
-    height: 100%;
-
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0a84e3 0%, #0a9be3 100%);
+    background: #fff;
 }
 .userProfileContainer .content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.userProfileContainer .form {
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.userProfileContainer .form:first-of-type {
-    margin-right: 100px;
+    min-height: calc(100vh - 200px);
+    margin-bottom: 30px;
 }
 .userProfileContainer .formColumn {
+    display: grid;
+    grid-template-areas:
+        'buttonLeft form buttonRight'
+        'none buttons nothing';
     margin-top: 80px;
-    height: 650px;
     background-color: #eee;
     border-radius: 15px;
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.25);
+    padding: 25px 0;
 }
-.userProfileContainer .inputs {
-    width: 800px;
-    height: 330px;
+.userProfileContainer .formColumn .fieldDiv {
+    width: 312px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    border: solid 1px #ccc;
+    padding: 5px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 120%;
+}
+
+.userProfileContainer .formColumn .button-page {
+    padding: 15px;
+    margin: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    grid-area: buttonRight;
+}
+.userProfileContainer .formColumn .button-page:focus {
+    outline: none;
+}
+
+.userProfileContainer .formColumn .previousButton {
+    transform: rotate(180deg);
+    grid-area: buttonLeft;
+}
+
+.userProfileContainer .formColumn .page {
+    grid-area: form;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.userProfileContainer .formColumn .page .form {
+    margin-top: 15px;
+    display: flex;
+}
+
+.userProfileContainer .formColumn .page .form .formRight {
+    margin-left: 60px;
+}
+
+.userProfileContainer .formColumn #page2,
+#page3 {
+    display: none;
 }
 
 .userProfileContainer .form .input {
     display: flex;
     margin-top: -3px;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003a70;
     margin-bottom: 10px;
-    height: 41px;
 }
 
 .userProfileContainer .form input::placeholder {
@@ -53,51 +83,52 @@
 
 .userProfileContainer .form input {
     width: 300px;
-    /* height: 41px; */
     margin: 0;
+    height: 30px;
 
     background-color: transparent;
-    color: #0459ae;
+    color: #003a70;
     border: 0;
-    padding-top: 20px;
+    padding-top: 6px;
     font-size: 15px;
-    line-height: 27px;
 }
 
 .userProfileContainer .form select {
-    width: 140px;
-    height: 41px;
-
-    color: #0459ae;
-
-    padding-top: 15px;
+    color: #003a70;
+    height: 30px;
+    padding-top: 6px;
     border: 0px;
     background-color: transparent;
-    border-bottom: 3px solid #0459ae;
+    border-bottom: 3px solid #003a70;
 
-    font-size: 14px;
-    line-height: 27px;
+    font-size: 15px;
     margin: -3px 0 10.5px 0;
 }
 
-.userProfileContainer .content .formColumn .form .selectsLargest {
-    width: 300px;
-    height: 41px;
+.userProfileContainer .buttons {
+    margin-top: 20px;
+    grid-area: buttons;
+    display: flex;
+    justify-content: space-between;
 }
 
-.userProfileContainer .formColumn .buttons .button-salvar {
+.userProfileContainer .content .formColumn .buttons .button-salvar,
+.userProfileContainer .content .formColumn .buttons .button-change {
     width: 130px;
     height: 40px;
-
     border-radius: 25px;
     border: 0;
     color: #fff;
-    background-color: #0459ae;
+    background-color: #003a70;
 
     cursor: pointer;
 
     font-size: 18px;
-    line-height: 36px;
+}
+
+.userProfileContainer .content .formColumn .buttons .button-change {
+    width: 150px;
+    background: #909090;
 }
 
 .userProfileContainer .formColumn .buttons .button-salvar:hover {
@@ -111,42 +142,18 @@
     left: 50%;
 }
 
-.userProfileContainer .buttons {
-    display: flex;
-    justify-content: flex-end;
-    width: 93.7%;
-    margin-top: -5px;
-}
-
 .userProfileContainer .form .alertContent {
     color: red;
     text-align: left;
-    width: 300px;
     height: 20px;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: -8px;
-    margin-bottom: 10px;
-}
-
-.userProfileContainer .form .alertContent + .alertContent {
-    margin-left: 20px;
-}
-
-.userProfileContainer .userIcon {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-}
-.userProfileContainer .personal-image {
-    margin-left: 50px;
-    margin-top: 45.5px;
-    margin-bottom: 30px;
-    height: 125px;
 }
 
 .userProfileContainer .personal-image input[type='file'] {
     display: none;
 }
+
 .userProfileContainer .personal-figure {
     position: relative;
     width: 125px;
@@ -165,7 +172,7 @@
     box-sizing: border-box;
     border-radius: 50%;
     transition: all ease-in-out 0.3s;
-    border: solid 1px #0459ae;
+    border: solid 1px #003a70;
     border-radius: 50%;
 }
 .userProfileContainer .personal-avatar:hover {
@@ -190,4 +197,105 @@
     margin-top: 32.5px;
     width: 50px;
     height: 50px;
+}
+.buttonConfirm {
+    background-color: #003a70;
+}
+
+.modalTitle {
+    color: #003a70;
+}
+
+.modalFormDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+}
+
+.modalLabel {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #003a70;
+}
+
+.modalInput {
+    background-color: transparent;
+    line-height: 27px;
+    border: 2px solid #003a70;
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 4px;
+    width: 300px;
+}
+.btn:not(:disabled):not(.disabled) {
+    border-radius: 18px;
+}
+
+.alertContent {
+    color: red;
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 900px) {
+    .userProfileContainer {
+        height: 100%;
+    }
+    .userProfileContainer .content {
+        margin-bottom: 30px;
+    }
+    .userProfileContainer .content .formColumn .buttons .button-salvar,
+    .userProfileContainer .content .formColumn .buttons .button-change {
+        width: 140px;
+        font-size: 16px;
+    }
+    .userProfileContainer .formColumn .page .form .formRight {
+        margin-left: 40px;
+    }
+    .userProfileContainer .formColumn .button-page {
+        padding: 10px;
+        margin: 5px;
+    }
+    .userProfileContainer .form .alertContent {
+        margin-bottom: 10px;
+    }
+    .userProfileContainer .form .fieldDiv {
+        width: 212px;
+    }
+
+    .userProfileContainer .form input {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .userProfileContainer .formColumn .page {
+        width: 220px;
+    }
+    .userProfileContainer .formColumn .page .form {
+        flex-direction: column;
+    }
+    .userProfileContainer .formColumn .page .form .formRight {
+        margin-left: 0;
+    }
+    .userProfileContainer .formColumn .button-page {
+        padding: 2.5vw;
+        margin: 0;
+        /* width: 30px; */
+    }
+    .userProfileContainer .formColumn .button-page img {
+        width: 30px;
+    }
+    .userProfileContainer .content .formColumn .buttons .button-salvar,
+    .userProfileContainer .content .formColumn .buttons .button-change {
+        width: 100px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
 }
